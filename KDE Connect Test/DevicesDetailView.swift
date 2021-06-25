@@ -1,0 +1,117 @@
+//
+//  DevicesDetailView.swift
+//  KDE Connect Test
+//
+//  Created by Lucas Wang on 2021-06-17.
+//
+
+import SwiftUI
+
+struct DevicesDetailView: View {
+    let detailsDeviceIndex: Int
+    @State private var showingEncryptionInfo: Bool = false
+    
+    var body: some View {
+        List {
+            Text("This is some instructions")
+            // NavigationLink doesn't work from the menu in
+            // the navigation bar, options are:
+            // 1. divide main list into section
+            // 2. 
+            Section(header: Text("Actions")) {
+                Button(action: {
+                    // need to figure out how to send files
+                    // Should bring up the file browser here
+                }, label: {
+                    HStack {
+                        Image(systemName: "folder")
+                        Text("Send files")
+                    }
+                })
+                
+                NavigationLink(
+                    destination: PlaceHolderView(),
+                    label: {
+                        HStack {
+                            Image(systemName: "slider.horizontal.below.rectangle")
+                            Text("Slideshow remote")
+                        }
+                    })
+                
+                NavigationLink(
+                    destination: PlaceHolderView(),
+                    label: {
+                        HStack {
+                            Image(systemName: "playpause")
+                            Text("Multimedia control")
+                        }
+                    })
+                
+                NavigationLink(
+                    destination: PlaceHolderView(),
+                    label: {
+                        HStack {
+                            Image(systemName: "hand.tap")
+                            Text("Remote input")
+                        }
+                    })
+            }
+            Section(header: Text("Device Specific Settings")) {
+                
+            }
+        }
+        .navigationTitle(testingConnectedDevicesInfo[detailsDeviceIndex].connectedDeviceName)
+        .navigationBarItems(trailing: {
+            Menu {
+                Button(action: {
+                    // ring
+                }, label: {
+                    HStack {
+                        Text("Ring")
+                        Image(systemName: "bell")
+                    }
+                })
+                
+                Button(action: {
+                    // send ping
+                }, label: {
+                    HStack {
+                        Text("Send Ping")
+                        Image(systemName: "megaphone")
+                    }
+                })
+                
+                NavigationLink(
+                    destination: DeviceDetailPluginSettingsView(detailsDeviceIndex: detailsDeviceIndex),
+                    label: {
+                        HStack {
+                            Text("Plugin Settings")
+                            Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
+                        }
+                    })
+                
+                Button(action: {
+                    showingEncryptionInfo = true
+                }, label: {
+                    HStack {
+                        Text("Encryption Info")
+                        Image(systemName: "lock.doc")
+                    }
+                })
+            } label: {
+                Image(systemName: "ellipsis.circle")
+            }
+        }())
+        .alert(isPresented: $showingEncryptionInfo) {
+            Alert(title: Text("Encryption Info"), message:
+                Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
+            , dismissButton: .default(Text("OK")))
+        }
+    }
+}
+
+struct DevicesDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        DevicesDetailView(detailsDeviceIndex: 0)
+    }
+}

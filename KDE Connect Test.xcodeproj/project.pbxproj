@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */; };
+		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
+		A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04433267BF38A00CC21DD /* Assets.xcassets */; };
+		A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */; };
+		A0A04442267BF38A00CC21DD /* KDE_Connect_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */; };
+		A0A0444D267BF38A00CC21DD /* KDE_Connect_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */; };
+		A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445A267BF40400CC21DD /* DevicesView.swift */; };
+		A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */; };
+		A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445E267BF41B00CC21DD /* SettingsView.swift */; };
+		A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */; };
+		A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */; };
+		A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */; };
+		A0B87281267C45F400F0EB72 /* ConnectedDevicesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87280267C45F400F0EB72 /* ConnectedDevicesData.swift */; };
+		A0B87283267D2A8600F0EB72 /* PlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */; };
+		A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */; };
+		A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A0A0443E267BF38A00CC21DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A04424267BF38700CC21DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0A0442B267BF38700CC21DD;
+			remoteInfo = "KDE Connect Test";
+		};
+		A0A04449267BF38A00CC21DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A04424267BF38700CC21DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0A0442B267BF38700CC21DD;
+			remoteInfo = "KDE Connect Test";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A0A0442C267BF38700CC21DD /* KDE Connect Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestApp.swift; sourceTree = "<group>"; };
+		A0A04431267BF38700CC21DD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		A0A04433267BF38A00CC21DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A0A04438267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0A0443D267BF38A00CC21DD /* KDE Connect TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE Connect TestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestTests.swift; sourceTree = "<group>"; };
+		A0A04443267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0A04448267BF38A00CC21DD /* KDE Connect TestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE Connect TestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestUITests.swift; sourceTree = "<group>"; };
+		A0A0444E267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0A0445A267BF40400CC21DD /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
+		A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesDetailView.swift; sourceTree = "<group>"; };
+		A0A0445E267BF41B00CC21DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCellView.swift; sourceTree = "<group>"; };
+		A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeviceNameView.swift; sourceTree = "<group>"; };
+		A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDeviceData.swift; sourceTree = "<group>"; };
+		A0B87280267C45F400F0EB72 /* ConnectedDevicesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDevicesData.swift; sourceTree = "<group>"; };
+		A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderView.swift; sourceTree = "<group>"; };
+		A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChosenThemeView.swift; sourceTree = "<group>"; };
+		A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailPluginSettingsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0A04429267BF38700CC21DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0A0443A267BF38A00CC21DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0A04445267BF38A00CC21DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A0A04423267BF38700CC21DD = {
+			isa = PBXGroup;
+			children = (
+				A0A0442E267BF38700CC21DD /* KDE Connect Test */,
+				A0A04440267BF38A00CC21DD /* KDE Connect TestTests */,
+				A0A0444B267BF38A00CC21DD /* KDE Connect TestUITests */,
+				A0A0442D267BF38700CC21DD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0A0442D267BF38700CC21DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0A0442C267BF38700CC21DD /* KDE Connect Test.app */,
+				A0A0443D267BF38A00CC21DD /* KDE Connect TestTests.xctest */,
+				A0A04448267BF38A00CC21DD /* KDE Connect TestUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0A0442E267BF38700CC21DD /* KDE Connect Test */ = {
+			isa = PBXGroup;
+			children = (
+				A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */,
+				A0A04431267BF38700CC21DD /* MainTabView.swift */,
+				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
+				A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */,
+				A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */,
+				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
+				A0B87280267C45F400F0EB72 /* ConnectedDevicesData.swift */,
+				A0A0445E267BF41B00CC21DD /* SettingsView.swift */,
+				A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */,
+				A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */,
+				A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */,
+				A0A04433267BF38A00CC21DD /* Assets.xcassets */,
+				A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */,
+				A0A04438267BF38A00CC21DD /* Info.plist */,
+				A0A04435267BF38A00CC21DD /* Preview Content */,
+			);
+			path = "KDE Connect Test";
+			sourceTree = "<group>";
+		};
+		A0A04435267BF38A00CC21DD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A0A04440267BF38A00CC21DD /* KDE Connect TestTests */ = {
+			isa = PBXGroup;
+			children = (
+				A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */,
+				A0A04443267BF38A00CC21DD /* Info.plist */,
+			);
+			path = "KDE Connect TestTests";
+			sourceTree = "<group>";
+		};
+		A0A0444B267BF38A00CC21DD /* KDE Connect TestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */,
+				A0A0444E267BF38A00CC21DD /* Info.plist */,
+			);
+			path = "KDE Connect TestUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0A0442B267BF38700CC21DD /* KDE Connect Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0A04451267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect Test" */;
+			buildPhases = (
+				A0A04428267BF38700CC21DD /* Sources */,
+				A0A04429267BF38700CC21DD /* Frameworks */,
+				A0A0442A267BF38700CC21DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KDE Connect Test";
+			productName = "KDE Connect Test";
+			productReference = A0A0442C267BF38700CC21DD /* KDE Connect Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A0A0443C267BF38A00CC21DD /* KDE Connect TestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0A04454267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestTests" */;
+			buildPhases = (
+				A0A04439267BF38A00CC21DD /* Sources */,
+				A0A0443A267BF38A00CC21DD /* Frameworks */,
+				A0A0443B267BF38A00CC21DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0A0443F267BF38A00CC21DD /* PBXTargetDependency */,
+			);
+			name = "KDE Connect TestTests";
+			productName = "KDE Connect TestTests";
+			productReference = A0A0443D267BF38A00CC21DD /* KDE Connect TestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A0A04447267BF38A00CC21DD /* KDE Connect TestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0A04457267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestUITests" */;
+			buildPhases = (
+				A0A04444267BF38A00CC21DD /* Sources */,
+				A0A04445267BF38A00CC21DD /* Frameworks */,
+				A0A04446267BF38A00CC21DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0A0444A267BF38A00CC21DD /* PBXTargetDependency */,
+			);
+			name = "KDE Connect TestUITests";
+			productName = "KDE Connect TestUITests";
+			productReference = A0A04448267BF38A00CC21DD /* KDE Connect TestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A0A04424267BF38700CC21DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					A0A0442B267BF38700CC21DD = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					A0A0443C267BF38A00CC21DD = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = A0A0442B267BF38700CC21DD;
+					};
+					A0A04447267BF38A00CC21DD = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = A0A0442B267BF38700CC21DD;
+					};
+				};
+			};
+			buildConfigurationList = A0A04427267BF38700CC21DD /* Build configuration list for PBXProject "KDE Connect Test" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A0A04423267BF38700CC21DD;
+			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A0A0442B267BF38700CC21DD /* KDE Connect Test */,
+				A0A0443C267BF38A00CC21DD /* KDE Connect TestTests */,
+				A0A04447267BF38A00CC21DD /* KDE Connect TestUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0A0442A267BF38700CC21DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */,
+				A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0A0443B267BF38A00CC21DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0A04446267BF38A00CC21DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0A04428267BF38700CC21DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0B87281267C45F400F0EB72 /* ConnectedDevicesData.swift in Sources */,
+				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
+				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
+				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
+				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
+				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
+				A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */,
+				A0B87283267D2A8600F0EB72 /* PlaceHolderView.swift in Sources */,
+				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
+				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
+				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
+				A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0A04439267BF38A00CC21DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0A04442267BF38A00CC21DD /* KDE_Connect_TestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0A04444267BF38A00CC21DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0A0444D267BF38A00CC21DD /* KDE_Connect_TestUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0A0443F267BF38A00CC21DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0A0442B267BF38700CC21DD /* KDE Connect Test */;
+			targetProxy = A0A0443E267BF38A00CC21DD /* PBXContainerItemProxy */;
+		};
+		A0A0444A267BF38A00CC21DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0A0442B267BF38700CC21DD /* KDE Connect Test */;
+			targetProxy = A0A04449267BF38A00CC21DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A0A0444F267BF38A00CC21DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A0A04450267BF38A00CC21DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A0A04452267BF38A00CC21DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect Test/Preview Content\"";
+				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "KDE Connect Test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0A04453267BF38A00CC21DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect Test/Preview Content\"";
+				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "KDE Connect Test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A0A04455267BF38A00CC21DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				INFOPLIST_FILE = "KDE Connect TestTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDE Connect Test.app/KDE Connect Test";
+			};
+			name = Debug;
+		};
+		A0A04456267BF38A00CC21DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				INFOPLIST_FILE = "KDE Connect TestTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDE Connect Test.app/KDE Connect Test";
+			};
+			name = Release;
+		};
+		A0A04458267BF38A00CC21DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				INFOPLIST_FILE = "KDE Connect TestUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "KDE Connect Test";
+			};
+			name = Debug;
+		};
+		A0A04459267BF38A00CC21DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				INFOPLIST_FILE = "KDE Connect TestUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "KDE Connect Test";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0A04427267BF38700CC21DD /* Build configuration list for PBXProject "KDE Connect Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0A0444F267BF38A00CC21DD /* Debug */,
+				A0A04450267BF38A00CC21DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0A04451267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0A04452267BF38A00CC21DD /* Debug */,
+				A0A04453267BF38A00CC21DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0A04454267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0A04455267BF38A00CC21DD /* Debug */,
+				A0A04456267BF38A00CC21DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0A04457267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0A04458267BF38A00CC21DD /* Debug */,
+				A0A04459267BF38A00CC21DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A0A04424267BF38700CC21DD /* Project object */;
+}
