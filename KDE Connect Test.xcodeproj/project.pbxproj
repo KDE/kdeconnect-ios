@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1499A8CF2698BE6900FDF493 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */; };
+		1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D42698BF0F00FDF493 /* LanLinkProvider.m */; };
+		1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D52698BF0F00FDF493 /* LanLink.m */; };
+		1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D82698BF0F00FDF493 /* BaseLink.m */; };
+		1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D92698BF0F00FDF493 /* BaseLinkProvider.m */; };
+		1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E02698BF6900FDF493 /* NetworkPackage.m */; };
+		1499A8E72698BFF300FDF493 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E32698BFF300FDF493 /* Device.m */; };
+		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
+		1499A8EA2698C48300FDF493 /* rsaPrivate.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 1499A8E92698C48300FDF493 /* rsaPrivate.p12 */; };
 		A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */; };
 		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
 		A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04433267BF38A00CC21DD /* Assets.xcassets */; };
@@ -43,6 +52,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1499A8D02698BF0F00FDF493 /* LanLink-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LanLink-Bridging-Header.h"; sourceTree = "<group>"; };
+		1499A8D22698BF0F00FDF493 /* LanLinkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanLinkProvider.h; sourceTree = "<group>"; };
+		1499A8D32698BF0F00FDF493 /* LanLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanLink.h; sourceTree = "<group>"; };
+		1499A8D42698BF0F00FDF493 /* LanLinkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanLinkProvider.m; sourceTree = "<group>"; };
+		1499A8D52698BF0F00FDF493 /* LanLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanLink.m; sourceTree = "<group>"; };
+		1499A8D62698BF0F00FDF493 /* BaseLinkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLinkProvider.h; sourceTree = "<group>"; };
+		1499A8D72698BF0F00FDF493 /* BaseLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLink.h; sourceTree = "<group>"; };
+		1499A8D82698BF0F00FDF493 /* BaseLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLink.m; sourceTree = "<group>"; };
+		1499A8D92698BF0F00FDF493 /* BaseLinkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLinkProvider.m; sourceTree = "<group>"; };
+		1499A8DF2698BF6900FDF493 /* NetworkPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPackage.h; sourceTree = "<group>"; };
+		1499A8E02698BF6900FDF493 /* NetworkPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPackage.m; sourceTree = "<group>"; };
+		1499A8E12698BF6900FDF493 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		1499A8E32698BFF300FDF493 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
+		1499A8E42698BFF300FDF493 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		1499A8E92698C48300FDF493 /* rsaPrivate.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsaPrivate.p12; sourceTree = "<group>"; };
 		A0A0442C267BF38700CC21DD /* KDE Connect Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestApp.swift; sourceTree = "<group>"; };
 		A0A04431267BF38700CC21DD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -72,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1499A8CF2698BE6900FDF493 /* CocoaAsyncSocket in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,9 +119,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1499A8CC2698BE2300FDF493 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				1499A8D72698BF0F00FDF493 /* BaseLink.h */,
+				1499A8D82698BF0F00FDF493 /* BaseLink.m */,
+				1499A8D62698BF0F00FDF493 /* BaseLinkProvider.h */,
+				1499A8D92698BF0F00FDF493 /* BaseLinkProvider.m */,
+				1499A8D12698BF0F00FDF493 /* lanBackend */,
+				1499A8D02698BF0F00FDF493 /* LanLink-Bridging-Header.h */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		1499A8D12698BF0F00FDF493 /* lanBackend */ = {
+			isa = PBXGroup;
+			children = (
+				1499A8D22698BF0F00FDF493 /* LanLinkProvider.h */,
+				1499A8D32698BF0F00FDF493 /* LanLink.h */,
+				1499A8D42698BF0F00FDF493 /* LanLinkProvider.m */,
+				1499A8D52698BF0F00FDF493 /* LanLink.m */,
+			);
+			path = lanBackend;
+			sourceTree = "<group>";
+		};
+		1499A8DE2698BF4900FDF493 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				1499A8E52698BFF300FDF493 /* Device.h */,
+				1499A8E32698BFF300FDF493 /* Device.m */,
+				1499A8E42698BFF300FDF493 /* KeychainItemWrapper.h */,
+				1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */,
+				1499A8E12698BF6900FDF493 /* common.h */,
+				1499A8DF2698BF6900FDF493 /* NetworkPackage.h */,
+				1499A8E02698BF6900FDF493 /* NetworkPackage.m */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		A0A04423267BF38700CC21DD = {
 			isa = PBXGroup;
 			children = (
+				1499A8E92698C48300FDF493 /* rsaPrivate.p12 */,
 				A0A0442E267BF38700CC21DD /* KDE Connect Test */,
 				A0A04440267BF38A00CC21DD /* KDE Connect TestTests */,
 				A0A0444B267BF38A00CC21DD /* KDE Connect TestUITests */,
@@ -115,6 +181,8 @@
 		A0A0442E267BF38700CC21DD /* KDE Connect Test */ = {
 			isa = PBXGroup;
 			children = (
+				1499A8DE2698BF4900FDF493 /* Library */,
+				1499A8CC2698BE2300FDF493 /* Backend */,
 				A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */,
 				A0A04431267BF38700CC21DD /* MainTabView.swift */,
 				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
@@ -176,6 +244,9 @@
 			dependencies = (
 			);
 			name = "KDE Connect Test";
+			packageProductDependencies = (
+				1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */,
+			);
 			productName = "KDE Connect Test";
 			productReference = A0A0442C267BF38700CC21DD /* KDE Connect Test.app */;
 			productType = "com.apple.product-type.application";
@@ -227,6 +298,7 @@
 				TargetAttributes = {
 					A0A0442B267BF38700CC21DD = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 					A0A0443C267BF38A00CC21DD = {
 						CreatedOnToolsVersion = 12.5;
@@ -247,6 +319,9 @@
 				Base,
 			);
 			mainGroup = A0A04423267BF38700CC21DD;
+			packageReferences = (
+				1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
+			);
 			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1499A8EA2698C48300FDF493 /* rsaPrivate.p12 in Resources */,
 				A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */,
 				A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */,
 			);
@@ -289,18 +365,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */,
+				1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */,
+				1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */,
+				1499A8E72698BFF300FDF493 /* Device.m in Sources */,
 				A0B87281267C45F400F0EB72 /* ConnectedDevicesData.swift in Sources */,
+				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
+				1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */,
 				A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */,
 				A0B87283267D2A8600F0EB72 /* PlaceHolderView.swift in Sources */,
 				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
 				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
 				A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */,
+				1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect Test/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
@@ -469,6 +553,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/Backend/LanLink-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -479,6 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect Test/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
@@ -491,6 +578,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/Backend/LanLink-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -620,6 +708,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/robbiehanson/CocoaAsyncSocket";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.6.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
+			productName = CocoaAsyncSocket;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0A04424267BF38700CC21DD /* Project object */;
 }

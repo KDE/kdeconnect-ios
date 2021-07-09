@@ -14,4 +14,6 @@ struct KDE_Connect_TestApp: App {
             MainTabView()
         }
     }
+    
+    var linkProvider = LanLinkProvider(delegate:nil)
 }
