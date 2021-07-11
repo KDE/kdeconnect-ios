@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -194,8 +194,8 @@
 				A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */,
 				A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */,
 				A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */,
-				A0A04433267BF38A00CC21DD /* Assets.xcassets */,
 				A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */,
+				A0A04433267BF38A00CC21DD /* Assets.xcassets */,
 				A0A04438267BF38A00CC21DD /* Info.plist */,
 				A0A04435267BF38A00CC21DD /* Preview Content */,
 			);

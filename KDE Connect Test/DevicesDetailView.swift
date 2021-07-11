@@ -13,11 +13,11 @@ struct DevicesDetailView: View {
     
     var body: some View {
         List {
-            Text("This is some instructions")
+            //Text("This is some instructions")
             // NavigationLink doesn't work from the menu in
             // the navigation bar, options are:
             // 1. divide main list into section
-            // 2. 
+            // 2.
             Section(header: Text("Actions")) {
                 Button(action: {
                     // need to figure out how to send files
@@ -57,10 +57,17 @@ struct DevicesDetailView: View {
                     })
             }
             Section(header: Text("Device Specific Settings")) {
-                
+                NavigationLink(
+                    destination: DeviceDetailPluginSettingsView(detailsDeviceIndex: detailsDeviceIndex),
+                    label: {
+                        HStack {
+                            Text("Plugin Settings")
+                            Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
+                        }
+                    })
             }
         }
-        .navigationTitle(testingConnectedDevicesInfo[detailsDeviceIndex].connectedDeviceName)
+        .navigationTitle(testingOtherDevicesInfo[detailsDeviceIndex].connectedDeviceName)
         .navigationBarItems(trailing: {
             Menu {
                 Button(action: {
@@ -81,15 +88,6 @@ struct DevicesDetailView: View {
                     }
                 })
                 
-                NavigationLink(
-                    destination: DeviceDetailPluginSettingsView(detailsDeviceIndex: detailsDeviceIndex),
-                    label: {
-                        HStack {
-                            Text("Plugin Settings")
-                            Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
-                        }
-                    })
-                
                 Button(action: {
                     showingEncryptionInfo = true
                 }, label: {
@@ -98,14 +96,24 @@ struct DevicesDetailView: View {
                         Image(systemName: "lock.doc")
                     }
                 })
+                
+                Button(action: {
+                    // unpair alert
+                }, label: {
+                    HStack {
+                        Text("Unpair")
+                        Image(systemName: "wifi.slash")
+                    }
+                })
+                
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
         }())
         .alert(isPresented: $showingEncryptionInfo) {
             Alert(title: Text("Encryption Info"), message:
-                Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
-            , dismissButton: .default(Text("OK")))
+                    Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
+                  , dismissButton: .default(Text("OK")))
         }
     }
 }

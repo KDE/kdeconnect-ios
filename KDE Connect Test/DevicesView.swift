@@ -11,25 +11,26 @@ struct DevicesView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(testingConnectedDevicesInfo.indices) { index in
+                ForEach(testingOtherDevicesInfo.indices) { index in
                     NavigationLink(
                         destination: DevicesDetailView(detailsDeviceIndex: index),
                         label: {
                             HStack {
-                                Image(systemName: (testingConnectedDevicesInfo[index].connectionStatus ? "wifi" : "wifi.slash"))
-                                    .foregroundColor(testingConnectedDevicesInfo[index].connectionStatus ? .green : .red)
+                                Image(systemName: otherDeviceSymbol[testingOtherDevicesInfo[index].connectionStatus]!)
+                                    .foregroundColor((testingOtherDevicesInfo[index].connectionStatus == "disconnected") ? .red : .green)
                                     .font(.system(size: 23))
                                 VStack(alignment: .leading) {
-                                    Text(testingConnectedDevicesInfo[index].connectedDeviceName)
+                                    Text(testingOtherDevicesInfo[index].connectedDeviceName)
                                         .font(.system(size: 20, weight: .bold))
-                                    Text(testingConnectedDevicesInfo[index].connectedDeviceDescription)
+                                    Text(testingOtherDevicesInfo[index].connectedDeviceDescription)
                                 }
                             }
-                    })
+                        })
                 }
             }
             .navigationTitle("Devices")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
