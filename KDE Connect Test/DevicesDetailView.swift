@@ -61,8 +61,8 @@ struct DevicesDetailView: View {
                     destination: DeviceDetailPluginSettingsView(detailsDeviceIndex: detailsDeviceIndex),
                     label: {
                         HStack {
-                            Text("Plugin Settings")
                             Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
+                            Text("Plugin Settings")
                         }
                     })
             }
