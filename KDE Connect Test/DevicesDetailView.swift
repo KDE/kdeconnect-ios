@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct DevicesDetailView: View {
     let detailsDeviceIndex: Int
     @State private var showingEncryptionInfo: Bool = false
     @State private var showingFilePicker: Bool = false
-    @State private var chosenFileURLs: [URL]? = nil
+    @State private var chosenFileURLs: [URL] = []
     
     var body: some View {
         List {
@@ -70,7 +71,7 @@ struct DevicesDetailView: View {
             
             Section(header: Text("Debug section")) {
                 Text("Chosen file URLs:")
-                ForEach(chosenFileURLs ?? [], id: \.self) { url in
+                ForEach(chosenFileURLs, id: \.self) { url in
                     Text(url.absoluteString)
                 }
             }
@@ -124,7 +125,7 @@ struct DevicesDetailView: View {
                     Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
                   , dismissButton: .default(Text("OK")))
         }
-        .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: [.text], allowsMultipleSelection: true) { result in
+        .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
             do {
                 chosenFileURLs = try result.get()
             } catch {
