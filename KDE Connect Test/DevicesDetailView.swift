@@ -10,6 +10,8 @@ import SwiftUI
 struct DevicesDetailView: View {
     let detailsDeviceIndex: Int
     @State private var showingEncryptionInfo: Bool = false
+    @State private var showingFilePicker: Bool = false
+    @State private var chosenFileURL: URL? = nil
     
     var body: some View {
         List {
@@ -20,8 +22,7 @@ struct DevicesDetailView: View {
             // 2.
             Section(header: Text("Actions")) {
                 Button(action: {
-                    // need to figure out how to send files
-                    // Should bring up the file browser here
+                    showingFilePicker = true
                 }, label: {
                     HStack {
                         Image(systemName: "folder")
@@ -65,6 +66,10 @@ struct DevicesDetailView: View {
                             Text("Plugin Settings")
                         }
                     })
+            }
+            
+            Section(header: Text("Debug section")) {
+                Text("Chosen file URL:\n" + (chosenFileURL?.absoluteString ?? "Chosen file is nil"))
             }
         }
         .navigationTitle(testingOtherDevicesInfo[detailsDeviceIndex].connectedDeviceName)
@@ -115,11 +120,14 @@ struct DevicesDetailView: View {
                     Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
                   , dismissButton: .default(Text("OK")))
         }
+        .sheet(isPresented: self.$showingFilePicker) {
+            DocumentPicker(fileContentData: $chosenFileURL)
+        }
     }
 }
 
-struct DevicesDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicesDetailView(detailsDeviceIndex: 0)
-    }
-}
+//struct DevicesDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DevicesDetailView(detailsDeviceIndex: 0)
+//    }
+//}
