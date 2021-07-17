@@ -124,8 +124,12 @@ struct DevicesDetailView: View {
                     Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
                   , dismissButton: .default(Text("OK")))
         }
-        .sheet(isPresented: self.$showingFilePicker) {
-            DocumentPicker(chosenFileURLs: $chosenFileURLs)
+        .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: [.text], allowsMultipleSelection: true) { result in
+            do {
+                chosenFileURLs = try result.get()
+            } catch {
+                print("Document Picker Error")
+            }
         }
     }
 }

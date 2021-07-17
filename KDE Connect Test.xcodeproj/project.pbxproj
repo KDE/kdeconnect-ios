@@ -33,7 +33,6 @@
 		A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */; };
 		A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */; };
 		A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */; };
-		A0F4BDFB26A268D5000A1D49 /* DocumentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4BDFA26A268D5000A1D49 /* DocumentPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +93,6 @@
 		A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChosenThemeView.swift; sourceTree = "<group>"; };
 		A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailPluginSettingsView.swift; sourceTree = "<group>"; };
 		A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPacketProcessing.swift; sourceTree = "<group>"; };
-		A0F4BDFA26A268D5000A1D49 /* DocumentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +187,6 @@
 				1499A8DE2698BF4900FDF493 /* Library */,
 				1499A8CC2698BE2300FDF493 /* Backend */,
 				A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */,
-				A0F4BDFA26A268D5000A1D49 /* DocumentPickerView.swift */,
 				A0A04431267BF38700CC21DD /* MainTabView.swift */,
 				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
 				A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */,
@@ -382,7 +379,6 @@
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
-				A0F4BDFB26A268D5000A1D49 /* DocumentPickerView.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
 				1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */,
 				A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */,
