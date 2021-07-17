@@ -11,7 +11,7 @@ struct DevicesDetailView: View {
     let detailsDeviceIndex: Int
     @State private var showingEncryptionInfo: Bool = false
     @State private var showingFilePicker: Bool = false
-    @State private var chosenFileURL: URL? = nil
+    @State private var chosenFileURLs: [URL]? = nil
     
     var body: some View {
         List {
@@ -69,8 +69,12 @@ struct DevicesDetailView: View {
             }
             
             Section(header: Text("Debug section")) {
-                Text("Chosen file URL:\n" + (chosenFileURL?.absoluteString ?? "Chosen file is nil"))
+                Text("Chosen file URLs:")
+                ForEach(chosenFileURLs ?? [], id: \.self) { url in
+                    Text(url.absoluteString)
+                }
             }
+            
         }
         .navigationTitle(testingOtherDevicesInfo[detailsDeviceIndex].connectedDeviceName)
         .navigationBarItems(trailing: {
@@ -121,7 +125,7 @@ struct DevicesDetailView: View {
                   , dismissButton: .default(Text("OK")))
         }
         .sheet(isPresented: self.$showingFilePicker) {
-            DocumentPicker(fileContentData: $chosenFileURL)
+            DocumentPicker(chosenFileURLs: $chosenFileURLs)
         }
     }
 }

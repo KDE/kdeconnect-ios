@@ -9,17 +9,20 @@ import SwiftUI
 import UIKit
 
 // DocumentPicker() is a system modal pop-up style picker that allows the user to pick a file
-// from the device and returns the URL of that file as a Bindable variable
+// from the device and returns the URLs of those files as a Bindable Array of URLs
 struct DocumentPicker: UIViewControllerRepresentable {
-    @Binding var fileContentData: URL?
+    @Binding var chosenFileURLs: [URL]?
     
     func makeCoordinator() -> DocumentPickerCoordinator {
-        return DocumentPickerCoordinator(fileContentData: $fileContentData)
+        return DocumentPickerCoordinator(chosenFileURLs: $chosenFileURLs)
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPicker>) -> UIDocumentPickerViewController {
         let controller: UIDocumentPickerViewController
         controller = UIDocumentPickerViewController(forOpeningContentTypes: [.text], asCopy: true)
+        
+        // This allows the "browse" section to have the select feature, but not the "recent" section
+        controller.allowsMultipleSelection = true
         controller.delegate = context.coordinator
         return controller
     }
@@ -28,13 +31,13 @@ struct DocumentPicker: UIViewControllerRepresentable {
 }
 
 class DocumentPickerCoordinator: NSObject, UIDocumentPickerDelegate, UINavigationControllerDelegate {
-    @Binding var fileContentData: URL?
+    @Binding var chosenFileURLs: [URL]?
     
-    init(fileContentData: Binding<URL?>) {
-        _fileContentData = fileContentData
+    init(chosenFileURLs: Binding<[URL]?>) {
+        _chosenFileURLs = chosenFileURLs
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        fileContentData = urls[0]
+        chosenFileURLs = urls
     }
 }

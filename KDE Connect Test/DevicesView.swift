@@ -21,10 +21,10 @@ struct DevicesView: View {
                                 HStack {
                                     Image(systemName: otherDeviceSymbol[testingOtherDevicesInfo[index].connectionStatus]!)
                                         .foregroundColor((testingOtherDevicesInfo[index].connectionStatus == "disconnected") ? .red : .green)
-                                        .font(.system(size: 23))
+                                        .font(.system(size: 21))
                                     VStack(alignment: .leading) {
                                         Text(testingOtherDevicesInfo[index].connectedDeviceName)
-                                            .font(.system(size: 20, weight: .bold))
+                                            .font(.system(size: 18, weight: .bold))
                                         Text(testingOtherDevicesInfo[index].connectedDeviceDescription)
                                     }
                                 }
@@ -44,10 +44,10 @@ struct DevicesView: View {
                                 HStack {
                                     Image(systemName: otherDeviceSymbol[testingOtherDevicesInfo[index].connectionStatus]!)
                                         .foregroundColor((testingOtherDevicesInfo[index].connectionStatus == "disconnected") ? .red : .green)
-                                        .font(.system(size: 23))
+                                        .font(.system(size: 21))
                                     VStack(alignment: .leading) {
                                         Text(testingOtherDevicesInfo[index].connectedDeviceName)
-                                            .font(.system(size: 20, weight: .bold))
+                                            .font(.system(size: 18, weight: .bold))
                                         Text(testingOtherDevicesInfo[index].connectedDeviceDescription)
                                     }
                                 }
