@@ -190,7 +190,9 @@
     }
 
     // load algo and encryption components
-    SSLeay_add_all_algorithms();
+    OpenSSL_add_all_algorithms();
+    OpenSSL_add_all_ciphers();
+    OpenSSL_add_all_digests();
     ERR_load_crypto_strings();
 
     // create p12 format data
