@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 1491F15926AC8BD6008C1065 /* OpenSSL */; };
 		1499A8CF2698BE6900FDF493 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */; };
 		1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D42698BF0F00FDF493 /* LanLinkProvider.m */; };
 		1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D52698BF0F00FDF493 /* LanLink.m */; };
@@ -104,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1499A8CF2698BE6900FDF493 /* CocoaAsyncSocket in Frameworks */,
+				1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +256,7 @@
 			name = "KDE Connect Test";
 			packageProductDependencies = (
 				1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */,
+				1491F15926AC8BD6008C1065 /* OpenSSL */,
 			);
 			productName = "KDE Connect Test";
 			productReference = A0A0442C267BF38700CC21DD /* KDE Connect Test.app */;
@@ -329,6 +332,7 @@
 			mainGroup = A0A04423267BF38700CC21DD;
 			packageReferences = (
 				1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
+				1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */,
 			);
 			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
 			projectDirPath = "";
@@ -724,6 +728,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/OpenSSL.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1100;
+			};
+		};
 		1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/robbiehanson/CocoaAsyncSocket";
@@ -735,6 +747,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1491F15926AC8BD6008C1065 /* OpenSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */;
+			productName = OpenSSL;
+		};
 		1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
