@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-@main
-struct KDE_Connect_TestApp: App {
+@main struct KDE_Connect_TestApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .onAppear {
+                    linkProvider.onStart()
+                }
         }
     }
-    
-    var linkProvider = LanLinkProvider(delegate:nil)
 }

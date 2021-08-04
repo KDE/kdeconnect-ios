@@ -69,12 +69,12 @@ struct DevicesDetailView: View {
                     })
             }
             
-            Section(header: Text("Debug section")) {
-                Text("Chosen file URLs:")
-                ForEach(chosenFileURLs, id: \.self) { url in
-                    Text(url.absoluteString)
-                }
-            }
+//            Section(header: Text("Debug section")) {
+//                Text("Chosen file URLs:")
+//                ForEach(chosenFileURLs, id: \.self) { url in
+//                    Text(url.absoluteString)
+//                }
+//            }
             
         }
         .navigationTitle(testingOtherDevicesInfo[detailsDeviceIndex].connectedDeviceName)
