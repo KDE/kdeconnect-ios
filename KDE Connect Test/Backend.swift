@@ -8,5 +8,6 @@
 import Foundation
 
 // A place to house all the Obj-C objects for global usage by the rest of the app
-let linkProvider: LanLinkProvider = LanLinkProvider(delegate:nil)
-let networkPackage: NetworkPackage = NetworkPackage.createIdentity()
+//let linkProvider: LanLinkProvider = LanLinkProvider(delegate:nil)
+//let networkPackage: NetworkPackage = NetworkPackage.createIdentity()
+let backgroundService: BackgroundService = BackgroundService()

@@ -33,6 +33,7 @@
 		A0B87283267D2A8600F0EB72 /* PlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */; };
 		A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */; };
 		A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */; };
+		A0BECF6626C0EDD10037E299 /* BackgroundService.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BECF6526C0EDD10037E299 /* BackgroundService.m */; };
 		A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */; };
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,8 @@
 		A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderView.swift; sourceTree = "<group>"; };
 		A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChosenThemeView.swift; sourceTree = "<group>"; };
 		A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailPluginSettingsView.swift; sourceTree = "<group>"; };
+		A0BECF6426C0ED890037E299 /* BackgroundService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundService.h; sourceTree = "<group>"; };
+		A0BECF6526C0EDD10037E299 /* BackgroundService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundService.m; sourceTree = "<group>"; };
 		A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPacketProcessing.swift; sourceTree = "<group>"; };
 		A0FB449926BA796400733914 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +163,8 @@
 				1499A8E12698BF6900FDF493 /* common.h */,
 				1499A8DF2698BF6900FDF493 /* NetworkPackage.h */,
 				1499A8E02698BF6900FDF493 /* NetworkPackage.m */,
+				A0BECF6426C0ED890037E299 /* BackgroundService.h */,
+				A0BECF6526C0EDD10037E299 /* BackgroundService.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
 				A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */,
 				1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */,
+				A0BECF6626C0EDD10037E299 /* BackgroundService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

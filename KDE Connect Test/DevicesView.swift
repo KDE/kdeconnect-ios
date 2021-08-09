@@ -86,7 +86,7 @@ struct DevicesView: View {
                 .navigationBarItems(trailing: {
                     Menu {
                         Button(action: {
-                            linkProvider.onRefresh()
+                            //linkProvider.onRefresh()
                         }, label: {
                             HStack {
                                 Text("Refresh Discovery")
@@ -185,7 +185,7 @@ struct DevicesView: View {
                 .navigationTitle("Devices")
                 .navigationBarItems(trailing: {
                     Button(action: {
-                        linkProvider.onRefresh()
+                        //linkProvider.onRefresh()
                     }, label: {
                         Image(systemName: "arrow.triangle.2.circlepath")
                     })

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import UniformTypeIdentifiers
+import UIKit
 
 class SelfDeviceData: ObservableObject {
     @Published var deviceName: String {
@@ -23,7 +24,7 @@ class SelfDeviceData: ObservableObject {
     }
     
     init() {
-        self.deviceName = UserDefaults.standard.object(forKey: "deviceName") as? String ?? ""
+        self.deviceName = UserDefaults.standard.object(forKey: "deviceName") as? String ?? UIDevice.current.name
         self.chosenTheme = UserDefaults.standard.object(forKey: "chosenTheme") as? String ?? "System Default"
     }
 }
