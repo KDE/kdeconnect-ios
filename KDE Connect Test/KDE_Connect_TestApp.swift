@@ -12,7 +12,11 @@ import SwiftUI
         WindowGroup {
             MainTabView()
                 .onAppear {
-                    linkProvider.onStart()
+                    //linkProvider.onStart()
+                    //print(networkPackage._Type!)
+                    //print(networkPackage._PayloadSize ?? "No Payload")
+                    //print(networkPackage._Body!)
+                    //print(networkPackage._Id!)
                 }
         }
     }

@@ -139,6 +139,7 @@
         return false;
     }
     
+    // If sharing file, start file sharing procedure
     if ([np _Payload] != nil && tag == PACKAGE_TAG_SHARE) {
         NSError* err;
         if (_fileServerSocket == nil) {
@@ -157,7 +158,7 @@
     
     NSData* data=[np serialize];
     [_socket writeData:data withTimeout:-1 tag:tag];
-    //TO-DO return true only when send successfully
+    //TODO: return true only when send successfully
     NSLog(@"%@", [NSString stringWithUTF8String:[data bytes]]);
     
     return true;

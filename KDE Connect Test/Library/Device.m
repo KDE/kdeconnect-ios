@@ -226,6 +226,7 @@
             }
         }
     }else if ([self isPaired]){
+        //TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling functon elsewhere in Swift
         //NSLog(@"recieved a plugin package :%@",[np _Type]);
 //        for (Plugin* plugin in [_plugins allValues]) {
 //            [plugin onDevicePackageReceived:np];

@@ -84,11 +84,34 @@ struct DevicesView: View {
                 }
                 .navigationTitle("Devices")
                 .navigationBarItems(trailing: {
-                    Button(action: {
-                        linkProvider.onRefresh()
-                    }, label: {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                    })
+                    Menu {
+                        Button(action: {
+                            linkProvider.onRefresh()
+                        }, label: {
+                            HStack {
+                                Text("Refresh Discovery")
+                                Image(systemName: "arrow.triangle.2.circlepath")
+                            }
+                        })
+                        Button(action: {
+                            // take to IP adding view
+                        }, label: {
+                            HStack {
+                                Text("Configure Devices By IP")
+                                Image(systemName: "network")
+                            }
+                        })
+                        Button(action: {
+                            // take to Trusted Networks View
+                        }, label: {
+                            HStack {
+                                Text("Configure Trusted Networks")
+                                Image(systemName: "lock.shield")
+                            }
+                        })
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
                 }())
             }
             .navigationViewStyle(StackNavigationViewStyle())

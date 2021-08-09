@@ -187,8 +187,9 @@
     
     //Introduce myself , UDP broadcasting my id package
     NetworkPackage* np=[NetworkPackage createIdentityPackage];
-    [np setInteger:_tcpPort forKey:@"tcpPort"];
+    [np setInteger:_tcpPort forKey:@"tcpPort"]; // need to give JSON since need to modify tcpport
     NSData* data=[np serialize];
+    
     NSLog(@"sending:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 	[_udpSocket sendData:data  toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
 }
@@ -224,6 +225,7 @@
         NetworkPackage* np=[NetworkPackage createIdentityPackage];
         [np setInteger:_tcpPort forKey:@"tcpPort"];
         NSData* data=[np serialize];
+        
         NSLog(@"sending:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
     }
@@ -253,6 +255,8 @@
 //a new device is introducing itself to me
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext
 {
+    
+    // Unserialize received data
     NSLog(@"lp receive udp package");
 	NetworkPackage* np = [NetworkPackage unserialize:data];
     NSLog(@"linkprovider:received a udp package from %@",[np objectForKey:@"deviceName"]);
@@ -263,7 +267,7 @@
         return;
     }
     
-    //my own package
+    //my own package, don't care
     NetworkPackage* np2=[NetworkPackage createIdentityPackage];
     NSString* myId=[[np2 _Body] valueForKey:@"deviceId"];
     if ([[np objectForKey:@"deviceId"] isEqualToString:myId]){
@@ -271,7 +275,7 @@
         return;
     }
     
-    //deal with id package
+    //deal with id package, might be ipV6 filtering, need to figure out
     NSString* host;
     [GCDAsyncUdpSocket getHost:&host port:nil fromAddress:address];
     if ([host hasPrefix:@"::ffff:"]) {
@@ -279,12 +283,16 @@
         return;
     }
     
+    
+    // Get ready to establish TCP connection to incoming host
     NSLog(@"LanLinkProvider:id package received, creating link and a TCP connection socket");
     GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
     uint16_t tcpPort=[np integerForKey:@"tcpPort"];
     
     NSError* error=nil;
     if (![socket connectToHost:host onPort:tcpPort error:&error]) {
+        // If TCP connection failed, make new packet with _tcpPort, then broadcast again
+        
         NSLog(@"LanLinkProvider:tcp connection error");
         NSLog(@"try reverse connection");
         [[np2 _Body] setValue:[[NSNumber alloc ] initWithUnsignedInt:_tcpPort] forKey:@"tcpPort"];
@@ -295,6 +303,8 @@
     }
     NSLog(@"connecting");
     
+    // Now that TCP is successful, I know the incoming host, now it's time for the incoming host
+    // to know me, I send ID Packet to incoming Host via the just established TCP
     NetworkPackage *inp = [NetworkPackage createIdentityPackage];
     NSData *inpData = [inp serialize];
     [socket writeData:inpData withTimeout:0 tag:PACKAGE_TAG_IDENTITY];
@@ -318,6 +328,8 @@
  * By default the new socket will have the same delegate and delegateQueue.
  * You may, of course, change this at any time.
  **/
+
+// Just
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
 	NSLog(@"TCP server: didAcceptNewSocket");
@@ -332,6 +344,7 @@
  * The host parameter will be an IP address, not a DNS name.
  **/
 
+// I try to establish TLS with another host
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     // Temporally disable
@@ -379,6 +392,7 @@
  * Called when a socket has completed reading the requested data into memory.
  * Not called if there is an error.
  **/
+//
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
     NSLog(@"lp tcp socket didReadData");
@@ -514,20 +528,23 @@
     return YES;
 }
 
+// After securing, create a LanLink for further communications
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
 {
     NSLog(@"Connection is secure LanLinkProvider");
     [sock setDelegate:nil];
+    NSUInteger pendingSocketIndex = [_pendingSockets indexOfObject:sock];
     [_pendingSockets removeObject:sock];
     
-    /* TODO: remove the old link */
+    /* TODO: remove the old link, or if exisitng LanLink exists, DON'T create a new one */
 //    LanLink* oldlink;
 //    if ([[_connectedLinks allKeys] containsObject:deviceId]) {
 //        oldlink=[_connectedLinks objectForKey:deviceId];
 //    }
     //create LanLink and inform the background
-    LanLink* link=[[LanLink alloc] init:sock deviceId:@"Test Object" setDelegate:nil];
-    [_connectedLinks setObject:link forKey:@"Test Object"];
+    NetworkPackage* pendingNP = [_pendingNps objectAtIndex:pendingSocketIndex];
+    LanLink* link=[[LanLink alloc] init:sock deviceId:[pendingNP objectForKey:@"deviceId"] setDelegate:nil];
+    [_connectedLinks setObject:link forKey:[pendingNP objectForKey:@"deviceId"]];
 //    [oldlink disconnect];
 }
 

@@ -3,3 +3,4 @@
 //
 
 #import "LanLinkProvider.h"
+#import "NetworkPackage.h"
