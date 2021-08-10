@@ -9,7 +9,8 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DevicesDetailView: View {
-    let detailsDeviceIndex: Int
+    // TODO: Using deviceId to identify whihc device we're dealing with here
+    let detailsDeviceId: String
     @State private var showingEncryptionInfo: Bool = false
     @State private var showingFilePicker: Bool = false
     @State private var chosenFileURLs: [URL] = []
@@ -60,7 +61,7 @@ struct DevicesDetailView: View {
             }
             Section(header: Text("Device Specific Settings")) {
                 NavigationLink(
-                    destination: DeviceDetailPluginSettingsView(detailsDeviceIndex: detailsDeviceIndex),
+                    destination: PlaceHolderView(), //DeviceDetailPluginSettingsView(detailsDeviceIndex: detailsDeviceIndex)
                     label: {
                         HStack {
                             Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
@@ -77,7 +78,7 @@ struct DevicesDetailView: View {
 //            }
             
         }
-        .navigationTitle(testingOtherDevicesInfo[detailsDeviceIndex].connectedDeviceName)
+        //.navigationTitle(testingOtherDevicesInfo[detailsDeviceIndex].connectedDeviceName)
         .navigationBarItems(trailing: {
             Menu {
                 Button(action: {

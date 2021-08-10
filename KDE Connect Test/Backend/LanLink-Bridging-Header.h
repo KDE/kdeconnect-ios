@@ -5,3 +5,4 @@
 //#import "LanLinkProvider.h"
 //#import "NetworkPackage.h"
 #import "BackgroundService.h"
+#import "Device.h"

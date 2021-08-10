@@ -29,6 +29,7 @@
 @property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableArray* _visibleDevices;
 @property(nonatomic)NSMutableDictionary* _settings;
+@property(nonatomic)NSDictionary* _savedDevices;
 
 //@property(nonatomic)SettingsStore* _settings; // seems like all this is doing is acting as a
 //persistent version of _devices
@@ -41,6 +42,7 @@
 @synthesize _linkProviders;
 @synthesize _visibleDevices;
 @synthesize _settings;
+@synthesize _savedDevices;
 
 + (id) sharedInstance
 {
@@ -66,9 +68,10 @@
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
         _visibleDevices=[NSMutableArray arrayWithCapacity:1];
-        _settings=[[NSUserDefaults standardUserDefaults] objectForKey:@"savedDevices"];  //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
-        if (_settings == nil) { // If nothing is saved in UserDefaults
-            _settings = [NSMutableDictionary dictionary];
+        _settings=[NSMutableDictionary dictionaryWithCapacity:1];
+        _savedDevices=[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];  //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
+        if (_savedDevices == nil) { // If nothing is saved in UserDefaults
+            _savedDevices = [NSMutableDictionary dictionary];
         }
         
         //[[NSUserDefaults standardUserDefaults] registerDefaults:_settings];
@@ -91,7 +94,7 @@
 
 - (void) loadRemenberedDevices
 {
-    for (NSString* deviceId in [_settings allKeys]) {
+    for (NSString* deviceId in [_savedDevices allKeys]) {
         Device* device=[[Device alloc] init:deviceId setDelegate:self];
         [_devices setObject:device forKey:deviceId];
     }
@@ -204,6 +207,7 @@
             }
         }
     }
+    // TODO: Is it fine to take this out????
     if (_backgroundServiceDelegate && updated) {
         [_backgroundServiceDelegate onDeviceListRefreshed];
     }

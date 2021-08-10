@@ -41,6 +41,7 @@
 @synthesize _supportedOutgoingInterfaces;
 @synthesize _testDevice;
 
+// TODO: might want to remove this before public testing
 - (Device*) initTest
 {
     if ((self=[super init])) {

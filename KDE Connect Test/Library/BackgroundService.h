@@ -25,9 +25,12 @@
 #import "NetworkPackage.h"
 //#import "PluginFactory.h"
 #import "common.h"
+//#import "ConnectedDevicesViewModel-Swift.h"
 //@class PluginFactory;
 @class BaseLink;
 @class Device;
+
+//@class ConnectedDevicesViewModel;
 
 @protocol backgroundServiceDelegate <NSObject>
 @optional
@@ -40,9 +43,9 @@
 
 @interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
 
-@property(nonatomic,assign) id _backgroundServiceDelegate;
+@property(nonatomic,assign) id _backgroundServiceDelegate; //TODO: What does this do???????
 
-//+ (id) sharedInstance;
++ (id) sharedInstance;
 
 - (void) startDiscovery;
 - (void) refreshDiscovery;

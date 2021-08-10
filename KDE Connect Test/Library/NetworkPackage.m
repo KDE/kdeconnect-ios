@@ -51,7 +51,11 @@ __strong static NSString* _UUID;
 {
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_IDENTITY];
     [np setObject:[NetworkPackage getUUID] forKey:@"deviceId"];
-    [np setObject:[NSUserDefaults standardUserDefaults] forKey:@"deviceName"];  //[UIDevice currentDevice].name forKey:@"deviceName"
+    NSString* deviceName=[[NSUserDefaults standardUserDefaults] stringForKey:@"deviceName"];
+    if (deviceName == nil) {
+        deviceName=[UIDevice currentDevice].name;
+    }
+    [np setObject:deviceName forKey:@"deviceName"];
     [np setInteger:ProtocolVersion forKey:@"protocolVersion"];
     [np setObject:@"phone" forKey:@"deviceType"];
     [np setInteger:1716 forKey:@"tcpPort"];

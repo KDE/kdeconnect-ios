@@ -12,6 +12,7 @@ import SwiftUI
         WindowGroup {
             MainTabView()
                 .onAppear {
+                    backgroundService.startDiscovery()
                     //linkProvider.onStart()
                     //print(networkPackage._Type!)
                     //print(networkPackage._PayloadSize ?? "No Payload")
