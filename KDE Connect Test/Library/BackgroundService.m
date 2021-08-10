@@ -20,13 +20,13 @@
 
 #import "BackgroundService.h"
 #import "LanLinkProvider.h"
-#import "SettingsStore.h"
+//#import "SettingsStore.h"
 //#import "PluginFactory.h"
 //#import "KeychainItemWrapper.h"
 
 @interface BackgroundService()
 @property(nonatomic)NSMutableArray* _linkProviders;
-@property(nonatomic)NSMutableDictionary* _devices;
+//@property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableArray* _visibleDevices;
 @property(nonatomic)NSMutableDictionary* _settings;
 @property(nonatomic)NSDictionary* _savedDevices;
@@ -216,6 +216,7 @@
 #pragma mark reactions
 - (void) onDeviceReachableStatusChanged:(Device*)device
 {
+    // FIXME: Seems to be missing logic for what should happen if an already connected device is unpaired from the remote device????
     //NSLog(@"bg on device reachable status changed");
     if (![device isReachable]) {
         //NSLog(@"bg device not reachable");
@@ -224,6 +225,7 @@
         [_devices removeObjectForKey:[device _id]];
         //NSLog(@"bg destroy device");
     }
+    //[self refreshDiscovery];
     [self refreshVisibleDeviceList];
 }
 

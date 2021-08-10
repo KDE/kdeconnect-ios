@@ -59,9 +59,11 @@ __strong static NSString* _UUID;
     [np setInteger:ProtocolVersion forKey:@"protocolVersion"];
     [np setObject:@"phone" forKey:@"deviceType"];
     [np setInteger:1716 forKey:@"tcpPort"];
-    // TODO: Instead of @[] actually import what plugins are here
+    
+    // TODO: Instead of @[] actually import what plugins are avaliable, UserDefaults to store maybe?
     [np setObject:@[] forKey:@"incomingCapabilities"];
     [np setObject:@[] forKey:@"outgoingCapabilities"];
+    
     // FIXME: Remove object
 //    [np setObject:[[PluginFactory sharedInstance] getSupportedIncomingInterfaces] forKey:@"SupportedIncomingInterfaces"];
 //    [np setObject:[[PluginFactory sharedInstance] getSupportedOutgoingInterfaces] forKey:@"SupportedOutgoingInterfaces"];

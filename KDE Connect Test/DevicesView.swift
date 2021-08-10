@@ -14,44 +14,53 @@ struct DevicesView: View {
     // Fixes the problem on iPhone BUT breaks side-by-side view support on iPad
     @Environment(\.horizontalSizeClass) var sizeClass
     
-    @State var connectedDevicesIds: [String] = []
-    @State var visibleDevicesIds: [String] = []
-    @State var savedDevicesIds: [String] = []
+    @State private var connectedDevicesIds: [String] = []
+    @State private var visibleDevicesIds: [String] = []
+    @State private var savedDevicesIds: [String] = []
+    
+    @State private var currPairingDeviceId: String?
+    @State private var showingOnPairRequestAlert: Bool = false
+    @State private var showingOnPairTimeoutAlert: Bool = false
+    @State private var showingOnPairSuccessAlert: Bool = false
+    @State private var showingOnPairRejectedAlert: Bool = false
+    @State private var showingOnSelfPairOutgoingRequestAlert: Bool = false
+    @State private var showingOnSelectSavedDeviceAlert: Bool = false
     
     var body: some View {
         if (sizeClass == .compact) {
             NavigationView {
-                List {
-                    Section(header: Text("Connected Devices")) {
-                        ForEach(connectedDevicesIds, id: \.self) { key in
-                            NavigationLink(
-                                // TODO: How do we know what to pass to the details view?
-                                // Use teh "key" from ForEach aka device ID to get it from
-                                // backgroundService's _devices dictionary for the value (Device class objects)
-                                // DevicesDetailView(detailsDeviceId: String)
-                                destination: PlaceHolderView(),
-                                label: {
-                                    HStack {
-                                        Image(systemName: "wifi")
-                                            .foregroundColor(.green)
-                                            .font(.system(size: 21))
-                                        VStack(alignment: .leading) {
-                                            Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
-                                                .font(.system(size: 18, weight: .bold))
-                                            // TODO: Might want to add the device description as
-                                            // id:desc dictionary?
-                                            Text(key)
+                VStack {
+                    List {
+                        Section(header: Text("Connected Devices")) {
+                            ForEach(connectedDevicesIds, id: \.self) { key in
+                                NavigationLink(
+                                    // TODO: How do we know what to pass to the details view?
+                                    // Use the "key" from ForEach aka device ID to get it from
+                                    // backgroundService's _devices dictionary for the value (Device class objects)
+                                    destination: DevicesDetailView(detailsDeviceId: key),
+                                    label: {
+                                        HStack {
+                                            Image(systemName: "wifi")
+                                                .foregroundColor(.green)
+                                                .font(.system(size: 21))
+                                            VStack(alignment: .leading) {
+                                                Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
+                                                    .font(.system(size: 18, weight: .bold))
+                                                // TODO: Might want to add the device description as
+                                                // id:desc dictionary?
+                                                Text(key)
+                                            }
                                         }
-                                    }
-                                })
+                                    })
+                            }
                         }
-                    }
-                    
-                    Section(header: Text("Discoverable Devices")) {
-                        ForEach(visibleDevicesIds, id: \.self) { key in
-                            NavigationLink(
-                                destination: PlaceHolderView(),
-                                label: {
+                        
+                        Section(header: Text("Discoverable Devices")) {
+                            ForEach(visibleDevicesIds, id: \.self) { key in
+                                Button(action: {
+                                    currPairingDeviceId = key
+                                    showingOnSelfPairOutgoingRequestAlert = true
+                                }) {
                                     HStack {
                                         Image(systemName: "badge.plus.radiowaves.right")
                                             .foregroundColor(.blue)
@@ -62,15 +71,17 @@ struct DevicesView: View {
                                             Text("Tap to start pairing")
                                         }
                                     }
-                                })
+                                    
+                                }
+                            }
                         }
-                    }
-
-                    Section(header: Text("Remembered Devices")) {
-                        ForEach(savedDevicesIds, id: \.self) { key in
-                            NavigationLink(
-                                destination: PlaceHolderView(),
-                                label: {
+                        
+                        Section(header: Text("Remembered Devices")) {
+                            ForEach(savedDevicesIds, id: \.self) { key in
+                                Button(action: {
+                                    currPairingDeviceId = key
+                                    showingOnSelectSavedDeviceAlert = true
+                                }) {
                                     HStack {
                                         Image(systemName: "wifi.slash")
                                             .foregroundColor(.red)
@@ -83,22 +94,91 @@ struct DevicesView: View {
                                             Text(key)
                                         }
                                     }
-                                })
+                                }
+                            }
                         }
+                        
                     }
+                    
+                    Text("")
+                        .alert(isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
+                            Alert(title: Text("Incoming Pairing Request"),
+                                  message: Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) wants to pair with this device"),
+                                  primaryButton: .cancel(Text("Do Not Pair")),
+                                  secondaryButton: .default(
+                                    Text("Pair")
+                                        .foregroundColor(.green)
+                                  ) {
+                                    backgroundService.pairDevice(currPairingDeviceId)
+                                    //currPairingDeviceId = nil
+                                  }
+                            )
+                        }
+                    
+                    Text("")
+                        .alert(isPresented: $showingOnPairTimeoutAlert) {
+                            Alert(title: Text("Pairing Timed Out"),
+                                  message: Text("Pairing with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) failed"),
+                                  dismissButton: .default(Text("OK"), action: {
+                                    currPairingDeviceId = nil
+                                  })
+                            )
+                        }
+                    
+                    Text("")
+                        .alert(isPresented: $showingOnPairSuccessAlert) {
+                            Alert(title: Text("Pairing Complete"),
+                                  message: Text("Pairing with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) succeeded"),
+                                  dismissButton: .default(Text("Nice"), action: {
+                                    currPairingDeviceId = nil
+                                    connectedDevicesViewModel.onDeviceListRefreshed()
+                                  })
+                            )
+                        }
+                    
+                    Text("")
+                        .alert(isPresented: $showingOnPairRejectedAlert) {
+                            Alert(title: Text("Pairing Rejected"),
+                                  message: Text("Pairing with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) failed"),
+                                  dismissButton: .default(Text("OK"), action: {
+                                    currPairingDeviceId = nil
+                                  })
+                            )
+                        }
+                    
+                    Text("")
+                        .alert(isPresented: $showingOnSelfPairOutgoingRequestAlert) {
+                            Alert(title: Text("Initiate Pairing?"),
+                                  message: Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!)?"),
+                                  primaryButton: .cancel(Text("Do Not Pair")),
+                                  secondaryButton: .default(
+                                    Text("Pair")
+                                        .foregroundColor(.green)
+                                  ) {
+                                    backgroundService.pairDevice(currPairingDeviceId)
+                                    //currPairingDeviceId = nil
+                                  }
+                            )
+                        }
+                    
+                    Text("")
+                        .alert(isPresented: $showingOnSelectSavedDeviceAlert) {
+                            Alert(title: Text("Device Offline"),
+                                  message: Text("The paired device \(currPairingDeviceId!) is not reachable. Make sure it is connected to the same network as this device."),
+                                  dismissButton: .default(Text("OK"), action: {
+                                    currPairingDeviceId = nil
+                                  })
+                            )
+                        }
                     
                 }
                 .navigationTitle("Devices")
                 .navigationBarItems(trailing: {
                     Menu {
                         Button(action: {
-                            //backgroundService.refreshDiscovery()
-                            // TODO: is this the correct way to refresh list and discovery???
-                            //backgroundService.refreshVisibleDeviceList()
-                            //onDeviceListsRefreshed()
-//                            print(connectedDevicesNames)
-//                            print(visibleDevicesNames)
-//                            print(savedDevicesNames)
+                            // TODO: Might want to delay after refreshDiscovery() for a bit b4 refreshing list
+                            backgroundService.refreshDiscovery()
+                            connectedDevicesViewModel.onDeviceListRefreshed()
                         }, label: {
                             HStack {
                                 Text("Refresh Discovery")
@@ -128,41 +208,41 @@ struct DevicesView: View {
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .onAppear() {
-                connectedDevicesViewModel.devicesView = self
-                backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
-                //print(connectedDevicesNames)
-                //print(visibleDevicesNames)
-                //print(savedDevicesNames)
+                if (connectedDevicesViewModel.devicesView == nil) {
+                    connectedDevicesViewModel.devicesView = self
+                }
+                if (backgroundService._backgroundServiceDelegate == nil) {
+                    backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
+                }
                 backgroundService.refreshVisibleDeviceList()
-                //onDeviceListsRefreshed()
             }
         } else { // iPad implementation goes here, without StackedNavigationStyle(), since that breaks iPad horizontal's split view (I think?)
 
         }
     }
 
+    func onPairRequestInsideView(_ deviceId: String!) -> Void {
+        currPairingDeviceId = deviceId
+        showingOnPairRequestAlert = true
+    }
+    
+    func onPairTimeoutInsideView(_ deviceId: String!) -> Void {
+        //currPairingDeviceId = nil
+        showingOnPairTimeoutAlert = true
+    }
+    
+    func onPairSuccessInsideView(_ deviceId: String!) -> Void {
+        showingOnPairSuccessAlert = true
+    }
+    
+    func onPairRejectedInsideView(_ deviceId: String!) -> Void {
+        showingOnPairRejectedAlert = true
+    }
+    
     func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {
         connectedDevicesIds = Array(vm.connectedDevices.keys)//.sort
         visibleDevicesIds = Array(vm.visibleDevices.keys)//.sort
         savedDevicesIds = Array(vm.savedDevices.keys)//.sort
-        
-//        connectedDevicesId = [];
-//        visibleDevicesId = [];
-//        savedDevicesId = [];
-//
-//        for (key, _) in VM.connectedDevices {
-//            connectedDevicesNames.append(key)
-//        }
-//        for (key, _) in VM.visibleDevices {
-//            visibleDevicesNames.append(key)
-//        }
-//        for (key, _) in VM.savedDevices {
-//            savedDevicesNames.append(key)
-//        }
-//
-//        connectedDevicesId.sort()
-//        visibleDevicesId.sort()
-//        savedDevicesId.sort()
     }
     
 }

@@ -14,12 +14,27 @@ class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
     var visibleDevices: [String : String] = [:]
     var savedDevices: [String : String] = [:]
     
+    func onPairRequest(_ deviceId: String!) -> Void {
+        devicesView!.onPairRequestInsideView(deviceId)
+    }
+    
+    func onPairTimeout(_ deviceId: String!) -> Void{
+        devicesView!.onPairTimeoutInsideView(deviceId)
+    }
+    
+    func onPairSuccess(_ deviceId: String!) -> Void {
+        devicesView!.onPairSuccessInsideView(deviceId)
+    }
+    
+    func onPairRejected(_ deviceId: String!) -> Void {
+        devicesView!.onPairRejectedInsideView(deviceId)
+    }
+    
     func onDeviceListRefreshed() -> Void {
         let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
         connectedDevices = devicesListsMap?["connected"] as! [String : String]
         visibleDevices = devicesListsMap?["visible"] as! [String : String]
         savedDevices = devicesListsMap?["remembered"] as! [String : String]
-        
         devicesView!.onDeviceListRefreshedInsideView(vm: self)
     }
 }

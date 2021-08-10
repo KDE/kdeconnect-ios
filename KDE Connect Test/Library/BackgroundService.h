@@ -44,6 +44,7 @@
 @interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
 
 @property(nonatomic,assign) id _backgroundServiceDelegate; //TODO: What does this do???????
+@property(nonatomic)NSMutableDictionary* _devices;
 
 + (id) sharedInstance;
 
