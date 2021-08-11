@@ -74,6 +74,7 @@
 		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		1499A8E92698C48300FDF493 /* rsaPrivate.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsaPrivate.p12; sourceTree = "<group>"; };
+		A01FDD2226C3A5560014B165 /* backgroundServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = backgroundServiceDelegate.h; sourceTree = "<group>"; };
 		A034ADA726BF32F500A7CC70 /* KDE Connect Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KDE Connect Test.entitlements"; sourceTree = "<group>"; };
 		A0A0442C267BF38700CC21DD /* KDE Connect Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestApp.swift; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 				1499A8DF2698BF6900FDF493 /* NetworkPackage.h */,
 				1499A8E02698BF6900FDF493 /* NetworkPackage.m */,
 				A0BECF6426C0ED890037E299 /* BackgroundService.h */,
+				A01FDD2226C3A5560014B165 /* backgroundServiceDelegate.h */,
 				A0BECF6526C0EDD10037E299 /* BackgroundService.m */,
 			);
 			path = Library;

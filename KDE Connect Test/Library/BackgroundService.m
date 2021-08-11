@@ -80,11 +80,11 @@
         [self loadRemenberedDevices];
         //[PluginFactory sharedInstance];
         
-#ifdef DEBUG
-        NSString* deviceId = @"test-purpose-device";
-        Device* device=[[Device alloc] initTest];
-        [_devices setObject:device forKey:deviceId];
-#endif
+//#ifdef DEBUG
+//        NSString* deviceId = @"test-purpose-device";
+//        Device* device=[[Device alloc] initTest];
+//        [_devices setObject:device forKey:deviceId];
+//#endif
         // [_visibleDevices addObject:device];
         
         // [self refreshVisibleDeviceList];
@@ -97,6 +97,8 @@
     for (NSString* deviceId in [_savedDevices allKeys]) {
         Device* device=[[Device alloc] init:deviceId setDelegate:self];
         [_devices setObject:device forKey:deviceId];
+        [_settings setObject:device forKey:deviceId]; //maybe this fixes the saved devices not saving?
+                                                        // NOPE
     }
 }
 - (void) registerLinkProviders
@@ -215,11 +217,13 @@
 
 #pragma mark reactions
 - (void) onDeviceReachableStatusChanged:(Device*)device
-{
-    // FIXME: Seems to be missing logic for what should happen if an already connected device is unpaired from the remote device????
-    //NSLog(@"bg on device reachable status changed");
+{   // TODO: Is this what gets called when paired device goes offline/becomes "remembered device"
+    // FIXME: NOOOOOOOOOO ITS NOT, must be somewhere else, but this is called by Device when links == 0 aka unreachable????
+    NSLog(@"bg on device reachable status changed");
     if (![device isReachable]) {
-        //NSLog(@"bg device not reachable");
+        NSLog(@"bg device not reachable");
+        //NSLog([device _id]);
+        [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[device _id]];
     }
     if (![device isPaired]) {
         [_devices removeObjectForKey:[device _id]];

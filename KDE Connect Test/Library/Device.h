@@ -21,6 +21,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseLink.h"
 #import "NetworkPackage.h"
+#import "backgroundServiceDelegate.h"
 @class BaseLink;
 @class NetworkPackage;
 @class Plugin;
@@ -43,6 +44,16 @@ typedef NS_ENUM(NSUInteger, DeviceType)
     Tablet=4
 };
 
+//@protocol backgroundServiceDelegate <NSObject>
+//@optional
+//-(void) onPairRequest:(NSString*)deviceId;
+//- (void) onPairTimeout:(NSString*)deviceId;
+//- (void) onPairSuccess:(NSString*)deviceId;
+//- (void) onPairRejected:(NSString*)deviceId;
+//- (void) onDeviceListRefreshed;
+//- (void) currDeviceDetailsViewOnUnpairFromRemote;
+//@end
+
 @interface Device : NSObject <linkDelegate>
 
 @property(readonly,nonatomic) NSString* _id;
@@ -53,9 +64,10 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 @property(readonly,nonatomic) NSArray* _supportedIncomingInterfaces;
 @property(readonly,nonatomic) NSArray* _supportedOutgoingInterfaces;
 @property(nonatomic) id _deviceDelegate;
-@property(readonly,nonatomic) BOOL _testDevice;
+@property(nonatomic,assign) id _backgroundServiceDelegate;
+//@property(readonly,nonatomic) BOOL _testDevice;
 
-- (Device*) initTest;
+//- (Device*) initTest;
 - (Device*) init:(NSString*)deviceId setDelegate:(id)deviceDelegate;
 - (Device*) init:(NetworkPackage*)np baselink:(BaseLink*)link setDelegate:(id)deviceDelegate;
 - (NSInteger) compareProtocolVersion;
@@ -85,7 +97,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 + (DeviceType)Str2Devicetype:(NSString*)str;
 @end
 
-
+// TODO: What is this exactly? Do we need a Swift class that confirms to this I THINK WE DO
 @protocol deviceDelegate <NSObject>
 @optional
 - (void) onDeviceReachableStatusChanged:(Device*)device;

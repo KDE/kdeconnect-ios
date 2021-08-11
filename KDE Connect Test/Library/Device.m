@@ -39,26 +39,27 @@
 @synthesize _failedPlugins;
 @synthesize _supportedIncomingInterfaces;
 @synthesize _supportedOutgoingInterfaces;
-@synthesize _testDevice;
+@synthesize _backgroundServiceDelegate;
+//@synthesize _testDevice;
 
 // TODO: might want to remove this before public testing
-- (Device*) initTest
-{
-    if ((self=[super init])) {
-        _id=@"test-purpose-device";
-        _name=@"TestiPhone";
-        _type=Phone;
-        _deviceDelegate=nil;
-        // [self loadSetting];
-        _links=[NSMutableArray arrayWithCapacity:1];
-        _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
-        _failedPlugins=[NSMutableArray arrayWithCapacity:1];
-        
-        _testDevice = YES;
-        _pairStatus = Paired;
-    }
-    return self;
-}
+//- (Device*) initTest
+//{
+//    if ((self=[super init])) {
+//        _id=@"test-purpose-device";
+//        _name=@"TestiPhone";
+//        _type=Phone;
+//        _deviceDelegate=nil;
+//        // [self loadSetting];
+//        _links=[NSMutableArray arrayWithCapacity:1];
+//        _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
+//        _failedPlugins=[NSMutableArray arrayWithCapacity:1];
+//
+//        _testDevice = YES;
+//        _pairStatus = Paired;
+//    }
+//    return self;
+//}
 
 - (Device*) init:(NSString*)deviceId setDelegate:(id)deviceDelegate
 {
@@ -120,13 +121,12 @@
         }
     }
 }
-
+// TODO: This ain't it, doesn't get called when connection is cut (e.g wifi off) from the remote device
 - (void) onLinkDestroyed:(BaseLink *)link
 {
     //NSLog(@"device on link destroyed");
     [_links removeObject:link];
-    //NSLog(@"remove link ; %lu remaining", (unsigned long)[_links count]);
-    
+    NSLog(@"remove link ; %lu remaining", (unsigned long)[_links count]);
     if ([_links count]==0) {
         //NSLog(@"no available link");
         if (_deviceDelegate) {
@@ -241,7 +241,7 @@
 
 - (BOOL) isReachable
 {
-    return [_links count]!=0 || _testDevice;
+    return [_links count]!=0; // || _testDevice
 }
 
 - (void) loadSetting
@@ -255,7 +255,7 @@
 #pragma mark Pairing-related Functions
 - (BOOL) isPaired
 {
-    return _pairStatus==Paired || _testDevice;
+    return _pairStatus==Paired; // || _testDevice
 }
 
 - (BOOL) isPaireRequested
@@ -320,6 +320,8 @@
 {
     //NSLog(@"device unpair");
     _pairStatus=NotPaired;
+    // How do we use same protocol from 
+    [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[self _id]];
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_PAIR];
     [np setBool:false forKey:@"pair"];
     [self sendPackage:np tag:PACKAGE_TAG_UNPAIR];

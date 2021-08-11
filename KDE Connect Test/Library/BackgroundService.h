@@ -25,6 +25,7 @@
 #import "NetworkPackage.h"
 //#import "PluginFactory.h"
 #import "common.h"
+#import "backgroundServiceDelegate.h"
 //#import "ConnectedDevicesViewModel-Swift.h"
 //@class PluginFactory;
 @class BaseLink;
@@ -32,18 +33,9 @@
 
 //@class ConnectedDevicesViewModel;
 
-@protocol backgroundServiceDelegate <NSObject>
-@optional
--(void) onPairRequest:(NSString*)deviceId;
-- (void) onPairTimeout:(NSString*)deviceId;
-- (void) onPairSuccess:(NSString*)deviceId;
-- (void) onPairRejected:(NSString*)deviceId;
-- (void) onDeviceListRefreshed;
-@end
-
 @interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
 
-@property(nonatomic,assign) id _backgroundServiceDelegate; //TODO: What does this do???????
+@property(nonatomic,assign) id _backgroundServiceDelegate;
 @property(nonatomic)NSMutableDictionary* _devices;
 
 + (id) sharedInstance;

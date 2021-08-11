@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-// TODO: device can be discovered by other devices, but can't seem to discover other devices
 struct DevicesView: View {
     // This is a bit redundent since it's basically just copy-and-pasting almost the exact
     // same view twice. But this is to get around what could be a bug. As
@@ -103,7 +102,7 @@ struct DevicesView: View {
                     Text("")
                         .alert(isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
                             Alert(title: Text("Incoming Pairing Request"),
-                                  message: Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) wants to pair with this device"),
+                                  message: Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device"),
                                   primaryButton: .cancel(Text("Do Not Pair")),
                                   secondaryButton: .default(
                                     Text("Pair")
@@ -118,7 +117,7 @@ struct DevicesView: View {
                     Text("")
                         .alert(isPresented: $showingOnPairTimeoutAlert) {
                             Alert(title: Text("Pairing Timed Out"),
-                                  message: Text("Pairing with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) failed"),
+                                  message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed"),
                                   dismissButton: .default(Text("OK"), action: {
                                     currPairingDeviceId = nil
                                   })
@@ -128,10 +127,9 @@ struct DevicesView: View {
                     Text("")
                         .alert(isPresented: $showingOnPairSuccessAlert) {
                             Alert(title: Text("Pairing Complete"),
-                                  message: Text("Pairing with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) succeeded"),
+                                  message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) succeeded"),
                                   dismissButton: .default(Text("Nice"), action: {
                                     currPairingDeviceId = nil
-                                    connectedDevicesViewModel.onDeviceListRefreshed()
                                   })
                             )
                         }
@@ -139,7 +137,7 @@ struct DevicesView: View {
                     Text("")
                         .alert(isPresented: $showingOnPairRejectedAlert) {
                             Alert(title: Text("Pairing Rejected"),
-                                  message: Text("Pairing with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!) failed"),
+                                  message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed"),
                                   dismissButton: .default(Text("OK"), action: {
                                     currPairingDeviceId = nil
                                   })
@@ -149,7 +147,7 @@ struct DevicesView: View {
                     Text("")
                         .alert(isPresented: $showingOnSelfPairOutgoingRequestAlert) {
                             Alert(title: Text("Initiate Pairing?"),
-                                  message: Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!]!)?"),
+                                  message: Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?"),
                                   primaryButton: .cancel(Text("Do Not Pair")),
                                   secondaryButton: .default(
                                     Text("Pair")
@@ -176,9 +174,7 @@ struct DevicesView: View {
                 .navigationBarItems(trailing: {
                     Menu {
                         Button(action: {
-                            // TODO: Might want to delay after refreshDiscovery() for a bit b4 refreshing list
-                            backgroundService.refreshDiscovery()
-                            connectedDevicesViewModel.onDeviceListRefreshed()
+                            refreshDiscoveryAndList()
                         }, label: {
                             HStack {
                                 Text("Refresh Discovery")
@@ -214,7 +210,7 @@ struct DevicesView: View {
                 if (backgroundService._backgroundServiceDelegate == nil) {
                     backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
                 }
-                backgroundService.refreshVisibleDeviceList()
+                refreshDiscoveryAndList()
             }
         } else { // iPad implementation goes here, without StackedNavigationStyle(), since that breaks iPad horizontal's split view (I think?)
 
@@ -233,6 +229,7 @@ struct DevicesView: View {
     
     func onPairSuccessInsideView(_ deviceId: String!) -> Void {
         showingOnPairSuccessAlert = true
+        connectedDevicesViewModel.onDeviceListRefreshed()
     }
     
     func onPairRejectedInsideView(_ deviceId: String!) -> Void {
@@ -243,6 +240,16 @@ struct DevicesView: View {
         connectedDevicesIds = Array(vm.connectedDevices.keys)//.sort
         visibleDevicesIds = Array(vm.visibleDevices.keys)//.sort
         savedDevicesIds = Array(vm.savedDevices.keys)//.sort
+    }
+    
+    func refreshDiscoveryAndList() {
+        let group = DispatchGroup()
+        group.enter()
+        backgroundService.refreshDiscovery()
+        group.leave()
+        group.notify(queue: DispatchQueue.main) {
+            backgroundService.refreshVisibleDeviceList()
+        }
     }
     
 }

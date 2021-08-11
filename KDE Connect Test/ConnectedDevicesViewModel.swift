@@ -9,6 +9,7 @@ import Foundation
 
 class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
     var devicesView: DevicesView? = nil
+    var currDeviceDetailsView: DevicesDetailView? = nil
     
     var connectedDevices: [String : String] = [:]
     var visibleDevices: [String : String] = [:]
@@ -36,5 +37,13 @@ class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
         visibleDevices = devicesListsMap?["visible"] as! [String : String]
         savedDevices = devicesListsMap?["remembered"] as! [String : String]
         devicesView!.onDeviceListRefreshedInsideView(vm: self)
+    }
+    
+    func currDeviceDetailsViewDisconnected(fromRemote deviceId: String!) -> Void {
+        if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
+            currDeviceDetailsView!.isStilConnected = false
+            // This automatically goes back to DeviceView after unpair is complete
+            onDeviceListRefreshed()
+        }
     }
 }

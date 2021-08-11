@@ -10,21 +10,16 @@ import UniformTypeIdentifiers
 
 struct DevicesDetailView: View {
     let detailsDeviceId: String
-    @State private var showingEncryptionInfo: Bool = false
+    @State var showingEncryptionInfo: Bool = false
     @State private var showingUnpairConfirmationAlert: Bool = false
     @State private var showingFilePicker: Bool = false
-    @State private var isStilConnected: Bool = true
+    @State var isStilConnected: Bool = true
     
     @State var chosenFileURLs: [URL] = []
     
     var body: some View {
         if (isStilConnected) {
             List {
-                //Text("This is some instructions")
-                // NavigationLink doesn't work from the menu in
-                // the navigation bar, options are:
-                // 1. divide main list into section
-                // 2.
                 Section(header: Text("Actions")) {
                     Button(action: {
                         showingFilePicker = true
@@ -150,15 +145,24 @@ struct DevicesDetailView: View {
                     print("Document Picker Error")
                 }
             }
+            .onAppear() {
+                connectedDevicesViewModel.currDeviceDetailsView = self
+                (backgroundService._devices[detailsDeviceId] as! Device)._backgroundServiceDelegate = connectedDevicesViewModel
+            }
         } else {
             VStack {
                 Spacer()
                 Image(systemName: "wifi.slash")
                     .foregroundColor(.red)
-                    .font(.system(size: 30))
-                Text("Device Successfully Unpaired")
+                    .font(.system(size: 40))
+                Text("Device Offline")
                 Spacer()
             }
+            // Calling this here will refresh after getting to the DeviceView, a bit of delay b4 the
+            // list actually refreshes but still works
+//            .onDisappear() {
+//                connectedDevicesViewModel.devicesView!.refreshDiscoveryAndList()
+//            }
         }
     }
 }
