@@ -42,8 +42,10 @@ class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
     func currDeviceDetailsViewDisconnected(fromRemote deviceId: String!) -> Void {
         if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
             currDeviceDetailsView!.isStilConnected = false
-            // This automatically goes back to DeviceView after unpair is complete
-            onDeviceListRefreshed()
-        }
+            //onDeviceListRefreshed() // This automatically goes back to DeviceView after unpair is complete
+        } //else if (currDeviceDetailsView == nil && devicesView!.currPairingDeviceId != nil) {
+            //onDeviceListRefreshed()
+        //}
+        onDeviceListRefreshed()
     }
 }

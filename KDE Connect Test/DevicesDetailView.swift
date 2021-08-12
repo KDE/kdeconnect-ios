@@ -89,7 +89,7 @@ struct DevicesDetailView: View {
                     })
                     
                     Button(action: {
-                        // send ping
+                        (avaliablePlugins["kdeconnect.ping"] as! Ping).sendPing(deviceId: detailsDeviceId)
                     }, label: {
                         HStack {
                             Text("Send Ping")

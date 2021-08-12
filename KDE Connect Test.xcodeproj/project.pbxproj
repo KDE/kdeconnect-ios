@@ -17,6 +17,9 @@
 		1499A8E72698BFF300FDF493 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E32698BFF300FDF493 /* Device.m */; };
 		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
 		1499A8EA2698C48300FDF493 /* rsaPrivate.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 1499A8E92698C48300FDF493 /* rsaPrivate.p12 */; };
+		A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */; };
+		A01FDD2726C4F6D50014B165 /* PluginsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* PluginsService.swift */; };
+		A01FDD2926C4F8420014B165 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2826C4F8420014B165 /* Ping.swift */; };
 		A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */; };
 		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
 		A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04433267BF38A00CC21DD /* Assets.xcassets */; };
@@ -75,6 +78,9 @@
 		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		1499A8E92698C48300FDF493 /* rsaPrivate.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsaPrivate.p12; sourceTree = "<group>"; };
 		A01FDD2226C3A5560014B165 /* backgroundServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = backgroundServiceDelegate.h; sourceTree = "<group>"; };
+		A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
+		A01FDD2626C4F6D50014B165 /* PluginsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsService.swift; sourceTree = "<group>"; };
+		A01FDD2826C4F8420014B165 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		A034ADA726BF32F500A7CC70 /* KDE Connect Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KDE Connect Test.entitlements"; sourceTree = "<group>"; };
 		A0A0442C267BF38700CC21DD /* KDE Connect Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestApp.swift; sourceTree = "<group>"; };
@@ -173,6 +179,15 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		A01FDD2526C4F65B0014B165 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				A01FDD2626C4F6D50014B165 /* PluginsService.swift */,
+				A01FDD2826C4F8420014B165 /* Ping.swift */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
 		A0A04423267BF38700CC21DD = {
 			isa = PBXGroup;
 			children = (
@@ -200,7 +215,9 @@
 				A034ADA726BF32F500A7CC70 /* KDE Connect Test.entitlements */,
 				1499A8DE2698BF4900FDF493 /* Library */,
 				1499A8CC2698BE2300FDF493 /* Backend */,
+				A01FDD2526C4F65B0014B165 /* Plugins */,
 				A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */,
+				A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */,
 				A0FB449926BA796400733914 /* Backend.swift */,
 				A0A04431267BF38700CC21DD /* MainTabView.swift */,
 				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
@@ -391,6 +408,8 @@
 				1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */,
 				A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */,
 				1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */,
+				A01FDD2726C4F6D50014B165 /* PluginsService.swift in Sources */,
+				A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
 				1499A8E72698BFF300FDF493 /* Device.m in Sources */,
 				A0FB449A26BA796400733914 /* Backend.swift in Sources */,
@@ -400,6 +419,7 @@
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
+				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
 				1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */,
 				A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */,

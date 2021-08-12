@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 // A place to house objects for global usage by the rest of the app
 // Background Service provider, bridged from Obj-C codebase
 let backgroundService: BackgroundService = BackgroundService()

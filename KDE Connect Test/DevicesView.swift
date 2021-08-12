@@ -17,13 +17,15 @@ struct DevicesView: View {
     @State private var visibleDevicesIds: [String] = []
     @State private var savedDevicesIds: [String] = []
     
-    @State private var currPairingDeviceId: String?
+    @State var currPairingDeviceId: String?
     @State private var showingOnPairRequestAlert: Bool = false
     @State private var showingOnPairTimeoutAlert: Bool = false
     @State private var showingOnPairSuccessAlert: Bool = false
     @State private var showingOnPairRejectedAlert: Bool = false
     @State private var showingOnSelfPairOutgoingRequestAlert: Bool = false
     @State private var showingOnSelectSavedDeviceAlert: Bool = false
+    
+    @ObservedObject var localNotificationService = LocalNotificationService()
     
     var body: some View {
         if (sizeClass == .compact) {
@@ -219,6 +221,7 @@ struct DevicesView: View {
 
     func onPairRequestInsideView(_ deviceId: String!) -> Void {
         currPairingDeviceId = deviceId
+//        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
         showingOnPairRequestAlert = true
     }
     

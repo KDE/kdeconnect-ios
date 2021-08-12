@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------
 
 #import "Device.h"
+#import "KDE_Connect_Test-Swift.h"
 #define PAIR_TIMMER_TIMEOUT  10.0
 
 @interface Device()
@@ -121,7 +122,7 @@
         }
     }
 }
-// TODO: This ain't it, doesn't get called when connection is cut (e.g wifi off) from the remote device
+// FIXME: This ain't it, doesn't get called when connection is cut (e.g wifi off) from the remote device
 - (void) onLinkDestroyed:(BaseLink *)link
 {
     //NSLog(@"device on link destroyed");
@@ -232,7 +233,7 @@
 //        for (Plugin* plugin in [_plugins allValues]) {
 //            [plugin onDevicePackageReceived:np];
 //        }
-        
+        [PluginsService goThroughHostPluginsForReceivingWithNp:np];
     }else{
         //NSLog(@"not paired, ignore packages, unpair the device");
         [self unpair];

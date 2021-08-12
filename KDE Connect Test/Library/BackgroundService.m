@@ -223,7 +223,7 @@
     if (![device isReachable]) {
         NSLog(@"bg device not reachable");
         //NSLog([device _id]);
-        [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[device _id]];
+        //[_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[device _id]];
     }
     if (![device isPaired]) {
         [_devices removeObjectForKey:[device _id]];
