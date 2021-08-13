@@ -245,12 +245,17 @@
  **/
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
+    // If the data received has a payload tag (indicating that it is a payload, e.g file trasnferred
+    // from the Share plugin, prepare a NetworkPackage with the payload in it and give it to the
+    // Plugins to handle it
+    NSLog(@"Package received with tag: %ld", tag);
     if (tag==PACKAGE_TAG_PAYLOAD) {
         NetworkPackage* np;
         @synchronized(_pendingRSockets){
             NSUInteger index=[_pendingRSockets indexOfObject:sock];
             np=[_pendingPayloadNP objectAtIndex:index];
             [np set_Payload:data];
+            //NSLog()
         }
         
         @synchronized(_pendingPayloadNP){
@@ -274,7 +279,7 @@
                 _pendingPairNP=np;
             }
             if ([np _PayloadTransferInfo]) {
-                // create a new socket to receive file
+                // Received request from remote to start new TLS connection/socket to receive file
                 GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
                 @synchronized(_pendingRSockets){
                     [_pendingRSockets addObject:socket];
@@ -283,6 +288,7 @@
                 NSLog(@"Pending payload: size: %ld", [np _PayloadSize]);
                 NSError* error=nil;
                 uint16_t tcpPort=[[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
+                // Create new connection here
                 if (![socket connectToHost:[sock connectedHost] onPort:tcpPort error:&error]){
                     NSLog(@"Lanlink connect to payload host failed");
                 }

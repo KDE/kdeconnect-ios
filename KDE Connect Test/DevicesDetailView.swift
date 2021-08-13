@@ -80,20 +80,20 @@ struct DevicesDetailView: View {
             .navigationBarItems(trailing: {
                 Menu {
                     Button(action: {
-                        // ring
-                    }, label: {
-                        HStack {
-                            Text("Ring")
-                            Image(systemName: "bell")
-                        }
-                    })
-                    
-                    Button(action: {
                         (avaliablePlugins["kdeconnect.ping"] as! Ping).sendPing(deviceId: detailsDeviceId)
                     }, label: {
                         HStack {
                             Text("Send Ping")
                             Image(systemName: "megaphone")
+                        }
+                    })
+                    
+                    Button(action: {
+                        // ring
+                    }, label: {
+                        HStack {
+                            Text("Ring Device")
+                            Image(systemName: "bell")
                         }
                     })
                     
@@ -143,6 +143,12 @@ struct DevicesDetailView: View {
                     chosenFileURLs = try result.get()
                 } catch {
                     print("Document Picker Error")
+                }
+                for url in chosenFileURLs {
+                    (avaliablePlugins["kdeconnect.share"] as! Share).sendFile(deviceId: detailsDeviceId, fileURL: url)
+//                    do {
+//                        sleep(2)
+//                    }
                 }
             }
             .onAppear() {

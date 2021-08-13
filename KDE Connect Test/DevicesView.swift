@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AVFoundation
+
 struct DevicesView: View {
     // This is a bit redundent since it's basically just copy-and-pasting almost the exact
     // same view twice. But this is to get around what could be a bug. As
@@ -24,6 +26,8 @@ struct DevicesView: View {
     @State private var showingOnPairRejectedAlert: Bool = false
     @State private var showingOnSelfPairOutgoingRequestAlert: Bool = false
     @State private var showingOnSelectSavedDeviceAlert: Bool = false
+    @State private var showingPingAlert: Bool = false
+    @State private var showingFindMyPhoneAlert: Bool = false
     
     @ObservedObject var localNotificationService = LocalNotificationService()
     
@@ -171,6 +175,26 @@ struct DevicesView: View {
                             )
                         }
                     
+                    Text("")
+                        .alert(isPresented: $showingPingAlert) {
+                            Alert(title: Text("Ping!"),
+                                  message: Text("Ping received from a connected device."),
+                                  dismissButton: .default(Text("OK"), action: {
+                                    
+                                  })
+                            )
+                        }
+                    
+                    Text("")
+                        .alert(isPresented: $showingFindMyPhoneAlert) {
+                            Alert(title: Text("Find My Phone Mode"),
+                                  message: Text("Find My Phone initiated from a remote device"),
+                                  dismissButton: .default(Text("I FOUND IT!"), action: {
+                                    
+                                  })
+                            )
+                        }
+                    
                 }
                 .navigationTitle("Devices")
                 .navigationBarItems(trailing: {
@@ -245,13 +269,32 @@ struct DevicesView: View {
         savedDevicesIds = Array(vm.savedDevices.keys)//.sort
     }
     
-    func refreshDiscoveryAndList() {
+    func refreshDiscoveryAndList() -> Void {
         let group = DispatchGroup()
         group.enter()
         backgroundService.refreshDiscovery()
         group.leave()
         group.notify(queue: DispatchQueue.main) {
             backgroundService.refreshVisibleDeviceList()
+        }
+    }
+    
+    func showPingAlertInsideView() -> Void {
+        haptics.impactOccurred(intensity: 0.8)
+        AudioServicesPlaySystemSound(1003)
+        showingPingAlert = true
+    }
+    
+    func showFindMyPhoneAlertInsideView() -> Void {
+        showingFindMyPhoneAlert = true
+        let group = DispatchGroup()
+        while (showingFindMyPhoneAlert) {
+            group.enter()
+            haptics.impactOccurred(intensity: 1.0)
+            group.leave()
+            group.notify(queue: DispatchQueue.main) {
+                AudioServicesPlaySystemSound(1005)
+            }
         }
     }
     

@@ -20,6 +20,9 @@
 		A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */; };
 		A01FDD2726C4F6D50014B165 /* PluginsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* PluginsService.swift */; };
 		A01FDD2926C4F8420014B165 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2826C4F8420014B165 /* Ping.swift */; };
+		A01FDD2D26C62E180014B165 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2C26C62E170014B165 /* Share.swift */; };
+		A01FDD2F26C6FD110014B165 /* FindMyPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */; };
+		A01FDD3126C701360014B165 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD3026C701360014B165 /* Battery.swift */; };
 		A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */; };
 		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
 		A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04433267BF38A00CC21DD /* Assets.xcassets */; };
@@ -81,6 +84,9 @@
 		A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		A01FDD2626C4F6D50014B165 /* PluginsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsService.swift; sourceTree = "<group>"; };
 		A01FDD2826C4F8420014B165 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
+		A01FDD2C26C62E170014B165 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyPhone.swift; sourceTree = "<group>"; };
+		A01FDD3026C701360014B165 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		A034ADA726BF32F500A7CC70 /* KDE Connect Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KDE Connect Test.entitlements"; sourceTree = "<group>"; };
 		A0A0442C267BF38700CC21DD /* KDE Connect Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestApp.swift; sourceTree = "<group>"; };
@@ -183,7 +189,10 @@
 			isa = PBXGroup;
 			children = (
 				A01FDD2626C4F6D50014B165 /* PluginsService.swift */,
+				A01FDD3026C701360014B165 /* Battery.swift */,
+				A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */,
 				A01FDD2826C4F8420014B165 /* Ping.swift */,
+				A01FDD2C26C62E170014B165 /* Share.swift */,
 			);
 			path = Plugins;
 			sourceTree = "<group>";
@@ -419,13 +428,16 @@
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
+				A01FDD3126C701360014B165 /* Battery.swift in Sources */,
 				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
+				A01FDD2F26C6FD110014B165 /* FindMyPhone.swift in Sources */,
 				1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */,
 				A0A04430267BF38700CC21DD /* KDE_Connect_TestApp.swift in Sources */,
 				A0B87283267D2A8600F0EB72 /* PlaceHolderView.swift in Sources */,
 				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
 				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
+				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
 				A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */,
 				1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */,

@@ -11,7 +11,7 @@ class Ping : Plugin {
     
     func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np._Type == PACKAGE_TYPE_PING) {
-            haptics.impactOccurred(intensity: 1.0)
+            connectedDevicesViewModel.showPingAlert()
             return true
         }
         return false

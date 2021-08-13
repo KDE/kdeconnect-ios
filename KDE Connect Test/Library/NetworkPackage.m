@@ -63,36 +63,16 @@ __strong static NSString* _UUID;
     // TODO: Instead of @[] actually import what plugins are avaliable, UserDefaults to store maybe?
     // For now, manually putting everything in to trick the other device to sending the iOS host the
     // identity packets so debugging is easier
-    [np setObject:@[@"kdeconnect.telephony.request_mute",
-                    @"kdeconnect.notification",
-                    @"kdeconnect.ping",
-                    @"kdeconnect.notification.reply",
-                    @"kdeconnect.notification.action",
+    [np setObject:@[@"kdeconnect.ping",
                     @"kdeconnect.share.request",
-                    @"kdeconnect.bigscreen.stt",
-                    @"kdeconnect.clipboard.connect",
-                    @"kdeconnect.runcommand",
-                    @"kdeconnect.connectivity_report.request",
-                    @"kdeconnect.contacts.request_all_uids_timestamps",
-                    @"kdeconnect.sms.request_conversations",
-                    @"kdeconnect.telephony.request",
-                    @"kdeconnect.mpris",
-                    @"kdeconnect.sms.request_conversation",
                     @"kdeconnect.findmyphone.request",
-                    @"kdeconnect.sms.request_attachment",
-                    @"kdeconnect.systemvolume",
-                    @"kdeconnect.mousepad.keyboardstate",
-                    @"kdeconnect.sftp.request",
-                    @"kdeconnect.share.request.update",
-                    @"kdeconnect.notification.request",
-                    @"kdeconnect.mousepad.request",
-                    @"kdeconnect.photo.request",
-                    @"kdeconnect.sms.request",
-                    @"kdeconnect.contacts.request_vcards_by_uid",
-                    @"kdeconnect.mpris.request",
-                    @"kdeconnect.battery.request",
-                    @"kdeconnect.clipboard"] forKey:@"incomingCapabilities"];
-    [np setObject:@[] forKey:@"outgoingCapabilities"];
+                    //@"kdeconnect.share.request.update",
+                    @"kdeconnect.battery.request",] forKey:@"incomingCapabilities"];
+    [np setObject:@[@"kdeconnect.ping",
+                    @"kdeconnect.share.request",
+                    @"kdeconnect.findmyphone.request",
+                    //@"kdeconnect.share.request.update",
+                    @"kdeconnect.battery",] forKey:@"outgoingCapabilities"];
     
     // FIXME: Remove object
 //    [np setObject:[[PluginFactory sharedInstance] getSupportedIncomingInterfaces] forKey:@"SupportedIncomingInterfaces"];

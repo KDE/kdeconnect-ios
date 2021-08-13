@@ -48,4 +48,12 @@ class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
         //}
         onDeviceListRefreshed()
     }
+    
+    func showPingAlert() -> Void {
+        devicesView!.showPingAlertInsideView()
+    }
+    
+    func showFindMyPhoneAlert() -> Void {
+        devicesView!.showFindMyPhoneAlertInsideView()
+    }
 }

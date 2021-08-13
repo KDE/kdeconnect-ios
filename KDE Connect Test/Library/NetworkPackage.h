@@ -61,6 +61,7 @@
 #define PACKAGE_TYPE_CONTACT    @"kdeconnect.contact"
 
 #define PACKAGE_TYPE_BATTERY_REQUEST    @"kdeconnect.battery.request"
+#define PACKAGE_TYPE_FINDMYPHONE_REQUEST @"kdeconnect.findmyphone.request"
 
 #pragma mark -
 
