@@ -90,6 +90,7 @@
     BOOL needGenerateCertificate = NO;
 
     NSString *resourcePath = NULL;
+    
 #ifdef DEBUG
     resourcePath = [[NSBundle mainBundle] pathForResource:@"rsaPrivate" ofType:@"p12"];
 #else

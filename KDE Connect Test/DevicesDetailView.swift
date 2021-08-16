@@ -145,7 +145,7 @@ struct DevicesDetailView: View {
                     print("Document Picker Error")
                 }
                 for url in chosenFileURLs {
-                    (avaliablePlugins["kdeconnect.share"] as! Share).sendFile(deviceId: detailsDeviceId, fileURL: url)
+                    (avaliablePlugins[PACKAGE_TYPE_SHARE] as! Share).sendFile(deviceId: detailsDeviceId, fileURL: url)
 //                    do {
 //                        sleep(2)
 //                    }

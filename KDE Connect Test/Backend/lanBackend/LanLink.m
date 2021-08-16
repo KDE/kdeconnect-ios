@@ -84,11 +84,22 @@
     BOOL needGenerateCertificate = NO;
 
     NSString *resourcePath = NULL;
+    
+#ifdef DEBUG
+    resourcePath = [[NSBundle mainBundle] pathForResource:@"rsaPrivate" ofType:@"p12"];
+#else
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     for (NSString *directory in documentDirectories) {
         NSLog(@"Find %@", directory);
         resourcePath = [directory stringByAppendingString:@"/rsaPrivate.p12"];
     }
+#endif
+    
+//    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    for (NSString *directory in documentDirectories) {
+//        NSLog(@"Find %@", directory);
+//        resourcePath = [directory stringByAppendingString:@"/rsaPrivate.p12"];
+//    }
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (resourcePath != NULL && [fileManager fileExistsAtPath:resourcePath]) {
@@ -187,6 +198,7 @@
  * By default the new socket will have the same delegate and delegateQueue.
  * You may, of course, change this at any time.
  **/
+// FIXME: Add our cert into myCerts
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
     NSLog(@"Lanlink: didAcceptNewSocket");
@@ -235,6 +247,7 @@
          (__bridge CFArrayRef) myCipherSuite, (id)GCDAsyncSocketSSLCipherSuites,
     nil];
 
+    //NSLog(@"%@", myCerts);
     [sock startTLS: tlsSettings];
     NSLog(@"Start Client TLS to receive file");
 }
@@ -255,7 +268,7 @@
             NSUInteger index=[_pendingRSockets indexOfObject:sock];
             np=[_pendingPayloadNP objectAtIndex:index];
             [np set_Payload:data];
-            [np set_Type:PACKAGE_TYPE_SHARE];
+            [np set_Type:PACKAGE_TYPE_SHARE_INTERNAL];
             //NSLog()
         }
         
