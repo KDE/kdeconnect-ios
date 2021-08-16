@@ -54,7 +54,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 //- (void) currDeviceDetailsViewOnUnpairFromRemote;
 //@end
 
-@interface Device : NSObject <linkDelegate>
+@interface Device : NSObject <linkDelegate, NSSecureCoding, NSCoding>
 
 @property(readonly,nonatomic) NSString* _id;
 @property(readonly,nonatomic) NSString* _name;
@@ -63,6 +63,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 @property(readonly,nonatomic) PairStatus _pairStatus;
 @property(readonly,nonatomic) NSArray* _supportedIncomingInterfaces;
 @property(readonly,nonatomic) NSArray* _supportedOutgoingInterfaces;
+
 @property(nonatomic) id _deviceDelegate;
 @property(nonatomic,assign) id _backgroundServiceDelegate;
 //@property(readonly,nonatomic) BOOL _testDevice;
@@ -83,6 +84,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 #pragma mark Pairing-related Functions
 - (BOOL) isPaired;
 - (BOOL) isPaireRequested;
+//- (void) setAsPaired; // Is this needed to be public?
 - (void) requestPairing;
 - (void) unpair;
 - (void) acceptPairing;

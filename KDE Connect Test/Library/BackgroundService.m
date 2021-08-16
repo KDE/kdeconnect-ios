@@ -29,7 +29,7 @@
 //@property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableArray* _visibleDevices;
 @property(nonatomic)NSMutableDictionary* _settings;
-@property(nonatomic)NSDictionary* _savedDevices;
+@property(nonatomic)NSMutableDictionary* _savedDevices;
 
 //@property(nonatomic)SettingsStore* _settings; // seems like all this is doing is acting as a
 //persistent version of _devices
@@ -65,17 +65,31 @@
 - (id) init
 {
     if ((self=[super init])) {
+        //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
         _visibleDevices=[NSMutableArray arrayWithCapacity:1];
         _settings=[NSMutableDictionary dictionaryWithCapacity:1];
-        _savedDevices=[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];  //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
-        if (_savedDevices == nil) { // If nothing is saved in UserDefaults
+       //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
+        
+        NSDictionary* tempDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];
+        if (tempDic == nil) { // If nothing is saved in UserDefaults
             _savedDevices = [NSMutableDictionary dictionary];
+        } else {
+            for (NSString* deviceId in [tempDic allKeys]) {
+                NSData* deviceData = tempDic[deviceId];
+                NSError* error;
+                //FIXME: decodes as nil for some reason
+                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClass:[Device class] fromData:deviceData error:&error];
+                NSLog(@"%@", device);
+                [device set_deviceDelegate:self];
+                [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
+                [_savedDevices setObject:device forKey:deviceId];
+            }
         }
         
         //[[NSUserDefaults standardUserDefaults] registerDefaults:_settings];
-        //[[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self registerLinkProviders];
         [self loadRemenberedDevices];
         //[PluginFactory sharedInstance];
@@ -95,10 +109,9 @@
 - (void) loadRemenberedDevices
 {
     for (NSString* deviceId in [_savedDevices allKeys]) {
-        Device* device=[[Device alloc] init:deviceId setDelegate:self];
-        [_devices setObject:device forKey:deviceId];
-        [_settings setObject:device forKey:deviceId]; //maybe this fixes the saved devices not saving?
-                                                        // NOPE
+        //Device* device=[[Device alloc] init:deviceId setDelegate:self];
+        [_devices setObject:_savedDevices[deviceId] forKey:deviceId];
+        [_settings setObject:_savedDevices[deviceId] forKey:deviceId];
     }
 }
 - (void) registerLinkProviders
@@ -177,8 +190,10 @@
     }
     [_devices removeObjectForKey:deviceId];
     [_settings removeObjectForKey:deviceId];
+//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
+//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc
@@ -283,19 +298,28 @@
         [_backgroundServiceDelegate onPairTimeout:[device _id]];
     }
     [_settings removeObjectForKey:[device _id]];
+//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
+//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) onDevicePairSuccess:(Device*)device
 {
+    //NSLog(@"%lu", [device _type]);
     NSLog(@"bg on device pair success");
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onPairSuccess:[device _id]];
     }
-    [_settings setObject:[device _name] forKey:[device _id]];
+    //[device setAsPaired]; is already called in the caller of this method
+    //FIXME: encodes as nil for some reason
+    NSError* error;
+    NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:true error:&error];
+    [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
+//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
+//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) onDevicePairRejected:(Device*)device
@@ -305,8 +329,10 @@
         [_backgroundServiceDelegate onPairRejected:[device _id]];
     }
     [_settings removeObjectForKey:[device _id]];
+//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
+//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //- (void) reloadAllPlugins

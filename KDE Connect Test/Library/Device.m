@@ -27,6 +27,7 @@
 @property(nonatomic) NSMutableDictionary* _plugins;
 @property(nonatomic) NSMutableArray* _failedPlugins;
 @end
+
 @implementation Device
 
 @synthesize _id;
@@ -78,7 +79,7 @@
 
 - (Device*) init:(NetworkPackage*)np baselink:(BaseLink*)link setDelegate:(id)deviceDelegate
 {
-    if ((self=[super init])) {
+    if (self=[super init]) {
         _id=[np objectForKey:@"deviceId"];
         _type=[Device Str2Devicetype:[np objectForKey:@"deviceType"]];
         _name=[np objectForKey:@"deviceName"];
@@ -413,6 +414,34 @@
         return Tablet;
     }
     return Unknown;
+}
+
+#pragma mark En/Decoding Methods
+- (void)encodeWithCoder:(nonnull NSCoder *)coder {
+    [coder encodeObject:_id forKey:@"_id"];
+    [coder encodeObject:_name forKey:@"_name"];
+    [coder encodeInteger:_type forKey:@"_type"];
+    [coder encodeInteger:_protocolVersion forKey:@"_protocolVersion"];
+    [coder encodeInteger:_pairStatus forKey:@"_pairStatus"];
+    [coder encodeObject:_supportedIncomingInterfaces forKey:@"_supportedIncomingInterfaces"];
+    [coder encodeObject:_supportedOutgoingInterfaces forKey:@"_supportedOutgoingInterfaces"];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
+    if (self = [super init]) {
+        _id = [coder decodeObjectForKey:@"_id"];
+        _name = [coder decodeObjectForKey:@"_name"];
+        _type = [coder decodeIntegerForKey:@"_type"];
+        _protocolVersion = [coder decodeIntegerForKey:@"_protocolVersion"];
+        _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
+        _supportedIncomingInterfaces = [coder decodeObjectForKey:@"_supportedIncomingInterfaces"];
+        _supportedOutgoingInterfaces = [coder decodeObjectForKey:@"_supportedOutgoingInterfaces"];
+        
+        // To be set later in backgroundServices
+        _deviceDelegate = nil;
+        _backgroundServiceDelegate = nil;
+    }
+    return self;
 }
 
 @end

@@ -276,6 +276,7 @@ struct DevicesView: View {
         group.leave()
         group.notify(queue: DispatchQueue.main) {
             backgroundService.refreshVisibleDeviceList()
+            //connectedDevicesViewModel.onDeviceListRefreshed()
         }
     }
     

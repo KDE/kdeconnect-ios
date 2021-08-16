@@ -63,16 +63,18 @@ __strong static NSString* _UUID;
     // TODO: Instead of @[] actually import what plugins are avaliable, UserDefaults to store maybe?
     // For now, manually putting everything in to trick the other device to sending the iOS host the
     // identity packets so debugging is easier
-    [np setObject:@[@"kdeconnect.ping",
-                    @"kdeconnect.share.request",
-                    @"kdeconnect.findmyphone.request",
+    [np setObject:@[PACKAGE_TYPE_PING,
+                    PACKAGE_TYPE_SHARE_REQUEST,
+                    PACKAGE_TYPE_SHARE,
                     //@"kdeconnect.share.request.update",
-                    @"kdeconnect.battery.request",] forKey:@"incomingCapabilities"];
-    [np setObject:@[@"kdeconnect.ping",
-                    @"kdeconnect.share.request",
-                    @"kdeconnect.findmyphone.request",
+                    PACKAGE_TYPE_FINDMYPHONE_REQUEST,
+                    PACKAGE_TYPE_BATTERY_REQUEST,] forKey:@"incomingCapabilities"];
+    [np setObject:@[PACKAGE_TYPE_PING,
+                    PACKAGE_TYPE_SHARE_REQUEST,
+                    PACKAGE_TYPE_SHARE,
                     //@"kdeconnect.share.request.update",
-                    @"kdeconnect.battery",] forKey:@"outgoingCapabilities"];
+                    PACKAGE_TYPE_FINDMYPHONE_REQUEST,
+                    PACKAGE_TYPE_BATTERY,] forKey:@"outgoingCapabilities"];
     
     // FIXME: Remove object
 //    [np setObject:[[PluginFactory sharedInstance] getSupportedIncomingInterfaces] forKey:@"SupportedIncomingInterfaces"];

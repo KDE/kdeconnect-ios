@@ -11,6 +11,7 @@ class Share : Plugin {
     let PAYLOAD_PORT: Int = 1739
     
     func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+        print("Share plugin received something")
         if (np._Type == PACKAGE_TYPE_SHARE) {
             print("Share Plugin received a valid Share package")
             if (saveFile(fileData: np._Payload, filename: np._Body["filename"] as! String)) {
@@ -20,6 +21,7 @@ class Share : Plugin {
             }
             return true
         }
+        print("Not a share packge")
         return false
     }
     
@@ -41,7 +43,7 @@ class Share : Plugin {
         if (contentToSend != nil && lastModifiedDate != nil) {
             let lastModifiedDateUNIXEpoche: Int = Int(lastModifiedDate!.timeIntervalSince1970)
             
-            let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_SHARE)
+            let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_SHARE_REQUEST)
             np.setObject(fileURL.lastPathComponent, forKey: "filename")
             np.setInteger(lastModifiedDateUNIXEpoche, forKey: "lastModified")
             np.setInteger(contentToSend!.count, forKey: "totalPayloadSize")

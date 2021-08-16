@@ -133,8 +133,8 @@ struct DevicesDetailView: View {
                       ) {
                         backgroundService.unpairDevice(detailsDeviceId)
                         isStilConnected = false
-                        backgroundService.refreshDiscovery()
-                        connectedDevicesViewModel.onDeviceListRefreshed()
+//                        backgroundService.refreshDiscovery()
+//                        connectedDevicesViewModel.onDeviceListRefreshed()
                       }
                 )
             }
