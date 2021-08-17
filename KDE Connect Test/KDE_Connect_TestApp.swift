@@ -12,12 +12,8 @@ import SwiftUI
         WindowGroup {
             MainTabView()
                 .onAppear {
+                    (avaliablePlugins[PACKAGE_TYPE_BATTERY] as! Battery).startBatteryMonitoring()
                     backgroundService.startDiscovery()
-                    //linkProvider.onStart()
-                    //print(networkPackage._Type!)
-                    //print(networkPackage._PayloadSize ?? "No Payload")
-                    //print(networkPackage._Body!)
-                    //print(networkPackage._Id!)
                 }
         }
     }

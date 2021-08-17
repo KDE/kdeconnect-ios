@@ -54,4 +54,18 @@ class Share : Plugin {
             device.send(np, tag: Int(PACKAGE_TAG_SHARE))
         }
     }
+    
+    private func saveFile(fileData: Data, filename: String) -> Bool {
+        let fileManager = FileManager.default
+        do {
+            let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false) // gets URL of app's document directory
+            let fileURL = documentDirectory.appendingPathComponent(filename) // adds new file's name to URL
+            //print(fileURL.absoluteString)
+            try fileData.write(to: fileURL) // and save!
+            return true
+        } catch {
+            print(error)
+        }
+        return false
+    }
 }

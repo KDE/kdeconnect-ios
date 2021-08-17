@@ -277,6 +277,7 @@ struct DevicesView: View {
         group.notify(queue: DispatchQueue.main) {
             backgroundService.refreshVisibleDeviceList()
             //connectedDevicesViewModel.onDeviceListRefreshed()
+            (avaliablePlugins[PACKAGE_TYPE_BATTERY] as! Battery).sendBatteryStatusOut()
         }
     }
     

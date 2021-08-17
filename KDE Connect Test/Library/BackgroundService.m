@@ -65,6 +65,7 @@
 - (id) init
 {
     if ((self=[super init])) {
+        // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
         //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
@@ -80,8 +81,8 @@
                 NSData* deviceData = tempDic[deviceId];
                 NSError* error;
                 //FIXME: decodes as nil for some reason
-                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClass:[Device class] fromData:deviceData error:&error];
-                NSLog(@"%@", device);
+                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClass:[Device class] fromData:deviceData error:&error]; // throws unknown selector error
+                NSLog(@"device is encoded from UserDefaults as: %@", device);
                 [device set_deviceDelegate:self];
                 [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
                 [_savedDevices setObject:device forKey:deviceId];
@@ -315,6 +316,7 @@
     //FIXME: encodes as nil for some reason
     NSError* error;
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:true error:&error];
+    NSLog(@"device object encoded into UserDefaults as: %@", deviceData);
     [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
 //    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];

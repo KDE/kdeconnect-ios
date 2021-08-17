@@ -7,7 +7,8 @@
 
 import Foundation
 import UIKit
-// A place to house objects for global usage by the rest of the app
+// A place to house functions and variables for global usage by the rest of the app
+
 // Background Service provider, bridged from Obj-C codebase
 let backgroundService: BackgroundService = BackgroundService()
 
@@ -19,19 +20,5 @@ let backgroundService: BackgroundService = BackgroundService()
 // DevicesView()
 let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewModel()
 
+// Haptics provider
 let haptics = UIImpactFeedbackGenerator(style: .rigid)
-
-// Global functions
-func saveFile(fileData: Data, filename: String) -> Bool {
-    let fileManager = FileManager.default
-    do {
-        let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false) // gets URL of app's document directory
-        let fileURL = documentDirectory.appendingPathComponent(filename) // adds new file's name to URL
-        //print(fileURL.absoluteString)
-        try fileData.write(to: fileURL) // and save!
-        return true
-    } catch {
-        print(error)
-    }
-    return false
-}

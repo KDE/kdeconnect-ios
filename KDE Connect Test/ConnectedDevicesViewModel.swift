@@ -25,6 +25,7 @@ class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
     
     func onPairSuccess(_ deviceId: String!) -> Void {
         devicesView!.onPairSuccessInsideView(deviceId)
+        (avaliablePlugins[PACKAGE_TYPE_BATTERY] as! Battery).sendBatteryStatusOut()
     }
     
     func onPairRejected(_ deviceId: String!) -> Void {
