@@ -54,7 +54,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 //- (void) currDeviceDetailsViewOnUnpairFromRemote;
 //@end
 
-@interface Device : NSObject <linkDelegate, NSSecureCoding, NSCoding>
+@interface Device : NSObject <linkDelegate, NSSecureCoding>
 
 @property(readonly,nonatomic) NSString* _id;
 @property(readonly,nonatomic) NSString* _name;
@@ -67,6 +67,8 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 @property(nonatomic) id _deviceDelegate;
 @property(nonatomic,assign) id _backgroundServiceDelegate;
 //@property(readonly,nonatomic) BOOL _testDevice;
+
+@property (class, readonly) BOOL supportsSecureCoding;
 
 //- (Device*) initTest;
 - (Device*) init:(NSString*)deviceId setDelegate:(id)deviceDelegate;

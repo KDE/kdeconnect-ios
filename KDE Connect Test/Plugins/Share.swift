@@ -38,7 +38,7 @@ class Share : Plugin {
             }
             fileURL.stopAccessingSecurityScopedResource()
         } catch {
-            print("Error: \(error)")
+            print("Error reading file on device: \(error)")
         }
         if (contentToSend != nil && lastModifiedDate != nil) {
             let lastModifiedDateUNIXEpoche: Int = Int(lastModifiedDate!.timeIntervalSince1970)
@@ -64,7 +64,7 @@ class Share : Plugin {
             try fileData.write(to: fileURL) // and save!
             return true
         } catch {
-            print(error)
+            print("Error saving file to device \(error)")
         }
         return false
     }

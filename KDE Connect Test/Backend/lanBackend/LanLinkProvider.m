@@ -611,9 +611,16 @@
     return YES;
 }
 
+// TODO: when shouldTrustPeer gets called, there are 2 possibilties:
+// 1. If device is new/never been paired before, just trust it
+// 2. If device's been paired before, check for the already stored certificate to check whether
+// its signature matches that of the device trying to connect
+
+// trust contains the remote device's cert
 - (BOOL)socket:(GCDAsyncSocket *)sock shouldTrustPeer:(SecTrustRef)trust
 {
     NSLog(@"Trust Certificate from %@ LanLinkProvider", [sock connectedHost]);
+    // return YES if we want to trust, return NO if we don't write logic here to determine what to return
     return YES;
 }
 
@@ -637,39 +644,18 @@
 //    [oldlink disconnect];
 }
 
+// TODO: when shouldTrustPeer gets called, there are 2 possibilties:
+// 1. If device is new/never been paired before, just trust it
+// 2. If device's been paired before, check for the already stored certificate to check whether
+// its signature matches that of the device trying to connect
+
+// trust contains the remote device's cert
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
-    completionHandler(YES);
+    completionHandler(YES);// give YES if we want to trust, NO if we don't
 
     NSLog(@"Receive Certificate, Trust it LanLinkProvider");
 }
 
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

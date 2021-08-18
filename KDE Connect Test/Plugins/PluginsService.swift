@@ -19,7 +19,7 @@ let avaliablePlugins: [String : Any] = [PACKAGE_TYPE_PING:Ping(), PACKAGE_TYPE_S
 @objc class PluginsService : NSObject {
     @objc static func goThroughHostPluginsForReceiving(np: NetworkPackage) -> Void {
         for plugin in avaliablePlugins.values {
-            print((plugin as! Plugin).onDevicePackageReceived(np: np))
+            (plugin as! Plugin).onDevicePackageReceived(np: np)
         }
     }
 }

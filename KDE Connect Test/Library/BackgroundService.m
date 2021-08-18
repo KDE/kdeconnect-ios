@@ -82,7 +82,7 @@
                 NSError* error;
                 //FIXME: decodes as nil for some reason
                 Device* device = [NSKeyedUnarchiver unarchivedObjectOfClass:[Device class] fromData:deviceData error:&error]; // throws unknown selector error
-                NSLog(@"device is encoded from UserDefaults as: %@", device);
+                NSLog(@"device is encoded from UserDefaults as: %@ with error %@", device, error);
                 [device set_deviceDelegate:self];
                 [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
                 [_savedDevices setObject:device forKey:deviceId];
@@ -108,7 +108,7 @@
 }
 
 - (void) loadRemenberedDevices
-{
+{   //FIXME: When we get here, _savedDevices is actually nil for some reason, why?
     for (NSString* deviceId in [_savedDevices allKeys]) {
         //Device* device=[[Device alloc] init:deviceId setDelegate:self];
         [_devices setObject:_savedDevices[deviceId] forKey:deviceId];
@@ -241,7 +241,7 @@
         //NSLog([device _id]);
         //[_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[device _id]];
     }
-    if (![device isPaired]) {
+    if (![device isPaired] && ![device isReachable]) {
         [_devices removeObjectForKey:[device _id]];
         //NSLog(@"bg destroy device");
     }
@@ -315,7 +315,7 @@
     //[device setAsPaired]; is already called in the caller of this method
     //FIXME: encodes as nil for some reason
     NSError* error;
-    NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:true error:&error];
+    NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
     NSLog(@"device object encoded into UserDefaults as: %@", deviceData);
     [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
