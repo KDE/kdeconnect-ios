@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct DeviceDetailPluginSettingsView: View {
-    let detailsDeviceIndex: Int
+    let detailsDeviceId: String
     
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct DeviceDetailPluginSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        DeviceDetailPluginSettingsView(detailsDeviceIndex: 0)
-    }
-}
+//struct DeviceDetailPluginSettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DeviceDetailPluginSettingsView(detailsDeviceIndex: 0)
+//    }
+//}

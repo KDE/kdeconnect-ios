@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 // A place to house functions and variables for global usage by the rest of the app
 
 // Background Service provider, bridged from Obj-C codebase
@@ -22,3 +23,9 @@ let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewM
 
 // Haptics provider
 let haptics = UIImpactFeedbackGenerator(style: .rigid)
+
+// System sounds definitions, for a list of all IDs, see
+// https://github.com/TUNER88/iOSSystemSoundsLibrary
+let soundSMSReceived: SystemSoundID = 1003
+let soundCalendarAlert: SystemSoundID = 1005
+let soundAudioToneBusy: SystemSoundID = 1070

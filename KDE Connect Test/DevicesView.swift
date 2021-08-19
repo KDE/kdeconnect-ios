@@ -53,7 +53,7 @@ struct DevicesView: View {
                                                     .font(.system(size: 18, weight: .bold))
                                                 // TODO: Might want to add the device description as
                                                 // id:desc dictionary?
-                                                Text(key)
+                                                //Text(key)
                                             }
                                         }
                                     })
@@ -96,7 +96,7 @@ struct DevicesView: View {
                                                 .font(.system(size: 18, weight: .bold))
                                             // TODO: Might want to add the device description as
                                             // id:desc dictionary?
-                                            Text(key)
+                                            //Text(key)
                                         }
                                     }
                                 }
@@ -238,7 +238,7 @@ struct DevicesView: View {
                 }
                 refreshDiscoveryAndList()
             }
-        } else { // iPad implementation goes here, without StackedNavigationStyle(), since that breaks iPad horizontal's split view (I think?)
+        } else { // iPad implementation goes here, without StackedNavigationStyle(), since that breaks iPad horizontal's split view (might be a bug that will be fixed in the future
 
         }
     }
@@ -246,21 +246,78 @@ struct DevicesView: View {
     func onPairRequestInsideView(_ deviceId: String!) -> Void {
         currPairingDeviceId = deviceId
 //        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
-        showingOnPairRequestAlert = true
+        if (noCurrentlyActiveAlert()) {
+            showingOnPairRequestAlert = true
+        } else {
+            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            print("Unable to display onPairRequest Alert, another alert already active")
+        }
     }
     
     func onPairTimeoutInsideView(_ deviceId: String!) -> Void {
         //currPairingDeviceId = nil
-        showingOnPairTimeoutAlert = true
+        if(noCurrentlyActiveAlert()) {
+            showingOnPairTimeoutAlert = true
+        } else {
+            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            print("Unable to display onPairTimeout Alert, another alert already active")
+        }
     }
     
     func onPairSuccessInsideView(_ deviceId: String!) -> Void {
-        showingOnPairSuccessAlert = true
+        if (noCurrentlyActiveAlert()) {
+            showingOnPairSuccessAlert = true
+        } else {
+            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            print("Unable to display onPairSuccess Alert, another alert already active, but device list is still refreshed")
+        }
         connectedDevicesViewModel.onDeviceListRefreshed()
     }
     
     func onPairRejectedInsideView(_ deviceId: String!) -> Void {
-        showingOnPairRejectedAlert = true
+        if (noCurrentlyActiveAlert()) {
+            showingOnPairRejectedAlert = true
+        } else {
+            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            print("Unable to display onPairRejected Alert, another alert already active")
+        }
+    }
+    
+    func showPingAlertInsideView() -> Void {
+        haptics.impactOccurred(intensity: 0.8)
+        AudioServicesPlaySystemSound(soundSMSReceived)
+        if (noCurrentlyActiveAlert()) {
+            showingPingAlert = true
+        } else {
+            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            print("Unable to display showingPingAlert Alert, another alert already active, but haptics and sounds are still played")
+        }
+    }
+    
+    func showFindMyPhoneAlertInsideView() -> Void {
+        if (noCurrentlyActiveAlert()) {
+            showingFindMyPhoneAlert = true
+            while (showingFindMyPhoneAlert) {
+                haptics.impactOccurred(intensity: 1.0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+                    AudioServicesPlaySystemSound(soundCalendarAlert)
+                }
+            }
+        } else {
+            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            print("Unable to display showFindMyPhoneAlert Alert, another alert already active, alert haptics and tone not played")
+        }
+    }
+    
+    private func noCurrentlyActiveAlert() -> Bool {
+        return (!showingOnPairRequestAlert &&
+                !showingOnPairTimeoutAlert &&
+                !showingOnPairSuccessAlert &&
+                !showingOnPairRejectedAlert &&
+                !showingOnSelfPairOutgoingRequestAlert &&
+                !showingOnSelectSavedDeviceAlert &&
+                !showingPingAlert &&
+                !showingFindMyPhoneAlert)
     }
     
     func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {
@@ -278,25 +335,6 @@ struct DevicesView: View {
             backgroundService.refreshVisibleDeviceList()
             //connectedDevicesViewModel.onDeviceListRefreshed()
             (avaliablePlugins[PACKAGE_TYPE_BATTERY] as! Battery).sendBatteryStatusOut()
-        }
-    }
-    
-    func showPingAlertInsideView() -> Void {
-        haptics.impactOccurred(intensity: 0.8)
-        AudioServicesPlaySystemSound(1003)
-        showingPingAlert = true
-    }
-    
-    func showFindMyPhoneAlertInsideView() -> Void {
-        showingFindMyPhoneAlert = true
-        let group = DispatchGroup()
-        while (showingFindMyPhoneAlert) {
-            group.enter()
-            haptics.impactOccurred(intensity: 1.0)
-            group.leave()
-            group.notify(queue: DispatchQueue.main) {
-                AudioServicesPlaySystemSound(1005)
-            }
         }
     }
     
