@@ -89,6 +89,7 @@
             }
         }
         
+        NSLog(@"%@", _savedDevices);
         //[[NSUserDefaults standardUserDefaults] registerDefaults:_settings];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self registerLinkProviders];
@@ -109,10 +110,10 @@
 
 - (void) loadRemenberedDevices
 {   //FIXME: When we get here, _savedDevices is actually nil for some reason, why?
-    for (NSString* deviceId in [_savedDevices allKeys]) {
+    for (Device* device in [_savedDevices allValues]) {
         //Device* device=[[Device alloc] init:deviceId setDelegate:self];
-        [_devices setObject:_savedDevices[deviceId] forKey:deviceId];
-        [_settings setObject:_savedDevices[deviceId] forKey:deviceId];
+        [_devices setObject:_savedDevices[device] forKey:[device _id]];
+        [_settings setObject:_savedDevices[device] forKey:[device _id]];
     }
 }
 - (void) registerLinkProviders

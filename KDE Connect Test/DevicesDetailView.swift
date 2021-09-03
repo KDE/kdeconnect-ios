@@ -14,6 +14,7 @@ struct DevicesDetailView: View {
     @State private var showingUnpairConfirmationAlert: Bool = false
     @State private var showingFilePicker: Bool = false
     @State var isStilConnected: Bool = true
+    @State private var showingPluginSettingsView: Bool = false
     
     @State var chosenFileURLs: [URL] = []
     
@@ -57,15 +58,9 @@ struct DevicesDetailView: View {
                             }
                         })
                 }
-                Section(header: Text("Device Specific Settings")) {
-                    NavigationLink(
-                        destination: PlaceHolderView(), //DeviceDetailPluginSettingsView(detailsDeviceIndex: detailsDeviceIndex)
-                        label: {
-                            HStack {
-                                Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
-                                Text("Plugin Settings")
-                            }
-                        })
+                
+                NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
+                    EmptyView()
                 }
                 
                 //            Section(header: Text("Debug section")) {
@@ -94,6 +89,15 @@ struct DevicesDetailView: View {
                         HStack {
                             Text("Ring Device")
                             Image(systemName: "bell")
+                        }
+                    })
+                    
+                    Button(action: {
+                        showingPluginSettingsView = true
+                    }, label: {
+                        HStack {
+                            Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
+                            Text("Plugin Settings")
                         }
                     })
                     

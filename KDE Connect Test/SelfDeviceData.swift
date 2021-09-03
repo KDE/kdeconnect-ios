@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import UniformTypeIdentifiers
+import SwiftUI
 import UIKit
 
 class SelfDeviceData: ObservableObject {
@@ -28,6 +29,9 @@ class SelfDeviceData: ObservableObject {
         self.chosenTheme = UserDefaults.standard.object(forKey: "chosenTheme") as? String ?? "System Default"
     }
 }
+
+// Dictionary for app theme management
+let appThemes: [String : ColorScheme] = ["Light":.light, "Dark":.dark]
 
 // Array of all UTTypes, used by .fileImporter() to allow importing of all file types
 let allUTTypes: [UTType] = [.aiff, .aliasFile, .appleArchive, .appleProtectedMPEG4Audio,

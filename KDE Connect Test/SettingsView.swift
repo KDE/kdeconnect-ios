@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var selfDeviceData = SelfDeviceData()
+    @ObservedObject private var selfDeviceDataForSettings: SelfDeviceData = selfDeviceData
     
     var body: some View {
         NavigationView {
             List {
                 // These could go in sections to give them each descriptions and space
                 NavigationLink(
-                    destination: SettingsDeviceNameView(deviceName: $selfDeviceData.deviceName),
+                    destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName),
                     label: {
                         HStack {
                             Text("Device Name")
@@ -26,10 +26,10 @@ struct SettingsView: View {
                     })
                 
                 NavigationLink(
-                    destination: SettingsChosenThemeView(chosenTheme: $selfDeviceData.chosenTheme),
+                    destination: SettingsChosenThemeView(chosenTheme: $selfDeviceDataForSettings.chosenTheme),
                     label: {
                         HStack {
-                            Text("Chose Theme")
+                            Text("App Theme")
                             Spacer()
                             Text(selfDeviceData.chosenTheme)
                                 .font(.system(size: 12))
@@ -41,8 +41,8 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingsView()
+//    }
+//}

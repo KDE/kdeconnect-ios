@@ -21,6 +21,9 @@ let backgroundService: BackgroundService = BackgroundService()
 // DevicesView()
 let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewModel()
 
+// Global ObservableObject to be Observed by needed structs for app-wide information
+let selfDeviceData: SelfDeviceData = SelfDeviceData()
+
 // Haptics provider
 let haptics = UIImpactFeedbackGenerator(style: .rigid)
 

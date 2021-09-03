@@ -29,6 +29,8 @@ struct DevicesView: View {
     @State private var showingPingAlert: Bool = false
     @State private var showingFindMyPhoneAlert: Bool = false
     
+    @State private var showingConfigureDevicesByIPView: Bool = false
+    
     @ObservedObject var localNotificationService = LocalNotificationService()
     
     var body: some View {
@@ -37,72 +39,88 @@ struct DevicesView: View {
                 VStack {
                     List {
                         Section(header: Text("Connected Devices")) {
-                            ForEach(connectedDevicesIds, id: \.self) { key in
-                                NavigationLink(
-                                    // TODO: How do we know what to pass to the details view?
-                                    // Use the "key" from ForEach aka device ID to get it from
-                                    // backgroundService's _devices dictionary for the value (Device class objects)
-                                    destination: DevicesDetailView(detailsDeviceId: key),
-                                    label: {
+                            if (connectedDevicesIds.isEmpty) {
+                                Text("No devices currently connected, connected devices will appear here.")
+                            } else {
+                                ForEach(connectedDevicesIds, id: \.self) { key in
+                                    NavigationLink(
+                                        // TODO: How do we know what to pass to the details view?
+                                        // Use the "key" from ForEach aka device ID to get it from
+                                        // backgroundService's _devices dictionary for the value (Device class objects)
+                                        destination: DevicesDetailView(detailsDeviceId: key),
+                                        label: {
+                                            HStack {
+                                                Image(systemName: "wifi")
+                                                    .foregroundColor(.green)
+                                                    .font(.system(size: 21))
+                                                VStack(alignment: .leading) {
+                                                    Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
+                                                        .font(.system(size: 18, weight: .bold))
+                                                    // TODO: Might want to add the device description as
+                                                    // id:desc dictionary?
+                                                    //Text(key)
+                                                }
+                                            }
+                                        })
+                                }
+                            }
+                        }
+                        
+                        Section(header: Text("Discoverable Devices")) {
+                            if (visibleDevicesIds.isEmpty) {
+                                Text("No devices discoverable on this network, make sure that the other devices are also running KDE Connect and are connect to the same network as this device.")
+                            } else {
+                                ForEach(visibleDevicesIds, id: \.self) { key in
+                                    Button(action: {
+                                        currPairingDeviceId = key
+                                        showingOnSelfPairOutgoingRequestAlert = true
+                                    }) {
                                         HStack {
-                                            Image(systemName: "wifi")
-                                                .foregroundColor(.green)
+                                            Image(systemName: "badge.plus.radiowaves.right")
+                                                .foregroundColor(.blue)
                                                 .font(.system(size: 21))
                                             VStack(alignment: .leading) {
-                                                Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
+                                                Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
+                                                    .font(.system(size: 18, weight: .bold))
+                                                Text("Tap to start pairing")
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        
+                        Section(header: Text("Remembered Devices")) {
+                            if (savedDevicesIds.isEmpty) {
+                                Text("No remembered devices, devices that were previously connected will appear here.")
+                            } else {
+                                ForEach(savedDevicesIds, id: \.self) { key in
+                                    Button(action: {
+                                        currPairingDeviceId = key
+                                        showingOnSelectSavedDeviceAlert = true
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "wifi.slash")
+                                                .foregroundColor(.red)
+                                                .font(.system(size: 21))
+                                            VStack(alignment: .leading) {
+                                                Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
                                                     .font(.system(size: 18, weight: .bold))
                                                 // TODO: Might want to add the device description as
                                                 // id:desc dictionary?
                                                 //Text(key)
                                             }
                                         }
-                                    })
-                            }
-                        }
-                        
-                        Section(header: Text("Discoverable Devices")) {
-                            ForEach(visibleDevicesIds, id: \.self) { key in
-                                Button(action: {
-                                    currPairingDeviceId = key
-                                    showingOnSelfPairOutgoingRequestAlert = true
-                                }) {
-                                    HStack {
-                                        Image(systemName: "badge.plus.radiowaves.right")
-                                            .foregroundColor(.blue)
-                                            .font(.system(size: 21))
-                                        VStack(alignment: .leading) {
-                                            Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
-                                                .font(.system(size: 18, weight: .bold))
-                                            Text("Tap to start pairing")
-                                        }
-                                    }
-                                    
-                                }
-                            }
-                        }
-                        
-                        Section(header: Text("Remembered Devices")) {
-                            ForEach(savedDevicesIds, id: \.self) { key in
-                                Button(action: {
-                                    currPairingDeviceId = key
-                                    showingOnSelectSavedDeviceAlert = true
-                                }) {
-                                    HStack {
-                                        Image(systemName: "wifi.slash")
-                                            .foregroundColor(.red)
-                                            .font(.system(size: 21))
-                                        VStack(alignment: .leading) {
-                                            Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
-                                                .font(.system(size: 18, weight: .bold))
-                                            // TODO: Might want to add the device description as
-                                            // id:desc dictionary?
-                                            //Text(key)
-                                        }
                                     }
                                 }
                             }
                         }
                         
+                    }
+                    
+                    NavigationLink(destination: PlaceHolderView(), isActive: $showingConfigureDevicesByIPView) {
+                        EmptyView()
                     }
                     
                     Text("")
@@ -208,7 +226,7 @@ struct DevicesView: View {
                             }
                         })
                         Button(action: {
-                            // take to IP adding view
+                            showingConfigureDevicesByIPView = true
                         }, label: {
                             HStack {
                                 Text("Configure Devices By IP")

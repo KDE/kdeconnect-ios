@@ -19,6 +19,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
+//                .environmentObject(selfDeviceData)
         }
     }
 }

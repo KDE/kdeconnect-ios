@@ -433,7 +433,7 @@
  * The host parameter will be an IP address, not a DNS name.
  **/
 
-// I try to establish TLS with another host
+// We try to establish TLS with a remote device after receiving thier identity packet
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     // Temporally disable
