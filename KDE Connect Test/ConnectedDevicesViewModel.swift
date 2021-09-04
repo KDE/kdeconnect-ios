@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
+@objc class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
     var devicesView: DevicesView? = nil
     var currDeviceDetailsView: DevicesDetailView? = nil
     
@@ -56,5 +56,9 @@ class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
     
     func showFindMyPhoneAlert() -> Void {
         devicesView!.showFindMyPhoneAlertInsideView()
+    }
+    
+    @objc static func getDirectIPList() -> [String] {
+        return selfDeviceData.directIPs
     }
 }

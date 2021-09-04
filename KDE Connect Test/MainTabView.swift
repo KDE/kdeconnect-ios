@@ -8,24 +8,51 @@
 import SwiftUI
 
 struct MainTabView: View {
+    // This is a bit redundent since it's basically just copy-and-pasting almost the exact
+    // same view twice. But this is to get around what could be a bug. As
+    // .navigationViewStyle(StackNavigationViewStyle())
+    // Fixes the problem on iPhone BUT breaks side-by-side view support on iPad
+    @Environment(\.horizontalSizeClass) var sizeClass
+    
     var body: some View {
         TabView {
-            DevicesView()
+            if (sizeClass == .compact) {
+                NavigationView {
+                    DevicesView()
+                }
                 .tabItem {
                     Label("Devices", systemImage: "laptopcomputer.and.iphone")
                 }
-            
-            SettingsView()
+                .navigationViewStyle(StackNavigationViewStyle())
+                
+                NavigationView {
+                    SettingsView()
+                }
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-//                .environmentObject(selfDeviceData)
+                .navigationViewStyle(StackNavigationViewStyle())
+            } else {
+                NavigationView {
+                    DevicesView()
+                }
+                .tabItem {
+                    Label("Devices", systemImage: "laptopcomputer.and.iphone")
+                }
+                
+                NavigationView {
+                    SettingsView()
+                }
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
+            }
         }
     }
 }
 
-struct TabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
-    }
-}
+//struct TabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainTabView()
+//    }
+//}

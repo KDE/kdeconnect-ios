@@ -24,9 +24,16 @@ class SelfDeviceData: ObservableObject {
         }
     }
     
+    @Published var directIPs: [String] {
+        didSet {
+            UserDefaults.standard.set(directIPs, forKey: "directIPs")
+        }
+    }
+    
     init() {
-        self.deviceName = UserDefaults.standard.object(forKey: "deviceName") as? String ?? UIDevice.current.name
-        self.chosenTheme = UserDefaults.standard.object(forKey: "chosenTheme") as? String ?? "System Default"
+        self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? UIDevice.current.name
+        self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme") ?? "System Default"
+        self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
     }
 }
 
