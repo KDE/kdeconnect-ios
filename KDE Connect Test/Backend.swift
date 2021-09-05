@@ -32,3 +32,16 @@ let haptics = UIImpactFeedbackGenerator(style: .rigid)
 let soundSMSReceived: SystemSoundID = 1003
 let soundCalendarAlert: SystemSoundID = 1005
 let soundAudioToneBusy: SystemSoundID = 1070
+
+// Date extension to return the UNIX epoche in miliseconds, since KDE Connect uses miliseconds
+// UNIX Epoche for all timestamp fields:
+// https://stackoverflow.com/questions/40134323/date-to-milliseconds-and-back-to-date-in-swift
+extension Date {
+    var millisecondsSince1970:Int64 {
+        return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+
+    init(milliseconds:Int64) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+    }
+}

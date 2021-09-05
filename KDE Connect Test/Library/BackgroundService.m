@@ -66,7 +66,7 @@
 {
     if ((self=[super init])) {
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
-        //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
         _visibleDevices=[NSMutableArray arrayWithCapacity:1];
@@ -80,9 +80,9 @@
             for (NSString* deviceId in [tempDic allKeys]) {
                 NSData* deviceData = tempDic[deviceId];
                 NSError* error;
-                //FIXME: decodes as nil for some reason
-                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClass:[Device class] fromData:deviceData error:&error]; // throws unknown selector error
-                NSLog(@"device is encoded from UserDefaults as: %@ with error %@", device, error);
+                //FIXME: error is saying _incoming and _outgoing are NSMutableArray for some reason. NSArrays should be very standard for en/decoding, IDK what's going on rn
+                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClass:[Device class] fromData:deviceData error:&error];
+                NSLog(@"device is decoded from UserDefaults as: %@ with error %@", device, error);
                 [device set_deviceDelegate:self];
                 [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
                 [_savedDevices setObject:device forKey:deviceId];
@@ -91,7 +91,7 @@
         
         NSLog(@"%@", _savedDevices);
         //[[NSUserDefaults standardUserDefaults] registerDefaults:_settings];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        //[[NSUserDefaults standardUserDefaults] synchronize];
         [self registerLinkProviders];
         [self loadRemenberedDevices];
         //[PluginFactory sharedInstance];
@@ -196,7 +196,7 @@
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
 //    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc
@@ -304,7 +304,7 @@
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
 //    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) onDevicePairSuccess:(Device*)device
@@ -318,7 +318,7 @@
     //FIXME: encodes as nil for some reason
     NSError* error;
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
-    NSLog(@"device object encoded into UserDefaults as: %@", deviceData);
+    NSLog(@"device object encoded into UserDefaults as: %@ with error: %@", deviceData, error);
     [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
 //    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
@@ -336,7 +336,7 @@
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
 //    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //- (void) reloadAllPlugins

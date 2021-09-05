@@ -34,6 +34,7 @@
 		A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445E267BF41B00CC21DD /* SettingsView.swift */; };
 		A0AAA99726E2D968003883A7 /* ConfigureDeviceByIPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */; };
 		A0AAA99926E2DDFD003883A7 /* AlertWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */; };
+		A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0852E26E576950010AE9D /* Clipboard.swift */; };
 		A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */; };
 		A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */; };
 		A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */; };
@@ -107,6 +108,7 @@
 		A0A0445E267BF41B00CC21DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureDeviceByIPView.swift; sourceTree = "<group>"; };
 		A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithTextField.swift; sourceTree = "<group>"; };
+		A0B0852E26E576950010AE9D /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCellView.swift; sourceTree = "<group>"; };
 		A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeviceNameView.swift; sourceTree = "<group>"; };
 		A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDeviceData.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */,
 				A01FDD2826C4F8420014B165 /* Ping.swift */,
 				A01FDD2C26C62E170014B165 /* Share.swift */,
+				A0B0852E26E576950010AE9D /* Clipboard.swift */,
 			);
 			path = Plugins;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				A0B87283267D2A8600F0EB72 /* PlaceHolderView.swift in Sources */,
 				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
 				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
+				A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */,
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
 				A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */,

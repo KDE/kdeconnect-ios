@@ -368,6 +368,8 @@
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_BATTERY_REQUEST]) {
             [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_BATTERY_REQUEST];
             
+        } else if ([pluginID isEqualToString:PACKAGE_TYPE_CLIPBOARD]) {
+            [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_CLIPBOARD];
         }
     }
     

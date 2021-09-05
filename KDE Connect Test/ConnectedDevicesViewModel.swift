@@ -5,7 +5,7 @@
 //  Created by Lucas Wang on 2021-08-09.
 //
 
-import Foundation
+import UIKit
 
 @objc class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
     var devicesView: DevicesView? = nil
@@ -14,6 +14,8 @@ import Foundation
     var connectedDevices: [String : String] = [:]
     var visibleDevices: [String : String] = [:]
     var savedDevices: [String : String] = [:]
+    
+    var currRemoteClipBoardContentUnsynced: String? = nil
     
     func onPairRequest(_ deviceId: String!) -> Void {
         devicesView!.onPairRequestInsideView(deviceId)

@@ -47,7 +47,7 @@ import Foundation
             print("Error reading file on device: \(error)")
         }
         if (contentToSend != nil && lastModifiedDate != nil) {
-            let lastModifiedDateUNIXEpoche: Int = Int(lastModifiedDate!.timeIntervalSince1970)
+            let lastModifiedDateUNIXEpoche: Int = Int(lastModifiedDate!.millisecondsSince1970)
             
             let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_SHARE)
             np.setObject(fileURL.lastPathComponent, forKey: "filename")

@@ -67,12 +67,18 @@ __strong static NSString* _UUID;
                     PACKAGE_TYPE_SHARE,
                     //@"kdeconnect.share.request.update",
                     PACKAGE_TYPE_FINDMYPHONE_REQUEST,
-                    PACKAGE_TYPE_BATTERY_REQUEST,] forKey:@"incomingCapabilities"];
+                    PACKAGE_TYPE_BATTERY_REQUEST,
+                    PACKAGE_TYPE_CLIPBOARD,
+                    PACKAGE_TYPE_CLIPBOARD_CONNECT
+                    ] forKey:@"incomingCapabilities"];
     [np setObject:@[PACKAGE_TYPE_PING,
                     PACKAGE_TYPE_SHARE,
                     //@"kdeconnect.share.request.update",
                     PACKAGE_TYPE_FINDMYPHONE_REQUEST,
-                    PACKAGE_TYPE_BATTERY,] forKey:@"outgoingCapabilities"];
+                    PACKAGE_TYPE_BATTERY,
+                    PACKAGE_TYPE_CLIPBOARD,
+                    PACKAGE_TYPE_CLIPBOARD_CONNECT
+                    ] forKey:@"outgoingCapabilities"];
     
     // FIXME: Remove object
 //    [np setObject:[[PluginFactory sharedInstance] getSupportedIncomingInterfaces] forKey:@"SupportedIncomingInterfaces"];

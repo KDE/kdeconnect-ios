@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import UIKit
 
 struct DevicesDetailView: View {
     let detailsDeviceId: String
@@ -32,32 +33,54 @@ struct DevicesDetailView: View {
                             }
                         })
                         
-                        NavigationLink(
-                            destination: PlaceHolderView(),
-                            label: {
-                                HStack {
-                                    Image(systemName: "slider.horizontal.below.rectangle")
-                                    Text("Slideshow remote")
-                                }
-                            })
+                        Button(action: {
+                            ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
+                        }, label: {
+                            HStack {
+                                Image(systemName: "square.and.arrow.up.on.square.fill")
+                                Text("Push Local Clipboard")
+                            }
+                        })
                         
-                        NavigationLink(
-                            destination: PlaceHolderView(),
-                            label: {
-                                HStack {
-                                    Image(systemName: "playpause")
-                                    Text("Multimedia control")
-                                }
-                            })
+                        Button(action: {
+                            if (connectedDevicesViewModel.currRemoteClipBoardContentUnsynced != nil) {
+                                UIPasteboard.general.string = connectedDevicesViewModel.currRemoteClipBoardContentUnsynced
+                            } else {
+                                print("currRemoteClipBoardContentUnsynced is nil, doing nothing")
+                            }
+                        }, label: {
+                            HStack {
+                                Image(systemName: "square.and.arrow.down.on.square")
+                                Text("Fetch Remote Clipboard")
+                            }
+                        })
                         
-                        NavigationLink(
-                            destination: PlaceHolderView(),
-                            label: {
-                                HStack {
-                                    Image(systemName: "hand.tap")
-                                    Text("Remote input")
-                                }
-                            })
+//                        NavigationLink(
+//                            destination: PlaceHolderView(),
+//                            label: {
+//                                HStack {
+//                                    Image(systemName: "slider.horizontal.below.rectangle")
+//                                    Text("Slideshow remote")
+//                                }
+//                            })
+//
+//                        NavigationLink(
+//                            destination: PlaceHolderView(),
+//                            label: {
+//                                HStack {
+//                                    Image(systemName: "playpause")
+//                                    Text("Multimedia control")
+//                                }
+//                            })
+//
+//                        NavigationLink(
+//                            destination: PlaceHolderView(),
+//                            label: {
+//                                HStack {
+//                                    Image(systemName: "hand.tap")
+//                                    Text("Remote input")
+//                                }
+//                            })
                     }
                     
                     //            Section(header: Text("Debug section")) {
@@ -78,8 +101,8 @@ struct DevicesDetailView: View {
             .navigationBarItems(trailing: {
                 Menu {
                     Button(action: {
-                        print(backgroundService._devices[detailsDeviceId as Any] as! Device)
-                        print((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping)
+                        //print(backgroundService._devices[detailsDeviceId as Any] as! Device)
+                        //print((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping)
                         ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping).sendPing()
                     }, label: {
                         HStack {
@@ -163,7 +186,7 @@ struct DevicesDetailView: View {
             .onAppear() {
                 connectedDevicesViewModel.currDeviceDetailsView = self
                 (backgroundService._devices[detailsDeviceId] as! Device)._backgroundServiceDelegate = connectedDevicesViewModel
-                print((backgroundService._devices[detailsDeviceId] as! Device)._plugins as Any)
+                //print((backgroundService._devices[detailsDeviceId] as! Device)._plugins as Any)
                 //print((backgroundService._devices[detailsDeviceId] as! Device)._incomingCapabilities as Any)
             }
         } else {
