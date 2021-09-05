@@ -24,8 +24,12 @@
 #import "backgroundServiceDelegate.h"
 @class BaseLink;
 @class NetworkPackage;
-@class Plugin;
-@class PluginFactory;
+//@protocol Plugin;
+//@class Ping;
+//@class Share;
+//@class FindMyPhone;
+//@class Battery;
+//@interface PluginInterface;
 
 typedef NS_ENUM(NSUInteger, PairStatus)
 {
@@ -61,8 +65,12 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 @property(readonly,nonatomic) DeviceType _type;
 @property(readonly,nonatomic) NSInteger _protocolVersion;
 @property(readonly,nonatomic) PairStatus _pairStatus;
-@property(readonly,nonatomic) NSArray* _supportedIncomingInterfaces;
-@property(readonly,nonatomic) NSArray* _supportedOutgoingInterfaces;
+@property(readonly,nonatomic) NSArray* _incomingCapabilities;
+@property(readonly,nonatomic) NSArray* _outgoingCapabilities;
+
+@property(nonatomic) NSMutableArray* _links;
+@property(nonatomic) NSMutableDictionary* _plugins;
+@property(nonatomic) NSMutableArray* _failedPlugins;
 
 @property(nonatomic) id _deviceDelegate;
 @property(nonatomic,assign) id _backgroundServiceDelegate;
@@ -111,5 +119,3 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 - (void) onDevicePairRejected:(Device*)device;
 - (void) onDevicePluginChanged:(Device*)device;
 @end
-
-

@@ -7,9 +7,14 @@
 
 import Foundation
 
-class FindMyPhone : Plugin {
+@objc class FindMyPhone : NSObject, Plugin {
+    @objc let controlDevice: Device
     
-    func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc init (controlDevice: Device) {
+        self.controlDevice = controlDevice
+    }
+    
+    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np._Type == PACKAGE_TYPE_FINDMYPHONE_REQUEST) {
             connectedDevicesViewModel.showFindMyPhoneAlert()
             return true
@@ -17,9 +22,8 @@ class FindMyPhone : Plugin {
         return false
     }
     
-    func sendFindMyPhoneRequest(deviceId: String) -> Void {
+    @objc func sendFindMyPhoneRequest() -> Void {
         let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_FINDMYPHONE_REQUEST)
-        let device: Device = backgroundService._devices[deviceId] as! Device
-        device.send(np, tag: 0)
+        controlDevice.send(np, tag: 0)
     }
 }

@@ -20,62 +20,67 @@ struct DevicesDetailView: View {
     
     var body: some View {
         if (isStilConnected) {
-            List {
-                Section(header: Text("Actions")) {
-                    Button(action: {
-                        showingFilePicker = true
-                    }, label: {
-                        HStack {
-                            Image(systemName: "folder")
-                            Text("Send files")
-                        }
-                    })
-                    
-                    NavigationLink(
-                        destination: PlaceHolderView(),
-                        label: {
+            VStack {
+                List {
+                    Section(header: Text("Actions")) {
+                        Button(action: {
+                            showingFilePicker = true
+                        }, label: {
                             HStack {
-                                Image(systemName: "slider.horizontal.below.rectangle")
-                                Text("Slideshow remote")
+                                Image(systemName: "folder")
+                                Text("Send files")
                             }
                         })
+                        
+                        NavigationLink(
+                            destination: PlaceHolderView(),
+                            label: {
+                                HStack {
+                                    Image(systemName: "slider.horizontal.below.rectangle")
+                                    Text("Slideshow remote")
+                                }
+                            })
+                        
+                        NavigationLink(
+                            destination: PlaceHolderView(),
+                            label: {
+                                HStack {
+                                    Image(systemName: "playpause")
+                                    Text("Multimedia control")
+                                }
+                            })
+                        
+                        NavigationLink(
+                            destination: PlaceHolderView(),
+                            label: {
+                                HStack {
+                                    Image(systemName: "hand.tap")
+                                    Text("Remote input")
+                                }
+                            })
+                    }
                     
-                    NavigationLink(
-                        destination: PlaceHolderView(),
-                        label: {
-                            HStack {
-                                Image(systemName: "playpause")
-                                Text("Multimedia control")
-                            }
-                        })
+                    //            Section(header: Text("Debug section")) {
+                    //                Text("Chosen file URLs:")
+                    //                ForEach(chosenFileURLs, id: \.self) { url in
+                    //                    Text(url.absoluteString)
+                    //                }
+                    //            }
                     
-                    NavigationLink(
-                        destination: PlaceHolderView(),
-                        label: {
-                            HStack {
-                                Image(systemName: "hand.tap")
-                                Text("Remote input")
-                            }
-                        })
                 }
                 
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
                     EmptyView()
                 }
                 
-                //            Section(header: Text("Debug section")) {
-                //                Text("Chosen file URLs:")
-                //                ForEach(chosenFileURLs, id: \.self) { url in
-                //                    Text(url.absoluteString)
-                //                }
-                //            }
-                
             }
             .navigationTitle((backgroundService._devices[detailsDeviceId] as! Device)._name)
             .navigationBarItems(trailing: {
                 Menu {
                     Button(action: {
-                        (avaliablePlugins["kdeconnect.ping"] as! Ping).sendPing(deviceId: detailsDeviceId)
+                        print(backgroundService._devices[detailsDeviceId as Any] as! Device)
+                        print((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping)
+                        ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping).sendPing()
                     }, label: {
                         HStack {
                             Text("Send Ping")
@@ -149,7 +154,7 @@ struct DevicesDetailView: View {
                     print("Document Picker Error")
                 }
                 for url in chosenFileURLs {
-                    (avaliablePlugins[PACKAGE_TYPE_SHARE] as! Share).sendFile(deviceId: detailsDeviceId, fileURL: url)
+                    ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_SHARE] as! Share).sendFile(fileURL: url)
 //                    do {
 //                        sleep(2)
 //                    }
@@ -158,6 +163,8 @@ struct DevicesDetailView: View {
             .onAppear() {
                 connectedDevicesViewModel.currDeviceDetailsView = self
                 (backgroundService._devices[detailsDeviceId] as! Device)._backgroundServiceDelegate = connectedDevicesViewModel
+                print((backgroundService._devices[detailsDeviceId] as! Device)._plugins as Any)
+                //print((backgroundService._devices[detailsDeviceId] as! Device)._incomingCapabilities as Any)
             }
         } else {
             VStack {

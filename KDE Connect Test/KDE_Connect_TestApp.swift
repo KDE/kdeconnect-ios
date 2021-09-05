@@ -15,7 +15,7 @@ import SwiftUI
             MainTabView()
                 .preferredColorScheme((selfDeviceDataForTopLevel.chosenTheme == "System Default") ? nil : appThemes[selfDeviceDataForTopLevel.chosenTheme])
                 .onAppear {
-                    (avaliablePlugins[PACKAGE_TYPE_BATTERY] as! Battery).startBatteryMonitoring()
+                    //startBatteryMonitoringAllDevices()
                     backgroundService.startDiscovery()
                 }
         }

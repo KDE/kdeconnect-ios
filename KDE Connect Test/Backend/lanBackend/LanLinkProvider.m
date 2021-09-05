@@ -509,58 +509,58 @@
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
     for (NSString* dataStr in packageArray) {
-        if ([dataStr length] <= 0) continue;
-
-        NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
-        if (![[np _Type] isEqualToString:PACKAGE_TYPE_IDENTITY]) {
-            NSLog(@"lp expecting an id package %@", [np _Type]);
-            return;
+        if ([dataStr length] > 0) {
+            NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
+            if (![[np _Type] isEqualToString:PACKAGE_TYPE_IDENTITY]) {
+                NSLog(@"lp expecting an id package %@", [np _Type]);
+                return;
+            }
+            NSString* deviceId=[np objectForKey:@"deviceId"];
+            
+            /* Test with cert file */
+            NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
+            
+            /*NSLog(@"%@", _certificate);*/
+            NSArray *myCipherSuite = [[NSArray alloc] initWithObjects:
+                                      [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256],
+                                      [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384],
+                                      [[NSNumber alloc] initWithInt: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA],
+                                      nil];
+            /* TLS */
+            NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                         //(id)kCFStreamSocketSecurityLevelNegotiatedSSL, (id)kCFStreamSSLLevel,
+                                         //(id)kCFBooleanFalse,       (id)kCFStreamSSLAllowsExpiredCertificates,  /* Disallowed expired certificate   */
+                                         //(id)kCFBooleanFalse,       (id)kCFStreamSSLAllowsExpiredRoots,         /* Disallowed expired Roots CA      */
+                                         //(id)kCFBooleanTrue,        (id)kCFStreamSSLAllowsAnyRoot,              /* Allow any root CA                */
+                                         //(id)kCFBooleanFalse,       (id)kCFStreamSSLValidatesCertificateChain,  /* Do not validate all              */
+                                         (id)deviceId,              (id)kCFStreamSSLPeerName,                   /* Set peer name to the one we received */
+                                         // (id)[[SecKeyWrapper sharedWrapper] getPrivateKeyRef], (id),
+                                         //(id)kCFBooleanTrue,        (id)GCDAsyncSocketManuallyEvaluateTrust,
+                                         (__bridge CFArrayRef) myCerts, (id)kCFStreamSSLCertificates,
+                                         (__bridge CFArrayRef) myCipherSuite, (id)GCDAsyncSocketSSLCipherSuites,
+                                         (id)[NSNumber numberWithInt:0],       (id)kCFStreamSSLIsServer,
+                                         //(id)[NSNumber numberWithInt:kAlwaysAuthenticate], (id)GCDAsyncSocketSSLClientSideAuthenticate,
+                                         (id)[NSNumber numberWithInt:1], (id)GCDAsyncSocketManuallyEvaluateTrust,
+                                         nil];
+            
+            [sock startTLS: tlsSettings];
+            NSLog(@"Start Client TLS");
+            
+            [sock setDelegate:nil];
+            [_pendingSockets removeObject:sock];
+            
+            LanLink* oldlink;
+            if ([[_connectedLinks allKeys] containsObject:deviceId]) {
+                oldlink=[_connectedLinks objectForKey:deviceId];
+            }
+            //create LanLink and inform the background
+            LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil];
+            [_connectedLinks setObject:link forKey:[np objectForKey:@"deviceId"]];
+            if (_linkProviderDelegate) {
+                [_linkProviderDelegate onConnectionReceived:np link:link];
+            }
+            [oldlink disconnect];
         }
-        NSString* deviceId=[np objectForKey:@"deviceId"];
-
-        /* Test with cert file */
-        NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
-
-        /*NSLog(@"%@", _certificate);*/
-        NSArray *myCipherSuite = [[NSArray alloc] initWithObjects:
-                                  [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256],
-                                  [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384],
-                                  [[NSNumber alloc] initWithInt: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA],
-                                  nil];
-        /* TLS */
-        NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
-             //(id)kCFStreamSocketSecurityLevelNegotiatedSSL, (id)kCFStreamSSLLevel,
-             //(id)kCFBooleanFalse,       (id)kCFStreamSSLAllowsExpiredCertificates,  /* Disallowed expired certificate   */
-             //(id)kCFBooleanFalse,       (id)kCFStreamSSLAllowsExpiredRoots,         /* Disallowed expired Roots CA      */
-             //(id)kCFBooleanTrue,        (id)kCFStreamSSLAllowsAnyRoot,              /* Allow any root CA                */
-             //(id)kCFBooleanFalse,       (id)kCFStreamSSLValidatesCertificateChain,  /* Do not validate all              */
-             (id)deviceId,              (id)kCFStreamSSLPeerName,                   /* Set peer name to the one we received */
-             // (id)[[SecKeyWrapper sharedWrapper] getPrivateKeyRef], (id),
-             //(id)kCFBooleanTrue,        (id)GCDAsyncSocketManuallyEvaluateTrust,
-             (__bridge CFArrayRef) myCerts, (id)kCFStreamSSLCertificates,
-             (__bridge CFArrayRef) myCipherSuite, (id)GCDAsyncSocketSSLCipherSuites,
-             (id)[NSNumber numberWithInt:0],       (id)kCFStreamSSLIsServer,
-             //(id)[NSNumber numberWithInt:kAlwaysAuthenticate], (id)GCDAsyncSocketSSLClientSideAuthenticate,
-             (id)[NSNumber numberWithInt:1], (id)GCDAsyncSocketManuallyEvaluateTrust,
-             nil];
-        
-        [sock startTLS: tlsSettings];
-        NSLog(@"Start Client TLS");
-        
-        [sock setDelegate:nil];
-        [_pendingSockets removeObject:sock];
-        
-        LanLink* oldlink;
-        if ([[_connectedLinks allKeys] containsObject:deviceId]) {
-            oldlink=[_connectedLinks objectForKey:deviceId];
-        }
-        //create LanLink and inform the background
-        LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil];
-        [_connectedLinks setObject:link forKey:[np objectForKey:@"deviceId"]];
-        if (_linkProviderDelegate) {
-            [_linkProviderDelegate onConnectionReceived:np link:link];
-        }
-        [oldlink disconnect];
     }
     
 }

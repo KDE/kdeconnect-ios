@@ -286,29 +286,31 @@
     NSLog(@"Received: %@", jsonStr);
     NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
     for (NSString* dataStr in packageArray) {
-        NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
-        if (_linkDelegate && np) {
-            //NSLog(@"llink did read data:\n%@",dataStr);
-            if ([[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
-                _pendingPairNP=np;
-            }
-            if ([np _PayloadTransferInfo]) {
-                // Received request from remote to start new TLS connection/socket to receive file
-                GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
-                @synchronized(_pendingRSockets){
-                    [_pendingRSockets addObject:socket];
-                    [_pendingPayloadNP addObject:np];
+        if ([dataStr length] > 0) {
+            NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
+            if (_linkDelegate && np) {
+                //NSLog(@"llink did read data:\n%@",dataStr);
+                if ([[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
+                    _pendingPairNP=np;
                 }
-                NSLog(@"Pending payload: size: %ld", [np _PayloadSize]);
-                NSError* error=nil;
-                uint16_t tcpPort=[[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
-                // Create new connection here
-                if (![socket connectToHost:[sock connectedHost] onPort:tcpPort error:&error]){
-                    NSLog(@"Lanlink connect to payload host failed");
+                if ([np _PayloadTransferInfo]) {
+                    // Received request from remote to start new TLS connection/socket to receive file
+                    GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
+                    @synchronized(_pendingRSockets){
+                        [_pendingRSockets addObject:socket];
+                        [_pendingPayloadNP addObject:np];
+                    }
+                    NSLog(@"Pending payload: size: %ld", [np _PayloadSize]);
+                    NSError* error=nil;
+                    uint16_t tcpPort=[[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
+                    // Create new connection here
+                    if (![socket connectToHost:[sock connectedHost] onPort:tcpPort error:&error]){
+                        NSLog(@"Lanlink connect to payload host failed");
+                    }
+                    return;
                 }
-                return;
+                [_linkDelegate onPackageReceived:np];
             }
-            [_linkDelegate onPackageReceived:np];
         }
     }
 }

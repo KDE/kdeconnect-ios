@@ -22,11 +22,11 @@
 #import "KDE_Connect_Test-Swift.h"
 #define PAIR_TIMMER_TIMEOUT  10.0
 
-@interface Device()
-@property(nonatomic) NSMutableArray* _links;
-@property(nonatomic) NSMutableDictionary* _plugins;
-@property(nonatomic) NSMutableArray* _failedPlugins;
-@end
+//@interface Device()
+//@property(nonatomic) NSMutableArray* _links;
+//@property(nonatomic) NSMutableDictionary* _plugins;
+//@property(nonatomic) NSMutableArray* _failedPlugins;
+//@end
 
 @implementation Device
 
@@ -39,8 +39,8 @@
 @synthesize _links;
 @synthesize _plugins;
 @synthesize _failedPlugins;
-@synthesize _supportedIncomingInterfaces;
-@synthesize _supportedOutgoingInterfaces;
+@synthesize _incomingCapabilities;
+@synthesize _outgoingCapabilities;
 @synthesize _backgroundServiceDelegate;
 //@synthesize _testDevice;
 
@@ -73,6 +73,7 @@
         _links=[NSMutableArray arrayWithCapacity:1];
         _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
         _failedPlugins=[NSMutableArray arrayWithCapacity:1];
+        [self reloadPlugins];
     }
     return self;
 }
@@ -83,14 +84,16 @@
         _id=[np objectForKey:@"deviceId"];
         _type=[Device Str2Devicetype:[np objectForKey:@"deviceType"]];
         _name=[np objectForKey:@"deviceName"];
-        _supportedIncomingInterfaces=[np objectForKey:@"SupportedIncomingInterfaces"];
-        _supportedOutgoingInterfaces=[np objectForKey:@"SupportedOutgoingInterfaces"];
+        _incomingCapabilities=[np objectForKey:@"incomingCapabilities"];
+        _outgoingCapabilities=[np objectForKey:@"outgoingCapabilities"];
         _links=[NSMutableArray arrayWithCapacity:1];
         _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
         _failedPlugins=[NSMutableArray arrayWithCapacity:1];
         _protocolVersion=[np integerForKey:@"protocolVersion"];
         _deviceDelegate=deviceDelegate;
         [self addLink:np baseLink:link];
+        
+        [self reloadPlugins];
     }
     return self;
 }
@@ -112,9 +115,9 @@
     _id=[np objectForKey:@"deviceId"];
     _name=[np objectForKey:@"deviceName"];
     _type=[Device Str2Devicetype:[np objectForKey:@"deviceType"]];
-    _supportedIncomingInterfaces=[[np objectForKey:@"SupportedIncomingInterfaces"] componentsSeparatedByString:@","];
-    _supportedOutgoingInterfaces=[[np objectForKey:@"SupportedOutgoingInterfaces"] componentsSeparatedByString:@","];
-    [self saveSetting];
+    _incomingCapabilities=[np objectForKey:@"incomingCapabilities"];
+    _outgoingCapabilities=[np objectForKey:@"outgoingCapabilities"];
+    //[self saveSetting];
     [Link set_linkDelegate:self];
     if ([_links count]==1) {
         //NSLog(@"one link available");
@@ -230,11 +233,11 @@
         }
     }else if ([self isPaired]){
         //TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling functon elsewhere in Swift
-        //NSLog(@"recieved a plugin package :%@",[np _Type]);
-//        for (Plugin* plugin in [_plugins allValues]) {
-//            [plugin onDevicePackageReceived:np];
-//        }
-        [PluginsService goThroughHostPluginsForReceivingWithNp:np];
+        NSLog(@"recieved a plugin package :%@",[np _Type]);
+        for (id<Plugin> plugin in [_plugins allValues]) {
+            [plugin onDevicePackageReceivedWithNp:np];
+        }
+        //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
     }else{
         //NSLog(@"not paired, ignore packages, unpair the device");
         [self unpair];
@@ -348,6 +351,26 @@
     if (![self isReachable]) {
         return;
     }
+    
+    NSLog(@"device reload plugins");
+    [_plugins removeAllObjects];
+    [_failedPlugins removeAllObjects];
+    for (NSString* pluginID in _incomingCapabilities) {
+        if ([pluginID isEqualToString:PACKAGE_TYPE_PING]) {
+            [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_PING];
+            
+        } else if ([pluginID isEqualToString:PACKAGE_TYPE_SHARE]) {
+            [_plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_SHARE];
+            
+        } else if ([pluginID isEqualToString:PACKAGE_TYPE_FINDMYPHONE_REQUEST]) {
+            [_plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_FINDMYPHONE_REQUEST];
+            
+        } else if ([pluginID isEqualToString:PACKAGE_TYPE_BATTERY_REQUEST]) {
+            [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_BATTERY_REQUEST];
+            
+        }
+    }
+    
 //    //NSLog(@"device reload plugins");
 //    [_failedPlugins removeAllObjects];
 //    PluginFactory* pluginFactory=[PluginFactory sharedInstance];
@@ -423,8 +446,8 @@
     [coder encodeInteger:_type forKey:@"_type"];
     [coder encodeInteger:_protocolVersion forKey:@"_protocolVersion"];
     [coder encodeInteger:_pairStatus forKey:@"_pairStatus"];
-    [coder encodeObject:_supportedIncomingInterfaces forKey:@"_supportedIncomingInterfaces"];
-    [coder encodeObject:_supportedOutgoingInterfaces forKey:@"_supportedOutgoingInterfaces"];
+    [coder encodeObject:_incomingCapabilities forKey:@"_incomingCapabilities"];
+    [coder encodeObject:_outgoingCapabilities forKey:@"_outgoingCapabilities"];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
@@ -434,12 +457,18 @@
         _type = [coder decodeIntegerForKey:@"_type"];
         _protocolVersion = [coder decodeIntegerForKey:@"_protocolVersion"];
         _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
-        _supportedIncomingInterfaces = [coder decodeObjectForKey:@"_supportedIncomingInterfaces"];
-        _supportedOutgoingInterfaces = [coder decodeObjectForKey:@"_supportedOutgoingInterfaces"];
+        _incomingCapabilities = [coder decodeObjectForKey:@"_incomingCapabilities"];
+        _outgoingCapabilities = [coder decodeObjectForKey:@"_outgoingCapabilities"];
         
         // To be set later in backgroundServices
         _deviceDelegate = nil;
         _backgroundServiceDelegate = nil;
+        
+        // To be set later
+        _plugins = [NSMutableDictionary dictionary];
+        _failedPlugins = [NSMutableArray array];
+        _links = [NSMutableArray array];
+        [self reloadPlugins];
     }
     return self;
 }
@@ -449,15 +478,3 @@
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-

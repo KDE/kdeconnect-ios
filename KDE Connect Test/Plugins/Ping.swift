@@ -7,9 +7,14 @@
 
 import Foundation
 
-class Ping : Plugin {
+@objc class Ping : NSObject, Plugin {
+    @objc let controlDevice: Device
     
-    func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc init (controlDevice: Device) {
+        self.controlDevice = controlDevice
+    }
+    
+    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np._Type == PACKAGE_TYPE_PING) {
             connectedDevicesViewModel.showPingAlert()
             return true
@@ -17,9 +22,8 @@ class Ping : Plugin {
         return false
     }
     
-    func sendPing(deviceId: String) -> Void {
+    @objc func sendPing() -> Void {
         let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_PING)
-        let device: Device = backgroundService._devices[deviceId] as! Device
-        device.send(np, tag: Int(PACKAGE_TAG_PING))
+        controlDevice.send(np, tag: Int(PACKAGE_TAG_PING))
     }
 }

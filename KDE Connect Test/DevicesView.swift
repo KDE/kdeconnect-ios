@@ -22,6 +22,7 @@ struct DevicesView: View {
     @State private var showingOnSelectSavedDeviceAlert: Bool = false
     @State private var showingPingAlert: Bool = false
     @State private var showingFindMyPhoneAlert: Bool = false
+    @State private var showingFileReceivedAlert: Bool = false
     
     @State private var showingConfigureDevicesByIPView: Bool = false
     
@@ -109,25 +110,23 @@ struct DevicesView: View {
                     }
                 }
             }
+            .alert(isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
+                Alert(title: Text("Incoming Pairing Request"),
+                      message: Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device"),
+                      primaryButton: .cancel(Text("Do Not Pair")),
+                      secondaryButton: .default(
+                        Text("Pair")
+                            .foregroundColor(.green)
+                      ) {
+                        backgroundService.pairDevice(currPairingDeviceId)
+                        //currPairingDeviceId = nil
+                      }
+                )
+            }
             
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
             }
-            
-            Text("")
-                .alert(isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
-                    Alert(title: Text("Incoming Pairing Request"),
-                          message: Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device"),
-                          primaryButton: .cancel(Text("Do Not Pair")),
-                          secondaryButton: .default(
-                            Text("Pair")
-                                .foregroundColor(.green)
-                          ) {
-                            backgroundService.pairDevice(currPairingDeviceId)
-                            //currPairingDeviceId = nil
-                          }
-                    )
-                }
             
             Text("")
                 .alert(isPresented: $showingOnPairTimeoutAlert) {
@@ -204,6 +203,16 @@ struct DevicesView: View {
                     )
                 }
             
+            Text("")
+                .alert(isPresented: $showingFileReceivedAlert) {
+                    Alert(title: Text("File Recevied"),
+                          message: Text("Received a file"),
+                          dismissButton: .default(Text("OK"), action: {
+                            
+                          })
+                    )
+                }
+            
         }
         .navigationTitle("Devices")
         .navigationBarItems(trailing: {
@@ -244,7 +253,9 @@ struct DevicesView: View {
             if (backgroundService._backgroundServiceDelegate == nil) {
                 backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
             }
-            refreshDiscoveryAndList()
+            // MARK: If refreshDiscoveryAndList() here, the device will go into "Remembered" for some reason and then immediately go back, but with an empty _plugins dictionary
+            //refreshDiscoveryAndList()
+            broadcastBatteryStatusAllDevices()
         }
     }
 
@@ -314,6 +325,15 @@ struct DevicesView: View {
         }
     }
     
+    func showFileReceivedAlertInsideView() -> Void {
+        if (noCurrentlyActiveAlert()) {
+            showingFileReceivedAlert = true
+        } else {
+            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            print("Unable to display File Received Alert, another alert already active")
+        }
+    }
+    
     private func noCurrentlyActiveAlert() -> Bool {
         return (!showingOnPairRequestAlert &&
                 !showingOnPairTimeoutAlert &&
@@ -322,7 +342,8 @@ struct DevicesView: View {
                 !showingOnSelfPairOutgoingRequestAlert &&
                 !showingOnSelectSavedDeviceAlert &&
                 !showingPingAlert &&
-                !showingFindMyPhoneAlert)
+                !showingFindMyPhoneAlert &&
+                !showingFileReceivedAlert)
     }
     
     func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {
@@ -338,8 +359,7 @@ struct DevicesView: View {
         group.leave()
         group.notify(queue: DispatchQueue.main) {
             backgroundService.refreshVisibleDeviceList()
-            //connectedDevicesViewModel.onDeviceListRefreshed()
-            (avaliablePlugins[PACKAGE_TYPE_BATTERY] as! Battery).sendBatteryStatusOut()
+            broadcastBatteryStatusAllDevices()
         }
     }
     

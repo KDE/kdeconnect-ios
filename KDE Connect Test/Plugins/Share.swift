@@ -7,14 +7,21 @@
 
 import Foundation
 
-class Share : Plugin {
+@objc class Share : NSObject, Plugin {
+    @objc let controlDevice: Device
+    
+    @objc init (controlDevice: Device) {
+        self.controlDevice = controlDevice
+    }
+    
     let PAYLOAD_PORT: Int = 1739
     
-    func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         print("Share plugin received something")
         if (np._Type == PACKAGE_TYPE_SHARE_INTERNAL) {
             print("Share Plugin received a valid Share package")
             if (saveFile(fileData: np._Payload, filename: np._Body["filename"] as! String)) {
+                connectedDevicesViewModel.showFileReceivedAlert()
                 print("File \(np._Body["filename"] as! String) saved successfully")
             } else {
                 print("File \(np._Body["filename"] as! String) failed to save")
@@ -25,8 +32,7 @@ class Share : Plugin {
         return false
     }
     
-    func sendFile(deviceId: String, fileURL: URL) -> Void {
-        let device: Device = backgroundService._devices[deviceId] as! Device
+    @objc func sendFile(fileURL: URL) -> Void {
         var contentToSend: Data? = nil
         var lastModifiedDate: Date? = nil
         do {
@@ -51,11 +57,11 @@ class Share : Plugin {
             np._PayloadTransferInfo = ["port":PAYLOAD_PORT]
             np._Payload = contentToSend
             np._PayloadSize = contentToSend!.count
-            device.send(np, tag: Int(PACKAGE_TAG_SHARE))
+            controlDevice.send(np, tag: Int(PACKAGE_TAG_SHARE))
         }
     }
     
-    private func saveFile(fileData: Data, filename: String) -> Bool {
+    @objc private func saveFile(fileData: Data, filename: String) -> Bool {
         let fileManager = FileManager.default
         do {
             let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false) // gets URL of app's document directory

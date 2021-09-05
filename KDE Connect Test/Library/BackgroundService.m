@@ -159,6 +159,7 @@
             [_rememberedDevicesList setValue:[device _name] forKey:[device _id]];
         }
         else if([device isPaired]){
+            [device reloadPlugins];
             [_connectedDevicesList setValue:[device _name] forKey:[device _id]];
             //TODO: move this to a different thread maybe, and also in Swift
             //[device reloadPlugins];
@@ -270,7 +271,7 @@
         [device addLink:np baseLink:link];
     }
     else{
-        NSLog(@"new device");
+        NSLog(@"new device from network package: %@", np);
         Device* device=[[Device alloc] init:np baselink:link setDelegate:self];
         [_devices setObject:device forKey:deviceId];
         [self refreshVisibleDeviceList];
