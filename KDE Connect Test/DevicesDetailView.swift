@@ -42,19 +42,6 @@ struct DevicesDetailView: View {
                             }
                         })
                         
-                        Button(action: {
-                            if (connectedDevicesViewModel.currRemoteClipBoardContentUnsynced != nil) {
-                                UIPasteboard.general.string = connectedDevicesViewModel.currRemoteClipBoardContentUnsynced
-                            } else {
-                                print("currRemoteClipBoardContentUnsynced is nil, doing nothing")
-                            }
-                        }, label: {
-                            HStack {
-                                Image(systemName: "square.and.arrow.down.on.square")
-                                Text("Fetch Remote Clipboard")
-                            }
-                        })
-                        
 //                        NavigationLink(
 //                            destination: PlaceHolderView(),
 //                            label: {

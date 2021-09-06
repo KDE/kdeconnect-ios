@@ -15,8 +15,8 @@ import UIKit
     var visibleDevices: [String : String] = [:]
     var savedDevices: [String : String] = [:]
     
-    var currRemoteClipBoardContentUnsynced: String? = nil
-    
+    var lastLocalClipboardUpdateTimestamp: Int = 0
+        
     func onPairRequest(_ deviceId: String!) -> Void {
         devicesView!.onPairRequestInsideView(deviceId)
     }

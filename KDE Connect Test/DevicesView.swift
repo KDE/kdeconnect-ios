@@ -61,7 +61,7 @@ struct DevicesView: View {
                 
                 Section(header: Text("Discoverable Devices")) {
                     if (visibleDevicesIds.isEmpty) {
-                        Text("No devices discoverable on this network, make sure that the other devices are also running KDE Connect and are connect to the same network as this device.")
+                        Text("No devices discoverable on this network, make sure that the other devices are also running KDE Connect and are connected to the same network as this device.")
                     } else {
                         ForEach(visibleDevicesIds, id: \.self) { key in
                             Button(action: {

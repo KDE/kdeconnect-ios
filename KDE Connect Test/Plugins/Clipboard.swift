@@ -17,8 +17,21 @@ import UIKit
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np._Type == PACKAGE_TYPE_CLIPBOARD || np._Type == PACKAGE_TYPE_CLIPBOARD_CONNECT) {
             if (np.object(forKey: "content") != nil) {
-                let remoteUnsyncedContent: String = np.object(forKey: "content") as! String
-                connectedDevicesViewModel.currRemoteClipBoardContentUnsynced = remoteUnsyncedContent
+                if (np._Type == PACKAGE_TYPE_CLIPBOARD) {
+                    UIPasteboard.general.string = np.object(forKey: "content") as? String
+                    connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
+                    print("Local clipboard synced with remote packet, timestamp updated")
+                } else if (np._Type == PACKAGE_TYPE_CLIPBOARD_CONNECT) {
+                    let packetTimeStamp: Int = np.integer(forKey: "timestamp")
+                    if (packetTimeStamp == 0 || packetTimeStamp < connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp) {
+                        print("Invalid timestamp from \(PACKAGE_TYPE_CLIPBOARD_CONNECT), doing nothing")
+                        return false;
+                    } else {
+                        UIPasteboard.general.string = np.object(forKey: "content") as? String
+                        connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
+                        print("Local clipboard synced with remote packet, timestamp updated")
+                    }
+                }
             } else {
                 print("Received nil for the content of the remote device's \(String(describing: np._Type)), doing nothing")
             }
@@ -30,10 +43,9 @@ import UIKit
     @objc func connectClipboardContent() -> Void {
         let clipboardConent: String? = UIPasteboard.general.string
         if (clipboardConent != nil) {
-            let currentUNIXEpoche: Int = Int(Date().millisecondsSince1970)
             let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_CLIPBOARD_CONNECT)
             np.setObject(clipboardConent, forKey: "content")
-            np.setInteger(currentUNIXEpoche, forKey: "timestamp")
+            np.setInteger(connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp, forKey: "timestamp")
             controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
         } else {
             print("Attempt to connect local clipboard content with remote device returned nil")
