@@ -77,7 +77,8 @@ __strong static NSString* _UUID;
                     PACKAGE_TYPE_FINDMYPHONE_REQUEST,
                     PACKAGE_TYPE_BATTERY,
                     PACKAGE_TYPE_CLIPBOARD,
-                    PACKAGE_TYPE_CLIPBOARD_CONNECT
+                    PACKAGE_TYPE_CLIPBOARD_CONNECT,
+                    PACKAGE_TYPE_MOUSEPAD
                     ] forKey:@"outgoingCapabilities"];
     
     // FIXME: Remove object

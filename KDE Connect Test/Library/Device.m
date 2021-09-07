@@ -370,6 +370,8 @@
             
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_CLIPBOARD]) {
             [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_CLIPBOARD];
+        } else if ([pluginID isEqualToString:PACKAGE_TYPE_MOUSEPAD]) {
+            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_MOUSEPAD];
         }
     }
     

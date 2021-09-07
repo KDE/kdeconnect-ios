@@ -60,14 +60,14 @@ struct DevicesDetailView: View {
 //                                }
 //                            })
 //
-//                        NavigationLink(
-//                            destination: PlaceHolderView(),
-//                            label: {
-//                                HStack {
-//                                    Image(systemName: "hand.tap")
-//                                    Text("Remote input")
-//                                }
-//                            })
+                        NavigationLink(
+                            destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
+                            label: {
+                                HStack {
+                                    Image(systemName: "hand.tap")
+                                    Text("Remote input")
+                                }
+                            })
                     }
                     
                     //            Section(header: Text("Debug section")) {
@@ -78,6 +78,7 @@ struct DevicesDetailView: View {
                     //            }
                     
                 }
+                .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
                 
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
                     EmptyView()

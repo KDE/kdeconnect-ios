@@ -203,15 +203,15 @@ struct DevicesView: View {
                     )
                 }
             
-            Text("")
-                .alert(isPresented: $showingFileReceivedAlert) {
-                    Alert(title: Text("File Recevied"),
-                          message: Text("Received a file"),
-                          dismissButton: .default(Text("OK"), action: {
-                            
-                          })
-                    )
-                }
+//            Text("")
+//                .alert(isPresented: $showingFileReceivedAlert) {
+//                    Alert(title: Text("File Recevied"),
+//                          message: Text("Received a file"),
+//                          dismissButton: .default(Text("OK"), action: {
+//
+//                          })
+//                    )
+//                }
             
         }
         .navigationTitle("Devices")
@@ -326,12 +326,13 @@ struct DevicesView: View {
     }
     
     func showFileReceivedAlertInsideView() -> Void {
-        if (noCurrentlyActiveAlert()) {
-            showingFileReceivedAlert = true
-        } else {
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
-            print("Unable to display File Received Alert, another alert already active")
-        }
+//        if (noCurrentlyActiveAlert()) {
+//            showingFileReceivedAlert = true
+//        } else {
+//            AudioServicesPlaySystemSound(soundAudioToneBusy)
+//            print("Unable to display File Received Alert, another alert already active")
+//        }
+        AudioServicesPlaySystemSound(soundMailReceived)
     }
     
     private func noCurrentlyActiveAlert() -> Bool {
@@ -342,8 +343,7 @@ struct DevicesView: View {
                 !showingOnSelfPairOutgoingRequestAlert &&
                 !showingOnSelectSavedDeviceAlert &&
                 !showingPingAlert &&
-                !showingFindMyPhoneAlert &&
-                !showingFileReceivedAlert)
+                !showingFindMyPhoneAlert) //&& !showingFileReceivedAlert
     }
     
     func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {

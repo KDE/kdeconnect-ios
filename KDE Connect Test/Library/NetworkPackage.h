@@ -56,7 +56,6 @@
 #define PACKAGE_TYPE_SHARE_INTERNAL     @"kdeconnect.share"
 #define PACKAGE_TYPE_CLIPBOARD          @"kdeconnect.clipboard"
 #define PACKAGE_TYPE_CLIPBOARD_CONNECT  @"kdeconnect.clipboard.connect"
-#define PACKAGE_TYPE_MOUSEPAD           @"kdeconnect.mousepad.request"
 #define PACKAGE_TYPE_BATTERY            @"kdeconnect.battery"
 #define PACKAGE_TYPE_CALENDAR           @"kdeconnect.calendar"
 // #define PACKAGE_TYPE_REMINDER           @"kdeconnect.reminder"
@@ -64,6 +63,9 @@
 
 #define PACKAGE_TYPE_BATTERY_REQUEST    @"kdeconnect.battery.request"
 #define PACKAGE_TYPE_FINDMYPHONE_REQUEST @"kdeconnect.findmyphone.request"
+
+#define PACKAGE_TYPE_MOUSEPAD           @"kdeconnect.mousepad.request"
+//#define PACKAGE-TYPE_
 
 #pragma mark -
 
