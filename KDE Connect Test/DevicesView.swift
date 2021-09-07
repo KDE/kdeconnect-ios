@@ -33,7 +33,7 @@ struct DevicesView: View {
             List {
                 Section(header: Text("Connected Devices")) {
                     if (connectedDevicesIds.isEmpty) {
-                        Text("No devices currently connected, connected devices will appear here.")
+                        Text("No devices currently connected.\nConnected devices will appear here.")
                     } else {
                         ForEach(connectedDevicesIds, id: \.self) { key in
                             NavigationLink(
@@ -61,7 +61,7 @@ struct DevicesView: View {
                 
                 Section(header: Text("Discoverable Devices")) {
                     if (visibleDevicesIds.isEmpty) {
-                        Text("No devices discoverable on this network, make sure that the other devices are also running KDE Connect and are connected to the same network as this device.")
+                        Text("No devices discoverable on this network.\nMake sure to refresh and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
                     } else {
                         ForEach(visibleDevicesIds, id: \.self) { key in
                             Button(action: {
@@ -86,7 +86,7 @@ struct DevicesView: View {
                 
                 Section(header: Text("Remembered Devices")) {
                     if (savedDevicesIds.isEmpty) {
-                        Text("No remembered devices, devices that were previously connected will appear here.")
+                        Text("No remembered devices.\nDevices that were previously connected will appear here.")
                     } else {
                         ForEach(savedDevicesIds, id: \.self) { key in
                             Button(action: {
