@@ -47,8 +47,18 @@ struct DevicesView: View {
                                             .foregroundColor(.green)
                                             .font(.system(size: 21))
                                         VStack(alignment: .leading) {
-                                            Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
-                                                .font(.system(size: 18, weight: .bold))
+                                            HStack {
+                                                Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
+                                                    .font(.system(size: 18, weight: .bold))
+                                                Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                                    .font(.system(size: 18))
+                                            }
+                                            HStack {
+                                                Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                                    .font(.system(size: 12))
+                                                Text("\(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                                                    .font(.system(size: 12))
+                                            }
                                             // TODO: Might want to add the device description as
                                             // id:desc dictionary?
                                             //Text(key)
@@ -73,8 +83,12 @@ struct DevicesView: View {
                                         .foregroundColor(.blue)
                                         .font(.system(size: 21))
                                     VStack(alignment: .leading) {
-                                        Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
-                                            .font(.system(size: 18, weight: .bold))
+                                        HStack {
+                                            Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
+                                                .font(.system(size: 18, weight: .bold))
+                                            Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                                .font(.system(size: 18))
+                                        }
                                         Text("Tap to start pairing")
                                     }
                                 }
@@ -98,8 +112,12 @@ struct DevicesView: View {
                                         .foregroundColor(.red)
                                         .font(.system(size: 21))
                                     VStack(alignment: .leading) {
-                                        Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
-                                            .font(.system(size: 18, weight: .bold))
+                                        HStack {
+                                            Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
+                                                .font(.system(size: 18, weight: .bold))
+                                            Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                                .font(.system(size: 18))
+                                        }
                                         // TODO: Might want to add the device description as
                                         // id:desc dictionary?
                                         //Text(key)
@@ -177,7 +195,7 @@ struct DevicesView: View {
             Text("")
                 .alert(isPresented: $showingOnSelectSavedDeviceAlert) {
                     Alert(title: Text("Device Offline"),
-                          message: Text("The paired device \(currPairingDeviceId!) is not reachable. Make sure it is connected to the same network as this device."),
+                          message: Text("The paired device \(connectedDevicesViewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device."),
                           dismissButton: .default(Text("OK"), action: {
                             currPairingDeviceId = nil
                           })
@@ -258,6 +276,7 @@ struct DevicesView: View {
             //refreshDiscoveryAndList()
             connectedDevicesViewModel.onDeviceListRefreshed()
             broadcastBatteryStatusAllDevices()
+            //onDeviceListRefreshedInsideView(vm: connectedDevicesViewModel)
         }
     }
     
@@ -368,6 +387,7 @@ struct DevicesView: View {
         backgroundService.refreshDiscovery()
         group.leave()
         group.notify(queue: DispatchQueue.main) {
+            //backgroundService.reloadAllPlugins()
             backgroundService.refreshVisibleDeviceList()
             broadcastBatteryStatusAllDevices()
         }

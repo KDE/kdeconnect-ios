@@ -68,6 +68,7 @@ __strong static NSString* _UUID;
                     //@"kdeconnect.share.request.update",
                     PACKAGE_TYPE_FINDMYPHONE_REQUEST,
                     PACKAGE_TYPE_BATTERY_REQUEST,
+                    PACKAGE_TYPE_BATTERY,
                     PACKAGE_TYPE_CLIPBOARD,
                     PACKAGE_TYPE_CLIPBOARD_CONNECT
                     ] forKey:@"incomingCapabilities"];
@@ -75,6 +76,7 @@ __strong static NSString* _UUID;
                     PACKAGE_TYPE_SHARE,
                     //@"kdeconnect.share.request.update",
                     PACKAGE_TYPE_FINDMYPHONE_REQUEST,
+                    PACKAGE_TYPE_BATTERY_REQUEST,
                     PACKAGE_TYPE_BATTERY,
                     PACKAGE_TYPE_CLIPBOARD,
                     PACKAGE_TYPE_CLIPBOARD_CONNECT,

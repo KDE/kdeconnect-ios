@@ -263,20 +263,7 @@
     // Plugins to handle it
     NSLog(@"Package received with tag: %ld", tag);
     if (tag==PACKAGE_TAG_PAYLOAD) {
-        NetworkPackage* np;
-        @synchronized(_pendingRSockets){
-            NSUInteger index=[_pendingRSockets indexOfObject:sock];
-            np=[_pendingPayloadNP objectAtIndex:index];
-            [np set_Payload:data];
-            [np set_Type:PACKAGE_TYPE_SHARE_INTERNAL];
-            //NSLog()
-        }
-        
-        @synchronized(_pendingPayloadNP){
-            [_pendingPayloadNP removeObject:np];
-            [_pendingRSockets removeObject:sock];
-        }
-        [_linkDelegate onPackageReceived:np];
+        [self attachAndProcessPayload:sock :data];
         return;
     }
     NSLog(@"llink did read data");
@@ -284,35 +271,7 @@
     [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"Received: %@", jsonStr);
-    NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
-    for (NSString* dataStr in packageArray) {
-        if ([dataStr length] > 0) {
-            NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
-            if (_linkDelegate && np) {
-                //NSLog(@"llink did read data:\n%@",dataStr);
-                if ([[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
-                    _pendingPairNP=np;
-                }
-                if ([np _PayloadTransferInfo]) {
-                    // Received request from remote to start new TLS connection/socket to receive file
-                    GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
-                    @synchronized(_pendingRSockets){
-                        [_pendingRSockets addObject:socket];
-                        [_pendingPayloadNP addObject:np];
-                    }
-                    NSLog(@"Pending payload: size: %ld", [np _PayloadSize]);
-                    NSError* error=nil;
-                    uint16_t tcpPort=[[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
-                    // Create new connection here
-                    if (![socket connectToHost:[sock connectedHost] onPort:tcpPort error:&error]){
-                        NSLog(@"Lanlink connect to payload host failed");
-                    }
-                    return;
-                }
-                [_linkDelegate onPackageReceived:np];
-            }
-        }
-    }
+    [self readThroughLatestPackets:sock :jsonStr];
 }
 
 /**
@@ -475,6 +434,56 @@
 
 - (void)dealloc {
     NSLog(@"Lan Link destroyed");
+}
+
+- (void)attachAndProcessPayload:(GCDAsyncSocket *)sock : (NSData *)data {
+    NetworkPackage* np;
+    @synchronized(_pendingRSockets){
+        NSUInteger index=[_pendingRSockets indexOfObject:sock];
+        np=[_pendingPayloadNP objectAtIndex:index];
+        [np set_Payload:data];
+        [np set_Type:PACKAGE_TYPE_SHARE];
+        //NSLog()
+    }
+    
+    @synchronized(_pendingPayloadNP){
+        [_pendingPayloadNP removeObject:np];
+        [_pendingRSockets removeObject:sock];
+    }
+    [_linkDelegate onPackageReceived:np];
+}
+
+- (void)readThroughLatestPackets:(GCDAsyncSocket *)sock : (NSString *) jsonStr {
+    NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
+    for (NSString* dataStr in packageArray) {
+        if ([dataStr length] > 0) {
+            NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
+            if (_linkDelegate && np) {
+                //NSLog(@"llink did read data:\n%@",dataStr);
+                if ([[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
+                    _pendingPairNP=np;
+                }
+                // If contains transferinfo, connect to remote using a new socket to transfer payload
+                if ([np _PayloadTransferInfo]) {
+                    // Received request from remote to start new TLS connection/socket to receive file
+                    GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
+                    @synchronized(_pendingRSockets){
+                        [_pendingRSockets addObject:socket];
+                        [_pendingPayloadNP addObject:np];
+                    }
+                    NSLog(@"Pending payload: size: %ld", [np _PayloadSize]);
+                    NSError* error=nil;
+                    uint16_t tcpPort=[[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
+                    // Create new connection here
+                    if (![socket connectToHost:[sock connectedHost] onPort:tcpPort error:&error]){
+                        NSLog(@"Lanlink connect to payload host failed");
+                    }
+                    return;
+                }
+                [_linkDelegate onPackageReceived:np];
+            }
+        }
+    }
 }
 
 @end

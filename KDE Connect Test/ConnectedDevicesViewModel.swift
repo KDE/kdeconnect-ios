@@ -33,6 +33,13 @@ import UIKit
         devicesView!.onPairRejectedInsideView(deviceId)
     }
     
+    // Used for simply rerendering the same lists, potentially useful to update information such as
+    // charge levels
+    func reRenderListsInsideView() -> Void {
+        devicesView!.onDeviceListRefreshedInsideView(vm: self)
+    }
+    
+    // Recalculate AND rerender the lists
     func onDeviceListRefreshed() -> Void {
         let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
         connectedDevices = devicesListsMap?["connected"] as! [String : String]
@@ -41,8 +48,15 @@ import UIKit
         devicesView!.onDeviceListRefreshedInsideView(vm: self)
     }
     
+    // Refresh Discovery, Recalculate AND rerender the lists
     func refreshDiscoveryAndListInsideView() -> Void {
         devicesView!.refreshDiscoveryAndList()
+    }
+    
+    func reRenderCurrDeviceDetailsView(deviceId: String) -> Void {
+        if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
+            connectedDevicesViewModel.currDeviceDetailsView!.showBatteryLoading += 1
+        }
     }
     
     func unpair(fromBackgroundServiceInstance deviceId: String) -> Void {

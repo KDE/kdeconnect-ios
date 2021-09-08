@@ -342,12 +342,12 @@
     //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-//- (void) reloadAllPlugins
-//{
-//    for (Device* dev in _visibleDevices) {
-//        [dev reloadPlugins];
-//    }
-//}
+- (void) reloadAllPlugins
+{
+    for (Device* device in _devices) { //_visibleDevices
+        [device reloadPlugins];
+    }
+}
 
 @end
 

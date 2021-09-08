@@ -18,7 +18,7 @@ import Foundation
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         print("Share plugin received something")
-        if (np._Type == PACKAGE_TYPE_SHARE_INTERNAL) {
+        if (np._Type == PACKAGE_TYPE_SHARE) {
             print("Share Plugin received a valid Share package")
             if (saveFile(fileData: np._Payload, filename: np._Body["filename"] as! String)) {
                 connectedDevicesViewModel.showFileReceivedAlert()
@@ -32,6 +32,7 @@ import Foundation
         return false
     }
     
+    // TODO: MOdify to take in the Array of URLs from DeviecDetailsView()
     @objc func sendFile(fileURL: URL) -> Void {
         var contentToSend: Data? = nil
         var lastModifiedDate: Date? = nil

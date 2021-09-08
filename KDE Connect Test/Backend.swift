@@ -46,3 +46,15 @@ extension Date {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }
+
+// Returns the systemName of the type of device
+func getSFSymbolNameFromDeviceType(deviceType: DeviceType) -> String {
+    switch (deviceType) {
+        case .Unknown: return "questionmark.square.dashed"
+        case .Desktop: return "desktopcomputer"
+        case .Laptop: return "laptopcomputer"
+        case .Phone: return "apps.iphone"
+        case .Tablet: return "apps.ipad.landscape"
+        default: return "questionmark.square.dashed"
+    }
+}

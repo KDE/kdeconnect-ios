@@ -10,6 +10,9 @@ import UIKit
 // TODO: We might be able to do something with the background activities plugin where it sends out its battery status every once in a while??? But maybe iOS will not unfreeze the entire app for us??? I really don't know...background activity is something that we'll have to figure out later on
 @objc class Battery : NSObject, Plugin {
     @objc let controlDevice: Device
+    @objc var remoteChargeLevel: Int = 0
+    @objc var remoteIsCharging: Bool = false
+    @objc var remoteThresholdEvent: Int = 0
     
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -32,6 +35,14 @@ import UIKit
         if (np._Type == PACKAGE_TYPE_BATTERY_REQUEST) {
             print("Battery plugin recevied a force update request")
             sendBatteryStatusOut()
+            return true
+        } else if (np._Type == PACKAGE_TYPE_BATTERY) { // received battery info from other device
+            print("Battery plugin recevied battery status from remote device")
+            remoteChargeLevel = np.integer(forKey: "currentCharge")
+            remoteIsCharging = np.bool(forKey: "isCharging")
+            remoteThresholdEvent = np.integer(forKey: "thresholdEvent")
+            connectedDevicesViewModel.reRenderListsInsideView()
+            connectedDevicesViewModel.reRenderCurrDeviceDetailsView(deviceId: controlDevice._id)
             return true
         }
         return false
@@ -56,6 +67,20 @@ import UIKit
             print("Battery status reported as unknown, reporting 0 for all values")
         }
         controlDevice.send(np, tag: Int(PACKAGE_TAG_BATTERY))
+    }
+    
+    func getSFSymbolNameFromBatteryStatus() -> String {
+        if (remoteThresholdEvent == 1 || remoteChargeLevel < 10) {
+            return "battery.0"
+        } else if (remoteIsCharging) {
+            return "battery.100.bolt"
+        } else if (remoteChargeLevel >= 40) {
+            return "battery.100"
+        } else if (remoteChargeLevel < 40) {
+            return "battery.25"
+        } else {
+            return "camera.metering.unknown"
+        }
     }
     
     // Global functions for setting up and responding to the device's own events when battery

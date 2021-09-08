@@ -19,6 +19,9 @@ struct DevicesDetailView: View {
     
     @State var chosenFileURLs: [URL] = []
     
+    // TODO: Maybe use a state to directly change the Battery % instead of doing this hacky thing?
+    @State var showBatteryLoading: Int = 0
+    
     var body: some View {
         if (isStilConnected) {
             VStack {
@@ -68,6 +71,19 @@ struct DevicesDetailView: View {
                                     Text("Remote input")
                                 }
                             })
+                    }
+                    
+                    Section(header: Text("Battery Status")) {
+                        HStack {
+                            Image(systemName: ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                .font(.system(size: 18))
+                            Text("\(((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                                .font(.system(size: 18))
+                        }
+//                        if (showBatteryLoading == 999) {
+//                            Text("Hi")
+//                        }
+                        Text("\(showBatteryLoading)")
                     }
                     
                     //            Section(header: Text("Debug section")) {
