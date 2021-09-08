@@ -92,7 +92,6 @@
         _protocolVersion=[np integerForKey:@"protocolVersion"];
         _deviceDelegate=deviceDelegate;
         [self addLink:np baseLink:link];
-        
         [self reloadPlugins];
     }
     return self;
@@ -228,7 +227,8 @@
                     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
                 });
             }else if (prevPairStatus==Paired){
-                [self unpair];
+                //[self unpair];
+                [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
             }
         }
     }else if ([self isPaired]){
@@ -240,7 +240,8 @@
         //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
     }else{
         //NSLog(@"not paired, ignore packages, unpair the device");
-        [self unpair];
+        //[self unpair];
+        [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
     }
 }
 
@@ -317,7 +318,8 @@
         if (_deviceDelegate) {
             [_deviceDelegate onDevicePairTimeout:self];
         }
-        [self unpair];
+        //[self unpair];
+        [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
     }
 }
 
@@ -342,15 +344,16 @@
 - (void) rejectPairing
 {
     //NSLog(@"device rejected pair request ");
-    [self unpair];
+    //[self unpair];
+    [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
 }
 
 #pragma mark Plugins-related Functions
 - (void) reloadPlugins
 {
-    if (![self isReachable]) {
-        return;
-    }
+//    if (![self isReachable]) {
+//        return;
+//    }
     
     NSLog(@"device reload plugins");
     [_plugins removeAllObjects];
@@ -468,7 +471,7 @@
         _deviceDelegate = nil;
         _backgroundServiceDelegate = nil;
         
-        // To be set later
+        // To be populated later
         _plugins = [NSMutableDictionary dictionary];
         _failedPlugins = [NSMutableArray array];
         _links = [NSMutableArray array];

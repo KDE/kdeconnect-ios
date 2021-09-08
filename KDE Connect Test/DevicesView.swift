@@ -61,7 +61,7 @@ struct DevicesView: View {
                 
                 Section(header: Text("Discoverable Devices")) {
                     if (visibleDevicesIds.isEmpty) {
-                        Text("No devices discoverable on this network.\nMake sure to refresh and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
+                        Text("No devices discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
                     } else {
                         ForEach(visibleDevicesIds, id: \.self) { key in
                             Button(action: {
@@ -107,6 +107,7 @@ struct DevicesView: View {
                                 }
                             }
                         }
+                        .onDelete(perform: deleteDevice)
                     }
                 }
             }
@@ -246,16 +247,25 @@ struct DevicesView: View {
                 Image(systemName: "ellipsis.circle")
             }
         }())
-        .onAppear() {
+        .onAppear() { // MARK: This get called twice on startup?????
             if (connectedDevicesViewModel.devicesView == nil) {
                 connectedDevicesViewModel.devicesView = self
             }
             if (backgroundService._backgroundServiceDelegate == nil) {
                 backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
             }
-            // MARK: If refreshDiscoveryAndList() here, the device will go into "Remembered" for some reason and then immediately go back, but with an empty _plugins dictionary
+            // MARK: If refreshDiscoveryAndList() is here, the device will go into "Remembered" for some reason and then immediately go back, but with an empty _plugins dictionary
             //refreshDiscoveryAndList()
+            connectedDevicesViewModel.onDeviceListRefreshed()
             broadcastBatteryStatusAllDevices()
+        }
+    }
+    
+    func deleteDevice(at offsets: IndexSet) {
+        if (offsets.first != nil) {
+            print("Remembered device \(String(describing: ((backgroundService._devices[savedDevicesIds[offsets.first!]]) as! Device)._name)) removed at index \(offsets.first!)")
+            backgroundService.unpairDevice(savedDevicesIds[offsets.first!])
+            savedDevicesIds.remove(atOffsets: offsets)
         }
     }
 

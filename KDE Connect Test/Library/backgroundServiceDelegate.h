@@ -12,5 +12,7 @@
 - (void) onPairSuccess:(NSString*)deviceId;
 - (void) onPairRejected:(NSString*)deviceId;
 - (void) onDeviceListRefreshed;
+- (void) refreshDiscoveryAndListInsideView;
 - (void) currDeviceDetailsViewDisconnectedFromRemote:(NSString*)deviceId;
+- (void) unpairFromBackgroundServiceInstance:(NSString*)deviceId;
 @end

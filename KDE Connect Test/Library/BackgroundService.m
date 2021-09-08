@@ -66,25 +66,25 @@
 {
     if ((self=[super init])) {
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
+        //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
+        
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
         _visibleDevices=[NSMutableArray arrayWithCapacity:1];
         _settings=[NSMutableDictionary dictionaryWithCapacity:1];
+        _savedDevices = [NSMutableDictionary dictionary];
        //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
         
         NSDictionary* tempDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];
-        if (tempDic == nil) { // If nothing is saved in UserDefaults
-            _savedDevices = [NSMutableDictionary dictionary];
-        } else {
+        if (tempDic != nil) {
             for (NSString* deviceId in [tempDic allKeys]) {
                 NSData* deviceData = tempDic[deviceId];
                 NSError* error;
-                //FIXME: error is saying _incoming and _outgoing are NSMutableArray for some reason. NSArrays should be very standard for en/decoding, IDK what's going on rn
-                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClass:[Device class] fromData:deviceData error:&error];
-                NSLog(@"device is decoded from UserDefaults as: %@ with error %@", device, error);
+                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
+                NSLog(@"device with pair status %lu is decoded from UserDefaults as: %@ with error %@", [device _pairStatus], device, error);
                 [device set_deviceDelegate:self];
                 [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
+                //[device reloadPlugins];
                 [_savedDevices setObject:device forKey:deviceId];
             }
         }
@@ -109,11 +109,11 @@
 }
 
 - (void) loadRemenberedDevices
-{   //FIXME: When we get here, _savedDevices is actually nil for some reason, why?
+{
     for (Device* device in [_savedDevices allValues]) {
         //Device* device=[[Device alloc] init:deviceId setDelegate:self];
-        [_devices setObject:_savedDevices[device] forKey:[device _id]];
-        [_settings setObject:_savedDevices[device] forKey:[device _id]];
+        [_devices setObject:device forKey:[device _id]];
+        [_settings setObject:device forKey:[device _id]];
     }
 }
 - (void) registerLinkProviders
@@ -150,7 +150,7 @@
 
 - (NSDictionary*) getDevicesLists
 {
-    //NSLog(@"bg get devices lists");
+    NSLog(@"bg get devices lists");
     NSMutableDictionary* _visibleDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _connectedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _rememberedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
@@ -159,7 +159,7 @@
             [_rememberedDevicesList setValue:[device _name] forKey:[device _id]];
         }
         else if([device isPaired]){
-            [device reloadPlugins];
+            //[device reloadPlugins];
             [_connectedDevicesList setValue:[device _name] forKey:[device _id]];
             //TODO: move this to a different thread maybe, and also in Swift
             //[device reloadPlugins];
@@ -184,19 +184,23 @@
     }
 }
 
+// MARK: This should be the ONLY method used for unpairing Devices, DO NOT call the device's own unpair() method as it DOES NOT remove the device from the Arrays like this one does. For other files aready using _backgroundServiceDelegate AKA ConnectedDevicesViewModel, use unpairFromBackgroundServiceInstance() in that. That's the same thing as calling this
 - (void) unpairDevice:(NSString*)deviceId
 {
     NSLog(@"bg unpair device");
     Device* device=[_devices valueForKey:deviceId];
-    if ([device isReachable]) {
-        [device unpair];
-    }
+    //if ([device isReachable]) { // we'll also be calling this to unpair remembered (unReachable) devices
+    [device unpair];
+    //}
     [_devices removeObjectForKey:deviceId];
     [_settings removeObjectForKey:deviceId];
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
 //    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
     //[[NSUserDefaults standardUserDefaults] synchronize];
+    if (_backgroundServiceDelegate) {
+        [_backgroundServiceDelegate refreshDiscoveryAndListInsideView];
+    }
 }
 
 //- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc
@@ -229,7 +233,7 @@
     }
     // TODO: Is it fine to take this out????
     if (_backgroundServiceDelegate && updated) {
-        [_backgroundServiceDelegate onDeviceListRefreshed];
+        [_backgroundServiceDelegate onDeviceListRefreshed]; // DONT put refreshDiscoveryAndListInsideView here!!!!! Otherwise will cause refresh loop
     }
 }
 
@@ -315,15 +319,14 @@
         [_backgroundServiceDelegate onPairSuccess:[device _id]];
     }
     //[device setAsPaired]; is already called in the caller of this method
-    //FIXME: encodes as nil for some reason
     NSError* error;
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
-    NSLog(@"device object encoded into UserDefaults as: %@ with error: %@", deviceData, error);
+    NSLog(@"device object with pair status %lu encoded into UserDefaults as: %@ with error: %@", [device _pairStatus], deviceData, error);
     [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
 //    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) onDevicePairRejected:(Device*)device
