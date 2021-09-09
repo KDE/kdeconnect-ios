@@ -123,6 +123,8 @@
         if (_deviceDelegate) {
             [_deviceDelegate onDeviceReachableStatusChanged:self];
         }
+        // If device is just online with its first link, ask for its battery status
+        [[_plugins objectForKey:PACKAGE_TYPE_BATTERY] sendBatteryStatusRequest];
     }
 }
 // FIXME: This ain't it, doesn't get called when connection is cut (e.g wifi off) from the remote device

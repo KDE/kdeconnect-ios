@@ -15,8 +15,11 @@ import SwiftUI
             MainTabView()
                 .preferredColorScheme((selfDeviceDataForTopLevel.chosenTheme == "System Default") ? nil : appThemes[selfDeviceDataForTopLevel.chosenTheme])
                 .onAppear {
-                    //startBatteryMonitoringAllDevices()
                     backgroundService.startDiscovery()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    // In case the app's been chilling suspended for a long time, upon returning ask for updates to all devices's battery statuses
+                    requestBatteryStatusAllDevices()
                 }
         }
     }

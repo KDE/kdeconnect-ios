@@ -252,7 +252,7 @@
         //NSLog(@"bg destroy device");
     }
     //[self refreshDiscovery];
-    [self refreshVisibleDeviceList];
+    [self refreshVisibleDeviceList]; // might want to reverse this after figuring out why refreshDiscovery is causing Plugins to dissapear
 }
 
 - (void) onNetworkChange

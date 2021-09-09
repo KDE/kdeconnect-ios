@@ -20,7 +20,7 @@ struct DevicesDetailView: View {
     @State var chosenFileURLs: [URL] = []
     
     // TODO: Maybe use a state to directly change the Battery % instead of doing this hacky thing?
-    @State var showBatteryLoading: Int = 0
+    @State var batteryUpdate: Bool = false
     
     var body: some View {
         if (isStilConnected) {
@@ -80,10 +80,6 @@ struct DevicesDetailView: View {
                             Text("\(((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
                                 .font(.system(size: 18))
                         }
-//                        if (showBatteryLoading == 999) {
-//                            Text("Hi")
-//                        }
-                        Text("\(showBatteryLoading)")
                     }
                     
                     //            Section(header: Text("Debug section")) {
@@ -99,6 +95,10 @@ struct DevicesDetailView: View {
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
                     EmptyView()
                 }
+                
+                // This is an invisible view using changes in batteryUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
+                Text(batteryUpdate ? "True" : "False")
+                    .opacity(0)
                 
             }
             .navigationTitle((backgroundService._devices[detailsDeviceId] as! Device)._name)

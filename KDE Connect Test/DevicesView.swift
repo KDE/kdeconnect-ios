@@ -26,6 +26,8 @@ struct DevicesView: View {
     
     @State private var showingConfigureDevicesByIPView: Bool = false
     
+    @State var batteryUpdate: Bool = false
+    
     @ObservedObject var localNotificationService = LocalNotificationService()
     
     var body: some View {
@@ -90,6 +92,7 @@ struct DevicesView: View {
                                                 .font(.system(size: 18))
                                         }
                                         Text("Tap to start pairing")
+                                            .font(.system(size: 15))
                                     }
                                 }
                                 
@@ -146,6 +149,10 @@ struct DevicesView: View {
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
             }
+            
+            // This is an invisible view using changes in batteryUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
+            Text(batteryUpdate ? "True" : "False")
+                .opacity(0)
             
             Text("")
                 .alert(isPresented: $showingOnPairTimeoutAlert) {
@@ -384,13 +391,20 @@ struct DevicesView: View {
     func refreshDiscoveryAndList() -> Void {
         let group = DispatchGroup()
         group.enter()
-        backgroundService.refreshDiscovery()
-        group.leave()
-        group.notify(queue: DispatchQueue.main) {
-            //backgroundService.reloadAllPlugins()
-            backgroundService.refreshVisibleDeviceList()
-            broadcastBatteryStatusAllDevices()
+        DispatchQueue.main.async {
+            backgroundService.refreshDiscovery()
+            group.leave()
         }
+//        DispatchQueue.main.async {
+//            backgroundService.reloadAllPlugins()
+//            group.leave()
+//        }
+        DispatchQueue.main.async {
+            backgroundService.refreshVisibleDeviceList()
+            group.leave()
+        }
+        group.wait()
+        broadcastBatteryStatusAllDevices()
     }
     
 }

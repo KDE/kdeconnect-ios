@@ -17,6 +17,7 @@ import UIKit
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice
         super.init()
+        //self.sendBatteryStatusRequest() // no need here, asking in Device() when first link is added
         self.startBatteryMonitoring()
         self.sendBatteryStatusOut()
     }
@@ -41,7 +42,7 @@ import UIKit
             remoteChargeLevel = np.integer(forKey: "currentCharge")
             remoteIsCharging = np.bool(forKey: "isCharging")
             remoteThresholdEvent = np.integer(forKey: "thresholdEvent")
-            connectedDevicesViewModel.reRenderListsInsideView()
+            connectedDevicesViewModel.reRenderDeviceView()
             connectedDevicesViewModel.reRenderCurrDeviceDetailsView(deviceId: controlDevice._id)
             return true
         }
@@ -67,6 +68,12 @@ import UIKit
             print("Battery status reported as unknown, reporting 0 for all values")
         }
         controlDevice.send(np, tag: Int(PACKAGE_TAG_BATTERY))
+    }
+    
+    @objc func sendBatteryStatusRequest() -> Void {
+        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_BATTERY_REQUEST)
+        np.setBool(true, forKey: "request")
+        controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
     func getSFSymbolNameFromBatteryStatus() -> String {
@@ -110,6 +117,14 @@ func broadcastBatteryStatusAllDevices() {
     for case let device as Device in (backgroundService._devices.allValues) {
         if (device.isPaired() && device._plugins.allKeys.contains(where: {$0 as! String == PACKAGE_TYPE_BATTERY_REQUEST})) {
             (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).sendBatteryStatusOut()
+        }
+    }
+}
+
+func requestBatteryStatusAllDevices() {
+    for case let device as Device in (backgroundService._devices.allValues) {
+        if (device.isPaired() && device._plugins.allKeys.contains(where: {$0 as! String == PACKAGE_TYPE_BATTERY_REQUEST})) {
+            (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).sendBatteryStatusRequest()
         }
     }
 }
