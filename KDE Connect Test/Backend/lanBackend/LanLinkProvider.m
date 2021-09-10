@@ -414,9 +414,12 @@
     
     // Now that TCP is successful, I know the incoming host, now it's time for the incoming host
     // to know me, I send ID Packet to incoming Host via the just established TCP
+    //if (([np _Payload] == nil) && ([np _PayloadTransferInfo] == nil) && ([np _PayloadSize]) == 0) {
+    // TODO: It seems like only identity packets ever show up here, why? Where is the id packet being sent when a new transfer connection is opened then????? This seems to be the ONLY place where ID packets are sent in TCP?
     NetworkPackage *inp = [NetworkPackage createIdentityPackage];
     NSData *inpData = [inp serialize];
     [socket writeData:inpData withTimeout:0 tag:PACKAGE_TAG_IDENTITY];
+    //}
     
     //add to pending connection list
     @synchronized(_pendingNps)

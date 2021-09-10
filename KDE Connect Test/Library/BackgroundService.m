@@ -66,7 +66,7 @@
 {
     if ((self=[super init])) {
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
-        //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
         
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
@@ -189,9 +189,11 @@
 {
     NSLog(@"bg unpair device");
     Device* device=[_devices valueForKey:deviceId];
-    //if ([device isReachable]) { // we'll also be calling this to unpair remembered (unReachable) devices
-    [device unpair];
-    //}
+    if ([device isReachable]) {
+        [device unpair];
+    } else { // we'll also be calling this to unpair remembered (unReachable) devices
+        [device justChangeStatusToUnpaired];
+    }
     [_devices removeObjectForKey:deviceId];
     [_settings removeObjectForKey:deviceId];
 //    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];

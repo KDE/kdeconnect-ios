@@ -96,6 +96,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 - (BOOL) isPaireRequested;
 //- (void) setAsPaired; // Is this needed to be public?
 - (void) requestPairing;
+- (void) justChangeStatusToUnpaired;
 - (void) unpair;
 - (void) acceptPairing;
 - (void) rejectPairing;

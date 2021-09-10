@@ -137,8 +137,9 @@
         //NSLog(@"no available link");
         if (_deviceDelegate) {
             [_deviceDelegate onDeviceReachableStatusChanged:self];
-            [_plugins removeAllObjects];
-            [_failedPlugins removeAllObjects];
+            // No, we don't want to remove the plugins because IF the device is coming back online later, we want to still have to ready
+            //[_plugins removeAllObjects];
+            //[_failedPlugins removeAllObjects];
         }
     }
     if (_deviceDelegate) {
@@ -323,6 +324,11 @@
         //[self unpair];
         [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
     }
+}
+
+// If we JUST want to change the status of the Device to unpaired WITHOUT sending out an unpair packet
+- (void) justChangeStatusToUnpaired {
+    _pairStatus=NotPaired;
 }
 
 - (void) unpair

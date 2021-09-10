@@ -389,21 +389,25 @@ struct DevicesView: View {
     }
     
     func refreshDiscoveryAndList() -> Void {
-        let group = DispatchGroup()
-        group.enter()
-        DispatchQueue.main.async {
-            backgroundService.refreshDiscovery()
-            group.leave()
-        }
+//        let group = DispatchGroup()
+//        group.enter()
 //        DispatchQueue.main.async {
-//            backgroundService.reloadAllPlugins()
+//            backgroundService.refreshDiscovery()
 //            group.leave()
 //        }
-        DispatchQueue.main.async {
-            backgroundService.refreshVisibleDeviceList()
-            group.leave()
-        }
-        group.wait()
+////        DispatchQueue.main.async {
+////            backgroundService.reloadAllPlugins()
+////            group.leave()
+////        }
+//        DispatchQueue.main.async {
+//            backgroundService.refreshVisibleDeviceList()
+//            group.leave()
+//        }
+//        group.wait()
+//        broadcastBatteryStatusAllDevices()
+        backgroundService.refreshDiscovery()
+        backgroundService.refreshVisibleDeviceList()
+        //backgroundService.reloadAllPlugins()
         broadcastBatteryStatusAllDevices()
     }
     
