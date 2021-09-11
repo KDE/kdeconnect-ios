@@ -177,7 +177,7 @@ __strong static NSString* _UUID;
     NSError* err=nil;
     NSMutableData* jsonData=[[NSMutableData alloc] initWithData:[NSJSONSerialization dataWithJSONObject:info options:0 error:&err]];
     if (err) {
-        //NSLog(@"NP serialize error");
+        NSLog(@"NP serialize error");
         return nil;
     }
     [jsonData appendData:LFDATA];

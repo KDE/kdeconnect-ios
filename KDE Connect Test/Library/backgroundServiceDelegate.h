@@ -15,4 +15,5 @@
 - (void) refreshDiscoveryAndListInsideView;
 - (void) currDeviceDetailsViewDisconnectedFromRemote:(NSString*)deviceId;
 - (void) unpairFromBackgroundServiceInstance:(NSString*)deviceId;
+- (void) removeDeviceFromArrays:(NSString*)deviceId;
 @end

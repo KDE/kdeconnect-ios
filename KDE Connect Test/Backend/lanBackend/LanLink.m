@@ -65,7 +65,7 @@
         [_socket performBlock:^{
             [_socket enableBackgroundingOnSocket];
         }];
-        //NSLog(@"LanLink:lanlink for device:%@ created",_deviceId);
+        NSLog(@"LanLink:lanlink for device:%@ created",_deviceId);
         [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
         _pendingRSockets=[NSMutableArray arrayWithCapacity:1];
         _pendingLSockets=[NSMutableArray arrayWithCapacity:1];
@@ -279,7 +279,7 @@
  **/
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-    //NSLog(@"llink didWriteData");
+    NSLog(@"llink didWriteData");
     if (_linkDelegate) {
         [_linkDelegate onSendSuccess:tag];
     }
@@ -349,7 +349,7 @@
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
     if ([_pendingRSockets containsObject:sock]) {
-        NSLog(@"llink payload socket disconnected");
+        NSLog(@"llink payload socket disconnected with error: %@", err);
         @synchronized(_pendingRSockets){
             NSUInteger index=[_pendingRSockets indexOfObject:sock];
             [_pendingRSockets removeObjectAtIndex:index];
@@ -357,7 +357,7 @@
         }
     }
     if (_linkDelegate&&(sock==_socket)) {
-        //NSLog(@"llink socket did disconnect");
+        NSLog(@"llink socket did disconnect with error: %@", err);
         [_linkDelegate onLinkDestroyed:self];
     }
     
@@ -459,7 +459,7 @@
         if ([dataStr length] > 0) {
             NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
             if (_linkDelegate && np) {
-                //NSLog(@"llink did read data:\n%@",dataStr);
+                NSLog(@"llink did read data:\n%@",dataStr);
                 if ([[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
                     _pendingPairNP=np;
                 }

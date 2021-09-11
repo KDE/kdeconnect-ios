@@ -239,7 +239,7 @@
 
 - (void)setupSocket
 {
-    //NSLog(@"lp setup socket");
+    NSLog(@"lp setup socket");
     NSError* err;
     _tcpSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
     _udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
@@ -293,7 +293,7 @@
 
 - (void)onStop
 {
-    //NSLog(@"lp onstop");
+    NSLog(@"lp onstop");
     [_udpSocket close];
     [_tcpSocket disconnect];
     for (GCDAsyncSocket* socket in _pendingSockets) {
@@ -313,7 +313,7 @@
 
 - (void) onRefresh
 {
-    //NSLog(@"lp on refresh");
+    NSLog(@"lp on refresh");
     if (![_tcpSocket isConnected]) {
         [self onNetworkChange];
         return;
@@ -344,7 +344,7 @@
 
 - (void) onLinkDestroyed:(BaseLink*)link
 {
-    //NSLog(@"lp on linkdestroyed");
+    NSLog(@"lp on linkdestroyed");
     if (link==[_connectedLinks objectForKey:[link _deviceId]]) {
         [_connectedLinks removeObjectForKey:[link _deviceId]];
     }
@@ -617,9 +617,9 @@
  **/
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
-    //NSLog(@"tcp socket did Disconnect");
+    NSLog(@"tcp socket did Disconnect with error: %@", err);
     if (sock==_tcpSocket) {
-        //NSLog(@"tcp server disconnected");
+        NSLog(@"tcp server disconnected with error: %@", err);
         _tcpSocket=nil;
     }
     else

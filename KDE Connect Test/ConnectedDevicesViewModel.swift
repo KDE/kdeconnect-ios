@@ -73,6 +73,12 @@ import UIKit
         //onDeviceListRefreshed()
     }
     
+    func removeDeviceFromArrays(deviceId: String) -> Void {
+        backgroundService._devices.removeObject(forKey: deviceId)
+        backgroundService._settings.removeObject(forKey: deviceId)
+        UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
+    }
+    
     func showPingAlert() -> Void {
         devicesView!.showPingAlertInsideView()
     }

@@ -37,6 +37,7 @@
 
 @property(nonatomic,assign) id _backgroundServiceDelegate;
 @property(nonatomic)NSMutableDictionary* _devices;
+@property(nonatomic)NSMutableDictionary* _settings;
 
 + (id) sharedInstance;
 

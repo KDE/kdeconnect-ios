@@ -28,7 +28,7 @@
 @property(nonatomic)NSMutableArray* _linkProviders;
 //@property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableArray* _visibleDevices;
-@property(nonatomic)NSMutableDictionary* _settings;
+//@property(nonatomic)NSMutableDictionary* _settings;
 @property(nonatomic)NSMutableDictionary* _savedDevices;
 
 //@property(nonatomic)SettingsStore* _settings; // seems like all this is doing is acting as a
@@ -118,8 +118,8 @@
 }
 - (void) registerLinkProviders
 {
-    //NSLog(@"bg register linkproviders");
-    // TO-DO  read setting for linkProvider registeration
+    NSLog(@"bg register linkproviders");
+    // TO-DO: read setting for linkProvider registeration
     LanLinkProvider* linkProvider=[[LanLinkProvider alloc] initWithDelegate:self];
     [_linkProviders addObject:linkProvider];
 }
@@ -134,7 +134,7 @@
 
 - (void) refreshDiscovery
 {
-    //NSLog(@"bg refresh Discovery");
+    NSLog(@"bg refresh Discovery");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onRefresh];
     }
@@ -142,7 +142,7 @@
 
 - (void) stopDiscovery
 {
-    //NSLog(@"bg stop Discovery");
+    NSLog(@"bg stop Discovery");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onStop];
     }
@@ -246,12 +246,12 @@
     NSLog(@"bg on device reachable status changed");
     if (![device isReachable]) {
         NSLog(@"bg device not reachable");
-        //NSLog([device _id]);
+        NSLog(@"%@", [device _id]);
         //[_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[device _id]];
     }
     if (![device isPaired] && ![device isReachable]) {
         [_devices removeObjectForKey:[device _id]];
-        //NSLog(@"bg destroy device");
+        NSLog(@"bg destroy device");
     }
     //[self refreshDiscovery];
     [self refreshVisibleDeviceList]; // might want to reverse this after figuring out why refreshDiscovery is causing Plugins to dissapear
@@ -259,7 +259,7 @@
 
 - (void) onNetworkChange
 {
-    //NSLog(@"bg on network change");
+    NSLog(@"bg on network change");
     for (LanLinkProvider* lp in _linkProviders){
         [lp onNetworkChange];
     }
@@ -272,7 +272,7 @@
     NSString* deviceId=[np objectForKey:@"deviceId"];
     NSLog(@"Device discovered: %@",deviceId);
     if ([_devices valueForKey:deviceId]) {
-        //NSLog(@"known device");
+        NSLog(@"known device");
         Device* device=[_devices objectForKey:deviceId];
         [device addLink:np baseLink:link];
     }
