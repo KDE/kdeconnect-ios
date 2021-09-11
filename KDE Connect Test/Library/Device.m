@@ -174,11 +174,12 @@
         if (_pairStatus==RequestedByPeer) {
             [self setAsPaired];
         }
-    }
-    else{
+    } else if (tag == PACKAGE_TAG_PAYLOAD){
         /* for (Plugin* plugin in [_plugins allValues]) {
 //            [plugin sentPercentage:100 tag:tag];
         } */
+        NSLog(@"Last payload sent successfully, sending next one");
+        [(Share *)[_plugins objectForKey:PACKAGE_TYPE_SHARE] sendSinglePayload];
     }
 }
 
@@ -230,8 +231,8 @@
                     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
                 });
             }else if (prevPairStatus==Paired){
-                //[self unpair];
-                [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
+                [self unpair];
+                //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
             }
         }
     }else if ([self isPaired]){
@@ -243,8 +244,8 @@
         //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
     }else{
         NSLog(@"not paired, ignore packages, unpair the device");
-        //[self unpair];
-        [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
+        [self unpair];
+        //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
     }
 }
 
@@ -321,8 +322,8 @@
         if (_deviceDelegate) {
             [_deviceDelegate onDevicePairTimeout:self];
         }
-        //[self unpair];
-        [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
+        [self unpair];
+        //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
     }
 }
 
@@ -336,6 +337,7 @@
     NSLog(@"device unpair");
     _pairStatus=NotPaired;
     [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[self _id]];
+    [_backgroundServiceDelegate removeDeviceFromArrays:[self _id]];
     // How do we use same protocol from
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_PAIR];
     [np setBool:false forKey:@"pair"];
@@ -352,8 +354,8 @@
 - (void) rejectPairing
 {
     NSLog(@"device rejected pair request ");
-    //[self unpair];
-    [_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
+    [self unpair];
+    //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
 }
 
 #pragma mark Plugins-related Functions

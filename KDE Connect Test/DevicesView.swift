@@ -28,7 +28,7 @@ struct DevicesView: View {
     
     @State var batteryUpdate: Bool = false
     
-    @ObservedObject var localNotificationService = LocalNotificationService()
+    //@ObservedObject var localNotificationService = LocalNotificationService()
     
     var body: some View {
         VStack {

@@ -29,10 +29,11 @@ let haptics = UIImpactFeedbackGenerator(style: .rigid)
 
 // System sounds definitions, for a list of all IDs, see
 // https://github.com/TUNER88/iOSSystemSoundsLibrary
+let soundMailReceived: SystemSoundID = 1000
+let soundMailSent: SystemSoundID = 1001
 let soundSMSReceived: SystemSoundID = 1003
 let soundCalendarAlert: SystemSoundID = 1005
 let soundAudioToneBusy: SystemSoundID = 1070
-let soundMailReceived: SystemSoundID = 1000
 
 // Date extension to return the UNIX epoche in miliseconds, since KDE Connect uses miliseconds
 // UNIX Epoche for all timestamp fields:

@@ -10,6 +10,8 @@
   - When unpair is initiated from remote, the device does not get removed from the "saved devices" list, I don't know why but neither the unpairDevice() from backgroundService nor the device's own unpair() is getting called
  
   - Figure out how to store host device's cert in keychains, remote devices's certs can just be stored in the Device objects
+ 
+  - Implement switching ports if file transfer hits an occupied port
  */
 
 import SwiftUI

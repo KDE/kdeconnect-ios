@@ -180,11 +180,8 @@ struct DevicesDetailView: View {
                 } catch {
                     print("Document Picker Error")
                 }
-                for url in chosenFileURLs {
-                    ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_SHARE] as! Share).sendFile(fileURL: url)
-//                    do {
-//                        sleep(2)
-//                    }
+                if (chosenFileURLs.count > 0) {
+                    ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_SHARE] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
                 }
             }
             .onAppear() {

@@ -77,8 +77,8 @@ import UIKit
         //onDeviceListRefreshed()
     }
     
-    @objc static func removeDeviceFromArrays(deviceId: String) -> Void {
-        backgroundService._devices.removeObject(forKey: deviceId)
+    func removeDeviceFromArrays(deviceId: String) -> Void {
+        //backgroundService._devices.removeObject(forKey: deviceId)
         backgroundService._settings.removeObject(forKey: deviceId)
         UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
     }

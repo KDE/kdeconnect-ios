@@ -198,13 +198,11 @@
         [device unpair];
     } else { // we'll also be calling this to unpair remembered (unReachable) devices
         [device justChangeStatusToUnpaired];
+        [_settings removeObjectForKey:deviceId];
+        [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
     }
     [_devices removeObjectForKey:deviceId];
-    [_settings removeObjectForKey:deviceId];
-//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
-//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
-    [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+    
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate refreshDiscoveryAndListInsideView];
     }
@@ -312,10 +310,7 @@
         [_backgroundServiceDelegate onPairTimeout:[device _id]];
     }
     [_settings removeObjectForKey:[device _id]];
-//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
-//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) onDevicePairSuccess:(Device*)device
@@ -330,10 +325,7 @@
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
     NSLog(@"device object with pair status %lu encoded into UserDefaults as: %@ with error: %@", [device _pairStatus], deviceData, error);
     [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
-//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
-//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) onDevicePairRejected:(Device*)device
@@ -343,10 +335,7 @@
         [_backgroundServiceDelegate onPairRejected:[device _id]];
     }
     [_settings removeObjectForKey:[device _id]];
-//    NSData* dataToBeSaved = [NSKeyedArchiver archivedDataWithRootObject:_settings requiringSecureCoding:false error:nil];
-//    [[NSUserDefaults standardUserDefaults] setValue:dataToBeSaved forKey:@"savedDevices"];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) reloadAllPlugins

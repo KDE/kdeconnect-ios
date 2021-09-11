@@ -281,11 +281,10 @@
     NSLog(@"llink didWriteData");
     if (_linkDelegate) {
         [_linkDelegate onSendSuccess:tag];
-    }
-    if (tag==PACKAGE_TAG_PAYLOAD) {
-        NSLog(@"llink payload sendpk");
-    }
-    
+    }// pass this to device also so device can notify Share plugin when a payload finishes sending?
+//    if (tag==PACKAGE_TAG_PAYLOAD) {
+//        NSLog(@"llink payload sendpk");
+//    }
 }
 
 /**
