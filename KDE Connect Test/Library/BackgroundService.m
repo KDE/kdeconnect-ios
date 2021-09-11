@@ -66,7 +66,7 @@
 {
     if ((self=[super init])) {
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
+        //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
         
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
@@ -82,10 +82,14 @@
                 NSError* error;
                 Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
                 NSLog(@"device with pair status %lu is decoded from UserDefaults as: %@ with error %@", [device _pairStatus], device, error);
-                [device set_deviceDelegate:self];
-                [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
-                //[device reloadPlugins];
-                [_savedDevices setObject:device forKey:deviceId];
+                if ([device _pairStatus] == Paired) {
+                    [device set_deviceDelegate:self];
+                    [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
+                    //[device reloadPlugins];
+                    [_savedDevices setObject:device forKey:deviceId];
+                } else {
+                    NSLog(@"Not loading device above since it's previous status is NOT paired.");
+                }
             }
         }
         
@@ -155,18 +159,19 @@
     NSMutableDictionary* _connectedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _rememberedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     for (Device* device in [_devices allValues]) {
-        if (![device isReachable]) {
+        if ((![device isReachable]) && [device isPaired]) {
             [_rememberedDevicesList setValue:[device _name] forKey:[device _id]];
-        }
-        else if([device isPaired]){
+            
+        } else if([device isPaired] && [device isReachable]){
             //[device reloadPlugins];
             [_connectedDevicesList setValue:[device _name] forKey:[device _id]];
             //TODO: move this to a different thread maybe, and also in Swift
             //[device reloadPlugins];
-        }
-        else{
+        } else if ((![device isPaired]) && [device isReachable]) {
             [_visibleDevicesList setValue:[device _name] forKey:[device _id]];
-        }
+        }// else {
+            //[_backgroundServiceDelegate removeDeviceFromArrays:[device _id]];
+        //}
     }
     NSDictionary* list=[NSDictionary dictionaryWithObjectsAndKeys:
                         _connectedDevicesList,  @"connected",

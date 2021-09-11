@@ -7,7 +7,7 @@
 
 @protocol backgroundServiceDelegate <NSObject>
 @optional
--(void) onPairRequest:(NSString*)deviceId;
+- (void) onPairRequest:(NSString*)deviceId;
 - (void) onPairTimeout:(NSString*)deviceId;
 - (void) onPairSuccess:(NSString*)deviceId;
 - (void) onPairRejected:(NSString*)deviceId;
@@ -15,5 +15,4 @@
 - (void) refreshDiscoveryAndListInsideView;
 - (void) currDeviceDetailsViewDisconnectedFromRemote:(NSString*)deviceId;
 - (void) unpairFromBackgroundServiceInstance:(NSString*)deviceId;
-- (void) removeDeviceFromArrays:(NSString*)deviceId;
 @end

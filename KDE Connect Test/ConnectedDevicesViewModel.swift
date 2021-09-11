@@ -61,6 +61,10 @@ import UIKit
         backgroundService.unpairDevice(deviceId)
     }
     
+    @objc static func staticUnpairFromBackgroundService(deviceId: String) -> Void {
+        backgroundService.unpairDevice(deviceId)
+    }
+    
     func currDeviceDetailsViewDisconnected(fromRemote deviceId: String!) -> Void {
         //backgroundService.unpairDevice(deviceId)
         if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
@@ -73,10 +77,20 @@ import UIKit
         //onDeviceListRefreshed()
     }
     
-    func removeDeviceFromArrays(deviceId: String) -> Void {
+    @objc static func removeDeviceFromArrays(deviceId: String) -> Void {
         backgroundService._devices.removeObject(forKey: deviceId)
         backgroundService._settings.removeObject(forKey: deviceId)
         UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
+    }
+    
+    @objc static func isDeviceCurrentlyPairedAndConnected(_ deviceId: String) -> Bool {
+        let doesExistInDevices: Bool = (backgroundService._devices[deviceId] != nil)
+        if doesExistInDevices {
+            let device: Device = (backgroundService._devices[deviceId] as! Device)
+            return (device.isPaired() && device.isReachable())
+        } else {
+            return false
+        }
     }
     
     func showPingAlert() -> Void {

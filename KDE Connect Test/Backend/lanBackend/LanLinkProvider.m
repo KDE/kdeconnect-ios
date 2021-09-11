@@ -386,6 +386,11 @@
         return;
     }
     
+    // This is very important, as if it doesn't ignore the identity packets of devices that are already connected, the app will respond by TERMINATING the existing connection and establishing a new one. We DO NOT want this.
+    if ([ConnectedDevicesViewModel isDeviceCurrentlyPairedAndConnected:[np objectForKey:@"deviceId"]]) {
+        NSLog(@"Received identity packet from %@, which is already connected (aka paired & reachable), ignoring", [np objectForKey:@"deviceName"]);
+        return;
+    }
     
     // Get ready to establish TCP connection to incoming host
     NSLog(@"LanLinkProvider:id package received, creating link and a TCP connection socket");
@@ -504,7 +509,7 @@
  * Called when a socket has completed reading the requested data into memory.
  * Not called if there is an error.
  **/
-//
+// MARK: Should we do something here for receiving file transfers????
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
     NSLog(@"lp tcp socket didReadData");

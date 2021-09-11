@@ -7,9 +7,7 @@
 
 /**
  TO-Dos:
-  - Single file transfer is not reliable, sometimes the connection just drops. Errors on Anroid, investigating Android code CompositeUpload to try to figure out what's going on: seems like we're sending ID Packet for file transfer connections, fixed, will see what happens
- 
-  - Multi-file transfer is indeed using a new connection for each file transferred, so should be do-able once we fix the issue with single file tranfer?
+  - When unpair is initiated from remote, the device does not get removed from the "saved devices" list, I don't know why but neither the unpairDevice() from backgroundService nor the device's own unpair() is getting called
  
   - Figure out how to store host device's cert in keychains, remote devices's certs can just be stored in the Device objects
  */

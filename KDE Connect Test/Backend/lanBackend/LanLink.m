@@ -227,7 +227,6 @@
  * Called when a socket connects and is ready for reading and writing.
  * The host parameter will be an IP address, not a DNS name.
  **/
-
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"Lanlink did connect to payload host, begin recieving data from %@ %d", host, port);

@@ -335,13 +335,11 @@
 {
     NSLog(@"device unpair");
     _pairStatus=NotPaired;
-    // How do we use same protocol from 
     [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[self _id]];
+    // How do we use same protocol from
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_PAIR];
     [np setBool:false forKey:@"pair"];
     [self sendPackage:np tag:PACKAGE_TAG_UNPAIR];
-    // MARK: Should this be here?
-    [_backgroundServiceDelegate removeDeviceFromArrays:[self _id]];
 }
 
 - (void) acceptPairing
