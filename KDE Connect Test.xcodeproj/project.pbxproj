@@ -48,6 +48,7 @@
 		A0D76FCE26E6F562009D9B03 /* RemoteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FCD26E6F562009D9B03 /* RemoteInput.swift */; };
 		A0D76FD026E73412009D9B03 /* TwoFingerTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */; };
 		A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */; };
+		A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD426EF1A4700791D07 /* SettingsAdvancedView.swift */; };
 		A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */; };
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
 /* End PBXBuildFile section */
@@ -127,6 +128,7 @@
 		A0D76FCD26E6F562009D9B03 /* RemoteInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteInput.swift; sourceTree = "<group>"; };
 		A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFingerTapView.swift; sourceTree = "<group>"; };
 		A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecognizerViewModifier.swift; sourceTree = "<group>"; };
+		A0D8CBD426EF1A4700791D07 /* SettingsAdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedView.swift; sourceTree = "<group>"; };
 		A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPacketProcessing.swift; sourceTree = "<group>"; };
 		A0FB449926BA796400733914 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,7 +160,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1499A8CC2698BE2300FDF493 /* Backend */ = {
+		1499A8CC2698BE2300FDF493 /* ObjC Network Backend */ = {
 			isa = PBXGroup;
 			children = (
 				1499A8D72698BF0F00FDF493 /* BaseLink.h */,
@@ -168,7 +170,7 @@
 				1499A8D12698BF0F00FDF493 /* lanBackend */,
 				1499A8D02698BF0F00FDF493 /* LanLink-Bridging-Header.h */,
 			);
-			path = Backend;
+			path = "ObjC Network Backend";
 			sourceTree = "<group>";
 		};
 		1499A8D12698BF0F00FDF493 /* lanBackend */ = {
@@ -182,7 +184,7 @@
 			path = lanBackend;
 			sourceTree = "<group>";
 		};
-		1499A8DE2698BF4900FDF493 /* Library */ = {
+		1499A8DE2698BF4900FDF493 /* ObjC Backend */ = {
 			isa = PBXGroup;
 			children = (
 				1499A8E52698BFF300FDF493 /* Device.h */,
@@ -196,21 +198,21 @@
 				A01FDD2226C3A5560014B165 /* backgroundServiceDelegate.h */,
 				A0BECF6526C0EDD10037E299 /* BackgroundService.m */,
 			);
-			path = Library;
+			path = "ObjC Backend";
 			sourceTree = "<group>";
 		};
-		A01FDD2526C4F65B0014B165 /* Plugins */ = {
+		A01FDD2526C4F65B0014B165 /* Plugins and Plugin Views */ = {
 			isa = PBXGroup;
 			children = (
 				A01FDD2626C4F6D50014B165 /* PluginsService.swift */,
-				A01FDD3026C701360014B165 /* Battery.swift */,
-				A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */,
-				A01FDD2826C4F8420014B165 /* Ping.swift */,
-				A01FDD2C26C62E170014B165 /* Share.swift */,
-				A0B0852E26E576950010AE9D /* Clipboard.swift */,
-				A0D76FCD26E6F562009D9B03 /* RemoteInput.swift */,
+				A0D8CBCD26EF088700791D07 /* Battery */,
+				A0D8CBCE26EF089700791D07 /* FindMyPhone */,
+				A0D8CBCF26EF08A800791D07 /* Ping */,
+				A0D8CBD026EF08B600791D07 /* Share */,
+				A0D8CBD126EF08C300791D07 /* Clipboard */,
+				A0D8CBD226EF08CE00791D07 /* RemoteInput */,
 			);
-			path = Plugins;
+			path = "Plugins and Plugin Views";
 			sourceTree = "<group>";
 		};
 		A0A04423267BF38700CC21DD = {
@@ -238,30 +240,11 @@
 			isa = PBXGroup;
 			children = (
 				A034ADA726BF32F500A7CC70 /* KDE Connect Test.entitlements */,
-				1499A8DE2698BF4900FDF493 /* Library */,
-				1499A8CC2698BE2300FDF493 /* Backend */,
-				A01FDD2526C4F65B0014B165 /* Plugins */,
-				A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */,
-				A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */,
-				A0FB449926BA796400733914 /* Backend.swift */,
-				A0A04431267BF38700CC21DD /* MainTabView.swift */,
-				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
-				A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */,
-				A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */,
-				A0D76FCB26E6B034009D9B03 /* RemoteInputView.swift */,
-				A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */,
-				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
-				A0BECF6726C195240037E299 /* ConnectedDevicesViewModel.swift */,
-				A0A0445E267BF41B00CC21DD /* SettingsView.swift */,
-				A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */,
-				A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */,
-				A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */,
-				A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */,
-				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
-				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
-				A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */,
-				A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */,
-				A0B87280267C45F400F0EB72 /* ConnectedDevicesData.swift */,
+				1499A8DE2698BF4900FDF493 /* ObjC Backend */,
+				1499A8CC2698BE2300FDF493 /* ObjC Network Backend */,
+				A0D8CBC626EF06FA00791D07 /* Swift Backend */,
+				A01FDD2526C4F65B0014B165 /* Plugins and Plugin Views */,
+				A0D8CBCA26EF080E00791D07 /* Views */,
 				A0A04433267BF38A00CC21DD /* Assets.xcassets */,
 				A0A04438267BF38A00CC21DD /* Info.plist */,
 				A0A04435267BF38A00CC21DD /* Preview Content */,
@@ -293,6 +276,122 @@
 				A0A0444E267BF38A00CC21DD /* Info.plist */,
 			);
 			path = "KDE Connect TestUITests";
+			sourceTree = "<group>";
+		};
+		A0D8CBC626EF06FA00791D07 /* Swift Backend */ = {
+			isa = PBXGroup;
+			children = (
+				A0BECF6726C195240037E299 /* ConnectedDevicesViewModel.swift */,
+				A0FB449926BA796400733914 /* Backend.swift */,
+				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
+				A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */,
+				A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */,
+				A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */,
+				A0B87280267C45F400F0EB72 /* ConnectedDevicesData.swift */,
+			);
+			path = "Swift Backend";
+			sourceTree = "<group>";
+		};
+		A0D8CBC926EF07C000791D07 /* Abstracted Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */,
+				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
+				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
+			);
+			path = "Abstracted Views";
+			sourceTree = "<group>";
+		};
+		A0D8CBCA26EF080E00791D07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8CBCB26EF081D00791D07 /* Top Level */,
+				A0D8CBC926EF07C000791D07 /* Abstracted Views */,
+				A0D8CBCC26EF082F00791D07 /* Devices */,
+				A0D8CBD326EF090800791D07 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A0D8CBCB26EF081D00791D07 /* Top Level */ = {
+			isa = PBXGroup;
+			children = (
+				A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */,
+				A0A04431267BF38700CC21DD /* MainTabView.swift */,
+			);
+			path = "Top Level";
+			sourceTree = "<group>";
+		};
+		A0D8CBCC26EF082F00791D07 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
+				A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */,
+				A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */,
+				A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		A0D8CBCD26EF088700791D07 /* Battery */ = {
+			isa = PBXGroup;
+			children = (
+				A01FDD3026C701360014B165 /* Battery.swift */,
+			);
+			path = Battery;
+			sourceTree = "<group>";
+		};
+		A0D8CBCE26EF089700791D07 /* FindMyPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */,
+			);
+			path = FindMyPhone;
+			sourceTree = "<group>";
+		};
+		A0D8CBCF26EF08A800791D07 /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				A01FDD2826C4F8420014B165 /* Ping.swift */,
+			);
+			path = Ping;
+			sourceTree = "<group>";
+		};
+		A0D8CBD026EF08B600791D07 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				A01FDD2C26C62E170014B165 /* Share.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		A0D8CBD126EF08C300791D07 /* Clipboard */ = {
+			isa = PBXGroup;
+			children = (
+				A0B0852E26E576950010AE9D /* Clipboard.swift */,
+			);
+			path = Clipboard;
+			sourceTree = "<group>";
+		};
+		A0D8CBD226EF08CE00791D07 /* RemoteInput */ = {
+			isa = PBXGroup;
+			children = (
+				A0D76FCB26E6B034009D9B03 /* RemoteInputView.swift */,
+				A0D76FCD26E6F562009D9B03 /* RemoteInput.swift */,
+			);
+			path = RemoteInput;
+			sourceTree = "<group>";
+		};
+		A0D8CBD326EF090800791D07 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A0A0445E267BF41B00CC21DD /* SettingsView.swift */,
+				A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */,
+				A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */,
+				A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */,
+				A0D8CBD426EF1A4700791D07 /* SettingsAdvancedView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +547,7 @@
 				A0B87281267C45F400F0EB72 /* ConnectedDevicesData.swift in Sources */,
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
+				A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */,
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0D76FCC26E6B034009D9B03 /* RemoteInputView.swift in Sources */,
@@ -641,7 +741,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/Backend/LanLink-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -668,7 +768,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/Backend/LanLink-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

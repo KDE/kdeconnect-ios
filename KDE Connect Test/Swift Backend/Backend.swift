@@ -25,7 +25,16 @@ let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewM
 let selfDeviceData: SelfDeviceData = SelfDeviceData()
 
 // Haptics provider
-let haptics = UIImpactFeedbackGenerator(style: .rigid)
+let hapticGenerators: [UIImpactFeedbackGenerator] =
+    [
+        UIImpactFeedbackGenerator(style: .light),
+        UIImpactFeedbackGenerator(style: .medium),
+        UIImpactFeedbackGenerator(style: .heavy),
+        UIImpactFeedbackGenerator(style: .soft),
+        UIImpactFeedbackGenerator(style: .rigid)
+    ]
+
+let notificationHapticsGenerator: UINotificationFeedbackGenerator = UINotificationFeedbackGenerator()
 
 // System sounds definitions, for a list of all IDs, see
 // https://github.com/TUNER88/iOSSystemSoundsLibrary

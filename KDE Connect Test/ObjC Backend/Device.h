@@ -48,6 +48,15 @@ typedef NS_ENUM(NSUInteger, DeviceType)
     Tablet=4
 };
 
+typedef NS_ENUM(NSUInteger, HapticStyle)
+{
+    light = 0,
+    medium = 1,
+    heavy = 2,
+    soft = 3,
+    rigid = 4
+};
+
 //@protocol backgroundServiceDelegate <NSObject>
 //@optional
 //-(void) onPairRequest:(NSString*)deviceId;
@@ -75,6 +84,11 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 @property(nonatomic) id _deviceDelegate;
 @property(nonatomic,assign) id _backgroundServiceDelegate;
 //@property(readonly,nonatomic) BOOL _testDevice;
+
+// Plugin-specific persistent data:
+// Remote Input
+@property(nonatomic) double _cursorSensitivity;
+@property(nonatomic) HapticStyle _hapticStyle;
 
 @property (class, readonly) BOOL supportsSecureCoding;
 

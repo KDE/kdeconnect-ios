@@ -17,6 +17,7 @@ struct SettingsView: View {
                 destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName),
                 label: {
                     HStack {
+                        Image(systemName: "iphone")
                         Text("Device Name")
                         Spacer()
                         Text(selfDeviceData.deviceName)
@@ -28,10 +29,20 @@ struct SettingsView: View {
                 destination: SettingsChosenThemeView(chosenTheme: $selfDeviceDataForSettings.chosenTheme),
                 label: {
                     HStack {
+                        Image(systemName: "lightbulb")
                         Text("App Theme")
                         Spacer()
                         Text(selfDeviceData.chosenTheme)
                             .font(.system(size: 12))
+                    }
+                })
+            
+            NavigationLink(
+                destination: SettingsAdvancedView(),
+                label: {
+                    HStack {
+                        Image(systemName: "wrench.and.screwdriver") //exclamationmark.triangle
+                        Text("Advanced Settings")
                     }
                 })
         }

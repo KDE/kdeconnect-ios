@@ -74,7 +74,7 @@ struct DevicesDetailView: View {
                     }
                     
                     Section(header: Text("Battery Status")) {
-                        if ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) {
+                        if ((backgroundService._devices[detailsDeviceId] as! Device)._type != DeviceType.Desktop) {
                             HStack {
                                 Image(systemName: ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
                                     .font(.system(size: 18))

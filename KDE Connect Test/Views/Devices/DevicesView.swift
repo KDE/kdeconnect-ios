@@ -55,7 +55,7 @@ struct DevicesView: View {
                                                 Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
                                                     .font(.system(size: 18))
                                             }
-                                            if ((backgroundService._devices[key as Any] as! Device)._type == DeviceType.Desktop) {
+                                            if ((backgroundService._devices[key as Any] as! Device)._type != DeviceType.Desktop) {
                                                 HStack {
                                                     Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
                                                         .font(.system(size: 12))
@@ -341,7 +341,7 @@ struct DevicesView: View {
     }
     
     func showPingAlertInsideView() -> Void {
-        haptics.impactOccurred(intensity: 0.8)
+        hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 0.8)
         AudioServicesPlaySystemSound(soundSMSReceived)
         if (noCurrentlyActiveAlert()) {
             showingPingAlert = true
@@ -355,7 +355,7 @@ struct DevicesView: View {
         if (noCurrentlyActiveAlert()) {
             showingFindMyPhoneAlert = true
             while (showingFindMyPhoneAlert) {
-                haptics.impactOccurred(intensity: 1.0)
+                hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 1.0)
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
                     AudioServicesPlaySystemSound(soundCalendarAlert)
                 }

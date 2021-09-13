@@ -43,6 +43,8 @@
 @synthesize _outgoingCapabilities;
 @synthesize _backgroundServiceDelegate;
 //@synthesize _testDevice;
+@synthesize _cursorSensitivity;
+@synthesize _hapticStyle;
 
 // TODO: might want to remove this before public testing
 //- (Device*) initTest
@@ -384,7 +386,8 @@
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_CLIPBOARD]) {
             [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_CLIPBOARD];
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_MOUSEPAD]) {
-            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_MOUSEPAD];
+            NSLog(@"Mousepad initiated with cursorSensitivity %f and hapticStyle %lu", _cursorSensitivity, (unsigned long)_hapticStyle);
+            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self sensitivity:_cursorSensitivity hapticStyleEnumType:_hapticStyle] forKey:PACKAGE_TYPE_MOUSEPAD];
         }
     }
     
@@ -458,6 +461,10 @@
 
 #pragma mark En/Decoding Methods
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
+    // update persistent values from the plugin objects first
+    _cursorSensitivity = [(RemoteInput *)_plugins[PACKAGE_TYPE_MOUSEPAD] sensitivity];
+    _hapticStyle = [(RemoteInput *)_plugins[PACKAGE_TYPE_MOUSEPAD] hapticStyleEnumType];
+    
     [coder encodeObject:_id forKey:@"_id"];
     [coder encodeObject:_name forKey:@"_name"];
     [coder encodeInteger:_type forKey:@"_type"];
@@ -465,6 +472,8 @@
     [coder encodeInteger:_pairStatus forKey:@"_pairStatus"];
     [coder encodeObject:_incomingCapabilities forKey:@"_incomingCapabilities"];
     [coder encodeObject:_outgoingCapabilities forKey:@"_outgoingCapabilities"];
+    [coder encodeDouble:_cursorSensitivity forKey:@"_cursorSensitivity"];
+    [coder encodeInteger:_hapticStyle forKey:@"_hapticStyle"];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
@@ -476,6 +485,8 @@
         _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
         _incomingCapabilities = [coder decodeObjectForKey:@"_incomingCapabilities"];
         _outgoingCapabilities = [coder decodeObjectForKey:@"_outgoingCapabilities"];
+        _cursorSensitivity = [coder decodeDoubleForKey:@"_cursorSensitivity"];
+        _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];
         
         // To be set later in backgroundServices
         _deviceDelegate = nil;
