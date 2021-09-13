@@ -74,11 +74,16 @@ struct DevicesDetailView: View {
                     }
                     
                     Section(header: Text("Battery Status")) {
-                        HStack {
-                            Image(systemName: ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                .font(.system(size: 18))
-                            Text("\(((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
-                                .font(.system(size: 18))
+                        if ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) {
+                            HStack {
+                                Image(systemName: ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                    .font(.system(size: 18))
+                                    .foregroundColor(((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
+                                Text("\(((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                                    .font(.system(size: 18))
+                            }
+                        } else {
+                            Text("No battery detected in device")
                         }
                     }
                     

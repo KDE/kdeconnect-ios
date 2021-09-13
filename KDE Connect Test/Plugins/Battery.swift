@@ -5,6 +5,7 @@
 //  Created by Lucas Wang on 2021-08-13.
 //
 
+import SwiftUI
 import UIKit
 
 // TODO: We might be able to do something with the background activities plugin where it sends out its battery status every once in a while??? But maybe iOS will not unfreeze the entire app for us??? I really don't know...background activity is something that we'll have to figure out later on
@@ -87,6 +88,18 @@ import UIKit
             return "battery.25"
         } else {
             return "camera.metering.unknown"
+        }
+    }
+    
+    func getSFSymbolColorFromBatteryStatus() -> Color? {
+        if (remoteThresholdEvent == 1 || remoteChargeLevel < 10) {
+            return .red
+        } else if (remoteIsCharging) {
+            return .green
+        } else if (remoteChargeLevel < 40) {
+            return .yellow
+        } else {
+            return nil
         }
     }
     

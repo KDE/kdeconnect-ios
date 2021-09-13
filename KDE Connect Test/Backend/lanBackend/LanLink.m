@@ -462,7 +462,7 @@
                     _pendingPairNP=np;
                 }
                 // If contains transferinfo, connect to remote using a new socket to transfer payload
-                if ([np _PayloadTransferInfo]) {
+                if ([np _PayloadTransferInfo] != nil) {
                     // Received request from remote to start new TLS connection/socket to receive file
                     GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
                     @synchronized(_pendingRSockets){

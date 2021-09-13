@@ -55,11 +55,16 @@ struct DevicesView: View {
                                                 Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
                                                     .font(.system(size: 18))
                                             }
-                                            HStack {
-                                                Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                                    .font(.system(size: 12))
-                                                Text("\(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
-                                                    .font(.system(size: 12))
+                                            if ((backgroundService._devices[key as Any] as! Device)._type == DeviceType.Desktop) {
+                                                HStack {
+                                                    Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                                        .font(.system(size: 12))
+                                                        .foregroundColor(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
+                                                    Text("\(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                                                        .font(.system(size: 12))
+                                                }
+                                            } else {
+                                                Text("No battery detected in device")
                                             }
                                             // TODO: Might want to add the device description as
                                             // id:desc dictionary?
