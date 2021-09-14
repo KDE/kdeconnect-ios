@@ -49,6 +49,8 @@
 		A0D76FD026E73412009D9B03 /* TwoFingerTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */; };
 		A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */; };
 		A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD426EF1A4700791D07 /* SettingsAdvancedView.swift */; };
+		A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD726F02C6700791D07 /* PresenterView.swift */; };
+		A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD926F02C7D00791D07 /* Presenter.swift */; };
 		A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */; };
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
 /* End PBXBuildFile section */
@@ -129,6 +131,8 @@
 		A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFingerTapView.swift; sourceTree = "<group>"; };
 		A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecognizerViewModifier.swift; sourceTree = "<group>"; };
 		A0D8CBD426EF1A4700791D07 /* SettingsAdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedView.swift; sourceTree = "<group>"; };
+		A0D8CBD726F02C6700791D07 /* PresenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterView.swift; sourceTree = "<group>"; };
+		A0D8CBD926F02C7D00791D07 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPacketProcessing.swift; sourceTree = "<group>"; };
 		A0FB449926BA796400733914 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +214,7 @@
 				A0D8CBCF26EF08A800791D07 /* Ping */,
 				A0D8CBD026EF08B600791D07 /* Share */,
 				A0D8CBD126EF08C300791D07 /* Clipboard */,
+				A0D8CBD626F02C2800791D07 /* Presenter */,
 				A0D8CBD226EF08CE00791D07 /* RemoteInput */,
 			);
 			path = "Plugins and Plugin Views";
@@ -394,6 +399,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		A0D8CBD626F02C2800791D07 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8CBD726F02C6700791D07 /* PresenterView.swift */,
+				A0D8CBD926F02C7D00791D07 /* Presenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -546,6 +560,7 @@
 				A0D76FCE26E6F562009D9B03 /* RemoteInput.swift in Sources */,
 				A0B87281267C45F400F0EB72 /* ConnectedDevicesData.swift in Sources */,
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
+				A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
 				A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */,
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
@@ -568,6 +583,7 @@
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
 				A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */,
 				A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */,
+				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,
 				1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */,
 				A0BECF6626C0EDD10037E299 /* BackgroundService.m in Sources */,
 			);

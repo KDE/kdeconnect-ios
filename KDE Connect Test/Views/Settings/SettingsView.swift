@@ -46,6 +46,7 @@ struct SettingsView: View {
                     }
                 })
         }
+        .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
         .navigationTitle("Settings")
     }
 }

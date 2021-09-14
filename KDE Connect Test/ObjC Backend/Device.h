@@ -85,11 +85,15 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 @property(nonatomic,assign) id _backgroundServiceDelegate;
 //@property(readonly,nonatomic) BOOL _testDevice;
 
-// Plugin-specific persistent data:
+// Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
+// data only and are therefore NOT stored persistently
 // Remote Input
-@property(nonatomic) double _cursorSensitivity;
+@property(nonatomic) float _cursorSensitivity;
 @property(nonatomic) HapticStyle _hapticStyle;
+// Presenter
+@property(nonatomic) float _pointerSensitivity;
 
+// For NSCoding
 @property (class, readonly) BOOL supportsSecureCoding;
 
 //- (Device*) initTest;

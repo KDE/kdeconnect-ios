@@ -80,7 +80,8 @@ __strong static NSString* _UUID;
                     PACKAGE_TYPE_BATTERY,
                     PACKAGE_TYPE_CLIPBOARD,
                     PACKAGE_TYPE_CLIPBOARD_CONNECT,
-                    PACKAGE_TYPE_MOUSEPAD
+                    PACKAGE_TYPE_MOUSEPAD_REQUEST,
+                    PACKAGE_TYPE_PRESENTER
                     ] forKey:@"outgoingCapabilities"];
     
     // FIXME: Remove object

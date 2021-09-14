@@ -45,14 +45,14 @@ struct DevicesDetailView: View {
                             }
                         })
                         
-//                        NavigationLink(
-//                            destination: PlaceHolderView(),
-//                            label: {
-//                                HStack {
-//                                    Image(systemName: "slider.horizontal.below.rectangle")
-//                                    Text("Slideshow remote")
-//                                }
-//                            })
+                        NavigationLink(
+                            destination: PresenterView(detailsDeviceId: detailsDeviceId),
+                            label: {
+                                HStack {
+                                    Image(systemName: "slider.horizontal.below.rectangle")
+                                    Text("Slideshow remote")
+                                }
+                            })
 //
 //                        NavigationLink(
 //                            destination: PlaceHolderView(),
