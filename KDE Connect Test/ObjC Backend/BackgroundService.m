@@ -79,6 +79,7 @@
         if (tempDic != nil) {
             for (NSString* deviceId in [tempDic allKeys]) {
                 NSData* deviceData = tempDic[deviceId];
+                [_settings setObject:deviceData forKey:deviceId];
                 NSError* error;
                 Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
                 NSLog(@"device with pair status %lu is decoded from UserDefaults as: %@ with error %@", [device _pairStatus], device, error);
@@ -117,7 +118,7 @@
     for (Device* device in [_savedDevices allValues]) {
         //Device* device=[[Device alloc] init:deviceId setDelegate:self];
         [_devices setObject:device forKey:[device _id]];
-        [_settings setObject:device forKey:[device _id]];
+        //[_settings setObject:device forKey:[device _id]];
     }
 }
 - (void) registerLinkProviders

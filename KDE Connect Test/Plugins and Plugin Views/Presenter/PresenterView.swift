@@ -14,17 +14,16 @@ struct PresenterView: View {
     
     @State private var pointerSensitivityFromSlider: Float = 3.0 // defaults to the middle
     @State private var showingSensitivitySlider: Bool = false
-    @State private var pointerIsOn: Bool = false
     
     var body: some View {
         VStack {
-            Spacer()
-                .frame(height: 20)
-            Image(systemName: (pointerIsOn) ? "flashlight.on.fill" : "flashlight.off.fill")
+//            Spacer()
+//                .frame(height: 20)
+            Image(systemName: "wand.and.rays")
                 .resizable()
-                .frame(width: 50, height: 110)
+                .frame(width: 110, height: 110)
                 .foregroundColor(.white)
-                .padding(EdgeInsets(top: 150, leading: 170, bottom: 150, trailing: 170))
+                .padding(EdgeInsets(top: 150, leading: 150, bottom: 150, trailing: 150))
                 .background(Color.orange)
                 .clipShape(Rectangle())
                 .cornerRadius(50)
@@ -32,11 +31,9 @@ struct PresenterView: View {
                     DragGesture(minimumDistance: 0)
                         .onChanged({ _ in
                             startGyroAndPointer()
-                            pointerIsOn = true
                         })
                         .onEnded({ _ in
                             stopGyroAndPointer()
-                            pointerIsOn = false
                         })
                 )
             
@@ -169,6 +166,6 @@ struct PresenterView: View {
 
 //struct PresenterView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        PresenterView()
+//        PresenterView(detailsDeviceId: "Hi")
 //    }
 //}
