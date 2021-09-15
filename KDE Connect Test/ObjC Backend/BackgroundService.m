@@ -23,16 +23,13 @@
 //#import "SettingsStore.h"
 //#import "PluginFactory.h"
 //#import "KeychainItemWrapper.h"
+//#import "Device.h"
+#import "KDE_Connect_Test-Swift.h"
 
 @interface BackgroundService()
 @property(nonatomic)NSMutableArray* _linkProviders;
-//@property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableArray* _visibleDevices;
-//@property(nonatomic)NSMutableDictionary* _settings;
 @property(nonatomic)NSMutableDictionary* _savedDevices;
-
-//@property(nonatomic)SettingsStore* _settings; // seems like all this is doing is acting as a
-//persistent version of _devices
 @end
 
 @implementation BackgroundService

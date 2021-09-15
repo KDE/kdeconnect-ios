@@ -25,17 +25,16 @@
 #import "NetworkPackage.h"
 //#import "PluginFactory.h"
 #import "common.h"
-#import "backgroundServiceDelegate.h"
-//#import "ConnectedDevicesViewModel-Swift.h"
+//#import "deviceDelegate.h"
+//#import "KDE_Connect_Test-Swift.h"
 //@class PluginFactory;
 @class BaseLink;
 @class Device;
-
-//@class ConnectedDevicesViewModel;
+@class ConnectedDevicesViewModel;
 
 @interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
 
-@property(nonatomic,assign) id _backgroundServiceDelegate;
+@property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;
 @property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableDictionary* _settings;
 
@@ -52,4 +51,5 @@
 - (void) refreshVisibleDeviceList;
 
 - (void) onNetworkChange;
+//- (void) onLinkDestroyed:(BaseLink *)link;
 @end

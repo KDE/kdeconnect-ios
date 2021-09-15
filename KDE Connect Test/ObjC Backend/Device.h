@@ -21,7 +21,9 @@
 #import <Foundation/Foundation.h>
 #import "BaseLink.h"
 #import "NetworkPackage.h"
-#import "backgroundServiceDelegate.h"
+//#import "deviceDelegate.h"
+//#import "KDE_Connect_Test-Swift.h"
+//#import "BackgroundService.h"
 @class BaseLink;
 @class NetworkPackage;
 //@protocol Plugin;
@@ -57,15 +59,7 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
     rigid = 4
 };
 
-//@protocol backgroundServiceDelegate <NSObject>
-//@optional
-//-(void) onPairRequest:(NSString*)deviceId;
-//- (void) onPairTimeout:(NSString*)deviceId;
-//- (void) onPairSuccess:(NSString*)deviceId;
-//- (void) onPairRejected:(NSString*)deviceId;
-//- (void) onDeviceListRefreshed;
-//- (void) currDeviceDetailsViewOnUnpairFromRemote;
-//@end
+@class ConnectedDevicesViewModel;
 
 @interface Device : NSObject <linkDelegate, NSSecureCoding>
 
@@ -81,8 +75,10 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 @property(nonatomic) NSMutableDictionary* _plugins;
 @property(nonatomic) NSMutableArray* _failedPlugins;
 
+// This is a generic pointer cause apperently neither the previous dev or I could figure out how to mutually import BackgroundService and Device with each other....
 @property(nonatomic) id _deviceDelegate;
-@property(nonatomic,assign) id _backgroundServiceDelegate;
+@property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;
+
 //@property(readonly,nonatomic) BOOL _testDevice;
 
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
@@ -128,7 +124,6 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 + (DeviceType)Str2Devicetype:(NSString*)str;
 @end
 
-// TODO: What is this exactly? Do we need a Swift class that confirms to this I THINK WE DO
 @protocol deviceDelegate <NSObject>
 @optional
 - (void) onDeviceReachableStatusChanged:(Device*)device;

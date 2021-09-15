@@ -19,14 +19,9 @@
 //---------------------------------------------------------------------
 
 #import "Device.h"
+//#import "BackgroundService.h"
 #import "KDE_Connect_Test-Swift.h"
 #define PAIR_TIMMER_TIMEOUT  10.0
-
-//@interface Device()
-//@property(nonatomic) NSMutableArray* _links;
-//@property(nonatomic) NSMutableDictionary* _plugins;
-//@property(nonatomic) NSMutableArray* _failedPlugins;
-//@end
 
 @implementation Device
 
@@ -345,7 +340,7 @@
     NSLog(@"device unpair");
     _pairStatus=NotPaired;
     [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[self _id]];
-    [_backgroundServiceDelegate removeDeviceFromArrays:[self _id]];
+    [_backgroundServiceDelegate removeDeviceFromArraysWithDeviceId:[self _id]];
     // How do we use same protocol from
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_PAIR];
     [np setBool:false forKey:@"pair"];

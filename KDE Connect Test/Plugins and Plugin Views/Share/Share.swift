@@ -13,6 +13,11 @@ import AVFoundation
     let MIN_PAYLOAD_PORT: Int = 1739
     let MAX_PAYLOAD_PORT: Int = 1764
     
+    // Receiving
+    var totalNumOfFilesToReceive: Int = 0
+    var numFilesReceived: Int = 0
+    
+    // Sending
     var isVacant: Bool = true
     var fileDatas: [Data] = []
     var fileNames: [String] = []
@@ -29,11 +34,20 @@ import AVFoundation
         print("Share plugin received something")
         if (np._Type == PACKAGE_TYPE_SHARE) {
             print("Share Plugin received a valid Share package")
+            if (numFilesReceived == 0) {
+                totalNumOfFilesToReceive = np.integer(forKey: "numberOfFiles")
+            }
             if (saveFile(fileData: np._Payload, filename: np._Body["filename"] as! String)) {
-                connectedDevicesViewModel.showFileReceivedAlert()
+                //connectedDevicesViewModel.showFileReceivedAlert()
                 print("File \(np._Body["filename"] as! String) saved successfully")
+                numFilesReceived += 1
             } else {
                 print("File \(np._Body["filename"] as! String) failed to save")
+            }
+            if (numFilesReceived == totalNumOfFilesToReceive) {
+                AudioServicesPlaySystemSound(soundMailReceived)
+                numFilesReceived = 0
+                totalNumOfFilesToReceive = 0
             }
             return true
         }
@@ -97,9 +111,10 @@ import AVFoundation
             fileNames.removeFirst()
             fileLastModifiedEpochs.removeFirst()
             numFilesSuccessfullySent += 1
-            AudioServicesPlaySystemSound(soundMailSent)
+            //AudioServicesPlaySystemSound(soundMailSent)
         } else {
             print("Finished sending a batch of \(totalNumOfFiles) files")
+            AudioServicesPlaySystemSound(soundMailSent)
             isVacant = true
             resetTransferData()
         }

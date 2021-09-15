@@ -7,7 +7,7 @@
 
 import UIKit
 
-@objc class ConnectedDevicesViewModel : NSObject, backgroundServiceDelegate {
+@objc class ConnectedDevicesViewModel : NSObject {
     var devicesView: DevicesView? = nil
     var currDeviceDetailsView: DevicesDetailView? = nil
     
@@ -17,24 +17,24 @@ import UIKit
     
     var lastLocalClipboardUpdateTimestamp: Int = 0
         
-    func onPairRequest(_ deviceId: String!) -> Void {
+    @objc func onPairRequest(_ deviceId: String!) -> Void {
         devicesView!.onPairRequestInsideView(deviceId)
     }
     
-    func onPairTimeout(_ deviceId: String!) -> Void{
+    @objc func onPairTimeout(_ deviceId: String!) -> Void{
         devicesView!.onPairTimeoutInsideView(deviceId)
     }
     
-    func onPairSuccess(_ deviceId: String!) -> Void {
+    @objc func onPairSuccess(_ deviceId: String!) -> Void {
         devicesView!.onPairSuccessInsideView(deviceId)
     }
     
-    func onPairRejected(_ deviceId: String!) -> Void {
+    @objc func onPairRejected(_ deviceId: String!) -> Void {
         devicesView!.onPairRejectedInsideView(deviceId)
     }
     
     // Recalculate AND rerender the lists
-    func onDeviceListRefreshed() -> Void {
+    @objc func onDeviceListRefreshed() -> Void {
         let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
         connectedDevices = devicesListsMap?["connected"] as! [String : String]
         visibleDevices = devicesListsMap?["visible"] as! [String : String]
@@ -43,21 +43,21 @@ import UIKit
     }
     
     // Refresh Discovery, Recalculate AND rerender the lists
-    func refreshDiscoveryAndListInsideView() -> Void {
+    @objc func refreshDiscoveryAndListInsideView() -> Void {
         devicesView!.refreshDiscoveryAndList()
     }
     
-    func reRenderDeviceView() -> Void {
+    @objc func reRenderDeviceView() -> Void {
         devicesView!.batteryUpdate.toggle()
     }
     
-    func reRenderCurrDeviceDetailsView(deviceId: String) -> Void {
+    @objc func reRenderCurrDeviceDetailsView(deviceId: String) -> Void {
         if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
             connectedDevicesViewModel.currDeviceDetailsView!.batteryUpdate.toggle()
         }
     }
     
-    func unpair(fromBackgroundServiceInstance deviceId: String) -> Void {
+    @objc func unpair(fromBackgroundServiceInstance deviceId: String) -> Void {
         backgroundService.unpairDevice(deviceId)
     }
     
@@ -65,7 +65,7 @@ import UIKit
         backgroundService.unpairDevice(deviceId)
     }
     
-    func currDeviceDetailsViewDisconnected(fromRemote deviceId: String!) -> Void {
+    @objc func currDeviceDetailsViewDisconnected(fromRemote deviceId: String!) -> Void {
         //backgroundService.unpairDevice(deviceId)
         if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
             currDeviceDetailsView!.isStilConnected = false
@@ -77,7 +77,7 @@ import UIKit
         //onDeviceListRefreshed()
     }
     
-    func removeDeviceFromArrays(deviceId: String) -> Void {
+    @objc func removeDeviceFromArrays(deviceId: String) -> Void {
         //backgroundService._devices.removeObject(forKey: deviceId)
         backgroundService._settings.removeObject(forKey: deviceId)
         UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
@@ -93,15 +93,15 @@ import UIKit
         }
     }
     
-    func showPingAlert() -> Void {
+    @objc func showPingAlert() -> Void {
         devicesView!.showPingAlertInsideView()
     }
     
-    func showFindMyPhoneAlert() -> Void {
+    @objc func showFindMyPhoneAlert() -> Void {
         devicesView!.showFindMyPhoneAlertInsideView()
     }
     
-    func showFileReceivedAlert() -> Void {
+    @objc func showFileReceivedAlert() -> Void {
         devicesView!.showFileReceivedAlertInsideView()
     }
     

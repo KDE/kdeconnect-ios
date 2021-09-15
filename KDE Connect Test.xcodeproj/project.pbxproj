@@ -90,7 +90,7 @@
 		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		1499A8E92698C48300FDF493 /* rsaPrivate.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsaPrivate.p12; sourceTree = "<group>"; };
-		A01FDD2226C3A5560014B165 /* backgroundServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = backgroundServiceDelegate.h; sourceTree = "<group>"; };
+		A01FDD2226C3A5560014B165 /* deviceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = deviceDelegate.h; sourceTree = "<group>"; };
 		A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		A01FDD2626C4F6D50014B165 /* PluginsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsService.swift; sourceTree = "<group>"; };
 		A01FDD2826C4F8420014B165 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
@@ -199,8 +199,8 @@
 				1499A8DF2698BF6900FDF493 /* NetworkPackage.h */,
 				1499A8E02698BF6900FDF493 /* NetworkPackage.m */,
 				A0BECF6426C0ED890037E299 /* BackgroundService.h */,
-				A01FDD2226C3A5560014B165 /* backgroundServiceDelegate.h */,
 				A0BECF6526C0EDD10037E299 /* BackgroundService.m */,
+				A01FDD2226C3A5560014B165 /* deviceDelegate.h */,
 			);
 			path = "ObjC Backend";
 			sourceTree = "<group>";
@@ -216,6 +216,7 @@
 				A0D8CBD126EF08C300791D07 /* Clipboard */,
 				A0D8CBD626F02C2800791D07 /* Presenter */,
 				A0D8CBD226EF08CE00791D07 /* RemoteInput */,
+				A0D8CBDB26F13A2A00791D07 /* RunCommand */,
 			);
 			path = "Plugins and Plugin Views";
 			sourceTree = "<group>";
@@ -406,6 +407,13 @@
 				A0D8CBD926F02C7D00791D07 /* Presenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A0D8CBDB26F13A2A00791D07 /* RunCommand */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RunCommand;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
