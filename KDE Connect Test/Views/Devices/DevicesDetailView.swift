@@ -27,7 +27,7 @@ struct DevicesDetailView: View {
             VStack {
                 List {
                     Section(header: Text("Actions")) {
-                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
+                        if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
                             Button(action: {
                                 showingFilePicker = true
                             }, label: {
@@ -38,7 +38,7 @@ struct DevicesDetailView: View {
                             })
                         }
                         
-                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
+                        if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
                             Button(action: {
                                 ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
                             }, label: {
@@ -49,7 +49,7 @@ struct DevicesDetailView: View {
                             })
                         }
                         
-                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {
+                        if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {
                             NavigationLink(
                                 destination: PresenterView(detailsDeviceId: detailsDeviceId),
                                 label: {
@@ -70,7 +70,7 @@ struct DevicesDetailView: View {
 //                            })
 //
                         
-                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
+                        if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
                             NavigationLink(
                                 destination: RunCommandView(detailsDeviceId: self.detailsDeviceId),
                                 label: {
@@ -81,7 +81,7 @@ struct DevicesDetailView: View {
                                 })
                         }
                         
-                        if (((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! Bool)) {
+                        if (((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! Bool)) {
                             NavigationLink(
                                 destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
                                 label: {
@@ -109,12 +109,12 @@ struct DevicesDetailView: View {
                         }
                     }
                     
-                    //            Section(header: Text("Debug section")) {
-                    //                Text("Chosen file URLs:")
-                    //                ForEach(chosenFileURLs, id: \.self) { url in
-                    //                    Text(url.absoluteString)
-                    //                }
-                    //            }
+                                Section(header: Text("Debug section")) {
+                                    Text("Chosen file URLs:")
+                                    ForEach(chosenFileURLs, id: \.self) { url in
+                                        Text(url.absoluteString)
+                                    }
+                                }
                     
                 }
                 .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
@@ -131,7 +131,7 @@ struct DevicesDetailView: View {
             .navigationTitle((backgroundService._devices[detailsDeviceId] as! Device)._name)
             .navigationBarItems(trailing: {
                 Menu {
-                    if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PING] as! Bool) {
+                    if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PING] as! Bool) {
                         Button(action: {
                             //print(backgroundService._devices[detailsDeviceId as Any] as! Device)
                             //print((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping)
@@ -144,9 +144,9 @@ struct DevicesDetailView: View {
                         })
                     }
                     
-                    if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! Bool) {
+                    if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! Bool) {
                         Button(action: {
-                            ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugin[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! FindMyPhone).sendFindMyPhoneRequest()
+                            ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! FindMyPhone).sendFindMyPhoneRequest()
                         }, label: {
                             HStack {
                                 Text("Ring Device")
