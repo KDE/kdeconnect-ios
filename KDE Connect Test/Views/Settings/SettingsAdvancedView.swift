@@ -22,6 +22,7 @@ struct SettingsAdvancedView: View {
                 })
             }
         }
+        .navigationTitle("Advanced Settings")
     }
 }
 

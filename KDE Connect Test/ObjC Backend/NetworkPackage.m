@@ -70,7 +70,8 @@ __strong static NSString* _UUID;
                     PACKAGE_TYPE_BATTERY_REQUEST,
                     PACKAGE_TYPE_BATTERY,
                     PACKAGE_TYPE_CLIPBOARD,
-                    PACKAGE_TYPE_CLIPBOARD_CONNECT
+                    PACKAGE_TYPE_CLIPBOARD_CONNECT,
+                    PACKAGE_TYPE_RUNCOMMAND
                     ] forKey:@"incomingCapabilities"];
     [np setObject:@[PACKAGE_TYPE_PING,
                     PACKAGE_TYPE_SHARE,
@@ -81,7 +82,8 @@ __strong static NSString* _UUID;
                     PACKAGE_TYPE_CLIPBOARD,
                     PACKAGE_TYPE_CLIPBOARD_CONNECT,
                     PACKAGE_TYPE_MOUSEPAD_REQUEST,
-                    PACKAGE_TYPE_PRESENTER
+                    PACKAGE_TYPE_PRESENTER,
+                    PACKAGE_TYPE_RUNCOMMAND_REQUEST
                     ] forKey:@"outgoingCapabilities"];
     
     // FIXME: Remove object

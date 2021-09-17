@@ -27,32 +27,38 @@ struct DevicesDetailView: View {
             VStack {
                 List {
                     Section(header: Text("Actions")) {
-                        Button(action: {
-                            showingFilePicker = true
-                        }, label: {
-                            HStack {
-                                Image(systemName: "folder")
-                                Text("Send files")
-                            }
-                        })
-                        
-                        Button(action: {
-                            ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
-                        }, label: {
-                            HStack {
-                                Image(systemName: "square.and.arrow.up.on.square.fill")
-                                Text("Push Local Clipboard")
-                            }
-                        })
-                        
-                        NavigationLink(
-                            destination: PresenterView(detailsDeviceId: detailsDeviceId),
-                            label: {
+                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
+                            Button(action: {
+                                showingFilePicker = true
+                            }, label: {
                                 HStack {
-                                    Image(systemName: "slider.horizontal.below.rectangle")
-                                    Text("Slideshow remote")
+                                    Image(systemName: "folder")
+                                    Text("Send files")
                                 }
                             })
+                        }
+                        
+                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
+                            Button(action: {
+                                ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "square.and.arrow.up.on.square.fill")
+                                    Text("Push Local Clipboard")
+                                }
+                            })
+                        }
+                        
+                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {
+                            NavigationLink(
+                                destination: PresenterView(detailsDeviceId: detailsDeviceId),
+                                label: {
+                                    HStack {
+                                        Image(systemName: "slider.horizontal.below.rectangle")
+                                        Text("Slideshow remote")
+                                    }
+                                })
+                        }
 //
 //                        NavigationLink(
 //                            destination: PlaceHolderView(),
@@ -63,18 +69,34 @@ struct DevicesDetailView: View {
 //                                }
 //                            })
 //
-                        NavigationLink(
-                            destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
-                            label: {
-                                HStack {
-                                    Image(systemName: "hand.tap")
-                                    Text("Remote input")
-                                }
-                            })
+                        
+                        if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
+                            NavigationLink(
+                                destination: RunCommandView(detailsDeviceId: self.detailsDeviceId),
+                                label: {
+                                    HStack {
+                                        Image(systemName: "terminal")
+                                        Text("Run Command")
+                                    }
+                                })
+                        }
+                        
+                        if (((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! Bool)) {
+                            NavigationLink(
+                                destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
+                                label: {
+                                    HStack {
+                                        Image(systemName: "hand.tap")
+                                        Text("Remote input")
+                                    }
+                                })
+                        }
                     }
                     
                     Section(header: Text("Battery Status")) {
-                        if ((backgroundService._devices[detailsDeviceId] as! Device)._type != DeviceType.Desktop) {
+                        if (!((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                            Text("Battery Plugin Disabled")
+                        } else if ((backgroundService._devices[detailsDeviceId] as! Device)._type != DeviceType.Desktop) {
                             HStack {
                                 Image(systemName: ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
                                     .font(.system(size: 18))
@@ -109,25 +131,29 @@ struct DevicesDetailView: View {
             .navigationTitle((backgroundService._devices[detailsDeviceId] as! Device)._name)
             .navigationBarItems(trailing: {
                 Menu {
-                    Button(action: {
-                        //print(backgroundService._devices[detailsDeviceId as Any] as! Device)
-                        //print((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping)
-                        ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping).sendPing()
-                    }, label: {
-                        HStack {
-                            Text("Send Ping")
-                            Image(systemName: "megaphone")
-                        }
-                    })
+                    if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PING] as! Bool) {
+                        Button(action: {
+                            //print(backgroundService._devices[detailsDeviceId as Any] as! Device)
+                            //print((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping)
+                            ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_PING] as! Ping).sendPing()
+                        }, label: {
+                            HStack {
+                                Text("Send Ping")
+                                Image(systemName: "megaphone")
+                            }
+                        })
+                    }
                     
-                    Button(action: {
-                        // ring
-                    }, label: {
-                        HStack {
-                            Text("Ring Device")
-                            Image(systemName: "bell")
-                        }
-                    })
+                    if ((backgroundService._devices[detailsDeviceId as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! Bool) {
+                        Button(action: {
+                            ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugin[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! FindMyPhone).sendFindMyPhoneRequest()
+                        }, label: {
+                            HStack {
+                                Text("Ring Device")
+                                Image(systemName: "bell")
+                            }
+                        })
+                    }
                     
                     Button(action: {
                         showingPluginSettingsView = true
@@ -194,6 +220,9 @@ struct DevicesDetailView: View {
                 (backgroundService._devices[detailsDeviceId] as! Device)._backgroundServiceDelegate = connectedDevicesViewModel
                 //print((backgroundService._devices[detailsDeviceId] as! Device)._plugins as Any)
                 //print((backgroundService._devices[detailsDeviceId] as! Device)._incomingCapabilities as Any)
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
+                    ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).requestCommandList()
+                }
             }
         } else {
             VStack {

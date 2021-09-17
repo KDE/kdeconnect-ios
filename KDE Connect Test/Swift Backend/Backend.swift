@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 import CoreMotion
-// A place to house functions and variables for global usage by the rest of the app
+// A place to house miscellaneous functions and variables for global usage by the rest of the app
 
 // Background Service provider, bridged from Obj-C codebase
 let backgroundService: BackgroundService = BackgroundService()
@@ -71,6 +71,18 @@ func getSFSymbolNameFromDeviceType(deviceType: DeviceType) -> String {
         case .Tablet: return "apps.ipad.landscape"
         default: return "questionmark.square.dashed"
     }
+}
+
+// Given a JSON String, returns a dictionary converted from the JSON String
+func JSONStringtoDictionary(json: String) -> [String: String]? {
+    if let jsonData = json.data(using: .utf8) {
+        do {
+            return try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String : String]
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    return nil
 }
 
 // Uniform Key inputs

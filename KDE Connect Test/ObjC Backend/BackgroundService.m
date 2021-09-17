@@ -76,7 +76,7 @@
         if (tempDic != nil) {
             for (NSString* deviceId in [tempDic allKeys]) {
                 NSData* deviceData = tempDic[deviceId];
-                [_settings setObject:deviceData forKey:deviceId];
+                [_settings setObject:deviceData forKey:deviceId]; // do this here since Settings holds exclusively encoded Data, NOT Device objects, otherwise will throw "non-property list" error upon trying to save to UserDefaults
                 NSError* error;
                 Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
                 NSLog(@"device with pair status %lu is decoded from UserDefaults as: %@ with error %@", [device _pairStatus], device, error);

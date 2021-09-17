@@ -44,6 +44,9 @@
 		A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */; };
 		A0BECF6626C0EDD10037E299 /* BackgroundService.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BECF6526C0EDD10037E299 /* BackgroundService.m */; };
 		A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BECF6726C195240037E299 /* ConnectedDevicesViewModel.swift */; };
+		A0CA112126F3C7ED006F6EAC /* RunCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA112026F3C7ED006F6EAC /* RunCommandView.swift */; };
+		A0CA112326F3C7F7006F6EAC /* RunCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA112226F3C7F7006F6EAC /* RunCommand.swift */; };
+		A0CA112526F3CF66006F6EAC /* CommandEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA112426F3CF66006F6EAC /* CommandEntry.swift */; };
 		A0D76FCC26E6B034009D9B03 /* RemoteInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FCB26E6B034009D9B03 /* RemoteInputView.swift */; };
 		A0D76FCE26E6F562009D9B03 /* RemoteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FCD26E6F562009D9B03 /* RemoteInput.swift */; };
 		A0D76FD026E73412009D9B03 /* TwoFingerTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */; };
@@ -126,6 +129,9 @@
 		A0BECF6426C0ED890037E299 /* BackgroundService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundService.h; sourceTree = "<group>"; };
 		A0BECF6526C0EDD10037E299 /* BackgroundService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundService.m; sourceTree = "<group>"; };
 		A0BECF6726C195240037E299 /* ConnectedDevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDevicesViewModel.swift; sourceTree = "<group>"; };
+		A0CA112026F3C7ED006F6EAC /* RunCommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCommandView.swift; sourceTree = "<group>"; };
+		A0CA112226F3C7F7006F6EAC /* RunCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCommand.swift; sourceTree = "<group>"; };
+		A0CA112426F3CF66006F6EAC /* CommandEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandEntry.swift; sourceTree = "<group>"; };
 		A0D76FCB26E6B034009D9B03 /* RemoteInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteInputView.swift; sourceTree = "<group>"; };
 		A0D76FCD26E6F562009D9B03 /* RemoteInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteInput.swift; sourceTree = "<group>"; };
 		A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFingerTapView.swift; sourceTree = "<group>"; };
@@ -412,6 +418,9 @@
 		A0D8CBDB26F13A2A00791D07 /* RunCommand */ = {
 			isa = PBXGroup;
 			children = (
+				A0CA112426F3CF66006F6EAC /* CommandEntry.swift */,
+				A0CA112026F3C7ED006F6EAC /* RunCommandView.swift */,
+				A0CA112226F3C7F7006F6EAC /* RunCommand.swift */,
 			);
 			path = RunCommand;
 			sourceTree = "<group>";
@@ -569,6 +578,7 @@
 				A0B87281267C45F400F0EB72 /* ConnectedDevicesData.swift in Sources */,
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
 				A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */,
+				A0CA112126F3C7ED006F6EAC /* RunCommandView.swift in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
 				A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */,
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
@@ -589,6 +599,8 @@
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
 				A0D76FD026E73412009D9B03 /* TwoFingerTapView.swift in Sources */,
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
+				A0CA112326F3C7F7006F6EAC /* RunCommand.swift in Sources */,
+				A0CA112526F3CF66006F6EAC /* CommandEntry.swift in Sources */,
 				A0B8727B267BFBAA00F0EB72 /* SettingsListCellView.swift in Sources */,
 				A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */,
 				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,

@@ -81,6 +81,9 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 
 //@property(readonly,nonatomic) BOOL _testDevice;
 
+// Plugin enable status
+@property(nonatomic) NSMutableDictionary* _pluginsEnableStatus;
+
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
 // data only and are therefore NOT stored persistently
 // Remote Input

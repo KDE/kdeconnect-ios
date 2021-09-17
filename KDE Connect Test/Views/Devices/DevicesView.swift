@@ -39,7 +39,7 @@ struct DevicesView: View {
                     } else {
                         ForEach(connectedDevicesIds, id: \.self) { key in
                             NavigationLink(
-                                // TODO: How do we know what to pass to the details view?
+                                // How do we know what to pass to the details view?
                                 // Use the "key" from ForEach aka device ID to get it from
                                 // backgroundService's _devices dictionary for the value (Device class objects)
                                 destination: DevicesDetailView(detailsDeviceId: key),
@@ -55,7 +55,9 @@ struct DevicesView: View {
                                                 Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
                                                     .font(.system(size: 18))
                                             }
-                                            if ((backgroundService._devices[key as Any] as! Device)._type != DeviceType.Desktop) {
+                                            if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                                                Text("Battery Plugin Disabled")
+                                            } else if ((backgroundService._devices[key as Any] as! Device)._type != DeviceType.Desktop) {
                                                 HStack {
                                                     Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
                                                         .font(.system(size: 12))

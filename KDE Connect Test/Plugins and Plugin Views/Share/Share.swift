@@ -41,8 +41,10 @@ import AVFoundation
                 //connectedDevicesViewModel.showFileReceivedAlert()
                 print("File \(np._Body["filename"] as! String) saved successfully")
                 numFilesReceived += 1
+                notificationHapticsGenerator.notificationOccurred(.success)
             } else {
                 print("File \(np._Body["filename"] as! String) failed to save")
+                notificationHapticsGenerator.notificationOccurred(.error)
             }
             if (numFilesReceived == totalNumOfFilesToReceive) {
                 AudioServicesPlaySystemSound(soundMailReceived)
@@ -112,6 +114,7 @@ import AVFoundation
             fileLastModifiedEpochs.removeFirst()
             numFilesSuccessfullySent += 1
             //AudioServicesPlaySystemSound(soundMailSent)
+            notificationHapticsGenerator.notificationOccurred(.success)
         } else {
             print("Finished sending a batch of \(totalNumOfFiles) files")
             AudioServicesPlaySystemSound(soundMailSent)

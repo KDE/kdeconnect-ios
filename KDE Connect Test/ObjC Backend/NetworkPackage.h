@@ -51,11 +51,15 @@
 #define PACKAGE_TYPE_ENCRYPTED                  @"kdeconnect.encrypted"
 #define PACKAGE_TYPE_PAIR                       @"kdeconnect.pair"
 #define PACKAGE_TYPE_PING                       @"kdeconnect.ping"
+
 #define PACKAGE_TYPE_MPRIS                      @"kdeconnect.mpris"
+
 #define PACKAGE_TYPE_SHARE                      @"kdeconnect.share.request"
 #define PACKAGE_TYPE_SHARE_INTERNAL             @"kdeconnect.share"
+
 #define PACKAGE_TYPE_CLIPBOARD                  @"kdeconnect.clipboard"
 #define PACKAGE_TYPE_CLIPBOARD_CONNECT          @"kdeconnect.clipboard.connect"
+
 #define PACKAGE_TYPE_BATTERY                    @"kdeconnect.battery"
 #define PACKAGE_TYPE_CALENDAR                   @"kdeconnect.calendar"
 // #define PACKAGE_TYPE_REMINDER           @"kdeconnect.reminder"
@@ -69,6 +73,9 @@
 #define PACKAGE_TYPE_MOUSEPAD_ECHO              @"kdeconnect.mousepad.echo"
 
 #define PACKAGE_TYPE_PRESENTER                  @"kdeconnect.presenter"
+
+#define PACKAGE_TYPE_RUNCOMMAND_REQUEST         @"kdeconnect.runcommand.request"
+#define PACKAGE_TYPE_RUNCOMMAND                 @"kdeconnect.runcommand"
 
 #pragma mark -
 
