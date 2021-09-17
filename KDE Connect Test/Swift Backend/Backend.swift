@@ -85,6 +85,19 @@ func JSONStringtoDictionary(json: String) -> [String: String]? {
     return nil
 }
 
+// Given th deviceId, saves/overwrites the device object from _device into _settings by encoding it and then into UserDefaults
+func saveDeviceToUserDefaults(deviceId: String) {
+    let deviceData: Data?
+    do {
+         deviceData = try NSKeyedArchiver.archivedData(withRootObject: (backgroundService._devices[deviceId] as! Device), requiringSecureCoding: true)
+    } catch {
+        print(error.localizedDescription)
+        return
+    }
+    backgroundService._settings.setValue(deviceData, forKey: (backgroundService._devices[deviceId] as! Device)._id)
+    UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
+}
+
 // Uniform Key inputs
 
 // KeyEvent is NOT a part of any iOS API, it's a custom enum

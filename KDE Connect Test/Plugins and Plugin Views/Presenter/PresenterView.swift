@@ -23,7 +23,7 @@ struct PresenterView: View {
                 .resizable()
                 .frame(width: 110, height: 110)
                 .foregroundColor(.white)
-                .padding(EdgeInsets(top: 150, leading: 150, bottom: 150, trailing: 150))
+                .padding(EdgeInsets(top: 130, leading: 130, bottom: 130, trailing: 130))
                 .background(Color.orange)
                 .clipShape(Rectangle())
                 .cornerRadius(50)
@@ -75,6 +75,7 @@ struct PresenterView: View {
                             onEditingChanged: { editing in
                                 if (!editing) {
                                     hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred()
+                                    saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                                 }
                             }
                         )
@@ -129,7 +130,7 @@ struct PresenterView: View {
     }
     
     func startGyroAndPointer() -> Void {
-        hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
+        //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
         motionManager.startGyroUpdates(to: .main) { (data, error) in
             if (data != nil) {
                 ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPointerPosition(Dx: Float(data!.rotationRate.x) * pointerSensitivityFromSlider, Dy: Float(data!.rotationRate.y) * pointerSensitivityFromSlider)
@@ -138,7 +139,7 @@ struct PresenterView: View {
     }
     
     func stopGyroAndPointer() -> Void {
-        hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
+        //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
         ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendStopPointer()
         motionManager.stopGyroUpdates()
     }

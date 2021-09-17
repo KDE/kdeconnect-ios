@@ -55,7 +55,7 @@ struct RemoteInputView: View {
                 VStack {
                     Image(systemName: "rectangle.portrait.arrowtriangle.2.outward")
                         .resizable()
-                        .frame(width: 100, height: 120)
+                        .frame(width: 110, height: 120)
                         //.scaledToFit()
                         .gesture(
                             DragGesture()
@@ -95,6 +95,7 @@ struct RemoteInputView: View {
                             onEditingChanged: { editing in
                                 if (!editing) {
                                     hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred()
+                                    saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                                 }
                             }
                         )
@@ -122,6 +123,7 @@ struct RemoteInputView: View {
                     .onChange(of: hapticSettingsSegmentPickerIndex, perform: { value in
                         hapticGenerators[value].impactOccurred()
                         (backgroundService._devices[detailsDeviceId] as! Device)._hapticStyle = HapticStyle(rawValue: UInt(value))! // ?? HapticStyle.medium
+                        saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                     })
                     Text("On-Click Haptic Style")
                 }

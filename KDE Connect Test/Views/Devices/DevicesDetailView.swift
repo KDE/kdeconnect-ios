@@ -20,24 +20,13 @@ struct DevicesDetailView: View {
     @State var chosenFileURLs: [URL] = []
     
     // TODO: Maybe use a state to directly change the Battery % instead of doing this hacky thing?
-    @State var batteryUpdate: Bool = false
+    @State var viewUpdate: Bool = false
     
     var body: some View {
         if (isStilConnected) {
             VStack {
                 List {
                     Section(header: Text("Actions")) {
-                        if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
-                            Button(action: {
-                                showingFilePicker = true
-                            }, label: {
-                                HStack {
-                                    Image(systemName: "folder")
-                                    Text("Send files")
-                                }
-                            })
-                        }
-                        
                         if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
                             Button(action: {
                                 ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
@@ -45,6 +34,17 @@ struct DevicesDetailView: View {
                                 HStack {
                                     Image(systemName: "square.and.arrow.up.on.square.fill")
                                     Text("Push Local Clipboard")
+                                }
+                            })
+                        }
+                        
+                        if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
+                            Button(action: {
+                                showingFilePicker = true
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "folder")
+                                    Text("Send files")
                                 }
                             })
                         }
@@ -109,12 +109,12 @@ struct DevicesDetailView: View {
                         }
                     }
                     
-                                Section(header: Text("Debug section")) {
-                                    Text("Chosen file URLs:")
-                                    ForEach(chosenFileURLs, id: \.self) { url in
-                                        Text(url.absoluteString)
-                                    }
-                                }
+//                    Section(header: Text("Debug section")) {
+//                        Text("Chosen file URLs:")
+//                        ForEach(chosenFileURLs, id: \.self) { url in
+//                            Text(url.absoluteString)
+//                        }
+//                    }
                     
                 }
                 .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
@@ -123,9 +123,32 @@ struct DevicesDetailView: View {
                     EmptyView()
                 }
                 
-                // This is an invisible view using changes in batteryUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
-                Text(batteryUpdate ? "True" : "False")
+                // This is an invisible view using changes in viewUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
+                Text(viewUpdate ? "True" : "False")
                     .opacity(0)
+                
+                Text("")
+                    .alert(isPresented: $showingEncryptionInfo) {
+                        Alert(title: Text("Encryption Info"), message:
+                                Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
+                              , dismissButton: .default(Text("OK")))
+                    }
+                
+                Text("")
+                    .alert(isPresented: $showingUnpairConfirmationAlert) {
+                        Alert(title: Text("Unpair With Device?"),
+                              message: Text("Unpair with \((backgroundService._devices[detailsDeviceId] as! Device)._name)?"),
+                              primaryButton: .cancel(Text("No, Stay Paired")),
+                              secondaryButton: .destructive(
+                                Text("Yes, Unpair")
+                              ) {
+                                backgroundService.unpairDevice(detailsDeviceId)
+                                isStilConnected = false
+                                //                        backgroundService.refreshDiscovery()
+                                //                        connectedDevicesViewModel.onDeviceListRefreshed()
+                              }
+                        )
+                    }
                 
             }
             .navigationTitle((backgroundService._devices[detailsDeviceId] as! Device)._name)
@@ -186,25 +209,6 @@ struct DevicesDetailView: View {
                     Image(systemName: "ellipsis.circle")
                 }
             }())
-            .alert(isPresented: $showingEncryptionInfo) {
-                Alert(title: Text("Encryption Info"), message:
-                        Text("SHA256 fingerprint of your device certificate is:\ndfdsfsfsdfsdfsdfsdf\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
-                      , dismissButton: .default(Text("OK")))
-            }
-            .alert(isPresented: $showingUnpairConfirmationAlert) {
-                Alert(title: Text("Unpair With Device?"),
-                      message: Text("Unpair with \((backgroundService._devices[detailsDeviceId] as! Device)._name)?"),
-                      primaryButton: .cancel(Text("No, Stay Paired")),
-                      secondaryButton: .destructive(
-                        Text("Yes, Unpair")
-                      ) {
-                        backgroundService.unpairDevice(detailsDeviceId)
-                        isStilConnected = false
-//                        backgroundService.refreshDiscovery()
-//                        connectedDevicesViewModel.onDeviceListRefreshed()
-                      }
-                )
-            }
             .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
                 do {
                     chosenFileURLs = try result.get()

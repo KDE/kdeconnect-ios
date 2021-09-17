@@ -78,7 +78,7 @@
         _links=[NSMutableArray arrayWithCapacity:1];
         _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
         _failedPlugins=[NSMutableArray arrayWithCapacity:1];
-        _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithObjects:@[PACKAGE_TYPE_PING, PACKAGE_TYPE_SHARE, PACKAGE_TYPE_FINDMYPHONE_REQUEST, PACKAGE_TYPE_BATTERY_REQUEST, PACKAGE_TYPE_CLIPBOARD, PACKAGE_TYPE_RUNCOMMAND, PACKAGE_TYPE_PRESENTER, PACKAGE_TYPE_MOUSEPAD_REQUEST] forKeys:@[@TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE]];
+        _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithObjects:@[@TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE] forKeys:@[PACKAGE_TYPE_PING, PACKAGE_TYPE_SHARE, PACKAGE_TYPE_FINDMYPHONE_REQUEST, PACKAGE_TYPE_BATTERY_REQUEST, PACKAGE_TYPE_CLIPBOARD, PACKAGE_TYPE_RUNCOMMAND, PACKAGE_TYPE_PRESENTER, PACKAGE_TYPE_MOUSEPAD_REQUEST]];
         _cursorSensitivity = 3.0;
         _hapticStyle = 0;
         _pointerSensitivity = 3.0;
@@ -99,7 +99,7 @@
         _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
         _failedPlugins=[NSMutableArray arrayWithCapacity:1];
         _protocolVersion=[np integerForKey:@"protocolVersion"];
-        _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithObjects:@[PACKAGE_TYPE_PING, PACKAGE_TYPE_SHARE, PACKAGE_TYPE_FINDMYPHONE_REQUEST, PACKAGE_TYPE_BATTERY_REQUEST, PACKAGE_TYPE_CLIPBOARD, PACKAGE_TYPE_RUNCOMMAND, PACKAGE_TYPE_PRESENTER, PACKAGE_TYPE_MOUSEPAD_REQUEST] forKeys:@[@TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE]];
+        _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithObjects:@[@TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE] forKeys:@[PACKAGE_TYPE_PING, PACKAGE_TYPE_SHARE, PACKAGE_TYPE_FINDMYPHONE_REQUEST, PACKAGE_TYPE_BATTERY_REQUEST, PACKAGE_TYPE_CLIPBOARD, PACKAGE_TYPE_RUNCOMMAND, PACKAGE_TYPE_PRESENTER, PACKAGE_TYPE_MOUSEPAD_REQUEST]];
         _deviceDelegate=deviceDelegate;
         _cursorSensitivity = 3.0;
         _hapticStyle = 0;

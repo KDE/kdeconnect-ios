@@ -391,6 +391,12 @@
 
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
+    NSLog(@"Trust is %@", trust);
+    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
+    
+    
+    
+    
     completionHandler(YES);
 
     NSLog(@"Receive Certificate, Trust it");

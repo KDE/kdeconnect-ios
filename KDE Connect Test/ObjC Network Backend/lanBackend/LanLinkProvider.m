@@ -647,6 +647,10 @@
 // trust contains the remote device's cert
 - (BOOL)socket:(GCDAsyncSocket *)sock shouldTrustPeer:(SecTrustRef)trust
 {
+    NSLog(@"Trust is %@", trust);
+    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
+    //NSLog(@"Trust SecTrustCopyKey is %@", SecTrust(trust));
+
     NSLog(@"Trust Certificate from %@ LanLinkProvider", [sock connectedHost]);
     // return YES if we want to trust, return NO if we don't write logic here to determine what to return
     return YES;
@@ -680,6 +684,11 @@
 // trust contains the remote device's cert
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
+    NSLog(@"Trust is %@", trust);
+    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
+    
+    
+    
     completionHandler(YES);// give YES if we want to trust, NO if we don't
 
     NSLog(@"Receive Certificate, Trust it LanLinkProvider");

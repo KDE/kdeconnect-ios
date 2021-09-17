@@ -26,7 +26,7 @@ struct DevicesView: View {
     
     @State private var showingConfigureDevicesByIPView: Bool = false
     
-    @State var batteryUpdate: Bool = false
+    @State var viewUpdate: Bool = false
     
     //@ObservedObject var localNotificationService = LocalNotificationService()
     
@@ -57,6 +57,7 @@ struct DevicesView: View {
                                             }
                                             if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
                                                 Text("Battery Plugin Disabled")
+                                                    .font(.system(size: 12))
                                             } else if ((backgroundService._devices[key as Any] as! Device)._type != DeviceType.Desktop) {
                                                 HStack {
                                                     Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
@@ -67,6 +68,7 @@ struct DevicesView: View {
                                                 }
                                             } else {
                                                 Text("No battery detected in device")
+                                                    .font(.system(size: 12))
                                             }
                                             // TODO: Might want to add the device description as
                                             // id:desc dictionary?
@@ -157,8 +159,8 @@ struct DevicesView: View {
                 EmptyView()
             }
             
-            // This is an invisible view using changes in batteryUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
-            Text(batteryUpdate ? "True" : "False")
+            // This is an invisible view using changes in viewUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
+            Text(viewUpdate ? "True" : "False")
                 .opacity(0)
             
             Text("")

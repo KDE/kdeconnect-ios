@@ -5,6 +5,7 @@
 //  Created by Lucas Wang on 2021-08-09.
 //
 
+import SwiftUI
 import UIKit
 
 @objc class ConnectedDevicesViewModel : NSObject {
@@ -48,12 +49,14 @@ import UIKit
     }
     
     @objc func reRenderDeviceView() -> Void {
-        devicesView!.batteryUpdate.toggle()
+        devicesView!.viewUpdate.toggle()
     }
     
     @objc func reRenderCurrDeviceDetailsView(deviceId: String) -> Void {
         if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
-            connectedDevicesViewModel.currDeviceDetailsView!.batteryUpdate.toggle()
+            withAnimation {
+                connectedDevicesViewModel.currDeviceDetailsView!.viewUpdate.toggle()
+            }
         }
     }
     
@@ -75,6 +78,7 @@ import UIKit
         //}
         // MARK: Is this still needed since DeviceView() will refresh it anyways?
         //onDeviceListRefreshed()
+        devicesView!.refreshDiscoveryAndList()
     }
     
     @objc func removeDeviceFromArrays(deviceId: String) -> Void {
