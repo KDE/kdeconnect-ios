@@ -37,6 +37,9 @@ class SelfDeviceData: ObservableObject {
     }
 }
 
+// The host's SHA256 hash, calculated upon launch so we don't have to calculated it every single time
+var hostSHA256Hash: String = "ERROR"
+
 // Dictionary for app theme management
 let appThemes: [String : ColorScheme] = ["Light":.light, "Dark":.dark]
 

@@ -35,7 +35,7 @@ struct DevicesView: View {
             List {
                 Section(header: Text("Connected Devices")) {
                     if (connectedDevicesIds.isEmpty) {
-                        Text("No devices currently connected.\nConnected devices will appear here.")
+                        Text("No devices currently connected.\nConnected devices will appear here. Please Refresh Discovery if a saved device is already online but not shown here.")
                     } else {
                         ForEach(connectedDevicesIds, id: \.self) { key in
                             NavigationLink(
@@ -47,28 +47,28 @@ struct DevicesView: View {
                                     HStack {
                                         Image(systemName: "wifi")
                                             .foregroundColor(.green)
-                                            .font(.system(size: 21))
+                                            .font(.system(size: 23))
                                         VStack(alignment: .leading) {
                                             HStack {
                                                 Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
-                                                    .font(.system(size: 18, weight: .bold))
+                                                    .font(.system(size: 19, weight: .bold))
                                                 Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                    .font(.system(size: 18))
+                                                    .font(.system(size: 19))
                                             }
-                                            if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                                            if ((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) {
+                                                Text("No battery detected in device")
+                                                    .font(.system(size: 13))
+                                            } else if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
                                                 Text("Battery Plugin Disabled")
-                                                    .font(.system(size: 12))
-                                            } else if ((backgroundService._devices[key as Any] as! Device)._type != DeviceType.Desktop) {
+                                                    .font(.system(size: 13))
+                                            } else {
                                                 HStack {
                                                     Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                                        .font(.system(size: 12))
+                                                        .font(.system(size: 13))
                                                         .foregroundColor(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
                                                     Text("\(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
-                                                        .font(.system(size: 12))
+                                                        .font(.system(size: 13))
                                                 }
-                                            } else {
-                                                Text("No battery detected in device")
-                                                    .font(.system(size: 12))
                                             }
                                             // TODO: Might want to add the device description as
                                             // id:desc dictionary?
@@ -92,13 +92,13 @@ struct DevicesView: View {
                                 HStack {
                                     Image(systemName: "badge.plus.radiowaves.right")
                                         .foregroundColor(.blue)
-                                        .font(.system(size: 21))
+                                        .font(.system(size: 23))
                                     VStack(alignment: .leading) {
                                         HStack {
                                             Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
-                                                .font(.system(size: 18, weight: .bold))
+                                                .font(.system(size: 19, weight: .bold))
                                             Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                .font(.system(size: 18))
+                                                .font(.system(size: 19))
                                         }
                                         Text("Tap to start pairing")
                                             .font(.system(size: 15))
@@ -122,13 +122,13 @@ struct DevicesView: View {
                                 HStack {
                                     Image(systemName: "wifi.slash")
                                         .foregroundColor(.red)
-                                        .font(.system(size: 21))
+                                        .font(.system(size: 23))
                                     VStack(alignment: .leading) {
                                         HStack {
                                             Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
-                                                .font(.system(size: 18, weight: .bold))
+                                                .font(.system(size: 19, weight: .bold))
                                             Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                .font(.system(size: 18))
+                                                .font(.system(size: 19))
                                         }
                                         // TODO: Might want to add the device description as
                                         // id:desc dictionary?
@@ -141,6 +141,7 @@ struct DevicesView: View {
                     }
                 }
             }
+            .environment(\.defaultMinListRowHeight, 60) // TODO: make this dynamic with GeometryReader???
             .alert(isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
                 Alert(title: Text("Incoming Pairing Request"),
                       message: Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device"),

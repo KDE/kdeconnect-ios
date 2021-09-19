@@ -124,20 +124,27 @@
 - (void) generateSecIdentity
 {
     // Force remove the old identity, otherwise the new identity cannot be stored
-    NSDictionary *spec = @{(__bridge id)kSecClass: (id)kSecClassIdentity};
-    SecItemDelete((__bridge CFDictionaryRef)spec);
+//    NSDictionary *spec = @{(__bridge id)kSecClass: (id)kSecClassIdentity};
+//    SecItemDelete((__bridge CFDictionaryRef)spec);
+    NSLog(@"Host keychain deleted with status %i", [KeychainOperations deleteHostCertificateFromKeychain]);
 
     // generate private key
     EVP_PKEY * pkey;
     pkey = EVP_PKEY_new();
-
-    RSA * rsa;
-    rsa = RSA_generate_key(
-            2048,   /* number of bits for the key - 2048 is a sensible value */
-            RSA_F4, /* exponent - RSA_F4 is defined as 0x10001L */
-            NULL,   /* callback - can be NULL if we aren't displaying progress */
-            NULL    /* callback argument - not needed in this case */
-    );
+    
+    RSA * rsa = RSA_new();
+    BIGNUM* bignum_exponent = BN_new();
+    BN_set_word(bignum_exponent, (unsigned long) RSA_F4);
+    RSA_generate_key_ex(rsa, 2048, bignum_exponent, NULL);
+    
+    // This is deprecated, replaced with the function above
+//    rsa = RSA_generate_key(
+//            2048,   /* number of bits for the key - 2048 is a sensible value */
+//            RSA_F4, /* exponent - RSA_F4 is defined as 0x10001L */
+//            NULL,   /* callback - can be NULL if we aren't displaying progress */
+//            NULL    /* callback argument - not needed in this case */
+//    );
+    
     EVP_PKEY_assign_RSA(pkey, rsa);
 
     // generate cert
@@ -519,7 +526,6 @@
  * Called when a socket has completed reading the requested data into memory.
  * Not called if there is an error.
  **/
-// MARK: Should we do something here for receiving file transfers????
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
     NSLog(@"lp tcp socket didReadData");
@@ -657,12 +663,12 @@
 // trust contains the remote device's cert
 - (BOOL)socket:(GCDAsyncSocket *)sock shouldTrustPeer:(SecTrustRef)trust
 {
-    NSLog(@"Trust is %@", trust);
-    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
-    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
-    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
-    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
-    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
+//    NSLog(@"Trust is %@", trust);
+//    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
+//    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
+//    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
+//    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
+//    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
     
 //    NSData* localSavedDeviceCertData = nil; // get it from storage or keychain
 //    NSInteger numOfCerts = SecTrustGetCertificateCount(trust);
@@ -674,9 +680,9 @@
 //            return YES;
 //        }
 //    }
-    // return YES if we want to trust, return NO if we don't write logic here to determine what to return
-    //return NO;
-    NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
+//  return YES if we want to trust, return NO if we don't write logic here to determine what to return
+//    return NO;
+//    NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
     return YES;
 }
 

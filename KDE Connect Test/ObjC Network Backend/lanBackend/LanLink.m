@@ -168,7 +168,6 @@
  * By default the new socket will have the same delegate and delegateQueue.
  * You may, of course, change this at any time.
  **/
-// FIXME: Add our cert into myCerts
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
     NSLog(@"Lanlink: didAcceptNewSocket");

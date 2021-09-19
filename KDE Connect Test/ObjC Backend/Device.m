@@ -78,7 +78,7 @@
         _links=[NSMutableArray arrayWithCapacity:1];
         _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
         _failedPlugins=[NSMutableArray arrayWithCapacity:1];
-        _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithObjects:@[@TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE] forKeys:@[PACKAGE_TYPE_PING, PACKAGE_TYPE_SHARE, PACKAGE_TYPE_FINDMYPHONE_REQUEST, PACKAGE_TYPE_BATTERY_REQUEST, PACKAGE_TYPE_CLIPBOARD, PACKAGE_TYPE_RUNCOMMAND, PACKAGE_TYPE_PRESENTER, PACKAGE_TYPE_MOUSEPAD_REQUEST]];
+        _pluginsEnableStatus = [NSMutableDictionary dictionary];
         _cursorSensitivity = 3.0;
         _hapticStyle = 0;
         _pointerSensitivity = 3.0;
@@ -99,7 +99,7 @@
         _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
         _failedPlugins=[NSMutableArray arrayWithCapacity:1];
         _protocolVersion=[np integerForKey:@"protocolVersion"];
-        _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithObjects:@[@TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE, @TRUE] forKeys:@[PACKAGE_TYPE_PING, PACKAGE_TYPE_SHARE, PACKAGE_TYPE_FINDMYPHONE_REQUEST, PACKAGE_TYPE_BATTERY_REQUEST, PACKAGE_TYPE_CLIPBOARD, PACKAGE_TYPE_RUNCOMMAND, PACKAGE_TYPE_PRESENTER, PACKAGE_TYPE_MOUSEPAD_REQUEST]];
+        _pluginsEnableStatus = [NSMutableDictionary dictionary];
         _deviceDelegate=deviceDelegate;
         _cursorSensitivity = 3.0;
         _hapticStyle = 0;
@@ -137,7 +137,7 @@
             [_deviceDelegate onDeviceReachableStatusChanged:self];
         }
         // If device is just online with its first link, ask for its battery status
-        if (_pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST]) {
+        if ((_pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (_pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST])) {
             [[_plugins objectForKey:PACKAGE_TYPE_BATTERY] sendBatteryStatusRequest];
         }
     }
@@ -383,26 +383,33 @@
     NSLog(@"device reload plugins");
     [_plugins removeAllObjects];
     [_failedPlugins removeAllObjects];
+    [_pluginsEnableStatus removeAllObjects];
+    
     for (NSString* pluginID in _incomingCapabilities) {
         if ([pluginID isEqualToString:PACKAGE_TYPE_PING]) {
             [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_PING];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_PING];
             
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_SHARE]) {
             [_plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_SHARE];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_SHARE];
             
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_FINDMYPHONE_REQUEST]) {
             [_plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_FINDMYPHONE_REQUEST];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_FINDMYPHONE_REQUEST];
             
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_BATTERY_REQUEST]) {
             [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_BATTERY_REQUEST];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_BATTERY_REQUEST];
             
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_CLIPBOARD]) {
             [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_CLIPBOARD];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_CLIPBOARD];
+            
         } else if ([pluginID isEqualToString:PACKAGE_TYPE_MOUSEPAD_REQUEST]) {
-            //NSLog(@"Mousepad initiated with cursorSensitivity %f and hapticStyle %lu", _cursorSensitivity, (unsigned long)_hapticStyle);
             [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_MOUSEPAD_REQUEST];
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_RUNCOMMAND]) {
-            [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_RUNCOMMAND];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_MOUSEPAD_REQUEST];
+            
         }
     }
     
@@ -410,6 +417,12 @@
     for (NSString* pluginID in _outgoingCapabilities) {
         if ([pluginID isEqualToString:PACKAGE_TYPE_PRESENTER]) {
             [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_PRESENTER];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_PRESENTER];
+            
+        } else if ([pluginID isEqualToString:PACKAGE_TYPE_RUNCOMMAND]) { // check DL360's id packet to  see if this is indeed the case
+            [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_RUNCOMMAND];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_RUNCOMMAND];
+            
         }
     }
     

@@ -49,7 +49,9 @@ import UIKit
     }
     
     @objc func reRenderDeviceView() -> Void {
-        devicesView!.viewUpdate.toggle()
+        withAnimation { // do we want animation for battery updates on DeviceView()?
+            devicesView!.viewUpdate.toggle()
+        }
     }
     
     @objc func reRenderCurrDeviceDetailsView(deviceId: String) -> Void {
