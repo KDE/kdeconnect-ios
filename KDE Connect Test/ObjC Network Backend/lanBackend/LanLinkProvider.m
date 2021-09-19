@@ -90,51 +90,27 @@
 {
     BOOL needGenerateCertificate = NO;
 
-    NSString *resourcePath = NULL;
-    
-#ifdef DEBUG
-    resourcePath = [[NSBundle mainBundle] pathForResource:@"rsaPrivate" ofType:@"p12"];
-#else
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    for (NSString *directory in documentDirectories) {
-        NSLog(@"Find %@", directory);
-        resourcePath = [directory stringByAppendingString:@"/rsaPrivate.p12"];
-    }
-#endif
-
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (resourcePath != NULL && [fileManager fileExistsAtPath:resourcePath]) {
-        NSData *p12Data = [NSData dataWithContentsOfFile:resourcePath];
-
-        NSMutableDictionary * options = [[NSMutableDictionary alloc] init];
-        [options setObject:@"" forKey:(id)kSecImportExportPassphrase];  // No password
-
-        CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
-        OSStatus securityError = SecPKCS12Import((CFDataRef) p12Data,
-                                                 (CFDictionaryRef)options, &items);
-        SecIdentityRef identityApp;
-        if (securityError == noErr && CFArrayGetCount(items) > 0) {
-            SecKeyRef privateKeyRef = NULL;
-            CFDictionaryRef identityDict = CFArrayGetValueAtIndex(items, 0);
-
-            identityApp = (SecIdentityRef)CFDictionaryGetValue(identityDict,
-                                                               kSecImportItemIdentity);
-
-            securityError = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
-            if (securityError != noErr) {
-                // Fail to retrieve private key from the .p12 file
-                needGenerateCertificate = YES;
-            } else {
-                _identity = identityApp;
-                NSLog(@"Certificate loaded successfully from %@", resourcePath);
-            }
-        } else {
-            // Not valid component in the .p12 file
-            needGenerateCertificate = YES;
-        }
-    } else {
-        // No .p12 file
+    NSDictionary *getQuery = @{
+        (id)kSecClass:      (id)kSecClassIdentity,
+        (id)kSecAttrLabel:  (id)[NetworkPackage getUUID],
+        (id)kSecReturnRef:  @YES,
+    };
+    SecIdentityRef identityApp = NULL;
+    OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)getQuery,
+                                          (CFTypeRef *)&identityApp);
+    if (status != errSecSuccess) {
         needGenerateCertificate = YES;
+    } else {
+        // Validate private key
+        SecKeyRef privateKeyRef = NULL;
+        status = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
+        if (status != noErr) {
+            // Fail to retrieve private key from the .p12 file
+            needGenerateCertificate = YES;
+        } else {
+            _identity = identityApp;
+            NSLog(@"Certificate loaded successfully");
+        }
     }
     
     if (needGenerateCertificate) {
@@ -147,6 +123,10 @@
 
 - (void) generateSecIdentity
 {
+    // Force remove the old identity, otherwise the new identity cannot be stored
+    NSDictionary *spec = @{(__bridge id)kSecClass: (id)kSecClassIdentity};
+    SecItemDelete((__bridge CFDictionaryRef)spec);
+
     // generate private key
     EVP_PKEY * pkey;
     pkey = EVP_PKEY_new();
@@ -206,13 +186,10 @@
         @throw [[NSException alloc] initWithName:@"Fail getP12File" reason:@"Error creating PKCS#12 structure" userInfo:nil];
     }
 
-    // write into `Documents/rsaPrivate.p12`
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    // write into `tmp/rsaPrivate.p12`
+    NSString *tempDictionary = NSTemporaryDirectory();
     NSString *p12FilePath = NULL;
-    for (NSString *directory in documentDirectories) {
-        NSLog(@"Find %@", directory);
-        p12FilePath = [directory stringByAppendingString:@"/rsaPrivate.p12"];
-    }
+    p12FilePath = [tempDictionary stringByAppendingString:@"/rsaPrivate.p12"];
     if (![[NSFileManager defaultManager] createFileAtPath:p12FilePath contents:nil attributes:nil])
     {
         NSLog(@"Error creating file for P12");
@@ -227,6 +204,39 @@
     PKCS12_free(p12);
     fclose(p12File);
     [outputFileHandle closeFile];
+    
+    // Read as NSData
+    NSData *p12Data = [NSData dataWithContentsOfFile:p12FilePath];
+    
+    NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
+    [options setObject:@"" forKey:(id)kSecImportExportPassphrase];  // No password
+
+    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
+    OSStatus securityError = SecPKCS12Import((CFDataRef) p12Data,
+                                             (CFDictionaryRef)options, &items);
+    SecIdentityRef identityApp;
+    if (securityError == noErr && CFArrayGetCount(items) > 0) {
+        CFDictionaryRef identityDict = CFArrayGetValueAtIndex(items, 0);
+
+        identityApp = (SecIdentityRef)CFDictionaryGetValue(identityDict,
+                                                           kSecImportItemIdentity);
+
+        NSDictionary* addQuery = @{
+            (id)kSecValueRef:   (__bridge id)identityApp,
+            // Do not use the sec class when adding, adding an identity will add key, cert and the identity
+            // (id)kSecClass:      (id)kSecClassIdentity,
+            (id)kSecAttrLabel:  (id)[NetworkPackage getUUID],
+        };
+        OSStatus status = SecItemAdd((__bridge CFDictionaryRef)addQuery, NULL);
+        if (status != errSecSuccess) {
+            // Handle the error
+            NSLog(@"Error");
+        }
+    }
+    // TODO: Add some error info
+    
+    // Delete the temp file
+    [[NSFileManager defaultManager] removeItemAtPath:p12FilePath error:nil];
 }
 
 - (void) generateAndLoadSecIdentity
