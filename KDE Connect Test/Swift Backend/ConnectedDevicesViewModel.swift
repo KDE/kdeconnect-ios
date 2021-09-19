@@ -69,15 +69,9 @@ import UIKit
     }
     
     @objc func currDeviceDetailsViewDisconnected(fromRemote deviceId: String!) -> Void {
-        //backgroundService.unpairDevice(deviceId)
         if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
             currDeviceDetailsView!.isStilConnected = false
-            //onDeviceListRefreshed() // This automatically goes back to DeviceView after unpair is complete
-        } //else if (currDeviceDetailsView == nil && devicesView!.currPairingDeviceId != nil) {
-            //onDeviceListRefreshed()
-        //}
-        // MARK: Is this still needed since DeviceView() will refresh it anyways?
-        //onDeviceListRefreshed()
+        }
         devicesView!.refreshDiscoveryAndList()
     }
     

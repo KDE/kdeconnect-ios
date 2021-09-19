@@ -649,10 +649,24 @@
 {
     NSLog(@"Trust is %@", trust);
     NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
-    //NSLog(@"Trust SecTrustCopyKey is %@", SecTrust(trust));
-
-    NSLog(@"Trust Certificate from %@ LanLinkProvider", [sock connectedHost]);
+    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
+    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
+    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
+    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
+    
+//    NSData* localSavedDeviceCertData = nil; // get it from storage or keychain
+//    NSInteger numOfCerts = SecTrustGetCertificateCount(trust);
+//    for (NSInteger i = 0; i < numOfCerts; i++) {
+//        SecCertificateRef secCertRef = SecTrustGetCertificateAtIndex(trust, i);
+//        NSData* certData = CFBridgingRelease(SecCertificateCopyData(secCertRef));
+//        if ([localSavedDeviceCertData isEqualToData:certData]) {
+//            NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
+//            return YES;
+//        }
+//    }
     // return YES if we want to trust, return NO if we don't write logic here to determine what to return
+    //return NO;
+    NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
     return YES;
 }
 
@@ -686,12 +700,14 @@
 {
     NSLog(@"Trust is %@", trust);
     NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
+    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
+    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
+    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
+    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
     
     
-    
+    NSLog(@"LanLinkProvider's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
     completionHandler(YES);// give YES if we want to trust, NO if we don't
-
-    NSLog(@"Receive Certificate, Trust it LanLinkProvider");
 }
 
 

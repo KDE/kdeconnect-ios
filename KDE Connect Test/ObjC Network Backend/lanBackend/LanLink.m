@@ -389,17 +389,21 @@
     }
 }
 
+// This gets called when the device comes online, not sure about the other 2 in LanLinkProvider
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
     NSLog(@"Trust is %@", trust);
     NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
+    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
+    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
+    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
+    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
+    CFArrayRef* array = NULL;
+    NSLog(@"Trust SecTrustCopyPolicies is %d", (int)SecTrustCopyPolicies(trust, array));
+    //NSLog(@"Policies are: %@", *array);
     
-    
-    
-    
+    NSLog(@"LanLink's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
     completionHandler(YES);
-
-    NSLog(@"Receive Certificate, Trust it");
 }
 
 - (void)sendPayloadWithSocket:(GCDAsyncSocket *)sock
