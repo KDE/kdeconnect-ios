@@ -11,8 +11,8 @@ import AVFoundation
 import CoreMotion
 // A place to house miscellaneous functions and variables for global usage by the rest of the app
 
-// Background Service provider, bridged from Obj-C codebase
-let backgroundService: BackgroundService = BackgroundService()
+// Certificate Service provider, to be usef for all certificate and Keychain operations
+let certificateService: CertificateService = CertificateService()
 
 // ViewModel object for devices-related functionalities
 // TODO: Should this be kept global or local to DevicesView()? Reference might break if this is
@@ -24,6 +24,9 @@ let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewM
 
 // Global ObservableObject to be Observed by needed structs for app-wide information
 let selfDeviceData: SelfDeviceData = SelfDeviceData()
+
+// Background Service provider, bridged from Obj-C codebase
+let backgroundService: BackgroundService = BackgroundService(connectedDeviceViewModel: connectedDevicesViewModel, certificateService: certificateService)
 
 // Haptics provider
 let hapticGenerators: [UIImpactFeedbackGenerator] =

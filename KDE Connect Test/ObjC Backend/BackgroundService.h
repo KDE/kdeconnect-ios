@@ -31,10 +31,11 @@
 @class BaseLink;
 @class Device;
 @class ConnectedDevicesViewModel;
+@class CertificateService;
 
 @interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
 
-@property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;
+- (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService;
 @property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableDictionary* _settings;
 

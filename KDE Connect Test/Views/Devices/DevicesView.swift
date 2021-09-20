@@ -286,9 +286,9 @@ struct DevicesView: View {
             if (connectedDevicesViewModel.devicesView == nil) {
                 connectedDevicesViewModel.devicesView = self
             }
-            if (backgroundService._backgroundServiceDelegate == nil) {
-                backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
-            }
+//            if (backgroundService._backgroundServiceDelegate == nil) {
+//                backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
+//            }
             // MARK: If refreshDiscoveryAndList() is here, the device will go into "Remembered" for some reason and then immediately go back, but with an empty _plugins dictionary
             //refreshDiscoveryAndList()
             connectedDevicesViewModel.onDeviceListRefreshed()

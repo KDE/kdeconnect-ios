@@ -30,11 +30,14 @@
 @property(nonatomic)NSMutableArray* _linkProviders;
 @property(nonatomic)NSMutableArray* _visibleDevices;
 @property(nonatomic)NSMutableDictionary* _savedDevices;
+@property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;
+@property(nonatomic,assign) CertificateService* _certificateService;
 @end
 
 @implementation BackgroundService
 
 @synthesize _backgroundServiceDelegate;
+@synthesize _certificateService;
 @synthesize _devices;
 @synthesize _linkProviders;
 @synthesize _visibleDevices;
@@ -59,7 +62,7 @@
     return self;
 }
 
-- (id) init
+- (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService
 {
     if ((self=[super init])) {
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
@@ -72,6 +75,9 @@
         _settings=[NSMutableDictionary dictionaryWithCapacity:1];
         _savedDevices = [NSMutableDictionary dictionary];
        //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
+        
+        _backgroundServiceDelegate = connectedDeviceViewModel;
+        _certificateService = certificateService;
         
         NSDictionary* tempDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];
         if (tempDic != nil) {
@@ -123,7 +129,7 @@
 {
     NSLog(@"bg register linkproviders");
     // TO-DO: read setting for linkProvider registeration
-    LanLinkProvider* linkProvider=[[LanLinkProvider alloc] initWithDelegate:self];
+    LanLinkProvider* linkProvider=[[LanLinkProvider alloc] initWithDelegate:self certificateService:_certificateService];
     [_linkProviders addObject:linkProvider];
 }
 

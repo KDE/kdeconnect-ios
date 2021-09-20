@@ -130,7 +130,7 @@ struct DevicesDetailView: View {
                 Text("")
                     .alert(isPresented: $showingEncryptionInfo) {
                         Alert(title: Text("Encryption Info"), message:
-                            Text("SHA256 fingerprint of your device certificate is:\n\(hostSHA256Hash)\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
+                                Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
                               , dismissButton: .default(Text("OK")))
                     }
                 
@@ -219,7 +219,7 @@ struct DevicesDetailView: View {
             }
             .onAppear() {
                 connectedDevicesViewModel.currDeviceDetailsView = self
-                (backgroundService._devices[detailsDeviceId] as! Device)._backgroundServiceDelegate = connectedDevicesViewModel
+//                (backgroundService._devices[detailsDeviceId] as! Device)._backgroundServiceDelegate = connectedDevicesViewModel
                 //print((backgroundService._devices[detailsDeviceId] as! Device)._plugins as Any)
                 //print((backgroundService._devices[detailsDeviceId] as! Device)._incomingCapabilities as Any)
                 if (((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] != nil) && (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {

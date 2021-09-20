@@ -26,10 +26,11 @@
 @class LanLinkProvider;
 @class BaseLink;
 @class Device;
+@class CertificateService;
 
 @interface LanLink : BaseLink <GCDAsyncSocketDelegate>
 
-- (LanLink*) init:(GCDAsyncSocket*)socket deviceId:(NSString*) deviceid setDelegate:(id)linkDelegate;
+- (LanLink*) init:(GCDAsyncSocket*)socket deviceId:(NSString*) deviceid setDelegate:(id)linkDelegate certificateService:(CertificateService*)certificateService;
 - (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag;
 - (void) disconnect;
 @end

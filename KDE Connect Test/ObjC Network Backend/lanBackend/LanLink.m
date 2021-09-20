@@ -19,6 +19,7 @@
 //----------------------------------------------------------------------
 
 #import "LanLink.h"
+#import "KDE_Connect_Test-Swift.h"
 
 #define PAYLOAD_PORT 1739
 #define PAYLOAD_SEND_DELAY 0 //ns
@@ -37,6 +38,7 @@
 @property(nonatomic) NSMutableArray* _pendingPayloads;
 @property(nonatomic) SecIdentityRef _identity;
 @property(nonatomic) GCDAsyncSocket* _fileServerSocket;
+@property(nonatomic,assign) CertificateService* _certificateService;
 
 @end
 
@@ -52,8 +54,9 @@
 @synthesize _socket;
 @synthesize _identity;
 @synthesize _fileServerSocket;
+@synthesize _certificateService;
 
-- (LanLink*) init:(GCDAsyncSocket*)socket deviceId:(NSString*) deviceid setDelegate:(id)linkdelegate
+- (LanLink*) init:(GCDAsyncSocket*)socket deviceId:(NSString*) deviceid setDelegate:(id)linkdelegate certificateService:(CertificateService*)certificateService
 {
     if ([super init:deviceid setDelegate:linkdelegate])
     {
@@ -73,7 +76,8 @@
         _pendingPayloads=[NSMutableArray arrayWithCapacity:1];
         _payloadPort=PAYLOAD_PORT;
         _socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.payload_socketQueue", NULL);
-
+    
+        _certificateService = certificateService;
         [self loadSecIdentity];
     }
     return self;
@@ -358,21 +362,25 @@
     }
 }
 
-// This gets called when the device comes online, not sure about the other 2 in LanLinkProvider
+// This gets called when a saved device comes back online, AND when initially pairing
+// So we need to deal with 2 possilibities here:
+
+// TODO: when shouldTrustPeer gets called, there are 2 possibilties:
+// 1. If device is new/never been paired before, just trust it
+// 2. If device's been paired before, check for the already stored certificate to check whether
+// its signature matches that of the device trying to connect
+
+// Remember, this is LanLink, so _deviceId is the id of the REMOTE device, we can use this to perform look-ups!!!!!
+
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
-    NSLog(@"Trust is %@", trust);
-    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
-    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
-    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
-    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
-    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
-    CFArrayRef* array = NULL;
-    NSLog(@"Trust SecTrustCopyPolicies is %d", (int)SecTrustCopyPolicies(trust, array));
-    //NSLog(@"Policies are: %@", *array);
-    
-    NSLog(@"LanLink's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
-    completionHandler(YES);
+    if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithDeviceIDWithTrust:trust deviceId:_deviceId]) {
+        NSLog(@"LanLink's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
+        completionHandler(YES);
+    } else {
+        completionHandler(NO);
+    }
+//    completionHandler(YES);
 }
 
 - (void)sendPayloadWithSocket:(GCDAsyncSocket *)sock

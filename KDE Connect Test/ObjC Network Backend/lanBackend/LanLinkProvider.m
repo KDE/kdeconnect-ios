@@ -49,6 +49,7 @@
 @property(nonatomic) SecCertificateRef _certificate;
 //@property(nonatomic) NSString * _certificateRequestPEM;
 @property(nonatomic) SecIdentityRef _identity;
+@property(nonatomic,assign) CertificateService* _certificateService;
 @end
 
 @implementation LanLinkProvider
@@ -62,8 +63,9 @@
 @synthesize _certificate;
 //@synthesize _certificateRequestPEM;
 @synthesize _identity;
+@synthesize _certificateService;
 
-- (LanLinkProvider*) initWithDelegate:(id)linkProviderDelegate
+- (LanLinkProvider*) initWithDelegate:(id)linkProviderDelegate certificateService:(CertificateService*)certificateService
 {
     if ([super initWithDelegate:linkProviderDelegate])
     {
@@ -79,6 +81,7 @@
         socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.socketqueue", NULL);
         
         // Load private key and certificate
+        _certificateService = certificateService;
         _identity = NULL;
         [self loadSecIdentity];
     }
@@ -111,6 +114,7 @@
             _identity = identityApp;
             NSLog(@"Certificate loaded successfully");
         }
+        CFRelease(privateKeyRef);
     }
     
     if (needGenerateCertificate) {
@@ -118,6 +122,8 @@
         NSLog(@"Need generate certificate");
         [self generateAndLoadSecIdentity];
     }
+    
+    //CFRelease(identityApp); // Releasing this causes crash!!!
 }
 
 
@@ -126,7 +132,7 @@
     // Force remove the old identity, otherwise the new identity cannot be stored
 //    NSDictionary *spec = @{(__bridge id)kSecClass: (id)kSecClassIdentity};
 //    SecItemDelete((__bridge CFDictionaryRef)spec);
-    NSLog(@"Host keychain deleted with status %i", [KeychainOperations deleteHostCertificateFromKeychain]);
+    NSLog(@"Host keychain deleted with status %i", [_certificateService deleteHostCertificateFromKeychain]);
 
     // generate private key
     EVP_PKEY * pkey;
@@ -239,11 +245,17 @@
             // Handle the error
             NSLog(@"Error");
         }
+        // Release finished CF Objects
+        CFRelease(identityDict);
     }
     // TODO: Add some error info
     
     // Delete the temp file
     [[NSFileManager defaultManager] removeItemAtPath:p12FilePath error:nil];
+    
+    // Release finished CF Objects
+    CFRelease(items);
+    //CFRelease(identityApp); // Releasing this causes crash!!!
 }
 
 - (void) generateAndLoadSecIdentity
@@ -512,7 +524,7 @@
         oldlink=[_connectedLinks objectForKey:deviceId];
     }
     
-    LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil];
+    LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil certificateService:_certificateService];
     [_pendingSockets removeObject:sock];
     [_pendingNps removeObject:np];
     [_connectedLinks setObject:link forKey:[np objectForKey:@"deviceId"]];
@@ -578,7 +590,7 @@
                 oldlink=[_connectedLinks objectForKey:deviceId];
             }
             //create LanLink and inform the background
-            LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil];
+            LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil certificateService:_certificateService];
             [_connectedLinks setObject:link forKey:[np objectForKey:@"deviceId"]];
             if (_linkProviderDelegate) {
                 [_linkProviderDelegate onConnectionReceived:np link:link];
@@ -655,35 +667,15 @@
     return YES;
 }
 
-// TODO: when shouldTrustPeer gets called, there are 2 possibilties:
-// 1. If device is new/never been paired before, just trust it
-// 2. If device's been paired before, check for the already stored certificate to check whether
-// its signature matches that of the device trying to connect
-
-// trust contains the remote device's cert
+// This doesn't actually get called anywhere, not sure what it does
 - (BOOL)socket:(GCDAsyncSocket *)sock shouldTrustPeer:(SecTrustRef)trust
 {
-//    NSLog(@"Trust is %@", trust);
-//    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
-//    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
-//    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
-//    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
-//    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
-    
-//    NSData* localSavedDeviceCertData = nil; // get it from storage or keychain
-//    NSInteger numOfCerts = SecTrustGetCertificateCount(trust);
-//    for (NSInteger i = 0; i < numOfCerts; i++) {
-//        SecCertificateRef secCertRef = SecTrustGetCertificateAtIndex(trust, i);
-//        NSData* certData = CFBridgingRelease(SecCertificateCopyData(secCertRef));
-//        if ([localSavedDeviceCertData isEqualToData:certData]) {
-//            NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
-//            return YES;
-//        }
-//    }
-//  return YES if we want to trust, return NO if we don't write logic here to determine what to return
-//    return NO;
-//    NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
-    return YES;
+    if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
+        NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 // After securing, create a LanLink for further communications
@@ -701,29 +693,20 @@
 //    }
     //create LanLink and inform the background
     NetworkPackage* pendingNP = [_pendingNps objectAtIndex:pendingSocketIndex];
-    LanLink* link=[[LanLink alloc] init:sock deviceId:[pendingNP objectForKey:@"deviceId"] setDelegate:nil];
+    LanLink* link=[[LanLink alloc] init:sock deviceId:[pendingNP objectForKey:@"deviceId"] setDelegate:nil certificateService:_certificateService];
     [_connectedLinks setObject:link forKey:[pendingNP objectForKey:@"deviceId"]];
 //    [oldlink disconnect];
 }
 
-// TODO: when shouldTrustPeer gets called, there are 2 possibilties:
-// 1. If device is new/never been paired before, just trust it
-// 2. If device's been paired before, check for the already stored certificate to check whether
-// its signature matches that of the device trying to connect
-
-// trust contains the remote device's cert
+// This doesn't actually get called anywhere, not sure what it does
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
-    NSLog(@"Trust is %@", trust);
-    NSLog(@"Trust SecTrustCopyKey is %@", SecTrustCopyKey(trust));
-    NSLog(@"Trust SecTrustCopyResult is %@", SecTrustCopyResult(trust));
-    NSLog(@"Trust SecTrustGetCertificateCount is %ld", (long)SecTrustGetCertificateCount(trust));
-    NSLog(@"Trust SecTrustCopyProperties is %@", SecTrustCopyProperties(trust));
-    NSLog(@"Trust SecTrustCopyExceptions is %@", SecTrustCopyExceptions(trust));
-    
-    
-    NSLog(@"LanLinkProvider's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
-    completionHandler(YES);// give YES if we want to trust, NO if we don't
+    if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
+        NSLog(@"LanLinkProvider's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
+        completionHandler(YES);// give YES if we want to trust, NO if we don't
+    } else {
+        completionHandler(NO);
+    }
 }
 
 

@@ -17,7 +17,6 @@ import SwiftUI
                 .onAppear {
                     backgroundService.startDiscovery()
                     motionManager.gyroUpdateInterval = 0.1
-                    hostSHA256Hash = KeychainOperations.getHostSHA256HashFullyFormatted()
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     // In case the app's been chilling suspended for a long time, upon returning ask for updates to all devices's battery statuses
