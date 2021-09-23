@@ -75,6 +75,8 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 @property(nonatomic) NSMutableDictionary* _plugins;
 @property(nonatomic) NSMutableArray* _failedPlugins;
 
+@property(nonatomic, copy) NSString* _SHA256HashFormatted;
+
 // This is a generic pointer cause apperently neither the previous dev or I could figure out how to mutually import BackgroundService and Device with each other....
 @property(nonatomic) id _deviceDelegate;
 @property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;

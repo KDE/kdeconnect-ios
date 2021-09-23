@@ -96,12 +96,85 @@ import CryptoKit
         return SecItemDelete(keychainItemQuery)
     }
     
+    // This function is called by LanLink's didReceiveTrust
     @objc func verifyCertificateEqualityFromRemoteDeviceWithDeviceID(trust: SecTrust, deviceId: String) -> Bool {
+        if let remoteCert: SecCertificate = extractRemoteCertFromTrust(trust: trust) {
+            if let storedRemoteCert: SecCertificate = extractSavedCertOfRemoteDevice(deviceId: deviceId) {
+                print("Both remote cert and stored cert exist, checking them for equality")
+                return ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data))
+            } else {
+                print("remote cert exists, but nothing stored, setting up for new remote device, saving cert with status \(saveRemoteDeviceCertToKeychain(cert: remoteCert, deviceId: deviceId))")
+                return true
+            }
+        } else {
+            print("Unable to extract remote certificate")
+            return false
+        }
+    }
+    
+    @objc func extractRemoteCertFromTrust(trust: SecTrust) -> SecCertificate? {
+        let numOfCerts: Int = SecTrustGetCertificateCount(trust)
+        if (numOfCerts != 1) {
+            print("Number of cert received != 1, something is wrong about the remote device")
+            return nil
+        }
+        if #available(iOS 15.0, *) {
+            let certificateChain: [SecCertificate]? = SecTrustCopyCertificateChain(trust) as? [SecCertificate]
+            if (certificateChain != nil) {
+                return certificateChain!.first
+            } else {
+                print("Unable to get certificate chain")
+                return nil
+            }
+        } else {
+            return SecTrustGetCertificateAtIndex(trust, 0)
+        }
+    }
+    
+    @objc func extractSavedCertOfRemoteDevice(deviceId: String) -> SecCertificate? {
+        let keychainItemQuery: CFDictionary = [
+            kSecClass: kSecClassCertificate,
+            kSecAttrLabel: deviceId as Any,
+            kSecReturnRef: true
+        ] as CFDictionary
+        var remoteSavedCert: AnyObject? = nil
+        let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &remoteSavedCert)
+        print("extractSavedCertOfRemoteDevice completed with \(status)")
+        
+        if (remoteSavedCert != nil) {
+            if (!backgroundService._devices.allKeys.contains(where: {$0 as! String == deviceId})) {
+                print("Device object is gone but cert is still here? Removing stored cert with status \(deleteRemoteDeviceSavedCert(deviceId: deviceId))")
+                return nil
+            } else {
+                return (remoteSavedCert as! SecCertificate)
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    // This function is called by LanLinkProvider's shouldTrustPeer and didReceiveTrust, and as far as I can tell, doesn't actually get called (what is this even for)??
+    @objc func verifyCertificateEqualityFromRemoteDevice(trust: SecTrust) -> Bool {
+        print("OH WOW HOW DID WE GET HERE?")
         return true
     }
     
-    @objc func verifyCertificateEqualityFromRemoteDevice(trust: SecTrust) -> Bool {
-        return true
+    @objc func saveRemoteDeviceCertToKeychain(cert: SecCertificate, deviceId: String) -> Bool {
+        let keychainItemQuery: CFDictionary = [
+            kSecAttrLabel: deviceId as Any,
+            kSecClass: kSecClassCertificate,
+            kSecValueRef: cert
+        ] as CFDictionary
+        let status: OSStatus = SecItemAdd(keychainItemQuery, nil)
+        return (status == 0)
+    }
+    
+    @objc func deleteRemoteDeviceSavedCert(deviceId: String) -> Bool {
+        let keychainItemQuery: CFDictionary = [
+            kSecAttrLabel: deviceId as Any,
+            kSecClass: kSecClassCertificate,
+        ] as CFDictionary
+        return (SecItemDelete(keychainItemQuery) == 0)
     }
 
 

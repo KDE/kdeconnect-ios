@@ -81,6 +81,7 @@ import UIKit
         //backgroundService._devices.removeObject(forKey: deviceId)
         backgroundService._settings.removeObject(forKey: deviceId)
         UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
+        print("Device remove, stored cert also removed with status \(certificateService.deleteRemoteDeviceSavedCert(deviceId: deviceId))")
     }
     
     @objc static func isDeviceCurrentlyPairedAndConnected(_ deviceId: String) -> Bool {

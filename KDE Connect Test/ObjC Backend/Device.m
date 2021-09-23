@@ -40,6 +40,7 @@
 //@synthesize _testDevice;
 
 @synthesize _pluginsEnableStatus;
+@synthesize _SHA256HashFormatted;
 
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
 // data only and are therefore NOT stored persistently
@@ -523,6 +524,9 @@
         _cursorSensitivity = [coder decodeFloatForKey:@"_cursorSensitivity"];
         _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];
         _pointerSensitivity = [coder decodeFloatForKey:@"_pointerSensitivity"];
+        
+        // To be set later in LanLink's didReceiveTrust
+        _SHA256HashFormatted = @"";
         
         // To be set later in backgroundServices
         _deviceDelegate = nil;
