@@ -87,20 +87,20 @@
 {
     BOOL needGenerateCertificate = NO;
 
-    NSDictionary *getQuery = @{
-        (id)kSecClass:      (id)kSecClassIdentity,
-        (id)kSecAttrLabel:  (id)[NetworkPackage getUUID],
-        (id)kSecReturnRef:  @YES,
-    };
-    SecIdentityRef identityApp = NULL;
-    OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)getQuery,
-                                          (CFTypeRef *)&identityApp);
-    if (status != errSecSuccess) {
+    SecIdentityRef identityApp = [_certificateService hostIdentity];
+    
+    // If nil at first, try to get it again
+    if (identityApp == nil) {
+        [_certificateService getHostIdentityFromKeychain];
+        identityApp = [_certificateService hostIdentity];
+    }
+    
+    if (identityApp == nil) {
         needGenerateCertificate = YES;
     } else {
         // Validate private key
         SecKeyRef privateKeyRef = NULL;
-        status = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
+        OSStatus status = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
         if (status != noErr) {
             // Fail to retrieve private key from the .p12 file
             needGenerateCertificate = YES;
@@ -108,6 +108,7 @@
             _identity = identityApp;
             NSLog(@"Certificate loaded successfully");
         }
+        CFRelease(privateKeyRef);
     }
 
     if (needGenerateCertificate) {

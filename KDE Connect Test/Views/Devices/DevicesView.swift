@@ -380,9 +380,11 @@ struct DevicesView: View {
     }
     
     func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {
-        connectedDevicesIds = Array(vm.connectedDevices.keys)//.sort
-        visibleDevicesIds = Array(vm.visibleDevices.keys)//.sort
-        savedDevicesIds = Array(vm.savedDevices.keys)//.sort
+        withAnimation {
+            connectedDevicesIds = Array(vm.connectedDevices.keys)//.sort
+            visibleDevicesIds = Array(vm.visibleDevices.keys)//.sort
+            savedDevicesIds = Array(vm.savedDevices.keys)//.sort
+        }
     }
     
     func refreshDiscoveryAndList() -> Void {

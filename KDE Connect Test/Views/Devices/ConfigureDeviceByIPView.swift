@@ -20,7 +20,9 @@ struct ConfigureDeviceByIPView: View {
                                  message: "The local address of the other device can usually be found in its wifi settings") { result in
                     if let address = result {
                         // address was accepted
-                        selfDeviceDataForIPConfig.directIPs.append(address)
+                        withAnimation {
+                            selfDeviceDataForIPConfig.directIPs.append(address)
+                        }
                     } else {
                         // The alert was cancelled
                     }
