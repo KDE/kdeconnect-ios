@@ -79,6 +79,14 @@ struct DevicesView: View {
                         }
                     }
                 }
+                .alert(isPresented: $showingOnPairSuccessAlert) {
+                    Alert(title: Text("Pairing Complete"),
+                          message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) succeeded"),
+                          dismissButton: .default(Text("Nice"), action: {
+                        currPairingDeviceId = nil
+                    })
+                    )
+                }
                 
                 Section(header: Text("Discoverable Devices")) {
                     if (visibleDevicesIds.isEmpty) {
@@ -108,6 +116,19 @@ struct DevicesView: View {
                             }
                         }
                     }
+                }
+                .alert(isPresented: $showingOnSelfPairOutgoingRequestAlert) {
+                    Alert(title: Text("Initiate Pairing?"),
+                          message: Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?"),
+                          primaryButton: .cancel(Text("Do Not Pair")),
+                          secondaryButton: .default(
+                            Text("Pair")
+                                .foregroundColor(.green)
+                          ) {
+                              backgroundService.pairDevice(currPairingDeviceId)
+                              //currPairingDeviceId = nil
+                          }
+                    )
                 }
                 
                 Section(header: Text("Remembered Devices")) {
@@ -140,6 +161,14 @@ struct DevicesView: View {
                         .onDelete(perform: deleteDevice)
                     }
                 }
+                .alert(isPresented: $showingOnSelectSavedDeviceAlert) {
+                    Alert(title: Text("Device Offline"),
+                          message: Text("The paired device \(connectedDevicesViewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device."),
+                          dismissButton: .default(Text("OK"), action: {
+                        currPairingDeviceId = nil
+                    })
+                    )
+                }
             }
             .environment(\.defaultMinListRowHeight, 60) // TODO: make this dynamic with GeometryReader???
             .alert(isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
@@ -155,99 +184,57 @@ struct DevicesView: View {
                       }
                 )
             }
-            
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
             }
-            
             // This is an invisible view using changes in viewUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
             Text(viewUpdate ? "True" : "False")
+                .frame(width: 0, height: 0)
                 .opacity(0)
             
-            Text("")
+            EmptyView()
+                .frame(width: 0, height: 0)
                 .alert(isPresented: $showingOnPairTimeoutAlert) {
                     Alert(title: Text("Pairing Timed Out"),
                           message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed"),
                           dismissButton: .default(Text("OK"), action: {
-                            currPairingDeviceId = nil
-                          })
+                        currPairingDeviceId = nil
+                    })
                     )
                 }
             
-            Text("")
-                .alert(isPresented: $showingOnPairSuccessAlert) {
-                    Alert(title: Text("Pairing Complete"),
-                          message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) succeeded"),
-                          dismissButton: .default(Text("Nice"), action: {
-                            currPairingDeviceId = nil
-                          })
-                    )
-                }
-            
-            Text("")
+            EmptyView()
+                .frame(width: 0, height: 0)
                 .alert(isPresented: $showingOnPairRejectedAlert) {
                     Alert(title: Text("Pairing Rejected"),
                           message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed"),
                           dismissButton: .default(Text("OK"), action: {
-                            currPairingDeviceId = nil
-                          })
+                        currPairingDeviceId = nil
+                    })
                     )
                 }
             
-            Text("")
-                .alert(isPresented: $showingOnSelfPairOutgoingRequestAlert) {
-                    Alert(title: Text("Initiate Pairing?"),
-                          message: Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?"),
-                          primaryButton: .cancel(Text("Do Not Pair")),
-                          secondaryButton: .default(
-                            Text("Pair")
-                                .foregroundColor(.green)
-                          ) {
-                            backgroundService.pairDevice(currPairingDeviceId)
-                            //currPairingDeviceId = nil
-                          }
-                    )
-                }
-            
-            Text("")
-                .alert(isPresented: $showingOnSelectSavedDeviceAlert) {
-                    Alert(title: Text("Device Offline"),
-                          message: Text("The paired device \(connectedDevicesViewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device."),
-                          dismissButton: .default(Text("OK"), action: {
-                            currPairingDeviceId = nil
-                          })
-                    )
-                }
-            
-            Text("")
+            EmptyView()
+                .frame(width: 0, height: 0)
                 .alert(isPresented: $showingPingAlert) {
                     Alert(title: Text("Ping!"),
                           message: Text("Ping received from a connected device."),
                           dismissButton: .default(Text("OK"), action: {
-                            
-                          })
+                        
+                    })
                     )
                 }
             
-            Text("")
+            EmptyView()
+                .frame(width: 0, height: 0)
                 .alert(isPresented: $showingFindMyPhoneAlert) {
                     Alert(title: Text("Find My Phone Mode"),
                           message: Text("Find My Phone initiated from a remote device"),
                           dismissButton: .default(Text("I FOUND IT!"), action: {
-                            
-                          })
+                        
+                    })
                     )
                 }
-            
-//            Text("")
-//                .alert(isPresented: $showingFileReceivedAlert) {
-//                    Alert(title: Text("File Recevied"),
-//                          message: Text("Received a file"),
-//                          dismissButton: .default(Text("OK"), action: {
-//
-//                          })
-//                    )
-//                }
             
         }
         .navigationTitle("Devices")

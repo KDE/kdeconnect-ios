@@ -92,6 +92,11 @@ struct DevicesDetailView: View {
                                 })
                         }
                     }
+                    .alert(isPresented: $showingEncryptionInfo) {
+                        Alert(title: Text("Encryption Info"), message:
+                                Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
+                              , dismissButton: .default(Text("OK")))
+                    }
                     
                     Section(header: Text("Battery Status")) {
                         if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) {
@@ -107,6 +112,20 @@ struct DevicesDetailView: View {
                                     .font(.system(size: 18))
                             }
                         }
+                    }
+                    .alert(isPresented: $showingUnpairConfirmationAlert) {
+                        Alert(title: Text("Unpair With Device?"),
+                              message: Text("Unpair with \((backgroundService._devices[detailsDeviceId] as! Device)._name)?"),
+                              primaryButton: .cancel(Text("No, Stay Paired")),
+                              secondaryButton: .destructive(
+                                Text("Yes, Unpair")
+                              ) {
+                                  backgroundService.unpairDevice(detailsDeviceId)
+                                  isStilConnected = false
+                                  //                        backgroundService.refreshDiscovery()
+                                  //                        connectedDevicesViewModel.onDeviceListRefreshed()
+                              }
+                        )
                     }
                     
 //                    Section(header: Text("Debug section")) {
@@ -125,30 +144,8 @@ struct DevicesDetailView: View {
                 
                 // This is an invisible view using changes in viewUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
                 Text(viewUpdate ? "True" : "False")
+                    .frame(width: 0, height: 0)
                     .opacity(0)
-                
-                Text("")
-                    .alert(isPresented: $showingEncryptionInfo) {
-                        Alert(title: Text("Encryption Info"), message:
-                                Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
-                              , dismissButton: .default(Text("OK")))
-                    }
-                
-                Text("")
-                    .alert(isPresented: $showingUnpairConfirmationAlert) {
-                        Alert(title: Text("Unpair With Device?"),
-                              message: Text("Unpair with \((backgroundService._devices[detailsDeviceId] as! Device)._name)?"),
-                              primaryButton: .cancel(Text("No, Stay Paired")),
-                              secondaryButton: .destructive(
-                                Text("Yes, Unpair")
-                              ) {
-                                backgroundService.unpairDevice(detailsDeviceId)
-                                isStilConnected = false
-                                //                        backgroundService.refreshDiscovery()
-                                //                        connectedDevicesViewModel.onDeviceListRefreshed()
-                              }
-                        )
-                    }
                 
             }
             .navigationTitle((backgroundService._devices[detailsDeviceId] as! Device)._name)

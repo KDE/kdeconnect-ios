@@ -57,18 +57,6 @@ import CryptoKit
         }
     }
     
-    @objc func deleteAllItemsFromKeychain() -> Bool {
-        let allSecItemClasses: [CFString] = [kSecClassGenericPassword, kSecClassInternetPassword, kSecClassCertificate, kSecClassKey, kSecClassIdentity]
-        for itemClass in allSecItemClasses {
-            let keychainItemQuery: CFDictionary = [kSecClass: itemClass] as CFDictionary
-            let status: OSStatus = SecItemDelete(keychainItemQuery)
-            if (status != 0) {
-                return false
-            }
-        }
-        return true
-    }
-    
     // Given a standard, no-space SHA256 hash, insert : dividers every 2 characters
     // It isn't terribly efficient to convert Subtring to String like this but it works?
     @objc func SHA256HashDividedAndFormatted(hashDescription: String) -> String {
@@ -175,6 +163,18 @@ import CryptoKit
             kSecClass: kSecClassCertificate,
         ] as CFDictionary
         return (SecItemDelete(keychainItemQuery) == 0)
+    }
+    
+    @objc func deleteAllItemsFromKeychain() -> Bool {
+        let allSecItemClasses: [CFString] = [kSecClassGenericPassword, kSecClassInternetPassword, kSecClassCertificate, kSecClassKey, kSecClassIdentity]
+        for itemClass in allSecItemClasses {
+            let keychainItemQuery: CFDictionary = [kSecClass: itemClass] as CFDictionary
+            let status: OSStatus = SecItemDelete(keychainItemQuery)
+            if (status != 0) {
+                print("Failed to remove 1 certificate in keychain, continuing to attempt to remove all")
+            }
+        }
+        return true
     }
 
 
