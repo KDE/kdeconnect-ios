@@ -22,7 +22,7 @@
 #import "BaseLink.h"
 #import "NetworkPackage.h"
 //#import "deviceDelegate.h"
-//#import "KDE_Connect_Test-Swift.h"
+//#import "KDE_Connect-Swift.h"
 //#import "BackgroundService.h"
 @class BaseLink;
 @class NetworkPackage;

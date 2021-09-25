@@ -101,17 +101,17 @@
 		A01FDD2C26C62E170014B165 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyPhone.swift; sourceTree = "<group>"; };
 		A01FDD3026C701360014B165 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
-		A034ADA726BF32F500A7CC70 /* KDE Connect Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KDE Connect Test.entitlements"; sourceTree = "<group>"; };
-		A0A0442C267BF38700CC21DD /* KDE Connect Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A034ADA726BF32F500A7CC70 /* KDE Connect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KDE Connect.entitlements"; sourceTree = "<group>"; };
+		A0A0442C267BF38700CC21DD /* KDE Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestApp.swift; sourceTree = "<group>"; };
 		A0A04431267BF38700CC21DD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0A04433267BF38A00CC21DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0A04438267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0A0443D267BF38A00CC21DD /* KDE Connect TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE Connect TestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A0443D267BF38A00CC21DD /* KDE ConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE ConnectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestTests.swift; sourceTree = "<group>"; };
 		A0A04443267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0A04448267BF38A00CC21DD /* KDE Connect TestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE Connect TestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A04448267BF38A00CC21DD /* KDE ConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE ConnectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestUITests.swift; sourceTree = "<group>"; };
 		A0A0444E267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A0445A267BF40400CC21DD /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
@@ -233,9 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				1499A8E92698C48300FDF493 /* rsaPrivate.p12 */,
-				A0A0442E267BF38700CC21DD /* KDE Connect Test */,
-				A0A04440267BF38A00CC21DD /* KDE Connect TestTests */,
-				A0A0444B267BF38A00CC21DD /* KDE Connect TestUITests */,
+				A0A0442E267BF38700CC21DD /* KDE Connect */,
+				A0A04440267BF38A00CC21DD /* KDE Connect Tests */,
+				A0A0444B267BF38A00CC21DD /* KDE Connect UITests */,
 				A0A0442D267BF38700CC21DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -243,17 +243,17 @@
 		A0A0442D267BF38700CC21DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A0A0442C267BF38700CC21DD /* KDE Connect Test.app */,
-				A0A0443D267BF38A00CC21DD /* KDE Connect TestTests.xctest */,
-				A0A04448267BF38A00CC21DD /* KDE Connect TestUITests.xctest */,
+				A0A0442C267BF38700CC21DD /* KDE Connect.app */,
+				A0A0443D267BF38A00CC21DD /* KDE ConnectTests.xctest */,
+				A0A04448267BF38A00CC21DD /* KDE ConnectUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A0A0442E267BF38700CC21DD /* KDE Connect Test */ = {
+		A0A0442E267BF38700CC21DD /* KDE Connect */ = {
 			isa = PBXGroup;
 			children = (
-				A034ADA726BF32F500A7CC70 /* KDE Connect Test.entitlements */,
+				A034ADA726BF32F500A7CC70 /* KDE Connect.entitlements */,
 				1499A8DE2698BF4900FDF493 /* ObjC Backend */,
 				1499A8CC2698BE2300FDF493 /* ObjC Network Backend */,
 				A0D8CBC626EF06FA00791D07 /* Swift Backend */,
@@ -263,7 +263,7 @@
 				A0A04438267BF38A00CC21DD /* Info.plist */,
 				A0A04435267BF38A00CC21DD /* Preview Content */,
 			);
-			path = "KDE Connect Test";
+			path = "KDE Connect";
 			sourceTree = "<group>";
 		};
 		A0A04435267BF38A00CC21DD /* Preview Content */ = {
@@ -274,22 +274,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A0A04440267BF38A00CC21DD /* KDE Connect TestTests */ = {
+		A0A04440267BF38A00CC21DD /* KDE Connect Tests */ = {
 			isa = PBXGroup;
 			children = (
 				A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */,
 				A0A04443267BF38A00CC21DD /* Info.plist */,
 			);
-			path = "KDE Connect TestTests";
+			path = "KDE Connect Tests";
 			sourceTree = "<group>";
 		};
-		A0A0444B267BF38A00CC21DD /* KDE Connect TestUITests */ = {
+		A0A0444B267BF38A00CC21DD /* KDE Connect UITests */ = {
 			isa = PBXGroup;
 			children = (
 				A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */,
 				A0A0444E267BF38A00CC21DD /* Info.plist */,
 			);
-			path = "KDE Connect TestUITests";
+			path = "KDE Connect UITests";
 			sourceTree = "<group>";
 		};
 		A0D8CBC626EF06FA00791D07 /* Swift Backend */ = {
@@ -431,9 +431,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A0A0442B267BF38700CC21DD /* KDE Connect Test */ = {
+		A0A0442B267BF38700CC21DD /* KDE Connect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0A04451267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect Test" */;
+			buildConfigurationList = A0A04451267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect" */;
 			buildPhases = (
 				A0A04428267BF38700CC21DD /* Sources */,
 				A0A04429267BF38700CC21DD /* Frameworks */,
@@ -443,18 +443,18 @@
 			);
 			dependencies = (
 			);
-			name = "KDE Connect Test";
+			name = "KDE Connect";
 			packageProductDependencies = (
 				1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */,
 				1491F15926AC8BD6008C1065 /* OpenSSL */,
 			);
 			productName = "KDE Connect Test";
-			productReference = A0A0442C267BF38700CC21DD /* KDE Connect Test.app */;
+			productReference = A0A0442C267BF38700CC21DD /* KDE Connect.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A0A0443C267BF38A00CC21DD /* KDE Connect TestTests */ = {
+		A0A0443C267BF38A00CC21DD /* KDE ConnectTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0A04454267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestTests" */;
+			buildConfigurationList = A0A04454267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE ConnectTests" */;
 			buildPhases = (
 				A0A04439267BF38A00CC21DD /* Sources */,
 				A0A0443A267BF38A00CC21DD /* Frameworks */,
@@ -465,14 +465,14 @@
 			dependencies = (
 				A0A0443F267BF38A00CC21DD /* PBXTargetDependency */,
 			);
-			name = "KDE Connect TestTests";
+			name = "KDE ConnectTests";
 			productName = "KDE Connect TestTests";
-			productReference = A0A0443D267BF38A00CC21DD /* KDE Connect TestTests.xctest */;
+			productReference = A0A0443D267BF38A00CC21DD /* KDE ConnectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A0A04447267BF38A00CC21DD /* KDE Connect TestUITests */ = {
+		A0A04447267BF38A00CC21DD /* KDE ConnectUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0A04457267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestUITests" */;
+			buildConfigurationList = A0A04457267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE ConnectUITests" */;
 			buildPhases = (
 				A0A04444267BF38A00CC21DD /* Sources */,
 				A0A04445267BF38A00CC21DD /* Frameworks */,
@@ -483,9 +483,9 @@
 			dependencies = (
 				A0A0444A267BF38A00CC21DD /* PBXTargetDependency */,
 			);
-			name = "KDE Connect TestUITests";
+			name = "KDE ConnectUITests";
 			productName = "KDE Connect TestUITests";
-			productReference = A0A04448267BF38A00CC21DD /* KDE Connect TestUITests.xctest */;
+			productReference = A0A04448267BF38A00CC21DD /* KDE ConnectUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -511,7 +511,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A0A04427267BF38700CC21DD /* Build configuration list for PBXProject "KDE Connect Test" */;
+			buildConfigurationList = A0A04427267BF38700CC21DD /* Build configuration list for PBXProject "KDE Connect" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -528,9 +528,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A0A0442B267BF38700CC21DD /* KDE Connect Test */,
-				A0A0443C267BF38A00CC21DD /* KDE Connect TestTests */,
-				A0A04447267BF38A00CC21DD /* KDE Connect TestUITests */,
+				A0A0442B267BF38700CC21DD /* KDE Connect */,
+				A0A0443C267BF38A00CC21DD /* KDE ConnectTests */,
+				A0A04447267BF38A00CC21DD /* KDE ConnectUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -634,12 +634,12 @@
 /* Begin PBXTargetDependency section */
 		A0A0443F267BF38A00CC21DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0A0442B267BF38700CC21DD /* KDE Connect Test */;
+			target = A0A0442B267BF38700CC21DD /* KDE Connect */;
 			targetProxy = A0A0443E267BF38A00CC21DD /* PBXContainerItemProxy */;
 		};
 		A0A0444A267BF38A00CC21DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0A0442B267BF38700CC21DD /* KDE Connect Test */;
+			target = A0A0442B267BF38700CC21DD /* KDE Connect */;
 			targetProxy = A0A04449267BF38A00CC21DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -767,12 +767,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "KDE Connect Test/KDE Connect Test.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "KDE Connect/KDE Connect.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect Test/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect/Preview Content\"";
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "KDE Connect Test/Info.plist";
+				INFOPLIST_FILE = "KDE Connect/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -781,7 +781,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/ObjC Network Backend/LanLink-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -794,12 +794,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "KDE Connect Test/KDE Connect Test.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "KDE Connect/KDE Connect.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect Test/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect/Preview Content\"";
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "KDE Connect Test/Info.plist";
+				INFOPLIST_FILE = "KDE Connect/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -808,7 +808,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect Test/ObjC Network Backend/LanLink-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -832,7 +832,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDE Connect Test.app/KDE Connect Test";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDE Connect.app/KDE Connect";
 			};
 			name = Debug;
 		};
@@ -854,7 +854,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDE Connect Test.app/KDE Connect Test";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDE Connect.app/KDE Connect";
 			};
 			name = Release;
 		};
@@ -901,7 +901,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0A04427267BF38700CC21DD /* Build configuration list for PBXProject "KDE Connect Test" */ = {
+		A0A04427267BF38700CC21DD /* Build configuration list for PBXProject "KDE Connect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0A0444F267BF38A00CC21DD /* Debug */,
@@ -910,7 +910,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0A04451267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect Test" */ = {
+		A0A04451267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0A04452267BF38A00CC21DD /* Debug */,
@@ -919,7 +919,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0A04454267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestTests" */ = {
+		A0A04454267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE ConnectTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0A04455267BF38A00CC21DD /* Debug */,
@@ -928,7 +928,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0A04457267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE Connect TestUITests" */ = {
+		A0A04457267BF38A00CC21DD /* Build configuration list for PBXNativeTarget "KDE ConnectUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0A04458267BF38A00CC21DD /* Debug */,

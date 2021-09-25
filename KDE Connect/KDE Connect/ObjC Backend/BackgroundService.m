@@ -24,7 +24,7 @@
 //#import "PluginFactory.h"
 //#import "KeychainItemWrapper.h"
 //#import "Device.h"
-#import "KDE_Connect_Test-Swift.h"
+#import "KDE_Connect-Swift.h"
 
 @interface BackgroundService()
 @property(nonatomic)NSMutableArray* _linkProviders;

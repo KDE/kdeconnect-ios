@@ -20,7 +20,7 @@
 
 #import "LanLinkProvider.h"
 #import "NetworkPackage.h"
-#import "KDE_Connect_Test-Swift.h"
+#import "KDE_Connect-Swift.h"
 
 #import <Security/Security.h>
 #import <Security/SecItem.h>

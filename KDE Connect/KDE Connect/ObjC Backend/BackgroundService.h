@@ -26,7 +26,7 @@
 //#import "PluginFactory.h"
 #import "common.h"
 //#import "deviceDelegate.h"
-//#import "KDE_Connect_Test-Swift.h"
+//#import "KDE_Connect-Swift.h"
 //@class PluginFactory;
 @class BaseLink;
 @class Device;

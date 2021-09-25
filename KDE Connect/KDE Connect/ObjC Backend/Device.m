@@ -20,7 +20,7 @@
 
 #import "Device.h"
 //#import "BackgroundService.h"
-#import "KDE_Connect_Test-Swift.h"
+#import "KDE_Connect-Swift.h"
 #define PAIR_TIMMER_TIMEOUT  10.0
 
 @implementation Device

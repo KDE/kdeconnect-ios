@@ -19,7 +19,7 @@
 //----------------------------------------------------------------------
 
 #import "LanLink.h"
-#import "KDE_Connect_Test-Swift.h"
+#import "KDE_Connect-Swift.h"
 
 #define PAYLOAD_PORT 1739
 #define PAYLOAD_SEND_DELAY 0 //ns
