@@ -119,7 +119,7 @@ struct DevicesDetailView: View {
                 }
                 .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
                 .alert("Encryption Info", isPresented: $showingEncryptionInfo) {} message: {
-                    Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\(((backgroundService._devices[detailsDeviceId] as! Device)._SHA256HashFormatted == nil) ? "ERROR" : (backgroundService._devices[detailsDeviceId] as! Device)._SHA256HashFormatted)")
+                    Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\(((backgroundService._devices[detailsDeviceId] as! Device)._SHA256HashFormatted == nil || (backgroundService._devices[detailsDeviceId] as! Device)._SHA256HashFormatted == "") ? "Unable to retrive fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : (backgroundService._devices[detailsDeviceId] as! Device)._SHA256HashFormatted)")
                 }
                 .alert("Unpair With Device?", isPresented: $showingUnpairConfirmationAlert) {
                     Button("No, Stay Paired", role: .cancel) {}

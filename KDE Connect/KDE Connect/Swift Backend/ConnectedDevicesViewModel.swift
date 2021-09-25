@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import CryptoKit
 
 @objc class ConnectedDevicesViewModel : NSObject {
     var devicesView: DevicesView? = nil
@@ -27,7 +28,14 @@ import UIKit
     }
     
     @objc func onPairSuccess(_ deviceId: String!) -> Void {
-        devicesView!.onPairSuccessInsideView(deviceId)
+        if (certificateService.tempRemoteCerts[deviceId] != nil) {
+            let status: Bool = certificateService.saveRemoteDeviceCertToKeychain(cert: certificateService.tempRemoteCerts[deviceId]!, deviceId: deviceId)
+            print("Remote certificate saved into local Keychain with status \(status)")
+            (backgroundService._devices[deviceId as Any] as! Device)._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
+            devicesView!.onPairSuccessInsideView(deviceId)
+        } else {
+            print("Pairing failed")
+        }
     }
     
     @objc func onPairRejected(_ deviceId: String!) -> Void {

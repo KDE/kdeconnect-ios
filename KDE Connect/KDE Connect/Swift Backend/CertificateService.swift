@@ -15,6 +15,8 @@ import CryptoKit
     @objc var hostIdentity: SecIdentity?
     @objc var hostCertificateSHA256HashFormattedString: String?
     
+    var tempRemoteCerts: [String : SecCertificate] = [:]
+    
     override init() {
         super.init()
         hostIdentity = getHostIdentityFromKeychain()
@@ -100,8 +102,8 @@ import CryptoKit
                     return false
                 }
             } else {
-                print("remote cert exists, but nothing stored, setting up for new remote device, saving cert with status \(saveRemoteDeviceCertToKeychain(cert: remoteCert, deviceId: deviceId))")
-                (backgroundService._devices[deviceId] as! Device)._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
+                print("remote cert exists, but nothing stored, setting up for new remote device")
+                tempRemoteCerts[deviceId] = remoteCert
                 return true
             }
         } else {

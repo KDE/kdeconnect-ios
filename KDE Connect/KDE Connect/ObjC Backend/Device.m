@@ -509,6 +509,7 @@
     [coder encodeFloat:_cursorSensitivity forKey:@"_cursorSensitivity"];
     [coder encodeInteger:_hapticStyle forKey:@"_hapticStyle"];
     [coder encodeFloat:_pointerSensitivity forKey:@"_pointerSensitivity"];
+    [coder encodeObject:_SHA256HashFormatted forKey:@"_SHA256HashFormatted"];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
@@ -524,9 +525,7 @@
         _cursorSensitivity = [coder decodeFloatForKey:@"_cursorSensitivity"];
         _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];
         _pointerSensitivity = [coder decodeFloatForKey:@"_pointerSensitivity"];
-        
-        // To be set later in LanLink's didReceiveTrust
-        _SHA256HashFormatted = @"";
+        _SHA256HashFormatted = [coder decodeObjectForKey:@"_SHA256HashFormatted"];
         
         // To be set later in backgroundServices
         _deviceDelegate = nil;
