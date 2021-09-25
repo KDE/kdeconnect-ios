@@ -89,9 +89,15 @@ import CryptoKit
         if let remoteCert: SecCertificate = extractRemoteCertFromTrust(trust: trust) {
             if let storedRemoteCert: SecCertificate = extractSavedCertOfRemoteDevice(deviceId: deviceId) {
                 print("Both remote cert and stored cert exist, checking them for equality")
-                return ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data))
+                if ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data)) {
+                    (backgroundService._devices[deviceId] as! Device)._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
+                    return true
+                } else {
+                    return false
+                }
             } else {
                 print("remote cert exists, but nothing stored, setting up for new remote device, saving cert with status \(saveRemoteDeviceCertToKeychain(cert: remoteCert, deviceId: deviceId))")
+                (backgroundService._devices[deviceId] as! Device)._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
                 return true
             }
         } else {
@@ -106,17 +112,20 @@ import CryptoKit
             print("Number of cert received != 1, something is wrong about the remote device")
             return nil
         }
-        if #available(iOS 15.0, *) {
-            let certificateChain: [SecCertificate]? = SecTrustCopyCertificateChain(trust) as? [SecCertificate]
-            if (certificateChain != nil) {
-                return certificateChain!.first
-            } else {
-                print("Unable to get certificate chain")
-                return nil
-            }
+        let certificateChain: [SecCertificate]? = SecTrustCopyCertificateChain(trust) as? [SecCertificate]
+        if (certificateChain != nil) {
+            return certificateChain!.first
         } else {
-            return SecTrustGetCertificateAtIndex(trust, 0)
+            print("Unable to get certificate chain")
+            return nil
         }
+        
+//        if #available(iOS 15.0, *) {
+//
+//        } else {
+//            return SecTrustGetCertificateAtIndex(trust, 0)
+//        }
+        
     }
     
     @objc func extractSavedCertOfRemoteDevice(deviceId: String) -> SecCertificate? {

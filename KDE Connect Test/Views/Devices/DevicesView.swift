@@ -52,8 +52,10 @@ struct DevicesView: View {
                                             HStack {
                                                 Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
                                                     .font(.system(size: 19, weight: .bold))
-                                                Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                    .font(.system(size: 19))
+                                                if (backgroundService._devices[key as Any] != nil) {
+                                                    Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                                        .font(.system(size: 19))
+                                                }
                                             }
                                             if ((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) {
                                                 Text("No battery detected in device")
@@ -79,14 +81,6 @@ struct DevicesView: View {
                         }
                     }
                 }
-                .alert(isPresented: $showingOnPairSuccessAlert) {
-                    Alert(title: Text("Pairing Complete"),
-                          message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) succeeded"),
-                          dismissButton: .default(Text("Nice"), action: {
-                        currPairingDeviceId = nil
-                    })
-                    )
-                }
                 
                 Section(header: Text("Discoverable Devices")) {
                     if (visibleDevicesIds.isEmpty) {
@@ -105,8 +99,10 @@ struct DevicesView: View {
                                         HStack {
                                             Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
                                                 .font(.system(size: 19, weight: .bold))
-                                            Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                .font(.system(size: 19))
+                                            if (backgroundService._devices[key as Any] != nil) {
+                                                Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                                    .font(.system(size: 19))
+                                            }
                                         }
                                         Text("Tap to start pairing")
                                             .font(.system(size: 15))
@@ -116,19 +112,6 @@ struct DevicesView: View {
                             }
                         }
                     }
-                }
-                .alert(isPresented: $showingOnSelfPairOutgoingRequestAlert) {
-                    Alert(title: Text("Initiate Pairing?"),
-                          message: Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?"),
-                          primaryButton: .cancel(Text("Do Not Pair")),
-                          secondaryButton: .default(
-                            Text("Pair")
-                                .foregroundColor(.green)
-                          ) {
-                              backgroundService.pairDevice(currPairingDeviceId)
-                              //currPairingDeviceId = nil
-                          }
-                    )
                 }
                 
                 Section(header: Text("Remembered Devices")) {
@@ -161,29 +144,78 @@ struct DevicesView: View {
                         .onDelete(perform: deleteDevice)
                     }
                 }
-                .alert(isPresented: $showingOnSelectSavedDeviceAlert) {
-                    Alert(title: Text("Device Offline"),
-                          message: Text("The paired device \(connectedDevicesViewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device."),
-                          dismissButton: .default(Text("OK"), action: {
-                        currPairingDeviceId = nil
-                    })
-                    )
-                }
+            }
+            .refreshable() {
+                refreshDiscoveryAndList()
             }
             .environment(\.defaultMinListRowHeight, 60) // TODO: make this dynamic with GeometryReader???
-            .alert(isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
-                Alert(title: Text("Incoming Pairing Request"),
-                      message: Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device"),
-                      primaryButton: .cancel(Text("Do Not Pair")),
-                      secondaryButton: .default(
-                        Text("Pair")
-                            .foregroundColor(.green)
-                      ) {
-                        backgroundService.pairDevice(currPairingDeviceId)
-                        //currPairingDeviceId = nil
-                      }
-                )
+            .alert("Incoming Pairing Request", isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
+                Button("Do Not Pair", role: .cancel) {}
+                Button("Pair") {
+                    backgroundService.pairDevice(currPairingDeviceId)
+                }
+                    .foregroundColor(.green)
+            } message: {
+                if (currPairingDeviceId != nil) {
+                    Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
+                }
             }
+            .alert("Pairing Complete", isPresented: $showingOnPairSuccessAlert) {
+                Button("Nice", role: .cancel) {
+                    currPairingDeviceId = nil
+                }
+            } message: {
+                if (currPairingDeviceId != nil) {
+                    Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) succeeded")
+                }
+            }
+            .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
+                Button("OK", role: .cancel) {}
+                Button("Pair") {
+                    backgroundService.pairDevice(currPairingDeviceId)
+                }
+                    .foregroundColor(.green)
+            } message: {
+                if (currPairingDeviceId != nil) {
+                    Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
+                }
+            }
+            .alert("Device Offline", isPresented: $showingOnSelectSavedDeviceAlert) {
+                Button("OK", role: .cancel) {
+                    currPairingDeviceId = nil
+                }
+            } message: {
+                if (currPairingDeviceId != nil && connectedDevicesViewModel.savedDevices[currPairingDeviceId!] != nil) {
+                    Text("The paired device \(connectedDevicesViewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
+                }
+            }
+            .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
+                Button("OK", role: .cancel) {
+                    currPairingDeviceId = nil
+                }
+            } message: {
+                if (currPairingDeviceId != nil) {
+                    Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed")
+                }
+            }
+            .alert("Pairing Rejected", isPresented: $showingOnPairRejectedAlert) {
+                Button("OK", role: .cancel) {
+                    currPairingDeviceId = nil
+                }
+            } message: {
+                if (currPairingDeviceId != nil) {
+                    Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed")
+                }
+            }
+            .alert("Ping!", isPresented: $showingPingAlert) {} message: {
+                Text("Ping received from a connected device.")
+            }
+            .alert("Find My Phone Mode", isPresented: $showingFindMyPhoneAlert) {
+                Button("I FOUND IT!", role: .cancel) {}
+            } message: {
+                Text("Find My Phone initiated from a remote device")
+            }
+            
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
             }
@@ -191,51 +223,6 @@ struct DevicesView: View {
             Text(viewUpdate ? "True" : "False")
                 .frame(width: 0, height: 0)
                 .opacity(0)
-            
-            EmptyView()
-                .frame(width: 0, height: 0)
-                .alert(isPresented: $showingOnPairTimeoutAlert) {
-                    Alert(title: Text("Pairing Timed Out"),
-                          message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed"),
-                          dismissButton: .default(Text("OK"), action: {
-                        currPairingDeviceId = nil
-                    })
-                    )
-                }
-            
-            EmptyView()
-                .frame(width: 0, height: 0)
-                .alert(isPresented: $showingOnPairRejectedAlert) {
-                    Alert(title: Text("Pairing Rejected"),
-                          message: Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed"),
-                          dismissButton: .default(Text("OK"), action: {
-                        currPairingDeviceId = nil
-                    })
-                    )
-                }
-            
-            EmptyView()
-                .frame(width: 0, height: 0)
-                .alert(isPresented: $showingPingAlert) {
-                    Alert(title: Text("Ping!"),
-                          message: Text("Ping received from a connected device."),
-                          dismissButton: .default(Text("OK"), action: {
-                        
-                    })
-                    )
-                }
-            
-            EmptyView()
-                .frame(width: 0, height: 0)
-                .alert(isPresented: $showingFindMyPhoneAlert) {
-                    Alert(title: Text("Find My Phone Mode"),
-                          message: Text("Find My Phone initiated from a remote device"),
-                          dismissButton: .default(Text("I FOUND IT!"), action: {
-                        
-                    })
-                    )
-                }
-            
         }
         .navigationTitle("Devices")
         .navigationBarItems(trailing: {
@@ -333,9 +320,9 @@ struct DevicesView: View {
     }
     
     func showPingAlertInsideView() -> Void {
-        hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 0.8)
-        AudioServicesPlaySystemSound(soundSMSReceived)
         if (noCurrentlyActiveAlert()) {
+            hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 0.8)
+            AudioServicesPlaySystemSound(soundSMSReceived)
             showingPingAlert = true
         } else {
             AudioServicesPlaySystemSound(soundAudioToneBusy)
@@ -348,9 +335,11 @@ struct DevicesView: View {
             showingFindMyPhoneAlert = true
             while (showingFindMyPhoneAlert) {
                 hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 1.0)
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-                    AudioServicesPlaySystemSound(soundCalendarAlert)
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+//                    AudioServicesPlaySystemSound(soundCalendarAlert)
+//                }
+                AudioServicesPlaySystemSound(soundCalendarAlert)
+                Thread.sleep(forTimeInterval: 4)
             }
         } else {
             AudioServicesPlaySystemSound(soundAudioToneBusy)

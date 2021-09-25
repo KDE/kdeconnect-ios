@@ -92,11 +92,6 @@ struct DevicesDetailView: View {
                                 })
                         }
                     }
-                    .alert(isPresented: $showingEncryptionInfo) {
-                        Alert(title: Text("Encryption Info"), message:
-                                Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is:\nDFSDFSDFSDF")
-                              , dismissButton: .default(Text("OK")))
-                    }
                     
                     Section(header: Text("Battery Status")) {
                         if ((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) {
@@ -113,20 +108,6 @@ struct DevicesDetailView: View {
                             }
                         }
                     }
-                    .alert(isPresented: $showingUnpairConfirmationAlert) {
-                        Alert(title: Text("Unpair With Device?"),
-                              message: Text("Unpair with \((backgroundService._devices[detailsDeviceId] as! Device)._name)?"),
-                              primaryButton: .cancel(Text("No, Stay Paired")),
-                              secondaryButton: .destructive(
-                                Text("Yes, Unpair")
-                              ) {
-                                  backgroundService.unpairDevice(detailsDeviceId)
-                                  isStilConnected = false
-                                  //                        backgroundService.refreshDiscovery()
-                                  //                        connectedDevicesViewModel.onDeviceListRefreshed()
-                              }
-                        )
-                    }
                     
 //                    Section(header: Text("Debug section")) {
 //                        Text("Chosen file URLs:")
@@ -137,6 +118,20 @@ struct DevicesDetailView: View {
                     
                 }
                 .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
+                .alert("Encryption Info", isPresented: $showingEncryptionInfo) {} message: {
+                    Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\(((backgroundService._devices[detailsDeviceId] as! Device)._SHA256HashFormatted == nil) ? "ERROR" : (backgroundService._devices[detailsDeviceId] as! Device)._SHA256HashFormatted)")
+                }
+                .alert("Unpair With Device?", isPresented: $showingUnpairConfirmationAlert) {
+                    Button("No, Stay Paired", role: .cancel) {}
+                    Button("Yes, Unpair", role: .destructive) {
+                        backgroundService.unpairDevice(detailsDeviceId)
+                        isStilConnected = false
+//                        backgroundService.refreshDiscovery()
+//                        connectedDevicesViewModel.onDeviceListRefreshed()
+                    }
+                } message: {
+                    Text("Unpair with \((backgroundService._devices[detailsDeviceId] as! Device)._name)?")
+                }
                 
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
                     EmptyView()
