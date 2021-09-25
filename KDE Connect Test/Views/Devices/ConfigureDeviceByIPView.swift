@@ -30,7 +30,7 @@ struct ConfigureDeviceByIPView: View {
             List {
                 Section(header: Text("Direct Handshake Devices"), footer: Text("Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery")) {
                     ForEach(selfDeviceDataForIPConfig.directIPs, id: \.self) { address in
-                        Text(address)
+                        Text(address) // maybe add ability to edit as well?????
                     }
                     .onDelete(perform: deleteAddress)
                 }

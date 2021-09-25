@@ -97,7 +97,7 @@
     
     // If nil at first, try to get it again
     if (identityApp == nil) {
-        [_certificateService getHostIdentityFromKeychain];
+        [_certificateService reFetchHostIdentity];
         identityApp = [_certificateService hostIdentity];
     }
 
@@ -132,7 +132,7 @@
     // Force remove the old identity, otherwise the new identity cannot be stored
 //    NSDictionary *spec = @{(__bridge id)kSecClass: (id)kSecClassIdentity};
 //    SecItemDelete((__bridge CFDictionaryRef)spec);
-    NSLog(@"Host keychain deleted with status %i", [_certificateService deleteHostCertificateFromKeychain]);
+    NSLog(@"Host identity deleted with status %i", [_certificateService deleteHostCertificateFromKeychain]);
 
     // generate private key
     EVP_PKEY * pkey;
@@ -253,8 +253,10 @@
     // Delete the temp file
     [[NSFileManager defaultManager] removeItemAtPath:p12FilePath error:nil];
     
+    [_certificateService reFetchHostIdentity];
+    
     // Release finished CF Objects
-    CFRelease(items);
+    //CFRelease(items);
     //CFRelease(identityApp); // Releasing this causes crash!!!
 }
 

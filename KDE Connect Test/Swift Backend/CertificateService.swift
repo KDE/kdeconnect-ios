@@ -25,6 +25,10 @@ import CryptoKit
         return SHA256HashDividedAndFormatted(hashDescription: getHostCertificateSHA256HexDescriptionString())
     }
     
+    @objc func reFetchHostIdentity() -> Void {
+        hostIdentity = getHostIdentityFromKeychain()
+    }
+    
     @objc func getHostIdentityFromKeychain() -> SecIdentity? {
         let keychainItemQuery: CFDictionary = [
             kSecClass: kSecClassIdentity,
@@ -180,7 +184,7 @@ import CryptoKit
             let keychainItemQuery: CFDictionary = [kSecClass: itemClass] as CFDictionary
             let status: OSStatus = SecItemDelete(keychainItemQuery)
             if (status != 0) {
-                print("Failed to remove 1 certificate in keychain, continuing to attempt to remove all")
+                print("Failed to remove 1 certificate in keychain with error code \(status), continuing to attempt to remove all")
             }
         }
         return true

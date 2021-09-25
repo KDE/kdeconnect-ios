@@ -91,7 +91,7 @@
     
     // If nil at first, try to get it again
     if (identityApp == nil) {
-        [_certificateService getHostIdentityFromKeychain];
+        [_certificateService reFetchHostIdentity];
         identityApp = [_certificateService hostIdentity];
     }
     

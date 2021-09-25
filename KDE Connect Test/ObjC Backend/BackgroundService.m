@@ -67,6 +67,7 @@
     if ((self=[super init])) {
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
         //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
+        //[_certificateService deleteAllItemsFromKeychain];
         //NSLog(@"Host identity deleted from keychain with exit code %i", [KeychainOperations deleteHostCertificateFromKeychain]);
         
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
