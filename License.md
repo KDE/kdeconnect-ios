@@ -1,0 +1,9 @@
+KDE Connect (iOS) is licensed under the GNU GPLv3. The following additional terms and conditions also apply:
+
+The KDE Connect developers are aware that the terms of service that apply to apps distributed via Apple's App Store services may conflict with rights granted under the KDE Connect iOS license, the GNU General Public License, version 3.
+
+The copyright holders of KDE Connect (iOS) do not wish this conflict to prevent the otherwise compliant distribution of derived projects and apps via the App Store. Therefore, we have committed not to pursue any license violation that results solely from the conflict between the GNU GPLv3 and the [Apple App Store terms of service](https://developer.apple.com/support/downloads/terms/apple-developer-program/Apple-Developer-Program-License-Agreement-20210607-English.pdf), including the FOSS-specific policies as outlined in sections 3.3.22, 5.1, and 9.1.
+
+However, please be aware that Apple may still choose to take issue with projects/apps derived from KDE Connect (iOS) if it is deemed to violate the[Apple App Store terms of service](https://developer.apple.com/support/downloads/terms/apple-developer-program/Apple-Developer-Program-License-Agreement-20210607-English.pdf).
+
+In other words, as long as you comply with the GPL in all other respects, including its requirements to provide users with source code and the text of the license, we will not object to your distribution of the KDE Connect (iOS) through the App Store and you are free to exercise all the other rights granted by the GPLv3 license. We also encourage you to exercise consideration in your derived projects/apps to not potentially violate the [Apple App Store terms of service](https://developer.apple.com/support/downloads/terms/apple-developer-program/Apple-Developer-Program-License-Agreement-20210607-English.pdf) to allow you to have a smooth time with FLOSS and KDE Connect (iOS).
