@@ -18,7 +18,7 @@
 		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
 		1499A8EA2698C48300FDF493 /* rsaPrivate.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 1499A8E92698C48300FDF493 /* rsaPrivate.p12 */; };
 		A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */; };
-		A01FDD2726C4F6D50014B165 /* PluginsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* PluginsService.swift */; };
+		A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* Plugin.swift */; };
 		A01FDD2926C4F8420014B165 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2826C4F8420014B165 /* Ping.swift */; };
 		A01FDD2D26C62E180014B165 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2C26C62E170014B165 /* Share.swift */; };
 		A01FDD2F26C6FD110014B165 /* FindMyPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */; };
@@ -96,7 +96,7 @@
 		1499A8E92698C48300FDF493 /* rsaPrivate.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsaPrivate.p12; sourceTree = "<group>"; };
 		A01FDD2226C3A5560014B165 /* deviceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = deviceDelegate.h; sourceTree = "<group>"; };
 		A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
-		A01FDD2626C4F6D50014B165 /* PluginsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsService.swift; sourceTree = "<group>"; };
+		A01FDD2626C4F6D50014B165 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		A01FDD2826C4F8420014B165 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		A01FDD2C26C62E170014B165 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyPhone.swift; sourceTree = "<group>"; };
@@ -201,14 +201,10 @@
 			children = (
 				1499A8E52698BFF300FDF493 /* Device.h */,
 				1499A8E32698BFF300FDF493 /* Device.m */,
-				1499A8E42698BFF300FDF493 /* KeychainItemWrapper.h */,
-				1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */,
-				1499A8E12698BF6900FDF493 /* common.h */,
 				1499A8DF2698BF6900FDF493 /* NetworkPackage.h */,
 				1499A8E02698BF6900FDF493 /* NetworkPackage.m */,
 				A0BECF6426C0ED890037E299 /* BackgroundService.h */,
 				A0BECF6526C0EDD10037E299 /* BackgroundService.m */,
-				A01FDD2226C3A5560014B165 /* deviceDelegate.h */,
 			);
 			path = "ObjC Backend";
 			sourceTree = "<group>";
@@ -216,7 +212,7 @@
 		A01FDD2526C4F65B0014B165 /* Plugins and Plugin Views */ = {
 			isa = PBXGroup;
 			children = (
-				A01FDD2626C4F6D50014B165 /* PluginsService.swift */,
+				A01FDD2626C4F6D50014B165 /* Plugin.swift */,
 				A0D8CBCD26EF088700791D07 /* Battery */,
 				A0D8CBCE26EF089700791D07 /* FindMyPhone */,
 				A0D8CBCF26EF08A800791D07 /* Ping */,
@@ -227,6 +223,21 @@
 				A0D8CBDB26F13A2A00791D07 /* RunCommand */,
 			);
 			path = "Plugins and Plugin Views";
+			sourceTree = "<group>";
+		};
+		A072FC3F270AB7220093EB7B /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */,
+				A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */,
+				A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */,
+				A0B87280267C45F400F0EB72 /* ConnectedDevicesData.swift */,
+				A01FDD2226C3A5560014B165 /* deviceDelegate.h */,
+				1499A8E12698BF6900FDF493 /* common.h */,
+				1499A8E42698BFF300FDF493 /* KeychainItemWrapper.h */,
+				1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */,
+			);
+			path = Unused;
 			sourceTree = "<group>";
 		};
 		A0A04423267BF38700CC21DD = {
@@ -259,6 +270,7 @@
 				A0D8CBC626EF06FA00791D07 /* Swift Backend */,
 				A01FDD2526C4F65B0014B165 /* Plugins and Plugin Views */,
 				A0D8CBCA26EF080E00791D07 /* Views */,
+				A072FC3F270AB7220093EB7B /* Unused */,
 				A0A04433267BF38A00CC21DD /* Assets.xcassets */,
 				A0A04438267BF38A00CC21DD /* Info.plist */,
 				A0A04435267BF38A00CC21DD /* Preview Content */,
@@ -299,10 +311,6 @@
 				A0C00FC426F5807C007EFCCA /* CertificateService.swift */,
 				A0FB449926BA796400733914 /* Backend.swift */,
 				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
-				A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */,
-				A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */,
-				A0B87282267D2A8600F0EB72 /* PlaceHolderView.swift */,
-				A0B87280267C45F400F0EB72 /* ConnectedDevicesData.swift */,
 			);
 			path = "Swift Backend";
 			sourceTree = "<group>";
@@ -571,7 +579,7 @@
 				1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */,
 				A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */,
 				1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */,
-				A01FDD2726C4F6D50014B165 /* PluginsService.swift in Sources */,
+				A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */,
 				A0AAA99926E2DDFD003883A7 /* AlertWithTextField.swift in Sources */,
 				A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,

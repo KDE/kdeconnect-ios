@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2021 Lucas Wang <lucas.wang@tuta.io>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
+// Original header below:
 //
 //  AlertWithTextField.swift
 //  KDE Connect Test
@@ -9,6 +16,7 @@
 import UIKit
 import SwiftUI
 
+// TODO: Can this be replaced with a better solution with SwiftUI 3?
 public struct TextAlert {
     public var title: String // Title of the dialog
     public var message: String // Dialog message

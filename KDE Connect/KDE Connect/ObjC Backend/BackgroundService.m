@@ -1,3 +1,11 @@
+/*
+ * SPDX-FileCopyrightText: 2014 YANG Qiao <yangqiao0505@me.com>
+ *                         2021 Lucas Wang <lucas.wang@tuta.io>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
+// Original header below:
 //Copyright 2/5/14  YANG Qiao yangqiao0505@me.com
 //kdeconnect is distributed under two licenses.
 //
@@ -44,23 +52,23 @@
 @synthesize _settings;
 @synthesize _savedDevices;
 
-+ (id) sharedInstance
-{
-    DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
-        return [[self alloc] init];
-    });
-}
-
-+ (id) allocWithZone:(struct _NSZone *)zone
-{
-    DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
-        return [super allocWithZone:zone];
-    });
-}
-
-- (id)copyWithZone:(NSZone *)zone;{
-    return self;
-}
+//+ (id) sharedInstance
+//{
+//    DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+//        return [[self alloc] init];
+//    });
+//}
+//
+//+ (id) allocWithZone:(struct _NSZone *)zone
+//{
+//    DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+//        return [super allocWithZone:zone];
+//    });
+//}
+//
+//- (id)copyWithZone:(NSZone *)zone;{
+//    return self;
+//}
 
 - (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService
 {

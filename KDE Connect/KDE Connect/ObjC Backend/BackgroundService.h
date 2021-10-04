@@ -1,3 +1,11 @@
+/*
+ * SPDX-FileCopyrightText: 2014 YANG Qiao <yangqiao0505@me.com>
+ *                         2021 Lucas Wang <lucas.wang@tuta.io>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
+// Original header below:
 //Copyright 2/5/14  YANG Qiao yangqiao0505@me.com
 //kdeconnect is distributed under two licenses.
 //
@@ -39,7 +47,7 @@
 @property(nonatomic)NSMutableDictionary* _devices;
 @property(nonatomic)NSMutableDictionary* _settings;
 
-+ (id) sharedInstance;
+//+ (id) sharedInstance;
 
 - (void) startDiscovery;
 - (void) refreshDiscovery;

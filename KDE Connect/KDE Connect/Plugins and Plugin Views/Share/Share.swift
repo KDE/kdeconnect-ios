@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2021 Lucas Wang <lucas.wang@tuta.io>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
+// Original header below:
 //
 //  Share.swift
 //  KDE Connect Test
@@ -8,6 +15,7 @@
 import Foundation
 import AVFoundation
 
+// TODO: Implement fallback on another port when default 1739 is unavaliable
 @objc class Share : NSObject, Plugin {
     @objc let controlDevice: Device
     let MIN_PAYLOAD_PORT: Int = 1739

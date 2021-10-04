@@ -1,4 +1,11 @@
-//Copyright 27/4/14  YANG Qiao yangqiao0505@me.com
+/*
+ * SPDX-FileCopyrightText: 2014 YANG Qiao <yangqiao0505@me.com>
+ *                         2021 Lucas Wang <lucas.wang@tuta.io>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
+// Original header below://Copyright 27/4/14  YANG Qiao yangqiao0505@me.com
 //kdeconnect is distributed under two licenses.
 //
 //* The Mozilla Public License (MPL) v2.0

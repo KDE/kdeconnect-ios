@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2021 Lucas Wang <lucas.wang@tuta.io>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
+// Original header below:
 //
 //  PresenterView.swift
 //  KDE Connect Test
@@ -17,25 +24,25 @@ struct PresenterView: View {
     
     var body: some View {
         VStack {
-//            Spacer()
-//                .frame(height: 20)
-            Image(systemName: "wand.and.rays")
-                .resizable()
-                .frame(width: 110, height: 110)
-                .foregroundColor(.white)
-                .padding(EdgeInsets(top: 130, leading: 130, bottom: 130, trailing: 130))
-                .background(Color.orange)
-                .clipShape(Rectangle())
-                .cornerRadius(50)
-                .gesture(
-                    DragGesture(minimumDistance: 0)
-                        .onChanged({ _ in
-                            startGyroAndPointer()
-                        })
-                        .onEnded({ _ in
-                            stopGyroAndPointer()
-                        })
-                )
+            if ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) {
+                Image(systemName: "wand.and.rays")
+                    .resizable()
+                    .frame(width: 110, height: 110)
+                    .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 130, leading: 130, bottom: 130, trailing: 130))
+                    .background(Color.orange)
+                    .clipShape(Rectangle())
+                    .cornerRadius(50)
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged({ _ in
+                                startGyroAndPointer()
+                            })
+                            .onEnded({ _ in
+                                stopGyroAndPointer()
+                            })
+                    )
+            }
             
             HStack {
                 Button(action: {
