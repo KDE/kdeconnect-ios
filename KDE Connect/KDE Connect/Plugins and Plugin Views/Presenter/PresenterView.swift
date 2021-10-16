@@ -46,26 +46,26 @@ struct PresenterView: View {
             
             HStack {
                 Button(action: {
-                    
+                    goBackAction()
                 }, label: {
                     Image(systemName: "backward.end")
                         .resizable()
                         .frame(width: 40, height: 50)
                         .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 30, leading: 70, bottom: 30, trailing: 70))
+                        .padding(EdgeInsets(top: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
                 })
                 
                 Button(action: {
-                    
+                    goForwardAction()
                 }, label: {
                     Image(systemName: "forward.end")
                         .resizable()
                         .frame(width: 40, height: 50)
                         .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 30, leading: 70, bottom: 30, trailing: 70))
+                        .padding(EdgeInsets(top: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
@@ -98,7 +98,7 @@ struct PresenterView: View {
             }
             
         }
-        .navigationTitle("Slideshow Remote")
+        .navigationBarTitle("Slideshow Remote", displayMode: .inline)
         .navigationBarItems(trailing: {
             Menu {
                 Button(action: {

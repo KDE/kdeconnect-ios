@@ -245,9 +245,11 @@ struct DevicesView: View {
                                     Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
+                                        .foregroundColor(.black)
                                     if (backgroundService._devices[key as Any] != nil) {
                                         Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
                                             .font(.title3)
+                                            .foregroundColor(.black)
                                     }
                                 }
                                 Text("Tap to start pairing")

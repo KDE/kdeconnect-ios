@@ -46,7 +46,7 @@ struct TwoFingerTapView: UIViewRepresentable
         NSLayoutConstraint.activate([
             instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             instructionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            instructionLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: UIScreen.main.bounds.height / 5),
+            instructionLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: UIScreen.main.bounds.height / 4),
         ])
         
         return view
