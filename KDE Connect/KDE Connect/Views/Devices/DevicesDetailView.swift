@@ -108,10 +108,8 @@ struct DevicesDetailView: View {
                         } else {
                             HStack {
                                 Image(systemName: ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                    .font(.system(size: 18))
                                     .foregroundColor(((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
                                 Text("\(((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
-                                    .font(.system(size: 18))
                             }
                         }
                     }

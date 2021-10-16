@@ -27,9 +27,10 @@ struct RunCommandView: View {
                 }, label: {
                     VStack {
                         Text(commandItemsInsideView[commandkey]?.name ?? "ERROR")
-                            .font(.system(size: 18, weight: .bold))
+                            .font(.headline)
+                            .fontWeight(.bold)
                         Text(commandItemsInsideView[commandkey]?.command ?? "ERROR")
-                            .font(.system(size: 12))
+                            .font(.caption)
                     }
                 })
             }

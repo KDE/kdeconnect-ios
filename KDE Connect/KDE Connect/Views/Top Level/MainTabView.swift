@@ -21,6 +21,7 @@ struct MainTabView: View {
             NavigationView {
                 DevicesView()
             }
+            .navigationViewStyle(.stack)
             .tabItem {
                 Label("Devices", systemImage: "laptopcomputer.and.iphone")
             }
@@ -28,6 +29,7 @@ struct MainTabView: View {
             NavigationView {
                 SettingsView()
             }
+            .navigationViewStyle(.stack)
             .tabItem {
                 Label("Settings", systemImage: "gear")
             }

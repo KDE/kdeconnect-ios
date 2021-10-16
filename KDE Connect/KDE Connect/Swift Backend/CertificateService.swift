@@ -89,6 +89,7 @@ import CryptoKit
         return arrayOf2CharStrings.joined(separator: ":")
     }
     
+    //@discardableResult
     @objc func deleteHostCertificateFromKeychain() -> OSStatus {
         let keychainItemQuery: CFDictionary = [
             kSecAttrLabel: NetworkPackage.getUUID() as Any,

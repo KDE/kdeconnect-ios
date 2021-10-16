@@ -18,6 +18,7 @@ struct SettingsChosenThemeView: View {
                     Text($0)
                 }
             }
+            .pickerStyle(.wheel)
         }
         .navigationTitle("Choose App Theme")
     }

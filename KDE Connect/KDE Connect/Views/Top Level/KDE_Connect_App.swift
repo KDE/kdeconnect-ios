@@ -6,15 +6,15 @@
 
 // Original header below:
 //
-//  KDE_Connect_TestApp.swift
-//  KDE Connect Test
+//  KDE_Connect_App.swift
+//  KDE Connect
 //
 //  Created by Lucas Wang on 2021-06-17.
 //
 
 import SwiftUI
 
-@main struct KDE_Connect_TestApp: App {
+@main struct KDE_Connect_App: App {
     @ObservedObject var selfDeviceDataForTopLevel: SelfDeviceData = selfDeviceData
     
     var body: some Scene {
@@ -24,6 +24,7 @@ import SwiftUI
                 .onAppear {
                     backgroundService.startDiscovery()
                     motionManager.gyroUpdateInterval = 0.1
+                    UITableView.appearance().contentInset.top = -25
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     // In case the app's been chilling suspended for a long time, upon returning ask for updates to all devices's battery statuses
