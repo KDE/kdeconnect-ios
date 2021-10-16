@@ -40,127 +40,11 @@ struct DevicesView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("Connected Devices")) {
-                    if (connectedDevicesIds.isEmpty) {
-                        Text("No devices currently connected.\nConnected devices will appear here. Please Refresh Discovery if a saved device is already online but not shown here.")
-                            .padding(.vertical, 8)
-                    } else {
-                        ForEach(connectedDevicesIds, id: \.self) { key in
-                            NavigationLink(
-                                // How do we know what to pass to the details view?
-                                // Use the "key" from ForEach aka device ID to get it from
-                                // backgroundService's _devices dictionary for the value (Device class objects)
-                                destination: DevicesDetailView(detailsDeviceId: key),
-                                //isActive: .constant(true),
-                                label: {
-                                    // TODO: use trailing closure to unindent
-                                    HStack {
-                                        Image(systemName: "wifi")
-                                            .foregroundColor(.green)
-                                            .font(.title2)
-                                        VStack(alignment: .leading) {
-                                            HStack {
-                                                Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
-                                                    .font(.title3)
-                                                    .fontWeight(.bold)
-                                                if (backgroundService._devices[key as Any] != nil) {
-                                                    Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                        .font(.title3)
-                                                }
-                                            }
-                                            if ((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) {
-                                                Text("No battery detected in device")
-                                                    .font(.footnote)
-                                            } else if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
-                                                Text("Battery Plugin Disabled")
-                                                    .font(.footnote)
-                                            } else {
-                                                HStack {
-                                                    Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                                        .font(.footnote)
-                                                        .foregroundColor(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
-                                                    Text("\(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
-                                                        .font(.footnote)
-                                                }
-                                            }
-                                            // TODO: Might want to add the device description as
-                                            // id:desc dictionary?
-                                            //Text(key)
-                                        }
-                                    }
-                                }
-                            )
-                        }
-                    }
-                }
+                connectedDevicesSection
                 
-                Section(header: Text("Discoverable Devices")) {
-                    if (visibleDevicesIds.isEmpty) {
-                        Text("No devices discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
-                            .padding(.vertical, 8)
-                    } else {
-                        ForEach(visibleDevicesIds, id: \.self) { key in
-                            Button(action: {
-                                currPairingDeviceId = key
-                                showingOnSelfPairOutgoingRequestAlert = true
-                            }) {
-                                HStack {
-                                    Image(systemName: "badge.plus.radiowaves.right")
-                                        .foregroundColor(.blue)
-                                        .font(.title2)
-                                    VStack(alignment: .leading) {
-                                        HStack {
-                                            Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
-                                                .font(.title3)
-                                                .fontWeight(.bold)
-                                            if (backgroundService._devices[key as Any] != nil) {
-                                                Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                    .font(.title3)
-                                            }
-                                        }
-                                        Text("Tap to start pairing")
-                                            .font(.subheadline)
-                                    }
-                                }
-                                
-                            }
-                        }
-                    }
-                }
+                discoverableDevicesSection
                 
-                Section(header: Text("Remembered Devices"), footer: Text("To connect to Remembered Devices, make sure they are connected to the same network as this device.")) {
-                    if (savedDevicesIds.isEmpty) {
-                        Text("No remembered devices.\nDevices that were previously connected will appear here.")
-                            .padding(.vertical, 8)
-                    } else {
-                        ForEach(savedDevicesIds, id: \.self) { key in
-                            Button(action: {
-                                //currPairingDeviceId = key
-                                //showingOnSelectSavedDeviceAlert = true
-                            }) {
-                                HStack {
-                                    Image(systemName: "wifi.slash")
-                                        .foregroundColor(.red)
-                                        .font(.title2)
-                                    VStack(alignment: .leading) {
-                                        HStack {
-                                            Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
-                                                .font(.title3)
-                                                .fontWeight(.bold)
-                                            Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
-                                                .font(.title3)
-                                        }
-                                        // TODO: Might want to add the device description as
-                                        // id:desc dictionary?
-                                        //Text(key)
-                                    }
-                                }
-                            }
-                            .disabled(true)
-                        }
-                        .onDelete(perform: deleteDevice)
-                    }
-                }
+                rememberedDevicesSection
             }
             .refreshable() {
                 refreshDiscoveryAndList()
@@ -171,7 +55,7 @@ struct DevicesView: View {
                 Button("Pair") {
                     backgroundService.pairDevice(currPairingDeviceId)
                 }
-                    .foregroundColor(.green)
+                .foregroundColor(.green)
             } message: {
                 if (currPairingDeviceId != nil) {
                     Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
@@ -191,7 +75,7 @@ struct DevicesView: View {
                 Button("Pair") {
                     backgroundService.pairDevice(currPairingDeviceId)
                 }
-                    .foregroundColor(.green)
+                .foregroundColor(.green)
             } message: {
                 if (currPairingDeviceId != nil) {
                     Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
@@ -288,14 +172,140 @@ struct DevicesView: View {
         }
     }
     
-    func deleteDevice(at offsets: IndexSet) {
-        if (offsets.first != nil) {
-            print("Remembered device \(String(describing: ((backgroundService._devices[savedDevicesIds[offsets.first!]]) as! Device)._name)) removed at index \(offsets.first!)")
-            backgroundService.unpairDevice(savedDevicesIds[offsets.first!])
-            savedDevicesIds.remove(atOffsets: offsets)
+    var connectedDevicesSection: some View {
+        Section(header: Text("Connected Devices")) {
+            if (connectedDevicesIds.isEmpty) {
+                Text("No devices currently connected.\nConnected devices will appear here. Please Refresh Discovery if a saved device is already online but not shown here.")
+                    .padding(.vertical, 8)
+            } else {
+                ForEach(connectedDevicesIds, id: \.self) { key in
+                    NavigationLink(
+                        // How do we know what to pass to the details view?
+                        // Use the "key" from ForEach aka device ID to get it from
+                        // backgroundService's _devices dictionary for the value (Device class objects)
+                        destination: DevicesDetailView(detailsDeviceId: key)
+                    ) {
+                        HStack {
+                            Image(systemName: "wifi")
+                                .foregroundColor(.green)
+                                .font(.title2)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                    if (backgroundService._devices[key as Any] != nil) {
+                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                            .font(.title3)
+                                    }
+                                }
+                                if ((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) {
+                                    Text("No battery detected in device")
+                                        .font(.footnote)
+                                } else if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                                    Text("Battery Plugin Disabled")
+                                        .font(.footnote)
+                                } else {
+                                    HStack {
+                                        Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                            .font(.footnote)
+                                            .foregroundColor(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
+                                        Text("\(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                                            .font(.footnote)
+                                    }
+                                }
+                                // TODO: Might want to add the device description as
+                                // id:desc dictionary?
+                                //Text(key)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-
+    
+    var discoverableDevicesSection: some View {
+        Section(header: Text("Discoverable Devices")) {
+            if (visibleDevicesIds.isEmpty) {
+                Text("No devices discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
+                    .padding(.vertical, 8)
+            } else {
+                ForEach(visibleDevicesIds, id: \.self) { key in
+                    Button(action: {
+                        currPairingDeviceId = key
+                        showingOnSelfPairOutgoingRequestAlert = true
+                    }) {
+                        HStack {
+                            Image(systemName: "badge.plus.radiowaves.right")
+                                .foregroundColor(.blue)
+                                .font(.title2)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                    if (backgroundService._devices[key as Any] != nil) {
+                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                            .font(.title3)
+                                    }
+                                }
+                                Text("Tap to start pairing")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    var rememberedDevicesSection: some View {
+        Section(header: Text("Remembered Devices"), footer: Text("To connect to Remembered Devices, make sure they are connected to the same network as this device.")) {
+            if (savedDevicesIds.isEmpty) {
+                Text("No remembered devices.\nDevices that were previously connected will appear here.")
+                    .padding(.vertical, 8)
+            } else {
+                ForEach(savedDevicesIds, id: \.self) { key in
+                    Button(action: {
+                        //currPairingDeviceId = key
+                        //showingOnSelectSavedDeviceAlert = true
+                    }) {
+                        HStack {
+                            Image(systemName: "wifi.slash")
+                                .foregroundColor(.red)
+                                .font(.title2)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                    Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                        .font(.title3)
+                                }
+                                // TODO: Might want to add the device description as
+                                // id:desc dictionary?
+                                //Text(key)
+                            }
+                        }
+                    }
+                    .disabled(true)
+                }
+                .onDelete(perform: deleteDevice)
+            }
+        }
+    }
+    
+    func deleteDevice(at offsets: IndexSet) {
+        for offset in offsets {
+            // TODO: Check Device.m for nullability
+            let name = (backgroundService._devices[savedDevicesIds[offset]] as! Device)._name!
+            print("Remembered device \(name) removed at index \(offset)")
+            backgroundService.unpairDevice(savedDevicesIds[offset])
+        }
+        savedDevicesIds.remove(atOffsets: offsets)
+    }
+    
     func onPairRequestInsideView(_ deviceId: String!) -> Void {
         currPairingDeviceId = deviceId
 //        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
