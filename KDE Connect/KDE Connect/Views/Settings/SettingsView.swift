@@ -18,11 +18,11 @@ struct SettingsView: View {
                     destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName),
                     label: {
                         HStack {
-                            Image(systemName: "iphone")
-                            Text("Device Name")
+                            Label("Device Name", systemImage: "iphone")
+                                .accentColor(.primary)
                             Spacer()
                             Text(selfDeviceData.deviceName)
-                                .font(.caption)
+                                .foregroundColor(.secondary)
                         }
                     })
                 
@@ -30,51 +30,58 @@ struct SettingsView: View {
                     destination: SettingsChosenThemeView(chosenTheme: $selfDeviceDataForSettings.chosenTheme),
                     label: {
                         HStack {
-                            Image(systemName: "lightbulb")
-                            Text("App Theme")
+                            Label("App Theme", systemImage: "lightbulb")
+                                .accentColor(.primary)
                             Spacer()
                             Text(selfDeviceData.chosenTheme)
-                                .font(.caption)
+                                .foregroundColor(.secondary)
                         }
                     })
                 
                 NavigationLink(
                     destination: SettingsAdvancedView(),
                     label: {
-                        HStack {
-                            Image(systemName: "wrench.and.screwdriver") //exclamationmark.triangle
-                            Text("Advanced Settings")
-                        }
+                        Label("Advanced Settings", systemImage: "wrench.and.screwdriver")
+                            .accentColor(.primary)
                     })
             }
             
             Section(header: Text("External Links")) {
-                HStack {
-                    Image(systemName: "books.vertical")
+                Label {
                     Link("Wiki & User's Manual", destination: URL(string: "https://userbase.kde.org/KDEConnect")!)
+                } icon: {
+                    Image(systemName: "books.vertical")
+                        .accentColor(.primary)
                 }
                 
-                HStack {
-                    Image(systemName: "ladybug")
+                Label {
                     Link("Report Bug", destination: URL(string: "https://bugs.kde.org/enter_bug.cgi?product=kdeconnect&component=ios-application")!)
+                } icon: {
+                    Image(systemName: "ladybug")
+                        .accentColor(.primary)
                 }
                 
-                HStack {
-                    Image(systemName: "dollarsign.square")
+                Label {
                     Link("Donate", destination: URL(string: "https://kde.org/community/donations/")!)
+                } icon: {
+                    Image(systemName: "dollarsign.square")
+                        .accentColor(.primary)
                 }
                 
-                HStack {
-                    Image(systemName: "chevron.left.forwardslash.chevron.right")
+                Label {
                     Link("Source Code", destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios")!)
+                } icon: {
+                    Image(systemName: "chevron.left.forwardslash.chevron.right")
+                        .accentColor(.primary)
                 }
                 
-                HStack {
-                    Image(systemName: "magazine")
+                Label {
                     Link("Licenses", destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios/-/blob/master/License.md")!)
+                } icon: {
+                    Image(systemName: "magazine")
+                        .accentColor(.primary)
                 }
             }
-            
         }
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
         .navigationTitle("Settings")

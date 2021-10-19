@@ -38,10 +38,7 @@ struct DevicesDetailView: View {
                             Button(action: {
                                 ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
                             }, label: {
-                                HStack {
-                                    Image(systemName: "square.and.arrow.up.on.square.fill")
-                                    Text("Push Local Clipboard")
-                                }
+                                Label("Push Local Clipboard", systemImage: "square.and.arrow.up.on.square.fill")
                             })
                         }
                         
@@ -49,10 +46,7 @@ struct DevicesDetailView: View {
                             Button(action: {
                                 showingFilePicker = true
                             }, label: {
-                                HStack {
-                                    Image(systemName: "folder")
-                                    Text("Send files")
-                                }
+                                Label("Send files", systemImage: "folder")
                             })
                         }
                         
@@ -60,10 +54,7 @@ struct DevicesDetailView: View {
                             NavigationLink(
                                 destination: PresenterView(detailsDeviceId: detailsDeviceId),
                                 label: {
-                                    HStack {
-                                        Image(systemName: "slider.horizontal.below.rectangle")
-                                        Text("Slideshow remote")
-                                    }
+                                    Label("Slideshow remote", systemImage: "slider.horizontal.below.rectangle")
                                 })
                         }
 //
@@ -81,10 +72,7 @@ struct DevicesDetailView: View {
                             NavigationLink(
                                 destination: RunCommandView(detailsDeviceId: self.detailsDeviceId),
                                 label: {
-                                    HStack {
-                                        Image(systemName: "terminal")
-                                        Text("Run Command")
-                                    }
+                                    Label("Run Command", systemImage: "terminal")
                                 })
                         }
                         
@@ -92,10 +80,7 @@ struct DevicesDetailView: View {
                             NavigationLink(
                                 destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
                                 label: {
-                                    HStack {
-                                        Image(systemName: "hand.tap")
-                                        Text("Remote input")
-                                    }
+                                    Label("Remote Input", systemImage: "hand.tap")
                                 })
                         }
                     }

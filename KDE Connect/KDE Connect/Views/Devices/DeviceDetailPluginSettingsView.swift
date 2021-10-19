@@ -28,33 +28,34 @@ struct DeviceDetailPluginSettingsView: View {
     
     var body: some View {
         List {
-            Text("You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views.")
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PING] != nil) {
-                Toggle("Ping", isOn: $isPingEnabled)
-            }
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_SHARE] != nil) {
-                Toggle("Share/File Transfer", isOn: $isShareEnabled)
-            }
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_FINDMYPHONE_REQUEST] != nil) {
-                Toggle("Ring/Find My Phone", isOn: $isFindMyPhoneEnabled)
-            }
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] != nil) {
-                Toggle("Battery Status", isOn: $isBatteryEnabled)
-            }
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] != nil) {
-                Toggle("Clipboard Sync", isOn: $isClipboardEnabled)
-            }
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil) {
-                Toggle("Remote Input", isOn: $isRemoteInputEnabled)
-            }
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] != nil) {
-                Toggle("Run Command", isOn: $isRunCommandEnabled)
-            }
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] != nil) {
-                Toggle("Slideshow Remote", isOn: $isPresenterEnabled)
+            Section(header: Text("Enable/Disable Plugins"), footer: Text("You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views.")) {
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PING] != nil) {
+                    Toggle("Ping", isOn: $isPingEnabled)
+                }
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_SHARE] != nil) {
+                    Toggle("Share/File Transfer", isOn: $isShareEnabled)
+                }
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_FINDMYPHONE_REQUEST] != nil) {
+                    Toggle("Ring/Find My Phone", isOn: $isFindMyPhoneEnabled)
+                }
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] != nil) {
+                    Toggle("Battery Status", isOn: $isBatteryEnabled)
+                }
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] != nil) {
+                    Toggle("Clipboard Sync", isOn: $isClipboardEnabled)
+                }
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil) {
+                    Toggle("Remote Input", isOn: $isRemoteInputEnabled)
+                }
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] != nil) {
+                    Toggle("Run Command", isOn: $isRunCommandEnabled)
+                }
+                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] != nil) {
+                    Toggle("Slideshow Remote", isOn: $isPresenterEnabled)
+                }
             }
         }
-        .navigationTitle("Plugin Settings")
+        .navigationBarTitle("Plugin Settings", displayMode: .inline)
         .onChange(of: isPingEnabled, perform: { value in
             (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PING] = value
         })
