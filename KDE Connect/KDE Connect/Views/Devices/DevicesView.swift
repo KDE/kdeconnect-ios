@@ -71,7 +71,7 @@ struct DevicesView: View {
                 }
             }
             .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
-                Button("OK", role: .cancel) {}
+                Button("Cancel", role: .cancel) {}
                 Button("Pair") {
                     backgroundService.pairDevice(currPairingDeviceId)
                 }
@@ -199,7 +199,7 @@ struct DevicesView: View {
                                             .font(.title3)
                                     }
                                 }
-                                if ((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) {
+                                if (((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) || (((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel == 0)) {
                                     Text("No battery detected in device")
                                         .font(.footnote)
                                 } else if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
@@ -245,7 +245,7 @@ struct DevicesView: View {
                                     Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(.primary)
                                     if (backgroundService._devices[key as Any] != nil) {
                                         Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
                                             .font(.title3)

@@ -45,7 +45,7 @@ struct SettingsAdvancedView: View {
                 })
             }
         }
-        .navigationTitle("Advanced Settings")
+        .navigationBarTitle("Advanced Settings", displayMode: .inline)
     }
 }
 

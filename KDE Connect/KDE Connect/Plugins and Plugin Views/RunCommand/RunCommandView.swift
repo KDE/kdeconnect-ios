@@ -13,7 +13,7 @@
 //
 
 import SwiftUI
-
+// TODO: Commands are not getting parsed properly? Investigate.
 struct RunCommandView: View {
     let detailsDeviceId: String
     @State var commandItemsInsideView: [String : CommandEntry] = [:]
@@ -35,7 +35,7 @@ struct RunCommandView: View {
                 })
             }
         }
-        .navigationTitle("Run Command")
+        .navigationBarTitle("Run Command", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
             ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).sendSetupPackage()
         }, label: {
