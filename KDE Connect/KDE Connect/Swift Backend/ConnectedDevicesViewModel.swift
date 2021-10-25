@@ -14,6 +14,7 @@
 
 import SwiftUI
 import UIKit
+import AVFoundation
 import CryptoKit
 
 @objc class ConnectedDevicesViewModel : NSObject {
@@ -27,45 +28,81 @@ import CryptoKit
     var lastLocalClipboardUpdateTimestamp: Int = 0
         
     @objc func onPairRequest(_ deviceId: String!) -> Void {
-        devicesView!.onPairRequestInsideView(deviceId)
+        if (devicesView != nil) {
+            devicesView!.onPairRequestInsideView(deviceId)
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform onPairRequest in ConnectedDevicesViewModel")
+        }
     }
     
     @objc func onPairTimeout(_ deviceId: String!) -> Void{
-        devicesView!.onPairTimeoutInsideView(deviceId)
+        if (devicesView != nil) {
+            devicesView!.onPairTimeoutInsideView(deviceId)
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform onPairTimeout in ConnectedDevicesViewModel")
+        }
     }
     
     @objc func onPairSuccess(_ deviceId: String!) -> Void {
-        if (certificateService.tempRemoteCerts[deviceId] != nil) {
-            let status: Bool = certificateService.saveRemoteDeviceCertToKeychain(cert: certificateService.tempRemoteCerts[deviceId]!, deviceId: deviceId)
-            print("Remote certificate saved into local Keychain with status \(status)")
-            (backgroundService._devices[deviceId as Any] as! Device)._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
-            devicesView!.onPairSuccessInsideView(deviceId)
+        if (devicesView != nil) {
+            if (certificateService.tempRemoteCerts[deviceId] != nil) {
+                let status: Bool = certificateService.saveRemoteDeviceCertToKeychain(cert: certificateService.tempRemoteCerts[deviceId]!, deviceId: deviceId)
+                print("Remote certificate saved into local Keychain with status \(status)")
+                (backgroundService._devices[deviceId as Any] as! Device)._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
+                devicesView!.onPairSuccessInsideView(deviceId)
+            } else {
+                AudioServicesPlaySystemSound(soundAudioError)
+                print("Pairing failed")
+            }
         } else {
-            print("Pairing failed")
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform onPairTimeout in ConnectedDevicesViewModel")
         }
     }
     
     @objc func onPairRejected(_ deviceId: String!) -> Void {
-        devicesView!.onPairRejectedInsideView(deviceId)
+        if (devicesView != nil) {
+            devicesView!.onPairRejectedInsideView(deviceId)
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform onPairRejected in ConnectedDevicesViewModel")
+        }
     }
     
     // Recalculate AND rerender the lists
     @objc func onDeviceListRefreshed() -> Void {
-        let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
-        connectedDevices = devicesListsMap?["connected"] as! [String : String]
-        visibleDevices = devicesListsMap?["visible"] as! [String : String]
-        savedDevices = devicesListsMap?["remembered"] as! [String : String]
-        devicesView!.onDeviceListRefreshedInsideView(vm: self)
+        if (devicesView != nil) {
+            let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
+            connectedDevices = devicesListsMap?["connected"] as! [String : String]
+            visibleDevices = devicesListsMap?["visible"] as! [String : String]
+            savedDevices = devicesListsMap?["remembered"] as! [String : String]
+            devicesView!.onDeviceListRefreshedInsideView(vm: self)
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform onDeviceListRefreshed in ConnectedDevicesViewModel")
+        }
     }
     
     // Refresh Discovery, Recalculate AND rerender the lists
     @objc func refreshDiscoveryAndListInsideView() -> Void {
-        devicesView!.refreshDiscoveryAndList()
+        if (devicesView != nil) {
+            devicesView!.refreshDiscoveryAndList()
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform refreshDiscoveryAndListInsideView in ConnectedDevicesViewModel")
+        }
     }
     
     @objc func reRenderDeviceView() -> Void {
-        withAnimation { // do we want animation for battery updates on DeviceView()?
-            devicesView!.viewUpdate.toggle()
+        if (devicesView != nil) {
+            withAnimation { // do we want animation for battery updates on DeviceView()?
+                devicesView!.viewUpdate.toggle()
+            }
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform reRenderDeviceView in ConnectedDevicesViewModel")
         }
     }
     
@@ -74,6 +111,9 @@ import CryptoKit
             withAnimation {
                 connectedDevicesViewModel.currDeviceDetailsView!.viewUpdate.toggle()
             }
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("currDeviceDetailsView is nil, unable to perform reRenderCurrDeviceDetailsView in ConnectedDevicesViewModel")
         }
     }
     
@@ -86,10 +126,13 @@ import CryptoKit
     }
     
     @objc func currDeviceDetailsViewDisconnected(fromRemote deviceId: String!) -> Void {
-        if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId) {
+        if (currDeviceDetailsView != nil && deviceId == currDeviceDetailsView!.detailsDeviceId && devicesView != nil) {
             currDeviceDetailsView!.isStilConnected = false
+            devicesView!.refreshDiscoveryAndList()
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView OR currDeviceDetailsView is nil, unable to perform devicesView in ConnectedDevicesViewModel")
         }
-        devicesView!.refreshDiscoveryAndList()
     }
     
     @objc func removeDeviceFromArrays(deviceId: String) -> Void {
@@ -110,15 +153,30 @@ import CryptoKit
     }
     
     @objc func showPingAlert() -> Void {
-        devicesView!.showPingAlertInsideView()
+        if (devicesView != nil) {
+            devicesView!.showPingAlertInsideView()
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform showPingAlert in ConnectedDevicesViewModel")
+        }
     }
     
     @objc func showFindMyPhoneAlert() -> Void {
-        devicesView!.showFindMyPhoneAlertInsideView()
+        if (devicesView != nil) {
+            devicesView!.showFindMyPhoneAlertInsideView()
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform showFindMyPhoneAlert in ConnectedDevicesViewModel")
+        }
     }
     
     @objc func showFileReceivedAlert() -> Void {
-        devicesView!.showFileReceivedAlertInsideView()
+        if (devicesView != nil) {
+            devicesView!.showFileReceivedAlertInsideView()
+        } else {
+            AudioServicesPlaySystemSound(soundAudioError)
+            print("devicesView is nil, unable to perform showFileReceivedAlert in ConnectedDevicesViewModel")
+        }
     }
     
     @objc static func getDirectIPList() -> [String] {

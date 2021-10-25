@@ -19,16 +19,16 @@ Please feel free to give feedback/report bugs in the TestFlight version through:
 
 - Sending feedback through TestFlight's integrated screenshot feedback system OR TestFlight's integrated crash feedback system will disclose:
 
-  -- User email (if chosen to disclose)
-  -- Device Model
-  -- iOS version
-  -- Battery level
-  -- Cellular carrier (if applicable)
-  -- Time zone
-  -- Architecture
-  -- Connection Type (Wifi, etc.)
-  -- Free space on disk and total disk space available
-  -- Screen resolution
+  -- User email (if chosen to disclose)<br />
+  -- Device Model<br />
+  -- iOS version<br />
+  -- Battery level<br />
+  -- Cellular carrier (if applicable)<br />
+  -- Time zone<br />
+  -- Architecture<br />
+  -- Connection Type (Wifi, etc.)<br />
+  -- Free space on disk and total disk space available<br />
+  -- Screen resolution<br />
   -- (For Crash feedback) stack trace leading to crash
    
 - Sending feedback through [KDE Bugzilla](https://bugs.kde.org/enter_bug.cgi?product=kdeconnect&component=ios-application) lets you manually disclose as much or as little information as you would like, but all information will have to be investigated manually.
@@ -59,6 +59,8 @@ If you would like to talk to the KDE Connect developers & contributors (for ques
 - Instead of the single-alert system, perhaps the app can implement some other sort of in-app notification system? (iOS cannot display system notifications while the app responsible for them is in the foreground)
 
 - Add "send with KDE Connect" in the "Share" menu so files can be sent from anywhere (need to wake up KDE Connect though, is this possible?)
+
+- Localization & translations (currently only English is supported)
 
 - Expand to a watchOS companion app?
 

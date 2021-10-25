@@ -337,10 +337,26 @@
     [_udpSocket close];
     [_tcpSocket disconnect];
     for (GCDAsyncSocket* socket in _pendingSockets) {
-        [socket disconnect];
+        if (socket != nil) {
+            [socket disconnect];
+        } else { // do we really have to remove all the nils here?
+            for (int i = 0; i < [_pendingSockets count]; i++) {
+                if (_pendingSockets[i] == nil) {
+                    [_pendingSockets removeObjectAtIndex:i];
+                }
+            }
+        }
     }
     for (LanLink* link in [_connectedLinks allValues]) {
-        [link disconnect];
+        if (link != nil) {
+            [link disconnect];
+        } else { // do we really have to remove all the nils here?
+            for (NSString* key in [_connectedLinks allKeys]) {
+                if ([_connectedLinks objectForKey:key] == nil) {
+                    [_connectedLinks removeObjectForKey:key];
+                }
+            }
+        }
     }
     
     [_pendingNps removeAllObjects];

@@ -40,6 +40,7 @@ struct DevicesDetailView: View {
                             }, label: {
                                 Label("Push Local Clipboard", systemImage: "square.and.arrow.up.on.square.fill")
                             })
+                                .accentColor(.primary)
                         }
                         
                         if (((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] != nil) && (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
@@ -48,6 +49,7 @@ struct DevicesDetailView: View {
                             }, label: {
                                 Label("Send files", systemImage: "folder")
                             })
+                                .accentColor(.primary)
                         }
                         
                         if (((backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] != nil) && (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {

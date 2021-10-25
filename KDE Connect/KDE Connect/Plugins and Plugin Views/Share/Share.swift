@@ -45,13 +45,18 @@ import AVFoundation
             if (numFilesReceived == 0) {
                 totalNumOfFilesToReceive = np.integer(forKey: "numberOfFiles")
             }
-            if (saveFile(fileData: np._Payload, filename: np._Body["filename"] as! String)) {
-                //connectedDevicesViewModel.showFileReceivedAlert()
-                print("File \(np._Body["filename"] as! String) saved successfully")
-                numFilesReceived += 1
-                notificationHapticsGenerator.notificationOccurred(.success)
+            if (np._Body["filename"] != nil) {
+                if (saveFile(fileData: np._Payload, filename: np._Body["filename"] as! String)) {
+                    //connectedDevicesViewModel.showFileReceivedAlert()
+                    print("File \(np._Body["filename"] as! String) saved successfully")
+                    numFilesReceived += 1
+                    notificationHapticsGenerator.notificationOccurred(.success)
+                } else {
+                    print("File \(np._Body["filename"] as! String) failed to save")
+                    notificationHapticsGenerator.notificationOccurred(.error)
+                }
             } else {
-                print("File \(np._Body["filename"] as! String) failed to save")
+                print("Nil received when trying to parse filename")
                 notificationHapticsGenerator.notificationOccurred(.error)
             }
             if (numFilesReceived == totalNumOfFilesToReceive) {

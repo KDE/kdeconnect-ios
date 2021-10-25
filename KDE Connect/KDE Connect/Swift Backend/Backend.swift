@@ -57,6 +57,7 @@ let soundMailSent: SystemSoundID = 1001
 let soundSMSReceived: SystemSoundID = 1003
 let soundCalendarAlert: SystemSoundID = 1005
 let soundAudioToneBusy: SystemSoundID = 1070
+let soundAudioError: SystemSoundID = 1073
 
 // Date extension to return the UNIX epoche in miliseconds, since KDE Connect uses miliseconds
 // UNIX Epoche for all timestamp fields:

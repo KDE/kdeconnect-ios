@@ -175,7 +175,7 @@ struct DevicesView: View {
     var connectedDevicesSection: some View {
         Section(header: Text("Connected Devices")) {
             if (connectedDevicesIds.isEmpty) {
-                Text("No devices currently connected.\nConnected devices will appear here. Please Refresh Discovery if a saved device is already online but not shown here.")
+                Text("No devices are currently connected.\nConnected devices will appear here. Please Refresh Discovery if a saved device is already online but not shown here.")
                     .padding(.vertical, 8)
             } else {
                 ForEach(connectedDevicesIds, id: \.self) { key in
@@ -228,7 +228,7 @@ struct DevicesView: View {
     var discoverableDevicesSection: some View {
         Section(header: Text("Discoverable Devices")) {
             if (visibleDevicesIds.isEmpty) {
-                Text("No devices discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
+                Text("No devices are discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device. If the network is shared/public it likely has broadcasting disabled, please manually add the devices in the \"Configure Devices By IP\" menu from the 3-dots drop-down button on the top right of this screen.")
                     .padding(.vertical, 8)
             } else {
                 ForEach(visibleDevicesIds, id: \.self) { key in
