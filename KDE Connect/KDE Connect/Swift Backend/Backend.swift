@@ -23,6 +23,7 @@ let certificateService: CertificateService = CertificateService()
 
 // ViewModel object for devices-related functionalities
 // TODO: Should this be kept global or local to DevicesView()? Reference might break if this is
+// TODO: if global, make singelton
 // global but making it local to DevicesView() would likely make it harder to access values in it
 // We'll finish developing everything else and see if anything other than DevicesView() needs it.
 // I think we probably do since the Unpair function is now in the details view instead of the
@@ -36,14 +37,15 @@ let selfDeviceData: SelfDeviceData = SelfDeviceData()
 let backgroundService: BackgroundService = BackgroundService(connectedDeviceViewModel: connectedDevicesViewModel, certificateService: certificateService)
 
 // Haptics provider
-let hapticGenerators: [UIImpactFeedbackGenerator] =
-    [
-        UIImpactFeedbackGenerator(style: .light),
-        UIImpactFeedbackGenerator(style: .medium),
-        UIImpactFeedbackGenerator(style: .heavy),
-        UIImpactFeedbackGenerator(style: .soft),
-        UIImpactFeedbackGenerator(style: .rigid)
-    ]
+let hapticGenerators: [UIImpactFeedbackGenerator] = [
+    UIImpactFeedbackGenerator(style: .light),
+    UIImpactFeedbackGenerator(style: .medium),
+    UIImpactFeedbackGenerator(style: .heavy),
+    UIImpactFeedbackGenerator(style: .soft),
+    UIImpactFeedbackGenerator(style: .rigid)
+]
+
+//UIImpactFeedbackGenerator.FeedbackStyle.init(rawValue: Int)
 
 let notificationHapticsGenerator: UINotificationFeedbackGenerator = UINotificationFeedbackGenerator()
 
@@ -52,6 +54,15 @@ let motionManager: CMMotionManager = CMMotionManager()
 
 // System sounds definitions, for a list of all IDs, see
 // https://github.com/TUNER88/iOSSystemSoundsLibrary
+// TODO: Implement the enum (in separate file) below to decrease global vars
+//enum SystemSound: SystemSoundID {
+//    case mailReceived = 1000
+//
+//    func play() {
+//        AudioServicesPlaySystemSound(self.rawValue)
+//    }
+//}
+//SystemSound.mailReceived.play()
 let soundMailReceived: SystemSoundID = 1000
 let soundMailSent: SystemSoundID = 1001
 let soundSMSReceived: SystemSoundID = 1003
@@ -63,15 +74,16 @@ let soundAudioError: SystemSoundID = 1073
 // UNIX Epoche for all timestamp fields:
 // https://stackoverflow.com/questions/40134323/date-to-milliseconds-and-back-to-date-in-swift
 extension Date {
-    var millisecondsSince1970:Int64 {
+    var millisecondsSince1970: Int64 {
         return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
     }
 
-    init(milliseconds:Int64) {
+    init(milliseconds: Int64) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }
 
+// TODO: convert this to a computed property on DeviceType
 // Returns the systemName of the type of device
 func getSFSymbolNameFromDeviceType(deviceType: DeviceType) -> String {
     switch (deviceType) {

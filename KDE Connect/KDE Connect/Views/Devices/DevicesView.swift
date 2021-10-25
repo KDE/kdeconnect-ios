@@ -16,9 +16,19 @@ import SwiftUI
 import AVFoundation
 
 struct DevicesView: View {
-    @State private var connectedDevicesIds: [String] = []
-    @State private var visibleDevicesIds: [String] = []
-    @State private var savedDevicesIds: [String] = []
+//    @State private var connectedDevicesIds: [String] = []
+//    @State private var visibleDevicesIds: [String] = []
+//    @State private var savedDevicesIds: [String] = []
+    
+    var connectedDevicesIds: [String] {
+        viewModel.connectedDevices.keys.sorted()
+    }
+    var visibleDevicesIds: [String] {
+        viewModel.visibleDevices.keys.sorted()
+    }
+    var savedDevicesIds: [String] {
+        viewModel.savedDevices.keys.sorted()
+    }
     
     @State var currPairingDeviceId: String?
     @State private var showingOnPairRequestAlert: Bool = false
@@ -34,6 +44,8 @@ struct DevicesView: View {
     @State private var showingConfigureDevicesByIPView: Bool = false
     
     @State var viewUpdate: Bool = false
+    
+    @ObservedObject var viewModel: ConnectedDevicesViewModel = connectedDevicesViewModel
     
     //@ObservedObject var localNotificationService = LocalNotificationService()
     
@@ -58,7 +70,7 @@ struct DevicesView: View {
                 .foregroundColor(.green)
             } message: {
                 if (currPairingDeviceId != nil) {
-                    Text("\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
+                    Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
                 }
             }
             .alert("Pairing Complete", isPresented: $showingOnPairSuccessAlert) {
@@ -78,7 +90,7 @@ struct DevicesView: View {
                 .foregroundColor(.green)
             } message: {
                 if (currPairingDeviceId != nil) {
-                    Text("Request to pair with \(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
+                    Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
                 }
             }
             .alert("Device Offline", isPresented: $showingOnSelectSavedDeviceAlert) {
@@ -86,8 +98,8 @@ struct DevicesView: View {
                     currPairingDeviceId = nil
                 }
             } message: {
-                if (currPairingDeviceId != nil && connectedDevicesViewModel.savedDevices[currPairingDeviceId!] != nil) {
-                    Text("The paired device \(connectedDevicesViewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
+                if (currPairingDeviceId != nil && viewModel.savedDevices[currPairingDeviceId!] != nil) {
+                    Text("The paired device \(viewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
                 }
             }
             .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
@@ -158,17 +170,17 @@ struct DevicesView: View {
             }
         }())
         .onAppear() { // MARK: This get called twice on startup?????
-            if (connectedDevicesViewModel.devicesView == nil) {
-                connectedDevicesViewModel.devicesView = self
+            if (viewModel.devicesView == nil) {
+                viewModel.devicesView = self
             }
 //            if (backgroundService._backgroundServiceDelegate == nil) {
-//                backgroundService._backgroundServiceDelegate = connectedDevicesViewModel
+//                backgroundService._backgroundServiceDelegate = viewModel
 //            }
             // MARK: If refreshDiscoveryAndList() is here, the device will go into "Remembered" for some reason and then immediately go back, but with an empty _plugins dictionary
             //refreshDiscoveryAndList()
-            connectedDevicesViewModel.onDeviceListRefreshed()
+            viewModel.onDeviceListRefreshed()
             broadcastBatteryStatusAllDevices()
-            //onDeviceListRefreshedInsideView(vm: connectedDevicesViewModel)
+            //onDeviceListRefreshedInsideView(vm: viewModel)
         }
     }
     
@@ -191,7 +203,7 @@ struct DevicesView: View {
                                 .font(.title2)
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text(connectedDevicesViewModel.connectedDevices[key] ?? "???")
+                                    Text(viewModel.connectedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
                                     if (backgroundService._devices[key as Any] != nil) {
@@ -242,7 +254,7 @@ struct DevicesView: View {
                                 .font(.title2)
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text(connectedDevicesViewModel.visibleDevices[key] ?? "???")
+                                    Text(viewModel.visibleDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
                                         .foregroundColor(.primary)
@@ -279,7 +291,7 @@ struct DevicesView: View {
                                 .font(.title2)
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text(connectedDevicesViewModel.savedDevices[key] ?? "???")
+                                    Text(viewModel.savedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
                                     Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
@@ -305,12 +317,12 @@ struct DevicesView: View {
             print("Remembered device \(name) removed at index \(offset)")
             backgroundService.unpairDevice(savedDevicesIds[offset])
         }
-        savedDevicesIds.remove(atOffsets: offsets)
+//        savedDevicesIds.remove(atOffsets: offsets)
     }
     
     func onPairRequestInsideView(_ deviceId: String!) -> Void {
         currPairingDeviceId = deviceId
-//        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(connectedDevicesViewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
+//        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
         if (noCurrentlyActiveAlert()) {
             showingOnPairRequestAlert = true
         } else {
@@ -336,7 +348,7 @@ struct DevicesView: View {
             AudioServicesPlaySystemSound(soundAudioToneBusy)
             print("Unable to display onPairSuccess Alert, another alert already active, but device list is still refreshed")
         }
-        connectedDevicesViewModel.onDeviceListRefreshed()
+        viewModel.onDeviceListRefreshed()
     }
     
     func onPairRejectedInsideView(_ deviceId: String!) -> Void {
@@ -397,37 +409,21 @@ struct DevicesView: View {
                 !showingFindMyPhoneAlert) //&& !showingFileReceivedAlert
     }
     
-    func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {
+//    func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {
+//        withAnimation {
+//            connectedDevicesIds = Array(vm.connectedDevices.keys)//.sort
+//            visibleDevicesIds = Array(vm.visibleDevices.keys)//.sort
+//            savedDevicesIds = Array(vm.savedDevices.keys)//.sort
+//        }
+//    }
+    
+    func refreshDiscoveryAndList() {
         withAnimation {
-            connectedDevicesIds = Array(vm.connectedDevices.keys)//.sort
-            visibleDevicesIds = Array(vm.visibleDevices.keys)//.sort
-            savedDevicesIds = Array(vm.savedDevices.keys)//.sort
+            backgroundService.refreshDiscovery()
+            backgroundService.refreshVisibleDeviceList()
+            broadcastBatteryStatusAllDevices()
         }
     }
-    
-    func refreshDiscoveryAndList() -> Void {
-//        let group = DispatchGroup()
-//        group.enter()
-//        DispatchQueue.main.async {
-//            backgroundService.refreshDiscovery()
-//            group.leave()
-//        }
-////        DispatchQueue.main.async {
-////            backgroundService.reloadAllPlugins()
-////            group.leave()
-////        }
-//        DispatchQueue.main.async {
-//            backgroundService.refreshVisibleDeviceList()
-//            group.leave()
-//        }
-//        group.wait()
-//        broadcastBatteryStatusAllDevices()
-        backgroundService.refreshDiscovery()
-        backgroundService.refreshVisibleDeviceList()
-        //backgroundService.reloadAllPlugins()
-        broadcastBatteryStatusAllDevices()
-    }
-    
 }
 
 //struct DevicesView_Previews: PreviewProvider {

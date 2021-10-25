@@ -98,7 +98,7 @@ import UIKit
         }
     }
     
-    func getSFSymbolColorFromBatteryStatus() -> Color? {
+    func getSFSymbolColorFromBatteryStatus() -> Color {
         if (remoteThresholdEvent == 1 || remoteChargeLevel < 10) {
             return .red
         } else if (remoteIsCharging) {
@@ -106,7 +106,7 @@ import UIKit
         } else if (remoteChargeLevel < 40) {
             return .yellow
         } else {
-            return nil
+            return .primary
         }
     }
     

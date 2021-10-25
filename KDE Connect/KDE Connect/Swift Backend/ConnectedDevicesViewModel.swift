@@ -16,13 +16,18 @@ import SwiftUI
 import UIKit
 import AVFoundation
 import CryptoKit
+import Combine
 
-@objc class ConnectedDevicesViewModel : NSObject {
+@objc class ConnectedDevicesViewModel : NSObject, ObservableObject {
+    // TODO: state shouldn't store view...
     var devicesView: DevicesView? = nil
     var currDeviceDetailsView: DevicesDetailView? = nil
     
+    @Published
     var connectedDevices: [String : String] = [:]
+    @Published
     var visibleDevices: [String : String] = [:]
+    @Published
     var savedDevices: [String : String] = [:]
     
     var lastLocalClipboardUpdateTimestamp: Int = 0
@@ -78,7 +83,7 @@ import CryptoKit
             connectedDevices = devicesListsMap?["connected"] as! [String : String]
             visibleDevices = devicesListsMap?["visible"] as! [String : String]
             savedDevices = devicesListsMap?["remembered"] as! [String : String]
-            devicesView!.onDeviceListRefreshedInsideView(vm: self)
+//            devicesView!.onDeviceListRefreshedInsideView(vm: self)
         } else {
             AudioServicesPlaySystemSound(soundAudioError)
             print("devicesView is nil, unable to perform onDeviceListRefreshed in ConnectedDevicesViewModel")
@@ -112,7 +117,7 @@ import CryptoKit
                 connectedDevicesViewModel.currDeviceDetailsView!.viewUpdate.toggle()
             }
         } else {
-            AudioServicesPlaySystemSound(soundAudioError)
+            //AudioServicesPlaySystemSound(soundAudioError)
             print("currDeviceDetailsView is nil, unable to perform reRenderCurrDeviceDetailsView in ConnectedDevicesViewModel")
         }
     }
@@ -130,7 +135,7 @@ import CryptoKit
             currDeviceDetailsView!.isStilConnected = false
             devicesView!.refreshDiscoveryAndList()
         } else {
-            AudioServicesPlaySystemSound(soundAudioError)
+            //AudioServicesPlaySystemSound(soundAudioError)
             print("devicesView OR currDeviceDetailsView is nil, unable to perform devicesView in ConnectedDevicesViewModel")
         }
     }
