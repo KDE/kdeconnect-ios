@@ -50,7 +50,7 @@ This project is intended to be the iOS version of the group of applications call
 [The KDE Community Wiki](https://community.kde.org/KDEConnect)
 [The KDE Userbase Wiki](https://userbase.kde.org/KDEConnect)
 
-If you would like to talk to the KDE Connect developers & contributors (for questions or if you would like to contribute!), please go to [KDE Connect development Telegram channel](https://planet.kde.org/t.me/joinchat/AOS6gA37orb2dZCLhqbZjg)
+If you would like to talk to the KDE Connect developers & contributors (for questions or if you would like to contribute!), please go to [KDE Connect development Telegram channel](https://t.me/joinchat/AOS6gA37orb2dZCLhqbZjg)
 
 **Plans & To-Dos (great for contributions!):**
 
