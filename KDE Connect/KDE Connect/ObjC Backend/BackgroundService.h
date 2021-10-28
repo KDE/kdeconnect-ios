@@ -44,9 +44,10 @@
 
 @interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
 
+// TODO: fix casing
 - (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService;
-@property(nonatomic)NSMutableDictionary* _devices;
-@property(nonatomic)NSMutableDictionary* _settings;
+@property(nonatomic, setter=setDevices:) NSDictionary<NSString *, Device *> *devices;
+@property(nonatomic, setter=setSettings:) NSDictionary<NSString *, NSData *> *settings;
 
 //+ (id) sharedInstance;
 
@@ -56,7 +57,7 @@
 - (void) pairDevice:(NSString*)deviceId;
 - (void) unpairDevice:(NSString*)deviceId;
 //- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc;
-- (NSDictionary*) getDevicesLists;
+- (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *) getDevicesLists;
 - (void) reloadAllPlugins;
 - (void) refreshVisibleDeviceList;
 

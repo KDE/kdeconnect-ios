@@ -55,7 +55,7 @@ import Combine
             if (certificateService.tempRemoteCerts[deviceId] != nil) {
                 let status: Bool = certificateService.saveRemoteDeviceCertToKeychain(cert: certificateService.tempRemoteCerts[deviceId]!, deviceId: deviceId)
                 print("Remote certificate saved into local Keychain with status \(status)")
-                (backgroundService._devices[deviceId as Any] as! Device)._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
+                backgroundService._devices[deviceId]!._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
                 devicesView!.onPairSuccessInsideView(deviceId)
             } else {
                 AudioServicesPlaySystemSound(soundAudioError)
@@ -78,12 +78,11 @@ import Combine
     
     // Recalculate AND rerender the lists
     @objc func onDeviceListRefreshed() -> Void {
-        if (devicesView != nil) {
-            let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
-            connectedDevices = devicesListsMap?["connected"] as! [String : String]
-            visibleDevices = devicesListsMap?["visible"] as! [String : String]
-            savedDevices = devicesListsMap?["remembered"] as! [String : String]
-//            devicesView!.onDeviceListRefreshedInsideView(vm: self)
+        if devicesView != nil {
+            let devicesListsMap = backgroundService.getDevicesLists()!
+            connectedDevices = devicesListsMap["connected"]!
+            visibleDevices = devicesListsMap["visible"]!
+            savedDevices = devicesListsMap["remembered"]!
         } else {
             AudioServicesPlaySystemSound(soundAudioError)
             print("devicesView is nil, unable to perform onDeviceListRefreshed in ConnectedDevicesViewModel")
@@ -139,22 +138,20 @@ import Combine
             print("devicesView OR currDeviceDetailsView is nil, unable to perform devicesView in ConnectedDevicesViewModel")
         }
     }
-    
+
+    // TODO: remove all `-> Void`
     @objc func removeDeviceFromArrays(deviceId: String) -> Void {
         //backgroundService._devices.removeObject(forKey: deviceId)
-        backgroundService._settings.removeObject(forKey: deviceId)
-        UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
+        backgroundService.settings.removeValue(forKey: deviceId)
+        UserDefaults.standard.setValue(backgroundService.settings, forKey: "savedDevices")
         print("Device remove, stored cert also removed with status \(certificateService.deleteRemoteDeviceSavedCert(deviceId: deviceId))")
     }
     
     @objc static func isDeviceCurrentlyPairedAndConnected(_ deviceId: String) -> Bool {
-        let doesExistInDevices: Bool = (backgroundService._devices[deviceId] != nil)
-        if doesExistInDevices {
-            let device: Device = (backgroundService._devices[deviceId] as! Device)
-            return (device.isPaired() && device.isReachable())
-        } else {
-            return false
+        if let device = backgroundService._devices[deviceId] {
+            return device.isPaired() && device.isReachable()
         }
+        return false
     }
     
     @objc func showPingAlert() -> Void {

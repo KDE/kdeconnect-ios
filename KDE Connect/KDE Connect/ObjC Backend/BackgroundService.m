@@ -35,22 +35,33 @@
 //#import "Device.h"
 #import "KDE_Connect-Swift.h"
 
-@interface BackgroundService()
-@property(nonatomic)NSMutableArray* _linkProviders;
-@property(nonatomic)NSMutableArray* _visibleDevices;
-@property(nonatomic)NSMutableDictionary* _savedDevices;
-@property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;
-@property(nonatomic,assign) CertificateService* _certificateService;
+@interface BackgroundService() {
+    NSMutableDictionary<NSString *, Device *> *_devices;
+    NSMutableDictionary<NSString *, NSData *> *_settings;
+}
+
+@property(nonatomic) NSMutableArray<BaseLinkProvider *> *_linkProviders;
+@property(nonatomic) NSMutableArray<Device *> *_visibleDevices;
+@property(nonatomic) NSMutableDictionary<NSString *, Device *> *_savedDevices;
+@property(nonatomic, assign) ConnectedDevicesViewModel *_backgroundServiceDelegate;
+@property(nonatomic, assign) CertificateService *_certificateService;
+
 @end
 
 @implementation BackgroundService
 
 @synthesize _backgroundServiceDelegate;
 @synthesize _certificateService;
-@synthesize _devices;
+- (void)setDevices:(NSDictionary<NSString *, Device *> *)devices
+{
+    _devices = [[NSMutableDictionary alloc] initWithDictionary:devices];
+}
 @synthesize _linkProviders;
 @synthesize _visibleDevices;
-@synthesize _settings;
+- (void)setSettings:(NSDictionary<NSString *, NSData *> *)settings
+{
+    _settings = [[NSMutableDictionary alloc] initWithDictionary:settings];
+}
 @synthesize _savedDevices;
 
 //+ (id) sharedInstance
@@ -127,6 +138,7 @@
     return self;
 }
 
+// TODO: fix typo in this name
 - (void) loadRemenberedDevices
 {
     for (Device* device in [_savedDevices allValues]) {
@@ -135,6 +147,7 @@
         //[_settings setObject:device forKey:[device _id]];
     }
 }
+
 - (void) registerLinkProviders
 {
     NSLog(@"bg register linkproviders");
@@ -167,13 +180,13 @@
     }
 }
 
-- (NSDictionary*) getDevicesLists
+- (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *) getDevicesLists
 {
     NSLog(@"bg get devices lists");
     NSMutableDictionary* _visibleDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _connectedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _rememberedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
-    for (Device* device in [_devices allValues]) {
+    for (Device *device in [_devices allValues]) {
         if ((![device isReachable]) && [device isPaired]) {
             [_rememberedDevicesList setValue:[device _name] forKey:[device _id]];
             

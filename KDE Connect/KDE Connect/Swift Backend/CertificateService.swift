@@ -104,7 +104,7 @@ import CryptoKit
             if let storedRemoteCert: SecCertificate = extractSavedCertOfRemoteDevice(deviceId: deviceId) {
                 print("Both remote cert and stored cert exist, checking them for equality")
                 if ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data)) {
-                    (backgroundService._devices[deviceId] as! Device)._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
+                    backgroundService._devices[deviceId]!._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
                     return true
                 } else {
                     return false
@@ -151,14 +151,13 @@ import CryptoKit
         var remoteSavedCert: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &remoteSavedCert)
         print("extractSavedCertOfRemoteDevice completed with \(status)")
-        
-        if (remoteSavedCert != nil) {
-            if (!backgroundService._devices.allKeys.contains(where: {$0 as! String == deviceId})) {
+
+        if remoteSavedCert != nil {
+            guard backgroundService._devices.keys.contains(deviceId) else {
                 print("Device object is gone but cert is still here? Removing stored cert with status \(deleteRemoteDeviceSavedCert(deviceId: deviceId))")
                 return nil
-            } else {
-                return (remoteSavedCert as! SecCertificate)
             }
+            return (remoteSavedCert as! SecCertificate)
         } else {
             return nil
         }
