@@ -46,8 +46,8 @@
 
 // TODO: fix casing
 - (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService;
-@property(nonatomic, setter=setDevices:) NSDictionary<NSString *, Device *>* devices;
-@property(nonatomic, setter=setSettings:) NSDictionary<NSString *, NSData *>* settings;
+@property(nonatomic, setter=setDevices:) NSDictionary<NSString *, Device *> *devices;
+@property(nonatomic, setter=setSettings:) NSDictionary<NSString *, NSData *> *settings;
 
 //+ (id) sharedInstance;
 
