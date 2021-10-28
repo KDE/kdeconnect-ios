@@ -78,12 +78,11 @@ import Combine
     
     // Recalculate AND rerender the lists
     @objc func onDeviceListRefreshed() -> Void {
-        if (devicesView != nil) {
-            let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
-            connectedDevices = devicesListsMap?["connected"] as! [String : String]
-            visibleDevices = devicesListsMap?["visible"] as! [String : String]
-            savedDevices = devicesListsMap?["remembered"] as! [String : String]
-//            devicesView!.onDeviceListRefreshedInsideView(vm: self)
+        if devicesView != nil {
+            let devicesListsMap = backgroundService.getDevicesLists()!
+            connectedDevices = devicesListsMap["connected"]!
+            visibleDevices = devicesListsMap["visible"]!
+            savedDevices = devicesListsMap["remembered"]!
         } else {
             AudioServicesPlaySystemSound(soundAudioError)
             print("devicesView is nil, unable to perform onDeviceListRefreshed in ConnectedDevicesViewModel")

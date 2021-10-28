@@ -57,7 +57,7 @@
 - (void) pairDevice:(NSString*)deviceId;
 - (void) unpairDevice:(NSString*)deviceId;
 //- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc;
-- (NSDictionary*) getDevicesLists;
+- (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *) getDevicesLists;
 - (void) reloadAllPlugins;
 - (void) refreshVisibleDeviceList;
 

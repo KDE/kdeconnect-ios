@@ -176,13 +176,13 @@
     }
 }
 
-- (NSDictionary*) getDevicesLists
+- (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *) getDevicesLists
 {
     NSLog(@"bg get devices lists");
     NSMutableDictionary* _visibleDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _connectedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _rememberedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
-    for (Device* device in [_devices allValues]) {
+    for (Device *device in [_devices allValues]) {
         if ((![device isReachable]) && [device isPaired]) {
             [_rememberedDevicesList setValue:[device _name] forKey:[device _id]];
             
