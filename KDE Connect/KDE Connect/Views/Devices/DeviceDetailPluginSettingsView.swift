@@ -29,69 +29,70 @@ struct DeviceDetailPluginSettingsView: View {
     var body: some View {
         List {
             Section(header: Text("Enable/Disable Plugins"), footer: Text("You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views.")) {
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PING] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PING] != nil {
                     Toggle("Ping", isOn: $isPingEnabled)
                 }
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_SHARE] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_SHARE] != nil {
                     Toggle("Share/File Transfer", isOn: $isShareEnabled)
                 }
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_FINDMYPHONE_REQUEST] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_FINDMYPHONE_REQUEST] != nil {
                     Toggle("Ring/Find My Phone", isOn: $isFindMyPhoneEnabled)
                 }
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] != nil {
                     Toggle("Battery Status", isOn: $isBatteryEnabled)
                 }
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_CLIPBOARD] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_CLIPBOARD] != nil {
                     Toggle("Clipboard Sync", isOn: $isClipboardEnabled)
                 }
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil {
                     Toggle("Remote Input", isOn: $isRemoteInputEnabled)
                 }
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] != nil {
                     Toggle("Run Command", isOn: $isRunCommandEnabled)
                 }
-                if ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] != nil) {
+                if backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] != nil {
                     Toggle("Slideshow Remote", isOn: $isPresenterEnabled)
                 }
             }
         }
         .navigationBarTitle("Plugin Settings", displayMode: .inline)
-        .onChange(of: isPingEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PING] = value
-        })
-        .onChange(of: isShareEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_SHARE] = value
-        })
-        .onChange(of: isFindMyPhoneEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] = value
-        })
-        .onChange(of: isBatteryEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] = value
-        })
-        .onChange(of: isClipboardEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] = value
-        })
-        .onChange(of: isRemoteInputEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] = value
-        })
-        .onChange(of: isRunCommandEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] = value
-        })
-        .onChange(of: isPresenterEnabled, perform: { value in
-            (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] = value
-        })
-        .onAppear() {
+        .onChange(of: isPingEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PING] = value
+        }
+        .onChange(of: isShareEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] = value
+        }
+        .onChange(of: isFindMyPhoneEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] = value
+        }
+        .onChange(of: isBatteryEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] = value
+        }
+        .onChange(of: isClipboardEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] = value
+        }
+        .onChange(of: isRemoteInputEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] = value
+        }
+        .onChange(of: isRunCommandEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] = value
+        }
+        .onChange(of: isPresenterEnabled) { value in
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] = value
+        }
+        .onAppear {
             updateValuesFromDevice()
         }
-        .onDisappear() {
+        .onDisappear {
             connectedDevicesViewModel.reRenderCurrDeviceDetailsView(deviceId: detailsDeviceId)
             connectedDevicesViewModel.reRenderDeviceView()
             saveDeviceToUserDefaults(deviceId: detailsDeviceId)
         }
     }
     
-    func updateValuesFromDevice() -> Void {
-        let fetchedDictionary: [String : Bool] = (backgroundService._devices[detailsDeviceId] as! Device)._pluginsEnableStatus as! [String : Bool]
+    func updateValuesFromDevice() {
+        // TODO: change to [String: Bool] in declaration
+        let fetchedDictionary: [String : Bool] = backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus as! [String : Bool]
         withAnimation {
             isPingEnabled = fetchedDictionary[PACKAGE_TYPE_PING] ?? true
             isShareEnabled = fetchedDictionary[PACKAGE_TYPE_SHARE] ?? true

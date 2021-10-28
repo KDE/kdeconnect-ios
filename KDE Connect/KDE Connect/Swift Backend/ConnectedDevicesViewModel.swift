@@ -55,7 +55,7 @@ import Combine
             if (certificateService.tempRemoteCerts[deviceId] != nil) {
                 let status: Bool = certificateService.saveRemoteDeviceCertToKeychain(cert: certificateService.tempRemoteCerts[deviceId]!, deviceId: deviceId)
                 print("Remote certificate saved into local Keychain with status \(status)")
-                (backgroundService._devices[deviceId as Any] as! Device)._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
+                backgroundService._devices[deviceId]!._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
                 devicesView!.onPairSuccessInsideView(deviceId)
             } else {
                 AudioServicesPlaySystemSound(soundAudioError)
@@ -139,7 +139,8 @@ import Combine
             print("devicesView OR currDeviceDetailsView is nil, unable to perform devicesView in ConnectedDevicesViewModel")
         }
     }
-    
+
+    // TODO: remove all `-> Void`
     @objc func removeDeviceFromArrays(deviceId: String) -> Void {
         //backgroundService._devices.removeObject(forKey: deviceId)
         backgroundService._settings.removeObject(forKey: deviceId)
@@ -148,13 +149,10 @@ import Combine
     }
     
     @objc static func isDeviceCurrentlyPairedAndConnected(_ deviceId: String) -> Bool {
-        let doesExistInDevices: Bool = (backgroundService._devices[deviceId] != nil)
-        if doesExistInDevices {
-            let device: Device = (backgroundService._devices[deviceId] as! Device)
-            return (device.isPaired() && device.isReachable())
-        } else {
-            return false
+        if let device = backgroundService._devices[deviceId] {
+            return device.isPaired() && device.isReachable()
         }
+        return false
     }
     
     @objc func showPingAlert() -> Void {

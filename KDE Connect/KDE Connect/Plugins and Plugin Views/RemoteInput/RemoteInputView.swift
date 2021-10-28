@@ -41,7 +41,7 @@ struct RemoteInputView: View {
                         let DxDrag: Float = Float(gesture.translation.width) - previousHorizontalDragOffset
                         let DyDrag: Float = Float(gesture.translation.height) - previousVerticalDragOffset
                         //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                        ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMouseDelta(Dx: DxDrag * cursorSensitivityFromSlider, Dy: DyDrag * cursorSensitivityFromSlider)
+                        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMouseDelta(Dx: DxDrag * cursorSensitivityFromSlider, Dy: DyDrag * cursorSensitivityFromSlider)
                         print("Moved by \(DxDrag) horizontally")
                         print("Moved by \(DyDrag) vertically")
                         //}
@@ -70,7 +70,7 @@ struct RemoteInputView: View {
                                     let DxScroll: Float = Float(gesture.translation.width) - previousScrollHorizontalDragOffset
                                     let DyScroll: Float = Float(gesture.translation.height) - previousScrollVerticalDragOffset
                                     //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                                    ((backgroundService._devices[detailsDeviceId as Any] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendScroll(Dx: DxScroll * cursorSensitivityFromSlider, Dy: DyScroll * cursorSensitivityFromSlider)
+                                    (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendScroll(Dx: DxScroll * cursorSensitivityFromSlider, Dy: DyScroll * cursorSensitivityFromSlider)
                                     print("Scrolled by \(DxScroll) horizontally")
                                     print("Scrolled by \(DyScroll) vertically")
                                     //}
@@ -106,9 +106,9 @@ struct RemoteInputView: View {
                                 }
                             }
                         )
-                        .onChange(of: cursorSensitivityFromSlider, perform: { value in
-                            (backgroundService._devices[detailsDeviceId] as! Device)._cursorSensitivity = value
-                        })
+                        .onChange(of: cursorSensitivityFromSlider) { value in
+                            backgroundService._devices[detailsDeviceId]!._cursorSensitivity = value
+                        }
                         Image(systemName: "plus")
                     }
                     Text("Cursor Sensitivity")
@@ -129,7 +129,7 @@ struct RemoteInputView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .onChange(of: hapticSettingsSegmentPickerIndex, perform: { value in
                         hapticGenerators[value].impactOccurred()
-                        (backgroundService._devices[detailsDeviceId] as! Device)._hapticStyle = HapticStyle(rawValue: UInt(value))! // ?? HapticStyle.medium
+                        backgroundService._devices[detailsDeviceId]!._hapticStyle = HapticStyle(rawValue: UInt(value))! // ?? HapticStyle.medium
                         saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                     })
                     Text("On-Click Haptic Style")
@@ -213,44 +213,44 @@ struct RemoteInputView: View {
             }
         }())
         .onAppear() {
-            cursorSensitivityFromSlider = (backgroundService._devices[detailsDeviceId] as! Device)._cursorSensitivity
+            cursorSensitivityFromSlider = backgroundService._devices[detailsDeviceId]!._cursorSensitivity
             // If new device, give default sensitivity of 3.0
             if (cursorSensitivityFromSlider < 0.5) {
                 cursorSensitivityFromSlider = 3.0
-                (backgroundService._devices[detailsDeviceId as Any] as! Device)._cursorSensitivity = 3.0
+                backgroundService._devices[detailsDeviceId]!._cursorSensitivity = 3.0
             }
             // New device's hapticStyle is automatically 0 (light) as it came from Obj-C initialization
-            hapticSettingsSegmentPickerIndex = Int(((backgroundService._devices[detailsDeviceId] as! Device)._hapticStyle.rawValue))
+            hapticSettingsSegmentPickerIndex = Int((backgroundService._devices[detailsDeviceId]!._hapticStyle.rawValue))
         }
     }
     
     func singleTapAction() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.7
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleClick()
         print("single clicked")
     }
     
     func doubleTapAction() {
         notificationHapticsGenerator.notificationOccurred(.success)
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendDoubleClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendDoubleClick()
         print("double clicked")
     }
     
     func rightClickAction() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 1.0
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendRightClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendRightClick()
         print("2 finger tap")
     }
     
     func singleHoldAction() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.5
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleHold()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleHold()
         print("Long press")
     }
     
     func middleClickAction() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.3
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMiddleClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMiddleClick()
         print("Middle Click")
     }
 }

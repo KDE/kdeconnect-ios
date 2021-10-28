@@ -22,7 +22,7 @@ struct RunCommandView: View {
         List {
             ForEach(Array(commandItemsInsideView.keys), id: \.self) { commandkey in
                 Button(action: {
-                    ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).runCommand(cmdKey: commandkey)
+                    (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).runCommand(cmdKey: commandkey)
                     notificationHapticsGenerator.notificationOccurred(.success)
                 }, label: {
                     VStack {
@@ -36,16 +36,16 @@ struct RunCommandView: View {
             }
         }
         .navigationBarTitle("Run Command", displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
-            ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).sendSetupPackage()
-        }, label: {
+        .navigationBarItems(trailing: Button {
+            (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).sendSetupPackage()
+        } label: {
             Image(systemName: "command") // is there a better choice for this? This is a nice reference though I think
-        }))
+        })
         .onAppear {
-            if (((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).controlView == nil) {
-                ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).controlView = self
+            if ((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).controlView == nil) {
+                (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).controlView = self
             }
-            ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).processCommandItemsAndGiveToRunCommandView()
+            (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).processCommandItemsAndGiveToRunCommandView()
         }
     }
 }

@@ -24,7 +24,7 @@ struct PresenterView: View {
     
     var body: some View {
         VStack {
-            if ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) {
+            if backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop {
                 Image(systemName: "wand.and.rays")
                     .resizable()
                     .frame(width: 110, height: 110)
@@ -52,7 +52,8 @@ struct PresenterView: View {
                         .resizable()
                         .frame(width: 40, height: 50)
                         .foregroundColor(.white)
-                        .padding(EdgeInsets(top: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
+                    // TODO: reduce duplication
+                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
@@ -65,7 +66,7 @@ struct PresenterView: View {
                         .resizable()
                         .frame(width: 40, height: 50)
                         .foregroundColor(.white)
-                        .padding(EdgeInsets(top: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: ((backgroundService._devices[detailsDeviceId] as! Device)._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
+                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
@@ -75,6 +76,7 @@ struct PresenterView: View {
             if (showingSensitivitySlider) {
                 VStack {
                     HStack {
+                        // TODO: replace independent images as part of slider
                         Image(systemName: "minus")
                         Slider(
                             value: $pointerSensitivityFromSlider,
@@ -86,9 +88,9 @@ struct PresenterView: View {
                                 }
                             }
                         )
-                        .onChange(of: pointerSensitivityFromSlider, perform: { value in
-                            (backgroundService._devices[detailsDeviceId] as! Device)._pointerSensitivity = value
-                        })
+                        .onChange(of: pointerSensitivityFromSlider) { value in
+                            backgroundService._devices[detailsDeviceId]!._pointerSensitivity = value
+                        }
                         Image(systemName: "plus")
                     }
                     Text("Pointer Sensitivity")
@@ -140,35 +142,35 @@ struct PresenterView: View {
         //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
         motionManager.startGyroUpdates(to: .main) { (data, error) in
             if (data != nil) {
-                ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPointerPosition(Dx: Float(data!.rotationRate.x) * pointerSensitivityFromSlider, Dy: Float(data!.rotationRate.y) * pointerSensitivityFromSlider)
+                (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPointerPosition(Dx: Float(data!.rotationRate.x) * pointerSensitivityFromSlider, Dy: Float(data!.rotationRate.y) * pointerSensitivityFromSlider)
             }
         }
     }
     
     func stopGyroAndPointer() -> Void {
         //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendStopPointer()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendStopPointer()
         motionManager.stopGyroUpdates()
     }
     
     func goFullscreenAction() -> Void {
         notificationHapticsGenerator.notificationOccurred(.success)
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendFullscreen()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendFullscreen()
     }
     
     func goEscapeAction() -> Void {
         notificationHapticsGenerator.notificationOccurred(.warning)
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendEsc()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendEsc()
     }
     
     func goBackAction() -> Void {
         hapticGenerators[Int(HapticStyle.soft.rawValue)].impactOccurred()
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPrevious()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPrevious()
     }
     
     func goForwardAction() -> Void {
         hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred()
-        ((backgroundService._devices[detailsDeviceId] as! Device)._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendNext()
+        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendNext()
     }
 }
 

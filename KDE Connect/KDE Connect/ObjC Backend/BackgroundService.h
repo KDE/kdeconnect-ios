@@ -44,8 +44,9 @@
 
 @interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
 
+// TODO: fix casing
 - (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService;
-@property(nonatomic)NSMutableDictionary* _devices;
+@property(nonatomic, setter=setDevices:) NSDictionary<NSString *, Device *>* devices;
 @property(nonatomic)NSMutableDictionary* _settings;
 
 //+ (id) sharedInstance;

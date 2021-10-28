@@ -112,12 +112,12 @@ func JSONStringtoDictionary(json: String) -> [String: String]? {
 func saveDeviceToUserDefaults(deviceId: String) {
     let deviceData: Data?
     do {
-         deviceData = try NSKeyedArchiver.archivedData(withRootObject: (backgroundService._devices[deviceId] as! Device), requiringSecureCoding: true)
+        deviceData = try NSKeyedArchiver.archivedData(withRootObject: backgroundService._devices[deviceId]!, requiringSecureCoding: true)
     } catch {
         print(error.localizedDescription)
         return
     }
-    backgroundService._settings.setValue(deviceData, forKey: (backgroundService._devices[deviceId] as! Device)._id)
+    backgroundService._settings.setValue(deviceData, forKey: backgroundService._devices[deviceId]!._id)
     UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
 }
 
@@ -162,4 +162,20 @@ enum KeyEvent: Int {
     case KEYCODE_F10            = 30
     case KEYCODE_F11            = 31
     case KEYCODE_F12            = 32
+}
+
+// MARK: - Migration
+
+// This section contains code that keeps the project compiling, but
+#warning("TODO: needs migration")
+
+// Please always use the non-deprecated spelling if possible, and
+// follow the compiler warnings when ready to migrate existing code
+// after uncommenting lines containing `@available`
+
+extension BackgroundService {
+    // @available(*, deprecated, renamed: "devices")
+    var _devices: [String: Device] {
+        return devices
+    }
 }

@@ -78,8 +78,9 @@ struct DevicesView: View {
                     currPairingDeviceId = nil
                 }
             } message: {
+                // TODO: use if-let binding
                 if (currPairingDeviceId != nil) {
-                    Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) succeeded")
+                    Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded")
                 }
             }
             .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
@@ -108,7 +109,7 @@ struct DevicesView: View {
                 }
             } message: {
                 if (currPairingDeviceId != nil) {
-                    Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed")
+                    Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
                 }
             }
             .alert("Pairing Rejected", isPresented: $showingOnPairRejectedAlert) {
@@ -117,7 +118,7 @@ struct DevicesView: View {
                 }
             } message: {
                 if (currPairingDeviceId != nil) {
-                    Text("Pairing with \((backgroundService._devices[currPairingDeviceId!] as! Device)._name) failed")
+                    Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
                 }
             }
             .alert("Ping!", isPresented: $showingPingAlert) {} message: {
@@ -206,23 +207,23 @@ struct DevicesView: View {
                                     Text(viewModel.connectedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
-                                    if (backgroundService._devices[key as Any] != nil) {
-                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                    if let device = backgroundService._devices[key] {
+                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: device._type))
                                             .font(.title3)
                                     }
                                 }
-                                if (((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) || (((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel == 0)) {
+                                if ((backgroundService._devices[key]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) || ((backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel == 0)) {
                                     Text("No battery detected in device")
                                         .font(.footnote)
-                                } else if (!((backgroundService._devices[key as Any] as! Device)._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                                } else if (!(backgroundService._devices[key]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
                                     Text("Battery Plugin Disabled")
                                         .font(.footnote)
                                 } else {
                                     HStack {
-                                        Image(systemName: ((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                        Image(systemName: (backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
                                             .font(.footnote)
-                                            .foregroundColor(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
-                                        Text("\(((backgroundService._devices[key as Any] as! Device)._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                                            .foregroundColor((backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
+                                        Text("\((backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
                                             .font(.footnote)
                                     }
                                 }
@@ -258,8 +259,8 @@ struct DevicesView: View {
                                         .font(.title3)
                                         .fontWeight(.bold)
                                         .foregroundColor(.primary)
-                                    if (backgroundService._devices[key as Any] != nil) {
-                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                    if let device = backgroundService._devices[key] {
+                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: device._type))
                                             .font(.title3)
                                             .foregroundColor(.black)
                                     }
@@ -294,7 +295,7 @@ struct DevicesView: View {
                                     Text(viewModel.savedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
-                                    Image(systemName: getSFSymbolNameFromDeviceType(deviceType: (backgroundService._devices[key as Any] as! Device)._type))
+                                    Image(systemName: getSFSymbolNameFromDeviceType(deviceType: backgroundService._devices[key]!._type))
                                         .font(.title3)
                                 }
                                 // TODO: Might want to add the device description as
@@ -312,8 +313,8 @@ struct DevicesView: View {
     
     func deleteDevice(at offsets: IndexSet) {
         for offset in offsets {
-            // TODO: Check Device.m for nullability
-            let name = (backgroundService._devices[savedDevicesIds[offset]] as! Device)._name!
+            // TODO: Update Device.m to indicate nullability
+            let name = backgroundService._devices[savedDevicesIds[offset]]!._name!
             print("Remembered device \(name) removed at index \(offset)")
             backgroundService.unpairDevice(savedDevicesIds[offset])
         }

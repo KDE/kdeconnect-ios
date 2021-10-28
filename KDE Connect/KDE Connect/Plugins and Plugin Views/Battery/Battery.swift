@@ -126,7 +126,7 @@ import UIKit
 
 // Global functions for Battery handling
 func startBatteryMonitoringAllDevices() {
-    for case let device as Device in (backgroundService._devices.allValues) {
+    for device in backgroundService._devices.values {
         if (device.isPaired() && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
             (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).startBatteryMonitoring()
         }
@@ -134,7 +134,7 @@ func startBatteryMonitoringAllDevices() {
 }
 
 func broadcastBatteryStatusAllDevices() {
-    for case let device as Device in (backgroundService._devices.allValues) {
+    for device in backgroundService._devices.values {
         if (device.isPaired() && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
             (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).sendBatteryStatusOut()
         }
@@ -142,7 +142,7 @@ func broadcastBatteryStatusAllDevices() {
 }
 
 func requestBatteryStatusAllDevices() {
-    for case let device as Device in (backgroundService._devices.allValues) {
+    for device in backgroundService._devices.values {
         if (device.isPaired() && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
             (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).sendBatteryStatusRequest()
         }
