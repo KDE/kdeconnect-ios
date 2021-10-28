@@ -117,8 +117,8 @@ func saveDeviceToUserDefaults(deviceId: String) {
         print(error.localizedDescription)
         return
     }
-    backgroundService._settings.setValue(deviceData, forKey: backgroundService._devices[deviceId]!._id)
-    UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
+    backgroundService.settings[backgroundService.devices[deviceId]!._id] = deviceData
+    UserDefaults.standard.setValue(backgroundService.settings, forKey: "savedDevices")
 }
 
 // Uniform Key inputs

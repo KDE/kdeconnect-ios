@@ -142,8 +142,8 @@ import Combine
     // TODO: remove all `-> Void`
     @objc func removeDeviceFromArrays(deviceId: String) -> Void {
         //backgroundService._devices.removeObject(forKey: deviceId)
-        backgroundService._settings.removeObject(forKey: deviceId)
-        UserDefaults.standard.setValue(backgroundService._settings, forKey: "savedDevices")
+        backgroundService.settings.removeValue(forKey: deviceId)
+        UserDefaults.standard.setValue(backgroundService.settings, forKey: "savedDevices")
         print("Device remove, stored cert also removed with status \(certificateService.deleteRemoteDeviceSavedCert(deviceId: deviceId))")
     }
     

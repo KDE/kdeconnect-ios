@@ -37,6 +37,7 @@
 
 @interface BackgroundService() {
     NSMutableDictionary<NSString *, Device *> *_devices;
+    NSMutableDictionary<NSString *, NSData *> *_settings;
 }
 
 @property(nonatomic) NSMutableArray<BaseLinkProvider *> *_linkProviders;
@@ -57,7 +58,10 @@
 }
 @synthesize _linkProviders;
 @synthesize _visibleDevices;
-@synthesize _settings;
+- (void)setSettings:(NSDictionary<NSString *, NSData *> *)settings
+{
+    _settings = [[NSMutableDictionary alloc] initWithDictionary:settings];
+}
 @synthesize _savedDevices;
 
 //+ (id) sharedInstance
