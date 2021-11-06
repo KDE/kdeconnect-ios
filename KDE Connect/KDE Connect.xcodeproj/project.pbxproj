@@ -16,6 +16,7 @@
 		1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E02698BF6900FDF493 /* NetworkPackage.m */; };
 		1499A8E72698BFF300FDF493 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E32698BFF300FDF493 /* Device.m */; };
 		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
+		14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */; };
 		A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */; };
 		A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* Plugin.swift */; };
 		A01FDD2926C4F8420014B165 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2826C4F8420014B165 /* Ping.swift */; };
@@ -92,6 +93,7 @@
 		1499A8E42698BFF300FDF493 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateServiceHelper.m; sourceTree = "<group>"; };
 		A01FDD2226C3A5560014B165 /* deviceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = deviceDelegate.h; sourceTree = "<group>"; };
 		A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		A01FDD2626C4F6D50014B165 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				1499A8E02698BF6900FDF493 /* NetworkPackage.m */,
 				A0BECF6426C0ED890037E299 /* BackgroundService.h */,
 				A0BECF6526C0EDD10037E299 /* BackgroundService.m */,
+				14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */,
 			);
 			path = "ObjC Backend";
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
 				A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */,
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
+				14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */,
 				A0D76FD026E73412009D9B03 /* TwoFingerTapView.swift in Sources */,
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
 				A0CA112326F3C7F7006F6EAC /* RunCommand.swift in Sources */,

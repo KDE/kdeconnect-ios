@@ -48,6 +48,13 @@ import CryptoKit
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &identityApp)
         print("getIdentityFromKeychain completed with \(status)")
         if (identityApp == nil) {
+            if (generateSecIdentityForUUID(NetworkPackage.getUUID()) == noErr) {
+                // Refetch
+                SecItemCopyMatching(keychainItemQuery, &identityApp);
+                if (identityApp != nil) {
+                    return (identityApp as! SecIdentity);
+                }
+            }
             return nil
         } else {
             return (identityApp as! SecIdentity)

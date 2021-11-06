@@ -94,36 +94,21 @@
 
 - (void) loadSecIdentity
 {
-    BOOL needGenerateCertificate = NO;
-
     SecIdentityRef identityApp = [_certificateService hostIdentity];
-    
-    // If nil at first, try to get it again
-    if (identityApp == nil) {
-        [_certificateService reFetchHostIdentity];
-        identityApp = [_certificateService hostIdentity];
-    }
-    
-    if (identityApp == nil) {
-        needGenerateCertificate = YES;
-    } else {
-        // Validate private key
-        SecKeyRef privateKeyRef = NULL;
-        OSStatus status = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
-        if (status != noErr) {
-            // Fail to retrieve private key from the .p12 file
-            needGenerateCertificate = YES;
-        } else {
-            _identity = identityApp;
-            NSLog(@"Certificate loaded successfully");
-        }
-        CFRelease(privateKeyRef);
-    }
+    assert(identityApp != nil);
 
-    if (needGenerateCertificate) {
-        // generate certificate
-        NSLog(@"Need generate certificate");
+    // Validate private key
+    SecKeyRef privateKeyRef = NULL;
+    OSStatus status = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
+    if (status != noErr) {
+        // Fail to retrieve private key from the .p12 file
+        NSLog(@"Certificate loading failed");
+    } else {
+        _identity = identityApp;
+        NSLog(@"Certificate loaded successfully");
     }
+    CFRelease(privateKeyRef);
+    // The ownership of SecIdentityRef is in CertificateService
 }
 
 - (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag

@@ -12,3 +12,5 @@
 #import "BackgroundService.h"
 #import "Device.h"
 #import "NetworkPackage.h"
+
+OSStatus generateSecIdentityForUUID(NSString *uuid);
