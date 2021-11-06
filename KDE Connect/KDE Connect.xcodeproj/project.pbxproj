@@ -27,8 +27,8 @@
 		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
 		A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04433267BF38A00CC21DD /* Assets.xcassets */; };
 		A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */; };
-		A0A04442267BF38A00CC21DD /* KDE_Connect_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */; };
-		A0A0444D267BF38A00CC21DD /* KDE_Connect_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */; };
+		A0A04442267BF38A00CC21DD /* KDE_Connect_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04441267BF38A00CC21DD /* KDE_Connect_Tests.swift */; };
+		A0A0444D267BF38A00CC21DD /* KDE_Connect_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0444C267BF38A00CC21DD /* KDE_Connect_UITests.swift */; };
 		A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445A267BF40400CC21DD /* DevicesView.swift */; };
 		A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */; };
 		A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445E267BF41B00CC21DD /* SettingsView.swift */; };
@@ -109,10 +109,10 @@
 		A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0A04438267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A0443D267BF38A00CC21DD /* KDE ConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE ConnectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestTests.swift; sourceTree = "<group>"; };
+		A0A04441267BF38A00CC21DD /* KDE_Connect_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_Tests.swift; sourceTree = "<group>"; };
 		A0A04443267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A04448267BF38A00CC21DD /* KDE ConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE ConnectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_TestUITests.swift; sourceTree = "<group>"; };
+		A0A0444C267BF38A00CC21DD /* KDE_Connect_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_UITests.swift; sourceTree = "<group>"; };
 		A0A0444E267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A0445A267BF40400CC21DD /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesDetailView.swift; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 		A0A04440267BF38A00CC21DD /* KDE Connect Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A0A04441267BF38A00CC21DD /* KDE_Connect_TestTests.swift */,
+				A0A04441267BF38A00CC21DD /* KDE_Connect_Tests.swift */,
 				A0A04443267BF38A00CC21DD /* Info.plist */,
 			);
 			path = "KDE Connect Tests";
@@ -298,7 +298,7 @@
 		A0A0444B267BF38A00CC21DD /* KDE Connect UITests */ = {
 			isa = PBXGroup;
 			children = (
-				A0A0444C267BF38A00CC21DD /* KDE_Connect_TestUITests.swift */,
+				A0A0444C267BF38A00CC21DD /* KDE_Connect_UITests.swift */,
 				A0A0444E267BF38A00CC21DD /* Info.plist */,
 			);
 			path = "KDE Connect UITests";
@@ -625,7 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0A04442267BF38A00CC21DD /* KDE_Connect_TestTests.swift in Sources */,
+				A0A04442267BF38A00CC21DD /* KDE_Connect_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0A0444D267BF38A00CC21DD /* KDE_Connect_TestUITests.swift in Sources */,
+				A0A0444D267BF38A00CC21DD /* KDE_Connect_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,8 +831,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
-				INFOPLIST_FILE = "KDE Connect TestTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_FILE = "KDE Connect Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -853,8 +853,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
-				INFOPLIST_FILE = "KDE Connect TestTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_FILE = "KDE Connect Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -874,7 +874,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
-				INFOPLIST_FILE = "KDE Connect TestUITests/Info.plist";
+				INFOPLIST_FILE = "KDE Connect UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -894,7 +894,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
-				INFOPLIST_FILE = "KDE Connect TestUITests/Info.plist";
+				INFOPLIST_FILE = "KDE Connect UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -13,7 +13,7 @@
 //
 
 import XCTest
-@testable import KDE_Connect_Test
+@testable import KDE_Connect
 
 class KDE_Connect_TestTests: XCTestCase {
 
