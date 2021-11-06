@@ -1,0 +1,40 @@
+# This file is a template, and might need editing before it works on your project.
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Swift.gitlab-ci.yml
+
+# Lifted from: https://about.gitlab.com/2016/03/10/setting-up-gitlab-ci-for-ios-projects/
+# This file assumes an own GitLab CI runner, setup on a macOS system.
+stages:
+  - build
+  - test
+#   - archive
+#   - deploy
+
+build_project:
+  stage: build
+  script:
+    # change working directory to the one containing Xcode project
+    - cd 'KDE Connect'
+    # clean any previous build data
+    - xcodebuild clean -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
+    # build the project and run the tests
+    - xcodebuild test -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect' -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.0'
+  tags:
+    - macOS
+
+# archive_project:
+#   stage: archive
+#   script:
+#     - xcodebuild clean archive -archivePath build/ProjectName -scheme SchemeName
+#     - xcodebuild -exportArchive -exportFormat ipa -archivePath "build/ProjectName.xcarchive" -exportPath "build/ProjectName.ipa" -exportProvisioningProfile "ProvisioningProfileName"
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+#   artifacts:
+#     paths:
+#       - build/ProjectName.ipa
+#   tags:
+#     - ios_11-3
+#     - xcode_9-3
+#     - macos_10-13
