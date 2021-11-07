@@ -71,15 +71,23 @@ struct SettingsView: View {
                 Label {
                     Link("Source Code", destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios")!)
                 } icon: {
-                    Image(systemName: "chevron.left.forwardslash.chevron.right")
-                        .accentColor(.primary)
+                    if #available(iOS 15, *) {
+                        Image(systemName: "chevron.left.forwardslash.chevron.right")
+                            .accentColor(.primary)
+                    } else {
+                        Image(systemName: "chevron.left.slash.chevron.right")
+                    }
                 }
                 
                 Label {
                     Link("Licenses", destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios/-/blob/master/License.md")!)
                 } icon: {
-                    Image(systemName: "magazine")
-                        .accentColor(.primary)
+                    if #available(iOS 15, *) {
+                        Image(systemName: "magazine")
+                            .accentColor(.primary)
+                    } else {
+                        Image(systemName: "text.book.closed")
+                    }
                 }
             }
         }

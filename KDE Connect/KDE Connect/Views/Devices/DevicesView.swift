@@ -51,84 +51,181 @@ struct DevicesView: View {
     
     var body: some View {
         VStack {
-            List {
-                connectedDevicesSection
-                
-                discoverableDevicesSection
-                
-                rememberedDevicesSection
-            }
-            .refreshable() {
-                refreshDiscoveryAndList()
-            }
-            .environment(\.defaultMinListRowHeight, 60) // TODO: make this dynamic with GeometryReader???
-            .alert("Incoming Pairing Request", isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
-                Button("Do Not Pair", role: .cancel) {}
-                Button("Pair") {
-                    backgroundService.pairDevice(currPairingDeviceId)
+        if #available(iOS 15.0, *) {
+            devicesList
+                .refreshable() {
+                    refreshDiscoveryAndList()
                 }
-                .foregroundColor(.green)
-            } message: {
-                if (currPairingDeviceId != nil) {
-                    Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
+                .alert("Incoming Pairing Request", isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
+                    Button("Do Not Pair", role: .cancel) {}
+                    Button("Pair") {
+                        backgroundService.pairDevice(currPairingDeviceId)
+                    }
+                    .foregroundColor(.green)
+                } message: {
+                    if (currPairingDeviceId != nil) {
+                        Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
+                    }
                 }
-            }
-            .alert("Pairing Complete", isPresented: $showingOnPairSuccessAlert) {
-                Button("Nice", role: .cancel) {
-                    currPairingDeviceId = nil
+                .alert("Pairing Complete", isPresented: $showingOnPairSuccessAlert) {
+                    Button("Nice", role: .cancel) {
+                        currPairingDeviceId = nil
+                    }
+                } message: {
+                    // TODO: use if-let binding
+                    if (currPairingDeviceId != nil) {
+                        Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded")
+                    }
                 }
-            } message: {
-                // TODO: use if-let binding
-                if (currPairingDeviceId != nil) {
-                    Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded")
+                .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
+                    Button("Cancel", role: .cancel) {}
+                    Button("Pair") {
+                        backgroundService.pairDevice(currPairingDeviceId)
+                    }
+                    .foregroundColor(.green)
+                } message: {
+                    if (currPairingDeviceId != nil) {
+                        Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
+                    }
                 }
-            }
-            .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
-                Button("Cancel", role: .cancel) {}
-                Button("Pair") {
-                    backgroundService.pairDevice(currPairingDeviceId)
+                .alert("Device Offline", isPresented: $showingOnSelectSavedDeviceAlert) {
+                    Button("OK", role: .cancel) {
+                        currPairingDeviceId = nil
+                    }
+                } message: {
+                    if (currPairingDeviceId != nil && viewModel.savedDevices[currPairingDeviceId!] != nil) {
+                        Text("The paired device \(viewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
+                    }
                 }
-                .foregroundColor(.green)
-            } message: {
-                if (currPairingDeviceId != nil) {
-                    Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
+                .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
+                    Button("OK", role: .cancel) {
+                        currPairingDeviceId = nil
+                    }
+                } message: {
+                    if (currPairingDeviceId != nil) {
+                        Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
+                    }
                 }
-            }
-            .alert("Device Offline", isPresented: $showingOnSelectSavedDeviceAlert) {
-                Button("OK", role: .cancel) {
-                    currPairingDeviceId = nil
+                .alert("Pairing Rejected", isPresented: $showingOnPairRejectedAlert) {
+                    Button("OK", role: .cancel) {
+                        currPairingDeviceId = nil
+                    }
+                } message: {
+                    if (currPairingDeviceId != nil) {
+                        Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
+                    }
                 }
-            } message: {
-                if (currPairingDeviceId != nil && viewModel.savedDevices[currPairingDeviceId!] != nil) {
-                    Text("The paired device \(viewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
+                .alert("Ping!", isPresented: $showingPingAlert) {} message: {
+                    Text("Ping received from a connected device.")
                 }
-            }
-            .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
-                Button("OK", role: .cancel) {
-                    currPairingDeviceId = nil
+                .alert("Find My Phone Mode", isPresented: $showingFindMyPhoneAlert) {
+                    Button("I FOUND IT!", role: .cancel) {}
+                } message: {
+                    Text("Find My Phone initiated from a remote device")
                 }
-            } message: {
-                if (currPairingDeviceId != nil) {
-                    Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
-                }
-            }
-            .alert("Pairing Rejected", isPresented: $showingOnPairRejectedAlert) {
-                Button("OK", role: .cancel) {
-                    currPairingDeviceId = nil
-                }
-            } message: {
-                if (currPairingDeviceId != nil) {
-                    Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
-                }
-            }
-            .alert("Ping!", isPresented: $showingPingAlert) {} message: {
-                Text("Ping received from a connected device.")
-            }
-            .alert("Find My Phone Mode", isPresented: $showingFindMyPhoneAlert) {
-                Button("I FOUND IT!", role: .cancel) {}
-            } message: {
-                Text("Find My Phone initiated from a remote device")
-            }
+        } else {
+            // Fallback on earlier versions, use Alert component
+            devicesList
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 Incoming pairing Alert",
+                isPresented: $showingOnPairRequestAlert,
+                alert:
+                    Alert(
+                        title: Text("Incoming Pairing Request"),
+                        message: currPairingDeviceId != nil ? Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device") : Text(""),
+                        primaryButton: .destructive(Text("Pair"), action: {
+                            backgroundService.pairDevice(currPairingDeviceId)
+                        }),
+                        secondaryButton: .cancel(Text("Cancel"), action: {})
+                    )
+            )
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 Pair complete Alert",
+                isPresented: $showingOnPairSuccessAlert,
+                alert:
+                    Alert(
+                        title: Text("Pairing Complete"),
+                        message: currPairingDeviceId != nil ?
+                            Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded")
+                            : Text(""),
+                        dismissButton: .cancel(Text("Nice"), action: { currPairingDeviceId = nil })
+                    )
+            )
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 Initiate pairing Alert",
+                isPresented: $showingOnSelfPairOutgoingRequestAlert,
+                alert:
+                    Alert(
+                        title: Text("Initiate Pairing?"),
+                        message: currPairingDeviceId != nil ? Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?") : Text(""),
+                        primaryButton: .destructive(Text("Pair"), action: {
+                            backgroundService.pairDevice(currPairingDeviceId)
+                        }),
+                        secondaryButton: .cancel(Text("Cancel"), action: {})
+                    )
+            )
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 device offline Alert",
+                isPresented: $showingOnSelectSavedDeviceAlert,
+                alert:
+                    Alert(
+                        title: Text("Device Offline"),
+                        message: (currPairingDeviceId != nil && viewModel.savedDevices[currPairingDeviceId!] != nil) ?
+                            Text("The paired device \(viewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
+                            : Text(""),
+                        dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
+                    )
+            )
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 Pair timeout Alert",
+                isPresented: $showingOnPairTimeoutAlert,
+                alert:
+                    Alert(
+                        title: Text("Pairing Timed Out"),
+                        message: currPairingDeviceId != nil ? Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed") : Text(""),
+                        dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
+                    )
+            )
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 Pair rejection Alert",
+                isPresented: $showingOnPairRejectedAlert,
+                alert:
+                    Alert(
+                        title: Text("Pairing Rejected"),
+                        message: currPairingDeviceId != nil ? Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed") : Text(""),
+                        dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
+                    )
+            )
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 Ping Alert",
+                isPresented: $showingPingAlert,
+                alert:
+                    Alert(
+                        title: Text("Ping!"),
+                        message: Text("Ping received from a connected device.")
+                    )
+            )
+            
+            iOS14CompatibilityAlert(
+                description: "iOS14 Find my phone Alert",
+                isPresented: $showingFindMyPhoneAlert,
+                alert:
+                    Alert(
+                        title: Text("Find My Phone Mode"),
+                        message: Text("Find My Phone initiated from a remote device"),
+                        dismissButton: .cancel(Text("I FOUND IT!"), action: { })
+                    )
+            )
+            
+            // TODO: refreshable(pull to refresh) for early version
+        }
             
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
@@ -184,6 +281,18 @@ struct DevicesView: View {
             //onDeviceListRefreshedInsideView(vm: viewModel)
         }
     }
+    
+    var devicesList: some View {
+        List {
+            connectedDevicesSection
+            
+            discoverableDevicesSection
+            
+            rememberedDevicesSection
+        }
+        .environment(\.defaultMinListRowHeight, 60) // TODO: make this dynamic with GeometryReader???
+    }
+    
     
     var connectedDevicesSection: some View {
         Section(header: Text("Connected Devices")) {
