@@ -32,102 +32,52 @@ struct DevicesDetailView: View {
     var body: some View {
         if (isStilConnected) {
             VStack {
-                List {
-                    Section(header: Text("Actions")) {
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
-                            Button(action: {
-                                (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
-                            }, label: {
-                                Label("Push Local Clipboard", systemImage: "square.and.arrow.up.on.square.fill")
-                            })
-                                .accentColor(.primary)
+                if #available(iOS 15.0, *) {
+                    deviceActionsList
+                        .alert("Encryption Info", isPresented: $showingEncryptionInfo) {} message: {
+                            Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrive fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
                         }
-                        
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
-                            Button(action: {
-                                showingFilePicker = true
-                            }, label: {
-                                Label("Send files", systemImage: "folder")
-                            })
-                                .accentColor(.primary)
-                        }
-                        
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {
-                            NavigationLink(
-                                destination: PresenterView(detailsDeviceId: detailsDeviceId),
-                                label: {
-                                    Label("Slideshow remote", systemImage: "slider.horizontal.below.rectangle")
-                                })
-                        }
-//
-//                        NavigationLink(
-//                            destination: PlaceHolderView(),
-//                            label: {
-//                                HStack {
-//                                    Image(systemName: "playpause")
-//                                    Text("Multimedia control")
-//                                }
-//                            })
-//
-                        
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
-                            NavigationLink(
-                                destination: RunCommandView(detailsDeviceId: self.detailsDeviceId),
-                                label: {
-                                    Label("Run Command", systemImage: "terminal")
-                                })
-                        }
-                        
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! Bool) {
-                            NavigationLink(
-                                destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
-                                label: {
-                                    Label("Remote Input", systemImage: "hand.tap")
-                                })
-                        }
-                    }
-                    
-                    Section(header: Text("Device Status")) {
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) || ((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel == 0)) {
-                            Text("No battery detected in device")
-                        } else if (!(backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
-                            Text("Battery Plugin Disabled")
-                        } else {
-                            HStack {
-                                Label {
-                                    Text("Battery Level")
-                                } icon: {
-                                    Image(systemName: (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                        .accentColor((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
-                                }
-                                Spacer()
-                                Text("\((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                        .alert("Unpair With Device?", isPresented: $showingUnpairConfirmationAlert) {
+                            Button("No, Stay Paired", role: .cancel) {}
+                            Button("Yes, Unpair", role: .destructive) {
+                                backgroundService.unpairDevice(detailsDeviceId)
+                                isStilConnected = false
+                                //                        backgroundService.refreshDiscovery()
+                                //                        connectedDevicesViewModel.onDeviceListRefreshed()
                             }
+                        } message: {
+                            Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?")
                         }
-                    }
+                } else {
+                    // Fallback on earlier versions
+                    deviceActionsList
                     
-//                    Section(header: Text("Debug section")) {
-//                        Text("Chosen file URLs:")
-//                        ForEach(chosenFileURLs, id: \.self) { url in
-//                            Text(url.absoluteString)
-//                        }
-//                    }
+                    iOS14CompatibilityAlert(
+                        description: "iOS14 Encryption info Alert",
+                        isPresented: $showingEncryptionInfo,
+                        alert:
+                            Alert(
+                                title: Text("Encryption Info"),
+                                message: Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrive fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
+                            )
+                    )
                     
-                }
-                .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
-                .alert("Encryption Info", isPresented: $showingEncryptionInfo) {} message: {
-                    Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrive fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
-                }
-                .alert("Unpair With Device?", isPresented: $showingUnpairConfirmationAlert) {
-                    Button("No, Stay Paired", role: .cancel) {}
-                    Button("Yes, Unpair", role: .destructive) {
-                        backgroundService.unpairDevice(detailsDeviceId)
-                        isStilConnected = false
-//                        backgroundService.refreshDiscovery()
-//                        connectedDevicesViewModel.onDeviceListRefreshed()
-                    }
-                } message: {
-                    Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?")
+                    iOS14CompatibilityAlert(
+                        description: "iOS14 Unpairing Alert",
+                        isPresented: $showingUnpairConfirmationAlert,
+                        alert:
+                            Alert(
+                                title: Text("Unpair With Device?"),
+                                message: Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?"),
+                                primaryButton: .destructive(Text("Yes, Unpair"), action: {
+                                    backgroundService.unpairDevice(detailsDeviceId)
+                                    isStilConnected = false
+                                    //                        backgroundService.refreshDiscovery()
+                                    //                        connectedDevicesViewModel.onDeviceListRefreshed()
+                                }),
+                                secondaryButton: .cancel(Text("No, Stay Paired"), action: {})
+                            )
+                    )
                 }
                 
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
@@ -232,6 +182,93 @@ struct DevicesDetailView: View {
 //            }
         }
     }
+    
+    var deviceActionsList: some View {
+        List {
+            Section(header: Text("Actions")) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
+                    Button(action: {
+                        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
+                    }, label: {
+                        Label("Push Local Clipboard", systemImage: "square.and.arrow.up.on.square.fill")
+                    })
+                        .accentColor(.primary)
+                }
+                
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
+                    Button(action: {
+                        showingFilePicker = true
+                    }, label: {
+                        Label("Send files", systemImage: "folder")
+                    })
+                        .accentColor(.primary)
+                }
+                
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {
+                    NavigationLink(
+                        destination: PresenterView(detailsDeviceId: detailsDeviceId),
+                        label: {
+                            Label("Slideshow remote", systemImage: "slider.horizontal.below.rectangle")
+                        })
+                }
+                //
+                //                        NavigationLink(
+                //                            destination: PlaceHolderView(),
+                //                            label: {
+                //                                HStack {
+                //                                    Image(systemName: "playpause")
+                //                                    Text("Multimedia control")
+                //                                }
+                //                            })
+                //
+                
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
+                    NavigationLink(
+                        destination: RunCommandView(detailsDeviceId: self.detailsDeviceId),
+                        label: {
+                            Label("Run Command", systemImage: "terminal")
+                        })
+                }
+                
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! Bool) {
+                    NavigationLink(
+                        destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
+                        label: {
+                            Label("Remote Input", systemImage: "hand.tap")
+                        })
+                }
+            }
+            
+            Section(header: Text("Device Status")) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) || ((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel == 0)) {
+                    Text("No battery detected in device")
+                } else if (!(backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                    Text("Battery Plugin Disabled")
+                } else {
+                    HStack {
+                        Label {
+                            Text("Battery Level")
+                        } icon: {
+                            Image(systemName: (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                .accentColor((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
+                        }
+                        Spacer()
+                        Text("\((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                    }
+                }
+            }
+            
+            //                    Section(header: Text("Debug section")) {
+            //                        Text("Chosen file URLs:")
+            //                        ForEach(chosenFileURLs, id: \.self) { url in
+            //                            Text(url.absoluteString)
+            //                        }
+            //                    }
+            
+        }
+        .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
+    }
+    
 }
 
 //struct DevicesDetailView_Previews: PreviewProvider {

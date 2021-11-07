@@ -24,7 +24,9 @@ import SwiftUI
                 .onAppear {
                     backgroundService.startDiscovery()
                     motionManager.gyroUpdateInterval = 0.1
-                    UITableView.appearance().contentInset.top = -25
+                    if #available(iOS 15.0, *) {
+                        UITableView.appearance().contentInset.top = -25
+                    }
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     // In case the app's been chilling suspended for a long time, upon returning ask for updates to all devices's battery statuses

@@ -23,6 +23,7 @@
 		A01FDD2D26C62E180014B165 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2C26C62E170014B165 /* Share.swift */; };
 		A01FDD2F26C6FD110014B165 /* FindMyPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */; };
 		A01FDD3126C701360014B165 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD3026C701360014B165 /* Battery.swift */; };
+		A09CFCDF2737195E007008A6 /* iOS14CompatibilityAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09CFCDE2737195E007008A6 /* iOS14CompatibilityAlertView.swift */; };
 		A0A04430267BF38700CC21DD /* KDE_Connect_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0442F267BF38700CC21DD /* KDE_Connect_App.swift */; };
 		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
 		A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04433267BF38A00CC21DD /* Assets.xcassets */; };
@@ -102,6 +103,7 @@
 		A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyPhone.swift; sourceTree = "<group>"; };
 		A01FDD3026C701360014B165 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		A034ADA726BF32F500A7CC70 /* KDE Connect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KDE Connect.entitlements"; sourceTree = "<group>"; };
+		A09CFCDE2737195E007008A6 /* iOS14CompatibilityAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibilityAlertView.swift; sourceTree = "<group>"; };
 		A0A0442C267BF38700CC21DD /* KDE Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_App.swift; sourceTree = "<group>"; };
 		A0A04431267BF38700CC21DD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */,
 				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
 				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
+				A09CFCDE2737195E007008A6 /* iOS14CompatibilityAlertView.swift */,
 			);
 			path = "Abstracted Views";
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
 				A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */,
 				A0CA112126F3C7ED006F6EAC /* RunCommandView.swift in Sources */,
+				A09CFCDF2737195E007008A6 /* iOS14CompatibilityAlertView.swift in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
 				A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */,
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
@@ -704,7 +708,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -759,7 +763,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -782,7 +786,7 @@
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "KDE Connect/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -790,6 +794,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -810,7 +815,7 @@
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "KDE Connect/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -818,6 +823,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
