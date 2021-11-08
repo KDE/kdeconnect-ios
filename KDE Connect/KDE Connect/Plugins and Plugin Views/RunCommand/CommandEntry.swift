@@ -14,14 +14,16 @@
 
 import Foundation
 
-class CommandEntry: Decodable {
+class CommandEntry: Identifiable {
     final var name: String
     final var command: String
-    final var key: String?
+    final var key: String
     
-//    init(name: String, cmd: String, key: String) {
-//        self.name = name
-//        self.cmd = cmd
-//        self.key = key
-//    }
+    var id: String { key }
+    
+    init(name: String, command: String, key: String) {
+        self.name = name
+        self.command = command
+        self.key = key
+    }
 }

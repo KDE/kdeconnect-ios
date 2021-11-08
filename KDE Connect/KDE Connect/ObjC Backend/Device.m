@@ -420,16 +420,15 @@
             [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_MOUSEPAD_REQUEST];
             [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_MOUSEPAD_REQUEST];
             
+        } else if ([pluginID isEqualToString:PACKAGE_TYPE_PRESENTER]) {
+            [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_PRESENTER];
+            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_PRESENTER];
         }
     }
     
     // for the capabilities that are ONLY in the outgoing section of KDE Connect iOS
     for (NSString* pluginID in _outgoingCapabilities) {
-        if ([pluginID isEqualToString:PACKAGE_TYPE_PRESENTER]) {
-            [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_PRESENTER];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_PRESENTER];
-            
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_RUNCOMMAND]) { // check DL360's id packet to  see if this is indeed the case
+        if ([pluginID isEqualToString:PACKAGE_TYPE_RUNCOMMAND]) {
             [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_RUNCOMMAND];
             [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_RUNCOMMAND];
             

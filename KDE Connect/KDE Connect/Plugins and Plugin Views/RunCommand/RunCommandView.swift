@@ -13,40 +13,40 @@
 //
 
 import SwiftUI
-// TODO: Commands are not getting parsed properly? Investigate.
 struct RunCommandView: View {
     let detailsDeviceId: String
-    @State var commandItemsInsideView: [String : CommandEntry] = [:]
+    @ObservedObject var runCommandPlugin: RunCommand
+    
+    init(detailsDeviceId: String) {
+        self.detailsDeviceId = detailsDeviceId
+        self.runCommandPlugin = backgroundService.devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand
+    }
     
     var body: some View {
         List {
-            ForEach(Array(commandItemsInsideView.keys), id: \.self) { commandkey in
-                Button(action: {
-                    (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).runCommand(cmdKey: commandkey)
+            ForEach(runCommandPlugin.commandEntries) { entry in
+                Button {
+                    runCommandPlugin.runCommand(cmdKey: entry.key)
                     notificationHapticsGenerator.notificationOccurred(.success)
-                }, label: {
-                    VStack {
-                        Text(commandItemsInsideView[commandkey]?.name ?? "ERROR")
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(entry.name)
                             .font(.headline)
                             .fontWeight(.bold)
-                        Text(commandItemsInsideView[commandkey]?.command ?? "ERROR")
+                            .foregroundColor(.primary)
+                        Text(entry.command)
                             .font(.caption)
                     }
-                })
+                }
             }
         }
+        .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
         .navigationBarTitle("Run Command", displayMode: .inline)
         .navigationBarItems(trailing: Button {
-            (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).sendSetupPackage()
+            runCommandPlugin.sendSetupPackage()
         } label: {
             Image(systemName: "command") // is there a better choice for this? This is a nice reference though I think
         })
-        .onAppear {
-            if ((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).controlView == nil) {
-                (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).controlView = self
-            }
-            (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).processCommandItemsAndGiveToRunCommandView()
-        }
     }
 }
 

@@ -348,9 +348,9 @@ struct DevicesView: View {
     }
     
     var discoverableDevicesSection: some View {
-        Section(header: Text("Discoverable Devices")) {
+        Section(header: Text("Discoverable Devices"), footer: Text("If the network is shared/public it likely has broadcasting disabled, please manually add the devices in the \"Configure Devices By IP\" menu from the 3-dots drop-down button.")) {
             if (visibleDevicesIds.isEmpty) {
-                Text("No devices are discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device. If the network is shared/public it likely has broadcasting disabled, please manually add the devices in the \"Configure Devices By IP\" menu from the 3-dots drop-down button on the top right of this screen.")
+                Text("No devices are discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
                     .padding(.vertical, 8)
             } else {
                 ForEach(visibleDevicesIds, id: \.self) { key in
