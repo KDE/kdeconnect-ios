@@ -96,18 +96,6 @@ func getSFSymbolNameFromDeviceType(deviceType: DeviceType) -> String {
     }
 }
 
-// Given a JSON String, returns a dictionary converted from the JSON String
-func JSONStringtoDictionary(json: String) -> [String: String]? {
-    if let jsonData = json.data(using: .utf8) {
-        do {
-            return try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String : String]
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    return nil
-}
-
 // Given th deviceId, saves/overwrites the device object from _device into _settings by encoding it and then into UserDefaults
 func saveDeviceToUserDefaults(deviceId: String) {
     let deviceData: Data?

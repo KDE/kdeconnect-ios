@@ -14,33 +14,23 @@
 
 import SwiftUI
 
-@objc class RunCommand : NSObject, Plugin {
+// TODO: rename to RunCommandPlugin
+@objc class RunCommand : NSObject, ObservablePlugin {
     @objc let controlDevice: Device
-    final var controlView: RunCommandView?
-    var commandItems: [CommandEntry] = []
+    @Published
+    var commandEntries: [CommandEntry] = []
     
-    @objc init (controlDevice: Device) {
+    @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np._Type == PACKAGE_TYPE_RUNCOMMAND) {
-            if (np.bodyHasKey("commandList")) {
+            if np.bodyHasKey("commandList") {
                 // Process the received commandList here
-                let jsonString: String = np.object(forKey: "commandList") as! String
-                if let jsonDictionary: [String : String] = JSONStringtoDictionary(json: jsonString) {
-                    for key in jsonDictionary.keys {
-                        if let commandEntryData: Data = jsonDictionary[key]!.data(using: .utf8) {
-                            let commandEntry: CommandEntry = try! JSONDecoder().decode(CommandEntry.self, from: commandEntryData)
-                            commandEntry.key = key
-                            commandItems.append(commandEntry)
-                        } else {
-                            print("RunCommand: CommandEntry decode failed")
-                        }
-                    }
-                    processCommandItemsAndGiveToRunCommandView()
-                } else {
-                    print("RunCommand: commandList decode failed")
+                let jsonString = np.object(forKey: "commandList") as! String
+                DispatchQueue.main.async { [self] in
+                    commandEntries = processCommandsJSON(jsonString)
                 }
             } else {
                 print("Runcommand packet received with no commandList, ignoring")
@@ -48,14 +38,6 @@ import SwiftUI
             return true
         }
         return false
-    }
-    
-    @objc func processCommandItemsAndGiveToRunCommandView() -> Void {
-        if (controlView != nil) {
-            for command in commandItems {
-                controlView!.commandItemsInsideView[command.key!] = command
-            }
-        }
     }
     
     @objc func runCommand(cmdKey: String) -> Void {
@@ -74,5 +56,30 @@ import SwiftUI
         let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_RUNCOMMAND_REQUEST)
         np.setBool(true, forKey: "setup")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
+    }
+    
+    private func processCommandsJSON(_ json: String) -> [CommandEntry] {
+        guard let jsonData = json.data(using: .utf8) else {
+            return []
+        }
+        do {
+            guard let commandsDict = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String : [String : String]] else {
+                print("RunCommand: commandList decode failed")
+                return []
+            }
+            return commandsDict.compactMap { (commandKey, commandInfo) in
+                if let commandName = commandInfo["name"],
+                    let command = commandInfo["command"] {
+                    let commandEntry = CommandEntry(name: commandName, command: command, key: commandKey)
+                    return commandEntry
+                } else {
+                    print("Command or CommandName for \(commandKey) is nil")
+                    return nil
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
     }
 }

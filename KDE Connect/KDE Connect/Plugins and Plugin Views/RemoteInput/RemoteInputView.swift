@@ -93,28 +93,26 @@ struct RemoteInputView: View {
             , alignment: .bottom)
             
             if (showingSensitivitySlider) {
-                VStack {
-                    HStack {
-                        Image(systemName: "minus")
-                        Slider(
-                            value: $cursorSensitivityFromSlider,
-                            in: 0.5...5.5,
-                            onEditingChanged: { editing in
-                                if (!editing) {
-                                    hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred()
-                                    saveDeviceToUserDefaults(deviceId: detailsDeviceId)
-                                }
-                            }
-                        )
-                        .onChange(of: cursorSensitivityFromSlider) { value in
-                            backgroundService._devices[detailsDeviceId]!._cursorSensitivity = value
-                        }
-                        Image(systemName: "plus")
-                    }
+                Slider(
+                    value: $cursorSensitivityFromSlider,
+                    in: 0.5...5.5
+                ) {
                     Text("Cursor Sensitivity")
+                } minimumValueLabel: {
+                    Image(systemName: "minus")
+                } maximumValueLabel: {
+                    Image(systemName: "plus")
+                } onEditingChanged: { editing in
+                    if (!editing) {
+                        hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred()
+                        saveDeviceToUserDefaults(deviceId: detailsDeviceId)
+                    }
                 }
                 .padding(.all, 15)
                 .transition(.opacity)
+                .onChange(of: cursorSensitivityFromSlider) { value in
+                    backgroundService._devices[detailsDeviceId]!._cursorSensitivity = value
+                }
             }
             
             if (showingHapticSegmentPicker) {
@@ -255,8 +253,8 @@ struct RemoteInputView: View {
     }
 }
 
-//struct MousePadView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MousePadView()
-//    }
-//}
+struct MousePadView_Previews: PreviewProvider {
+    static var previews: some View {
+        RemoteInputView(detailsDeviceId: "HI")
+    }
+}
