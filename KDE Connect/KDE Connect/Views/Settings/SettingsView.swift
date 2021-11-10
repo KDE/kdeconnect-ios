@@ -14,36 +14,30 @@ struct SettingsView: View {
         List {
             // These could go in sections to give them each descriptions and space
             Section(header: Text("Host Device Settings")) {
-                NavigationLink(
-                    destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName),
-                    label: {
-                        HStack {
-                            Label("Device Name", systemImage: "iphone")
-                                .accentColor(.primary)
-                            Spacer()
-                            Text(selfDeviceData.deviceName)
-                                .foregroundColor(.secondary)
-                        }
-                    })
-                
-                NavigationLink(
-                    destination: SettingsChosenThemeView(chosenTheme: $selfDeviceDataForSettings.chosenTheme),
-                    label: {
-                        HStack {
-                            Label("App Theme", systemImage: "lightbulb")
-                                .accentColor(.primary)
-                            Spacer()
-                            Text(selfDeviceData.chosenTheme)
-                                .foregroundColor(.secondary)
-                        }
-                    })
-                
-                NavigationLink(
-                    destination: SettingsAdvancedView(),
-                    label: {
-                        Label("Advanced Settings", systemImage: "wrench.and.screwdriver")
+                NavigationLink(destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName)) {
+                    HStack {
+                        Label("Device Name", systemImage: "iphone")
                             .accentColor(.primary)
-                    })
+                        Spacer()
+                        Text(selfDeviceData.deviceName)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                NavigationLink(destination: SettingsChosenThemeView(chosenTheme: $selfDeviceDataForSettings.chosenTheme)) {
+                    HStack {
+                        Label("App Theme", systemImage: "lightbulb")
+                            .accentColor(.primary)
+                        Spacer()
+                        Text(selfDeviceData.chosenTheme)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                NavigationLink(destination: SettingsAdvancedView()) {
+                    Label("Advanced Settings", systemImage: "wrench.and.screwdriver")
+                        .accentColor(.primary)
+                }
             }
             
             Section(header: Text("External Links")) {

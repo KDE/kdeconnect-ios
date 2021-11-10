@@ -28,12 +28,13 @@ struct TwoFingerTapView: UIViewRepresentable
     func makeUIView(context: UIViewRepresentableContext<TwoFingerTapView>) -> UIView
     {
         let view = UIView()
-        let TwoFingerTapGestureRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(sender:)))
+        view.backgroundColor = .systemBackground
+        let twoFingerTapGestureRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(sender:)))
         
         // Set number of touches.
-        TwoFingerTapGestureRecognizer.numberOfTouchesRequired = 2
+        twoFingerTapGestureRecognizer.numberOfTouchesRequired = 2
         
-        view.addGestureRecognizer(TwoFingerTapGestureRecognizer)
+        view.addGestureRecognizer(twoFingerTapGestureRecognizer)
         
         let instructionLabel: UILabel = UILabel()
         instructionLabel.translatesAutoresizingMaskIntoConstraints = false

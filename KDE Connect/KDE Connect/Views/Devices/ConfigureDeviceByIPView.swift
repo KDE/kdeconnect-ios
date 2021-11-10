@@ -44,12 +44,13 @@ struct ConfigureDeviceByIPView: View {
             }
         }
         .navigationTitle("Configure Devices By IP")
-        .navigationBarItems(trailing: Button(action: {
+        .navigationBarItems(trailing: Button {
             showingAddNewIPAlert = true
-        }) {
+        } label: {
             Image(systemName: "plus")
         })
     }
+    
     func deleteAddress(at offsets: IndexSet) {
         selfDeviceDataForIPConfig.directIPs.remove(atOffsets: offsets)
     }

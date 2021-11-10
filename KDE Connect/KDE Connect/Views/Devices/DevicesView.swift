@@ -36,7 +36,6 @@ struct DevicesView: View {
     @State private var showingOnPairSuccessAlert: Bool = false
     @State private var showingOnPairRejectedAlert: Bool = false
     @State private var showingOnSelfPairOutgoingRequestAlert: Bool = false
-    @State private var showingOnSelectSavedDeviceAlert: Bool = false
     @State private var showingPingAlert: Bool = false
     @State private var showingFindMyPhoneAlert: Bool = false
     @State private var showingFileReceivedAlert: Bool = false
@@ -61,7 +60,6 @@ struct DevicesView: View {
                     Button("Pair") {
                         backgroundService.pairDevice(currPairingDeviceId)
                     }
-                    .foregroundColor(.green)
                 } message: {
                     if (currPairingDeviceId != nil) {
                         Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
@@ -82,19 +80,9 @@ struct DevicesView: View {
                     Button("Pair") {
                         backgroundService.pairDevice(currPairingDeviceId)
                     }
-                    .foregroundColor(.green)
                 } message: {
                     if (currPairingDeviceId != nil) {
                         Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
-                    }
-                }
-                .alert("Device Offline", isPresented: $showingOnSelectSavedDeviceAlert) {
-                    Button("OK", role: .cancel) {
-                        currPairingDeviceId = nil
-                    }
-                } message: {
-                    if (currPairingDeviceId != nil && viewModel.savedDevices[currPairingDeviceId!] != nil) {
-                        Text("The paired device \(viewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
                     }
                 }
                 .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
@@ -133,8 +121,8 @@ struct DevicesView: View {
                 alert:
                     Alert(
                         title: Text("Incoming Pairing Request"),
-                        message: currPairingDeviceId != nil ? Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device") : Text(""),
-                        primaryButton: .destructive(Text("Pair"), action: {
+                        message: Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device"),
+                        primaryButton: .default(Text("Pair"), action: {
                             backgroundService.pairDevice(currPairingDeviceId)
                         }),
                         secondaryButton: .cancel(Text("Cancel"), action: {})
@@ -147,9 +135,7 @@ struct DevicesView: View {
                 alert:
                     Alert(
                         title: Text("Pairing Complete"),
-                        message: currPairingDeviceId != nil ?
-                            Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded")
-                            : Text(""),
+                        message: Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded"),
                         dismissButton: .cancel(Text("Nice"), action: { currPairingDeviceId = nil })
                     )
             )
@@ -160,24 +146,11 @@ struct DevicesView: View {
                 alert:
                     Alert(
                         title: Text("Initiate Pairing?"),
-                        message: currPairingDeviceId != nil ? Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?") : Text(""),
-                        primaryButton: .destructive(Text("Pair"), action: {
+                        message: Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?"),
+                        primaryButton: .default(Text("Pair"), action: {
                             backgroundService.pairDevice(currPairingDeviceId)
                         }),
                         secondaryButton: .cancel(Text("Cancel"), action: {})
-                    )
-            )
-            
-            iOS14CompatibilityAlert(
-                description: "iOS14 device offline Alert",
-                isPresented: $showingOnSelectSavedDeviceAlert,
-                alert:
-                    Alert(
-                        title: Text("Device Offline"),
-                        message: (currPairingDeviceId != nil && viewModel.savedDevices[currPairingDeviceId!] != nil) ?
-                            Text("The paired device \(viewModel.savedDevices[currPairingDeviceId!]!) is not reachable. Make sure it is connected to the same network as this device.")
-                            : Text(""),
-                        dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
                     )
             )
             
@@ -187,7 +160,7 @@ struct DevicesView: View {
                 alert:
                     Alert(
                         title: Text("Pairing Timed Out"),
-                        message: currPairingDeviceId != nil ? Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed") : Text(""),
+                        message: Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed"),
                         dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
                     )
             )
@@ -198,7 +171,7 @@ struct DevicesView: View {
                 alert:
                     Alert(
                         title: Text("Pairing Rejected"),
-                        message: currPairingDeviceId != nil ? Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed") : Text(""),
+                        message: Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed"),
                         dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
                     )
             )
@@ -234,51 +207,34 @@ struct DevicesView: View {
             Text(viewUpdate ? "True" : "False")
                 .frame(width: 0, height: 0)
                 .opacity(0)
+                .accessibilityHidden(true)
         }
         .navigationTitle("Devices")
-        .navigationBarItems(trailing: {
+        .navigationBarItems(trailing:
             Menu {
-                Button(action: {
-                    refreshDiscoveryAndList()
-                }, label: {
-                    HStack {
-                        Text("Refresh Discovery")
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                    }
-                })
-                Button(action: {
+                Button(action: refreshDiscoveryAndList) {
+                    Label("Refresh Discovery", systemImage: "arrow.triangle.2.circlepath")
+                }
+            
+                Button {
                     showingConfigureDevicesByIPView = true
-                }, label: {
-                    HStack {
-                        Text("Configure Devices By IP")
-                        Image(systemName: "network")
-                    }
-                })
-                //TODO: how exactly does this work again? Possibly need more entitlements for accessing the wifi information
-//                Button(action: {
-//                    // take to Trusted Networks View
-//                }, label: {
-//                    HStack {
-//                        Text("Configure Trusted Networks")
-//                        Image(systemName: "lock.shield")
-//                    }
-//                })
+                } label: {
+                    Label("Configure Devices By IP", systemImage: "network")
+                }
+                
+                // TODO: Implement trusted networks, possibly need entitlement to access LAN information
+                // Label("Configure Trusted Networks", systemName: "lock.shield")
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
-        }())
-        .onAppear() { // MARK: This get called twice on startup?????
+        )
+        .onAppear {
+            // TODO: Don't hold the view in the viewModel!!!
             if (viewModel.devicesView == nil) {
                 viewModel.devicesView = self
             }
-//            if (backgroundService._backgroundServiceDelegate == nil) {
-//                backgroundService._backgroundServiceDelegate = viewModel
-//            }
-            // MARK: If refreshDiscoveryAndList() is here, the device will go into "Remembered" for some reason and then immediately go back, but with an empty _plugins dictionary
-            //refreshDiscoveryAndList()
             viewModel.onDeviceListRefreshed()
             broadcastBatteryStatusAllDevices()
-            //onDeviceListRefreshedInsideView(vm: viewModel)
         }
     }
     
@@ -348,16 +304,16 @@ struct DevicesView: View {
     }
     
     var discoverableDevicesSection: some View {
-        Section(header: Text("Discoverable Devices"), footer: Text("If the network is shared/public it likely has broadcasting disabled, please manually add the devices in the \"Configure Devices By IP\" menu from the 3-dots drop-down button.")) {
+        Section(header: Text("Discovered Devices"), footer: Text("If the network is shared/public it likely has broadcasting disabled, please manually add the devices in the \"Configure Devices By IP\" menu from the 3-dots drop-down button.")) {
             if (visibleDevicesIds.isEmpty) {
-                Text("No devices are discoverable on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
+                Text("No devices are discovered on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
                     .padding(.vertical, 8)
             } else {
                 ForEach(visibleDevicesIds, id: \.self) { key in
-                    Button(action: {
+                    Button {
                         currPairingDeviceId = key
                         showingOnSelfPairOutgoingRequestAlert = true
-                    }) {
+                    } label: {
                         HStack {
                             Image(systemName: "badge.plus.radiowaves.right")
                                 .foregroundColor(.blue)
@@ -391,10 +347,10 @@ struct DevicesView: View {
                     .padding(.vertical, 8)
             } else {
                 ForEach(savedDevicesIds, id: \.self) { key in
-                    Button(action: {
+                    Button {
                         //currPairingDeviceId = key
                         //showingOnSelectSavedDeviceAlert = true
-                    }) {
+                    } label: {
                         HStack {
                             Image(systemName: "wifi.slash")
                                 .foregroundColor(.red)
@@ -514,7 +470,6 @@ struct DevicesView: View {
                 !showingOnPairSuccessAlert &&
                 !showingOnPairRejectedAlert &&
                 !showingOnSelfPairOutgoingRequestAlert &&
-                !showingOnSelectSavedDeviceAlert &&
                 !showingPingAlert &&
                 !showingFindMyPhoneAlert) //&& !showingFileReceivedAlert
     }

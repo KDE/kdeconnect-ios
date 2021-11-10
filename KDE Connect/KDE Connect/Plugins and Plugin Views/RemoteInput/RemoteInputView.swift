@@ -31,19 +31,18 @@ struct RemoteInputView: View {
     var body: some View {
         VStack {
             TwoFingerTapView { gesture in
-                rightClickAction()
+                sendRightClick()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background((colorScheme == .light) ? Color.white : Color.black)
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
-                        let DxDrag: Float = Float(gesture.translation.width) - previousHorizontalDragOffset
-                        let DyDrag: Float = Float(gesture.translation.height) - previousVerticalDragOffset
+                        let dxDrag: Float = Float(gesture.translation.width) - previousHorizontalDragOffset
+                        let dyDrag: Float = Float(gesture.translation.height) - previousVerticalDragOffset
                         //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMouseDelta(Dx: DxDrag * cursorSensitivityFromSlider, Dy: DyDrag * cursorSensitivityFromSlider)
-                        print("Moved by \(DxDrag) horizontally")
-                        print("Moved by \(DyDrag) vertically")
+                        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMouseDelta(dx: dxDrag * cursorSensitivityFromSlider, dy: dyDrag * cursorSensitivityFromSlider)
+                        print("Moved by \(dxDrag) horizontally")
+                        print("Moved by \(dyDrag) vertically")
                         //}
                         previousHorizontalDragOffset = Float(gesture.translation.width)
                         previousVerticalDragOffset = Float(gesture.translation.height)
@@ -54,9 +53,9 @@ struct RemoteInputView: View {
                         print("Drag ended, resetting to 0.0")
                     }
             )
-            .tapRecognizer(tapSensitivity: 0.2, singleTapAction: singleTapAction, doubleTapAction: doubleTapAction)
+            .tapRecognizer(tapSensitivity: 0.2, singleTapAction: sendSingleTap, doubleTapAction: sendDoubleTap)
             .onLongPressGesture {
-                singleHoldAction()
+                sendSingleHold()
             }
             .overlay( // FIXME: Migrate to new overlay() when iOS 15 comes out
                 VStack {
@@ -84,7 +83,7 @@ struct RemoteInputView: View {
                                 }
                         )
                         .onTapGesture {
-                            middleClickAction()
+                            sendMiddleClick()
                             print("Middle click from scroll wheel")
                         }
                         .padding(.top, 5)
@@ -137,80 +136,51 @@ struct RemoteInputView: View {
             }
         }
         .navigationBarTitle("Remote Input", displayMode: .inline)
-        .navigationBarItems(trailing: {
+        .navigationBarItems(trailing:
             Menu {
-                Button(action: {
-                    singleTapAction()
-                }, label: {
-                    HStack {
-                        Text("Send Single Left Click")
-                        Image(systemName: "cursorarrow.click")
-                    }
-                })
+                Button(action: sendSingleTap) {
+                    Label("Send Single Left Click", systemImage: "cursorarrow.click")
+                }
                 
-                Button(action: {
-                    doubleTapAction()
-                }, label: {
-                    HStack {
-                        Text("Send Double Left Click")
-                        Image(systemName: "cursorarrow.click.2")
-                    }
-                })
+                Button(action: sendDoubleTap) {
+                    Label("Send Double Left Click", systemImage: "cursorarrow.click.2")
+                }
                 
-                Button(action: {
-                    rightClickAction()
-                }, label: {
-                    HStack {
-                        Text("Send Right Click")
-                        Image(systemName: "line.diagonal.arrow")
-                    }
-                })
+                Button(action: sendRightClick) {
+                    Label("Send Right Click", systemImage: "line.diagonal.arrow")
+                }
                 
-                Button(action: {
-                    singleHoldAction()
-                }, label: {
-                    HStack {
-                        Text("Send Left Hold")
-                        Image(systemName: "cursorarrow.rays")
-                    }
-                })
+                Button(action: sendSingleHold) {
+                    Label("Send Left Hold", systemImage: "cursorarrow.rays")
+                }
                 
-                Button(action: {
-                    middleClickAction()
-                }, label: {
-                    HStack {
-                        Text("Send Middle Click")
-                        Image(systemName: "square.and.line.vertical.and.square")
-                    }
-                })
+                Button(action: sendMiddleClick) {
+                    Label("Send Middle Click", systemImage: "square.and.line.vertical.and.square")
+                }
                 
-                Button(action: {
+                Button {
                     withAnimation {
                         showingSensitivitySlider.toggle()
                     }
-                }, label: {
-                    HStack {
-                        Text("\((showingSensitivitySlider) ? "Hide" : "Show") Sensitivity Slider")
-                        Image(systemName: "cursorarrow.motionlines")
-                    }
-                })
+                } label: {
+                    Label("\((showingSensitivitySlider) ? "Hide" : "Show") Sensitivity Slider",
+                          systemImage: "cursorarrow.motionlines")
+                }
                 
-                Button(action: {
+                Button {
                     withAnimation {
                         showingHapticSegmentPicker.toggle()
                     }
-                }, label: {
-                    HStack {
-                        Text("\((showingHapticSegmentPicker) ? "Hide" : "Show") Haptics Style Selector")
-                        Image(systemName: "cursorarrow.motionlines.click")
-                    }
-                })
+                } label: {
+                    Label("\((showingHapticSegmentPicker) ? "Hide" : "Show") Haptics Style Selector",
+                          systemImage: "cursorarrow.motionlines.click")
+                }
                 
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
-        }())
-        .onAppear() {
+        )
+        .onAppear {
             cursorSensitivityFromSlider = backgroundService._devices[detailsDeviceId]!._cursorSensitivity
             // If new device, give default sensitivity of 3.0
             if (cursorSensitivityFromSlider < 0.5) {
@@ -222,31 +192,31 @@ struct RemoteInputView: View {
         }
     }
     
-    func singleTapAction() {
+    func sendSingleTap() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.7
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleClick()
         print("single clicked")
     }
     
-    func doubleTapAction() {
+    func sendDoubleTap() {
         notificationHapticsGenerator.notificationOccurred(.success)
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendDoubleClick()
         print("double clicked")
     }
     
-    func rightClickAction() {
+    func sendRightClick() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 1.0
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendRightClick()
         print("2 finger tap")
     }
     
-    func singleHoldAction() {
+    func sendSingleHold() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.5
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleHold()
         print("Long press")
     }
     
-    func middleClickAction() {
+    func sendMiddleClick() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.3
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMiddleClick()
         print("Middle Click")

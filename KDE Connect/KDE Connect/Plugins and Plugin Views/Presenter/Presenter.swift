@@ -53,10 +53,10 @@ import Foundation
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendPointerPosition(Dx: Float, Dy: Float) -> Void {
+    @objc func sendPointerPosition(dx: Float, dy: Float) -> Void {
         let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_PRESENTER)
-        np.setFloat(Dx, forKey: "dx")
-        np.setFloat(Dy, forKey: "dy")
+        np.setFloat(dx, forKey: "dx")
+        np.setFloat(dy, forKey: "dy")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     

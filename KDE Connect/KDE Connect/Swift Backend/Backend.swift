@@ -36,6 +36,7 @@ let selfDeviceData: SelfDeviceData = SelfDeviceData()
 // Background Service provider, bridged from Obj-C codebase
 let backgroundService: BackgroundService = BackgroundService(connectedDeviceViewModel: connectedDevicesViewModel, certificateService: certificateService)
 
+// TODO: replace with system enum and thier raw values instead of doing this madness
 // Haptics provider
 let hapticGenerators: [UIImpactFeedbackGenerator] = [
     UIImpactFeedbackGenerator(style: .light),
