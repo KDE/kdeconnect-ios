@@ -18,21 +18,23 @@ import UIKit.UIDevice
 struct PresenterView: View {
     let detailsDeviceId: String
     
-    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    @State var currentBroadcastingDeviceOrientation = UIDevice.current.orientation
     
     @State private var pointerSensitivityFromSlider: Float = 0.07 // defaults to the middle
     @State private var showingSensitivitySlider: Bool = false
 
     var body: some View {
         VStack { // TODO: This is a rough first implementation of getting it "optimized" for different displays and orientations. But let's test if the gyroscope backend even works first
-            if (horizontalSizeClass == .compact && verticalSizeClass == .regular) || (horizontalSizeClass == .regular && verticalSizeClass == .regular) { //iPhone Portrait or iPad Landscape AND portrait
-                
-            } else if (horizontalSizeClass == .regular && verticalSizeClass == .compact) { //iPhone Landscape
-                
+            switch currentBroadcastingDeviceOrientation {
+            case .landscapeLeft, .landscapeRight:
+                landscapePresenterView
+            case .portrait, .portraitUpsideDown, .faceUp, .faceDown, .unknown:
+                portraitPresenterView
+            @unknown default:
+                portraitPresenterView
             }
             
-            if (showingSensitivitySlider) {
+            if showingSensitivitySlider {
                 Slider(
                     value: $pointerSensitivityFromSlider,
                     in: 0.05...0.09
@@ -56,41 +58,58 @@ struct PresenterView: View {
             }
         }
         .navigationBarTitle("Slideshow Remote", displayMode: .inline)
-        .navigationBarItems(trailing: {
+        .navigationBarItems(trailing:
             Menu {
-                Button(action: {
-                    goFullscreenAction()
-                }, label: {
-                    HStack {
-                        Text("Go FullScreen")
-                        Image(systemName: "arrow.up.left.and.arrow.down.right")
-                    }
-                })
+                Button(action: sendGoFullscreenAction) {
+                    Label("Go FullScreen", systemImage: "arrow.up.left.and.arrow.down.right")
+                }
                 
-                Button(action: {
-                    goEscapeAction()
-                }, label: {
-                    HStack {
-                        Text("Exit Presentation")
-                        Image(systemName: "arrowshape.turn.up.left")
-                    }
-                })
+                Button(action: sendEscapeKey) {
+                    Label("Exit Presentation", systemImage: "arrowshape.turn.up.left")
+                }
                 
-                Button(action: {
+                Button {
                     withAnimation {
                         showingSensitivitySlider.toggle()
                     }
-                }, label: {
-                    HStack {
-                        Text("\((showingSensitivitySlider) ? "Hide" : "Show") Sensitivity Slider")
-                        Image(systemName: "cursorarrow.motionlines")
-                    }
-                })
+                } label: {
+                    Label("\((showingSensitivitySlider) ? "Hide" : "Show") Sensitivity Slider",
+                          systemImage: "cursorarrow.motionlines")
+                }
                 
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
-        }())
+        )
+        .onAppear {
+            UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+            switch currentBroadcastingDeviceOrientation {
+            case .portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight:
+                print("PresenterView appeared with defined orientation")
+                break
+            case .faceUp, .faceDown, .unknown:
+                currentBroadcastingDeviceOrientation = .portrait
+                print("PresenterView appeared without defined orientation, defaulting to portrait")
+            @unknown default:
+                currentBroadcastingDeviceOrientation = .portrait
+                print("PresenterView appeared without defined orientation, defaulting to portrait")
+            }
+        }
+        .onDisappear {
+            stopGyroAndPointer()
+            UIDevice.current.endGeneratingDeviceOrientationNotifications()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+            let newOrientation = UIDevice.current.orientation
+            switch newOrientation {
+            case .portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight:
+                currentBroadcastingDeviceOrientation = newOrientation
+            case .faceUp, .faceDown, .unknown:
+                break
+            @unknown default:
+                break
+            }
+        }
     }
     
     var portraitPresenterView: some View {
@@ -106,19 +125,17 @@ struct PresenterView: View {
                     .cornerRadius(50)
                     .gesture(
                         DragGesture(minimumDistance: 0)
-                            .onChanged({ _ in
+                            .onChanged { _ in
                                 startGyroAndPointer()
-                            })
-                            .onEnded({ _ in
+                            }
+                            .onEnded { _ in
                                 stopGyroAndPointer()
-                            })
+                            }
                     )
             }
             
             HStack {
-                Button(action: {
-                    goBackAction()
-                }, label: {
+                Button(action: sendGoPreviousSlideAction) {
                     Image(systemName: "backward.end")
                         .resizable()
                         .frame(width: 40, height: 50)
@@ -128,11 +145,9 @@ struct PresenterView: View {
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
-                })
+                }
                 
-                Button(action: {
-                    goForwardAction()
-                }, label: {
+                Button(action: sendGoPreviousSlideAction) {
                     Image(systemName: "forward.end")
                         .resizable()
                         .frame(width: 40, height: 50)
@@ -141,16 +156,14 @@ struct PresenterView: View {
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
-                })
+                }
             }
         }
     }
     
     var landscapePresenterView: some View {
         HStack {
-            Button(action: {
-                goBackAction()
-            }, label: {
+            Button(action: sendGoPreviousSlideAction) {
                 Image(systemName: "backward.end")
                     .resizable()
                     .frame(width: 40, height: 50)
@@ -160,7 +173,7 @@ struct PresenterView: View {
                     .background(Color.orange)
                     .clipShape(Rectangle())
                     .cornerRadius(20)
-            })
+            }
             
             if backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop {
                 Image(systemName: "wand.and.rays")
@@ -173,18 +186,16 @@ struct PresenterView: View {
                     .cornerRadius(50)
                     .gesture(
                         DragGesture(minimumDistance: 0)
-                            .onChanged({ _ in
+                            .onChanged { _ in
                                 startGyroAndPointer()
-                            })
-                            .onEnded({ _ in
+                            }
+                            .onEnded { _ in
                                 stopGyroAndPointer()
-                            })
+                            }
                     )
             }
             
-            Button(action: {
-                goForwardAction()
-            }, label: {
+            Button(action: sendGoNextSlideAction) {
                 Image(systemName: "forward.end")
                     .resizable()
                     .frame(width: 40, height: 50)
@@ -193,57 +204,61 @@ struct PresenterView: View {
                     .background(Color.orange)
                     .clipShape(Rectangle())
                     .cornerRadius(20)
-            })
-        }
-    }
-    
-    func startGyroAndPointer() -> Void {
-        //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
-        motionManager.startGyroUpdates(to: .main) { (data, error) in
-            if (data != nil) {
-                var DxToSend: Float = 0.0 //
-                var DyToSend: Float = 0.0
-                if (horizontalSizeClass == .compact && verticalSizeClass == .regular) || (horizontalSizeClass == .regular && verticalSizeClass == .regular) {
-                    DxToSend = -(Float(data!.rotationRate.z) * pointerSensitivityFromSlider)
-                    DyToSend = -(Float(data!.rotationRate.x) * pointerSensitivityFromSlider)
-                } else if (horizontalSizeClass == .regular && verticalSizeClass == .compact) {
-                    if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
-                        DxToSend = -(Float(data!.rotationRate.z) * pointerSensitivityFromSlider)
-                        DyToSend = (Float(data!.rotationRate.y) * pointerSensitivityFromSlider)
-                    } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-                        DxToSend = (Float(data!.rotationRate.z) * pointerSensitivityFromSlider)
-                        DyToSend = (Float(data!.rotationRate.y) * pointerSensitivityFromSlider)
-                    }
-                }
-                if DxToSend != 0.0 && DyToSend != 0.0 {
-                    (backgroundService.devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPointerPosition(Dx: DxToSend, Dy: DyToSend)
-                }
             }
         }
     }
     
-    func stopGyroAndPointer() -> Void {
-        //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
+    func startGyroAndPointer() -> Void {
+            //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
+            motionManager.startGyroUpdates(to: .main) { (data, error) in
+                guard let data = data else { return }
+                var dxToSend: Float = 0.0 //
+                var dyToSend: Float = 0.0
+                switch currentBroadcastingDeviceOrientation {
+                case .portrait:
+                    dxToSend = -(Float(data.rotationRate.z) * pointerSensitivityFromSlider)
+                    dyToSend = -(Float(data.rotationRate.x) * pointerSensitivityFromSlider)
+                case .portraitUpsideDown:
+                    dxToSend = -(Float(data.rotationRate.z) * pointerSensitivityFromSlider)
+                    dyToSend =  (Float(data.rotationRate.x) * pointerSensitivityFromSlider)
+                case .landscapeLeft:
+                    dxToSend = -(Float(data.rotationRate.z) * pointerSensitivityFromSlider)
+                    dyToSend =  (Float(data.rotationRate.y) * pointerSensitivityFromSlider)
+                case .landscapeRight:
+                    dxToSend = -(Float(data.rotationRate.z) * pointerSensitivityFromSlider)
+                    dyToSend = -(Float(data.rotationRate.y) * pointerSensitivityFromSlider)
+                case .faceUp, .faceDown, .unknown:
+                    break
+                @unknown default:
+                    break
+                }
+                if dxToSend != 0.0 || dyToSend != 0.0 {
+                    (backgroundService.devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPointerPosition(dx: dxToSend, dy: dyToSend)
+                }
+            }
+        }
+    
+    func stopGyroAndPointer() {
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendStopPointer()
         motionManager.stopGyroUpdates()
     }
     
-    func goFullscreenAction() -> Void {
+    func sendGoFullscreenAction() {
         notificationHapticsGenerator.notificationOccurred(.success)
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendFullscreen()
     }
     
-    func goEscapeAction() -> Void {
+    func sendEscapeKey() {
         notificationHapticsGenerator.notificationOccurred(.warning)
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendEsc()
     }
     
-    func goBackAction() -> Void {
+    func sendGoPreviousSlideAction() {
         hapticGenerators[Int(HapticStyle.soft.rawValue)].impactOccurred()
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPrevious()
     }
     
-    func goForwardAction() -> Void {
+    func sendGoNextSlideAction() {
         hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred()
         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendNext()
     }

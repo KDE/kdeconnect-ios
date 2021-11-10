@@ -14,16 +14,10 @@
 
 import Foundation
 
-class CommandEntry: Identifiable {
-    final var name: String
-    final var command: String
-    final var key: String
+struct CommandEntry: Identifiable {
+    let name: String
+    let command: String
+    let key: String
     
     var id: String { key }
-    
-    init(name: String, command: String, key: String) {
-        self.name = name
-        self.command = command
-        self.key = key
-    }
 }

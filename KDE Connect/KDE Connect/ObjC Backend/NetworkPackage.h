@@ -56,6 +56,10 @@
 #define MAX_TCP_PORT            1764
 #define ProtocolVersion         7
 
+// TODO: Explore using ENUM instead of using these global #define macros
+//typedef NSString *PackageType NS_TYPED_ENUM;
+//extern PackageType const PackageTypeIdentity = @"kdeconnect.identity";
+
 #define PACKAGE_TYPE_IDENTITY                   @"kdeconnect.identity"
 #define PACKAGE_TYPE_ENCRYPTED                  @"kdeconnect.encrypted"
 #define PACKAGE_TYPE_PAIR                       @"kdeconnect.pair"

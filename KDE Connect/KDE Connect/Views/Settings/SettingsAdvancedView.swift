@@ -11,11 +11,11 @@ struct SettingsAdvancedView: View {
     var body: some View {
         List {
             Section(header: Text("DANGEROUS OPTIONS"), footer: Text("The options above are irreversible and require a complete app restart to take effect.")) {
-                Button(action: {
+                Button {
                     notificationHapticsGenerator.notificationOccurred(.warning)
                     certificateService.deleteAllItemsFromKeychain()
                     UserDefaults.standard.removeObject(forKey: "savedDevices")
-                }, label: {
+                } label: {
                     HStack {
                         Image(systemName: "delete.right")
                         VStack(alignment: .leading) {
@@ -26,12 +26,12 @@ struct SettingsAdvancedView: View {
                         }
                     }
                     .accentColor(.red)
-                })
+                }
                 
-                Button(action: {
+                Button {
                     notificationHapticsGenerator.notificationOccurred(.warning)
                     certificateService.deleteHostCertificateFromKeychain()
-                }, label: {
+                } label: {
                     HStack {
                         Image(systemName: "delete.right")
                         VStack(alignment: .leading) {
@@ -42,7 +42,7 @@ struct SettingsAdvancedView: View {
                         }
                     }
                     .accentColor(.red)
-                })
+                }
             }
         }
         .navigationBarTitle("Advanced Settings", displayMode: .inline)

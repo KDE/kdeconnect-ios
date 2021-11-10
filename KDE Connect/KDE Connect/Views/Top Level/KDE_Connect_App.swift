@@ -23,7 +23,7 @@ import SwiftUI
                 .preferredColorScheme((selfDeviceDataForTopLevel.chosenTheme == "System Default") ? nil : appThemes[selfDeviceDataForTopLevel.chosenTheme])
                 .onAppear {
                     backgroundService.startDiscovery()
-                    motionManager.gyroUpdateInterval = 0.1
+                    motionManager.gyroUpdateInterval = 0.025
                     if #available(iOS 15.0, *) {
                         UITableView.appearance().contentInset.top = -25
                     }

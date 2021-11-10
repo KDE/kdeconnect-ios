@@ -88,64 +88,50 @@ struct DevicesDetailView: View {
                 Text(viewUpdate ? "True" : "False")
                     .frame(width: 0, height: 0)
                     .opacity(0)
+                    .accessibilityHidden(true)
                 
             }
             .navigationTitle(backgroundService._devices[detailsDeviceId]!._name)
-            .navigationBarItems(trailing: {
+            .navigationBarItems(trailing:
                 Menu {
                     if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PING] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PING] as! Bool) {
-                        Button(action: {
+                        Button {
                             (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PING] as! Ping).sendPing()
-                        }, label: {
-                            HStack {
-                                Text("Send Ping")
-                                Image(systemName: "megaphone")
-                            }
-                        })
+                        } label: {
+                            Label("Send Ping", systemImage: "megaphone")
+                        }
                     }
                     
                     if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! Bool) {
-                        Button(action: {
+                        Button {
                             (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! FindMyPhone).sendFindMyPhoneRequest()
-                        }, label: {
-                            HStack {
-                                Text("Ring Device")
-                                Image(systemName: "bell")
-                            }
-                        })
+                        } label: {
+                            Label("Ring Device", systemImage: "bell")
+                        }
                     }
                     
-                    Button(action: {
+                    Button {
                         showingPluginSettingsView = true
-                    }, label: {
-                        HStack {
-                            Image(systemName: "dot.arrowtriangles.up.right.down.left.circle")
-                            Text("Plugin Settings")
-                        }
-                    })
+                    } label: {
+                        Label("Plugin Settings", systemImage: "dot.arrowtriangles.up.right.down.left.circle")
+                    }
                     
-                    Button(action: {
+                    Button {
                         showingEncryptionInfo = true
-                    }, label: {
-                        HStack {
-                            Text("Encryption Info")
-                            Image(systemName: "lock.doc")
-                        }
-                    })
+                    } label: {
+                        Label("Encryption Info", systemImage: "lock.doc")
+                    }
                     
-                    Button(action: {
+                    Button {
                         showingUnpairConfirmationAlert = true
-                    }, label: {
-                        HStack {
-                            Text("Unpair")
-                            Image(systemName: "wifi.slash")
-                        }
-                    })
+                    } label: {
+                        Label("Unpair", systemImage: "wifi.slash")
+                    }
                     
                 } label: {
                     Image(systemName: "ellipsis.circle")
                 }
-            }())
+            )
             .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
                 do {
                     chosenFileURLs = try result.get()
@@ -158,9 +144,6 @@ struct DevicesDetailView: View {
             }
             .onAppear() {
                 connectedDevicesViewModel.currDeviceDetailsView = self
-//                (backgroundService._devices[detailsDeviceId] as! Device)._backgroundServiceDelegate = connectedDevicesViewModel
-                //print((backgroundService._devices[detailsDeviceId] as! Device)._plugins as Any)
-                //print((backgroundService._devices[detailsDeviceId] as! Device)._incomingCapabilities as Any)
                 // TODO: use if let as
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
                     (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).requestCommandList()
@@ -187,55 +170,42 @@ struct DevicesDetailView: View {
         List {
             Section(header: Text("Actions")) {
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
-                    Button(action: {
+                    Button {
                         (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
-                    }, label: {
+                    } label: {
                         Label("Push Local Clipboard", systemImage: "square.and.arrow.up.on.square.fill")
-                    })
-                        .accentColor(.primary)
+                    }
+                    .accentColor(.primary)
                 }
                 
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
-                    Button(action: {
+                    Button {
                         showingFilePicker = true
-                    }, label: {
+                    } label: {
                         Label("Send files", systemImage: "folder")
-                    })
-                        .accentColor(.primary)
+                    }
+                    .accentColor(.primary)
                 }
                 
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {
-                    NavigationLink(
-                        destination: PresenterView(detailsDeviceId: detailsDeviceId),
-                        label: {
-                            Label("Slideshow remote", systemImage: "slider.horizontal.below.rectangle")
-                        })
+                    NavigationLink(destination: PresenterView(detailsDeviceId: detailsDeviceId)) {
+                        Label("Slideshow remote", systemImage: "slider.horizontal.below.rectangle")
+                    }
+                    .accentColor(.primary)
                 }
-                //
-                //                        NavigationLink(
-                //                            destination: PlaceHolderView(),
-                //                            label: {
-                //                                HStack {
-                //                                    Image(systemName: "playpause")
-                //                                    Text("Multimedia control")
-                //                                }
-                //                            })
-                //
                 
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
-                    NavigationLink(
-                        destination: RunCommandView(detailsDeviceId: self.detailsDeviceId),
-                        label: {
-                            Label("Run Command", systemImage: "terminal")
-                        })
+                    NavigationLink(destination: RunCommandView(detailsDeviceId: self.detailsDeviceId)){
+                        Label("Run Command", systemImage: "terminal")
+                    }
+                    .accentColor(.primary)
                 }
                 
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! Bool) {
-                    NavigationLink(
-                        destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId),
-                        label: {
-                            Label("Remote Input", systemImage: "hand.tap")
-                        })
+                    NavigationLink(destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId)) {
+                        Label("Remote Input", systemImage: "hand.tap")
+                    }
+                    .accentColor(.primary)
                 }
             }
             

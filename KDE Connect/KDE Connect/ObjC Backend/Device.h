@@ -50,6 +50,16 @@ typedef NS_ENUM(NSUInteger, PairStatus)
     Paired=3
 };
 
+// TODO: use this to give Swift-style lower-case enum cases instead
+//typedef NS_ENUM(NSUInteger, DeviceType)
+//{
+//    DeviceTypeUnknown=0,
+//    DeviceTypeDesktop=1,
+//    DeviceTypeLaptop=2,
+//    DeviceTypePhone=3,
+//    DeviceTypeTablet=4
+//};
+
 typedef NS_ENUM(NSUInteger, DeviceType)
 {
     Unknown=0,
@@ -59,6 +69,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
     Tablet=4
 };
 
+// TODO: use system raw values for Haptic instead
 typedef NS_ENUM(NSUInteger, HapticStyle)
 {
     light = 0,
