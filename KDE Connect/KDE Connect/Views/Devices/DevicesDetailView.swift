@@ -53,19 +53,17 @@ struct DevicesDetailView: View {
                     deviceActionsList
                     
                     iOS14CompatibilityAlert(
-                        description: "iOS14 Encryption info Alert",
-                        isPresented: $showingEncryptionInfo,
-                        alert:
+                        description: Text("iOS14 Encryption info Alert"),
+                        isPresented: $showingEncryptionInfo) {
                             Alert(
                                 title: Text("Encryption Info"),
                                 message: Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrive fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
                             )
-                    )
+                        }
                     
                     iOS14CompatibilityAlert(
-                        description: "iOS14 Unpairing Alert",
-                        isPresented: $showingUnpairConfirmationAlert,
-                        alert:
+                        description: Text("iOS14 Unpairing Alert"),
+                        isPresented: $showingUnpairConfirmationAlert) {
                             Alert(
                                 title: Text("Unpair With Device?"),
                                 message: Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?"),
@@ -77,7 +75,7 @@ struct DevicesDetailView: View {
                                 }),
                                 secondaryButton: .cancel(Text("No, Stay Paired"), action: {})
                             )
-                    )
+                        }
                 }
                 
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {

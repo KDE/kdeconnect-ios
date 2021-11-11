@@ -6,9 +6,26 @@
 
 import SwiftUI
 
-// A wrapper view for the iOS 14 Alert implementation.
-// Since .alert modifiers cannot be chained in iOS 14, an invisible Textbox
-// hidden from accessibility features is need for each alert
+/// A wrapper view for the iOS 14 Alert implementation.
+/// Since .alert modifiers cannot be chained in iOS 14, an invisible Text
+/// hidden from accessibility features is need for each alert.
+///
+/// - Important: state variables used in Alert won't be updated to new value
+/// unless you include them in the description like this:
+///
+/// ```
+/// iOS14CompatibilityAlert(
+///     description: Text("Alert body uses \(thisOptionalStateVariable ?? "")"),
+///     isPresented: $showingAlert) {
+///         Alert(
+///             title: Text("Title"),
+///             message: Text("\(thisOptionalStateVariable!) must exist"),
+///             dismissButton: .cancel(Text("OK")) {
+///                 thisOptionalStateVariable = nil
+///             }
+///         )
+/// }
+/// ```
 @available(iOS, deprecated: 15, message:
         """
         iOS14CompatibilityAlert should only be used for backwards
@@ -17,18 +34,17 @@ import SwiftUI
         """
 )
 struct iOS14CompatibilityAlert: View {
-    let description: String
+    /// Declare any depending state variables by putting them in here.
+    let description: Text
     @Binding var isPresented: Bool
-    let alert: Alert
+    let alert: () -> Alert
     
     var body: some View {
-        Text(description)
+        description
             .frame(width: 0, height: 0)
             .opacity(0)
             .accessibilityHidden(true)
-            .alert(isPresented: $isPresented) {
-                alert
-            }
+            .alert(isPresented: $isPresented, content: alert)
     }
 }
 
