@@ -84,16 +84,17 @@ extension Date {
     }
 }
 
-// TODO: convert this to a computed property on DeviceType
-// Returns the systemName of the type of device
-func getSFSymbolNameFromDeviceType(deviceType: DeviceType) -> String {
-    switch (deviceType) {
-        case .Unknown: return "questionmark.square.dashed"
-        case .Desktop: return "desktopcomputer"
-        case .Laptop: return "laptopcomputer"
-        case .Phone: return "apps.iphone"
-        case .Tablet: return "apps.ipad.landscape"
-        default: return "questionmark.square.dashed"
+
+public extension DeviceType {
+    var sfSymbolName: String {
+        switch (self) {
+            case .Unknown: return "questionmark.square.dashed"
+            case .Desktop: return "desktopcomputer"
+            case .Laptop: return "laptopcomputer"
+            case .Phone: return "apps.iphone"
+            case .Tablet: return "apps.ipad.landscape"
+            @unknown default: return "questionmark.square.dashed"
+        }
     }
 }
 

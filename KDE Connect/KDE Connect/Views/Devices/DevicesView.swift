@@ -250,7 +250,7 @@ struct DevicesView: View {
                                         .font(.title3)
                                         .fontWeight(.bold)
                                     if let device = backgroundService._devices[key] {
-                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: device._type))
+                                        Image(systemName: device._type.sfSymbolName)
                                             .font(.title3)
                                     }
                                 }
@@ -302,7 +302,7 @@ struct DevicesView: View {
                                         .fontWeight(.bold)
                                         .foregroundColor(.primary)
                                     if let device = backgroundService._devices[key] {
-                                        Image(systemName: getSFSymbolNameFromDeviceType(deviceType: device._type))
+                                        Image(systemName: device._type.sfSymbolName)
                                             .font(.title3)
                                             .foregroundColor(.black)
                                     }
@@ -337,7 +337,7 @@ struct DevicesView: View {
                                     Text(viewModel.savedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
-                                    Image(systemName: getSFSymbolNameFromDeviceType(deviceType: backgroundService._devices[key]!._type))
+                                    Image(systemName: backgroundService._devices[key]!._type.sfSymbolName)
                                         .font(.title3)
                                 }
                                 // TODO: Might want to add the device description as
