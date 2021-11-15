@@ -88,7 +88,6 @@ extension Date {
 // Returns the systemName of the type of device
 func getSFSymbolNameFromDeviceType(deviceType: DeviceType) -> String {
     switch (deviceType) {
-        case .Unknown: return "questionmark.square.dashed"
         case .Desktop: return "desktopcomputer"
         case .Laptop: return "laptopcomputer"
         case .Phone: return "apps.iphone"
