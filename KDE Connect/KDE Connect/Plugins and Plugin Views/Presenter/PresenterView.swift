@@ -147,7 +147,7 @@ struct PresenterView: View {
                         .cornerRadius(20)
                 }
                 
-                Button(action: sendGoPreviousSlideAction) {
+                Button(action: sendGoNextSlideAction) {
                     Image(systemName: "forward.end")
                         .resizable()
                         .frame(width: 40, height: 50)
