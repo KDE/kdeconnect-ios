@@ -80,6 +80,7 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 };
 
 @class ConnectedDevicesViewModel;
+@protocol DeviceDelegate;
 
 @interface Device : NSObject <linkDelegate, NSSecureCoding>
 
@@ -97,8 +98,8 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 
 @property(nonatomic, copy) NSString* _SHA256HashFormatted;
 
-// This is a generic pointer cause apperently neither the previous dev or I could figure out how to mutually import BackgroundService and Device with each other....
-@property(nonatomic) id _deviceDelegate;
+// TODO: why are there 2 delegates here?
+@property(nonatomic) id<DeviceDelegate> deviceDelegate;
 @property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;
 
 //@property(readonly,nonatomic) BOOL _testDevice;
@@ -149,7 +150,7 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 + (DeviceType)Str2Devicetype:(NSString*)str;
 @end
 
-@protocol deviceDelegate <NSObject>
+@protocol DeviceDelegate <NSObject>
 @optional
 - (void) onDeviceReachableStatusChanged:(Device*)device;
 - (void) onDevicePairRequest:(Device*)device;
@@ -157,4 +158,5 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 - (void) onDevicePairSuccess:(Device*)device;
 - (void) onDevicePairRejected:(Device*)device;
 - (void) onDevicePluginChanged:(Device*)device;
+- (void) onLinkDestroyed:(BaseLink *)link;
 @end

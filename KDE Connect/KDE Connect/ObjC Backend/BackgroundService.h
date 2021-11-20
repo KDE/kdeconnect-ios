@@ -42,7 +42,7 @@
 @class ConnectedDevicesViewModel;
 @class CertificateService;
 
-@interface BackgroundService : NSObject<linkProviderDelegate,deviceDelegate>
+@interface BackgroundService : NSObject<linkProviderDelegate, DeviceDelegate>
 
 // TODO: fix casing
 - (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService;
@@ -62,5 +62,4 @@
 - (void) refreshVisibleDeviceList;
 
 - (void) onNetworkChange;
-//- (void) onLinkDestroyed:(BaseLink *)link;
 @end

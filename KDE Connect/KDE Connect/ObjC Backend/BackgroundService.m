@@ -109,7 +109,7 @@
                 Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
                 NSLog(@"device with pair status %lu is decoded from UserDefaults as: %@ with error %@", [device _pairStatus], device, error);
                 if ([device _pairStatus] == Paired) {
-                    [device set_deviceDelegate:self];
+                    device.deviceDelegate = self;
                     [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
                     //[device reloadPlugins];
                     [_savedDevices setObject:device forKey:deviceId];

@@ -39,7 +39,7 @@
 @synthesize _pairStatus;
 @synthesize _protocolVersion;
 @synthesize _type;
-@synthesize _deviceDelegate;
+@synthesize deviceDelegate;
 @synthesize _links;
 @synthesize _plugins;
 @synthesize _failedPlugins;
@@ -66,7 +66,7 @@
 //        _id=@"test-purpose-device";
 //        _name=@"TestiPhone";
 //        _type=Phone;
-//        _deviceDelegate=nil;
+//        deviceDelegate=nil;
 //        // [self loadSetting];
 //        _links=[NSMutableArray arrayWithCapacity:1];
 //        _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
@@ -83,7 +83,7 @@
     if ((self=[super init])) {
         _id=deviceId;
         _type=Phone;
-        _deviceDelegate=deviceDelegate;
+        self.deviceDelegate=deviceDelegate;
         [self loadSetting];
         _links=[NSMutableArray arrayWithCapacity:1];
         _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
@@ -110,7 +110,7 @@
         _failedPlugins=[NSMutableArray arrayWithCapacity:1];
         _protocolVersion=[np integerForKey:@"protocolVersion"];
         _pluginsEnableStatus = [NSMutableDictionary dictionary];
-        _deviceDelegate=deviceDelegate;
+        self.deviceDelegate=deviceDelegate;
         _cursorSensitivity = 3.0;
         _hapticStyle = 0;
         _pointerSensitivity = 3.0;
@@ -143,8 +143,8 @@
     [Link set_linkDelegate:self];
     if ([_links count]==1) {
         NSLog(@"one link available");
-        if (_deviceDelegate) {
-            [_deviceDelegate onDeviceReachableStatusChanged:self];
+        if (deviceDelegate) {
+            [deviceDelegate onDeviceReachableStatusChanged:self];
         }
         // If device is just online with its first link, ask for its battery status
         if ((_pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (_pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST])) {
@@ -160,15 +160,15 @@
     NSLog(@"remove link ; %lu remaining", (unsigned long)[_links count]);
     if ([_links count]==0) {
         NSLog(@"no available link");
-        if (_deviceDelegate) {
-            [_deviceDelegate onDeviceReachableStatusChanged:self];
+        if (deviceDelegate) {
+            [deviceDelegate onDeviceReachableStatusChanged:self];
             // No, we don't want to remove the plugins because IF the device is coming back online later, we want to still have to ready
             //[_plugins removeAllObjects];
             //[_failedPlugins removeAllObjects];
         }
     }
-    if (_deviceDelegate) {
-        [_deviceDelegate onLinkDestroyed:link];
+    if (deviceDelegate) {
+        [deviceDelegate onLinkDestroyed:link];
     }
 }
 
@@ -222,8 +222,8 @@
                     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
                 });
                 _pairStatus=NotPaired;
-                if (_deviceDelegate) {
-                    [_deviceDelegate onDevicePairRejected:self];
+                if (deviceDelegate) {
+                    [deviceDelegate onDevicePairRejected:self];
                 }
             }
             else if(wantsPair){
@@ -241,8 +241,8 @@
             }
             else{
                 _pairStatus=RequestedByPeer;
-                if (_deviceDelegate) {
-                    [_deviceDelegate onDevicePairRequest:self];
+                if (deviceDelegate) {
+                    [deviceDelegate onDevicePairRequest:self];
                 }
             }
         }
@@ -303,8 +303,8 @@
     _pairStatus=Paired;
     //NSLog(@"paired with %@",_name);
     [self saveSetting];
-    if (_deviceDelegate) {
-        [_deviceDelegate onDevicePairSuccess:self];
+    if (deviceDelegate) {
+        [deviceDelegate onDevicePairSuccess:self];
     }
     // for (BaseLink* link in _links) {
     // }
@@ -344,8 +344,8 @@
     if (_pairStatus==Requested) {
         _pairStatus=NotPaired;
         NSLog(@"pairing timeout");
-        if (_deviceDelegate) {
-            [_deviceDelegate onDevicePairTimeout:self];
+        if (deviceDelegate) {
+            [deviceDelegate onDevicePairTimeout:self];
         }
         [self unpair];
         //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
@@ -536,7 +536,7 @@
         _SHA256HashFormatted = [coder decodeObjectForKey:@"_SHA256HashFormatted"];
         
         // To be set later in backgroundServices
-        _deviceDelegate = nil;
+        deviceDelegate = nil;
         _backgroundServiceDelegate = nil;
         
         // To be populated later
