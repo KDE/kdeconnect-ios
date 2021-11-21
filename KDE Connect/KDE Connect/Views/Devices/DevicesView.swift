@@ -16,10 +16,6 @@ import SwiftUI
 import AVFoundation
 
 struct DevicesView: View {
-//    @State private var connectedDevicesIds: [String] = []
-//    @State private var visibleDevicesIds: [String] = []
-//    @State private var savedDevicesIds: [String] = []
-    
     var connectedDevicesIds: [String] {
         viewModel.connectedDevices.keys.sorted()
     }
@@ -61,19 +57,14 @@ struct DevicesView: View {
                         backgroundService.pairDevice(currPairingDeviceId)
                     }
                 } message: {
-                    if (currPairingDeviceId != nil) {
-                        Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device")
-                    }
+                    wantsToPairMessage
                 }
                 .alert("Pairing Complete", isPresented: $showingOnPairSuccessAlert) {
                     Button("Nice", role: .cancel) {
                         currPairingDeviceId = nil
                     }
                 } message: {
-                    // TODO: use if-let binding
-                    if (currPairingDeviceId != nil) {
-                        Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded")
-                    }
+                    paringCompleteMessage
                 }
                 .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
                     Button("Cancel", role: .cancel) {}
@@ -81,27 +72,21 @@ struct DevicesView: View {
                         backgroundService.pairDevice(currPairingDeviceId)
                     }
                 } message: {
-                    if (currPairingDeviceId != nil) {
-                        Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?")
-                    }
+                    initiatePairingMessage
                 }
                 .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
                     Button("OK", role: .cancel) {
                         currPairingDeviceId = nil
                     }
                 } message: {
-                    if (currPairingDeviceId != nil) {
-                        Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
-                    }
+                    pairingTimeoutMessage
                 }
                 .alert("Pairing Rejected", isPresented: $showingOnPairRejectedAlert) {
                     Button("OK", role: .cancel) {
                         currPairingDeviceId = nil
                     }
                 } message: {
-                    if (currPairingDeviceId != nil) {
-                        Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed")
-                    }
+                    pairingRejectedMessage
                 }
                 .alert("Ping!", isPresented: $showingPingAlert) {} message: {
                     Text("Ping received from a connected device.")
@@ -120,7 +105,7 @@ struct DevicesView: View {
                 isPresented: $showingOnPairRequestAlert) {
                     Alert(
                         title: Text("Incoming Pairing Request"),
-                        message: Text("\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device"),
+                        message: wantsToPairMessage,
                         primaryButton: .default(Text("Pair"), action: {
                             backgroundService.pairDevice(currPairingDeviceId)
                         }),
@@ -133,7 +118,7 @@ struct DevicesView: View {
                 isPresented: $showingOnPairSuccessAlert) {
                     Alert(
                         title: Text("Pairing Complete"),
-                        message: Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) succeeded"),
+                        message: paringCompleteMessage,
                         dismissButton: .cancel(Text("Nice"), action: { currPairingDeviceId = nil })
                     )
                 }
@@ -143,7 +128,7 @@ struct DevicesView: View {
                 isPresented: $showingOnSelfPairOutgoingRequestAlert) {
                     Alert(
                         title: Text("Initiate Pairing?"),
-                        message: Text("Request to pair with \(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR")?"),
+                        message: initiatePairingMessage,
                         primaryButton: .default(Text("Pair"), action: {
                             backgroundService.pairDevice(currPairingDeviceId)
                         }),
@@ -156,7 +141,7 @@ struct DevicesView: View {
                 isPresented: $showingOnPairTimeoutAlert) {
                     Alert(
                         title: Text("Pairing Timed Out"),
-                        message: Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed"),
+                        message: pairingTimeoutMessage,
                         dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
                     )
                 }
@@ -166,7 +151,7 @@ struct DevicesView: View {
                 isPresented: $showingOnPairRejectedAlert) {
                     Alert(
                         title: Text("Pairing Rejected"),
-                        message: Text("Pairing with \(backgroundService._devices[currPairingDeviceId!]!._name) failed"),
+                        message: pairingRejectedMessage,
                         dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
                     )
                 }
@@ -241,7 +226,6 @@ struct DevicesView: View {
         }
         .environment(\.defaultMinListRowHeight, 60) // TODO: make this dynamic with GeometryReader???
     }
-    
     
     var connectedDevicesSection: some View {
         Section(header: Text("Connected Devices")) {
@@ -367,6 +351,51 @@ struct DevicesView: View {
                 .onDelete(perform: deleteDevice)
             }
         }
+    }
+    
+    // MARK: - Alert Messages
+    
+    var wantsToPairMessage: Text? {
+        currentPairingDeviceName.map {
+            Text("\($0) wants to pair with this device")
+        }
+    }
+    
+    var paringCompleteMessage: Text? {
+        currentPairingDeviceName.map {
+            Text("Pairing with \($0) succeeded")
+        }
+    }
+    
+    var initiatePairingMessage: Text? {
+        currentPairingDeviceName.map {
+            Text("Request to pair with \($0)?")
+        }
+    }
+    
+    var pairingTimeoutMessage: Text? {
+        currentPairingDeviceName.map {
+            Text("Pairing with \($0) failed")
+        }
+    }
+    
+    var pairingRejectedMessage: Text? {
+        currentPairingDeviceName.map {
+            Text("Pairing with \($0) failed")
+        }
+    }
+    
+    var currentPairingDeviceName: String? {
+        if let currPairingDeviceId = currPairingDeviceId {
+            if let device = backgroundService._devices[currPairingDeviceId] {
+                return device._name
+            } else {
+                print("Missing device for \(currPairingDeviceId)")
+            }
+        } else {
+            print("Missing currPairingDeviceId")
+        }
+        return nil
     }
     
     func deleteDevice(at offsets: IndexSet) {
