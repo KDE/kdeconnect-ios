@@ -25,7 +25,7 @@ import SwiftUI
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        if (np._Type == PACKAGE_TYPE_RUNCOMMAND) {
+        if (np.type == .runCommand) {
             if np.bodyHasKey("commandList") {
                 // Process the received commandList here
                 let jsonString = np.object(forKey: "commandList") as! String
@@ -41,19 +41,19 @@ import SwiftUI
     }
     
     @objc func runCommand(cmdKey: String) -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_RUNCOMMAND_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
         np.setObject(cmdKey, forKey: "key")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
     @objc func requestCommandList() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_RUNCOMMAND_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
         np.setBool(true, forKey: "requestCommandList")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
     @objc func sendSetupPackage() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_RUNCOMMAND_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
         np.setBool(true, forKey: "setup")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }

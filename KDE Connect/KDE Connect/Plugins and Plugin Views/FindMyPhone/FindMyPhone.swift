@@ -22,7 +22,7 @@ import Foundation
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        if (np._Type == PACKAGE_TYPE_FINDMYPHONE_REQUEST) {
+        if (np.type == .findMyPhoneRequest) {
             connectedDevicesViewModel.showFindMyPhoneAlert()
             return true
         }
@@ -30,7 +30,7 @@ import Foundation
     }
     
     @objc func sendFindMyPhoneRequest() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_FINDMYPHONE_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .findMyPhoneRequest)
         controlDevice.send(np, tag: 0)
     }
 }

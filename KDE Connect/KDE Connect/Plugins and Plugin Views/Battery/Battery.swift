@@ -41,11 +41,11 @@ import UIKit
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        if (np._Type == PACKAGE_TYPE_BATTERY_REQUEST) {
+        if (np.type == .batteryRequest) {
             print("Battery plugin recevied a force update request")
             sendBatteryStatusOut()
             return true
-        } else if (np._Type == PACKAGE_TYPE_BATTERY) { // received battery info from other device
+        } else if (np.type == .battery) { // received battery info from other device
             print("Battery plugin recevied battery status from remote device")
             remoteChargeLevel = np.integer(forKey: "currentCharge")
             remoteIsCharging = np.bool(forKey: "isCharging")
@@ -60,7 +60,7 @@ import UIKit
     @objc func sendBatteryStatusOut() -> Void {
         let batteryLevel: Int = Int(UIDevice.current.batteryLevel * 100)
         let batteryStatus = UIDevice.current.batteryState
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_BATTERY)
+        let np: NetworkPackage = NetworkPackage(type: .battery)
         if (batteryStatus != .unknown) {
             let batteryThresholdEvent: Int = (batteryLevel < 10) ? 1 : 0
             np.setInteger(batteryLevel, forKey: "currentCharge")
@@ -79,7 +79,7 @@ import UIKit
     }
     
     @objc func sendBatteryStatusRequest() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_BATTERY_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .batteryRequest)
         np.setBool(true, forKey: "request")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
@@ -127,24 +127,24 @@ import UIKit
 // Global functions for Battery handling
 func startBatteryMonitoringAllDevices() {
     for device in backgroundService._devices.values {
-        if (device.isPaired() && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
-            (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).startBatteryMonitoring()
+        if (device.isPaired() && (device._pluginsEnableStatus[.batteryRequest] != nil) && (device._pluginsEnableStatus[.batteryRequest] as! Bool)) {
+            (device._plugins[.batteryRequest] as! Battery).startBatteryMonitoring()
         }
     }
 }
 
 func broadcastBatteryStatusAllDevices() {
     for device in backgroundService._devices.values {
-        if (device.isPaired() && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
-            (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).sendBatteryStatusOut()
+        if (device.isPaired() && (device._pluginsEnableStatus[.batteryRequest] != nil) && (device._pluginsEnableStatus[.batteryRequest] as! Bool)) {
+            (device._plugins[.batteryRequest] as! Battery).sendBatteryStatusOut()
         }
     }
 }
 
 func requestBatteryStatusAllDevices() {
     for device in backgroundService._devices.values {
-        if (device.isPaired() && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (device._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
-            (device._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).sendBatteryStatusRequest()
+        if (device.isPaired() && (device._pluginsEnableStatus[.batteryRequest] != nil) && (device._pluginsEnableStatus[.batteryRequest] as! Bool)) {
+            (device._plugins[.batteryRequest] as! Battery).sendBatteryStatusRequest()
         }
     }
 }

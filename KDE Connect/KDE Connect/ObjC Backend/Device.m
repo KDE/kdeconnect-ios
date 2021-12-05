@@ -32,7 +32,10 @@
 #import "KDE_Connect-Swift.h"
 #define PAIR_TIMMER_TIMEOUT  10.0
 
-@implementation Device
+@implementation Device {
+    NSMutableDictionary<NetworkPackageType, id<Plugin>> *_plugins;
+    NSMutableDictionary<NetworkPackageType, NSNumber *> *_pluginsEnableStatus;
+}
 
 @synthesize _id;
 @synthesize _name;
@@ -41,14 +44,20 @@
 @synthesize _type;
 @synthesize deviceDelegate;
 @synthesize _links;
-@synthesize _plugins;
+- (void)setPlugins:(NSDictionary<NetworkPackageType, NSNumber *> *)plugins
+{
+    _plugins = [[NSMutableDictionary alloc] initWithDictionary:plugins];
+}
 @synthesize _failedPlugins;
 @synthesize _incomingCapabilities;
 @synthesize _outgoingCapabilities;
 @synthesize _backgroundServiceDelegate;
 //@synthesize _testDevice;
 
-@synthesize _pluginsEnableStatus;
+- (void)setPluginsEnableStatus:(NSDictionary<NetworkPackageType, NSNumber *> *)pluginsEnableStatus
+{
+    _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithDictionary:pluginsEnableStatus];
+}
 @synthesize _SHA256HashFormatted;
 
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
@@ -147,8 +156,10 @@
             [deviceDelegate onDeviceReachableStatusChanged:self];
         }
         // If device is just online with its first link, ask for its battery status
-        if ((_pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] != nil) && (_pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST])) {
-            [[_plugins objectForKey:PACKAGE_TYPE_BATTERY] sendBatteryStatusRequest];
+        if ((_pluginsEnableStatus[NetworkPackageTypeBatteryRequest] != nil)
+            && (_pluginsEnableStatus[NetworkPackageTypeBatteryRequest])
+            && ([[_plugins objectForKey:NetworkPackageTypeBatteryRequest] respondsToSelector:@selector(sendBatteryStatusRequest)])) {
+            [[_plugins objectForKey:NetworkPackageTypeBatteryRequest] performSelector:@selector(sendBatteryStatusRequest)];
         }
     }
 }
@@ -175,7 +186,8 @@
 - (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag
 {
     NSLog(@"device send package");
-    if (![[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
+    // TODO: 2 branch has identical code
+    if (![np.type isEqualToString:NetworkPackageTypePair]) {
         for (BaseLink* link in _links) {
             if ([link sendPackage:np tag:tag]) {
                 return true;
@@ -204,14 +216,14 @@
 //            [plugin sentPercentage:100 tag:tag];
         } */
         NSLog(@"Last payload sent successfully, sending next one");
-        [(Share *)[_plugins objectForKey:PACKAGE_TYPE_SHARE] sendSinglePayload];
+        [(Share *)[_plugins objectForKey:NetworkPackageTypeShare] sendSinglePayload];
     }
 }
 
 - (void) onPackageReceived:(NetworkPackage*)np
 {
     NSLog(@"device on package received");
-    if ([[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
+    if ([np.type isEqualToString:NetworkPackageTypePair]) {
         NSLog(@"Pair package received");
         BOOL wantsPair=[np boolForKey:@"pair"];
         if (wantsPair==[self isPaired]) {
@@ -262,7 +274,7 @@
         }
     }else if ([self isPaired]){
         //TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling functon elsewhere in Swift
-        NSLog(@"recieved a plugin package :%@",[np _Type]);
+        NSLog(@"recieved a plugin package :%@", np.type);
         for (id<Plugin> plugin in [_plugins allValues]) {
             [plugin onDevicePackageReceivedWithNp:np];
         }
@@ -364,7 +376,7 @@
     [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[self _id]];
     [_backgroundServiceDelegate removeDeviceFromArraysWithDeviceId:[self _id]];
     // How do we use same protocol from
-    NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_PAIR];
+    NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypePair];
     [np setBool:false forKey:@"pair"];
     [self sendPackage:np tag:PACKAGE_TAG_UNPAIR];
 }
@@ -396,41 +408,41 @@
     [_pluginsEnableStatus removeAllObjects];
     
     for (NSString* pluginID in _incomingCapabilities) {
-        if ([pluginID isEqualToString:PACKAGE_TYPE_PING]) {
-            [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_PING];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_PING];
+        if ([pluginID isEqualToString:NetworkPackageTypePing]) {
+            [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:NetworkPackageTypePing];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypePing];
             
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_SHARE]) {
-            [_plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_SHARE];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_SHARE];
+        } else if ([pluginID isEqualToString:NetworkPackageTypeShare]) {
+            [_plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:NetworkPackageTypeShare];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeShare];
             
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_FINDMYPHONE_REQUEST]) {
-            [_plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_FINDMYPHONE_REQUEST];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_FINDMYPHONE_REQUEST];
+        } else if ([pluginID isEqualToString:NetworkPackageTypeFindMyPhoneRequest]) {
+            [_plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:NetworkPackageTypeFindMyPhoneRequest];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeFindMyPhoneRequest];
             
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_BATTERY_REQUEST]) {
-            [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_BATTERY_REQUEST];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_BATTERY_REQUEST];
+        } else if ([pluginID isEqualToString:NetworkPackageTypeBatteryRequest]) {
+            [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:NetworkPackageTypeBatteryRequest];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeBatteryRequest];
             
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_CLIPBOARD]) {
-            [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_CLIPBOARD];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_CLIPBOARD];
+        } else if ([pluginID isEqualToString:NetworkPackageTypeClipboard]) {
+            [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:NetworkPackageTypeClipboard];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeClipboard];
             
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_MOUSEPAD_REQUEST]) {
-            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_MOUSEPAD_REQUEST];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_MOUSEPAD_REQUEST];
+        } else if ([pluginID isEqualToString:NetworkPackageTypeMousePadRequest]) {
+            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:NetworkPackageTypeMousePadRequest];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeMousePadRequest];
             
-        } else if ([pluginID isEqualToString:PACKAGE_TYPE_PRESENTER]) {
-            [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_PRESENTER];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_PRESENTER];
+        } else if ([pluginID isEqualToString:NetworkPackageTypePresenter]) {
+            [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:NetworkPackageTypePresenter];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypePresenter];
         }
     }
     
     // for the capabilities that are ONLY in the outgoing section of KDE Connect iOS
     for (NSString* pluginID in _outgoingCapabilities) {
-        if ([pluginID isEqualToString:PACKAGE_TYPE_RUNCOMMAND]) {
-            [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:PACKAGE_TYPE_RUNCOMMAND];
-            [_pluginsEnableStatus setValue:@TRUE forKey:PACKAGE_TYPE_RUNCOMMAND];
+        if ([pluginID isEqualToString:NetworkPackageTypeRunCommand]) {
+            [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:NetworkPackageTypeRunCommand];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeRunCommand];
             
         }
     }

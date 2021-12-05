@@ -56,70 +56,74 @@
 #define MAX_TCP_PORT            1764
 #define ProtocolVersion         7
 
-// TODO: Explore using ENUM instead of using these global #define macros
-//typedef NSString *PackageType NS_TYPED_ENUM;
-//extern PackageType const PackageTypeIdentity = @"kdeconnect.identity";
+#pragma mark - Package Types
 
-#define PACKAGE_TYPE_IDENTITY                   @"kdeconnect.identity"
-#define PACKAGE_TYPE_ENCRYPTED                  @"kdeconnect.encrypted"
-#define PACKAGE_TYPE_PAIR                       @"kdeconnect.pair"
-#define PACKAGE_TYPE_PING                       @"kdeconnect.ping"
+NS_ASSUME_NONNULL_BEGIN
 
-#define PACKAGE_TYPE_MPRIS                      @"kdeconnect.mpris"
+typedef NSString *NetworkPackageType NS_TYPED_ENUM NS_SWIFT_NAME(NetworkPackage.Type);
 
-#define PACKAGE_TYPE_SHARE                      @"kdeconnect.share.request"
-#define PACKAGE_TYPE_SHARE_INTERNAL             @"kdeconnect.share"
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeIdentity;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeEncrypted;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypePair;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypePing;
 
-#define PACKAGE_TYPE_CLIPBOARD                  @"kdeconnect.clipboard"
-#define PACKAGE_TYPE_CLIPBOARD_CONNECT          @"kdeconnect.clipboard.connect"
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeMPRIS;
 
-#define PACKAGE_TYPE_BATTERY                    @"kdeconnect.battery"
-#define PACKAGE_TYPE_CALENDAR                   @"kdeconnect.calendar"
-// #define PACKAGE_TYPE_REMINDER           @"kdeconnect.reminder"
-#define PACKAGE_TYPE_CONTACT                    @"kdeconnect.contact"
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeShare;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeShareInternal;
 
-#define PACKAGE_TYPE_BATTERY_REQUEST            @"kdeconnect.battery.request"
-#define PACKAGE_TYPE_FINDMYPHONE_REQUEST        @"kdeconnect.findmyphone.request"
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeClipboard;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeClipboardConnect;
 
-#define PACKAGE_TYPE_MOUSEPAD_REQUEST           @"kdeconnect.mousepad.request"
-#define PACKAGE_TYPE_MOUSEPAD_KEYBOARDSTATE     @"kdeconnect.mousepad.keyboardstate"
-#define PACKAGE_TYPE_MOUSEPAD_ECHO              @"kdeconnect.mousepad.echo"
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeBattery;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeCalendar;
+// FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeReminder;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeContact;
 
-#define PACKAGE_TYPE_PRESENTER                  @"kdeconnect.presenter"
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeBatteryRequest;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeFindMyPhoneRequest;
 
-#define PACKAGE_TYPE_RUNCOMMAND_REQUEST         @"kdeconnect.runcommand.request"
-#define PACKAGE_TYPE_RUNCOMMAND                 @"kdeconnect.runcommand"
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeMousePadRequest;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeMousePadKeyboardState;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeMousePadEcho;
+
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypePresenter;
+
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeRunCommandRequest;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeRunCommand;
 
 #pragma mark -
 
 @interface NetworkPackage : NSObject
 
 @property(nonatomic) NSNumber *_Id;
-@property(nonatomic) NSString *_Type;
-@property(nonatomic) NSMutableDictionary *_Body;
-@property(nonatomic) NSData *_Payload;
-@property(nonatomic) NSDictionary *_PayloadTransferInfo;
-@property(nonatomic)long _PayloadSize;
+@property(nonatomic) NetworkPackageType type;
+@property(nonatomic) NSMutableDictionary<NSString *, id> *_Body;
+@property(nonatomic, nullable) NSData *_Payload;
+@property(nonatomic, nullable) NSDictionary<NSString *, id> *_PayloadTransferInfo;
+@property(nonatomic) long _PayloadSize;
 
-- (NetworkPackage*) initWithType:(NSString*)type;
-+ (NetworkPackage*) createIdentityPackage;
-+ (NetworkPackage*) createPairPackage;
-+ (NSString*) getUUID;
+- (NetworkPackage *) initWithType:(NetworkPackageType)type;
++ (NetworkPackage *) createIdentityPackage;
++ (NetworkPackage *) createPairPackage;
++ (nullable NSString *) getUUID;
 
-- (BOOL) bodyHasKey:(NSString*)key;
-- (void)setBool:(BOOL)value      forKey:(NSString*)key;
-- (void)setFloat:(float)value    forKey:(NSString*)key;
-- (void)setDouble:(double)value  forKey:(NSString*)key;
-- (void)setInteger:(NSInteger)value    forKey:(NSString*)key;
-- (void)setObject:(id)value      forKey:(NSString*)key;
-- (BOOL)boolForKey:(NSString*)key;
-- (float)floatForKey:(NSString*)key;
-- (double)doubleForKey:(NSString*)key;
-- (NSInteger)integerForKey:(NSString*)key;
-- (id)objectForKey:(NSString*)key;
+- (BOOL)bodyHasKey:(nonnull NSString *)key;
+- (void)setBool:(BOOL)value         forKey:(NSString *)key;
+- (void)setFloat:(float)value       forKey:(NSString *)key;
+- (void)setDouble:(double)value     forKey:(NSString *)key;
+- (void)setInteger:(NSInteger)value forKey:(NSString *)key;
+- (void)setObject:(id)value         forKey:(NSString *)key;
+- (BOOL)boolForKey:(NSString *)key;
+- (float)floatForKey:(NSString *)key;
+- (double)doubleForKey:(NSString *)key;
+- (NSInteger)integerForKey:(NSString *)key;
+- (nullable id)objectForKey:(NSString *)key;
 
 #pragma mark Serialize
-- (NSData*) serialize;
-+ (NetworkPackage*) unserialize:(NSData*)data;
+- (nullable NSData *) serialize;
++ (nullable NetworkPackage *) unserialize:(NSData *)data;
 
 @end
+
+NS_ASSUME_NONNULL_END

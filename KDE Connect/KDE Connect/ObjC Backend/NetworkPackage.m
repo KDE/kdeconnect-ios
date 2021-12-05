@@ -36,19 +36,19 @@ __strong static NSString* _UUID;
 #pragma mark Implementation
 @implementation NetworkPackage
 
-- (NetworkPackage*) initWithType:(NSString *)type
+- (NetworkPackage*) initWithType:(NetworkPackageType)type
 {
     if ((self=[super init]))
     {
         _Id=[NSNumber numberWithLong:[[NSDate date] timeIntervalSince1970]];
-        _Type=type;
+        self.type=type;
         _Body=[NSMutableDictionary dictionary];
     }
     return self;
 }
 
 @synthesize _Id;
-@synthesize _Type;
+@synthesize type;
 @synthesize _Body;
 @synthesize _Payload;
 @synthesize _PayloadSize;
@@ -57,7 +57,7 @@ __strong static NSString* _UUID;
 #pragma mark create Package
 +(NetworkPackage*) createIdentityPackage
 {
-    NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_IDENTITY];
+    NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypeIdentity];
     [np setObject:[NetworkPackage getUUID] forKey:@"deviceId"];
     NSString* deviceName=[[NSUserDefaults standardUserDefaults] stringForKey:@"deviceName"];
     if (deviceName == nil) {
@@ -68,30 +68,30 @@ __strong static NSString* _UUID;
     [np setObject:@"phone" forKey:@"deviceType"];
     [np setInteger:1716 forKey:@"tcpPort"];
     
-    // TODO: Instead of @[] actually import what plugins are avaliable, UserDefaults to store maybe?
+    // TODO: Instead of @[] actually import what plugins are available, UserDefaults to store maybe?
     // For now, manually putting everything in to trick the other device to sending the iOS host the
     // identity packets so debugging is easier
-    [np setObject:@[PACKAGE_TYPE_PING,
-                    PACKAGE_TYPE_SHARE,
+    [np setObject:@[NetworkPackageTypePing,
+                    NetworkPackageTypeShare,
                     //@"kdeconnect.share.request.update",
-                    PACKAGE_TYPE_FINDMYPHONE_REQUEST,
-                    PACKAGE_TYPE_BATTERY_REQUEST,
-                    PACKAGE_TYPE_BATTERY,
-                    PACKAGE_TYPE_CLIPBOARD,
-                    PACKAGE_TYPE_CLIPBOARD_CONNECT,
-                    PACKAGE_TYPE_RUNCOMMAND
+                    NetworkPackageTypeFindMyPhoneRequest,
+                    NetworkPackageTypeBatteryRequest,
+                    NetworkPackageTypeBattery,
+                    NetworkPackageTypeClipboard,
+                    NetworkPackageTypeClipboardConnect,
+                    NetworkPackageTypeRunCommand
                     ] forKey:@"incomingCapabilities"];
-    [np setObject:@[PACKAGE_TYPE_PING,
-                    PACKAGE_TYPE_SHARE,
+    [np setObject:@[NetworkPackageTypePing,
+                    NetworkPackageTypeShare,
                     //@"kdeconnect.share.request.update",
-                    PACKAGE_TYPE_FINDMYPHONE_REQUEST,
-                    PACKAGE_TYPE_BATTERY_REQUEST,
-                    PACKAGE_TYPE_BATTERY,
-                    PACKAGE_TYPE_CLIPBOARD,
-                    PACKAGE_TYPE_CLIPBOARD_CONNECT,
-                    PACKAGE_TYPE_MOUSEPAD_REQUEST,
-                    PACKAGE_TYPE_PRESENTER,
-                    PACKAGE_TYPE_RUNCOMMAND_REQUEST
+                    NetworkPackageTypeFindMyPhoneRequest,
+                    NetworkPackageTypeBatteryRequest,
+                    NetworkPackageTypeBattery,
+                    NetworkPackageTypeClipboard,
+                    NetworkPackageTypeClipboardConnect,
+                    NetworkPackageTypeMousePadRequest,
+                    NetworkPackageTypePresenter,
+                    NetworkPackageTypeRunCommandRequest
                     ] forKey:@"outgoingCapabilities"];
     
     // FIXME: Remove object
@@ -109,6 +109,11 @@ __strong static NSString* _UUID;
         KeychainItemWrapper* wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"org.kde.kdeconnect-ios" accessGroup:group];
         _UUID = [wrapper objectForKey:(__bridge id)(kSecValueData)];
         if (!_UUID || [_UUID length] < 1) {
+            // FIXME: identifierForVendor might be nil
+            // Documentation reads:
+            // If the value is nil, wait and get the value again later.
+            // This happens, for example, after the device has been restarted
+            // but before the user has unlocked the device.
             _UUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
             _UUID = [_UUID stringByReplacingOccurrencesOfString:@"-" withString:@""];
             _UUID = [_UUID stringByReplacingOccurrencesOfString:@"_" withString:@""];
@@ -121,7 +126,7 @@ __strong static NSString* _UUID;
 
 + (NetworkPackage*) createPairPackage
 {
-    NetworkPackage* np=[[NetworkPackage alloc] initWithType:PACKAGE_TYPE_PAIR];
+    NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypePair];
     [np setBool:YES forKey:@"pair"];
 
     return np;
@@ -130,6 +135,11 @@ __strong static NSString* _UUID;
 //
 - (BOOL) bodyHasKey:(NSString*)key
 {
+    // FIXME: this implementation is most likely inaccurate;
+    // might have bug when key starts with "@" because for valueForKey:
+    //  If key does not start with “@”, invokes `objectForKey:`.
+    //  If key does start with “@”, strips the “@” and
+    //      invokes [super valueForKey:] with the rest of the key.
     if ([self._Body valueForKey:key]!=nil) {
         return true;
     }
@@ -179,7 +189,7 @@ __strong static NSString* _UUID;
 - (NSData*) serialize
 {
     NSArray* keys=[NSArray arrayWithObjects:@"id",@"type",@"body", nil];
-    NSArray* values=[NSArray arrayWithObjects:[self _Id],[self _Type],[self _Body], nil];
+    NSArray* values=[NSArray arrayWithObjects:[self _Id],self.type,[self _Body], nil];
     NSMutableDictionary* info=[NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
     if (_Payload) {
         [info setObject:[NSNumber numberWithLong:(_PayloadSize?_PayloadSize:-1)] forKey:@"payloadSize"];
@@ -201,8 +211,9 @@ __strong static NSString* _UUID;
     NSError* err=nil;
     NSDictionary* info=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
 
+    // FIXME: add missing null check
     [np set_Id:[info valueForKey:@"id"]];
-    [np set_Type:[info valueForKey:@"type"]];
+    np.type = [info valueForKey:@"type"];
     [np set_Body:[info valueForKey:@"body"]];
     [np set_PayloadSize:[[info valueForKey:@"payloadSize"]longValue]];
     [np set_PayloadTransferInfo:[info valueForKey:@"payloadTransferInfo"]];
@@ -217,6 +228,7 @@ __strong static NSString* _UUID;
     }
     [np set_PayloadTransferInfo:[info valueForKey:@"payloadTransferInfo"]];
     
+    // FIXME: error check too late
     if (err) {
         return nil;
     }
@@ -224,3 +236,35 @@ __strong static NSString* _UUID;
 }
 
 @end
+
+#pragma mark - Package Types
+
+NetworkPackageType const NetworkPackageTypeIdentity                 = @"kdeconnect.identity";
+NetworkPackageType const NetworkPackageTypeEncrypted                = @"kdeconnect.encrypted";
+NetworkPackageType const NetworkPackageTypePair                     = @"kdeconnect.pair";
+NetworkPackageType const NetworkPackageTypePing                     = @"kdeconnect.ping";
+
+NetworkPackageType const NetworkPackageTypeMPRIS                    = @"kdeconnect.mpris";
+
+NetworkPackageType const NetworkPackageTypeShare                    = @"kdeconnect.share.request";
+NetworkPackageType const NetworkPackageTypeShareInternal            = @"kdeconnect.share";
+
+NetworkPackageType const NetworkPackageTypeClipboard                = @"kdeconnect.clipboard";
+NetworkPackageType const NetworkPackageTypeClipboardConnect         = @"kdeconnect.clipboard.connect";
+
+NetworkPackageType const NetworkPackageTypeBattery                  = @"kdeconnect.battery";
+NetworkPackageType const NetworkPackageTypeCalendar                 = @"kdeconnect.calendar";
+// NetworkPackageType const NetworkPackageTypeReminder                 = @"kdeconnect.reminder";
+NetworkPackageType const NetworkPackageTypeContact                  = @"kdeconnect.contact";
+
+NetworkPackageType const NetworkPackageTypeBatteryRequest           = @"kdeconnect.battery.request";
+NetworkPackageType const NetworkPackageTypeFindMyPhoneRequest       = @"kdeconnect.findmyphone.request";
+
+NetworkPackageType const NetworkPackageTypeMousePadRequest          = @"kdeconnect.mousepad.request";
+NetworkPackageType const NetworkPackageTypeMousePadKeyboardState    = @"kdeconnect.mousepad.keyboardstate";
+NetworkPackageType const NetworkPackageTypeMousePadEcho             = @"kdeconnect.mousepad.echo";
+
+NetworkPackageType const NetworkPackageTypePresenter                = @"kdeconnect.presenter";
+
+NetworkPackageType const NetworkPackageTypeRunCommandRequest        = @"kdeconnect.runcommand.request";
+NetworkPackageType const NetworkPackageTypeRunCommand               = @"kdeconnect.runcommand";

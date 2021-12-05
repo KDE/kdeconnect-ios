@@ -22,7 +22,7 @@ import UIKit
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        if (np._Type == PACKAGE_TYPE_MOUSEPAD_REQUEST) {
+        if (np.type == .mousePadRequest) {
             print("Received mousepad command, doing nothing")
             return true
         }
@@ -30,44 +30,44 @@ import UIKit
     }
     
     @objc func sendMouseDelta(dx: Float, dy: Float) -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setFloat(dx, forKey: "dx")
         np.setFloat(dy, forKey: "dy")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendSingleClick() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "singleclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendDoubleClick() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "doubleclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendMiddleClick() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "middleclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendRightClick() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "rightclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendSingleHold() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "singlehold")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendScroll(Dx: Float, Dy: Float) -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "scroll")
         np.setFloat(Dx, forKey: "dx")
         np.setFloat(Dy, forKey: "dy")

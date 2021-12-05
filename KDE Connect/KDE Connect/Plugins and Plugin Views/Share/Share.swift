@@ -40,19 +40,19 @@ import AVFoundation
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         print("Share plugin received something")
-        if (np._Type == PACKAGE_TYPE_SHARE) {
+        if (np.type == .share) {
             print("Share Plugin received a valid Share package")
             if (numFilesReceived == 0) {
                 totalNumOfFilesToReceive = np.integer(forKey: "numberOfFiles")
             }
-            if (np._Body["filename"] != nil) {
-                if (saveFile(fileData: np._Payload, filename: np._Body["filename"] as! String)) {
+            if let filename = np._Body["filename"] as? String {
+                if saveFile(fileData: np._Payload!, filename: filename) {
                     //connectedDevicesViewModel.showFileReceivedAlert()
-                    print("File \(np._Body["filename"] as! String) saved successfully")
+                    print("File \(filename) saved successfully")
                     numFilesReceived += 1
                     notificationHapticsGenerator.notificationOccurred(.success)
                 } else {
-                    print("File \(np._Body["filename"] as! String) failed to save")
+                    print("File \(filename) failed to save")
                     notificationHapticsGenerator.notificationOccurred(.error)
                 }
             } else {
@@ -113,8 +113,8 @@ import AVFoundation
     
     @objc func sendSinglePayload() -> Void {
         if ((fileDatas.count == fileNames.count) && (fileDatas.count == fileLastModifiedEpochs.count) && totalPayloadSize > 0 && fileDatas.count > 0 && (numFilesSuccessfullySent < totalNumOfFiles)) {
-            let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_SHARE)
-            np.setObject(fileNames.first, forKey: "filename")
+            let np = NetworkPackage(type: .share)
+            np.setObject(fileNames.first!, forKey: "filename")
             np.setInteger(fileLastModifiedEpochs.first!, forKey: "lastModified")
             np.setInteger(totalPayloadSize, forKey: "totalPayloadSize")
             np.setInteger(totalNumOfFiles, forKey: "numberOfFiles")

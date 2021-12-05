@@ -40,7 +40,7 @@ struct RemoteInputView: View {
                         let dxDrag: Float = Float(gesture.translation.width) - previousHorizontalDragOffset
                         let dyDrag: Float = Float(gesture.translation.height) - previousVerticalDragOffset
                         //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMouseDelta(dx: dxDrag * cursorSensitivityFromSlider, dy: dyDrag * cursorSensitivityFromSlider)
+                        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendMouseDelta(dx: dxDrag * cursorSensitivityFromSlider, dy: dyDrag * cursorSensitivityFromSlider)
                         print("Moved by \(dxDrag) horizontally")
                         print("Moved by \(dyDrag) vertically")
                         //}
@@ -69,7 +69,7 @@ struct RemoteInputView: View {
                                     let DxScroll: Float = Float(gesture.translation.width) - previousScrollHorizontalDragOffset
                                     let DyScroll: Float = Float(gesture.translation.height) - previousScrollVerticalDragOffset
                                     //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                                    (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendScroll(Dx: DxScroll * cursorSensitivityFromSlider, Dy: DyScroll * cursorSensitivityFromSlider)
+                                    (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendScroll(Dx: DxScroll * cursorSensitivityFromSlider, Dy: DyScroll * cursorSensitivityFromSlider)
                                     print("Scrolled by \(DxScroll) horizontally")
                                     print("Scrolled by \(DyScroll) vertically")
                                     //}
@@ -194,31 +194,31 @@ struct RemoteInputView: View {
     
     func sendSingleTap() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.7
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleClick()
         print("single clicked")
     }
     
     func sendDoubleTap() {
         notificationHapticsGenerator.notificationOccurred(.success)
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendDoubleClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendDoubleClick()
         print("double clicked")
     }
     
     func sendRightClick() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 1.0
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendRightClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendRightClick()
         print("2 finger tap")
     }
     
     func sendSingleHold() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.5
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendSingleHold()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleHold()
         print("Long press")
     }
     
     func sendMiddleClick() {
         hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.3
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! RemoteInput).sendMiddleClick()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendMiddleClick()
         print("Middle Click")
     }
 }

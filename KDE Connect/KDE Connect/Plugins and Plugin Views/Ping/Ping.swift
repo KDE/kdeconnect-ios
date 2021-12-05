@@ -22,7 +22,7 @@ import Foundation
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        if (np._Type == PACKAGE_TYPE_PING) {
+        if (np.type == .ping) {
             connectedDevicesViewModel.showPingAlert()
             return true
         }
@@ -30,7 +30,7 @@ import Foundation
     }
     
     @objc func sendPing() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_PING)
+        let np: NetworkPackage = NetworkPackage(type: .ping)
         controlDevice.send(np, tag: Int(PACKAGE_TAG_PING))
     }
 }

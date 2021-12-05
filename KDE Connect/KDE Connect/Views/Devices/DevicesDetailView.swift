@@ -92,17 +92,17 @@ struct DevicesDetailView: View {
             .navigationTitle(backgroundService._devices[detailsDeviceId]!._name)
             .navigationBarItems(trailing:
                 Menu {
-                    if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PING] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PING] as! Bool) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] as! Bool) {
                         Button {
-                            (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PING] as! Ping).sendPing()
+                            (backgroundService._devices[detailsDeviceId]!._plugins[.ping] as! Ping).sendPing()
                         } label: {
                             Label("Send Ping", systemImage: "megaphone")
                         }
                     }
                     
-                    if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! Bool) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] as! Bool) {
                         Button {
-                            (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_FINDMYPHONE_REQUEST] as! FindMyPhone).sendFindMyPhoneRequest()
+                            (backgroundService._devices[detailsDeviceId]!._plugins[.findMyPhoneRequest] as! FindMyPhone).sendFindMyPhoneRequest()
                         } label: {
                             Label("Ring Device", systemImage: "bell")
                         }
@@ -137,14 +137,14 @@ struct DevicesDetailView: View {
                     print("Document Picker Error")
                 }
                 if (chosenFileURLs.count > 0) {
-                    (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_SHARE] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
+                    (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
                 }
             }
             .onAppear() {
                 connectedDevicesViewModel.currDeviceDetailsView = self
                 // TODO: use if let as
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
-                    (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand).requestCommandList()
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool) {
+                    (backgroundService._devices[detailsDeviceId]!._plugins[.runCommand] as! RunCommand).requestCommandList()
                 }
             }
         } else {
@@ -167,16 +167,16 @@ struct DevicesDetailView: View {
     var deviceActionsList: some View {
         List {
             Section(header: Text("Actions")) {
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_CLIPBOARD] as! Bool) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.clipboard] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.clipboard] as! Bool) {
                     Button {
-                        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_CLIPBOARD] as! Clipboard).sendClipboardContentOut()
+                        (backgroundService._devices[detailsDeviceId]!._plugins[.clipboard] as! Clipboard).sendClipboardContentOut()
                     } label: {
                         Label("Push Local Clipboard", systemImage: "square.and.arrow.up.on.square.fill")
                     }
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_SHARE] as! Bool) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.share] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.share] as! Bool) {
                     Button {
                         showingFilePicker = true
                     } label: {
@@ -185,21 +185,21 @@ struct DevicesDetailView: View {
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_PRESENTER] as! Bool) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.presenter] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.presenter] as! Bool) {
                     NavigationLink(destination: PresenterView(detailsDeviceId: detailsDeviceId)) {
                         Label("Slideshow remote", systemImage: "slider.horizontal.below.rectangle")
                     }
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_RUNCOMMAND] as! Bool) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool) {
                     NavigationLink(destination: RunCommandView(detailsDeviceId: self.detailsDeviceId)){
                         Label("Run Command", systemImage: "terminal")
                     }
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_MOUSEPAD_REQUEST] as! Bool) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.mousePadRequest] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.mousePadRequest] as! Bool) {
                     NavigationLink(destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId)) {
                         Label("Remote Input", systemImage: "hand.tap")
                     }
@@ -208,20 +208,20 @@ struct DevicesDetailView: View {
             }
             
             Section(header: Text("Device Status")) {
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) || ((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel == 0)) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.batteryRequest] == nil) || ((backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel == 0)) {
                     Text("No battery detected in device")
-                } else if (!(backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                } else if (!(backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.batteryRequest] as! Bool)) {
                     Text("Battery Plugin Disabled")
                 } else {
                     HStack {
                         Label {
                             Text("Battery Level")
                         } icon: {
-                            Image(systemName: (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                .accentColor((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
+                            Image(systemName: (backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                .accentColor((backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).getSFSymbolColorFromBatteryStatus())
                         }
                         Spacer()
-                        Text("\((backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                        Text("\((backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel)%")
                     }
                 }
             }

@@ -254,7 +254,7 @@
     NSLog(@"linkprovider:received a udp package from %@",[np objectForKey:@"deviceName"]);
     //not id package
     
-    if (![[np _Type] isEqualToString:PACKAGE_TYPE_IDENTITY]){
+    if (![np.type isEqualToString:NetworkPackageTypeIdentity]) {
         NSLog(@"LanLinkProvider:expecting an id package");
         return;
     }
@@ -407,8 +407,8 @@
     for (NSString* dataStr in packageArray) {
         if ([dataStr length] > 0) {
             NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
-            if (![[np _Type] isEqualToString:PACKAGE_TYPE_IDENTITY]) {
-                NSLog(@"lp expecting an id package %@", [np _Type]);
+            if (![np.type isEqualToString:NetworkPackageTypeIdentity]) {
+                NSLog(@"lp expecting an id package %@", np.type);
                 return;
             }
             NSString* deviceId=[np objectForKey:@"deviceId"];

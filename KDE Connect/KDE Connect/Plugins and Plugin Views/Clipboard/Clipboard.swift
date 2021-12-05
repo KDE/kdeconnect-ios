@@ -22,16 +22,16 @@ import UIKit
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        if (np._Type == PACKAGE_TYPE_CLIPBOARD || np._Type == PACKAGE_TYPE_CLIPBOARD_CONNECT) {
+        if (np.type == .clipboard || np.type == .clipboardConnect) {
             if (np.object(forKey: "content") != nil) {
-                if (np._Type == PACKAGE_TYPE_CLIPBOARD) {
+                if (np.type == .clipboard) {
                     UIPasteboard.general.string = np.object(forKey: "content") as? String
                     connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
                     print("Local clipboard synced with remote packet, timestamp updated")
-                } else if (np._Type == PACKAGE_TYPE_CLIPBOARD_CONNECT) {
+                } else if (np.type == .clipboardConnect) {
                     let packetTimeStamp: Int = np.integer(forKey: "timestamp")
                     if (packetTimeStamp == 0 || packetTimeStamp < connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp) {
-                        print("Invalid timestamp from \(PACKAGE_TYPE_CLIPBOARD_CONNECT), doing nothing")
+                        print("Invalid timestamp from \(np.type), doing nothing")
                         return false;
                     } else {
                         UIPasteboard.general.string = np.object(forKey: "content") as? String
@@ -40,7 +40,7 @@ import UIKit
                     }
                 }
             } else {
-                print("Received nil for the content of the remote device's \(String(describing: np._Type)), doing nothing")
+                print("Received nil for the content of the remote device's \(np.type), doing nothing")
             }
             return true
         }
@@ -48,10 +48,9 @@ import UIKit
     }
     
     @objc func connectClipboardContent() -> Void {
-        let clipboardConent: String? = UIPasteboard.general.string
-        if (clipboardConent != nil) {
-            let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_CLIPBOARD_CONNECT)
-            np.setObject(clipboardConent, forKey: "content")
+        if let clipboardContent = UIPasteboard.general.string {
+            let np = NetworkPackage(type: .clipboardConnect)
+            np.setObject(clipboardContent, forKey: "content")
             np.setInteger(connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp, forKey: "timestamp")
             controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
         } else {
@@ -60,10 +59,9 @@ import UIKit
     }
     
     @objc func sendClipboardContentOut() -> Void {
-        let clipboardConent: String? = UIPasteboard.general.string
-        if (clipboardConent != nil) {
-            let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_CLIPBOARD)
-            np.setObject(clipboardConent, forKey: "content")
+        if let clipboardContent = UIPasteboard.general.string {
+            let np = NetworkPackage(type: .clipboard)
+            np.setObject(clipboardContent, forKey: "content")
             controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
         } else {
             print("Attempt to grab and update local clipboard content returned nil")

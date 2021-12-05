@@ -233,34 +233,34 @@ struct PresenterView: View {
                     break
                 }
                 if dxToSend != 0.0 || dyToSend != 0.0 {
-                    (backgroundService.devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPointerPosition(dx: dxToSend, dy: dyToSend)
+                    (backgroundService.devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendPointerPosition(dx: dxToSend, dy: dyToSend)
                 }
             }
         }
     
     func stopGyroAndPointer() {
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendStopPointer()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendStopPointer()
         motionManager.stopGyroUpdates()
     }
     
     func sendGoFullscreenAction() {
         notificationHapticsGenerator.notificationOccurred(.success)
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendFullscreen()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendFullscreen()
     }
     
     func sendEscapeKey() {
         notificationHapticsGenerator.notificationOccurred(.warning)
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendEsc()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendEsc()
     }
     
     func sendGoPreviousSlideAction() {
         hapticGenerators[Int(HapticStyle.soft.rawValue)].impactOccurred()
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendPrevious()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendPrevious()
     }
     
     func sendGoNextSlideAction() {
         hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred()
-        (backgroundService._devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_PRESENTER] as! Presenter).sendNext()
+        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendNext()
     }
 }
 

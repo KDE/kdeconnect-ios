@@ -19,7 +19,7 @@ struct RunCommandView: View {
     
     init(detailsDeviceId: String) {
         self.detailsDeviceId = detailsDeviceId
-        self.runCommandPlugin = backgroundService.devices[detailsDeviceId]!._plugins[PACKAGE_TYPE_RUNCOMMAND] as! RunCommand
+        self.runCommandPlugin = backgroundService.devices[detailsDeviceId]!._plugins[.runCommand] as! RunCommand
     }
     
     var body: some View {

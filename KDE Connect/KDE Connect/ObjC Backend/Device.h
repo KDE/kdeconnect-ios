@@ -31,11 +31,10 @@
 #import "BaseLink.h"
 #import "NetworkPackage.h"
 //#import "deviceDelegate.h"
-//#import "KDE_Connect-Swift.h"
 //#import "BackgroundService.h"
 @class BaseLink;
 @class NetworkPackage;
-//@protocol Plugin;
+@protocol Plugin;
 //@class Ping;
 //@class Share;
 //@class FindMyPhone;
@@ -93,7 +92,7 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 @property(readonly,nonatomic) NSArray* _outgoingCapabilities;
 
 @property(nonatomic) NSMutableArray* _links;
-@property(nonatomic) NSMutableDictionary* _plugins;
+@property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPackageType, id<Plugin>> *plugins;
 @property(nonatomic) NSMutableArray* _failedPlugins;
 
 @property(nonatomic, copy) NSString* _SHA256HashFormatted;
@@ -105,7 +104,7 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 //@property(readonly,nonatomic) BOOL _testDevice;
 
 // Plugin enable status
-@property(nonatomic) NSMutableDictionary* _pluginsEnableStatus;
+@property(nonatomic, setter=setPluginsEnableStatus:) NSDictionary<NetworkPackageType, NSNumber *> *pluginsEnableStatus;
 
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
 // data only and are therefore NOT stored persistently

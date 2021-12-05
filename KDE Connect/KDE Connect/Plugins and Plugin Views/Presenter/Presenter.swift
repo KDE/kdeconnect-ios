@@ -22,7 +22,7 @@ import Foundation
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        if (np._Type == PACKAGE_TYPE_PRESENTER) {
+        if (np.type == .presenter) {
             print("Presenter received a package, can't do anything about it, ignoring")
             return true
         }
@@ -30,38 +30,38 @@ import Foundation
     }
     
     @objc func sendNext() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_PAGE_DOWN.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendPrevious() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_PAGE_UP.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendFullscreen() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_F5.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendEsc() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_MOUSEPAD_REQUEST)
+        let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_ESCAPE.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
     @objc func sendPointerPosition(dx: Float, dy: Float) -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_PRESENTER)
+        let np: NetworkPackage = NetworkPackage(type: .presenter)
         np.setFloat(dx, forKey: "dx")
         np.setFloat(dy, forKey: "dy")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
     @objc func sendStopPointer() -> Void {
-        let np: NetworkPackage = NetworkPackage(type: PACKAGE_TYPE_PRESENTER)
+        let np: NetworkPackage = NetworkPackage(type: .presenter)
         np.setBool(true, forKey: "stop")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }

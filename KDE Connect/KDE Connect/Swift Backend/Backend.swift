@@ -169,3 +169,20 @@ extension BackgroundService {
         return devices
     }
 }
+
+extension Device {
+    // @available(*, deprecated, renamed: "plugins")
+    var _plugins: [NetworkPackage.`Type`: Plugin] {
+        plugins
+    }
+
+    // @available(*, deprecated, renamed: "pluginsEnableStatus")
+    var _pluginsEnableStatus: [NetworkPackage.`Type`: NSNumber] {
+        get {
+            pluginsEnableStatus
+        }
+        set {
+            pluginsEnableStatus = newValue
+        }
+    }
+}

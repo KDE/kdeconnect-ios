@@ -422,7 +422,7 @@
         NSUInteger index=[_pendingRSockets indexOfObject:sock];
         np=[_pendingPayloadNP objectAtIndex:index];
         [np set_Payload:data];
-        [np set_Type:PACKAGE_TYPE_SHARE];
+        np.type = NetworkPackageTypeShare;
         //NSLog()
     }
     
@@ -440,7 +440,7 @@
             NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
             if (_linkDelegate && np) {
                 NSLog(@"llink did read data:\n%@",dataStr);
-                if ([[np _Type] isEqualToString:PACKAGE_TYPE_PAIR]) {
+                if ([np.type isEqualToString:NetworkPackageTypePair]) {
                     _pendingPairNP=np;
                 }
                 // If contains transferinfo, connect to remote using a new socket to transfer payload

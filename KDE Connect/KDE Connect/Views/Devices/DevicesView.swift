@@ -254,18 +254,18 @@ struct DevicesView: View {
                                             .font(.title3)
                                     }
                                 }
-                                if ((backgroundService._devices[key]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] == nil) || ((backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel == 0)) {
+                                if ((backgroundService._devices[key]!._pluginsEnableStatus[.batteryRequest] == nil) || ((backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel == 0)) {
                                     Text("No battery detected in device")
                                         .font(.footnote)
-                                } else if (!(backgroundService._devices[key]!._pluginsEnableStatus[PACKAGE_TYPE_BATTERY_REQUEST] as! Bool)) {
+                                } else if (!(backgroundService._devices[key]!._pluginsEnableStatus[.batteryRequest] as! Bool)) {
                                     Text("Battery Plugin Disabled")
                                         .font(.footnote)
                                 } else {
                                     HStack {
-                                        Image(systemName: (backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                        Image(systemName: (backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).getSFSymbolNameFromBatteryStatus())
                                             .font(.footnote)
-                                            .foregroundColor((backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).getSFSymbolColorFromBatteryStatus())
-                                        Text("\((backgroundService._devices[key]!._plugins[PACKAGE_TYPE_BATTERY_REQUEST] as! Battery).remoteChargeLevel)%")
+                                            .foregroundColor((backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).getSFSymbolColorFromBatteryStatus())
+                                        Text("\((backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel)%")
                                             .font(.footnote)
                                     }
                                 }
