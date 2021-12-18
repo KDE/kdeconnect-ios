@@ -27,6 +27,8 @@
 //---------------------------------------------------------------------
 
 #import "NetworkPackage.h"
+#import "Device.h"
+#import "KDE_Connect-Swift.h"
 #import "KeychainItemWrapper.h"
 
 #define LFDATA [NSData dataWithBytes:"\x0A" length:1]
@@ -65,7 +67,7 @@ __strong static NSString* _UUID;
     }
     [np setObject:deviceName forKey:@"deviceName"];
     [np setInteger:ProtocolVersion forKey:@"protocolVersion"];
-    [np setObject:@"phone" forKey:@"deviceType"];
+    [np setObject:[Device DeviceType2Str:Device.currentDeviceType] forKey:@"deviceType"];
     [np setInteger:1716 forKey:@"tcpPort"];
     
     // TODO: Instead of @[] actually import what plugins are available, UserDefaults to store maybe?

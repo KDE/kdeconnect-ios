@@ -304,7 +304,7 @@ struct DevicesView: View {
                                     if let device = backgroundService._devices[key] {
                                         Image(systemName: device._type.sfSymbolName)
                                             .font(.title3)
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                     }
                                 }
                                 Text("Tap to start pairing")

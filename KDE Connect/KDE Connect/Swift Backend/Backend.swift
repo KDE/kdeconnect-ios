@@ -88,17 +88,74 @@ extension Date {
 public extension DeviceType {
     var sfSymbolName: String {
         switch (self) {
-            case .Unknown: return "questionmark.square.dashed"
-            case .Desktop: return "desktopcomputer"
-            case .Laptop: return "laptopcomputer"
-            case .Phone: return "apps.iphone"
-            case .Tablet: return "apps.ipad.landscape"
+            case .unknown: return "questionmark.square.dashed"
+            case .desktop: return "desktopcomputer"
+            case .laptop: return "laptopcomputer"
+            case .phone: return "apps.iphone"
+            case .tablet: return "apps.ipad.landscape"
+            case .tv: return "tv"
             @unknown default: return "questionmark.square.dashed"
+        }
+    }
+
+    static var current: DeviceType {
+        var macDeviceType: DeviceType {
+            "hw.model".withCString { hwModelCStr in
+                var size = 0
+                if sysctlbyname(hwModelCStr, nil, &size, nil, 0) != 0 {
+                    print("Failed to get size of hw.model (\(String(cString: strerror(errno))))")
+                    return .unknown
+                }
+                precondition(size > 0)
+                var resultCStr = [CChar](repeating: 0, count: size)
+                if sysctlbyname(hwModelCStr, &resultCStr, &size, nil, 0) != 0 {
+                    print("Failed to get hw.model (\(String(cString: strerror(errno))))")
+                    return .unknown
+                }
+                // https://everymac.com/systems/by_capability/mac-specs-by-machine-model-machine-id.html
+                switch String(cString: resultCStr) {
+                case let model where model.starts(with: "MacBook"):
+                    return .laptop
+                case let model where model.contains("Mac"):
+                    return .desktop
+                case let model:
+                    print("Unexpected hw.model (\(model)")
+                    return .unknown
+                }
+            }
+        }
+        switch UIDevice.current.userInterfaceIdiom {
+        case .unspecified:
+            return .unknown
+        case .phone:
+            return .phone
+        case .pad:
+            let processInfo = ProcessInfo.processInfo
+            if processInfo.isMacCatalystApp || processInfo.isiOSAppOnMac {
+                return macDeviceType
+            }
+            return .tablet
+        case .tv:
+            return .tv
+        case .carPlay:
+            return .unknown
+        case .mac:
+            return macDeviceType
+        @unknown default:
+            return .unknown
         }
     }
 }
 
-// Given th deviceId, saves/overwrites the device object from _device into _settings by encoding it and then into UserDefaults
+extension Device {
+    @objc
+    @available(swift, obsoleted: 1.0, message: "Use 'DeviceType.current' instead")
+    static var currentDeviceType: DeviceType {
+        return DeviceType.current
+    }
+}
+
+// Given the deviceId, saves/overwrites the device object from _device into _settings by encoding it and then into UserDefaults
 func saveDeviceToUserDefaults(deviceId: String) {
     let deviceData: Data?
     do {

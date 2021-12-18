@@ -60,6 +60,7 @@
 }
 @synthesize _SHA256HashFormatted;
 
+// TODO: plugins should be saving their own preferences
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
 // data only and are therefore NOT stored persistently
 // Remote Input
@@ -68,49 +69,11 @@
 // Presenter
 @synthesize _pointerSensitivity;
 
-// TODO: might want to remove this before public testing
-//- (Device*) initTest
-//{
-//    if ((self=[super init])) {
-//        _id=@"test-purpose-device";
-//        _name=@"TestiPhone";
-//        _type=Phone;
-//        deviceDelegate=nil;
-//        // [self loadSetting];
-//        _links=[NSMutableArray arrayWithCapacity:1];
-//        _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
-//        _failedPlugins=[NSMutableArray arrayWithCapacity:1];
-//
-//        _testDevice = YES;
-//        _pairStatus = Paired;
-//    }
-//    return self;
-//}
-
-- (Device*) init:(NSString*)deviceId setDelegate:(id)deviceDelegate
-{
-    if ((self=[super init])) {
-        _id=deviceId;
-        _type=Phone;
-        self.deviceDelegate=deviceDelegate;
-        [self loadSetting];
-        _links=[NSMutableArray arrayWithCapacity:1];
-        _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
-        _failedPlugins=[NSMutableArray arrayWithCapacity:1];
-        _pluginsEnableStatus = [NSMutableDictionary dictionary];
-        _cursorSensitivity = 3.0;
-        _hapticStyle = 0;
-        _pointerSensitivity = 3.0;
-        [self reloadPlugins];
-    }
-    return self;
-}
-
 - (Device*) init:(NetworkPackage*)np baselink:(BaseLink*)link setDelegate:(id)deviceDelegate
 {
     if (self=[super init]) {
         _id=[np objectForKey:@"deviceId"];
-        _type=[Device Str2Devicetype:[np objectForKey:@"deviceType"]];
+        _type=[Device Str2DeviceType:[np objectForKey:@"deviceType"]];
         _name=[np objectForKey:@"deviceName"];
         _incomingCapabilities=[np objectForKey:@"incomingCapabilities"];
         _outgoingCapabilities=[np objectForKey:@"outgoingCapabilities"];
@@ -145,7 +108,7 @@
     [_links addObject:Link];
     _id=[np objectForKey:@"deviceId"];
     _name=[np objectForKey:@"deviceName"];
-    _type=[Device Str2Devicetype:[np objectForKey:@"deviceType"]];
+    _type=[Device Str2DeviceType:[np objectForKey:@"deviceType"]];
     _incomingCapabilities=[np objectForKey:@"incomingCapabilities"];
     _outgoingCapabilities=[np objectForKey:@"outgoingCapabilities"];
     //[self saveSetting];
@@ -484,36 +447,41 @@
 //}
 
 #pragma mark enum tools
-+ (NSString*)Devicetype2Str:(DeviceType)type
++ (NSString*)DeviceType2Str:(DeviceType)type
 {
     switch (type) {
-        case Desktop:
+        case DeviceTypeDesktop:
             return @"desktop";
-        case Laptop:
+        case DeviceTypeLaptop:
             return @"laptop";
-        case Phone:
+        case DeviceTypePhone:
             return @"phone";
-        case Tablet:
+        case DeviceTypeTablet:
             return @"tablet";
-        default:
+        case DeviceTypeTv:
+            return @"tv";
+        case DeviceTypeUnknown:
             return @"unknown";
     }
 }
-+ (DeviceType)Str2Devicetype:(NSString*)str
++ (DeviceType)Str2DeviceType:(NSString*)str
 {
     if ([str isEqualToString:@"desktop"]) {
-        return Desktop;
+        return DeviceTypeDesktop;
     }
     if ([str isEqualToString:@"laptop"]) {
-        return Laptop;
+        return DeviceTypeLaptop;
     }
     if ([str isEqualToString:@"phone"]) {
-        return Phone;
+        return DeviceTypePhone;
     }
     if ([str isEqualToString:@"tablet"]) {
-        return Tablet;
+        return DeviceTypeTablet;
     }
-    return Unknown;
+    if ([str isEqualToString:@"tv"]) {
+        return DeviceTypeTv;
+    }
+    return DeviceTypeUnknown;
 }
 
 #pragma mark En/Decoding Methods

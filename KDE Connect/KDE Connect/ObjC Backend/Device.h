@@ -49,23 +49,14 @@ typedef NS_ENUM(NSUInteger, PairStatus)
     Paired=3
 };
 
-// TODO: use this to give Swift-style lower-case enum cases instead
-//typedef NS_ENUM(NSUInteger, DeviceType)
-//{
-//    DeviceTypeUnknown=0,
-//    DeviceTypeDesktop=1,
-//    DeviceTypeLaptop=2,
-//    DeviceTypePhone=3,
-//    DeviceTypeTablet=4
-//};
-
 typedef NS_ENUM(NSUInteger, DeviceType)
 {
-    Unknown=0,
-    Desktop=1,
-    Laptop=2,
-    Phone=3,
-    Tablet=4
+    DeviceTypeUnknown=0,
+    DeviceTypeDesktop=1,
+    DeviceTypeLaptop=2,
+    DeviceTypePhone=3,
+    DeviceTypeTablet=4,
+    DeviceTypeTv=5,
 };
 
 // TODO: use system raw values for Haptic instead
@@ -117,8 +108,6 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 // For NSCoding
 @property (class, readonly) BOOL supportsSecureCoding;
 
-//- (Device*) initTest;
-- (Device*) init:(NSString*)deviceId setDelegate:(id)deviceDelegate;
 - (Device*) init:(NetworkPackage*)np baselink:(BaseLink*)link setDelegate:(id)deviceDelegate;
 - (NSInteger) compareProtocolVersion;
 
@@ -145,8 +134,8 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 // - (NSArray*) getPluginViews:(UIViewController*)vc;
 
 #pragma mark enum tools
-+ (NSString*)Devicetype2Str:(DeviceType)type;
-+ (DeviceType)Str2Devicetype:(NSString*)str;
++ (NSString*)DeviceType2Str:(DeviceType)type;
++ (DeviceType)Str2DeviceType:(NSString*)str;
 @end
 
 @protocol DeviceDelegate <NSObject>

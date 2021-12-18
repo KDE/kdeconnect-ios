@@ -114,7 +114,7 @@ struct PresenterView: View {
     
     var portraitPresenterView: some View {
         Group {
-            if backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop {
+            if backgroundService._devices[detailsDeviceId]!._type == .desktop {
                 Image(systemName: "wand.and.rays")
                     .resizable()
                     .frame(width: 110, height: 110)
@@ -141,7 +141,7 @@ struct PresenterView: View {
                         .frame(width: 40, height: 50)
                         .foregroundColor(.white)
                     // TODO: reduce duplication
-                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
+                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 30 : 200, trailing: 70))
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
@@ -152,7 +152,7 @@ struct PresenterView: View {
                         .resizable()
                         .frame(width: 40, height: 50)
                         .foregroundColor(.white)
-                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 30 : 200, trailing: 70))
+                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 30 : 200, trailing: 70))
                         .background(Color.orange)
                         .clipShape(Rectangle())
                         .cornerRadius(20)
@@ -169,13 +169,13 @@ struct PresenterView: View {
                     .frame(width: 40, height: 50)
                     .foregroundColor(.white)
                 // TODO: reduce duplication
-                    .padding(EdgeInsets(top: 80, leading: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 50 : 200, bottom: 80, trailing: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 50 : 200))
+                    .padding(EdgeInsets(top: 80, leading: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 50 : 200, bottom: 80, trailing: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 50 : 200))
                     .background(Color.orange)
                     .clipShape(Rectangle())
                     .cornerRadius(20)
             }
             
-            if backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop {
+            if backgroundService._devices[detailsDeviceId]!._type == .desktop {
                 Image(systemName: "wand.and.rays")
                     .resizable()
                     .frame(width: 110, height: 110)
@@ -200,7 +200,7 @@ struct PresenterView: View {
                     .resizable()
                     .frame(width: 40, height: 50)
                     .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 80, leading: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 50 : 200, bottom: 80, trailing: (backgroundService._devices[detailsDeviceId]!._type == DeviceType.Desktop) ? 50 : 200))
+                    .padding(EdgeInsets(top: 80, leading: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 50 : 200, bottom: 80, trailing: (backgroundService._devices[detailsDeviceId]!._type == .desktop) ? 50 : 200))
                     .background(Color.orange)
                     .clipShape(Rectangle())
                     .cornerRadius(20)
