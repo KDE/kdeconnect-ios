@@ -69,7 +69,6 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
     rigid = 4
 };
 
-@class ConnectedDevicesViewModel;
 @protocol DeviceDelegate;
 
 @interface Device : NSObject <linkDelegate, NSSecureCoding>
@@ -88,9 +87,7 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 
 @property(nonatomic, copy) NSString* _SHA256HashFormatted;
 
-// TODO: why are there 2 delegates here?
 @property(nonatomic) id<DeviceDelegate> deviceDelegate;
-@property(nonatomic,assign) ConnectedDevicesViewModel* _backgroundServiceDelegate;
 
 //@property(readonly,nonatomic) BOOL _testDevice;
 
@@ -120,14 +117,13 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 - (BOOL) isReachable;
 
 #pragma mark Pairing-related Functions
-- (BOOL) isPaired;
-- (BOOL) isPaireRequested;
-//- (void) setAsPaired; // Is this needed to be public?
-- (void) requestPairing;
-- (void) justChangeStatusToUnpaired;
-- (void) unpair;
-- (void) acceptPairing;
-- (void) rejectPairing;
+- (BOOL)isPaired;
+- (BOOL)isPaireRequested;
+//- (void)setAsPaired; // Is this needed to be public?
+- (void)requestPairing;
+- (void)setAsUnpaired;
+- (void)unpair;
+- (void)acceptPairing;
 
 #pragma mark Plugin-related Functions
 - (void) reloadPlugins;
@@ -140,11 +136,12 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 
 @protocol DeviceDelegate <NSObject>
 @optional
-- (void) onDeviceReachableStatusChanged:(Device*)device;
-- (void) onDevicePairRequest:(Device*)device;
-- (void) onDevicePairTimeout:(Device*)device;
-- (void) onDevicePairSuccess:(Device*)device;
-- (void) onDevicePairRejected:(Device*)device;
-- (void) onDevicePluginChanged:(Device*)device;
-- (void) onLinkDestroyed:(BaseLink *)link;
+- (void)onDeviceReachableStatusChanged:(Device *)device;
+- (void)onDevicePairRequest:(Device *)device;
+- (void)onDevicePairTimeout:(Device *)device;
+- (void)onDevicePairSuccess:(Device *)device;
+- (void)onDevicePairRejected:(Device *)device;
+- (void)onDeviceUnpaired:(Device *)device;
+- (void)onDevicePluginChanged:(Device *)device;
+- (void)onLinkDestroyed:(BaseLink *)link;
 @end

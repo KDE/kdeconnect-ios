@@ -15,9 +15,13 @@
 import Foundation
 import AVFoundation
 
+extension Notification.Name {
+    static let didReceiveFileNotification = Notification.Name("didReceiveFileNotification")
+}
+
 // TODO: Implement fallback on another port when default 1739 is unavaliable
 @objc class Share : NSObject, Plugin {
-    @objc let controlDevice: Device
+    @objc weak var controlDevice: Device!
     let MIN_PAYLOAD_PORT: Int = 1739
     let MAX_PAYLOAD_PORT: Int = 1764
     
@@ -59,14 +63,17 @@ import AVFoundation
                 print("Nil received when trying to parse filename")
                 notificationHapticsGenerator.notificationOccurred(.error)
             }
-            if (numFilesReceived == totalNumOfFilesToReceive) {
+            if numFilesReceived == totalNumOfFilesToReceive {
                 AudioServicesPlaySystemSound(soundMailReceived)
+                NotificationCenter.default
+                    .post(name: .didReceiveFileNotification, object: nil,
+                          userInfo: nil)
                 numFilesReceived = 0
                 totalNumOfFilesToReceive = 0
             }
             return true
         }
-        print("Not a share packge")
+        print("Not a share package")
         return false
     }
     

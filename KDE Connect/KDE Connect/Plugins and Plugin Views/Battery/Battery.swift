@@ -16,13 +16,16 @@ import SwiftUI
 import UIKit
 
 // TODO: We might be able to do something with the background activities plugin where it sends out its battery status every once in a while??? But maybe iOS will not unfreeze the entire app for us??? I really don't know...background activity is something that we'll have to figure out later on
-@objc class Battery : NSObject, Plugin {
-    @objc let controlDevice: Device
+@objc class Battery: NSObject, ObservablePlugin {
+    @objc weak var controlDevice: Device!
+    @Published
     @objc var remoteChargeLevel: Int = 0
+    @Published
     @objc var remoteIsCharging: Bool = false
+    @Published
     @objc var remoteThresholdEvent: Int = 0
     
-    @objc init (controlDevice: Device) {
+    @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
         super.init()
         //self.sendBatteryStatusRequest() // no need here, asking in Device() when first link is added
@@ -30,7 +33,7 @@ import UIKit
         self.sendBatteryStatusOut()
     }
     
-    @objc func startBatteryMonitoring() -> Void {
+    @objc func startBatteryMonitoring() {
         UIDevice.current.isBatteryMonitoringEnabled = true
         
         // Tip: to add an observer with a function/selector in another class that is not self,
@@ -42,22 +45,24 @@ import UIKit
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np.type == .batteryRequest) {
-            print("Battery plugin recevied a force update request")
+            print("Battery plugin received a force update request")
             sendBatteryStatusOut()
             return true
         } else if (np.type == .battery) { // received battery info from other device
-            print("Battery plugin recevied battery status from remote device")
-            remoteChargeLevel = np.integer(forKey: "currentCharge")
-            remoteIsCharging = np.bool(forKey: "isCharging")
-            remoteThresholdEvent = np.integer(forKey: "thresholdEvent")
-            connectedDevicesViewModel.reRenderDeviceView()
-            connectedDevicesViewModel.reRenderCurrDeviceDetailsView(deviceId: controlDevice._id)
+            print("Battery plugin received battery status from remote device")
+            DispatchQueue.main.async { [self] in
+                withAnimation {
+                    self.remoteChargeLevel = np.integer(forKey: "currentCharge")
+                    self.remoteIsCharging = np.bool(forKey: "isCharging")
+                    self.remoteThresholdEvent = np.integer(forKey: "thresholdEvent")
+                }
+            }
             return true
         }
         return false
     }
     
-    @objc func sendBatteryStatusOut() -> Void {
+    @objc func sendBatteryStatusOut() {
         let batteryLevel: Int = Int(UIDevice.current.batteryLevel * 100)
         let batteryStatus = UIDevice.current.batteryState
         let np: NetworkPackage = NetworkPackage(type: .battery)
@@ -78,32 +83,33 @@ import UIKit
         controlDevice.send(np, tag: Int(PACKAGE_TAG_BATTERY))
     }
     
-    @objc func sendBatteryStatusRequest() -> Void {
+    @objc func sendBatteryStatusRequest() {
         let np: NetworkPackage = NetworkPackage(type: .batteryRequest)
         np.setBool(true, forKey: "request")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
-    func getSFSymbolNameFromBatteryStatus() -> String {
-        if (remoteThresholdEvent == 1 || remoteChargeLevel < 10) {
+    var statusSFSymbolName: String {
+        // TODO: display additional levels from SF Symbols 3
+        if remoteThresholdEvent == 1 || remoteChargeLevel < 10 {
             return "battery.0"
-        } else if (remoteIsCharging) {
+        } else if remoteIsCharging {
             return "battery.100.bolt"
-        } else if (remoteChargeLevel >= 40) {
+        } else if remoteChargeLevel >= 40 {
             return "battery.100"
-        } else if (remoteChargeLevel < 40) {
+        } else if remoteChargeLevel < 40 {
             return "battery.25"
         } else {
             return "camera.metering.unknown"
         }
     }
     
-    func getSFSymbolColorFromBatteryStatus() -> Color {
-        if (remoteThresholdEvent == 1 || remoteChargeLevel < 10) {
+    var statusColor: Color {
+        if remoteThresholdEvent == 1 || remoteChargeLevel < 10 {
             return .red
-        } else if (remoteIsCharging) {
+        } else if remoteIsCharging {
             return .green
-        } else if (remoteChargeLevel < 40) {
+        } else if remoteChargeLevel < 40 {
             return .yellow
         } else {
             return .primary

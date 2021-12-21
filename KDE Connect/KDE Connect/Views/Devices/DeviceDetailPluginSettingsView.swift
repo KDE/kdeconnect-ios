@@ -84,9 +84,12 @@ struct DeviceDetailPluginSettingsView: View {
             updateValuesFromDevice()
         }
         .onDisappear {
-            connectedDevicesViewModel.reRenderCurrDeviceDetailsView(deviceId: detailsDeviceId)
-            connectedDevicesViewModel.reRenderDeviceView()
             saveDeviceToUserDefaults(deviceId: detailsDeviceId)
+            // TODO: find a better way to automatically update DevicesDetailView
+            // most likely by making Device an ObservableObject
+            // FIXME: remove the following workaround for triggering manual update
+            // (also need to remove @ObservedObject viewModel from BatteryStatus)
+            connectedDevicesViewModel.onDevicesListUpdated()
         }
     }
     

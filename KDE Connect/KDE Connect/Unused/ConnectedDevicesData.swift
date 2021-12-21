@@ -16,6 +16,7 @@ import Combine
 // but that's a while away until it goes public, meanwhile, is there a better way to do this???
 
 
+// TODO: remove all `-> Void`
 //func onDeviceListsRefreshed() -> Void {
 //    let devicesListsMap = backgroundService.getDevicesLists() //[String : [String : Device]]
 //    connectedDevices = devicesListsMap?["connected"] as! [String : String]

@@ -33,7 +33,7 @@
 @interface BaseLink : NSObject
 
 @property(nonatomic) NSString* _deviceId;
-@property(nonatomic) id _linkDelegate;
+@property(nonatomic, weak) id _linkDelegate;
 //@property(nonatomic) SecKeyRef _publicKey;
 
 - (BaseLink*) init:(NSString*)deviceId setDelegate:(id)linkDelegate;

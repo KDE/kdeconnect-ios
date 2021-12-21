@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 1491F15926AC8BD6008C1065 /* OpenSSL */; };
-		1499A8CF2698BE6900FDF493 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */; };
 		1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D42698BF0F00FDF493 /* LanLinkProvider.m */; };
 		1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D52698BF0F00FDF493 /* LanLink.m */; };
 		1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D82698BF0F00FDF493 /* BaseLink.m */; };
@@ -58,6 +57,8 @@
 		A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD926F02C7D00791D07 /* Presenter.swift */; };
 		A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */; };
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
+		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
+		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		A0D8CBD926F02C7D00791D07 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPacketProcessing.swift; sourceTree = "<group>"; };
 		A0FB449926BA796400733914 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1499A8CF2698BE6900FDF493 /* CocoaAsyncSocket in Frameworks */,
+				D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */,
 				1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +252,7 @@
 				A0A04440267BF38A00CC21DD /* KDE Connect Tests */,
 				A0A0444B267BF38A00CC21DD /* KDE Connect UITests */,
 				A0A0442D267BF38700CC21DD /* Products */,
+				D2FBA1F7277179A300EBA686 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,6 +327,7 @@
 				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
 				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
 				A09CFCDE2737195E007008A6 /* iOS14CompatibilityAlertView.swift */,
+				D26C5134275CBB4800074DB3 /* BatteryStatus.swift */,
 			);
 			path = "Abstracted Views";
 			sourceTree = "<group>";
@@ -439,6 +443,13 @@
 			path = RunCommand;
 			sourceTree = "<group>";
 		};
+		D2FBA1F7277179A300EBA686 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,8 +467,8 @@
 			);
 			name = "KDE Connect";
 			packageProductDependencies = (
-				1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */,
 				1491F15926AC8BD6008C1065 /* OpenSSL */,
+				D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */,
 			);
 			productName = "KDE Connect Test";
 			productReference = A0A0442C267BF38700CC21DD /* KDE Connect.app */;
@@ -532,8 +543,8 @@
 			);
 			mainGroup = A0A04423267BF38700CC21DD;
 			packageReferences = (
-				1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 				1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */,
+				D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 			);
 			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
 			projectDirPath = "";
@@ -602,6 +613,7 @@
 				A01FDD3126C701360014B165 /* Battery.swift in Sources */,
 				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
 				A0AAA99726E2D968003883A7 /* ConfigureDeviceByIPView.swift in Sources */,
+				D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
 				A01FDD2F26C6FD110014B165 /* FindMyPhone.swift in Sources */,
 				1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */,
@@ -964,12 +976,12 @@
 				minimumVersion = 1.1.1100;
 			};
 		};
-		1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
+		D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/robbiehanson/CocoaAsyncSocket";
+			repositoryURL = "https://github.com/ApolloZhu/CocoaAsyncSocket";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.6.5;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -980,9 +992,9 @@
 			package = 1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */;
 			productName = OpenSSL;
 		};
-		1499A8CE2698BE6900FDF493 /* CocoaAsyncSocket */ = {
+		D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1499A8CD2698BE6900FDF493 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
+			package = D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
 			productName = CocoaAsyncSocket;
 		};
 /* End XCSwiftPackageProductDependency section */

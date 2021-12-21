@@ -16,7 +16,7 @@ import SwiftUI
 
 // TODO: rename to RunCommandPlugin
 @objc class RunCommand : NSObject, ObservablePlugin {
-    @objc let controlDevice: Device
+    @objc weak var controlDevice: Device!
     @Published
     var commandEntries: [CommandEntry] = []
     

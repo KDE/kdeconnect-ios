@@ -110,7 +110,6 @@
                 NSLog(@"device with pair status %lu is decoded from UserDefaults as: %@ with error %@", [device _pairStatus], device, error);
                 if ([device _pairStatus] == Paired) {
                     device.deviceDelegate = self;
-                    [device set_backgroundServiceDelegate:_backgroundServiceDelegate];
                     //[device reloadPlugins];
                     [_savedDevices setObject:device forKey:deviceId];
                 } else {
@@ -197,9 +196,7 @@
             //[device reloadPlugins];
         } else if ((![device isPaired]) && [device isReachable]) {
             [_visibleDevicesList setValue:[device _name] forKey:[device _id]];
-        }// else {
-            //[_backgroundServiceDelegate removeDeviceFromArrays:[device _id]];
-        //}
+        }
     }
     NSDictionary* list=[NSDictionary dictionaryWithObjectsAndKeys:
                         _connectedDevicesList,  @"connected",
@@ -217,56 +214,34 @@
     }
 }
 
-// MARK: This should be the ONLY method used for unpairing Devices, DO NOT call the device's own unpair() method as it DOES NOT remove the device from the Arrays like this one does. For other files aready using _backgroundServiceDelegate AKA ConnectedDevicesViewModel, use unpairFromBackgroundServiceInstance() in that. That's the same thing as calling this
-- (void) unpairDevice:(NSString*)deviceId
-{
+/// @remark This should be the ONLY method used for unpairing Devices, DO NOT call the device's own unpair() method as it DOES NOT remove the device from the Arrays like this one does. For other files already using _backgroundServiceDelegate AKA ConnectedDevicesViewModel, use unpairFromBackgroundServiceInstance() in that. That's the same thing as calling this
+- (void)unpairDevice:(NSString *)deviceId {
     NSLog(@"bg unpair device");
     Device* device=[_devices valueForKey:deviceId];
     if ([device isReachable]) {
         [device unpair];
-    } else { // we'll also be calling this to unpair remembered (unReachable) devices
-        [device justChangeStatusToUnpaired];
-        [_settings removeObjectForKey:deviceId];
-        [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
+    } else {
+        // we'll also be calling this to unpair remembered (unReachable) devices
+        [device setAsUnpaired];
+        [_devices removeObjectForKey:deviceId];
     }
-    [_devices removeObjectForKey:deviceId];
-    
-    if (_backgroundServiceDelegate) {
-        [_backgroundServiceDelegate refreshDiscoveryAndListInsideView];
-    }
+    [self onDeviceUnpaired:device];
 }
 
-//- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc
-//{
-//    //NSLog(@"bg get device plugin view");
-//    Device* device=[_devices valueForKey:deviceId];
-//    if (device) {
-//        return [device getPluginViews:vc];
-//    }
-//    return nil;
-//}
-
-- (void) refreshVisibleDeviceList
-{
-    NSLog(@"bg on device refresh visible device list");
-    BOOL updated=false;
-    for (Device* device  in [_devices allValues]) {
+- (void)refreshVisibleDeviceList {
+    NSMutableArray *newVisibleDevices = [[NSMutableArray alloc] init];
+    
+    for (Device* device in [_devices allValues]) {
         if ([device isReachable]) {
-            if (![_visibleDevices containsObject:device]) {
-                updated=true;
-                [_visibleDevices addObject:device];
-            }
-        }
-        else{
-            if ([_visibleDevices containsObject:device]) {
-                updated=true;
-                [_visibleDevices removeObject:device];
-            }
+            [newVisibleDevices addObject:device];
         }
     }
-    // TODO: Is it fine to take this out????
+    BOOL updated = ![newVisibleDevices isEqualToArray:_visibleDevices];
+    NSLog(@"bg on device refresh visible device list, %@",
+          updated ? @"UPDATED" : @"NO UPDATE");
+    _visibleDevices = newVisibleDevices;
     if (_backgroundServiceDelegate && updated) {
-        [_backgroundServiceDelegate onDeviceListRefreshed]; // DONT put refreshDiscoveryAndListInsideView here!!!!! Otherwise will cause refresh loop
+        [_backgroundServiceDelegate onDevicesListUpdated];
     }
 }
 
@@ -285,7 +260,7 @@
         NSLog(@"bg destroy device");
     }
     //[self refreshDiscovery];
-    [self refreshVisibleDeviceList]; // might want to reverse this after figuring out why refreshDiscovery is causing Plugins to dissapear
+    [self refreshVisibleDeviceList]; // might want to reverse this after figuring out why refreshDiscovery is causing Plugins to disappear
 }
 
 - (void) onNetworkChange
@@ -364,6 +339,19 @@
     }
     [_settings removeObjectForKey:[device _id]];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
+}
+
+- (void)onDeviceUnpaired:(Device *)device {
+    NSString *deviceId = [device _id];
+    NSLog(@"bg on device unpair %@", deviceId);
+    [_settings removeObjectForKey:deviceId];
+    [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
+    device._SHA256HashFormatted = nil;
+    BOOL status = [_certificateService deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
+    NSLog(@"Device remove, stored cert also removed with status %d", status);
+    if (_backgroundServiceDelegate) {
+        [_backgroundServiceDelegate onDevicesListUpdated];
+    }
 }
 
 - (void) reloadAllPlugins

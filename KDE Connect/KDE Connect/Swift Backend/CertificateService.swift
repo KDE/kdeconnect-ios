@@ -191,6 +191,7 @@ import CryptoKit
             kSecAttrLabel: deviceId as Any,
             kSecClass: kSecClassCertificate,
         ] as CFDictionary
+        // NOTE: cannot remove from tempRemoteCerts
         return (SecItemDelete(keychainItemQuery) == 0)
     }
     

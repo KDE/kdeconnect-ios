@@ -14,8 +14,12 @@
 
 import Foundation
 
+extension Notification.Name {
+    static let didReceiveFindMyPhoneRequestNotification = Notification.Name("didReceiveFindMyPhoneRequestNotification")
+}
+
 @objc class FindMyPhone : NSObject, Plugin {
-    @objc let controlDevice: Device
+    @objc weak var controlDevice: Device!
     
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -23,7 +27,7 @@ import Foundation
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np.type == .findMyPhoneRequest) {
-            connectedDevicesViewModel.showFindMyPhoneAlert()
+            NotificationCenter.default.post(name: .didReceiveFindMyPhoneRequestNotification, object: nil)
             return true
         }
         return false

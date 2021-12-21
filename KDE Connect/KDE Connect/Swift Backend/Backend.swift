@@ -16,6 +16,7 @@ import Foundation
 import UIKit
 import AVFoundation
 import CoreMotion
+import SwiftUI
 // A place to house miscellaneous functions and variables for global usage by the rest of the app
 
 // Certificate Service provider, to be usef for all certificate and Keychain operations
@@ -84,6 +85,23 @@ extension Date {
     }
 }
 
+extension LocalizedStringKey.StringInterpolation {
+    mutating func appendInterpolation(percent: Int) {
+        if #available(iOS 15, *) {
+            appendInterpolation(Double(percent) / 100, format: .percent)
+        } else {
+            appendInterpolation(Double(percent) / 100 as NSNumber, formatter: NumberFormatter.percentage)
+        }
+    }
+}
+
+fileprivate extension NumberFormatter {
+    static let percentage: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        return formatter
+    }()
+}
 
 public extension DeviceType {
     var sfSymbolName: String {

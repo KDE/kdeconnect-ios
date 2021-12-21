@@ -15,7 +15,7 @@
 import Foundation
 
 @objc class Presenter : NSObject, Plugin {
-    @objc let controlDevice: Device
+    @objc weak var controlDevice: Device!
     
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice

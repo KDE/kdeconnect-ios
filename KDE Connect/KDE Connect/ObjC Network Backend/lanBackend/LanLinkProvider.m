@@ -350,7 +350,7 @@
  * The host parameter will be an IP address, not a DNS name.
  **/
 
-// We try to establish TLS with a remote device after receiving thier identity packet
+// We try to establish TLS with a remote device after receiving their identity packet
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     // Temporally disable
@@ -370,11 +370,12 @@
     nil];
     NSArray *myCerts = [[NSArray alloc] initWithObjects: (__bridge id)_identity, nil];
     NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
-         (id)[NSNumber numberWithBool:YES],        (id)kCFStreamSSLIsServer,
-         (__bridge CFArrayRef) myCipherSuite,   (id)GCDAsyncSocketSSLCipherSuites,
-         (__bridge CFArrayRef) myCerts,         (id)kCFStreamSSLCertificates,
+        (id)[NSNumber numberWithBool:YES],                  (id)kCFStreamSSLIsServer,
+        (id)[NSNumber numberWithBool:YES],                  (id)GCDAsyncSocketManuallyEvaluateTrust,
+        (id)[NSNumber numberWithInt:kAlwaysAuthenticate],   (id)GCDAsyncSocketSSLClientSideAuthenticate,
+        (id)myCipherSuite,                                  (id)GCDAsyncSocketSSLCipherSuites,
+        (id)myCerts,                                        (id)kCFStreamSSLCertificates,
     nil];
-    // (id)kCFBooleanTrue,                    (id)GCDAsyncSocketManuallyEvaluateTrust,
 
     NSLog(@"Start Server TLS");
     [sock startTLS:tlsSettings];
@@ -435,7 +436,6 @@
                                          (__bridge CFArrayRef) myCerts, (id)kCFStreamSSLCertificates,
                                          (__bridge CFArrayRef) myCipherSuite, (id)GCDAsyncSocketSSLCipherSuites,
                                          (id)[NSNumber numberWithInt:0],       (id)kCFStreamSSLIsServer,
-                                         //(id)[NSNumber numberWithInt:kAlwaysAuthenticate], (id)GCDAsyncSocketSSLClientSideAuthenticate,
                                          (id)[NSNumber numberWithInt:1], (id)GCDAsyncSocketManuallyEvaluateTrust,
                                          nil];
             
@@ -501,7 +501,7 @@
  *
  * asyncSocket = nil; // I'm implicitly disconnecting the socket
  *
- * In this case it may preferrable to nil the delegate beforehand, like this:
+ * In this case it may preferable to nil the delegate beforehand, like this:
  *
  * asyncSocket.delegate = nil; // Don't invoke my delegate method
  * asyncSocket = nil; // I'm implicitly disconnecting the socket
@@ -546,7 +546,7 @@
     NSUInteger pendingSocketIndex = [_pendingSockets indexOfObject:sock];
     [_pendingSockets removeObject:sock];
     
-    /* TODO: remove the old link, or if exisitng LanLink exists, DON'T create a new one */
+    /* TODO: remove the old link, or if existing LanLink exists, DON'T create a new one */
 //    LanLink* oldlink;
 //    if ([[_connectedLinks allKeys] containsObject:deviceId]) {
 //        oldlink=[_connectedLinks objectForKey:deviceId];

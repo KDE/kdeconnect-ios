@@ -30,7 +30,7 @@
 #import "Device.h"
 //#import "BackgroundService.h"
 #import "KDE_Connect-Swift.h"
-#define PAIR_TIMMER_TIMEOUT  10.0
+static const NSTimeInterval kPairingTimeout = 30.0;
 
 @implementation Device {
     NSMutableDictionary<NetworkPackageType, id<Plugin>> *_plugins;
@@ -51,7 +51,6 @@
 @synthesize _failedPlugins;
 @synthesize _incomingCapabilities;
 @synthesize _outgoingCapabilities;
-@synthesize _backgroundServiceDelegate;
 //@synthesize _testDevice;
 
 - (void)setPluginsEnableStatus:(NSDictionary<NetworkPackageType, NSNumber *> *)pluginsEnableStatus
@@ -183,8 +182,7 @@
     }
 }
 
-- (void) onPackageReceived:(NetworkPackage*)np
-{
+- (void)onPackageReceived:(NetworkPackage *)np {
     NSLog(@"device on package received");
     if ([np.type isEqualToString:NetworkPackageTypePair]) {
         NSLog(@"Pair package received");
@@ -200,8 +198,7 @@
                 if (deviceDelegate) {
                     [deviceDelegate onDevicePairRejected:self];
                 }
-            }
-            else if(wantsPair){
+            } else if (wantsPair) {
                 [self acceptPairing];
             }
             return;
@@ -220,32 +217,33 @@
                     [deviceDelegate onDevicePairRequest:self];
                 }
             }
-        }
-        else{
+        } else {
             //NSLog(@"unpair request");
-            PairStatus prevPairStatus=_pairStatus;
-            _pairStatus=NotPaired;
-            if (prevPairStatus==Requested) {
+            if (_pairStatus==Requested) {
                 //NSLog(@"canceled by other peer");
+                _pairStatus=NotPaired;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
                 });
-            }else if (prevPairStatus==Paired){
+            } else if (_pairStatus==Paired) {
+                // okay to call unpair directly because other is reachable
                 [self unpair];
-                //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
+                if (deviceDelegate) {
+                    [deviceDelegate onDeviceUnpaired:self];
+                }
             }
         }
-    }else if ([self isPaired]){
-        //TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling functon elsewhere in Swift
-        NSLog(@"recieved a plugin package :%@", np.type);
+    } else if ([self isPaired]) {
+        // TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling function elsewhere in Swift
+        NSLog(@"received a plugin package: %@", np.type);
         for (id<Plugin> plugin in [_plugins allValues]) {
             [plugin onDevicePackageReceivedWithNp:np];
         }
         //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
-    }else{
+    } else {
         NSLog(@"not paired, ignore packages, unpair the device");
+        // remembered devices should have became paired, okay to call unpair.
         [self unpair];
-        //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
     }
 }
 
@@ -306,15 +304,14 @@
         NSLog(@"device request pairing");
         _pairStatus=Requested;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self performSelector:@selector(requestPairingTimeout:) withObject:nil afterDelay:PAIR_TIMMER_TIMEOUT];
+            [self performSelector:@selector(requestPairingTimeout:) withObject:nil afterDelay:kPairingTimeout];
         });
     }
     NetworkPackage* np=[NetworkPackage createPairPackage];
     [self sendPackage:np tag:PACKAGE_TAG_PAIR];
 }
 
-- (void) requestPairingTimeout:(id)sender
-{
+- (void)requestPairingTimeout:(id)sender {
     NSLog(@"device request pairing timeout");
     if (_pairStatus==Requested) {
         _pairStatus=NotPaired;
@@ -322,23 +319,22 @@
         if (deviceDelegate) {
             [deviceDelegate onDevicePairTimeout:self];
         }
+        // okay to call unpair directly because only invocation of this method
+        // is scheduled when we initiate a pairing (and cancelled otherwise)
+        // thus can't be a remembered or paired device.
         [self unpair];
-        //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
     }
 }
 
-// If we JUST want to change the status of the Device to unpaired WITHOUT sending out an unpair packet
-- (void) justChangeStatusToUnpaired {
+/// Change the status of the Device to unpaired WITHOUT sending out an unpair packet.
+- (void)setAsUnpaired {
     _pairStatus=NotPaired;
 }
 
-- (void) unpair
-{
+- (void)unpair {
     NSLog(@"device unpair");
     _pairStatus=NotPaired;
-    [_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[self _id]];
-    [_backgroundServiceDelegate removeDeviceFromArraysWithDeviceId:[self _id]];
-    // How do we use same protocol from
+
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypePair];
     [np setBool:false forKey:@"pair"];
     [self sendPackage:np tag:PACKAGE_TAG_UNPAIR];
@@ -349,13 +345,6 @@
     NSLog(@"device accepted pair request");
     NetworkPackage* np=[NetworkPackage createPairPackage];
     [self sendPackage:np tag:PACKAGE_TAG_PAIR];
-}
-
-- (void) rejectPairing
-{
-    NSLog(@"device rejected pair request ");
-    [self unpair];
-    //[_backgroundServiceDelegate unpairFromBackgroundServiceInstance:[self _id]];
 }
 
 #pragma mark Plugins-related Functions
@@ -517,7 +506,6 @@
         
         // To be set later in backgroundServices
         deviceDelegate = nil;
-        _backgroundServiceDelegate = nil;
         
         // To be populated later
         _plugins = [NSMutableDictionary dictionary];

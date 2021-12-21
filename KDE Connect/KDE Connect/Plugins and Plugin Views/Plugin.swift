@@ -18,6 +18,4 @@ import Foundation
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool
 }
 
-protocol ObservablePlugin: Plugin, ObservableObject {
-    
-}
+typealias ObservablePlugin = Plugin & ObservableObject

@@ -21,29 +21,27 @@ struct DevicesDetailView: View {
     @State var showingEncryptionInfo: Bool = false
     @State private var showingUnpairConfirmationAlert: Bool = false
     @State private var showingFilePicker: Bool = false
-    @State var isStilConnected: Bool = true
     @State private var showingPluginSettingsView: Bool = false
     
     @State var chosenFileURLs: [URL] = []
+    @ObservedObject var viewModel = connectedDevicesViewModel
     
-    // TODO: Maybe use a state to directly change the Battery % instead of doing this hacky thing?
-    @State var viewUpdate: Bool = false
+    var isStillConnected: Bool {
+        viewModel.connectedDevices.keys.contains(detailsDeviceId)
+    }
     
     var body: some View {
-        if (isStilConnected) {
+        if isStillConnected {
             VStack {
                 if #available(iOS 15.0, *) {
                     deviceActionsList
                         .alert("Encryption Info", isPresented: $showingEncryptionInfo) {} message: {
-                            Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrive fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
+                            Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrieve fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
                         }
                         .alert("Unpair With Device?", isPresented: $showingUnpairConfirmationAlert) {
                             Button("No, Stay Paired", role: .cancel) {}
                             Button("Yes, Unpair", role: .destructive) {
                                 backgroundService.unpairDevice(detailsDeviceId)
-                                isStilConnected = false
-                                //                        backgroundService.refreshDiscovery()
-                                //                        connectedDevicesViewModel.onDeviceListRefreshed()
                             }
                         } message: {
                             Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?")
@@ -69,9 +67,6 @@ struct DevicesDetailView: View {
                                 message: Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?"),
                                 primaryButton: .destructive(Text("Yes, Unpair"), action: {
                                     backgroundService.unpairDevice(detailsDeviceId)
-                                    isStilConnected = false
-                                    //                        backgroundService.refreshDiscovery()
-                                    //                        connectedDevicesViewModel.onDeviceListRefreshed()
                                 }),
                                 secondaryButton: .cancel(Text("No, Stay Paired"), action: {})
                             )
@@ -81,13 +76,6 @@ struct DevicesDetailView: View {
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
                     EmptyView()
                 }
-                
-                // This is an invisible view using changes in viewUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
-                Text(viewUpdate ? "True" : "False")
-                    .frame(width: 0, height: 0)
-                    .opacity(0)
-                    .accessibilityHidden(true)
-                
             }
             .navigationTitle(backgroundService._devices[detailsDeviceId]!._name)
             .navigationBarItems(trailing:
@@ -141,7 +129,6 @@ struct DevicesDetailView: View {
                 }
             }
             .onAppear() {
-                connectedDevicesViewModel.currDeviceDetailsView = self
                 // TODO: use if let as
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool) {
                     (backgroundService._devices[detailsDeviceId]!._plugins[.runCommand] as! RunCommand).requestCommandList()
@@ -156,11 +143,6 @@ struct DevicesDetailView: View {
                 Text("Device Offline")
                 Spacer()
             }
-            // Calling this here will refresh after getting to the DeviceView, a bit of delay b4 the
-            // list actually refreshes but still works
-//            .onDisappear() {
-//                connectedDevicesViewModel.devicesView!.refreshDiscoveryAndList()
-//            }
         }
     }
     
@@ -208,35 +190,22 @@ struct DevicesDetailView: View {
             }
             
             Section(header: Text("Device Status")) {
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.batteryRequest] == nil) || ((backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel == 0)) {
-                    Text("No battery detected in device")
-                } else if (!(backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.batteryRequest] as! Bool)) {
-                    Text("Battery Plugin Disabled")
-                } else {
+                BatteryStatus(device: backgroundService._devices[detailsDeviceId]!) { battery in
                     HStack {
                         Label {
                             Text("Battery Level")
                         } icon: {
-                            Image(systemName: (backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).getSFSymbolNameFromBatteryStatus())
-                                .accentColor((backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).getSFSymbolColorFromBatteryStatus())
+                            Image(systemName: battery.statusSFSymbolName)
+                                .accentColor(battery.statusColor)
                         }
                         Spacer()
-                        Text("\((backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel)%")
+                        Text("\(percent: battery.remoteChargeLevel)")
                     }
                 }
             }
-            
-            //                    Section(header: Text("Debug section")) {
-            //                        Text("Chosen file URLs:")
-            //                        ForEach(chosenFileURLs, id: \.self) { url in
-            //                            Text(url.absoluteString)
-            //                        }
-            //                    }
-            
         }
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
     }
-    
 }
 
 //struct DevicesDetailView_Previews: PreviewProvider {

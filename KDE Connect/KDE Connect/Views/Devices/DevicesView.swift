@@ -13,6 +13,7 @@
 //
 
 import SwiftUI
+import Combine
 import AVFoundation
 
 struct DevicesView: View {
@@ -37,11 +38,10 @@ struct DevicesView: View {
     @State private var showingFileReceivedAlert: Bool = false
     
     @State private var showingConfigureDevicesByIPView: Bool = false
-    
-    @State var viewUpdate: Bool = false
-    
+        
     @ObservedObject var viewModel: ConnectedDevicesViewModel = connectedDevicesViewModel
-    
+    @State private var findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
+
     //@ObservedObject var localNotificationService = LocalNotificationService()
     
     var body: some View {
@@ -181,11 +181,6 @@ struct DevicesView: View {
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
             }
-            // This is an invisible view using changes in viewUpdate to force SwiftUI to re-render the entire screen. We want this because the battery information is NOT a @State variables, as such in order for updates to actually register, we need to force the view to re-render
-            Text(viewUpdate ? "True" : "False")
-                .frame(width: 0, height: 0)
-                .opacity(0)
-                .accessibilityHidden(true)
         }
         .navigationTitle("Devices")
         .navigationBarItems(trailing:
@@ -207,11 +202,6 @@ struct DevicesView: View {
             }
         )
         .onAppear {
-            // TODO: Don't hold the view in the viewModel!!!
-            if (viewModel.devicesView == nil) {
-                viewModel.devicesView = self
-            }
-            viewModel.onDeviceListRefreshed()
             broadcastBatteryStatusAllDevices()
         }
     }
@@ -225,6 +215,35 @@ struct DevicesView: View {
             rememberedDevicesSection
         }
         .environment(\.defaultMinListRowHeight, 60) // TODO: make this dynamic with GeometryReader???
+        .onReceive(NotificationCenter.default.publisher(for: .didReceivePairRequestNotification, object: nil)
+                    .receive(on: RunLoop.main)) { notification in
+            onPairRequest(fromDeviceWithID: notification.userInfo?["deviceID"] as? String)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .pairRequestTimedOutNotification, object: nil)
+                    .receive(on: RunLoop.main)) { notification in
+            onPairTimeout(toDeviceWithID: notification.userInfo?["deviceID"] as? String)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .pairRequestSucceedNotification, object: nil)
+                    .receive(on: RunLoop.main)) { notification in
+            onPairSuccess(withDeviceWithID: notification.userInfo?["deviceID"] as? String)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .pairRequestRejectedNotification, object: nil)
+                    .receive(on: RunLoop.main)) { notification in
+            onPairRejected(byDeviceWithID: notification.userInfo?["deviceID"] as? String)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .didReceivePingNotification, object: nil)
+                    .receive(on: RunLoop.main)) { _ in
+            showPingAlert()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .didReceiveFindMyPhoneRequestNotification, object: nil)
+                    .receive(on: RunLoop.main)) { _ in
+            showFindMyPhoneAlert()
+        }
+        .onChange(of: showingFindMyPhoneAlert, perform: updateFindMyPhoneTimer)
+        .onReceive(findMyPhoneTimer) { _ in
+            hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 1.0)
+            AudioServicesPlaySystemSound(soundCalendarAlert)
+        }
     }
     
     var connectedDevicesSection: some View {
@@ -254,18 +273,12 @@ struct DevicesView: View {
                                             .font(.title3)
                                     }
                                 }
-                                if ((backgroundService._devices[key]!._pluginsEnableStatus[.batteryRequest] == nil) || ((backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel == 0)) {
-                                    Text("No battery detected in device")
-                                        .font(.footnote)
-                                } else if (!(backgroundService._devices[key]!._pluginsEnableStatus[.batteryRequest] as! Bool)) {
-                                    Text("Battery Plugin Disabled")
-                                        .font(.footnote)
-                                } else {
+                                BatteryStatus(device: backgroundService._devices[key]!) { battery in
                                     HStack {
-                                        Image(systemName: (backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).getSFSymbolNameFromBatteryStatus())
+                                        Image(systemName: battery.statusSFSymbolName)
                                             .font(.footnote)
-                                            .foregroundColor((backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).getSFSymbolColorFromBatteryStatus())
-                                        Text("\((backgroundService._devices[key]!._plugins[.batteryRequest] as! Battery).remoteChargeLevel)%")
+                                            .foregroundColor(battery.statusColor)
+                                        Text("\(percent: battery.remoteChargeLevel)")
                                             .font(.footnote)
                                     }
                                 }
@@ -392,23 +405,23 @@ struct DevicesView: View {
             } else {
                 print("Missing device for \(currPairingDeviceId)")
             }
-        } else {
-            print("Missing currPairingDeviceId")
         }
+        // alerts evaluates eagerly, making currPairingDeviceId nil normally
         return nil
     }
     
     func deleteDevice(at offsets: IndexSet) {
-        for offset in offsets {
-            // TODO: Update Device.m to indicate nullability
-            let name = backgroundService._devices[savedDevicesIds[offset]]!._name!
-            print("Remembered device \(name) removed at index \(offset)")
-            backgroundService.unpairDevice(savedDevicesIds[offset])
-        }
-//        savedDevicesIds.remove(atOffsets: offsets)
+        offsets
+            .map { (offset: $0, id: savedDevicesIds[$0]) }
+            .forEach { device in
+                // TODO: Update Device.m to indicate nullability
+                let name = backgroundService._devices[device.id]!._name!
+                print("Remembered device \(name) removed at index \(device.offset)")
+                backgroundService.unpairDevice(device.id)
+            }
     }
     
-    func onPairRequestInsideView(_ deviceId: String!) -> Void {
+    func onPairRequest(fromDeviceWithID deviceId: String!) {
         currPairingDeviceId = deviceId
 //        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
         if (noCurrentlyActiveAlert()) {
@@ -419,7 +432,7 @@ struct DevicesView: View {
         }
     }
     
-    func onPairTimeoutInsideView(_ deviceId: String!) -> Void {
+    func onPairTimeout(toDeviceWithID deviceId: String!) {
         //currPairingDeviceId = nil
         if(noCurrentlyActiveAlert()) {
             showingOnPairTimeoutAlert = true
@@ -429,17 +442,16 @@ struct DevicesView: View {
         }
     }
     
-    func onPairSuccessInsideView(_ deviceId: String!) -> Void {
+    func onPairSuccess(withDeviceWithID deviceId: String!) {
         if (noCurrentlyActiveAlert()) {
             showingOnPairSuccessAlert = true
         } else {
             AudioServicesPlaySystemSound(soundAudioToneBusy)
             print("Unable to display onPairSuccess Alert, another alert already active, but device list is still refreshed")
         }
-        viewModel.onDeviceListRefreshed()
     }
     
-    func onPairRejectedInsideView(_ deviceId: String!) -> Void {
+    func onPairRejected(byDeviceWithID deviceId: String!) {
         if (noCurrentlyActiveAlert()) {
             showingOnPairRejectedAlert = true
         } else {
@@ -448,7 +460,7 @@ struct DevicesView: View {
         }
     }
     
-    func showPingAlertInsideView() -> Void {
+    func showPingAlert() {
         if (noCurrentlyActiveAlert()) {
             hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 0.8)
             AudioServicesPlaySystemSound(soundSMSReceived)
@@ -459,33 +471,28 @@ struct DevicesView: View {
         }
     }
     
-    func showFindMyPhoneAlertInsideView() -> Void {
+    func showFindMyPhoneAlert() {
         if (noCurrentlyActiveAlert()) {
             showingFindMyPhoneAlert = true
-            while (showingFindMyPhoneAlert) {
-                hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 1.0)
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-//                    AudioServicesPlaySystemSound(soundCalendarAlert)
-//                }
-                AudioServicesPlaySystemSound(soundCalendarAlert)
-                Thread.sleep(forTimeInterval: 4)
-            }
         } else {
             AudioServicesPlaySystemSound(soundAudioToneBusy)
             print("Unable to display showFindMyPhoneAlert Alert, another alert already active, alert haptics and tone not played")
         }
     }
     
-    func showFileReceivedAlertInsideView() -> Void {
-//        if (noCurrentlyActiveAlert()) {
-//            showingFileReceivedAlert = true
-//        } else {
-//            AudioServicesPlaySystemSound(soundAudioToneBusy)
-//            print("Unable to display File Received Alert, another alert already active")
-//        }
-        AudioServicesPlaySystemSound(soundMailReceived)
+    private func updateFindMyPhoneTimer(isRunning: Bool) {
+        if isRunning {
+            findMyPhoneTimer = Deferred {
+                Just(Date())
+            }
+            .append(Timer.publish(every: 4, on: .main, in: .common).autoconnect())
+            .eraseToAnyPublisher()
+        } else {
+            findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
+        }
     }
-    
+
+    // TODO: maybe queue the alerts
     private func noCurrentlyActiveAlert() -> Bool {
         return (!showingOnPairRequestAlert &&
                 !showingOnPairTimeoutAlert &&
@@ -496,14 +503,6 @@ struct DevicesView: View {
                 !showingFindMyPhoneAlert) //&& !showingFileReceivedAlert
     }
     
-//    func onDeviceListRefreshedInsideView(vm : ConnectedDevicesViewModel) -> Void {
-//        withAnimation {
-//            connectedDevicesIds = Array(vm.connectedDevices.keys)//.sort
-//            visibleDevicesIds = Array(vm.visibleDevices.keys)//.sort
-//            savedDevicesIds = Array(vm.savedDevices.keys)//.sort
-//        }
-//    }
-    
     func refreshDiscoveryAndList() {
         withAnimation {
             backgroundService.refreshDiscovery()
@@ -513,8 +512,8 @@ struct DevicesView: View {
     }
 }
 
-//struct DevicesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DevicesView()
-//    }
-//}
+struct DevicesView_Previews: PreviewProvider {
+    static var previews: some View {
+        DevicesView()
+    }
+}

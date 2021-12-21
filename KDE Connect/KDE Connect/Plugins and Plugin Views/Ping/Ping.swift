@@ -14,8 +14,12 @@
 
 import Foundation
 
+extension Notification.Name {
+    static let didReceivePingNotification = Notification.Name("didReceivePingNotification")
+}
+
 @objc class Ping : NSObject, Plugin {
-    @objc let controlDevice: Device
+    @objc weak var controlDevice: Device!
     
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -23,7 +27,7 @@ import Foundation
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np.type == .ping) {
-            connectedDevicesViewModel.showPingAlert()
+            NotificationCenter.default.post(name: .didReceivePingNotification, object: nil)
             return true
         }
         return false

@@ -14,10 +14,11 @@
 
 import UIKit
 
-@objc class Clipboard : NSObject, Plugin {
-    @objc let controlDevice: Device
+@objc class Clipboard: NSObject, Plugin {
+    static var lastLocalClipboardUpdateTimestamp: Int = 0
+    @objc weak var controlDevice: Device!
     
-    @objc init (controlDevice: Device) {
+    @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
     }
     
@@ -26,16 +27,16 @@ import UIKit
             if (np.object(forKey: "content") != nil) {
                 if (np.type == .clipboard) {
                     UIPasteboard.general.string = np.object(forKey: "content") as? String
-                    connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
+                    Self.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
                     print("Local clipboard synced with remote packet, timestamp updated")
                 } else if (np.type == .clipboardConnect) {
                     let packetTimeStamp: Int = np.integer(forKey: "timestamp")
-                    if (packetTimeStamp == 0 || packetTimeStamp < connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp) {
+                    if (packetTimeStamp == 0 || packetTimeStamp < Self.lastLocalClipboardUpdateTimestamp) {
                         print("Invalid timestamp from \(np.type), doing nothing")
-                        return false;
+                        return false
                     } else {
                         UIPasteboard.general.string = np.object(forKey: "content") as? String
-                        connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
+                        Self.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
                         print("Local clipboard synced with remote packet, timestamp updated")
                     }
                 }
@@ -47,18 +48,19 @@ import UIKit
         return false
     }
     
-    @objc func connectClipboardContent() -> Void {
+    // FIXME: unused function
+    func connectClipboardContent() {
         if let clipboardContent = UIPasteboard.general.string {
             let np = NetworkPackage(type: .clipboardConnect)
             np.setObject(clipboardContent, forKey: "content")
-            np.setInteger(connectedDevicesViewModel.lastLocalClipboardUpdateTimestamp, forKey: "timestamp")
+            np.setInteger(Self.lastLocalClipboardUpdateTimestamp, forKey: "timestamp")
             controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
         } else {
             print("Attempt to connect local clipboard content with remote device returned nil")
         }
     }
     
-    @objc func sendClipboardContentOut() -> Void {
+    func sendClipboardContentOut() {
         if let clipboardContent = UIPasteboard.general.string {
             let np = NetworkPackage(type: .clipboard)
             np.setObject(clipboardContent, forKey: "content")
