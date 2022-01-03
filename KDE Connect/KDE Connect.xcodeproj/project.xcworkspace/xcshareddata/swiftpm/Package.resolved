@@ -18,6 +18,15 @@
           "revision": "45545c5729b5597d2d4910a5edd07b1bf42e5839",
           "version": "1.1.1200"
         }
+      },
+      {
+        "package": "SwiftUI-MediaPicker",
+        "repositoryURL": "https://github.com/UWAppDev/SwiftUI-MediaPicker.git",
+        "state": {
+          "branch": null,
+          "revision": "43cf23f8eb4930aa27a7cec12bfadb6f49d33a39",
+          "version": "0.0.1"
+        }
       }
     ]
   },

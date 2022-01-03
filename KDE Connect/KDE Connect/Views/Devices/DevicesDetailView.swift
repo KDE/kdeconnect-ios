@@ -15,11 +15,13 @@
 import SwiftUI
 import UniformTypeIdentifiers
 import UIKit
+import MediaPicker
 
 struct DevicesDetailView: View {
     let detailsDeviceId: String
     @State var showingEncryptionInfo: Bool = false
     @State private var showingUnpairConfirmationAlert: Bool = false
+    @State private var showingPhotosPicker: Bool = false
     @State private var showingFilePicker: Bool = false
     @State private var showingPluginSettingsView: Bool = false
     
@@ -118,6 +120,13 @@ struct DevicesDetailView: View {
                     Image(systemName: "ellipsis.circle")
                 }
             )
+            .mediaImporter(isPresented: $showingPhotosPicker, allowedMediaTypes: .all, allowsMultipleSelection: true) { result in
+                if case .success(let chosenMediaURLs) = result, !chosenMediaURLs.isEmpty {
+                    (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenMediaURLs)
+                } else {
+                    print("Media Picker Result: \(result)")
+                }
+            }
             .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
                 do {
                     chosenFileURLs = try result.get()
@@ -160,9 +169,16 @@ struct DevicesDetailView: View {
                 
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.share] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.share] as! Bool) {
                     Button {
+                        showingPhotosPicker = true
+                    } label: {
+                        Label("Send Photos and Videos", systemImage: "photo.on.rectangle")
+                    }
+                    .accentColor(.primary)
+                    
+                    Button {
                         showingFilePicker = true
                     } label: {
-                        Label("Send files", systemImage: "folder")
+                        Label("Send Files", systemImage: "folder")
                     }
                     .accentColor(.primary)
                 }

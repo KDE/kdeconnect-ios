@@ -58,6 +58,7 @@
 		A0F4BDF7269A71EA000A1D49 /* JSONPacketProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4BDF6269A71EA000A1D49 /* JSONPacketProcessing.swift */; };
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
+		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
 		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 			files = (
 				D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */,
 				1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */,
+				D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +470,7 @@
 			name = "KDE Connect";
 			packageProductDependencies = (
 				1491F15926AC8BD6008C1065 /* OpenSSL */,
+				D2D0A89B27688B5500CA9B13 /* MediaPicker */,
 				D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */,
 			);
 			productName = "KDE Connect Test";
@@ -544,6 +547,7 @@
 			mainGroup = A0A04423267BF38700CC21DD;
 			packageReferences = (
 				1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */,
+				D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */,
 				D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 			);
 			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
@@ -984,6 +988,14 @@
 				kind = branch;
 			};
 		};
+		D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/UWAppDev/SwiftUI-MediaPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -996,6 +1008,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
 			productName = CocoaAsyncSocket;
+		};
+		D2D0A89B27688B5500CA9B13 /* MediaPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */;
+			productName = MediaPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
