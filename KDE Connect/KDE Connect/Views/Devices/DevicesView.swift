@@ -46,9 +46,8 @@ struct DevicesView: View {
     
     var body: some View {
         VStack {
-        if #available(iOS 15.0, *) {
             devicesList
-                .refreshable() {
+                .refreshable {
                     refreshDiscoveryAndList()
                 }
                 .alert("Incoming Pairing Request", isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
@@ -57,14 +56,18 @@ struct DevicesView: View {
                         backgroundService.pairDevice(currPairingDeviceId)
                     }
                 } message: {
-                    wantsToPairMessage
+                    currentPairingDeviceName.map {
+                        Text("\($0) wants to pair with this device")
+                    }
                 }
                 .alert("Pairing Complete", isPresented: $showingOnPairSuccessAlert) {
                     Button("Nice", role: .cancel) {
                         currPairingDeviceId = nil
                     }
                 } message: {
-                    paringCompleteMessage
+                    currentPairingDeviceName.map {
+                        Text("Pairing with \($0) succeeded")
+                    }
                 }
                 .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
                     Button("Cancel", role: .cancel) {}
@@ -72,21 +75,27 @@ struct DevicesView: View {
                         backgroundService.pairDevice(currPairingDeviceId)
                     }
                 } message: {
-                    initiatePairingMessage
+                    currentPairingDeviceName.map {
+                        Text("Request to pair with \($0)?")
+                    }
                 }
                 .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
                     Button("OK", role: .cancel) {
                         currPairingDeviceId = nil
                     }
                 } message: {
-                    pairingTimeoutMessage
+                    currentPairingDeviceName.map {
+                        Text("Pairing with \($0) failed")
+                    }
                 }
                 .alert("Pairing Rejected", isPresented: $showingOnPairRejectedAlert) {
                     Button("OK", role: .cancel) {
                         currPairingDeviceId = nil
                     }
                 } message: {
-                    pairingRejectedMessage
+                    currentPairingDeviceName.map {
+                        Text("Pairing with \($0) failed")
+                    }
                 }
                 .alert("Ping!", isPresented: $showingPingAlert) {} message: {
                     Text("Ping received from a connected device.")
@@ -96,87 +105,6 @@ struct DevicesView: View {
                 } message: {
                     Text("Find My Phone initiated from a remote device")
                 }
-        } else {
-            // Fallback on earlier versions, use Alert component
-            devicesList
-            
-            iOS14CompatibilityAlert(
-                description: Text("iOS14 Incoming pairing Alert \(currPairingDeviceId ?? "")"),
-                isPresented: $showingOnPairRequestAlert) {
-                    Alert(
-                        title: Text("Incoming Pairing Request"),
-                        message: wantsToPairMessage,
-                        primaryButton: .default(Text("Pair"), action: {
-                            backgroundService.pairDevice(currPairingDeviceId)
-                        }),
-                        secondaryButton: .cancel(Text("Cancel"), action: {})
-                    )
-                }
-            
-            iOS14CompatibilityAlert(
-                description: Text("iOS14 Pair complete Alert \(currPairingDeviceId ?? "")"),
-                isPresented: $showingOnPairSuccessAlert) {
-                    Alert(
-                        title: Text("Pairing Complete"),
-                        message: paringCompleteMessage,
-                        dismissButton: .cancel(Text("Nice"), action: { currPairingDeviceId = nil })
-                    )
-                }
-            
-            iOS14CompatibilityAlert(
-                description: Text("iOS14 Initiate pairing Alert for \(currPairingDeviceId ?? "")"),
-                isPresented: $showingOnSelfPairOutgoingRequestAlert) {
-                    Alert(
-                        title: Text("Initiate Pairing?"),
-                        message: initiatePairingMessage,
-                        primaryButton: .default(Text("Pair"), action: {
-                            backgroundService.pairDevice(currPairingDeviceId)
-                        }),
-                        secondaryButton: .cancel(Text("Cancel"), action: {})
-                    )
-                }
-            
-            iOS14CompatibilityAlert(
-                description: Text("iOS14 Pair timeout Alert \(currPairingDeviceId ?? "")"),
-                isPresented: $showingOnPairTimeoutAlert) {
-                    Alert(
-                        title: Text("Pairing Timed Out"),
-                        message: pairingTimeoutMessage,
-                        dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
-                    )
-                }
-            
-            iOS14CompatibilityAlert(
-                description: Text("iOS14 Pair rejection Alert \(currPairingDeviceId ?? "")"),
-                isPresented: $showingOnPairRejectedAlert) {
-                    Alert(
-                        title: Text("Pairing Rejected"),
-                        message: pairingRejectedMessage,
-                        dismissButton: .cancel(Text("OK"), action: { currPairingDeviceId = nil })
-                    )
-                }
-            
-            iOS14CompatibilityAlert(
-                description: Text("iOS14 Ping Alert"),
-                isPresented: $showingPingAlert) {
-                    Alert(
-                        title: Text("Ping!"),
-                        message: Text("Ping received from a connected device.")
-                    )
-                }
-            
-            iOS14CompatibilityAlert(
-                description: Text("iOS14 Find my phone Alert"),
-                isPresented: $showingFindMyPhoneAlert) {
-                    Alert(
-                        title: Text("Find My Phone Mode"),
-                        message: Text("Find My Phone initiated from a remote device"),
-                        dismissButton: .cancel(Text("I FOUND IT!"), action: { })
-                    )
-                }
-            
-            // TODO: refreshable(pull to refresh) for early version
-        }
             
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
@@ -363,38 +291,6 @@ struct DevicesView: View {
                 }
                 .onDelete(perform: deleteDevice)
             }
-        }
-    }
-    
-    // MARK: - Alert Messages
-    
-    var wantsToPairMessage: Text? {
-        currentPairingDeviceName.map {
-            Text("\($0) wants to pair with this device")
-        }
-    }
-    
-    var paringCompleteMessage: Text? {
-        currentPairingDeviceName.map {
-            Text("Pairing with \($0) succeeded")
-        }
-    }
-    
-    var initiatePairingMessage: Text? {
-        currentPairingDeviceName.map {
-            Text("Request to pair with \($0)?")
-        }
-    }
-    
-    var pairingTimeoutMessage: Text? {
-        currentPairingDeviceName.map {
-            Text("Pairing with \($0) failed")
-        }
-    }
-    
-    var pairingRejectedMessage: Text? {
-        currentPairingDeviceName.map {
-            Text("Pairing with \($0) failed")
         }
     }
     
