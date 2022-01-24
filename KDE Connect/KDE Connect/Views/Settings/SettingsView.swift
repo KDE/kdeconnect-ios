@@ -39,49 +39,11 @@ struct SettingsView: View {
                         .accentColor(.primary)
                 }
             }
-            
-            Section(header: Text("External Links")) {
-                Label {
-                    Link("Wiki & User's Manual", destination: URL(string: "https://userbase.kde.org/KDEConnect")!)
-                } icon: {
-                    Image(systemName: "books.vertical")
+
+            Section(header: Text("Information")) {
+                NavigationLink(destination: SettingsAboutView()) {
+                    Label("About", systemImage: "info.circle")
                         .accentColor(.primary)
-                }
-                
-                Label {
-                    Link("Report Bug", destination: URL(string: "https://bugs.kde.org/enter_bug.cgi?product=kdeconnect&component=ios-application")!)
-                } icon: {
-                    Image(systemName: "ladybug")
-                        .accentColor(.primary)
-                }
-                
-                Label {
-                    Link("Donate", destination: URL(string: "https://kde.org/community/donations/")!)
-                } icon: {
-                    Image(systemName: "dollarsign.square")
-                        .accentColor(.primary)
-                }
-                
-                Label {
-                    Link("Source Code", destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios")!)
-                } icon: {
-                    if #available(iOS 15, *) {
-                        Image(systemName: "chevron.left.forwardslash.chevron.right")
-                            .accentColor(.primary)
-                    } else {
-                        Image(systemName: "chevron.left.slash.chevron.right")
-                    }
-                }
-                
-                Label {
-                    Link("Licenses", destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios/-/blob/master/License.md")!)
-                } icon: {
-                    if #available(iOS 15, *) {
-                        Image(systemName: "magazine")
-                            .accentColor(.primary)
-                    } else {
-                        Image(systemName: "text.book.closed")
-                    }
                 }
             }
         }

@@ -16,6 +16,11 @@
 		1499A8E72698BFF300FDF493 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E32698BFF300FDF493 /* Device.m */; };
 		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
 		14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */; };
+		5EA4114427960C1C0044C559 /* libs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114227960C1C0044C559 /* libs.json */; };
+		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
+		5EA41148279611EB0044C559 /* contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA41147279611EB0044C559 /* contributors.json */; };
+		5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */; };
+		5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */; };
 		A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */; };
 		A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* Plugin.swift */; };
 		A01FDD2926C4F8420014B165 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2826C4F8420014B165 /* Ping.swift */; };
@@ -25,7 +30,6 @@
 		A09CFCDF2737195E007008A6 /* View+iOS14Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */; };
 		A0A04430267BF38700CC21DD /* KDE_Connect_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0442F267BF38700CC21DD /* KDE_Connect_App.swift */; };
 		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
-		A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04433267BF38A00CC21DD /* Assets.xcassets */; };
 		A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */; };
 		A0A04442267BF38A00CC21DD /* KDE_Connect_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04441267BF38A00CC21DD /* KDE_Connect_Tests.swift */; };
 		A0A0444D267BF38A00CC21DD /* KDE_Connect_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0444C267BF38A00CC21DD /* KDE_Connect_UITests.swift */; };
@@ -97,6 +101,11 @@
 		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateServiceHelper.m; sourceTree = "<group>"; };
+		5EA4114227960C1C0044C559 /* libs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = libs.json; sourceTree = "<group>"; };
+		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5EA41147279611EB0044C559 /* contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contributors.json; sourceTree = "<group>"; };
+		5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibleTextView.swift; sourceTree = "<group>"; };
+		5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
 		A01FDD2226C3A5560014B165 /* deviceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = deviceDelegate.h; sourceTree = "<group>"; };
 		A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		A01FDD2626C4F6D50014B165 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
@@ -109,7 +118,6 @@
 		A0A0442C267BF38700CC21DD /* KDE Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_App.swift; sourceTree = "<group>"; };
 		A0A04431267BF38700CC21DD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		A0A04433267BF38A00CC21DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0A04438267BF38A00CC21DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A0443D267BF38A00CC21DD /* KDE ConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KDE ConnectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +224,15 @@
 			path = "ObjC Backend";
 			sourceTree = "<group>";
 		};
+		5EA4114027960BA50044C559 /* Texts */ = {
+			isa = PBXGroup;
+			children = (
+				5EA41147279611EB0044C559 /* contributors.json */,
+				5EA4114227960C1C0044C559 /* libs.json */,
+			);
+			path = Texts;
+			sourceTree = "<group>";
+		};
 		A01FDD2526C4F65B0014B165 /* Plugins and Plugin Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,9 +294,10 @@
 				A0D8CBC626EF06FA00791D07 /* Swift Backend */,
 				A01FDD2526C4F65B0014B165 /* Plugins and Plugin Views */,
 				A0D8CBCA26EF080E00791D07 /* Views */,
+				5EA4114027960BA50044C559 /* Texts */,
 				A072FC3F270AB7220093EB7B /* Unused */,
-				A0A04433267BF38A00CC21DD /* Assets.xcassets */,
 				A0A04438267BF38A00CC21DD /* Info.plist */,
+				5EA4114527960D0B0044C559 /* Assets.xcassets */,
 				A0A04435267BF38A00CC21DD /* Preview Content */,
 			);
 			path = "KDE Connect";
@@ -330,6 +348,7 @@
 				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
 				A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */,
 				D26C5134275CBB4800074DB3 /* BatteryStatus.swift */,
+				5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */,
 			);
 			path = "Abstracted Views";
 			sourceTree = "<group>";
@@ -422,6 +441,7 @@
 				A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */,
 				A0B8727A267BFBAA00F0EB72 /* SettingsListCellView.swift */,
 				A0D8CBD426EF1A4700791D07 /* SettingsAdvancedView.swift */,
+				5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -567,7 +587,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */,
-				A0A04434267BF38A00CC21DD /* Assets.xcassets in Resources */,
+				5EA4114427960C1C0044C559 /* libs.json in Resources */,
+				5EA41148279611EB0044C559 /* contributors.json in Resources */,
+				5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +638,7 @@
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
 				A01FDD3126C701360014B165 /* Battery.swift in Sources */,
 				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
+				5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */,
 				A0AAA99726E2D968003883A7 /* ConfigureDeviceByIPView.swift in Sources */,
 				D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
@@ -626,6 +649,7 @@
 				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
 				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
 				A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */,
+				5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */,
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
 				14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */,
 				A0D76FD026E73412009D9B03 /* TwoFingerTapView.swift in Sources */,
@@ -980,20 +1004,20 @@
 				minimumVersion = 1.1.1100;
 			};
 		};
-		D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ApolloZhu/CocoaAsyncSocket";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/UWAppDev/SwiftUI-MediaPicker.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.1;
+			};
+		};
+		D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ApolloZhu/CocoaAsyncSocket";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1004,15 +1028,15 @@
 			package = 1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */;
 			productName = OpenSSL;
 		};
-		D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
-			productName = CocoaAsyncSocket;
-		};
 		D2D0A89B27688B5500CA9B13 /* MediaPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */;
 			productName = MediaPicker;
+		};
+		D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
+			productName = CocoaAsyncSocket;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,0 +1,23 @@
+[
+	{
+		"id": "CocoaAsyncSocket",
+		"name": "robbiehanson→ApolloZhu/CocoaAsyncSocket",
+		"repo": "https://github.com/ApolloZhu/CocoaAsyncSocket",
+		"license": "Public Domain / BSD",
+		"licenseURL": "https://github.com/ApolloZhu/CocoaAsyncSocket/blob/master/LICENSE.txt"
+	},
+	{
+		"id": "OpenSSL",
+		"name": "krzyzanowskim/OpenSSL",
+		"repo": "https://github.com/krzyzanowskim/OpenSSL",
+		"license": "OpenSSL",
+		"licenseURL": "https://github.com/krzyzanowskim/OpenSSL/blob/master/LICENSE.txt"
+	},
+	{
+		"id": "SwiftUI-MediaPicker",
+		"name": "UWAppDev/SwiftUI-MediaPicker",
+		"repo": "https://github.com/UWAppDev/SwiftUI-MediaPicker",
+		"license": "MIT",
+		"licenseURL": "https://github.com/UWAppDev/SwiftUI-MediaPicker/blob/main/LICENSE"
+	}
+]

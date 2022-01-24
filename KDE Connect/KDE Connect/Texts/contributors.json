@@ -1,0 +1,30 @@
+{
+	"maintainers": [
+		{
+			"name": "Apollo Zhu",
+			"kde": "apollozhu"
+		},
+		{
+			"name": "Lucas Wang",
+			"kde": "lucaswzx"
+		}
+	],
+	"authors": [
+		{
+			"name": "Dan Stoian",
+			"kde": "danthedante"
+		},
+		{
+			"name": "Nicolás Alvarez",
+			"kde": "nalvarez"
+		},
+		{
+			"name": "Ruixuan Tu",
+			"kde": "ruixuantu"
+		},
+		{
+			"name": "Wenxuan Xiao",
+			"kde": "wxiao"
+		}
+	]
+}
