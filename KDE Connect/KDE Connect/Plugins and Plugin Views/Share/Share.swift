@@ -14,6 +14,7 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 extension Notification.Name {
     static let didReceiveFileNotification = Notification.Name("didReceiveFileNotification")
@@ -58,6 +59,17 @@ extension Notification.Name {
                 } else {
                     print("File \(filename) failed to save")
                     notificationHapticsGenerator.notificationOccurred(.error)
+                }
+            } else if let sharedText = np._Body["text"] as? String {
+                // Text sharing: copy to clipboard
+                UIPasteboard.general.string = sharedText
+            } else if let sharedURLText = np._Body["url"] as? String {
+                // TODO: avoid to handle URL open in the share extension
+                // URL sharing: open it through URL scheme
+                if let sharedURL = URL(string: sharedURLText) {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.open(sharedURL)
+                    }
                 }
             } else {
                 print("Nil received when trying to parse filename")
