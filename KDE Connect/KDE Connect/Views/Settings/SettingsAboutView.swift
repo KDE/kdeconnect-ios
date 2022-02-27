@@ -123,8 +123,7 @@ struct SettingsAboutView: View {
                 }
             }
         }
-        // .inline to keep title from taking space from content
-        .navigationBarTitle("About", displayMode: .inline)
+        .navigationTitle("About")
     }
 
     let kdeInvent = "https://invent.kde.org/"

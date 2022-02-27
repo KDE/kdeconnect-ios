@@ -139,7 +139,7 @@
     NSData* data=[np serialize];
     [_socket writeData:data withTimeout:-1 tag:tag];
     //TODO: return true only when send successfully
-    NSLog(@"%@", [NSString stringWithUTF8String:[data bytes]]);
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     return true;
 }

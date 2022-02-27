@@ -135,7 +135,7 @@ struct RemoteInputView: View {
                 .transition(.opacity)
             }
         }
-        .navigationBarTitle("Remote Input", displayMode: .inline)
+        .navigationTitle("Remote Input")
         .navigationBarItems(trailing:
             Menu {
                 Button(action: sendSingleTap) {

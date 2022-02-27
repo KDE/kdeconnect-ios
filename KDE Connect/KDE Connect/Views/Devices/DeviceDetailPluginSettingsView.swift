@@ -55,7 +55,7 @@ struct DeviceDetailPluginSettingsView: View {
                 }
             }
         }
-        .navigationBarTitle("Plugin Settings", displayMode: .inline)
+        .navigationTitle("Plugin Settings")
         .onChange(of: isPingEnabled) { value in
             backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] = value as NSNumber
         }

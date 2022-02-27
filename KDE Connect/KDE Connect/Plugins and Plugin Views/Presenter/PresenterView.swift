@@ -57,7 +57,7 @@ struct PresenterView: View {
                 }
             }
         }
-        .navigationBarTitle("Slideshow Remote", displayMode: .inline)
+        .navigationTitle("Slideshow Remote")
         .navigationBarItems(trailing:
             Menu {
                 Button(action: sendGoFullscreenAction) {

@@ -25,7 +25,7 @@ struct SettingsAdvancedView: View {
                                 .font(.caption)
                         }
                     }
-                    .accentColor(.red)
+                    .foregroundColor(.red)
                 }
                 
                 Button {
@@ -41,11 +41,11 @@ struct SettingsAdvancedView: View {
                                 .font(.caption)
                         }
                     }
-                    .accentColor(.red)
+                    .foregroundColor(.red)
                 }
             }
         }
-        .navigationBarTitle("Advanced Settings", displayMode: .inline)
+        .navigationTitle("Advanced Settings")
     }
 }
 
