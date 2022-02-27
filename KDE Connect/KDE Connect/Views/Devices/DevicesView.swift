@@ -38,6 +38,7 @@ struct DevicesView: View {
     @State private var showingFileReceivedAlert: Bool = false
     
     @State private var showingConfigureDevicesByIPView: Bool = false
+    @State private var isDeviceDiscoveryHelpPresented = false
         
     @ObservedObject var viewModel: ConnectedDevicesViewModel = connectedDevicesViewModel
     @State private var findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
@@ -49,6 +50,9 @@ struct DevicesView: View {
             devicesList
                 .refreshable {
                     refreshDiscoveryAndList()
+                }
+                .sheet(isPresented: $isDeviceDiscoveryHelpPresented) {
+                    deviceDiscoveryHelp
                 }
                 .alert("Incoming Pairing Request", isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
                     Button("Do Not Pair", role: .cancel) {}
@@ -175,9 +179,9 @@ struct DevicesView: View {
     }
     
     var connectedDevicesSection: some View {
-        Section(header: Text("Connected Devices")) {
-            if (connectedDevicesIds.isEmpty) {
-                Text("No devices are currently connected.\nConnected devices will appear here. Please Refresh Discovery if a saved device is already online but not shown here.")
+        Section {
+            if connectedDevicesIds.isEmpty {
+                Text("No currently connected devices.")
                     .padding(.vertical, 8)
             } else {
                 ForEach(connectedDevicesIds, id: \.self) { key in
@@ -218,13 +222,19 @@ struct DevicesView: View {
                     }
                 }
             }
+        } header: {
+            Text("Connected Devices")
+        } footer: {
+            if !savedDevicesIds.isEmpty {
+                Text("If a remembered device is already online but not shown here, try Refresh Discovery.")
+            }
         }
     }
     
     var discoverableDevicesSection: some View {
-        Section(header: Text("Discovered Devices"), footer: Text("If the network is shared/public it likely has broadcasting disabled, please manually add the devices in the \"Configure Devices By IP\" menu from the 3-dots drop-down button.")) {
-            if (visibleDevicesIds.isEmpty) {
-                Text("No devices are discovered on this network.\nMake sure to Refresh Discovery and check that the other devices are also running KDE Connect & are connected to the same network as this device.")
+        Section {
+            if visibleDevicesIds.isEmpty {
+                Text("No additional devices are discovered on this network.")
                     .padding(.vertical, 8)
             } else {
                 ForEach(visibleDevicesIds, id: \.self) { key in
@@ -255,13 +265,26 @@ struct DevicesView: View {
                     }
                 }
             }
+        } header: {
+            Text("Discovered Devices")
+        } footer: {
+            Button {
+                isDeviceDiscoveryHelpPresented = true
+            } label: {
+                if #available(iOS 15, *) {
+                    Text("Can't find your devices here?")
+                } else {
+                    Text("Can't find your devices here?")
+                        .foregroundColor(.accentColor)
+                }
+            }
         }
     }
     
     var rememberedDevicesSection: some View {
-        Section(header: Text("Remembered Devices"), footer: Text("To connect to Remembered Devices, make sure they are connected to the same network as this device.")) {
-            if (savedDevicesIds.isEmpty) {
-                Text("No remembered devices.\nDevices that were previously connected will appear here.")
+        Section {
+            if savedDevicesIds.isEmpty {
+                Text("Previously connected devices will appear here.")
                     .padding(.vertical, 8)
             } else {
                 ForEach(savedDevicesIds, id: \.self) { key in
@@ -290,6 +313,39 @@ struct DevicesView: View {
                     .disabled(true)
                 }
                 .onDelete(perform: deleteDevice)
+            }
+        } header: {
+            Text("Remembered Devices")
+        } footer: {
+            if !savedDevicesIds.isEmpty {
+                Text("To connect to remembered devices, make sure they are connected to the same network as this device.")
+            }
+        }
+    }
+    
+    var deviceDiscoveryHelp: some View {
+        NavigationView {
+            ScrollView {
+                Text("""
+                If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:
+                
+                1. "Refresh Discovery" through the \(Image(systemName: "ellipsis.circle")) menu or pull to refresh the Devices list.
+                
+                2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.
+                
+                3. Manually add the other devices through the "Configure Devices By IP" in the \(Image(systemName: "ellipsis.circle")) menu.
+                """)
+                .padding()
+            }
+            .navigationTitle("Device Discovery")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        isDeviceDiscoveryHelpPresented = false
+                    } label: {
+                        Text("Done")
+                    }
+                }
             }
         }
     }
