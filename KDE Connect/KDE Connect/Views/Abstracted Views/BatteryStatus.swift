@@ -16,7 +16,7 @@ import SwiftUI
 
 struct BatteryStatus<ValidBatteryStatusContent: View>: View {
     let device: Device
-    @ObservedObject var battery: Battery
+    let battery: Battery?
     // FIXME: remove the following workaround for triggering manual update
     // when DeviceDetailPluginSettingsView.onDisappear workaround is removed
     @ObservedObject var viewModel = connectedDevicesViewModel
@@ -25,24 +25,42 @@ struct BatteryStatus<ValidBatteryStatusContent: View>: View {
     init(device: Device,
          @ViewBuilder validBatteryContent: @escaping (Battery) -> ValidBatteryStatusContent) {
         self.device = device
-        self.battery = device._plugins[.batteryRequest] as! Battery
+        self.battery = device._plugins[.batteryRequest] as? Battery
         self.validBatteryContent = validBatteryContent
     }
     
-    var batteryPluginStatus: Bool? {
-        device._pluginsEnableStatus[.batteryRequest] as? Bool
+    var body: some View {
+        if let battery = battery {
+            BatteryObserving(
+                battery: battery,
+                isEnabled: device._pluginsEnableStatus[.batteryRequest] as? Bool,
+                validBatteryContent: validBatteryContent
+            )
+        } else {
+            Self.makeNoBatteryView()
+        }
     }
     
-    var body: some View {
-        if batteryPluginStatus == nil || battery.remoteChargeLevel == 0 {
-            Text("No battery detected in device")
-                .font(.footnote)
-        } else if batteryPluginStatus == false {
-            Text("Battery Plugin Disabled")
-                .font(.footnote)
-        } else {
-            validBatteryContent(battery)
+    private struct BatteryObserving: View {
+        @ObservedObject var battery: Battery
+        let isEnabled: Bool?
+        let validBatteryContent: (Battery) -> ValidBatteryStatusContent
+        
+        var body: some View {
+            if isEnabled == nil || battery.remoteChargeLevel == 0 {
+                makeNoBatteryView()
+            } else if isEnabled == false {
+                Text("Battery Plugin Disabled")
+                    .font(.footnote)
+            } else {
+                validBatteryContent(battery)
+            }
         }
+    }
+    
+    private static func makeNoBatteryView() -> some View {
+        Text("No battery detected in device")
+            .font(.footnote)
     }
 }
 
