@@ -20,7 +20,7 @@ build_project:
     # clean any previous build data
     - xcodebuild clean -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
     # build the project and run the tests
-    - xcodebuild test -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect' -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.0'
+    - xcodebuild test -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect' -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'
   tags:
     - macOS
 
