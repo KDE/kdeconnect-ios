@@ -63,6 +63,18 @@ struct SettingsView: View {
                     Label("About", systemImage: "info.circle")
                         .accentColor(.primary)
                 }
+                NavigationLink(destination: FeaturesList()) {
+                    Label {
+                        Text("Features")
+                    } icon: {
+                        if #available(iOS 15, *) {
+                            Image(systemName: "checklist")
+                        } else {
+                            Image(systemName: "scroll")
+                        }
+                    }
+                    .accentColor(.primary)
+                }
             }
         }
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
