@@ -30,6 +30,7 @@
 #import "Device.h"
 #import "KDE_Connect-Swift.h"
 #import "KeychainItemWrapper.h"
+@import UIKit;
 
 #define LFDATA [NSData dataWithBytes:"\x0A" length:1]
 

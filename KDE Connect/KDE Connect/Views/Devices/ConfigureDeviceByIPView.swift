@@ -13,7 +13,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct ConfigureDeviceByIPView: View {
     @ObservedObject var selfDeviceDataForIPConfig: SelfDeviceData = selfDeviceData

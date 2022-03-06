@@ -14,7 +14,6 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
-import UIKit
 import MediaPicker
 
 struct DevicesDetailView: View {

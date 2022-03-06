@@ -33,7 +33,6 @@
 #import "Device.h"
 #import "NetworkPackage.h"
 //#import "PluginFactory.h"
-#import "common.h"
 //#import "deviceDelegate.h"
 //#import "KDE_Connect-Swift.h"
 //@class PluginFactory;

@@ -5,6 +5,7 @@
 //  Created by Ruixuan Tu on 2022-01-16.
 //
 
+import UIKit
 import SwiftUI
 
 struct SettingsAboutView: View {

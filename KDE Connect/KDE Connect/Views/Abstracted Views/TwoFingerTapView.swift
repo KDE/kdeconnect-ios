@@ -12,6 +12,7 @@
 //  Created by Lucas Wang on 2021-09-06.
 //
 
+import UIKit
 import SwiftUI
 
 struct TwoFingerTapView: UIViewRepresentable
