@@ -57,6 +57,7 @@
 		A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD726F02C6700791D07 /* PresenterView.swift */; };
 		A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD926F02C7D00791D07 /* Presenter.swift */; };
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
+		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
 		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
 		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
@@ -146,6 +147,7 @@
 		A0D8CBD726F02C6700791D07 /* PresenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterView.swift; sourceTree = "<group>"; };
 		A0D8CBD926F02C7D00791D07 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		A0FB449926BA796400733914 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -418,6 +420,7 @@
 				A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */,
 				A0D8CBD426EF1A4700791D07 /* SettingsAdvancedView.swift */,
 				5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */,
+				D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
 				A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */,
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
+				D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0D76FCC26E6B034009D9B03 /* RemoteInputView.swift in Sources */,
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
@@ -789,6 +793,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KDE Connect/KDE Connect.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -818,6 +823,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KDE Connect/KDE Connect.entitlements";
 				CODE_SIGN_STYLE = Automatic;

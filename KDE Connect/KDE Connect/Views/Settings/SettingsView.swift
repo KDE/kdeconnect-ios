@@ -13,7 +13,7 @@ struct SettingsView: View {
     var body: some View {
         List {
             // These could go in sections to give them each descriptions and space
-            Section(header: Text("Host Device Settings")) {
+            Section(header: Text("General")) {
                 NavigationLink(destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName)) {
                     HStack {
                         Label("Device Name", systemImage: "iphone")
@@ -34,14 +34,32 @@ struct SettingsView: View {
                     }
                 }
                 
+                if UIApplication.shared.supportsAlternateIcons {
+                    NavigationLink {
+                        AppIconPicker()
+                            .environmentObject(selfDeviceDataForSettings)
+                    } label: {
+                        HStack {
+                            Label("App Icon", systemImage: "app")
+                                .accentColor(.primary)
+                            Spacer()
+                            selfDeviceDataForSettings.appIcon.name
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
+                
                 NavigationLink(destination: SettingsAdvancedView()) {
                     Label("Advanced Settings", systemImage: "wrench.and.screwdriver")
                         .accentColor(.primary)
                 }
             }
-
+            
             Section(header: Text("Information")) {
-                NavigationLink(destination: SettingsAboutView()) {
+                NavigationLink {
+                    SettingsAboutView()
+                        .environmentObject(selfDeviceDataForSettings)
+                } label: {
                     Label("About", systemImage: "info.circle")
                         .accentColor(.primary)
                 }

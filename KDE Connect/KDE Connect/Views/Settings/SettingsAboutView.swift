@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SettingsAboutView: View {
     @Environment(\.openURL) var openURL
+    @EnvironmentObject var settings: SelfDeviceData
 
     let version: String = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let build: String = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
@@ -36,11 +37,9 @@ struct SettingsAboutView: View {
                 VStack {
                     HStack {
                         Spacer(minLength: 0.0)
-                        Image("About.AppIcon")
-                            .resizable()
-                            .frame(width: 64.0, height: 64.0)
+                        settings.appIcon.image_60x60
                             .accessibilityHidden(true)
-                        Spacer(minLength: 0.0)
+                        Spacer(minLength: 8.0)
                         VStack {
                             if #available(iOS 15, *) {
                                 Text("**KDE Connect** for iOS")
@@ -211,5 +210,6 @@ struct SettingsAboutView: View {
 struct SettingsAboutView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsAboutView()
+            .environmentObject(selfDeviceData)
     }
 }

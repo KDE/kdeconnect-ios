@@ -31,6 +31,12 @@ class SelfDeviceData: ObservableObject {
         }
     }
     
+    @Published var appIcon: AppIcon {
+        didSet {
+            UserDefaults.standard.set(appIcon.rawValue, forKey: "appIcon")
+        }
+    }
+    
     @Published var directIPs: [String] {
         didSet {
             UserDefaults.standard.set(directIPs, forKey: "directIPs")
@@ -41,6 +47,7 @@ class SelfDeviceData: ObservableObject {
         self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? UIDevice.current.name
         self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme") ?? "System Default"
         self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
+        self.appIcon = AppIcon(rawValue: UserDefaults.standard.string(forKey: "appIcon")) ?? .default
     }
 }
 
