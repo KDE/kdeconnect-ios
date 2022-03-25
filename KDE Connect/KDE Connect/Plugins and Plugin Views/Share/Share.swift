@@ -76,7 +76,7 @@ extension Notification.Name {
                 notificationHapticsGenerator.notificationOccurred(.error)
             }
             if numFilesReceived == totalNumOfFilesToReceive {
-                AudioServicesPlaySystemSound(soundMailReceived)
+                SystemSound.mailReceived.play()
                 NotificationCenter.default
                     .post(name: .didReceiveFileNotification, object: nil,
                           userInfo: nil)
@@ -126,7 +126,7 @@ extension Notification.Name {
             sendSinglePayload()
         } else {
             print("Share plugin busy for this device, ignoring sharing attempt")
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            SystemSound.audioToneBusy.play()
         }
     }
     
@@ -145,11 +145,11 @@ extension Notification.Name {
             fileNames.removeFirst()
             fileLastModifiedEpochs.removeFirst()
             numFilesSuccessfullySent += 1
-            //AudioServicesPlaySystemSound(soundMailSent)
+            //SystemSound.mailSent.play()
             notificationHapticsGenerator.notificationOccurred(.success)
         } else {
             print("Finished sending a batch of \(totalNumOfFiles) files")
-            AudioServicesPlaySystemSound(soundMailSent)
+            SystemSound.mailSent.play()
             isVacant = true
             resetTransferData()
         }

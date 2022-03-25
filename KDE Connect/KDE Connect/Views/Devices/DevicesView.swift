@@ -49,7 +49,7 @@ struct DevicesView: View {
         VStack {
             devicesList
                 .refreshable {
-                    refreshDiscoveryAndList()
+                    await refreshDiscoveryAndList()
                 }
                 .sheet(isPresented: $isDeviceDiscoveryHelpPresented) {
                     deviceDiscoveryHelp
@@ -174,7 +174,7 @@ struct DevicesView: View {
         .onChange(of: showingFindMyPhoneAlert, perform: updateFindMyPhoneTimer)
         .onReceive(findMyPhoneTimer) { _ in
             hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 1.0)
-            AudioServicesPlaySystemSound(soundCalendarAlert)
+            SystemSound.calendarAlert.play()
         }
     }
     
@@ -379,7 +379,7 @@ struct DevicesView: View {
         if (noCurrentlyActiveAlert()) {
             showingOnPairRequestAlert = true
         } else {
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            SystemSound.audioToneBusy.play()
             print("Unable to display onPairRequest Alert, another alert already active")
         }
     }
@@ -389,7 +389,7 @@ struct DevicesView: View {
         if(noCurrentlyActiveAlert()) {
             showingOnPairTimeoutAlert = true
         } else {
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            SystemSound.audioToneBusy.play()
             print("Unable to display onPairTimeout Alert, another alert already active")
         }
     }
@@ -398,7 +398,7 @@ struct DevicesView: View {
         if (noCurrentlyActiveAlert()) {
             showingOnPairSuccessAlert = true
         } else {
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            SystemSound.audioToneBusy.play()
             print("Unable to display onPairSuccess Alert, another alert already active, but device list is still refreshed")
         }
     }
@@ -407,7 +407,7 @@ struct DevicesView: View {
         if (noCurrentlyActiveAlert()) {
             showingOnPairRejectedAlert = true
         } else {
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            SystemSound.audioToneBusy.play()
             print("Unable to display onPairRejected Alert, another alert already active")
         }
     }
@@ -415,10 +415,10 @@ struct DevicesView: View {
     func showPingAlert() {
         if (noCurrentlyActiveAlert()) {
             hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 0.8)
-            AudioServicesPlaySystemSound(soundSMSReceived)
+            SystemSound.smsReceived.play()
             showingPingAlert = true
         } else {
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            SystemSound.audioToneBusy.play()
             print("Unable to display showingPingAlert Alert, another alert already active, but haptics and sounds are still played")
         }
     }
@@ -427,7 +427,7 @@ struct DevicesView: View {
         if (noCurrentlyActiveAlert()) {
             showingFindMyPhoneAlert = true
         } else {
-            AudioServicesPlaySystemSound(soundAudioToneBusy)
+            SystemSound.audioToneBusy.play()
             print("Unable to display showFindMyPhoneAlert Alert, another alert already active, alert haptics and tone not played")
         }
     }

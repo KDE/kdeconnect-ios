@@ -16,12 +16,12 @@
 		1499A8E72698BFF300FDF493 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E32698BFF300FDF493 /* Device.m */; };
 		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
 		14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */; };
+		53A92E6D27ED4F4F0085A10C /* SystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A92E6C27ED4F4F0085A10C /* SystemSound.swift */; };
 		5EA4114427960C1C0044C559 /* libs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114227960C1C0044C559 /* libs.json */; };
 		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
 		5EA41148279611EB0044C559 /* contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA41147279611EB0044C559 /* contributors.json */; };
 		5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */; };
 		5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */; };
-		A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */; };
 		A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* Plugin.swift */; };
 		A01FDD2926C4F8420014B165 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2826C4F8420014B165 /* Ping.swift */; };
 		A01FDD2D26C62E180014B165 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2C26C62E170014B165 /* Share.swift */; };
@@ -98,13 +98,12 @@
 		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateServiceHelper.m; sourceTree = "<group>"; };
+		53A92E6C27ED4F4F0085A10C /* SystemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSound.swift; sourceTree = "<group>"; };
 		5EA4114227960C1C0044C559 /* libs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = libs.json; sourceTree = "<group>"; };
 		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EA41147279611EB0044C559 /* contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contributors.json; sourceTree = "<group>"; };
 		5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibleTextView.swift; sourceTree = "<group>"; };
 		5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
-		A01FDD2226C3A5560014B165 /* deviceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = deviceDelegate.h; sourceTree = "<group>"; };
-		A01FDD2326C4BC080014B165 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		A01FDD2626C4F6D50014B165 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		A01FDD2826C4F8420014B165 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		A01FDD2C26C62E170014B165 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
@@ -317,6 +316,7 @@
 				A0C00FC426F5807C007EFCCA /* CertificateService.swift */,
 				A0FB449926BA796400733914 /* Backend.swift */,
 				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
+				53A92E6C27ED4F4F0085A10C /* SystemSound.swift */,
 			);
 			path = "Swift Backend";
 			sourceTree = "<group>";
@@ -640,6 +640,7 @@
 				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,
 				A0C00FC526F5807C007EFCCA /* CertificateService.swift in Sources */,
 				1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */,
+				53A92E6D27ED4F4F0085A10C /* SystemSound.swift in Sources */,
 				A0BECF6626C0EDD10037E299 /* BackgroundService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -44,7 +44,7 @@ extension Notification.Name {
     
     @objc func onPairSuccess(_ deviceId: String!) {
         guard let cert = certificateService.tempRemoteCerts[deviceId] else {
-            AudioServicesPlaySystemSound(soundAudioError)
+            SystemSound.audioError.play()
             print("Pairing succeeded without certificate for remote device \(deviceId!)")
             return
         }
