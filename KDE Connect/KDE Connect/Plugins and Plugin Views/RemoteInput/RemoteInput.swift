@@ -27,44 +27,44 @@
         return false
     }
     
-    @objc func sendMouseDelta(dx: Float, dy: Float) -> Void {
+    @objc func sendMouseDelta(dx: Float, dy: Float) {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setFloat(dx, forKey: "dx")
         np.setFloat(dy, forKey: "dy")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendSingleClick() -> Void {
+    @objc func sendSingleClick() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "singleclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendDoubleClick() -> Void {
+    @objc func sendDoubleClick() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "doubleclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendMiddleClick() -> Void {
+    @objc func sendMiddleClick() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "middleclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendRightClick() -> Void {
+    @objc func sendRightClick() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "rightclick")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendSingleHold() -> Void {
+    @objc func sendSingleHold() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "singlehold")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendScroll(Dx: Float, Dy: Float) -> Void {
+    @objc func sendScroll(Dx: Float, Dy: Float) {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "scroll")
         np.setFloat(Dx, forKey: "dx")

@@ -34,7 +34,7 @@ import CryptoKit
         return SHA256HashDividedAndFormatted(hashDescription: getHostCertificateSHA256HexDescriptionString())
     }
     
-    @objc func reFetchHostIdentity() -> Void {
+    @objc func reFetchHostIdentity() {
         hostIdentity = getHostIdentityFromKeychain()
     }
     

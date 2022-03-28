@@ -40,19 +40,19 @@ import SwiftUI
         return false
     }
     
-    @objc func runCommand(cmdKey: String) -> Void {
+    @objc func runCommand(cmdKey: String) {
         let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
         np.setObject(cmdKey, forKey: "key")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
-    @objc func requestCommandList() -> Void {
+    @objc func requestCommandList() {
         let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
         np.setBool(true, forKey: "requestCommandList")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
-    @objc func sendSetupPackage() -> Void {
+    @objc func sendSetupPackage() {
         let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
         np.setBool(true, forKey: "setup")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))

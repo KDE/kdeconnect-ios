@@ -29,38 +29,38 @@ import Foundation
         return false
     }
     
-    @objc func sendNext() -> Void {
+    @objc func sendNext() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_PAGE_DOWN.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendPrevious() -> Void {
+    @objc func sendPrevious() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_PAGE_UP.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendFullscreen() -> Void {
+    @objc func sendFullscreen() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_F5.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendEsc() -> Void {
+    @objc func sendEsc() {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setInteger(KeyEvent.KEYCODE_ESCAPE.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendPointerPosition(dx: Float, dy: Float) -> Void {
+    @objc func sendPointerPosition(dx: Float, dy: Float) {
         let np: NetworkPackage = NetworkPackage(type: .presenter)
         np.setFloat(dx, forKey: "dx")
         np.setFloat(dy, forKey: "dy")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
-    @objc func sendStopPointer() -> Void {
+    @objc func sendStopPointer() {
         let np: NetworkPackage = NetworkPackage(type: .presenter)
         np.setBool(true, forKey: "stop")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))

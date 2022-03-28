@@ -208,7 +208,7 @@ struct PresenterView: View {
         }
     }
     
-    func startGyroAndPointer() -> Void {
+    func startGyroAndPointer() {
             //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
             motionManager.startGyroUpdates(to: .main) { (data, error) in
                 guard let data = data else { return }

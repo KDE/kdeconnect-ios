@@ -33,7 +33,7 @@ extension Notification.Name {
         return false
     }
     
-    @objc func sendFindMyPhoneRequest() -> Void {
+    @objc func sendFindMyPhoneRequest() {
         let np: NetworkPackage = NetworkPackage(type: .findMyPhoneRequest)
         controlDevice.send(np, tag: 0)
     }

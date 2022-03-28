@@ -33,7 +33,7 @@ extension Notification.Name {
         return false
     }
     
-    @objc func sendPing() -> Void {
+    @objc func sendPing() {
         let np: NetworkPackage = NetworkPackage(type: .ping)
         controlDevice.send(np, tag: Int(PACKAGE_TAG_PING))
     }

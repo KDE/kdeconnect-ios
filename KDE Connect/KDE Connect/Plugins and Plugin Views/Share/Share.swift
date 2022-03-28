@@ -89,7 +89,7 @@ extension Notification.Name {
         return false
     }
     
-    @objc private func resetTransferData() -> Void {
+    @objc private func resetTransferData() {
         fileDatas = []
         fileNames = []
         fileLastModifiedEpochs = []
@@ -98,7 +98,7 @@ extension Notification.Name {
         numFilesSuccessfullySent = 0
     }
     
-    @objc func prepAndInitFileSend(fileURLs: [URL]) -> Void {
+    @objc func prepAndInitFileSend(fileURLs: [URL]) {
         if (isVacant) {
             isVacant = false
             for url in fileURLs {
@@ -130,7 +130,7 @@ extension Notification.Name {
         }
     }
     
-    @objc func sendSinglePayload() -> Void {
+    @objc func sendSinglePayload() {
         if ((fileDatas.count == fileNames.count) && (fileDatas.count == fileLastModifiedEpochs.count) && totalPayloadSize > 0 && fileDatas.count > 0 && (numFilesSuccessfullySent < totalNumOfFiles)) {
             let np = NetworkPackage(type: .share)
             np.setObject(fileNames.first!, forKey: "filename")
