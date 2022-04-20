@@ -46,7 +46,7 @@ struct PresenterView: View {
                     Image(systemName: "plus")
                 } onEditingChanged: { editing in
                     if (!editing) {
-                        hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred()
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                     }
                 }
@@ -209,7 +209,7 @@ struct PresenterView: View {
     }
     
     func startGyroAndPointer() {
-            //hapticGenerators[Int(HapticStyle.heavy.rawValue)].impactOccurred()
+            //UIImpactFeedbackGenerator(style: .heavy).impactOcurred()
             motionManager.startGyroUpdates(to: .main) { (data, error) in
                 guard let data = data else { return }
                 var dxToSend: Float = 0.0 //
@@ -254,12 +254,12 @@ struct PresenterView: View {
     }
     
     func sendGoPreviousSlideAction() {
-        hapticGenerators[Int(HapticStyle.soft.rawValue)].impactOccurred()
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendPrevious()
     }
     
     func sendGoNextSlideAction() {
-        hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred()
+        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendNext()
     }
 }

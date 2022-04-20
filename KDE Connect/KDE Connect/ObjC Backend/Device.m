@@ -64,7 +64,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 // data only and are therefore NOT stored persistently
 // Remote Input
 @synthesize _cursorSensitivity;
-@synthesize _hapticStyle;
 // Presenter
 @synthesize _pointerSensitivity;
 

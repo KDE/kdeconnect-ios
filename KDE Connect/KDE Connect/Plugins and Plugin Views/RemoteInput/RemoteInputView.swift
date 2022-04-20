@@ -24,7 +24,7 @@ struct RemoteInputView: View {
     @State private var previousScrollHorizontalDragOffset: Float = 0.0
     
     @State private var cursorSensitivityFromSlider: Float = 3.0 // defaults to the middle
-    @State private var hapticSettingsSegmentPickerIndex: Int = 0
+    @State private var hapticSettings: UIImpactFeedbackGenerator.FeedbackStyle = .light
     @State private var showingSensitivitySlider: Bool = false
     @State private var showingHapticSegmentPicker: Bool = false
     
@@ -103,7 +103,7 @@ struct RemoteInputView: View {
                     Image(systemName: "plus")
                 } onEditingChanged: { editing in
                     if (!editing) {
-                        hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred()
+                        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred()
                         saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                     }
                 }
@@ -116,17 +116,16 @@ struct RemoteInputView: View {
             
             if (showingHapticSegmentPicker) {
                 VStack {
-                    Picker(selection: $hapticSettingsSegmentPickerIndex, label: Text("Haptics Style")) {
-                        Text("Light").tag(0)
-                        Text("Medium").tag(1)
-                        Text("Heavy").tag(2)
-                        Text("Soft").tag(3)
-                        Text("Rigid").tag(4)
+                    Picker(selection: $hapticSettings, label: Text("Haptics Style")) {
+                        ForEach(UIImpactFeedbackGenerator.FeedbackStyle.allCases, id: \.self) { style in
+                            style.text
+                                .tag(style)
+                        }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    .onChange(of: hapticSettingsSegmentPickerIndex, perform: { value in
-                        hapticGenerators[value].impactOccurred()
-                        backgroundService._devices[detailsDeviceId]!._hapticStyle = HapticStyle(rawValue: UInt(value))! // ?? HapticStyle.medium
+                    .onChange(of: hapticSettings, perform: { style in
+                        UIImpactFeedbackGenerator(style: style).impactOccurred()
+                        backgroundService._devices[detailsDeviceId]!.hapticStyle = style
                         saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                     })
                     Text("On-Click Haptic Style")
@@ -188,12 +187,13 @@ struct RemoteInputView: View {
                 backgroundService._devices[detailsDeviceId]!._cursorSensitivity = 3.0
             }
             // New device's hapticStyle is automatically 0 (light) as it came from Obj-C initialization
-            hapticSettingsSegmentPickerIndex = Int((backgroundService._devices[detailsDeviceId]!._hapticStyle.rawValue))
+            
+            hapticSettings = backgroundService._devices[detailsDeviceId]!.hapticStyle
         }
     }
     
     func sendSingleTap() {
-        hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.7
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 0.7
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleClick()
         print("single clicked")
     }
@@ -205,19 +205,19 @@ struct RemoteInputView: View {
     }
     
     func sendRightClick() {
-        hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 1.0
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 1.0
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendRightClick()
         print("2 finger tap")
     }
     
     func sendSingleHold() {
-        hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.5
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 0.5
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleHold()
         print("Long press")
     }
     
     func sendMiddleClick() {
-        hapticGenerators[hapticSettingsSegmentPickerIndex].impactOccurred() //intensity: 0.3
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 0.3
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendMiddleClick()
         print("Middle Click")
     }

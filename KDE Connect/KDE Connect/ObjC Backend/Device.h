@@ -30,6 +30,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseLink.h"
 #import "NetworkPackage.h"
+#import "UIKit/UIKit.h"
 //#import "deviceDelegate.h"
 //#import "BackgroundService.h"
 @class BaseLink;
@@ -57,16 +58,6 @@ typedef NS_ENUM(NSUInteger, DeviceType)
     DeviceTypePhone=3,
     DeviceTypeTablet=4,
     DeviceTypeTv=5,
-};
-
-// TODO: use system raw values for Haptic instead
-typedef NS_ENUM(NSUInteger, HapticStyle)
-{
-    light = 0,
-    medium = 1,
-    heavy = 2,
-    soft = 3,
-    rigid = 4
 };
 
 @protocol DeviceDelegate;
@@ -98,7 +89,7 @@ typedef NS_ENUM(NSUInteger, HapticStyle)
 // data only and are therefore NOT stored persistently
 // Remote Input
 @property(nonatomic) float _cursorSensitivity;
-@property(nonatomic) HapticStyle _hapticStyle;
+@property(nonatomic) UIImpactFeedbackStyle hapticStyle;
 // Presenter
 @property(nonatomic) float _pointerSensitivity;
 

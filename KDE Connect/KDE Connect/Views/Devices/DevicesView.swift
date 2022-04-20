@@ -173,7 +173,7 @@ struct DevicesView: View {
         }
         .onChange(of: showingFindMyPhoneAlert, perform: updateFindMyPhoneTimer)
         .onReceive(findMyPhoneTimer) { _ in
-            hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 1.0)
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 1.0)
             SystemSound.calendarAlert.play()
         }
     }
@@ -414,7 +414,7 @@ struct DevicesView: View {
     
     func showPingAlert() {
         if (noCurrentlyActiveAlert()) {
-            hapticGenerators[Int(HapticStyle.rigid.rawValue)].impactOccurred(intensity: 0.8)
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 0.8)
             SystemSound.smsReceived.play()
             showingPingAlert = true
         } else {
