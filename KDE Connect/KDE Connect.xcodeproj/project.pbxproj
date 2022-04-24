@@ -37,7 +37,6 @@
 		A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */; };
 		A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0445E267BF41B00CC21DD /* SettingsView.swift */; };
 		A0AAA99726E2D968003883A7 /* ConfigureDeviceByIPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */; };
-		A0AAA99926E2DDFD003883A7 /* AlertWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */; };
 		A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0852E26E576950010AE9D /* Clipboard.swift */; };
 		A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */; };
 		A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */; };
@@ -57,6 +56,7 @@
 		A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD726F02C6700791D07 /* PresenterView.swift */; };
 		A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8CBD926F02C7D00791D07 /* Presenter.swift */; };
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
+		A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0C2B427CD471700C7217F /* AlertManager.swift */; };
 		D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20922C827C5EC3900AF6F76 /* FeaturesList.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
@@ -126,7 +126,6 @@
 		A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesDetailView.swift; sourceTree = "<group>"; };
 		A0A0445E267BF41B00CC21DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureDeviceByIPView.swift; sourceTree = "<group>"; };
-		A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithTextField.swift; sourceTree = "<group>"; };
 		A0B0852E26E576950010AE9D /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeviceNameView.swift; sourceTree = "<group>"; };
 		A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDeviceData.swift; sourceTree = "<group>"; };
@@ -147,6 +146,7 @@
 		A0D8CBD726F02C6700791D07 /* PresenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterView.swift; sourceTree = "<group>"; };
 		A0D8CBD926F02C7D00791D07 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		A0FB449926BA796400733914 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		A2D0C2B427CD471700C7217F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		D20922C827C5EC3900AF6F76 /* FeaturesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesList.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
@@ -316,6 +316,7 @@
 				A0C00FC426F5807C007EFCCA /* CertificateService.swift */,
 				A0FB449926BA796400733914 /* Backend.swift */,
 				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
+				A2D0C2B427CD471700C7217F /* AlertManager.swift */,
 				53A92E6C27ED4F4F0085A10C /* SystemSound.swift */,
 			);
 			path = "Swift Backend";
@@ -324,7 +325,6 @@
 		A0D8CBC926EF07C000791D07 /* Abstracted Views */ = {
 			isa = PBXGroup;
 			children = (
-				A0AAA99826E2DDFD003883A7 /* AlertWithTextField.swift */,
 				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
 				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
 				A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */,
@@ -600,8 +600,10 @@
 				1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */,
 				1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */,
 				A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */,
+				A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */,
 				A0AAA99926E2DDFD003883A7 /* AlertWithTextField.swift in Sources */,
 				D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */,
+				A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
 				1499A8E72698BFF300FDF493 /* Device.m in Sources */,
 				A0FB449A26BA796400733914 /* Backend.swift in Sources */,

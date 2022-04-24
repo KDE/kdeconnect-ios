@@ -15,11 +15,13 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
+    @EnvironmentObject var alertManager: AlertManager
+
     var body: some View {
         TabView {
             NavigationView {
                 DevicesView()
+                    .environmentObject(alertManager)
             }
             .navigationViewStyle(.stack)
             .tabItem {

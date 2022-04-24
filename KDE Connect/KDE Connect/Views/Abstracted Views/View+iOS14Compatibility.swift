@@ -34,11 +34,6 @@ extension View {
             )
         } else {
             self
-            
-            message()
-                .frame(width: 0, height: 0)
-                .opacity(0)
-                .accessibilityHidden(true)
                 .alert(isPresented: isPresented) {
                     switch actions() {
                     case .none:
@@ -102,7 +97,7 @@ struct _Button {
     }
     
     @available(iOS, deprecated: 15)
-    fileprivate var alertButton: Alert.Button {
+   fileprivate var alertButton: Alert.Button {
         switch role {
         case .destructive:
             return .destructive(Text(titleKey), action: action)

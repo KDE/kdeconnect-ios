@@ -17,6 +17,8 @@ import Combine
 import AVFoundation
 
 struct DevicesView: View {
+    @EnvironmentObject var alertManager: AlertManager
+
     var connectedDevicesIds: [String] {
         viewModel.connectedDevices.keys.sorted()
     }
@@ -27,15 +29,6 @@ struct DevicesView: View {
         viewModel.savedDevices.keys.sorted()
     }
     
-    @State var currPairingDeviceId: String?
-    @State private var showingOnPairRequestAlert: Bool = false
-    @State private var showingOnPairTimeoutAlert: Bool = false
-    @State private var showingOnPairSuccessAlert: Bool = false
-    @State private var showingOnPairRejectedAlert: Bool = false
-    @State private var showingOnSelfPairOutgoingRequestAlert: Bool = false
-    @State private var showingPingAlert: Bool = false
-    @State private var showingFindMyPhoneAlert: Bool = false
-    @State private var showingFileReceivedAlert: Bool = false
     
     @State private var showingConfigureDevicesByIPView: Bool = false
     @State private var isDeviceDiscoveryHelpPresented = false
@@ -53,61 +46,6 @@ struct DevicesView: View {
                 }
                 .sheet(isPresented: $isDeviceDiscoveryHelpPresented) {
                     deviceDiscoveryHelp
-                }
-                .alert("Incoming Pairing Request", isPresented: $showingOnPairRequestAlert) { // TODO: Might want to add a "pairing in progress" UI element?
-                    Button("Do Not Pair", role: .cancel) {}
-                    Button("Pair") {
-                        backgroundService.pairDevice(currPairingDeviceId)
-                    }
-                } message: {
-                    currentPairingDeviceName.map {
-                        Text("\($0) wants to pair with this device")
-                    }
-                }
-                .alert("Pairing Complete", isPresented: $showingOnPairSuccessAlert) {
-                    Button("Nice", role: .cancel) {
-                        currPairingDeviceId = nil
-                    }
-                } message: {
-                    currentPairingDeviceName.map {
-                        Text("Pairing with \($0) succeeded")
-                    }
-                }
-                .alert("Initiate Pairing?", isPresented: $showingOnSelfPairOutgoingRequestAlert) {
-                    Button("Cancel", role: .cancel) {}
-                    Button("Pair") {
-                        backgroundService.pairDevice(currPairingDeviceId)
-                    }
-                } message: {
-                    currentPairingDeviceName.map {
-                        Text("Request to pair with \($0)?")
-                    }
-                }
-                .alert("Pairing Timed Out", isPresented: $showingOnPairTimeoutAlert) {
-                    Button("OK", role: .cancel) {
-                        currPairingDeviceId = nil
-                    }
-                } message: {
-                    currentPairingDeviceName.map {
-                        Text("Pairing with \($0) failed")
-                    }
-                }
-                .alert("Pairing Rejected", isPresented: $showingOnPairRejectedAlert) {
-                    Button("OK", role: .cancel) {
-                        currPairingDeviceId = nil
-                    }
-                } message: {
-                    currentPairingDeviceName.map {
-                        Text("Pairing with \($0) failed")
-                    }
-                }
-                .alert("Ping!", isPresented: $showingPingAlert) {} message: {
-                    Text("Ping received from a connected device.")
-                }
-                .alert("Find My Phone Mode", isPresented: $showingFindMyPhoneAlert) {
-                    Button("I FOUND IT!", role: .cancel) {}
-                } message: {
-                    Text("Find My Phone initiated from a remote device")
                 }
             
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
@@ -170,8 +108,8 @@ struct DevicesView: View {
         .onReceive(NotificationCenter.default.publisher(for: .didReceiveFindMyPhoneRequestNotification, object: nil)
                     .receive(on: RunLoop.main)) { _ in
             showFindMyPhoneAlert()
+            updateFindMyPhoneTimer(isRunning: true)
         }
-        .onChange(of: showingFindMyPhoneAlert, perform: updateFindMyPhoneTimer)
         .onReceive(findMyPhoneTimer) { _ in
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 1.0)
             SystemSound.calendarAlert.play()
@@ -190,6 +128,7 @@ struct DevicesView: View {
                         // Use the "key" from ForEach aka device ID to get it from
                         // backgroundService's _devices dictionary for the value (Device class objects)
                         destination: DevicesDetailView(detailsDeviceId: key)
+                            .environmentObject(alertManager)
                     ) {
                         HStack {
                             Image(systemName: "wifi")
@@ -239,8 +178,16 @@ struct DevicesView: View {
             } else {
                 ForEach(visibleDevicesIds, id: \.self) { key in
                     Button {
-                        currPairingDeviceId = key
-                        showingOnSelfPairOutgoingRequestAlert = true
+                        alertManager.queueAlert(prioritize: true, title: "Initiate Pairing?") {
+                            currentPairingDeviceName(id: key).map {
+                                Text("Request to pair with \($0)?")
+                            }
+                        } buttons: {
+                            Button("Cancel", role: .cancel) {}
+                            Button("Pair") {
+                                backgroundService.pairDevice(key)
+                            }
+                        }
                     } label: {
                         HStack {
                             Image(systemName: "badge.plus.radiowaves.right")
@@ -350,18 +297,10 @@ struct DevicesView: View {
         }
     }
     
-    var currentPairingDeviceName: String? {
-        if let currPairingDeviceId = currPairingDeviceId {
-            if let device = backgroundService._devices[currPairingDeviceId] {
-                return device._name
-            } else {
-                print("Missing device for \(currPairingDeviceId)")
-            }
-        }
-        // alerts evaluates eagerly, making currPairingDeviceId nil normally
-        return nil
+    func currentPairingDeviceName(id: String) -> String? {
+        backgroundService._devices[id]?._name
     }
-    
+
     func deleteDevice(at offsets: IndexSet) {
         offsets
             .map { (offset: $0, id: savedDevicesIds[$0]) }
@@ -374,61 +313,65 @@ struct DevicesView: View {
     }
     
     func onPairRequest(fromDeviceWithID deviceId: String!) {
-        currPairingDeviceId = deviceId
 //        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
-        if (noCurrentlyActiveAlert()) {
-            showingOnPairRequestAlert = true
-        } else {
-            SystemSound.audioToneBusy.play()
-            print("Unable to display onPairRequest Alert, another alert already active")
+        alertManager.queueAlert(title: "Incoming Pairing Request") {
+            currentPairingDeviceName(id: deviceId).map {
+                Text("\($0) wants to pair with this device")
+            }
+        } buttons: {
+            Button("Do Not Pair", role: .cancel) {}
+            Button("Pair") {
+                backgroundService.pairDevice(deviceId)
+            }
         }
+        
     }
     
     func onPairTimeout(toDeviceWithID deviceId: String!) {
-        //currPairingDeviceId = nil
-        if(noCurrentlyActiveAlert()) {
-            showingOnPairTimeoutAlert = true
-        } else {
-            SystemSound.audioToneBusy.play()
-            print("Unable to display onPairTimeout Alert, another alert already active")
+        alertManager.queueAlert(title: "Pairing Timed Out") {
+            currentPairingDeviceName(id: deviceId).map {
+                Text("Pairing with \($0) failed")
+            }
+        } buttons: {
+            Button("OK", role: .cancel) {}
         }
     }
     
     func onPairSuccess(withDeviceWithID deviceId: String!) {
-        if (noCurrentlyActiveAlert()) {
-            showingOnPairSuccessAlert = true
-        } else {
-            SystemSound.audioToneBusy.play()
-            print("Unable to display onPairSuccess Alert, another alert already active, but device list is still refreshed")
+        alertManager.queueAlert(title: "Pairing Complete") {
+            currentPairingDeviceName(id: deviceId).map{
+                Text("Pairing with \($0) succeeded")
+            }
+        } buttons: {
+            Button("Nice", role: .cancel) {}
         }
     }
     
     func onPairRejected(byDeviceWithID deviceId: String!) {
-        if (noCurrentlyActiveAlert()) {
-            showingOnPairRejectedAlert = true
-        } else {
-            SystemSound.audioToneBusy.play()
-            print("Unable to display onPairRejected Alert, another alert already active")
+        alertManager.queueAlert(title: "Pairing Rejected") {
+            currentPairingDeviceName(id: deviceId).map{
+                Text("Pairing with \($0) failed")
+            }
+        } buttons: {
+            Button("OK", role: .cancel) {}
         }
     }
     
     func showPingAlert() {
-        if (noCurrentlyActiveAlert()) {
-            UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 0.8)
-            SystemSound.smsReceived.play()
-            showingPingAlert = true
-        } else {
-            SystemSound.audioToneBusy.play()
-            print("Unable to display showingPingAlert Alert, another alert already active, but haptics and sounds are still played")
-        }
+        UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 0.8)
+        SystemSound.smsReceived.play()
+        alertManager.queueAlert( title: "Ping!") {
+            Text("Ping received from a connected device.")
+        } buttons: {}
     }
     
     func showFindMyPhoneAlert() {
-        if (noCurrentlyActiveAlert()) {
-            showingFindMyPhoneAlert = true
-        } else {
-            SystemSound.audioToneBusy.play()
-            print("Unable to display showFindMyPhoneAlert Alert, another alert already active, alert haptics and tone not played")
+        alertManager.queueAlert(prioritize: true, title: "Find My Phone Mode") {
+            Text("Find My Phone initiated from a remote device")
+        } buttons: {
+            Button("I FOUND IT!", role: .cancel) {
+                updateFindMyPhoneTimer(isRunning: false)
+            }
         }
     }
     
@@ -444,16 +387,6 @@ struct DevicesView: View {
         }
     }
 
-    // TODO: maybe queue the alerts
-    private func noCurrentlyActiveAlert() -> Bool {
-        return (!showingOnPairRequestAlert &&
-                !showingOnPairTimeoutAlert &&
-                !showingOnPairSuccessAlert &&
-                !showingOnPairRejectedAlert &&
-                !showingOnSelfPairOutgoingRequestAlert &&
-                !showingPingAlert &&
-                !showingFindMyPhoneAlert) //&& !showingFileReceivedAlert
-    }
     
     func refreshDiscoveryAndList() {
         withAnimation {

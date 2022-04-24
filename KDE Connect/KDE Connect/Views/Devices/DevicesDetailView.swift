@@ -18,8 +18,8 @@ import MediaPicker
 
 struct DevicesDetailView: View {
     let detailsDeviceId: String
-    @State var showingEncryptionInfo: Bool = false
-    @State private var showingUnpairConfirmationAlert: Bool = false
+    @EnvironmentObject var alertManager: AlertManager
+
     @State private var showingPhotosPicker: Bool = false
     @State private var showingFilePicker: Bool = false
     @State private var showingPluginSettingsView: Bool = false
@@ -35,17 +35,6 @@ struct DevicesDetailView: View {
         if isStillConnected {
             VStack {
                 deviceActionsList
-                    .alert("Encryption Info", isPresented: $showingEncryptionInfo) {} message: {
-                        Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrieve fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
-                    }
-                    .alert("Unpair With Device?", isPresented: $showingUnpairConfirmationAlert) {
-                        Button("No, Stay Paired", role: .cancel) {}
-                        Button("Yes, Unpair", role: .destructive) {
-                            backgroundService.unpairDevice(detailsDeviceId)
-                        }
-                    } message: {
-                        Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?")
-                    }
                 
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
                     EmptyView()
@@ -77,13 +66,22 @@ struct DevicesDetailView: View {
                     }
                     
                     Button {
-                        showingEncryptionInfo = true
+                        alertManager.queueAlert(prioritize: true, title: "Encryption Info") {
+                            Text("SHA256 fingerprint of your device certificate is:\n\((certificateService.hostCertificateSHA256HashFormattedString == nil) ? "ERROR" : certificateService.hostCertificateSHA256HashFormattedString!)\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == "") ? "Unable to retrieve fingerprint of remote device. Add the remote device's IP address directly using Configure Devices By IP and Refresh Discovery" : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
+                        } buttons: {}
                     } label: {
                         Label("Encryption Info", systemImage: "lock.doc")
                     }
                     
                     Button {
-                        showingUnpairConfirmationAlert = true
+                        alertManager.queueAlert(prioritize: true, title: "Unpair With Device?") {
+                            Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?")
+                        } buttons: {
+                            Button("No, Stay Paired", role: .cancel) {}
+                            Button("Yes, Unpair", role: .destructive) {
+                                backgroundService.unpairDevice(detailsDeviceId)
+                            }
+                        }
                     } label: {
                         Label("Unpair", systemImage: "wifi.slash")
                     }

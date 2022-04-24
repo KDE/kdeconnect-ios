@@ -17,6 +17,7 @@ import SwiftUI
 
 @main struct KDE_Connect_App: App {
     @ObservedObject var selfDeviceDataForTopLevel: SelfDeviceData = selfDeviceData
+    @StateObject var alertManager: AlertManager = AlertManager()
     
     var body: some Scene {
         WindowGroup {
@@ -30,6 +31,13 @@ import SwiftUI
                     // In case the app's been chilling suspended for a long time, upon returning ask for updates to all devices's battery statuses
                     requestBatteryStatusAllDevices()
                 }
+                .environmentObject(alertManager)
+                .alert(
+                    alertManager.currentAlert.title,
+                    isPresented: $alertManager.alertPresent,
+                    actions: alertManager.currentAlert.buttons,
+                    message: alertManager.currentAlert.content
+                )
         }
     }
 }
