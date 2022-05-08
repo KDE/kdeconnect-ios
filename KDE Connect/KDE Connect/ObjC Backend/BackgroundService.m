@@ -145,6 +145,9 @@
         [_devices setObject:device forKey:[device _id]];
         //[_settings setObject:device forKey:[device _id]];
     }
+    if (_backgroundServiceDelegate) {
+        [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
+    }
 }
 
 - (void) registerLinkProviders
@@ -241,7 +244,7 @@
           updated ? @"UPDATED" : @"NO UPDATE");
     _visibleDevices = newVisibleDevices;
     if (_backgroundServiceDelegate && updated) {
-        [_backgroundServiceDelegate onDevicesListUpdated];
+        [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }
 }
 
@@ -350,7 +353,7 @@
     BOOL status = [_certificateService deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
     NSLog(@"Device remove, stored cert also removed with status %d", status);
     if (_backgroundServiceDelegate) {
-        [_backgroundServiceDelegate onDevicesListUpdated];
+        [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }
 }
 

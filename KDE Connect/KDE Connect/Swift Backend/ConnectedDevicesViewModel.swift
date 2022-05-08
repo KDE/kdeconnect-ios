@@ -63,8 +63,9 @@ extension Notification.Name {
                                         userInfo: ["deviceID": deviceId!])
     }
     
-    @objc public func onDevicesListUpdated() {
-        let devicesListsMap = backgroundService.getDevicesLists()!
+    @objc public func onDevicesListUpdated(
+        devicesListsMap: [String : [String : String]] = backgroundService.getDevicesLists()
+    ) {
         DispatchQueue.main.async { [self] in
             withAnimation {
                 connectedDevices = devicesListsMap["connected"]!
