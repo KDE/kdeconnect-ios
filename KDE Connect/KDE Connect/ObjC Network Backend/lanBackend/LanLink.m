@@ -443,7 +443,8 @@
                     _pendingPairNP=np;
                 }
                 // If contains transferinfo, connect to remote using a new socket to transfer payload
-                if ([np _PayloadTransferInfo] != nil) {
+                // Note: Ubuntu 20.04 sends `payloadSize` and (empty) `payloadTransferInfo` for all packages.
+                if ([np _PayloadTransferInfo] != nil && [[np _PayloadTransferInfo] objectForKey:@"port"] != nil) {
                     // Received request from remote to start new TLS connection/socket to receive file
                     GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
                     @synchronized(_pendingRSockets){
