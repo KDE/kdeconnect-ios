@@ -61,7 +61,9 @@
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
 		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
+		D2FAF12727D2E78900658753 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2FAF12627D2E78900658753 /* Introspect */; };
 		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
+		DB8E559E2815961200101059 /* iOS14+FocusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E559D2815961200101059 /* iOS14+FocusState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +152,7 @@
 		D20922C827C5EC3900AF6F76 /* FeaturesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesList.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
+		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */,
+				D2FAF12727D2E78900658753 /* Introspect in Frameworks */,
 				1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */,
 				D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */,
 			);
@@ -327,9 +331,8 @@
 			children = (
 				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
 				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
-				A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */,
 				D26C5134275CBB4800074DB3 /* BatteryStatus.swift */,
-				5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */,
+				DB8E559C281595EF00101059 /* iOS14Compatibility */,
 			);
 			path = "Abstracted Views";
 			sourceTree = "<group>";
@@ -454,6 +457,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DB8E559C281595EF00101059 /* iOS14Compatibility */ = {
+			isa = PBXGroup;
+			children = (
+				A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */,
+				5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */,
+				DB8E559D2815961200101059 /* iOS14+FocusState.swift */,
+			);
+			path = iOS14Compatibility;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,6 +487,7 @@
 				1491F15926AC8BD6008C1065 /* OpenSSL */,
 				D2D0A89B27688B5500CA9B13 /* MediaPicker */,
 				D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */,
+				D2FAF12627D2E78900658753 /* Introspect */,
 			);
 			productName = "KDE Connect Test";
 			productReference = A0A0442C267BF38700CC21DD /* KDE Connect.app */;
@@ -551,6 +565,7 @@
 				1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */,
 				D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */,
 				D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
+				D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
 			projectDirPath = "";
@@ -599,11 +614,10 @@
 				1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */,
 				1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */,
 				1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */,
+				DB8E559E2815961200101059 /* iOS14+FocusState.swift in Sources */,
 				A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */,
 				A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */,
-				A0AAA99926E2DDFD003883A7 /* AlertWithTextField.swift in Sources */,
 				D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */,
-				A01FDD2426C4BC090014B165 /* LocalNotificationService.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
 				1499A8E72698BFF300FDF493 /* Device.m in Sources */,
 				A0FB449A26BA796400733914 /* Backend.swift in Sources */,
@@ -996,6 +1010,14 @@
 				minimumVersion = 0.0.1;
 			};
 		};
+		D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ApolloZhu/CocoaAsyncSocket";
@@ -1016,6 +1038,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */;
 			productName = MediaPicker;
+		};
+		D2FAF12627D2E78900658753 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */ = {
 			isa = XCSwiftPackageProductDependency;
