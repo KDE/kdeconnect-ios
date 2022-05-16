@@ -30,16 +30,9 @@ function export_pot_file # First parameter will be the path of the pot file we h
 	potfile=$1
 	mkdir outdir
 	xcodebuild -exportLocalizations -project 'KDE Connect/KDE Connect.xcodeproj' -localizationPath outdir
-	python3 scripts/xliff2po.py --pot -i 'outdir/en.xcloc/Localized Contents/en.xliff' -o 'outdir/template.pot'
-
-	# Interestingly, most convertions tools cut it of around column 80 near whitespace/newline
-	# where the whitespace/newline is kept at the previous line.
-
 	# TODO: not sure how to handle plurals yet, but we don't have any stringsdict this point
-
-	# FIXME: REPACKPOT not happy with some of the msgid, maybe need to replace `<=>` with `cmp`
-	# Argument "xxx" isn't numeric in sort at repack-pot.pl line 169.
-	# Argument "xxx" isn't numeric in sort at repack-pot.pl line 211.
+	python3 scripts/xliff2po.py --pot -i 'outdir/en.xcloc/Localized Contents/en.xliff' -o 'outdir/template.pot'
+	# FIXME: REPACKPOT expect references to have line numbers, but ... Xcode doesn't provide that
 	mv 'outdir/template.pot' $potfile
 	rm -rf outdir
 }
