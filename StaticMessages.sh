@@ -45,10 +45,7 @@ function import_po_files # First parameter will be a path that will contain seve
 	find "$podir" -type f -name "*@*.po" -delete
 	for pofile in `ls $podir`; do
 		LANG=$(basename $pofile .po)
-		# FIXME: this is not picking up the right language. XLIFF should have
-		# source-language="en" target-language="$LANG"
-		po2xliff -i $podir/$pofile -o outdir/$LANG.xliff
-		# FIXME: the translated XLIFF file has incorrect information to be imported by Xcode
+		python3 scripts/po2xliff.py -i $podir/$pofile -o outdir/$LANG.xliff
 		xcodebuild -importLocalizations -project 'KDE Connect/KDE Connect.xcodeproj' -localizationPath outdir/$LANG.xliff
 	done
 	rm -rf outdir
