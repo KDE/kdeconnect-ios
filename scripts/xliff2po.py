@@ -23,13 +23,14 @@ NS: Final[dict[str, str]] = {
 }
 NO_COMMENT: Final[str] = "No comment provided by engineer."
 OBJC_FORMAT: Final[Pattern[AnyStr]] = re.compile(r"%(\d+\$)?@")
+SPACE_IN_PATH: Final[str] = "__SpAcE__"
 
 ########################################
 # XLIFF to POT
 ########################################
 
 
-def xliff2po(xliff_path: str, pot: bool = True) -> Catalog:
+def xliff2po(xliff_path: str, pot: bool = True, kde: bool = False) -> Catalog:
     catalog = Catalog(
         project="KDE Connect iOS",
         copyright_holder="KDE Community & contributors",
@@ -42,6 +43,7 @@ def xliff2po(xliff_path: str, pot: bool = True) -> Catalog:
 # Apollo Zhu <public-apollonian@outlook.com>, 2022.
 #"""
     )
+    count = 1
     tree = ET.parse(xliff_path)
     for file in tree.getroot().findall("xliff:file", NS):
         reference = file.get("original")
@@ -60,12 +62,13 @@ def xliff2po(xliff_path: str, pot: bool = True) -> Catalog:
 
             catalog.add(
                 auto_comments=() if no_comments else [extracted_comments],
-                locations=[(reference, None)],
+                locations=[(reference.replace(" ", SPACE_IN_PATH) if kde else reference, count if kde else None)],
                 flags=flags,
                 context=msgctxt,
                 id=msgid,
                 string=None if pot else msgstr
             )
+            count += 1
     return catalog
 
 ########################################
@@ -81,7 +84,9 @@ if __name__ == "__main__":
                         action="store_true")
     parser.add_argument("-i", "--input", required=True, help="Path to XLIFF")
     parser.add_argument("-o", "--output", required=True, help="Path to po/pot")
+    parser.add_argument("--kde", help="Workarounds for KDE specific workflow",
+                        action="store_true")
 
     args = parser.parse_args()
     with open(args.output, "wb") as f:
-        write_po(f, xliff2po(args.input, args.pot))
+        write_po(f, xliff2po(args.input, args.pot, args.kde))

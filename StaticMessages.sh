@@ -31,9 +31,7 @@ function export_pot_file # First parameter will be the path of the pot file we h
 	mkdir outdir
 	xcodebuild -exportLocalizations -project 'KDE Connect/KDE Connect.xcodeproj' -localizationPath outdir
 	# TODO: not sure how to handle plurals yet, but we don't have any stringsdict this point
-	python3 scripts/xliff2po.py --pot -i 'outdir/en.xcloc/Localized Contents/en.xliff' -o 'outdir/template.pot'
-	# FIXME: REPACKPOT expect references to have line numbers, but ... Xcode doesn't provide that
-	# FIXME: REPACKPOT expect no whitespace in file name...
+	python3 scripts/xliff2po.py -i 'outdir/en.xcloc/Localized Contents/en.xliff' -o 'outdir/template.pot' --kde --pot
 	mv 'outdir/template.pot' $potfile
 	rm -rf outdir
 }
@@ -46,7 +44,7 @@ function import_po_files # First parameter will be a path that will contain seve
 	find "$podir" -type f -name "*@*.po" -delete
 	for pofile in `ls $podir`; do
 		LANG=$(basename $pofile .po)
-		python3 scripts/po2xliff.py -i $podir/$pofile -o outdir/$LANG.xliff
+		python3 scripts/po2xliff.py -i $podir/$pofile -o outdir/$LANG.xliff --kde
 		xcodebuild -importLocalizations -project 'KDE Connect/KDE Connect.xcodeproj' -localizationPath outdir/$LANG.xliff
 	done
 	rm -rf outdir

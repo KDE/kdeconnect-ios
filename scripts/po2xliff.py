@@ -33,13 +33,14 @@ XLIFF_TEMPLATE: Final[str] = """\
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
 </xliff>
 """
+SPACE_IN_PATH: Final[str] = "__SpAcE__"
 
 ########################################
 # PO to XLIFF
 ########################################
 
 
-def po2xliff(catalog: Catalog) -> ET.ElementTree:
+def po2xliff(catalog: Catalog, kde: bool = False) -> ET.ElementTree:
     ET.register_namespace("", "urn:oasis:names:tc:xliff:document:1.2")
     ET.register_namespace("xsi", "http://www.w3.org/2001/XMLSchema-instance")
     root = ET.fromstring(XLIFF_TEMPLATE)
@@ -53,7 +54,10 @@ def po2xliff(catalog: Catalog) -> ET.ElementTree:
     for message in catalog:
         # "KDE Connect/..." got parsed into (KDE, None) and (Connect/..., None)
         # https://github.com/python-babel/babel/issues/654
-        original = " ".join([location[0] for location in message.locations])
+        if kde:
+            original = message.locations[0][0].replace(SPACE_IN_PATH, " ") if message.locations else None
+        else:
+            original = " ".join([location[0] for location in message.locations])
         id = message.context
         source = message.id
         target = message.string
@@ -97,10 +101,12 @@ if __name__ == "__main__":
     )
     parser.add_argument("-i", "--input", required=True, help="Path to po")
     parser.add_argument("-o", "--output", required=True, help="Path to XLIFF")
+    parser.add_argument("--kde", help="Workarounds for KDE specific workflow",
+                        action="store_true")
 
     args = parser.parse_args()
     with open(args.input) as input:
         catalog = read_po(input)
-        tree = po2xliff(catalog)
+        tree = po2xliff(catalog, args.kde)
         ET.indent(tree)
         tree.write(args.output, encoding="UTF-8", xml_declaration=True)
