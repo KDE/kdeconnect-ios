@@ -92,7 +92,7 @@ def po2xliff(catalog: Catalog) -> ET.ElementTree:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description='Convert NU gettext po files to XLIFF files'
+        description='Convert GNU gettext po files to XLIFF files'
     )
     parser.add_argument("-i", "--input", required=True, help="Path to po")
     parser.add_argument("-o", "--output", required=True, help="Path to XLIFF")
