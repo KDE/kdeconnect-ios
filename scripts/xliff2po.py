@@ -8,6 +8,7 @@
 from typing import Final, Optional
 import datetime
 import xml.etree.ElementTree as ET
+import argparse
 
 ########################################
 # Constants
@@ -94,5 +95,12 @@ msgstr "{msgstr}"
 ########################################
 
 if __name__ == "__main__":
-    with open("outdir/en.pot", "w") as f:
-        f.write(xliff2po("outdir/en.xliff"))
+    parser = argparse.ArgumentParser(description='Convert XLIFF files to GNU gettext po/pot files')
+    parser.add_argument("-P", "--pot", help="Output pot instead of po",
+                        action="store_true")
+    parser.add_argument("-i", "--input", required=True, help="Path to XLIFF")
+    parser.add_argument("-o", "--output", required=True, help="Path to po/pot")
+
+    args = parser.parse_args()
+    with open(args.output, "w") as f:
+        f.write(xliff2po(args.input, args.pot))
