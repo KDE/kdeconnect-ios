@@ -52,6 +52,7 @@ def po2xliff(catalog: Catalog) -> ET.ElementTree:
     # skip the first metadata one
     for message in catalog:
         # "KDE Connect/..." got parsed into (KDE, None) and (Connect/..., None)
+        # https://github.com/python-babel/babel/issues/654
         original = " ".join([location[0] for location in message.locations])
         id = message.context
         source = message.id
