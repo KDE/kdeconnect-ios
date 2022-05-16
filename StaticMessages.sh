@@ -30,23 +30,7 @@ function export_pot_file # First parameter will be the path of the pot file we h
 	potfile=$1
 	mkdir outdir
 	xcodebuild -exportLocalizations -project 'KDE Connect/KDE Connect.xcodeproj' -localizationPath outdir
-	# brew install translate-toolkit
-	xliff2po --pot -i 'outdir/en.xcloc/Localized Contents/en.xliff' -o 'outdir/template.pot'
-
-	# FIXME: ideally we should have each entry in .po like (ignoring everything from //):
-
-	# #. COMMENT // from `<note>COMMENT</note>`
-	# #: ORIGINAL_FILE_PATH // from `<file original="ORIGINAL_FILE_PATH" ...`
-	# #, objc-format // if it has an unescaped % in it, I guess
-	# msgctxt "KEY" // from `<trans-unit id="KEY" ... `
-	# msgid "VALUE" // from <source>VALUE</source>
-	# msgstr "" // since this is the pot template, no value here. However,
-	# // this will be the translated value from the po files
-
-	# Remember to escape (and unescape) double quotes!
-	# All newlines are respected (in XLIFF, newlines are actually newlines, and no column wrap)
-	# &amp; in XLIFF is just & in po/pot (so some sort of XML encode/decode)
-	# In addition, inside id, " is &quot;, \n is &#10;, both %@ and %1$@ are just %@
+	python3 scripts/xliff2po.py --pot -i 'outdir/en.xcloc/Localized Contents/en.xliff' -o 'outdir/template.pot'
 
 	# Interestingly, most convertions tools cut it of around column 80 near whitespace/newline
 	# where the whitespace/newline is kept at the previous line.
