@@ -16,6 +16,13 @@
 		1499A8E72698BFF300FDF493 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E32698BFF300FDF493 /* Device.m */; };
 		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
 		14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */; };
+		53A0A1D2283ED2B600C7C473 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0A1D1283ED2B600C7C473 /* Haptics.swift */; };
+		53A0A1D4283ED43200C7C473 /* DeviceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0A1D3283ED43200C7C473 /* DeviceType+Extensions.swift */; };
+		53A0A1D6283ED49E00C7C473 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0A1D5283ED49E00C7C473 /* Device+Extensions.swift */; };
+		53A0A1D8283ED55200C7C473 /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0A1D7283ED55200C7C473 /* KeyEvent.swift */; };
+		53A0A1DA283ED59100C7C473 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0A1D9283ED59100C7C473 /* Date+Extensions.swift */; };
+		53A0A1DC283ED5C400C7C473 /* BackgroundService+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0A1DB283ED5C400C7C473 /* BackgroundService+Extensions.swift */; };
+		53A0A1DE283ED78700C7C473 /* LocalizedStringKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0A1DD283ED78700C7C473 /* LocalizedStringKey+Extensions.swift */; };
 		53A92E6D27ED4F4F0085A10C /* SystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A92E6C27ED4F4F0085A10C /* SystemSound.swift */; };
 		5EA4114427960C1C0044C559 /* libs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114227960C1C0044C559 /* libs.json */; };
 		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
@@ -100,6 +107,13 @@
 		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateServiceHelper.m; sourceTree = "<group>"; };
+		53A0A1D1283ED2B600C7C473 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		53A0A1D3283ED43200C7C473 /* DeviceType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceType+Extensions.swift"; sourceTree = "<group>"; };
+		53A0A1D5283ED49E00C7C473 /* Device+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Extensions.swift"; sourceTree = "<group>"; };
+		53A0A1D7283ED55200C7C473 /* KeyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEvent.swift; sourceTree = "<group>"; };
+		53A0A1D9283ED59100C7C473 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		53A0A1DB283ED5C400C7C473 /* BackgroundService+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackgroundService+Extensions.swift"; sourceTree = "<group>"; };
+		53A0A1DD283ED78700C7C473 /* LocalizedStringKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+Extensions.swift"; sourceTree = "<group>"; };
 		53A92E6C27ED4F4F0085A10C /* SystemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSound.swift; sourceTree = "<group>"; };
 		5EA4114227960C1C0044C559 /* libs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = libs.json; sourceTree = "<group>"; };
 		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -322,6 +336,13 @@
 				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
 				A2D0C2B427CD471700C7217F /* AlertManager.swift */,
 				53A92E6C27ED4F4F0085A10C /* SystemSound.swift */,
+				53A0A1D1283ED2B600C7C473 /* Haptics.swift */,
+				53A0A1D3283ED43200C7C473 /* DeviceType+Extensions.swift */,
+				53A0A1D5283ED49E00C7C473 /* Device+Extensions.swift */,
+				53A0A1D7283ED55200C7C473 /* KeyEvent.swift */,
+				53A0A1D9283ED59100C7C473 /* Date+Extensions.swift */,
+				53A0A1DB283ED5C400C7C473 /* BackgroundService+Extensions.swift */,
+				53A0A1DD283ED78700C7C473 /* LocalizedStringKey+Extensions.swift */,
 			);
 			path = "Swift Backend";
 			sourceTree = "<group>";
@@ -619,6 +640,8 @@
 				A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */,
 				D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
+				53A0A1DE283ED78700C7C473 /* LocalizedStringKey+Extensions.swift in Sources */,
+				53A0A1DC283ED5C400C7C473 /* BackgroundService+Extensions.swift in Sources */,
 				1499A8E72698BFF300FDF493 /* Device.m in Sources */,
 				A0FB449A26BA796400733914 /* Backend.swift in Sources */,
 				A0D76FCE26E6F562009D9B03 /* RemoteInput.swift in Sources */,
@@ -640,6 +663,7 @@
 				D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
 				A01FDD2F26C6FD110014B165 /* FindMyPhone.swift in Sources */,
+				53A0A1DA283ED59100C7C473 /* Date+Extensions.swift in Sources */,
 				1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */,
 				A0A04430267BF38700CC21DD /* KDE_Connect_App.swift in Sources */,
 				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
@@ -647,11 +671,15 @@
 				A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */,
 				5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */,
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
+				53A0A1D2283ED2B600C7C473 /* Haptics.swift in Sources */,
 				14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */,
+				53A0A1D8283ED55200C7C473 /* KeyEvent.swift in Sources */,
 				A0D76FD026E73412009D9B03 /* TwoFingerTapView.swift in Sources */,
 				A0A0445D267BF41200CC21DD /* DevicesDetailView.swift in Sources */,
 				A0CA112326F3C7F7006F6EAC /* RunCommand.swift in Sources */,
+				53A0A1D4283ED43200C7C473 /* DeviceType+Extensions.swift in Sources */,
 				A0CA112526F3CF66006F6EAC /* CommandEntry.swift in Sources */,
+				53A0A1D6283ED49E00C7C473 /* Device+Extensions.swift in Sources */,
 				A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */,
 				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,
 				A0C00FC526F5807C007EFCCA /* CertificateService.swift in Sources */,
