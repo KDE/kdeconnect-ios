@@ -112,6 +112,7 @@ import CryptoKit
                 print("Both remote cert and stored cert exist, checking them for equality")
                 if ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data)) {
                     backgroundService._devices[deviceId]!._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
+                    tempRemoteCerts[deviceId] = remoteCert
                     return true
                 } else {
                     return false
