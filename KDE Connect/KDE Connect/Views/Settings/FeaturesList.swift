@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2021 Lucas Wang <lucas.wang@tuta.io>
+ *                         2022 Apollo Zhu <public-apollonian@outlook.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -17,7 +18,7 @@ import SwiftUI
 struct FeaturesList: View {
     private let supportedFeatures: [Feature] = [
         Feature(Text("Discovery & Pairing"),
-                details: Text("May timeout on/for Ubuntu LTS distros")),
+                details: Text("May not work with KDE Connect for Windows")),
         Feature(Text("Ping")),
         Feature(Text("Find My Device")),
         Feature(Text("Battery Status")),
@@ -25,7 +26,7 @@ struct FeaturesList: View {
         Feature(Text("Share: Send File"),
                 details: Text("Support for sharing through the system share sheet is in progress")),
         Feature(Text("Share: Receive File, Text, and URL"),
-                details: Text("May crash when several other devices try to send files to this device at the same time")),
+                details: Text("May crash when several other devices try to send (large) files to this device at the same time")),
         Feature(Text("Presenter: Control Remote")),
         Feature(Text("Mouse: Control Remote")),
         Feature(Text("Run Command: Request")),
@@ -39,8 +40,13 @@ struct FeaturesList: View {
     ]
     private let unsupportedFeatures: [Feature] = [
         Feature(Text("Background Activity"),
-                details: Text("Currently, the app must stay in the foreground to work properly")),
-        Feature(Text("Clipboard: Sync")),
+                details: Text("Currently, the app must stay in the foreground to work properly")
+                            .fontWeight(.bold)
+                            .italic()
+                            .underline()
+                            .foregroundColor(.red)),
+        Feature(Text("Clipboard: Sync"),
+                details: Text("Maybe through URL Scheme and integration with Siri Shortcuts")),
         Feature(Text("Contacts")),
         Feature(Text("Connectivity Report")),
         Feature(Text("SFTP: Access Remote & Initiate File Server")),
@@ -55,8 +61,8 @@ struct FeaturesList: View {
                 // https://support.apple.com/guide/shortcuts/run-a-shortcut-from-a-url-apd624386f42/ios
                 details: Text("Integration with Siri Shortcuts")),
         Feature(Text("Notification: Receive from Others")),
-        Feature(Text("Notification: Send to Others"),
-                details: Text("This is likely not possible to implement on iOS")),
+        Feature(Text("Notification: Retrieve by Others"),
+                details: Text("Maybe with Apple Notification Center Service (ACNS)")),
         Feature(Text("Telephony: SMS/Call Sync"),
                 details: Text("This is likely not possible to implement on iOS")),
     ]
