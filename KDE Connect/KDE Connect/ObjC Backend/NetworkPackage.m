@@ -108,7 +108,7 @@ __strong static NSString* _UUID;
 + (NSString*) getUUID
 {
     if (!_UUID) {
-        NSString* group = @"Q9HDHY97NW.org.kde.kdeconnect-ios";
+        NSString* group = @"5433B4KXM8.org.kde.kdeconnect";
         KeychainItemWrapper* wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"org.kde.kdeconnect-ios" accessGroup:group];
         _UUID = [wrapper objectForKey:(__bridge id)(kSecValueData)];
         if (!_UUID || [_UUID length] < 1) {
