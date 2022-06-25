@@ -45,7 +45,7 @@ struct DevicesView: View {
                     await refreshDiscoveryAndList()
                 }
                 .sheet(isPresented: $isDeviceDiscoveryHelpPresented) {
-                    deviceDiscoveryHelp
+                    DeviceDiscoveryHelp()
                 }
             
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
@@ -266,33 +266,6 @@ struct DevicesView: View {
         } footer: {
             if !savedDevicesIds.isEmpty {
                 Text("To connect to remembered devices, make sure they are connected to the same network as this device.")
-            }
-        }
-    }
-    
-    var deviceDiscoveryHelp: some View {
-        NavigationView {
-            ScrollView {
-                Text("""
-                If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:
-                
-                1. "Refresh Discovery" through the \(Image(systemName: "ellipsis.circle")) menu or pull to refresh the Devices list.
-                
-                2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.
-                
-                3. Manually add the other devices through the "Configure Devices By IP" in the \(Image(systemName: "ellipsis.circle")) menu.
-                """)
-                .padding()
-            }
-            .navigationTitle("Device Discovery")
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        isDeviceDiscoveryHelpPresented = false
-                    } label: {
-                        Text("Done")
-                    }
-                }
             }
         }
     }

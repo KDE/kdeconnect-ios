@@ -67,6 +67,7 @@
 		D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20922C827C5EC3900AF6F76 /* FeaturesList.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
+		D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */; };
 		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
 		D2FAF12727D2E78900658753 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2FAF12627D2E78900658753 /* Introspect */; };
 		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
@@ -166,6 +167,7 @@
 		D20922C827C5EC3900AF6F76 /* FeaturesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesList.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
+		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
 		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -382,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
+				D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */,
 				A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */,
 				A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */,
 				A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */,
@@ -655,6 +658,7 @@
 				D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0D76FCC26E6B034009D9B03 /* RemoteInputView.swift in Sources */,
+				D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */,
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
 				A01FDD3126C701360014B165 /* Battery.swift in Sources */,
 				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
