@@ -29,7 +29,7 @@ struct SettingsView: View {
                         Label("App Theme", systemImage: "lightbulb")
                             .accentColor(.primary)
                         Spacer()
-                        Text(selfDeviceData.chosenTheme)
+                        selfDeviceData.chosenTheme.text
                             .foregroundColor(.secondary)
                     }
                 }

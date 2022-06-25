@@ -64,8 +64,7 @@ enum AppIcon: RawRepresentable, CaseIterable {
 
 struct AppIconPicker: View {
     @EnvironmentObject var settings: SelfDeviceData
-    @State var error: Error? = nil
-    @State var isErrorAlertPresented = false
+    @EnvironmentObject var alertManager: AlertManager
     
     var body: some View {
         List {
@@ -73,8 +72,11 @@ struct AppIconPicker: View {
                 Button {
                     settings.appIcon = icon
                     UIApplication.shared.setAlternateIconName(icon.rawValue) { error in
-                        self.error = error
-                        isErrorAlertPresented = error != nil
+                        guard let error = error else { return }
+                        alertManager.queueAlert(prioritize: true,
+                                                title: "Failed to Change Icon") {
+                            Text(error.localizedDescription)
+                        } buttons: { }
                     }
                 } label: {
                     HStack(spacing: 16) {
@@ -88,16 +90,12 @@ struct AppIconPicker: View {
                         }
                     }
                 }
-                .accessibilityLabel("app icon")
+                .accessibilityLabel("App Icon")
                 .accessibilityValue(icon.name)
                 .accessibilityAddTraits(icon == settings.appIcon ? .isSelected : [])
             }
         }
         .navigationTitle("Choose App Icon")
-        .alert("Failed to Change Icon", isPresented: $isErrorAlertPresented) { } message: {
-            Text(error?.localizedDescription
-                 ?? NSLocalizedString("Something went wrong.", comment: ""))
-        }
     }
 }
 

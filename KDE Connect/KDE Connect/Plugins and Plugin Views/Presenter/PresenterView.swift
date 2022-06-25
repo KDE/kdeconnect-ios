@@ -73,8 +73,15 @@ struct PresenterView: View {
                         showingSensitivitySlider.toggle()
                     }
                 } label: {
-                    Label("\((showingSensitivitySlider) ? "Hide" : "Show") Sensitivity Slider",
-                          systemImage: "cursorarrow.motionlines")
+                    Label {
+                        if showingSensitivitySlider {
+                            Text("Hide Sensitivity Slider")
+                        } else {
+                            Text("Show Sensitivity Slider")
+                        }
+                    } icon: {
+                        Image(systemName: "cursorarrow.motionlines")
+                    }
                 }
                 
             } label: {

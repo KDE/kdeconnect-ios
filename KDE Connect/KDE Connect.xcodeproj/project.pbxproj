@@ -26,7 +26,6 @@
 		53A92E6D27ED4F4F0085A10C /* SystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A92E6C27ED4F4F0085A10C /* SystemSound.swift */; };
 		5EA4114427960C1C0044C559 /* libs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114227960C1C0044C559 /* libs.json */; };
 		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
-		5EA41148279611EB0044C559 /* contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA41147279611EB0044C559 /* contributors.json */; };
 		5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */; };
 		5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */; };
 		A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* Plugin.swift */; };
@@ -65,6 +64,7 @@
 		A0FB449A26BA796400733914 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FB449926BA796400733914 /* Backend.swift */; };
 		A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0C2B427CD471700C7217F /* AlertManager.swift */; };
 		D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20922C827C5EC3900AF6F76 /* FeaturesList.swift */; };
+		D20FCC41282F4D5500A6E16B /* Contributors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FCC40282F4D5500A6E16B /* Contributors.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
 		D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */; };
@@ -118,7 +118,6 @@
 		53A92E6C27ED4F4F0085A10C /* SystemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSound.swift; sourceTree = "<group>"; };
 		5EA4114227960C1C0044C559 /* libs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = libs.json; sourceTree = "<group>"; };
 		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5EA41147279611EB0044C559 /* contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contributors.json; sourceTree = "<group>"; };
 		5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibleTextView.swift; sourceTree = "<group>"; };
 		5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
 		A01FDD2626C4F6D50014B165 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
@@ -165,6 +164,7 @@
 		A0FB449926BA796400733914 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		A2D0C2B427CD471700C7217F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		D20922C827C5EC3900AF6F76 /* FeaturesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesList.swift; sourceTree = "<group>"; };
+		D20FCC40282F4D5500A6E16B /* Contributors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributors.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
 		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		5EA4114027960BA50044C559 /* Texts */ = {
 			isa = PBXGroup;
 			children = (
-				5EA41147279611EB0044C559 /* contributors.json */,
+				D20FCC40282F4D5500A6E16B /* Contributors.swift */,
 				5EA4114227960C1C0044C559 /* libs.json */,
 			);
 			path = Texts;
@@ -609,7 +609,6 @@
 			files = (
 				A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */,
 				5EA4114427960C1C0044C559 /* libs.json in Resources */,
-				5EA41148279611EB0044C559 /* contributors.json in Resources */,
 				5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,6 +647,7 @@
 				1499A8E72698BFF300FDF493 /* Device.m in Sources */,
 				A0FB449A26BA796400733914 /* Backend.swift in Sources */,
 				A0D76FCE26E6F562009D9B03 /* RemoteInput.swift in Sources */,
+				D20FCC41282F4D5500A6E16B /* Contributors.swift in Sources */,
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
 				A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */,
 				A0CA112126F3C7ED006F6EAC /* RunCommandView.swift in Sources */,
@@ -866,6 +866,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -896,6 +897,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

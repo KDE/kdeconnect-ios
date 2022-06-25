@@ -162,7 +162,7 @@ struct DevicesDetailView: View {
                 
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.presenter] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.presenter] as! Bool) {
                     NavigationLink(destination: PresenterView(detailsDeviceId: detailsDeviceId)) {
-                        Label("Slideshow remote", systemImage: "slider.horizontal.below.rectangle")
+                        Label("Slideshow Remote", systemImage: "slider.horizontal.below.rectangle")
                     }
                     .accentColor(.primary)
                 }

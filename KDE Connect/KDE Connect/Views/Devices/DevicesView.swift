@@ -136,6 +136,7 @@ struct DevicesView: View {
                                 .font(.title2)
                             VStack(alignment: .leading) {
                                 HStack {
+                                    // FIXME: replace ??? with proper error message
                                     Text(viewModel.connectedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
@@ -195,6 +196,7 @@ struct DevicesView: View {
                                 .font(.title2)
                             VStack(alignment: .leading) {
                                 HStack {
+                                    // FIXME: replace ??? with proper error message
                                     Text(viewModel.visibleDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
@@ -245,6 +247,7 @@ struct DevicesView: View {
                                 .font(.title2)
                             VStack(alignment: .leading) {
                                 HStack {
+                                    // FIXME: replace ??? with proper error message
                                     Text(viewModel.savedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)

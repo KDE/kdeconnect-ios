@@ -90,17 +90,17 @@ struct SettingsAboutView: View {
 
             Section(header: Text("Contributors")) {
                 if #available(iOS 15, *) {
-                    Text("Currently maintained by \(try! AttributedString(markdown: getContributorListText(for: \.maintainers)))")
-                    Text("Also written by \(try! AttributedString(markdown: getContributorListText(for: \.authors)))")
+                    Text("Currently maintained by \(try! AttributedString(markdown: getContributorListText(for: .maintainers)))")
+                    Text("Also written by \(try! AttributedString(markdown: getContributorListText(for: .authors)))")
                 } else {
-                    Text(getContributorListAttributedTextWrapper(for: \.maintainers).string)
+                    Text(getContributorListAttributedTextWrapper(for: .maintainers).string)
                         .opacity(0.0)
                         .accessibilityHidden(true)
-                        .overlay(iOS14CompatibleTextView(getContributorListAttributedTextWrapper(for: \.maintainers)))
-                    Text(getContributorListAttributedTextWrapper(for: \.authors).string)
+                        .overlay(iOS14CompatibleTextView(getContributorListAttributedTextWrapper(for: .maintainers)))
+                    Text(getContributorListAttributedTextWrapper(for: .authors).string)
                         .opacity(0.0)
                         .accessibilityHidden(true)
-                        .overlay(iOS14CompatibleTextView(getContributorListAttributedTextWrapper(for: \.authors)))
+                        .overlay(iOS14CompatibleTextView(getContributorListAttributedTextWrapper(for: .authors)))
                 }
             }
 
@@ -127,29 +127,9 @@ struct SettingsAboutView: View {
     }
 
     let kdeInvent = "https://invent.kde.org/"
-
-    struct Contributor: Decodable {
-        let name: String
-        let kde: String
-    }
-
-    struct Contributors: Decodable {
-        let maintainers: [Contributor]
-        let authors: [Contributor]
-    }
-
-    func getContributorList(for category: KeyPath<Contributors, [Contributor]>) -> [Contributor] {
-        // for maintainer of contributors.json: please keep the order by "name" of contributors
-        let assetPath = Bundle.main.path(forResource: "contributors", ofType: "json")
-        let asset = try! Data(contentsOf: URL(fileURLWithPath: assetPath!), options: .mappedIfSafe)
-        let decoder = JSONDecoder()
-        let json = try! decoder.decode(Contributors.self, from: asset)
-        let contributors = json[keyPath: category]
-        return contributors
-    }
-
-    func getContributorListText(for category: KeyPath<Contributors, [Contributor]>) -> String {
-        let contributors = getContributorList(for: category)
+    
+    func getContributorListText(for category: Contributors) -> String {
+        let contributors = category.identities
         let list = contributors.map {
             "[\($0.name)](\(kdeInvent + $0.kde))"
         }
@@ -162,8 +142,8 @@ struct SettingsAboutView: View {
             iOS 15 should follow the new convention of using Text() supporting Markdown attributes.
             """
     )
-    func getContributorListAttributedText(template: String, for category: KeyPath<Contributors, [Contributor]>) -> NSAttributedString {
-        let contributors = getContributorList(for: category)
+    func getContributorListAttributedText(template: String, for category: Contributors) -> NSAttributedString {
+        let contributors = category.identities
         let contributorNames = contributors.map {
             $0.name
         }
@@ -193,15 +173,13 @@ struct SettingsAboutView: View {
             iOS 15 should follow the new convention of using Text() supporting Markdown attributes.
             """
     )
-    func getContributorListAttributedTextWrapper(for category: KeyPath<Contributors, [Contributor]>) -> NSAttributedString {
-        let template: String;
+    func getContributorListAttributedTextWrapper(for category: Contributors) -> NSAttributedString {
+        let template: String
         switch category {
-        case \.maintainers:
+        case .maintainers:
             template = NSLocalizedString("Currently maintained by %@", comment: "maintainer localized string")
-        case \.authors:
+        case .authors:
             template = NSLocalizedString("Also written by %@", comment: "author localized string")
-        default:
-            fatalError("unexpected category")
         }
         return getContributorListAttributedText(template: template, for: category)
     }

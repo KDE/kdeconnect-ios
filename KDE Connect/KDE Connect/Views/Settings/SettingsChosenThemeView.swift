@@ -8,24 +8,23 @@
 import SwiftUI
 
 struct SettingsChosenThemeView: View {
-    @Binding var chosenTheme: String
-    let themes: [String] = ["System Default", "Light", "Dark"]
+    @Binding var chosenTheme: ColorScheme?
     
     var body: some View {
-        VStack {
-            Picker("Avaliable themes", selection: $chosenTheme) {
-                ForEach(themes, id: \.self) {
-                    Text($0)
-                }
+        Picker(selection: $chosenTheme) {
+            ForEach(ColorScheme?.allCases, id: \.self) {
+                $0.text
             }
-            .pickerStyle(.wheel)
+        } label: {
+            Text("Available themes")
         }
+        .pickerStyle(.wheel)
         .navigationTitle("Choose App Theme")
     }
 }
 
 struct SettingsChosenThemeView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsChosenThemeView(chosenTheme: .constant("System Default"))
+        SettingsChosenThemeView(chosenTheme: .constant(nil))
     }
 }

@@ -40,7 +40,7 @@ struct TwoFingerTapView: UIViewRepresentable
         let instructionLabel: UILabel = UILabel()
         instructionLabel.translatesAutoresizingMaskIntoConstraints = false
         instructionLabel.textAlignment = .right
-        instructionLabel.text = "Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the \"Scroll Wheel\" above to scroll both vertically and horizontally. Tap on the \"Scroll Wheel\" for middle click."
+        instructionLabel.text = NSLocalizedString("Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the \"Scroll Wheel\" above to scroll both vertically and horizontally. Tap on the \"Scroll Wheel\" for middle click.", comment: "")
         instructionLabel.numberOfLines = 12
         instructionLabel.textAlignment = .center
         view.addSubview(instructionLabel)

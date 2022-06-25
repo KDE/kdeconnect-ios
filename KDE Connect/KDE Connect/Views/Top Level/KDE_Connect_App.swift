@@ -22,7 +22,7 @@ import SwiftUI
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .preferredColorScheme((selfDeviceDataForTopLevel.chosenTheme == "System Default") ? nil : appThemes[selfDeviceDataForTopLevel.chosenTheme])
+                .preferredColorScheme(selfDeviceDataForTopLevel.chosenTheme)
                 .onAppear {
                     backgroundService.startDiscovery()
                     motionManager.gyroUpdateInterval = 0.025

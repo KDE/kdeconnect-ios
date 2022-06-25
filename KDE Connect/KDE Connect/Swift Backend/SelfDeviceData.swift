@@ -25,9 +25,9 @@ class SelfDeviceData: ObservableObject {
         }
     }
     
-    @Published var chosenTheme: String {
+    @Published var chosenTheme: ColorScheme? {
         didSet {
-            UserDefaults.standard.set(chosenTheme, forKey: "chosenTheme")
+            UserDefaults.standard.set(chosenTheme?.rawValue, forKey: "chosenTheme")
         }
     }
     
@@ -45,17 +45,55 @@ class SelfDeviceData: ObservableObject {
     
     init() {
         self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? UIDevice.current.name
-        self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme") ?? "System Default"
+        self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme").flatMap(ColorScheme.init)
         self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
         self.appIcon = AppIcon(rawValue: UserDefaults.standard.string(forKey: "appIcon")) ?? .default
     }
 }
 
+extension ColorScheme: RawRepresentable {
+    public typealias RawValue = String
+    
+    public init?(rawValue: String) {
+        switch rawValue {
+        case "Light": self = .light
+        case "Dark": self = .dark
+        default: return nil
+        }
+    }
+    
+    public var rawValue: String {
+        switch self {
+        case .light: return "Light"
+        case .dark: return "Dark"
+        @unknown default: return "Unknown"
+        }
+    }
+}
+
+extension Optional where Wrapped == ColorScheme {
+    var text: Text {
+        switch self {
+        case .none:
+            return Text("System Default")
+        case .some(let scheme):
+            switch scheme {
+            case .light: return Text("Light")
+            case .dark: return Text("Dark")
+            @unknown default: return Text("Unknown Theme")
+            }
+        }
+    }
+}
+
+extension Optional: CaseIterable where Wrapped: CaseIterable {
+    public static var allCases: [Optional<Wrapped>] {
+        return [nil] + Wrapped.allCases.map(Self.init)
+    }
+}
+
 // The host's SHA256 hash, calculated upon launch so we don't have to calculated it every single time
 var hostSHA256Hash: String = "ERROR"
-
-// Dictionary for app theme management
-let appThemes: [String : ColorScheme] = ["Light":.light, "Dark":.dark]
 
 // Array of all UTTypes, used by .fileImporter() to allow importing of all file types
 let allUTTypes: [UTType] = [.aiff, .aliasFile, .appleArchive, .appleProtectedMPEG4Audio,
