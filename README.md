@@ -1,6 +1,6 @@
 # The Official Repository of KDE Connect iOS
 
-**TL;DR: Get the public testing version of KDE Connect iOS by opening [this TestFlight link](https://testflight.apple.com/join/vxCluwBF) on an iOS >= 14 device!**
+**TL;DR: [Download from the App Store](https://apps.apple.com/app/kde-connect/id1580245991) on an iOS >= 14 device!**
 
 ---
 
@@ -10,6 +10,12 @@ This project is the iOS version of the group of applications called KDE Connect,
 - [The KDE UserBase Wiki](https://userbase.kde.org/KDEConnect)
 
 If you would like to talk to the KDE Connect developers & contributors (for questions or if you would like to contribute!), please join the [KDE Connect development Telegram channel](https://t.me/joinchat/AOS6gA37orb2dZCLhqbZjg).
+
+## Beta Testing
+
+In addition to the App Store, you can also get the public testing version of KDE Connect iOS
+by opening [this TestFlight link](https://testflight.apple.com/join/vxCluwBF).
+This version also supports running on Macs with Apple silicon.
 
 ## Known Behavior and Problems
 
