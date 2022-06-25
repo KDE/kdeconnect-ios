@@ -1037,7 +1037,7 @@
 			repositoryURL = "https://github.com/UWAppDev/SwiftUI-MediaPicker.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
+				minimumVersion = 0.2.0;
 			};
 		};
 		D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {

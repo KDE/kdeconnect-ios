@@ -96,6 +96,13 @@ struct DevicesDetailView: View {
                 } else {
                     print("Media Picker Result: \(result)")
                 }
+            } loadingOverlay: { progress in
+                NavigationView {
+                    ProgressView(progress)
+                        .padding()
+                        .navigationTitle(Text("Preparing Media…"))
+                }
+                .transition(.move(edge: .bottom).combined(with: .opacity))
             }
             .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
                 do {
