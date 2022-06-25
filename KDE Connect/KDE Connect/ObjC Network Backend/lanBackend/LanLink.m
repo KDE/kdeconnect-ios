@@ -67,7 +67,7 @@
 
 - (LanLink*) init:(GCDAsyncSocket*)socket deviceId:(NSString*) deviceid setDelegate:(id)linkdelegate certificateService:(CertificateService*)certificateService
 {
-    if ([super init:deviceid setDelegate:linkdelegate])
+    if (self = [super init:deviceid setDelegate:linkdelegate])
     {
         _socket=socket;
         _deviceId=deviceid;

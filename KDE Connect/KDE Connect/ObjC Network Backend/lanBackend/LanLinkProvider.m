@@ -69,7 +69,7 @@
 
 - (LanLinkProvider*) initWithDelegate:(id)linkProviderDelegate certificateService:(CertificateService*)certificateService
 {
-    if ([super initWithDelegate:linkProviderDelegate])
+    if (self = [super initWithDelegate:linkProviderDelegate])
     {
         _tcpPort=MIN_TCP_PORT;
         [_tcpSocket disconnect];

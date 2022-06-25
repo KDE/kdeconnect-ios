@@ -131,8 +131,6 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
             NSLog(@"Error");
             return 1;
         }
-        // Release finished CF Objects
-        CFRelease(identityDict);
     }
 
     // Delete the temp file
