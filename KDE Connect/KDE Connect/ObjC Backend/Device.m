@@ -69,27 +69,47 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 // Presenter
 @synthesize _pointerSensitivity;
 
-- (Device*) init:(NetworkPackage*)np baselink:(BaseLink*)link setDelegate:(id)deviceDelegate
+- (instancetype)initWithID:(NSString *)deviceID
+                      type:(DeviceType)deviceType
+                      name:(NSString *)deviceName
+      incomingCapabilities:(NSArray<NSString *> *)incomingCapabilities
+      outgoingCapabilities:(NSArray<NSString *> *)outgoingCapabilities
+           protocolVersion:(NSInteger)protocolVersion
+            deviceDelegate:(id<DeviceDelegate>)deviceDelegate
 {
-    if (self=[super init]) {
+    if (self = [super init]) {
         logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                NSStringFromClass([self class]).UTF8String);
-        _id=[np objectForKey:@"deviceId"];
-        _type=[Device Str2DeviceType:[np objectForKey:@"deviceType"]];
-        _name=[np objectForKey:@"deviceName"];
-        _incomingCapabilities=[np objectForKey:@"incomingCapabilities"];
-        _outgoingCapabilities=[np objectForKey:@"outgoingCapabilities"];
-        _links=[NSMutableArray arrayWithCapacity:1];
-        _plugins=[NSMutableDictionary dictionaryWithCapacity:1];
-        _failedPlugins=[NSMutableArray arrayWithCapacity:1];
-        _protocolVersion=[np integerForKey:@"protocolVersion"];
+        _id = deviceID;
+        _type = deviceType;
+        _name = deviceName;
+        _incomingCapabilities = incomingCapabilities;
+        _outgoingCapabilities = outgoingCapabilities;
+        _links = [NSMutableArray arrayWithCapacity:1];
+        _plugins = [NSMutableDictionary dictionaryWithCapacity:1];
+        _failedPlugins = [NSMutableArray arrayWithCapacity:1];
+        _protocolVersion = protocolVersion;
         _pluginsEnableStatus = [NSMutableDictionary dictionary];
-        self.deviceDelegate=deviceDelegate;
+        self.deviceDelegate = deviceDelegate;
         _cursorSensitivity = 3.0;
         _hapticStyle = 0;
         _pointerSensitivity = 3.0;
-        [self addLink:np baseLink:link];
         [self reloadPlugins];
+    }
+    return self;
+}
+
+- (instancetype)initWithNetworkPackage:(NetworkPackage *)np
+                                  link:(BaseLink*)link
+                              delegate:(id<DeviceDelegate>)deviceDelegate {
+    if (self = [self initWithID:[np objectForKey:@"deviceId"]
+                           type:[Device Str2DeviceType:[np objectForKey:@"deviceType"]]
+                           name:[np objectForKey:@"deviceName"]
+           incomingCapabilities:[np objectForKey:@"incomingCapabilities"]
+           outgoingCapabilities:[np objectForKey:@"outgoingCapabilities"]
+                protocolVersion:[np integerForKey:@"protocolVersion"]
+                 deviceDelegate:deviceDelegate]) {
+        [self addLink:link];
     }
     return self;
 }
@@ -108,18 +128,20 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 #pragma mark Link-related Functions
 
-- (void) addLink:(NetworkPackage*)np baseLink:(BaseLink*)Link
-{
-    os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_id);
+- (void)updateInfoWithNetworkPackage:(NetworkPackage*)np {
     if (_protocolVersion!=[np integerForKey:@"protocolVersion"]) {
         os_log_with_type(logger, self.debugLogLevel, "using different protocol version");
     }
-    [_links addObject:Link];
     _id=[np objectForKey:@"deviceId"];
     _name=[np objectForKey:@"deviceName"];
     _type=[Device Str2DeviceType:[np objectForKey:@"deviceType"]];
     _incomingCapabilities=[np objectForKey:@"incomingCapabilities"];
     _outgoingCapabilities=[np objectForKey:@"outgoingCapabilities"];
+}
+
+- (void)addLink:(BaseLink*)Link {
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_id);
+    [_links addObject:Link];
     //[self saveSetting];
     [Link set_linkDelegate:self];
     if ([_links count]==1) {

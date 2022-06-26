@@ -64,13 +64,13 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 
 @interface Device : NSObject <linkDelegate, NSSecureCoding>
 
-@property(readonly,nonatomic) NSString* _id;
-@property(readonly,nonatomic) NSString* _name;
-@property(readonly,nonatomic) DeviceType _type;
-@property(readonly,nonatomic) NSInteger _protocolVersion;
-@property(readonly,nonatomic) PairStatus _pairStatus;
-@property(readonly,nonatomic) NSArray* _incomingCapabilities;
-@property(readonly,nonatomic) NSArray* _outgoingCapabilities;
+@property(readonly, nonatomic) NSString *_id;
+@property(readonly, nonatomic) NSString *_name;
+@property(readonly, nonatomic) DeviceType _type;
+@property(readonly, nonatomic) NSInteger _protocolVersion;
+@property(readonly, nonatomic) PairStatus _pairStatus;
+@property(readonly, nonatomic) NSArray<NSString *> *_incomingCapabilities;
+@property(readonly, nonatomic) NSArray<NSString *> *_outgoingCapabilities;
 
 @property(nonatomic) NSMutableArray* _links;
 @property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPackageType, id<Plugin>> *plugins;
@@ -96,16 +96,27 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 // For NSCoding
 @property (class, readonly) BOOL supportsSecureCoding;
 
-- (Device*) init:(NetworkPackage*)np baselink:(BaseLink*)link setDelegate:(id)deviceDelegate;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithID:(NSString *)deviceID
+                      type:(DeviceType)deviceType
+                      name:(NSString *)deviceName
+      incomingCapabilities:(NSArray<NSString *> *)incomingCapabilities
+      outgoingCapabilities:(NSArray<NSString *> *)outgoingCapabilities
+           protocolVersion:(NSInteger)protocolVersion
+            deviceDelegate:(id<DeviceDelegate>)deviceDelegate;
+- (instancetype)initWithNetworkPackage:(NetworkPackage *)np
+                                  link:(BaseLink*)link
+                              delegate:(id<DeviceDelegate>)deviceDelegate;
 - (NSInteger) compareProtocolVersion;
 
 #pragma mark Link-related Functions
-- (void) addLink:(NetworkPackage*)np baseLink:(BaseLink*)link;
-- (void) onPackageReceived:(NetworkPackage*)np;
-- (void) onLinkDestroyed:(BaseLink *)link;
-- (void) onSendSuccess:(long)tag;
-- (BOOL) sendPackage:(NetworkPackage*)np tag:(long)tag;
-- (BOOL) isReachable;
+- (void)updateInfoWithNetworkPackage:(NetworkPackage *)np;
+- (void)addLink:(BaseLink *)link;
+- (void)onPackageReceived:(NetworkPackage *)np;
+- (void)onLinkDestroyed:(BaseLink *)link;
+- (void)onSendSuccess:(long)tag;
+- (BOOL)sendPackage:(NetworkPackage *)np tag:(long)tag;
+- (BOOL)isReachable;
 
 #pragma mark Pairing-related Functions
 - (BOOL)isPaired;

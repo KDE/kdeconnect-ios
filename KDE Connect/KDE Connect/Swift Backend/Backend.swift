@@ -34,7 +34,19 @@ let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewM
 let selfDeviceData: SelfDeviceData = .shared
 
 // Background Service provider, bridged from Obj-C codebase
-let backgroundService: BackgroundService = BackgroundService(connectedDeviceViewModel: connectedDevicesViewModel, certificateService: certificateService)
+let backgroundService: BackgroundService = {
+#if DEBUG
+    let setupScreenshotDevices = ProcessInfo.processInfo.arguments.contains("setupScreenshotDevices")
+#else
+    let setupScreenshotDevices = false
+#endif
+    return BackgroundService(
+        // disconnect background service from connected devices view model if taking screenshots
+        // so the UI testing instances will only access to fake devices
+        connectedDeviceViewModel: setupScreenshotDevices ? nil : connectedDevicesViewModel,
+        certificateService: certificateService
+    )
+}()
 
 // Device motion manager
 let motionManager: CMMotionManager = CMMotionManager()

@@ -7,6 +7,13 @@
 		"licenseURL": "https://github.com/ApolloZhu/CocoaAsyncSocket/blob/master/LICENSE.txt"
 	},
 	{
+		"id": "fastlane",
+		"name": "fastlane/fastlane",
+		"repo": "https://github.com/fastlane/fastlane",
+		"license": "MIT",
+		"licenseURL": "https://github.com/fastlane/fastlane/blob/master/LICENSE"
+	},
+	{
 		"id": "OpenSSL",
 		"name": "krzyzanowskim/OpenSSL",
 		"repo": "https://github.com/krzyzanowskim/OpenSSL",

@@ -73,10 +73,12 @@
 		D28C94CC27D1CAD2002EBC2D /* OSLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */; };
 		D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */; };
 		D28C94D127D1CEB9002EBC2D /* OSLog+KDE Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94D027D1CEB9002EBC2D /* OSLog+KDE Connect.swift */; };
+		D2916A4227C98BC200EF0714 /* SetupForUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2916A4127C98BC200EF0714 /* SetupForUITests.swift */; };
 		D298D96927D2C8810053F65B /* NetworkPackage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */; };
 		D298D96B27D2C91F0053F65B /* NetworkPackageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */; };
 		D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */; };
 		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
+		D2F7776627C99760008F20A1 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */; };
 		D2FAF12727D2E78900658753 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2FAF12627D2E78900658753 /* Introspect */; };
 		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
 		DB8E559E2815961200101059 /* iOS14+FocusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E559D2815961200101059 /* iOS14+FocusState.swift */; };
@@ -181,9 +183,12 @@
 		D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogView.swift; sourceTree = "<group>"; };
 		D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogEntryLogView.swift; sourceTree = "<group>"; };
 		D28C94D027D1CEB9002EBC2D /* OSLog+KDE Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+KDE Connect.swift"; sourceTree = "<group>"; };
+		D2916A4127C98BC200EF0714 /* SetupForUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupForUITests.swift; sourceTree = "<group>"; };
 		D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkPackage+Extensions.swift"; sourceTree = "<group>"; };
 		D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPackageComposer.swift; sourceTree = "<group>"; };
 		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
+		D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		D2F7776727C99901008F20A1 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -287,6 +292,7 @@
 				A0A0442E267BF38700CC21DD /* KDE Connect */,
 				A0A04440267BF38A00CC21DD /* KDE Connect Tests */,
 				A0A0444B267BF38A00CC21DD /* KDE Connect UITests */,
+				D2F7776727C99901008F20A1 /* fastlane */,
 				A0A0442D267BF38700CC21DD /* Products */,
 				D2FBA1F7277179A300EBA686 /* Frameworks */,
 			);
@@ -341,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				A0A0444C267BF38A00CC21DD /* KDE_Connect_UITests.swift */,
+				D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */,
 				A0A0444E267BF38A00CC21DD /* Info.plist */,
 			);
 			path = "KDE Connect UITests";
@@ -506,6 +513,7 @@
 			children = (
 				D298D96727D2C8640053F65B /* NetworkPackage */,
 				D28C94CF27D1CDE2002EBC2D /* OSLog */,
+				D2916A4027C98B9800EF0714 /* UITests */,
 			);
 			path = Developer;
 			sourceTree = "<group>";
@@ -519,6 +527,14 @@
 				D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */,
 			);
 			path = OSLog;
+			sourceTree = "<group>";
+		};
+		D2916A4027C98B9800EF0714 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				D2916A4127C98BC200EF0714 /* SetupForUITests.swift */,
+			);
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		D298D96727D2C8640053F65B /* NetworkPackage */ = {
@@ -750,6 +766,7 @@
 				D298D96927D2C8810053F65B /* NetworkPackage+Extensions.swift in Sources */,
 				A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */,
 				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,
+				D2916A4227C98BC200EF0714 /* SetupForUITests.swift in Sources */,
 				A0C00FC526F5807C007EFCCA /* CertificateService.swift in Sources */,
 				1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */,
 				53A92E6D27ED4F4F0085A10C /* SystemSound.swift in Sources */,
@@ -770,6 +787,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A0444D267BF38A00CC21DD /* KDE_Connect_UITests.swift in Sources */,
+				D2F7776627C99760008F20A1 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,15 +992,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				DEVELOPMENT_TEAM = 5433B4KXM8;
 				INFOPLIST_FILE = "KDE Connect Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestTests";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -996,15 +1014,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				DEVELOPMENT_TEAM = 5433B4KXM8;
 				INFOPLIST_FILE = "KDE Connect Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestTests";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1017,18 +1035,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				DEVELOPMENT_TEAM = 5433B4KXM8;
 				INFOPLIST_FILE = "KDE Connect UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "KDE Connect Test";
+				TEST_TARGET_NAME = "KDE Connect";
 			};
 			name = Debug;
 		};
@@ -1037,18 +1056,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HEUH9ZE2Q;
+				DEVELOPMENT_TEAM = 5433B4KXM8;
 				INFOPLIST_FILE = "KDE Connect UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Lucas-Wang.KDE-Connect-TestUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "KDE Connect Test";
+				TEST_TARGET_NAME = "KDE Connect";
 			};
 			name = Release;
 		};

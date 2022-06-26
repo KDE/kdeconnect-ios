@@ -24,6 +24,11 @@ import SwiftUI
             MainTabView()
                 .preferredColorScheme(selfDeviceDataForTopLevel.chosenTheme)
                 .onAppear {
+#if DEBUG
+                    if ProcessInfo.processInfo.arguments.contains("setupScreenshotDevices") {
+                        setupForUITests()
+                    }
+#endif
                     backgroundService.startDiscovery()
                     motionManager.gyroUpdateInterval = 0.025
                 }

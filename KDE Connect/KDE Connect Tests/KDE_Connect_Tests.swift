@@ -6,8 +6,8 @@
 
 // Original header below:
 //
-//  KDE_Connect_TestTests.swift
-//  KDE Connect TestTests
+//  KDE_Connect_Tests.swift
+//  KDE Connect Tests
 //
 //  Created by Lucas Wang on 2021-06-17.
 //
@@ -15,7 +15,7 @@
 import XCTest
 @testable import KDE_Connect
 
-class KDE_Connect_TestTests: XCTestCase {
+class KDE_Connect_Tests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

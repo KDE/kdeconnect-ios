@@ -294,11 +294,12 @@
     if ([_devices valueForKey:deviceId]) {
         os_log_with_type(logger, self.debugLogLevel, "known device");
         Device* device=[_devices objectForKey:deviceId];
-        [device addLink:np baseLink:link];
+        [device updateInfoWithNetworkPackage:np];
+        [device addLink:link];
     }
     else{
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "new device from network package: %{public}@", np);
-        Device* device=[[Device alloc] init:np baselink:link setDelegate:self];
+        Device *device=[[Device alloc] initWithNetworkPackage:np link:link delegate:self];
         [_devices setObject:device forKey:deviceId];
         [self refreshVisibleDeviceList];
     }
