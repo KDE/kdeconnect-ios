@@ -65,6 +65,8 @@
 		A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0C2B427CD471700C7217F /* AlertManager.swift */; };
 		D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20922C827C5EC3900AF6F76 /* FeaturesList.swift */; };
 		D20FCC41282F4D5500A6E16B /* Contributors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FCC40282F4D5500A6E16B /* Contributors.swift */; };
+		D20FF56527C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FF56427C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift */; };
+		D20FF56727C77E0F00E347F7 /* AccessibleHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
 		D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */; };
@@ -165,6 +167,8 @@
 		A2D0C2B427CD471700C7217F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		D20922C827C5EC3900AF6F76 /* FeaturesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesList.swift; sourceTree = "<group>"; };
 		D20FCC40282F4D5500A6E16B /* Contributors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributors.swift; sourceTree = "<group>"; };
+		D20FF56427C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityTitleOnlyLabelStyle.swift; sourceTree = "<group>"; };
+		D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleHStack.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
 		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 		A0D8CBC926EF07C000791D07 /* Abstracted Views */ = {
 			isa = PBXGroup;
 			children = (
+				D20FF56327C77DE400E347F7 /* Accessibility */,
 				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
 				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
 				D26C5134275CBB4800074DB3 /* BatteryStatus.swift */,
@@ -472,6 +477,15 @@
 				A0CA112226F3C7F7006F6EAC /* RunCommand.swift */,
 			);
 			path = RunCommand;
+			sourceTree = "<group>";
+		};
+		D20FF56327C77DE400E347F7 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				D20FF56427C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift */,
+				D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */,
+			);
+			path = Accessibility;
 			sourceTree = "<group>";
 		};
 		D2FBA1F7277179A300EBA686 /* Frameworks */ = {
@@ -640,6 +654,7 @@
 				DB8E559E2815961200101059 /* iOS14+FocusState.swift in Sources */,
 				A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */,
 				A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */,
+				D20FF56727C77E0F00E347F7 /* AccessibleHStack.swift in Sources */,
 				D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
 				53A0A1DE283ED78700C7C473 /* LocalizedStringKey+Extensions.swift in Sources */,
@@ -674,6 +689,7 @@
 				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
 				A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */,
 				5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */,
+				D20FF56527C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift in Sources */,
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
 				53A0A1D2283ED2B600C7C473 /* Haptics.swift in Sources */,
 				14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */,

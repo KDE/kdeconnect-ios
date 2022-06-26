@@ -37,6 +37,7 @@ struct DevicesView: View {
     @State private var findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
 
     //@ObservedObject var localNotificationService = LocalNotificationService()
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
         VStack {
@@ -53,24 +54,30 @@ struct DevicesView: View {
             }
         }
         .navigationTitle("Devices")
-        .navigationBarItems(trailing:
-            Menu {
-                Button(action: refreshDiscoveryAndList) {
-                    Label("Refresh Discovery", systemImage: "arrow.triangle.2.circlepath")
-                }
-            
-                Button {
-                    showingConfigureDevicesByIPView = true
-                } label: {
-                    Label("Configure Devices By IP", systemImage: "network")
-                }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Menu {
+                    Button(action: refreshDiscoveryAndList) {
+                        Label("Refresh Discovery", systemImage: "arrow.triangle.2.circlepath")
+                    }
                 
-                // TODO: Implement trusted networks, possibly need entitlement to access LAN information
-                // Label("Configure Trusted Networks", systemName: "lock.shield")
-            } label: {
-                Image(systemName: "ellipsis.circle")
+                    Button {
+                        showingConfigureDevicesByIPView = true
+                    } label: {
+                        Label("Configure Devices By IP", systemImage: "network")
+                    }
+                    
+                    // TODO: Implement trusted networks, possibly need entitlement to access LAN information
+                    // Label("Configure Trusted Networks", systemName: "lock.shield")
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
             }
-        )
+            
+            ToolbarItem(placement: .bottomBar) {
+                discoveryHelpButton
+            }
+        }
         .onAppear {
             broadcastBatteryStatusAllDevices()
         }
@@ -216,17 +223,15 @@ struct DevicesView: View {
             }
         } header: {
             Text("Discovered Devices")
-        } footer: {
-            Button {
-                isDeviceDiscoveryHelpPresented = true
-            } label: {
-                if #available(iOS 15, *) {
-                    Text("Can't find your devices here?")
-                } else {
-                    Text("Can't find your devices here?")
-                        .foregroundColor(.accentColor)
-                }
-            }
+        }
+    }
+    
+    private var discoveryHelpButton: some View {
+        Button {
+            isDeviceDiscoveryHelpPresented = true
+        } label: {
+            Text("Can't find your devices here?")
+                .foregroundColor(.accentColor)
         }
     }
     
@@ -375,6 +380,9 @@ struct DevicesView: View {
 
 struct DevicesView_Previews: PreviewProvider {
     static var previews: some View {
-        DevicesView()
+        NavigationView {
+            DevicesView()
+                .listStyle(.sidebar)
+        }
     }
 }

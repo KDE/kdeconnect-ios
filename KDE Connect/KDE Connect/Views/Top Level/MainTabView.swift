@@ -22,16 +22,28 @@ struct MainTabView: View {
             NavigationView {
                 DevicesView()
                     .environmentObject(alertManager)
+                
+                Text("Select a device from the Devices list to start.")
+                    .navigationTitle("KDE Connect")
             }
-            .navigationViewStyle(.stack)
+            .introspectSplitViewController { splitViewController in
+                splitViewController.preferredSplitBehavior = .tile
+                splitViewController.preferredDisplayMode = .oneBesideSecondary
+            }
             .tabItem {
                 Label("Devices", systemImage: "laptopcomputer.and.iphone")
             }
             
             NavigationView {
                 SettingsView()
+                
+                EmptyView()
+                    .navigationTitle("KDE Connect")
             }
-            .navigationViewStyle(.stack)
+            .introspectSplitViewController { splitViewController in
+                splitViewController.preferredSplitBehavior = .tile
+                splitViewController.preferredDisplayMode = .oneBesideSecondary
+            }
             .tabItem {
                 Label("Settings", systemImage: "gear")
             }
@@ -39,8 +51,8 @@ struct MainTabView: View {
     }
 }
 
-//struct TabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainTabView()
-//    }
-//}
+struct TabView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainTabView()
+    }
+}

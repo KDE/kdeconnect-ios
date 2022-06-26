@@ -95,15 +95,15 @@ struct FeaturesList: View {
                 } icon: {
                     if feature.details == nil {
                         Image(systemName: "checkmark.circle.fill")
-                            .accentColor(.green)
+                            .foregroundColor(.green)
                     } else {
                         if #available(iOS 15, *) {
                             Image(systemName: "checkmark.circle.trianglebadge.exclamationmark")
                                 .renderingMode(.original)
-                                .accentColor(.green)
+                                .foregroundColor(.green)
                         } else {
                             Image(systemName: "checkmark.circle")
-                                .accentColor(.orange)
+                                .foregroundColor(.orange)
                         }
                     }
                 }
@@ -123,8 +123,10 @@ struct FeaturesList: View {
                 } icon: {
                     if #available(iOS 15, *) {
                         Image(systemName: "hammer.circle.fill")
+                            .foregroundColor(.blue)
                     } else {
                         Image(systemName: "hammer.fill")
+                            .foregroundColor(.blue)
                     }
                 }
             }
@@ -149,7 +151,7 @@ struct FeaturesList: View {
                     Feature.DefaultView(feature: feature)
                 } icon: {
                     Image(systemName: "circle.dashed")
-                        .accentColor(.primary)
+                        .foregroundColor(.primary)
                 }
             }
         } header: {

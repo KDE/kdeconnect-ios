@@ -18,19 +18,19 @@ import UIKit.UIDevice
 struct PresenterView: View {
     let detailsDeviceId: String
     
+    /// For translating gyroscope to coordinates
     @State var currentBroadcastingDeviceOrientation = UIDevice.current.orientation
+    /// For optimizing layout
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     @State private var pointerSensitivityFromSlider: Float = 0.07 // defaults to the middle
     @State private var showingSensitivitySlider: Bool = false
 
     var body: some View {
-        VStack { // TODO: This is a rough first implementation of getting it "optimized" for different displays and orientations. But let's test if the gyroscope backend even works first
-            switch currentBroadcastingDeviceOrientation {
-            case .landscapeLeft, .landscapeRight:
+        VStack {
+            if horizontalSizeClass == .regular {
                 landscapePresenterView
-            case .portrait, .portraitUpsideDown, .faceUp, .faceDown, .unknown:
-                portraitPresenterView
-            @unknown default:
+            } else {
                 portraitPresenterView
             }
             

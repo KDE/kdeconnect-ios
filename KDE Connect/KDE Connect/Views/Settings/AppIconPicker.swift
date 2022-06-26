@@ -79,7 +79,7 @@ struct AppIconPicker: View {
                         } buttons: { }
                     }
                 } label: {
-                    HStack(spacing: 16) {
+                    AccessibleHStack(spacing: 16) {
                         icon.image_60x60
                         icon.name
                             .foregroundColor(.primary)

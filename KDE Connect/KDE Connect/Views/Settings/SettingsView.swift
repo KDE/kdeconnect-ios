@@ -15,8 +15,9 @@ struct SettingsView: View {
             // These could go in sections to give them each descriptions and space
             Section(header: Text("General")) {
                 NavigationLink(destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName)) {
-                    HStack {
-                        Label("Device Name", systemImage: "iphone")
+                    AccessibleHStack {
+                        Label("Device Name", systemImage: DeviceType.current.sfSymbolName)
+                            .labelStyle(.accessibilityTitleOnly)
                             .accentColor(.primary)
                         Spacer()
                         Text(selfDeviceData.deviceName)
@@ -25,8 +26,9 @@ struct SettingsView: View {
                 }
                 
                 NavigationLink(destination: SettingsChosenThemeView(chosenTheme: $selfDeviceDataForSettings.chosenTheme)) {
-                    HStack {
+                    AccessibleHStack {
                         Label("App Theme", systemImage: "lightbulb")
+                            .labelStyle(.accessibilityTitleOnly)
                             .accentColor(.primary)
                         Spacer()
                         selfDeviceData.chosenTheme.text
@@ -39,8 +41,9 @@ struct SettingsView: View {
                         AppIconPicker()
                             .environmentObject(selfDeviceDataForSettings)
                     } label: {
-                        HStack {
+                        AccessibleHStack {
                             Label("App Icon", systemImage: "app")
+                                .labelStyle(.accessibilityTitleOnly)
                                 .accentColor(.primary)
                             Spacer()
                             selfDeviceDataForSettings.appIcon.name
@@ -51,6 +54,7 @@ struct SettingsView: View {
                 
                 NavigationLink(destination: SettingsAdvancedView()) {
                     Label("Advanced Settings", systemImage: "wrench.and.screwdriver")
+                        .labelStyle(.accessibilityTitleOnly)
                         .accentColor(.primary)
                 }
             }
@@ -61,6 +65,7 @@ struct SettingsView: View {
                         .environmentObject(selfDeviceDataForSettings)
                 } label: {
                     Label("About", systemImage: "info.circle")
+                        .labelStyle(.accessibilityTitleOnly)
                         .accentColor(.primary)
                 }
                 NavigationLink(destination: FeaturesList()) {
@@ -73,11 +78,11 @@ struct SettingsView: View {
                             Image(systemName: "scroll")
                         }
                     }
+                    .labelStyle(.accessibilityTitleOnly)
                     .accentColor(.primary)
                 }
             }
         }
-        .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
         .navigationTitle("Settings")
     }
 }
