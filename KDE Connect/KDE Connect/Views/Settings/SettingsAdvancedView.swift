@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsAdvancedView: View {
+    @EnvironmentObject private var selfDeviceData: SelfDeviceData
+
     var body: some View {
         List {
             Section(header: Text("DANGEROUS OPTIONS"), footer: Text("The options above are irreversible and require a complete app restart to take effect.")) {
@@ -42,6 +44,31 @@ struct SettingsAdvancedView: View {
                         }
                     }
                     .foregroundColor(.red)
+                }
+            }
+        
+            if selfDeviceData.isDebugging {
+                Section {
+                    if #available(iOS 15.0, *) {
+                        NavigationLink {
+                            OSLogView()
+                        } label: {
+                            Label("Logs", systemImage: "list.bullet.rectangle")
+                        }
+                    } else {
+                        Link(destination: URL(string: "https://developer.apple.com/documentation/os/logging/viewing_log_messages")!) {
+                            Label("Logs", systemImage: "link")
+                        }
+                    }
+                    NavigationLink {
+                        NetworkPackageComposer()
+                            .environmentObject(connectedDevicesViewModel)
+                            .environmentObject(selfDeviceData)
+                    } label: {
+                        Label("Network Package Composer", systemImage: "network")
+                    }
+                } header: {
+                    Text("Developer")
                 }
             }
         }

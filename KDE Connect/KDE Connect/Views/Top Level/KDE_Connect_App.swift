@@ -16,7 +16,7 @@ import UIKit
 import SwiftUI
 
 @main struct KDE_Connect_App: App {
-    @ObservedObject var selfDeviceDataForTopLevel: SelfDeviceData = selfDeviceData
+    @ObservedObject var selfDeviceDataForTopLevel: SelfDeviceData = .shared
     @StateObject var alertManager: AlertManager = AlertManager()
     
     var body: some Scene {

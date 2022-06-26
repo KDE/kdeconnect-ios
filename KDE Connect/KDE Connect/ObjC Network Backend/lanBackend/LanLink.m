@@ -30,6 +30,8 @@
 #import "LanLink.h"
 #import "KDE_Connect-Swift.h"
 
+@import os.log;
+
 #define PAYLOAD_PORT 1739
 #define PAYLOAD_SEND_DELAY 0 //ns
 
@@ -37,6 +39,7 @@
 {
     uint16_t _payloadPort;
     dispatch_queue_t _socketQueue;
+    os_log_t logger;
 }
 
 @property(nonatomic) GCDAsyncSocket* _socket;
@@ -69,6 +72,8 @@
 {
     if (self = [super init:deviceid setDelegate:linkdelegate])
     {
+        logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                               NSStringFromClass([self class]).UTF8String);
         _socket=socket;
         _deviceId=deviceid;
         _linkDelegate=linkdelegate;
@@ -77,7 +82,7 @@
         [_socket performBlock:^{
             [_socket enableBackgroundingOnSocket];
         }];
-        NSLog(@"LanLink:lanlink for device:%@ created",_deviceId);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink:lanlink for device:%{mask.hash}@ created",_deviceId);
         [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
         _pendingRSockets=[NSMutableArray arrayWithCapacity:1];
         _pendingLSockets=[NSMutableArray arrayWithCapacity:1];
@@ -92,6 +97,13 @@
     return self;
 }
 
+- (os_log_type_t)debugLogLevel {
+    if ([SelfDeviceData shared].isDebuggingNetworkPackage) {
+        return OS_LOG_TYPE_INFO;
+    }
+    return OS_LOG_TYPE_DEBUG;
+}
+
 - (void) loadSecIdentity
 {
     SecIdentityRef identityApp = [_certificateService hostIdentity];
@@ -102,10 +114,10 @@
     OSStatus status = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
     if (status != noErr) {
         // Fail to retrieve private key from the .p12 file
-        NSLog(@"Certificate loading failed");
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Certificate loading failed: %d", status);
     } else {
         _identity = identityApp;
-        NSLog(@"Certificate loaded successfully");
+        os_log_with_type(logger, self.debugLogLevel, "Certificate loaded successfully");
     }
     CFRelease(privateKeyRef);
     // The ownership of SecIdentityRef is in CertificateService
@@ -113,9 +125,9 @@
 
 - (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag
 {
-    NSLog(@"llink send package");
+    os_log_with_type(logger, self.debugLogLevel, "llink send package");
     if (![_socket isConnected]) {
-        NSLog(@"LanLink: Device:%@ disconnected",_deviceId);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%@ disconnected",_deviceId);
         return false;
     }
     
@@ -126,9 +138,9 @@
             _fileServerSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
             if (![_fileServerSocket isConnected]) {
                 if (![_fileServerSocket acceptOnPort:_payloadPort error:&err]) {
-                    NSLog(@"Error binding payload port");
+                    os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error binding payload port");
                 } else {
-                    NSLog(@"Binding payload server ok");
+                    os_log_with_type(logger, self.debugLogLevel, "Binding payload server ok");
                 }
             }
         }
@@ -139,7 +151,7 @@
     NSData* data=[np serialize];
     [_socket writeData:data withTimeout:-1 tag:tag];
     //TODO: return true only when send successfully
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    os_log_with_type(logger, self.debugLogLevel, "%{public}@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     return true;
 }
@@ -153,7 +165,7 @@
         [_linkDelegate onLinkDestroyed:self];
     }
     _pendingPairNP=nil;
-    NSLog(@"LanLink: Device:%@ disconnected",_deviceId);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%{mask.hash}@ disconnected",_deviceId);
 }
 
 #pragma mark TCP delegate
@@ -169,7 +181,7 @@
  **/
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
-    NSLog(@"Lanlink: didAcceptNewSocket");
+    os_log_with_type(logger, self.debugLogLevel, "Lanlink: didAcceptNewSocket");
 
     /* TLS Connection */
     NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
@@ -187,7 +199,7 @@
 
     [newSocket startTLS: tlsSettings];
     [_pendingLSockets insertObject:newSocket atIndex:0];
-    NSLog(@"Start Server TLS to send file");
+    os_log_with_type(logger, self.debugLogLevel, "Start Server TLS to send file");
 }
 
 
@@ -197,7 +209,7 @@
  **/
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
-    NSLog(@"Lanlink did connect to payload host, begin recieving data from %@ %d", host, port);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "Lanlink did connect to payload host, begin receiving data from %{mask.hash}@ %d", host, port);
 
     /* TLS Connection */
     NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
@@ -216,7 +228,7 @@
 
     //NSLog(@"%@", myCerts);
     [sock startTLS: tlsSettings];
-    NSLog(@"Start Client TLS to receive file");
+    os_log_with_type(logger, self.debugLogLevel, "Start Client TLS to receive file");
 }
 
 /**
@@ -228,16 +240,16 @@
     // If the data received has a payload tag (indicating that it is a payload, e.g file trasnferred
     // from the Share plugin, prepare a NetworkPackage with the payload in it and give it to the
     // Plugins to handle it
-    NSLog(@"Package received with tag: %ld", tag);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "Package received with tag: %{public}@", [NetworkPackage descriptionFor: tag]);
     if (tag==PACKAGE_TAG_PAYLOAD) {
         [self attachAndProcessPayload:sock :data];
         return;
     }
-    NSLog(@"llink did read data");
+    os_log_with_type(logger, self.debugLogLevel, "llink did read data");
     //BUG even if we read with a seperator LFData , it's still possible to receive several data package together. So we split the string and retrieve the package
     [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"Received: %@", jsonStr);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "Received: %{public}@", jsonStr);
     [self readThroughLatestPackets:sock :jsonStr];
 }
 
@@ -246,7 +258,7 @@
  **/
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-    NSLog(@"llink didWriteData");
+    os_log_with_type(logger, self.debugLogLevel, "llink didWriteData");
     if (_linkDelegate) {
         [_linkDelegate onSendSuccess:tag];
     }// pass this to device also so device can notify Share plugin when a payload finishes sending?
@@ -315,7 +327,7 @@
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
     if ([_pendingRSockets containsObject:sock]) {
-        NSLog(@"llink payload socket disconnected with error: %@", err);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "llink payload socket disconnected with error: %{public}@", err);
         @synchronized(_pendingRSockets){
             NSUInteger index=[_pendingRSockets indexOfObject:sock];
             [_pendingRSockets removeObjectAtIndex:index];
@@ -323,7 +335,7 @@
         }
     }
     if (_linkDelegate&&(sock==_socket)) {
-        NSLog(@"llink socket did disconnect with error: %@", err);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "llink socket did disconnect with error: %{public}@", err);
         [_linkDelegate onLinkDestroyed:self];
     }
     
@@ -340,7 +352,7 @@
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
 {
-    NSLog(@"Connection is secure");
+    os_log_with_type(logger, self.debugLogLevel, "Connection is secure");
     
     @synchronized(_pendingLSockets){
         if ([_pendingLSockets count] > 0) {
@@ -370,7 +382,7 @@
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
     if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithDeviceIDWithTrust:trust deviceId:_deviceId]) {
-        NSLog(@"LanLink's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         completionHandler(YES);
     } else {
         completionHandler(NO);
@@ -406,13 +418,13 @@
 {
     @synchronized(_pendingRSockets){
         NSUInteger index=[_pendingRSockets indexOfObject:sock];
-        NSLog(@"Reading from socket %@ %ld bytes", _pendingRSockets, [[_pendingPayloadNP objectAtIndex:index] _PayloadSize]);
+        os_log_with_type(logger, self.debugLogLevel, "Reading from socket %{public}@ %ld bytes", _pendingRSockets, [[_pendingPayloadNP objectAtIndex:index] _PayloadSize]);
         [sock readDataToLength: [[_pendingPayloadNP objectAtIndex:index] _PayloadSize] withTimeout:-1 tag:PACKAGE_TAG_PAYLOAD];
     }
 }
 
 - (void)dealloc {
-    NSLog(@"Lan Link destroyed");
+    os_log_with_type(logger, self.debugLogLevel, "Lan Link destroyed");
 }
 
 - (void)attachAndProcessPayload:(GCDAsyncSocket *)sock : (NSData *)data {
@@ -438,7 +450,7 @@
         if ([dataStr length] > 0) {
             NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
             if (_linkDelegate && np) {
-                NSLog(@"llink did read data:\n%@",dataStr);
+                os_log_with_type(logger, self.debugLogLevel, "llink did read data:\n%{public}@",dataStr);
                 if ([np.type isEqualToString:NetworkPackageTypePair]) {
                     _pendingPairNP=np;
                 }
@@ -451,12 +463,12 @@
                         [_pendingRSockets addObject:socket];
                         [_pendingPayloadNP addObject:np];
                     }
-                    NSLog(@"Pending payload: size: %ld", [np _PayloadSize]);
+                    os_log_with_type(logger, self.debugLogLevel, "Pending payload: size: %ld", [np _PayloadSize]);
                     NSError* error=nil;
                     uint16_t tcpPort=[[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
                     // Create new connection here
                     if (![socket connectToHost:[sock connectedHost] onPort:tcpPort error:&error]){
-                        NSLog(@"Lanlink connect to payload host failed");
+                        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Lanlink connect to payload host failed");
                     }
                     return;
                 }

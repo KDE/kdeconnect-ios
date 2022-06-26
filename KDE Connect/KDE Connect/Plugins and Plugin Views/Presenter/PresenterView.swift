@@ -25,6 +25,7 @@ struct PresenterView: View {
     
     @State private var pointerSensitivityFromSlider: Float = 0.07 // defaults to the middle
     @State private var showingSensitivitySlider: Bool = false
+    private let logger = Logger()
 
     var body: some View {
         VStack {
@@ -92,14 +93,14 @@ struct PresenterView: View {
             UIDevice.current.beginGeneratingDeviceOrientationNotifications()
             switch currentBroadcastingDeviceOrientation {
             case .portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight:
-                print("PresenterView appeared with defined orientation")
+                logger.debug("PresenterView appeared with defined orientation")
                 break
             case .faceUp, .faceDown, .unknown:
                 currentBroadcastingDeviceOrientation = .portrait
-                print("PresenterView appeared without defined orientation, defaulting to portrait")
+                logger.debug("PresenterView appeared without defined orientation, defaulting to portrait")
             @unknown default:
                 currentBroadcastingDeviceOrientation = .portrait
-                print("PresenterView appeared without defined orientation, defaulting to portrait")
+                logger.debug("PresenterView appeared without defined orientation, defaulting to portrait")
             }
         }
         .onDisappear {

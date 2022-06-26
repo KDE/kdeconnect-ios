@@ -21,6 +21,7 @@ import CryptoKit
 @objc class CertificateService: NSObject {
     @objc var hostIdentity: SecIdentity?
     @objc var hostCertificateSHA256HashFormattedString: String?
+    private let logger = Logger()
     
     var tempRemoteCerts: [String : SecCertificate] = [:]
     
@@ -46,7 +47,7 @@ import CryptoKit
         ] as CFDictionary
         var identityApp: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &identityApp)
-        print("getIdentityFromKeychain completed with \(status)")
+        logger.info("getIdentityFromKeychain completed with \(status)")
         if (identityApp == nil) {
             if (generateSecIdentityForUUID(NetworkPackage.getUUID()) == noErr) {
                 // Refetch
@@ -66,13 +67,15 @@ import CryptoKit
         if let hostIdentity: SecIdentity = hostIdentity {
             var secCert: SecCertificate? = nil
             let status: OSStatus = SecIdentityCopyCertificate(hostIdentity, &secCert)
-            print("SecIdentityCopyCertificate completed with \(status)")
+            logger.info("SecIdentityCopyCertificate completed with \(status)")
             if (secCert != nil) {
                 return SHA256.hash(data: SecCertificateCopyData(secCert!) as Data).description
             } else {
+                logger.fault("secCert is nil")
                 return "ERROR getting SHA256 from host's certificate"
             }
         } else {
+            logger.fault("hostIdentity is nil")
             return "ERROR getting SHA256 from host's certificate"
         }
     }
@@ -109,21 +112,22 @@ import CryptoKit
     @objc func verifyCertificateEqualityFromRemoteDeviceWithDeviceID(trust: SecTrust, deviceId: String) -> Bool {
         if let remoteCert: SecCertificate = extractRemoteCertFromTrust(trust: trust) {
             if let storedRemoteCert: SecCertificate = extractSavedCertOfRemoteDevice(deviceId: deviceId) {
-                print("Both remote cert and stored cert exist, checking them for equality")
+                logger.debug("Both remote cert and stored cert exist, checking them for equality")
                 if ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data)) {
                     backgroundService._devices[deviceId]!._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
                     tempRemoteCerts[deviceId] = remoteCert
                     return true
                 } else {
+                    logger.error("reject remote device for having a different certificate from the stored certificate")
                     return false
                 }
             } else {
-                print("remote cert exists, but nothing stored, setting up for new remote device")
+                logger.debug("remote cert exists, but nothing stored, setting up for new remote device")
                 tempRemoteCerts[deviceId] = remoteCert
                 return true
             }
         } else {
-            print("Unable to extract remote certificate")
+            logger.fault("Unable to extract remote certificate")
             return false
         }
     }
@@ -131,7 +135,7 @@ import CryptoKit
     @objc func extractRemoteCertFromTrust(trust: SecTrust) -> SecCertificate? {
         let numOfCerts: Int = SecTrustGetCertificateCount(trust)
         if (numOfCerts != 1) {
-            print("Number of cert received != 1, something is wrong about the remote device")
+            logger.error("Number of cert received \(numOfCerts) != 1, something is wrong about the remote device")
             return nil
         }
         if #available(iOS 15.0, *) {
@@ -139,7 +143,7 @@ import CryptoKit
             if (certificateChain != nil) {
                 return certificateChain!.first
             } else {
-                print("Unable to get certificate chain")
+                logger.fault("Unable to get certificate chain")
                 return nil
             }
         } else {
@@ -158,11 +162,12 @@ import CryptoKit
         ] as CFDictionary
         var remoteSavedCert: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &remoteSavedCert)
-        print("extractSavedCertOfRemoteDevice completed with \(status)")
+        logger.info("extractSavedCertOfRemoteDevice completed with \(status)")
 
         if remoteSavedCert != nil {
             guard backgroundService._devices.keys.contains(deviceId) else {
-                print("Device object is gone but cert is still here? Removing stored cert with status \(deleteRemoteDeviceSavedCert(deviceId: deviceId))")
+                let deleteStatus = deleteRemoteDeviceSavedCert(deviceId: deviceId)
+                logger.notice("Device object is gone but cert is still here? Removing stored cert with status \(deleteStatus)")
                 return nil
             }
             return (remoteSavedCert as! SecCertificate)
@@ -173,7 +178,7 @@ import CryptoKit
     
     // This function is called by LanLinkProvider's shouldTrustPeer and didReceiveTrust, and as far as I can tell, doesn't actually get called (what is this even for)??
     @objc func verifyCertificateEqualityFromRemoteDevice(trust: SecTrust) -> Bool {
-        print("OH WOW HOW DID WE GET HERE?")
+        logger.fault("OH WOW HOW DID WE GET HERE?")
         return true
     }
     
@@ -202,7 +207,7 @@ import CryptoKit
             let keychainItemQuery: CFDictionary = [kSecClass: itemClass] as CFDictionary
             let status: OSStatus = SecItemDelete(keychainItemQuery)
             if (status != 0) {
-                print("Failed to remove 1 certificate in keychain with error code \(status), continuing to attempt to remove all")
+                logger.error("Failed to remove 1 certificate in keychain with error code \(status), continuing to attempt to remove all")
             }
         }
         return true

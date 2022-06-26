@@ -21,8 +21,15 @@
 #include <openssl/rsa.h>
 #include <openssl/evp.h>
 
+#import "KDE_Connect-Swift.h"
+
+@import os.log;
+
 OSStatus generateSecIdentityForUUID(NSString *uuid)
 {
+    os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                                    "CertificateService");
+    
     // Force to remove the old identity, otherwise the new identity cannot be stored
     NSDictionary *spec = @{(__bridge id)kSecClass: (id)kSecClassIdentity};
     SecItemDelete((__bridge CFDictionaryRef)spec);
@@ -90,7 +97,7 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     p12FilePath = [tempDictionary stringByAppendingString:@"/rsaPrivate.p12"];
     if (![[NSFileManager defaultManager] createFileAtPath:p12FilePath contents:nil attributes:nil])
     {
-        NSLog(@"Error creating file for P12");
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error creating file for P12");
         @throw [[NSException alloc] initWithName:@"Fail getP12File" reason:@"Fail Error creating file for P12" userInfo:nil];
     }
 
@@ -128,7 +135,7 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
         OSStatus status = SecItemAdd((__bridge CFDictionaryRef)addQuery, NULL);
         if (status != errSecSuccess) {
             // Handle the error
-            NSLog(@"Error");
+            os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error %d", status);
             return 1;
         }
     }

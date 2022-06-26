@@ -69,6 +69,12 @@
 		D20FF56727C77E0F00E347F7 /* AccessibleHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
+		D28C94CA27D1CAAA002EBC2D /* OSLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */; };
+		D28C94CC27D1CAD2002EBC2D /* OSLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */; };
+		D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */; };
+		D28C94D127D1CEB9002EBC2D /* OSLog+KDE Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94D027D1CEB9002EBC2D /* OSLog+KDE Connect.swift */; };
+		D298D96927D2C8810053F65B /* NetworkPackage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */; };
+		D298D96B27D2C91F0053F65B /* NetworkPackageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */; };
 		D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */; };
 		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
 		D2FAF12727D2E78900658753 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2FAF12627D2E78900658753 /* Introspect */; };
@@ -171,6 +177,12 @@
 		D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleHStack.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
+		D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogManager.swift; sourceTree = "<group>"; };
+		D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogView.swift; sourceTree = "<group>"; };
+		D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogEntryLogView.swift; sourceTree = "<group>"; };
+		D28C94D027D1CEB9002EBC2D /* OSLog+KDE Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+KDE Connect.swift"; sourceTree = "<group>"; };
+		D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkPackage+Extensions.swift"; sourceTree = "<group>"; };
+		D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPackageComposer.swift; sourceTree = "<group>"; };
 		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
 		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +311,7 @@
 				A0D8CBC626EF06FA00791D07 /* Swift Backend */,
 				A01FDD2526C4F65B0014B165 /* Plugins and Plugin Views */,
 				A0D8CBCA26EF080E00791D07 /* Views */,
+				D28C94C827D1CA87002EBC2D /* Developer */,
 				5EA4114027960BA50044C559 /* Texts */,
 				A0A04438267BF38A00CC21DD /* Info.plist */,
 				5EA4114527960D0B0044C559 /* Assets.xcassets */,
@@ -488,6 +501,35 @@
 			path = Accessibility;
 			sourceTree = "<group>";
 		};
+		D28C94C827D1CA87002EBC2D /* Developer */ = {
+			isa = PBXGroup;
+			children = (
+				D298D96727D2C8640053F65B /* NetworkPackage */,
+				D28C94CF27D1CDE2002EBC2D /* OSLog */,
+			);
+			path = Developer;
+			sourceTree = "<group>";
+		};
+		D28C94CF27D1CDE2002EBC2D /* OSLog */ = {
+			isa = PBXGroup;
+			children = (
+				D28C94D027D1CEB9002EBC2D /* OSLog+KDE Connect.swift */,
+				D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */,
+				D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */,
+				D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */,
+			);
+			path = OSLog;
+			sourceTree = "<group>";
+		};
+		D298D96727D2C8640053F65B /* NetworkPackage */ = {
+			isa = PBXGroup;
+			children = (
+				D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */,
+				D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */,
+			);
+			path = NetworkPackage;
+			sourceTree = "<group>";
+		};
 		D2FBA1F7277179A300EBA686 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,16 +701,20 @@
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
 				53A0A1DE283ED78700C7C473 /* LocalizedStringKey+Extensions.swift in Sources */,
 				53A0A1DC283ED5C400C7C473 /* BackgroundService+Extensions.swift in Sources */,
+				D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */,
 				1499A8E72698BFF300FDF493 /* Device.m in Sources */,
 				A0FB449A26BA796400733914 /* Backend.swift in Sources */,
 				A0D76FCE26E6F562009D9B03 /* RemoteInput.swift in Sources */,
 				D20FCC41282F4D5500A6E16B /* Contributors.swift in Sources */,
+				D28C94CC27D1CAD2002EBC2D /* OSLogView.swift in Sources */,
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
 				A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */,
 				A0CA112126F3C7ED006F6EAC /* RunCommandView.swift in Sources */,
 				A09CFCDF2737195E007008A6 /* View+iOS14Compatibility.swift in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
+				D298D96B27D2C91F0053F65B /* NetworkPackageComposer.swift in Sources */,
 				A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */,
+				D28C94CA27D1CAAA002EBC2D /* OSLogManager.swift in Sources */,
 				A0A0445F267BF41B00CC21DD /* SettingsView.swift in Sources */,
 				D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */,
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
@@ -677,6 +723,7 @@
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
 				A01FDD3126C701360014B165 /* Battery.swift in Sources */,
 				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
+				D28C94D127D1CEB9002EBC2D /* OSLog+KDE Connect.swift in Sources */,
 				5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */,
 				A0AAA99726E2D968003883A7 /* ConfigureDeviceByIPView.swift in Sources */,
 				D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */,
@@ -700,6 +747,7 @@
 				53A0A1D4283ED43200C7C473 /* DeviceType+Extensions.swift in Sources */,
 				A0CA112526F3CF66006F6EAC /* CommandEntry.swift in Sources */,
 				53A0A1D6283ED49E00C7C473 /* Device+Extensions.swift in Sources */,
+				D298D96927D2C8810053F65B /* NetworkPackage+Extensions.swift in Sources */,
 				A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */,
 				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,
 				A0C00FC526F5807C007EFCCA /* CertificateService.swift in Sources */,

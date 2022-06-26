@@ -31,6 +31,7 @@ extension Notification.Name {
     var visibleDevices: [String : String] = [:]
     @Published
     var savedDevices: [String : String] = [:]
+    private let logger = Logger()
     
     @objc func onPairRequest(_ deviceId: String!) {
         NotificationCenter.default.post(name: .didReceivePairRequestNotification, object: nil,
@@ -45,12 +46,12 @@ extension Notification.Name {
     @objc func onPairSuccess(_ deviceId: String!) {
         guard let cert = certificateService.tempRemoteCerts[deviceId] else {
             SystemSound.audioError.play()
-            print("Pairing succeeded without certificate for remote device \(deviceId!)")
+            logger.fault("Pairing succeeded without certificate for remote device \(deviceId!, privacy: .private(mask: .hash))")
             return
         }
         
         let status = certificateService.saveRemoteDeviceCertToKeychain(cert: cert, deviceId: deviceId)
-        print("Remote certificate saved into local Keychain with status \(status)")
+        logger.info("Remote certificate saved into local Keychain with status \(status)")
         backgroundService._devices[deviceId]!._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
         
         onDevicesListUpdated()
@@ -66,11 +67,12 @@ extension Notification.Name {
     @objc public func onDevicesListUpdated(
         devicesListsMap: [String : [String : String]] = backgroundService.getDevicesLists()
     ) {
-        DispatchQueue.main.async { [self] in
+        DispatchQueue.main.async { [weak self] in
             withAnimation {
-                connectedDevices = devicesListsMap["connected"]!
-                visibleDevices = devicesListsMap["visible"]!
-                savedDevices = devicesListsMap["remembered"]!
+                guard let self = self else { return }
+                self.connectedDevices = devicesListsMap["connected"]!
+                self.visibleDevices = devicesListsMap["visible"]!
+                self.savedDevices = devicesListsMap["remembered"]!
             }
         }
     }
@@ -83,6 +85,6 @@ extension Notification.Name {
     }
     
     @objc static func getDirectIPList() -> [String] {
-        return selfDeviceData.directIPs
+        return SelfDeviceData.shared.directIPs
     }
 }

@@ -34,10 +34,12 @@
 //#import "KeychainItemWrapper.h"
 //#import "Device.h"
 #import "KDE_Connect-Swift.h"
+@import os.log;
 
 @interface BackgroundService() {
     NSMutableDictionary<NSString *, Device *> *_devices;
     NSMutableDictionary<NSString *, NSData *> *_settings;
+    os_log_t logger;
 }
 
 @property(nonatomic) NSMutableArray<BaseLinkProvider *> *_linkProviders;
@@ -85,6 +87,8 @@
 - (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService
 {
     if ((self=[super init])) {
+        logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                                        NSStringFromClass([self class]).UTF8String);
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
         //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
         //[_certificateService deleteAllItemsFromKeychain];
@@ -107,18 +111,18 @@
                 [_settings setObject:deviceData forKey:deviceId]; // do this here since Settings holds exclusively encoded Data, NOT Device objects, otherwise will throw "non-property list" error upon trying to save to UserDefaults
                 NSError* error;
                 Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
-                NSLog(@"device with pair status %lu is decoded from UserDefaults as: %@ with error %@", [device _pairStatus], device, error);
+                os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device with pair status %lu is decoded from UserDefaults as: %{public}@ with error %{public}@", [device _pairStatus], device, error);
                 if ([device _pairStatus] == Paired) {
                     device.deviceDelegate = self;
                     //[device reloadPlugins];
                     [_savedDevices setObject:device forKey:deviceId];
                 } else {
-                    NSLog(@"Not loading device above since it's previous status is NOT paired.");
+                    os_log_with_type(logger, self.debugLogLevel, "Not loading device above since it's previous status is NOT paired.");
                 }
             }
         }
         
-        NSLog(@"%@", _savedDevices);
+        os_log_with_type(logger, self.debugLogLevel, "%{public}@", _savedDevices);
         //[[NSUserDefaults standardUserDefaults] registerDefaults:_settings];
         //[[NSUserDefaults standardUserDefaults] synchronize];
         [self registerLinkProviders];
@@ -137,6 +141,13 @@
     return self;
 }
 
+- (os_log_type_t)debugLogLevel {
+    if ([SelfDeviceData shared].isDebuggingDiscovery) {
+        return OS_LOG_TYPE_INFO;
+    }
+    return OS_LOG_TYPE_DEBUG;
+}
+
 // TODO: fix typo in this name
 - (void) loadRemenberedDevices
 {
@@ -152,15 +163,15 @@
 
 - (void) registerLinkProviders
 {
-    NSLog(@"bg register linkproviders");
-    // TO-DO: read setting for linkProvider registeration
+    os_log_with_type(logger, self.debugLogLevel, "bg register linkproviders");
+    // TO-DO: read setting for linkProvider registration
     LanLinkProvider* linkProvider=[[LanLinkProvider alloc] initWithDelegate:self certificateService:_certificateService];
     [_linkProviders addObject:linkProvider];
 }
 
 - (void) startDiscovery
 {
-    NSLog(@"bg start Discovery");
+    os_log_with_type(logger, self.debugLogLevel, "bg start Discovery");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onStart];
     }
@@ -168,7 +179,7 @@
 
 - (void) refreshDiscovery
 {
-    NSLog(@"bg refresh Discovery");
+    os_log_with_type(logger, self.debugLogLevel, "bg refresh Discovery");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onRefresh];
     }
@@ -176,7 +187,7 @@
 
 - (void) stopDiscovery
 {
-    NSLog(@"bg stop Discovery");
+    os_log_with_type(logger, self.debugLogLevel, "bg stop Discovery");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onStop];
     }
@@ -184,7 +195,7 @@
 
 - (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *) getDevicesLists
 {
-    NSLog(@"bg get devices lists");
+    os_log_with_type(logger, self.debugLogLevel, "bg get devices lists");
     NSMutableDictionary* _visibleDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _connectedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary* _rememberedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
@@ -210,7 +221,7 @@
 
 - (void) pairDevice:(NSString*)deviceId;
 {
-    NSLog(@"bg pair device");
+    os_log_with_type(logger, self.debugLogLevel, "bg pair device");
     Device* device=[_devices valueForKey:deviceId];
     if ([device isReachable]) {
         [device requestPairing];
@@ -219,7 +230,7 @@
 
 /// @remark This should be the ONLY method used for unpairing Devices, DO NOT call the device's own unpair() method as it DOES NOT remove the device from the Arrays like this one does. For other files already using _backgroundServiceDelegate AKA ConnectedDevicesViewModel, use unpairFromBackgroundServiceInstance() in that. That's the same thing as calling this
 - (void)unpairDevice:(NSString *)deviceId {
-    NSLog(@"bg unpair device");
+    os_log_with_type(logger, self.debugLogLevel, "bg unpair device");
     Device* device=[_devices valueForKey:deviceId];
     if ([device isReachable]) {
         [device unpair];
@@ -240,7 +251,7 @@
         }
     }
     BOOL updated = ![newVisibleDevices isEqualToArray:_visibleDevices];
-    NSLog(@"bg on device refresh visible device list, %@",
+    os_log_with_type(logger, self.debugLogLevel, "bg on device refresh visible device list, %{public}@",
           updated ? @"UPDATED" : @"NO UPDATE");
     _visibleDevices = newVisibleDevices;
     if (_backgroundServiceDelegate && updated) {
@@ -252,15 +263,15 @@
 - (void) onDeviceReachableStatusChanged:(Device*)device
 {   // TODO: Is this what gets called when paired device goes offline/becomes "remembered device"
     // FIXME: NOOOOOOOOOO ITS NOT, must be somewhere else, but this is called by Device when links == 0 aka unreachable????
-    NSLog(@"bg on device reachable status changed");
+    os_log_with_type(logger, self.debugLogLevel, "bg on device reachable status changed");
     if (![device isReachable]) {
-        NSLog(@"bg device not reachable");
-        NSLog(@"%@", [device _id]);
+        os_log_with_type(logger, self.debugLogLevel, "bg device not reachable");
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "%{mask.hash}@", [device _id]);
         //[_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[device _id]];
     }
     if (![device isPaired] && ![device isReachable]) {
         [_devices removeObjectForKey:[device _id]];
-        NSLog(@"bg destroy device");
+        os_log_with_type(logger, self.debugLogLevel, "bg destroy device");
     }
     //[self refreshDiscovery];
     [self refreshVisibleDeviceList]; // might want to reverse this after figuring out why refreshDiscovery is causing Plugins to disappear
@@ -268,7 +279,7 @@
 
 - (void) onNetworkChange
 {
-    NSLog(@"bg on network change");
+    os_log_with_type(logger, self.debugLogLevel, "bg on network change");
     for (LanLinkProvider* lp in _linkProviders){
         [lp onNetworkChange];
     }
@@ -277,16 +288,16 @@
 
 - (void) onConnectionReceived:(NetworkPackage *)np link:(BaseLink *)link
 {
-    NSLog(@"bg on connection received");
+    os_log_with_type(logger, self.debugLogLevel, "bg on connection received");
     NSString* deviceId=[np objectForKey:@"deviceId"];
-    NSLog(@"Device discovered: %@",deviceId);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "Device discovered: %{mask.hash}@",deviceId);
     if ([_devices valueForKey:deviceId]) {
-        NSLog(@"known device");
+        os_log_with_type(logger, self.debugLogLevel, "known device");
         Device* device=[_devices objectForKey:deviceId];
         [device addLink:np baseLink:link];
     }
     else{
-        NSLog(@"new device from network package: %@", np);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "new device from network package: %{public}@", np);
         Device* device=[[Device alloc] init:np baselink:link setDelegate:self];
         [_devices setObject:device forKey:deviceId];
         [self refreshVisibleDeviceList];
@@ -295,7 +306,7 @@
 
 - (void) onLinkDestroyed:(BaseLink *)link
 {
-    NSLog(@"bg on link destroyed");
+    os_log_with_type(logger, self.debugLogLevel, "bg on link destroyed");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onLinkDestroyed:link];
     }
@@ -303,7 +314,7 @@
 
 - (void) onDevicePairRequest:(Device *)device
 {
-    NSLog(@"bg on device pair request");
+    os_log_with_type(logger, self.debugLogLevel, "bg on device pair request");
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onPairRequest:[device _id]];
     }
@@ -311,7 +322,7 @@
 
 - (void) onDevicePairTimeout:(Device*)device
 {
-    NSLog(@"bg on device pair timeout");
+    os_log_with_type(logger, self.debugLogLevel, "bg on device pair timeout");
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onPairTimeout:[device _id]];
     }
@@ -322,21 +333,21 @@
 - (void) onDevicePairSuccess:(Device*)device
 {
     //NSLog(@"%lu", [device _type]);
-    NSLog(@"bg on device pair success");
+    os_log_with_type(logger, self.debugLogLevel, "bg on device pair success");
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onPairSuccess:[device _id]];
     }
     //[device setAsPaired]; is already called in the caller of this method
     NSError* error;
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
-    NSLog(@"device object with pair status %lu encoded into UserDefaults as: %@ with error: %@", [device _pairStatus], deviceData, error);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "device object with pair status %lu encoded into UserDefaults as: %{public}@ with error: %{public}@", [device _pairStatus], deviceData, error);
     [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
 }
 
 - (void) onDevicePairRejected:(Device*)device
 {
-    NSLog(@"bg on device pair rejected");
+    os_log_with_type(logger, self.debugLogLevel, "bg on device pair rejected");
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onPairRejected:[device _id]];
     }
@@ -346,12 +357,12 @@
 
 - (void)onDeviceUnpaired:(Device *)device {
     NSString *deviceId = [device _id];
-    NSLog(@"bg on device unpair %@", deviceId);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "bg on device unpair %{mask.hash}@", deviceId);
     [_settings removeObjectForKey:deviceId];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
     device._SHA256HashFormatted = nil;
     BOOL status = [_certificateService deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
-    NSLog(@"Device remove, stored cert also removed with status %d", status);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "Device remove, stored cert also removed with status %d", status);
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }

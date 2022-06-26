@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject private var selfDeviceDataForSettings: SelfDeviceData = selfDeviceData
+    @ObservedObject private var selfDeviceDataForSettings: SelfDeviceData = .shared
     
     var body: some View {
         List {
@@ -20,7 +20,7 @@ struct SettingsView: View {
                             .labelStyle(.accessibilityTitleOnly)
                             .accentColor(.primary)
                         Spacer()
-                        Text(selfDeviceData.deviceName)
+                        Text(selfDeviceDataForSettings.deviceName)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -31,7 +31,7 @@ struct SettingsView: View {
                             .labelStyle(.accessibilityTitleOnly)
                             .accentColor(.primary)
                         Spacer()
-                        selfDeviceData.chosenTheme.text
+                        selfDeviceDataForSettings.chosenTheme.text
                             .foregroundColor(.secondary)
                     }
                 }
@@ -52,7 +52,10 @@ struct SettingsView: View {
                     }
                 }
                 
-                NavigationLink(destination: SettingsAdvancedView()) {
+                NavigationLink {
+                    SettingsAdvancedView()
+                        .environmentObject(selfDeviceDataForSettings)
+                } label: {
                     Label("Advanced Settings", systemImage: "wrench.and.screwdriver")
                         .labelStyle(.accessibilityTitleOnly)
                         .accentColor(.primary)

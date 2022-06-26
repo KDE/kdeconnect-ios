@@ -16,6 +16,7 @@
 import SwiftUI
 
 struct DeviceDiscoveryHelp: View {
+    @EnvironmentObject private var selfDeviceData: SelfDeviceData
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -39,6 +40,15 @@ struct DeviceDiscoveryHelp: View {
                          destination: URL(string: "https://userbase.kde.org/KDEConnect#Troubleshooting")!)
                 }
                 .padding()
+                .accessibilityAddTraits(selfDeviceData.isDebuggingDiscovery ? [] : .isButton)
+                .accessibilityHint(
+                    selfDeviceData.isDebuggingDiscovery
+                    ? Text("Debugging device discovery")
+                    : Text("Double tap to activate debugging device discovery")
+                )
+                .accessibilityAction {
+                    enableDebuggingDiscovery()
+                }
             }
             .navigationTitle("Device Discovery")
             .toolbar {
@@ -46,10 +56,22 @@ struct DeviceDiscoveryHelp: View {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Text("Done")
+                        if selfDeviceData.isDebuggingDiscovery {
+                            Label("Done", systemImage: "hammer.fill")
+                        } else {
+                            Text("Done")
+                        }
                     }
                 }
             }
+        }
+        .onTapGesture(count: 10, perform: enableDebuggingDiscovery)
+    }
+
+    private func enableDebuggingDiscovery() {
+        withAnimation {
+            selfDeviceData.isDebugging = true
+            selfDeviceData.isDebuggingDiscovery = true
         }
     }
 }

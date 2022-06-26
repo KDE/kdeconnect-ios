@@ -103,7 +103,7 @@ struct AppIconPicker_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AppIconPicker()
-                .environmentObject(selfDeviceData)
+                .environmentObject(SelfDeviceData.shared)
         }
     }
 }

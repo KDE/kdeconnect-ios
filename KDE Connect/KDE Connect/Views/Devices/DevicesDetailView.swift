@@ -26,6 +26,7 @@ struct DevicesDetailView: View {
     
     @State var chosenFileURLs: [URL] = []
     @ObservedObject var viewModel = connectedDevicesViewModel
+    private let logger = Logger(category: "DevicesDetailView")
     
     var isStillConnected: Bool {
         viewModel.connectedDevices.keys.contains(detailsDeviceId)
@@ -91,10 +92,15 @@ struct DevicesDetailView: View {
                 }
             )
             .mediaImporter(isPresented: $showingPhotosPicker, allowedMediaTypes: .all, allowsMultipleSelection: true) { result in
-                if case .success(let chosenMediaURLs) = result, !chosenMediaURLs.isEmpty {
-                    (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenMediaURLs)
-                } else {
-                    print("Media Picker Result: \(result)")
+                switch result {
+                case .success(let chosenMediaURLs):
+                    if chosenMediaURLs.isEmpty {
+                        logger.info("Media Picker picked nothing")
+                    } else {
+                        (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenMediaURLs)
+                    }
+                case .failure(let error):
+                    logger.error("Media Picker Error: \(error.localizedDescription, privacy: .public)")
                 }
             } loadingOverlay: { progress in
                 NavigationView {
@@ -105,13 +111,15 @@ struct DevicesDetailView: View {
                 .transition(.move(edge: .bottom).combined(with: .opacity))
             }
             .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
-                do {
-                    chosenFileURLs = try result.get()
-                } catch {
-                    print("Document Picker Error")
-                }
-                if (chosenFileURLs.count > 0) {
-                    (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
+                switch result {
+                case .success(let chosenFileURLs):
+                    if chosenFileURLs.isEmpty {
+                        logger.info("Document Picker picked nothing")
+                    } else {
+                        (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
+                    }
+                case .failure(let error):
+                    logger.error("Document Picker Error: \(error.localizedDescription, privacy: .public)")
                 }
             }
             .onAppear() {

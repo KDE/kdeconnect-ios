@@ -45,9 +45,10 @@ class AlertManager: ObservableObject {
     init() {
         self.$alertPresent
             .receive(on: DispatchQueue.main)
-            .sink { [self] (alertPresent: Bool) in
+            .sink { [weak self] (alertPresent: Bool) in
+                guard let self = self else { return }
                 if alertPresent == false && self.queue.count != 0{
-                    currentAlert = queue.removeFirst()
+                    self.currentAlert = self.queue.removeFirst()
                     self.alertPresent = true
                 }
             }

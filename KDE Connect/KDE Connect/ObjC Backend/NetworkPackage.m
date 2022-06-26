@@ -32,6 +32,8 @@
 #import "KeychainItemWrapper.h"
 @import UIKit;
 
+@import os.log;
+
 #define LFDATA [NSData dataWithBytes:"\x0A" length:1]
 
 __strong static NSString* _UUID;
@@ -97,6 +99,11 @@ __strong static NSString* _UUID;
                     NetworkPackageTypeRunCommandRequest
                     ] forKey:@"outgoingCapabilities"];
     
+    if ([[SelfDeviceData shared] isDebuggingNetworkPackage]) {
+        [np setObject:[NetworkPackage allPackageTypes] forKey:@"incomingCapabilities"];
+        [np setObject:[NetworkPackage allPackageTypes] forKey:@"outgoingCapabilities"];
+    }
+    
     // FIXME: Remove object
 //    [np setObject:[[PluginFactory sharedInstance] getSupportedIncomingInterfaces] forKey:@"SupportedIncomingInterfaces"];
 //    [np setObject:[[PluginFactory sharedInstance] getSupportedOutgoingInterfaces] forKey:@"SupportedOutgoingInterfaces"];
@@ -123,7 +130,15 @@ __strong static NSString* _UUID;
             [wrapper setObject:_UUID forKey:(__bridge id)(kSecValueData)];
         }
     }
-    NSLog(@"Get UUID %@", _UUID);
+    os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                                    NSStringFromClass([self class]).UTF8String);
+    os_log_type_t debugLogLevel;
+    if ([[SelfDeviceData shared] isDebuggingNetworkPackage]) {
+        debugLogLevel = OS_LOG_TYPE_INFO;
+    } else {
+        debugLogLevel = OS_LOG_TYPE_DEBUG;
+    }
+    os_log_with_type(logger, debugLogLevel, "Get UUID %{mask.hash}@", _UUID);
     return _UUID;
 }
 
@@ -201,7 +216,9 @@ __strong static NSString* _UUID;
     NSError* err=nil;
     NSMutableData* jsonData=[[NSMutableData alloc] initWithData:[NSJSONSerialization dataWithJSONObject:info options:0 error:&err]];
     if (err) {
-        NSLog(@"NP serialize error");
+        os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                                        NSStringFromClass([self class]).UTF8String);
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "NP serialize error");
         return nil;
     }
     [jsonData appendData:LFDATA];

@@ -30,11 +30,13 @@
 #import "Device.h"
 //#import "BackgroundService.h"
 #import "KDE_Connect-Swift.h"
+@import os.log;
 static const NSTimeInterval kPairingTimeout = 30.0;
 
 @implementation Device {
     NSMutableDictionary<NetworkPackageType, id<Plugin>> *_plugins;
     NSMutableDictionary<NetworkPackageType, NSNumber *> *_pluginsEnableStatus;
+    os_log_t logger;
 }
 
 @synthesize _id;
@@ -70,6 +72,8 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 - (Device*) init:(NetworkPackage*)np baselink:(BaseLink*)link setDelegate:(id)deviceDelegate
 {
     if (self=[super init]) {
+        logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                               NSStringFromClass([self class]).UTF8String);
         _id=[np objectForKey:@"deviceId"];
         _type=[Device Str2DeviceType:[np objectForKey:@"deviceType"]];
         _name=[np objectForKey:@"deviceName"];
@@ -90,6 +94,13 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     return self;
 }
 
+- (os_log_type_t)debugLogLevel {
+    if ([SelfDeviceData shared].isDebuggingDiscovery) {
+        return OS_LOG_TYPE_INFO;
+    }
+    return OS_LOG_TYPE_DEBUG;
+}
+
 - (NSInteger) compareProtocolVersion
 {
     return 0;
@@ -99,9 +110,9 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 - (void) addLink:(NetworkPackage*)np baseLink:(BaseLink*)Link
 {
-    NSLog(@"add link to %@",_id);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_id);
     if (_protocolVersion!=[np integerForKey:@"protocolVersion"]) {
-        NSLog(@"using different protocol version");
+        os_log_with_type(logger, self.debugLogLevel, "using different protocol version");
     }
     [_links addObject:Link];
     _id=[np objectForKey:@"deviceId"];
@@ -112,7 +123,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     //[self saveSetting];
     [Link set_linkDelegate:self];
     if ([_links count]==1) {
-        NSLog(@"one link available");
+        os_log_with_type(logger, self.debugLogLevel, "one link available");
         if (deviceDelegate) {
             [deviceDelegate onDeviceReachableStatusChanged:self];
         }
@@ -127,11 +138,11 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 // FIXME: This ain't it, doesn't get called when connection is cut (e.g wifi off) from the remote device
 - (void) onLinkDestroyed:(BaseLink *)link
 {
-    NSLog(@"device on link destroyed");
+    os_log_with_type(logger, self.debugLogLevel, "device on link destroyed");
     [_links removeObject:link];
-    NSLog(@"remove link ; %lu remaining", (unsigned long)[_links count]);
+    os_log_with_type(logger, self.debugLogLevel, "remove link ; %lu remaining", (unsigned long)[_links count]);
     if ([_links count]==0) {
-        NSLog(@"no available link");
+        os_log_with_type(logger, self.debugLogLevel, "no available link");
         if (deviceDelegate) {
             [deviceDelegate onDeviceReachableStatusChanged:self];
             // No, we don't want to remove the plugins because IF the device is coming back online later, we want to still have to ready
@@ -146,7 +157,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 - (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag
 {
-    NSLog(@"device send package");
+    os_log_with_type(logger, self.debugLogLevel, "device send package");
     // TODO: 2 branch has identical code
     if (![np.type isEqualToString:NetworkPackageTypePair]) {
         for (BaseLink* link in _links) {
@@ -167,7 +178,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 - (void) onSendSuccess:(long)tag
 {
-    NSLog(@"device on send success");
+    os_log_with_type(logger, self.debugLogLevel, "device on send success");
     if (tag==PACKAGE_TAG_PAIR) {
         if (_pairStatus==RequestedByPeer) {
             [self setAsPaired];
@@ -176,20 +187,20 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         /* for (Plugin* plugin in [_plugins allValues]) {
 //            [plugin sentPercentage:100 tag:tag];
         } */
-        NSLog(@"Last payload sent successfully, sending next one");
+        os_log_with_type(logger, self.debugLogLevel, "Last payload sent successfully, sending next one");
         [(Share *)[_plugins objectForKey:NetworkPackageTypeShare] sendSinglePayload];
     }
 }
 
 - (void)onPackageReceived:(NetworkPackage *)np {
-    NSLog(@"device on package received");
+    os_log_with_type(logger, self.debugLogLevel, "device on package received");
     if ([np.type isEqualToString:NetworkPackageTypePair]) {
-        NSLog(@"Pair package received");
+        os_log_with_type(logger, self.debugLogLevel, "Pair package received");
         BOOL wantsPair=[np boolForKey:@"pair"];
         if (wantsPair==[self isPaired]) {
-            NSLog(@"already done, paired:%d",wantsPair);
+            os_log_with_type(logger, self.debugLogLevel, "already done, paired:%d",wantsPair);
             if (_pairStatus==Requested) {
-                NSLog(@"canceled by other peer");
+                os_log_with_type(logger, self.debugLogLevel, "canceled by other peer");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
                 });
@@ -203,7 +214,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
             return;
         }
         if (wantsPair) {
-            NSLog(@"pair request");
+            os_log_with_type(logger, self.debugLogLevel, "pair request");
             if ((_pairStatus)==Requested) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
@@ -234,13 +245,13 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         }
     } else if ([self isPaired]) {
         // TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling function elsewhere in Swift
-        NSLog(@"received a plugin package: %@", np.type);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "received a plugin package: %{public}@", np.type);
         for (id<Plugin> plugin in [_plugins allValues]) {
             [plugin onDevicePackageReceivedWithNp:np];
         }
         //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
     } else {
-        NSLog(@"not paired, ignore packages, unpair the device");
+        os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "not paired, ignore packages, unpair the device");
         // remembered devices should have became paired, okay to call unpair.
         [self unpair];
     }
@@ -285,22 +296,22 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 - (void) requestPairing
 {
     if (![self isReachable]) {
-        NSLog(@"device failed:not reachable");
+        os_log_with_type(logger, OS_LOG_TYPE_ERROR, "device failed:not reachable");
         return;
     }
     if (_pairStatus==Paired) {
-        NSLog(@"device failed:already paired");
+        os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device failed:already paired");
         return;
     }
     if (_pairStatus==Requested) {
-        NSLog(@"device failed:already requested");
+        os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device failed:already requested");
         return;
     }
     if (_pairStatus==RequestedByPeer) {
-        NSLog(@"device accept pair request");
+        os_log_with_type(logger, self.debugLogLevel, "device accept pair request");
     }
     else{
-        NSLog(@"device request pairing");
+        os_log_with_type(logger, self.debugLogLevel, "device request pairing");
         _pairStatus=Requested;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self performSelector:@selector(requestPairingTimeout:) withObject:nil afterDelay:kPairingTimeout];
@@ -311,10 +322,10 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 }
 
 - (void)requestPairingTimeout:(id)sender {
-    NSLog(@"device request pairing timeout");
+    os_log_with_type(logger, OS_LOG_TYPE_ERROR, "device request pairing timeout");
     if (_pairStatus==Requested) {
         _pairStatus=NotPaired;
-        NSLog(@"pairing timeout");
+        os_log_with_type(logger, self.debugLogLevel, "pairing timeout");
         if (deviceDelegate) {
             [deviceDelegate onDevicePairTimeout:self];
         }
@@ -331,7 +342,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 }
 
 - (void)unpair {
-    NSLog(@"device unpair");
+    os_log_with_type(logger, self.debugLogLevel, "device unpair");
     _pairStatus=NotPaired;
 
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypePair];
@@ -341,7 +352,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 - (void) acceptPairing
 {
-    NSLog(@"device accepted pair request");
+    os_log_with_type(logger, self.debugLogLevel, "device accepted pair request");
     NetworkPackage* np=[NetworkPackage createPairPackage];
     [self sendPackage:np tag:PACKAGE_TAG_PAIR];
 }
@@ -353,7 +364,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 //        return;
 //    }
     
-    NSLog(@"device reload plugins");
+    os_log_with_type(logger, self.debugLogLevel, "device reload plugins");
     [_plugins removeAllObjects];
     [_failedPlugins removeAllObjects];
     [_pluginsEnableStatus removeAllObjects];

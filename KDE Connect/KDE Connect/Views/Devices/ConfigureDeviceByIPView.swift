@@ -15,7 +15,7 @@
 import SwiftUI
 
 struct ConfigureDeviceByIPView: View {
-    @ObservedObject var selfDeviceDataForIPConfig: SelfDeviceData = selfDeviceData
+    @ObservedObject var selfDeviceDataForIPConfig: SelfDeviceData = .shared
     @FocusState var focusedAddressID: UUID?
     
     struct DirectIPaddress: Identifiable {

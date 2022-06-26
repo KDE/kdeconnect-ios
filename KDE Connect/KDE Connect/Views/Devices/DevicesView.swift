@@ -18,6 +18,7 @@ import AVFoundation
 
 struct DevicesView: View {
     @EnvironmentObject var alertManager: AlertManager
+    @EnvironmentObject private var selfDeviceData: SelfDeviceData
 
     var connectedDevicesIds: [String] {
         viewModel.connectedDevices.keys.sorted()
@@ -38,6 +39,7 @@ struct DevicesView: View {
 
     //@ObservedObject var localNotificationService = LocalNotificationService()
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    private let logger = Logger()
     
     var body: some View {
         VStack {
@@ -288,7 +290,7 @@ struct DevicesView: View {
             .forEach { device in
                 // TODO: Update Device.m to indicate nullability
                 let name = backgroundService._devices[device.id]!._name!
-                print("Remembered device \(name) removed at index \(device.offset)")
+                logger.info("Remembered device \(name, privacy: .private(mask: .hash)) removed at index \(device.offset)")
                 backgroundService.unpairDevice(device.id)
             }
     }
@@ -383,6 +385,7 @@ struct DevicesView_Previews: PreviewProvider {
         NavigationView {
             DevicesView()
                 .listStyle(.sidebar)
+                .environmentObject(SelfDeviceData.shared)
         }
     }
 }

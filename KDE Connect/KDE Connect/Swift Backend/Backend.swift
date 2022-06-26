@@ -30,7 +30,8 @@ let certificateService: CertificateService = CertificateService()
 let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewModel()
 
 // Global ObservableObject to be Observed by needed structs for app-wide information
-let selfDeviceData: SelfDeviceData = SelfDeviceData()
+@available(*, deprecated, renamed: "SelfDeviceData.shared")
+let selfDeviceData: SelfDeviceData = .shared
 
 // Background Service provider, bridged from Obj-C codebase
 let backgroundService: BackgroundService = BackgroundService(connectedDeviceViewModel: connectedDevicesViewModel, certificateService: certificateService)
@@ -44,7 +45,7 @@ func saveDeviceToUserDefaults(deviceId: String) {
     do {
         deviceData = try NSKeyedArchiver.archivedData(withRootObject: backgroundService._devices[deviceId]!, requiringSecureCoding: true)
     } catch {
-        print(error.localizedDescription)
+        Logger(category: "Device").fault("\(error.localizedDescription, privacy: .public)")
         return
     }
     backgroundService.settings[backgroundService.devices[deviceId]!._id] = deviceData

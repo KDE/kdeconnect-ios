@@ -16,6 +16,7 @@ import Foundation
 
 @objc class Presenter : NSObject, Plugin {
     @objc weak var controlDevice: Device!
+    private let logger = Logger()
     
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -23,7 +24,7 @@ import Foundation
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np.type == .presenter) {
-            print("Presenter received a package, can't do anything about it, ignoring")
+            logger.info("Presenter received a package, can't do anything about it, ignoring")
             return true
         }
         return false

@@ -17,6 +17,7 @@ import UIKit
 @objc class Clipboard: NSObject, Plugin {
     static var lastLocalClipboardUpdateTimestamp: Int = 0
     @objc weak var controlDevice: Device!
+    private let logger = Logger()
     
     @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -28,20 +29,20 @@ import UIKit
                 if (np.type == .clipboard) {
                     UIPasteboard.general.string = np.object(forKey: "content") as? String
                     Self.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
-                    print("Local clipboard synced with remote packet, timestamp updated")
+                    logger.debug("Local clipboard synced with remote packet, timestamp updated")
                 } else if (np.type == .clipboardConnect) {
                     let packetTimeStamp: Int = np.integer(forKey: "timestamp")
                     if (packetTimeStamp == 0 || packetTimeStamp < Self.lastLocalClipboardUpdateTimestamp) {
-                        print("Invalid timestamp from \(np.type), doing nothing")
+                        logger.info("Invalid timestamp from \(np.type.rawValue, privacy: .public), doing nothing")
                         return false
                     } else {
                         UIPasteboard.general.string = np.object(forKey: "content") as? String
                         Self.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
-                        print("Local clipboard synced with remote packet, timestamp updated")
+                        logger.debug("Local clipboard synced with remote packet, timestamp updated")
                     }
                 }
             } else {
-                print("Received nil for the content of the remote device's \(np.type), doing nothing")
+                logger.debug("Received nil for the content of the remote device's \(np.type.rawValue, privacy: .public), doing nothing")
             }
             return true
         }
@@ -56,7 +57,7 @@ import UIKit
             np.setInteger(Self.lastLocalClipboardUpdateTimestamp, forKey: "timestamp")
             controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
         } else {
-            print("Attempt to connect local clipboard content with remote device returned nil")
+            logger.info("Attempt to connect local clipboard content with remote device returned nil")
         }
     }
     
@@ -66,7 +67,7 @@ import UIKit
             np.setObject(clipboardContent, forKey: "content")
             controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
         } else {
-            print("Attempt to grab and update local clipboard content returned nil")
+            logger.info("Attempt to grab and update local clipboard content returned nil")
         }
     }
 }

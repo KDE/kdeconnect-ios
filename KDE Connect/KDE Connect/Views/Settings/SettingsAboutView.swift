@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsAboutView: View {
     @Environment(\.openURL) var openURL
-    @EnvironmentObject var settings: SelfDeviceData
+    @EnvironmentObject private var selfDeviceData: SelfDeviceData
 
     let version: String = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let build: String = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
@@ -37,7 +37,7 @@ struct SettingsAboutView: View {
                 VStack {
                     HStack {
                         Spacer(minLength: 0.0)
-                        settings.appIcon.image_60x60
+                        selfDeviceData.appIcon.image_60x60
                             .accessibilityHidden(true)
                         Spacer(minLength: 8.0)
                         VStack {
@@ -50,7 +50,27 @@ struct SettingsAboutView: View {
                                     Text(" for iOS")
                                 }
                             }
-                            Text("Version: \(version) (\(build))")
+                            Label {
+                                Text("Version: \(version) (\(build))")
+                            } icon: {
+                                if selfDeviceData.isDebugging {
+                                    Image(systemName: "hammer.fill")
+                                        .foregroundColor(.primary)
+                                }
+                            }
+                            .accessibilityValue(selfDeviceData.isDebugging ? Text("Debug mode") : Text(""))
+                            .onTapGesture(count: 10) {
+                                withAnimation {
+                                    selfDeviceData.isDebugging = true
+                                }
+                            }
+                            .accessibilityAddTraits(selfDeviceData.isDebugging ? [] : .isButton)
+                            .accessibilityHint(selfDeviceData.isDebugging ? Text("") : Text("Double tap to activate debug mode"))
+                            .accessibilityAction {
+                                withAnimation {
+                                    selfDeviceData.isDebugging = true
+                                }
+                            }
                             Text("© KDE Community & contributors")
                                 .fixedSize(horizontal: true, vertical: false)
                         }
@@ -188,6 +208,6 @@ struct SettingsAboutView: View {
 struct SettingsAboutView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsAboutView()
-            .environmentObject(selfDeviceData)
+            .environmentObject(SelfDeviceData.shared)
     }
 }

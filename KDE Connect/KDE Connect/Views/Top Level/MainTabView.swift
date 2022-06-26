@@ -22,6 +22,7 @@ struct MainTabView: View {
             NavigationView {
                 DevicesView()
                     .environmentObject(alertManager)
+                    .environmentObject(SelfDeviceData.shared)
                 
                 Text("Select a device from the Devices list to start.")
                     .navigationTitle("KDE Connect")

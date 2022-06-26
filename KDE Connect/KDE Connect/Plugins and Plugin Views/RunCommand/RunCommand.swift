@@ -19,6 +19,7 @@ import SwiftUI
     @objc weak var controlDevice: Device!
     @Published
     var commandEntries: [CommandEntry] = []
+    private let logger = Logger()
     
     @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -35,10 +36,10 @@ import SwiftUI
                 case let jsonString as String:
                     commandsDict = processCommandsJSON(jsonString)
                 case let dict as CommandsDictionary:
-                    print("out of date GSConnect with wrong RunCommand implementation")
+                    logger.fault("out of date GSConnect with wrong RunCommand implementation")
                     commandsDict = dict
                 case let somethingElse:
-                    print("unexpected commandList format \(type(of: somethingElse))")
+                    logger.fault("unexpected commandList format \(type(of: somethingElse), privacy: .public)")
                     commandsDict = [:]
                 }
                 let newCommandEntries = processCommandsDict(commandsDict)
@@ -46,7 +47,7 @@ import SwiftUI
                     self?.commandEntries = newCommandEntries
                 }
             } else {
-                print("RunCommand packet received with no commandList, ignoring")
+                logger.info("RunCommand packet received with no commandList, ignoring")
             }
             return true
         }
@@ -72,17 +73,16 @@ import SwiftUI
     }
     
     private func processCommandsJSON(_ json: String) -> CommandsDictionary {
-        guard let jsonData = json.data(using: .utf8) else {
-            return [:]
-        }
+        let jsonData = Data(json.utf8)
         do {
-            guard let commandsDict = try JSONSerialization.jsonObject(with: jsonData, options: []) as? CommandsDictionary else {
-                print("commandList string is not convertible to CommandsDictionary")
+            let json = try JSONSerialization.jsonObject(with: jsonData)
+            guard let commandsDict = json as? CommandsDictionary else {
+                logger.fault("commandList JSON is \(type(of: json), privacy: .public), not CommandsDictionary")
                 return [:]
             }
             return commandsDict
         } catch {
-            print(error.localizedDescription)
+            logger.fault("commandList string failed to decode as JSON due to \(error.localizedDescription, privacy: .public)")
             return [:]
         }
     }
@@ -94,7 +94,7 @@ import SwiftUI
                 let commandEntry = CommandEntry(name: commandName, command: command, key: commandKey)
                 return commandEntry
             } else {
-                print("Command or CommandName for \(commandKey) is nil")
+                logger.error("Command or CommandName for \(commandKey, privacy: .public) is nil")
                 return nil
             }
         }

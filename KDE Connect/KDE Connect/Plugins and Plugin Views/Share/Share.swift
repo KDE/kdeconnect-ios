@@ -39,25 +39,27 @@ extension Notification.Name {
     var totalNumOfFiles: Int = 0
     var numFilesSuccessfullySent: Int = 0
     
+    private let logger = Logger()
+    
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice
     }
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
-        print("Share plugin received something")
+        logger.debug("Share plugin received something")
         if (np.type == .share) {
-            print("Share Plugin received a valid Share package")
+            logger.debug("Share Plugin received a valid Share package")
             if (numFilesReceived == 0) {
                 totalNumOfFilesToReceive = np.integer(forKey: "numberOfFiles")
             }
             if let filename = np._Body["filename"] as? String {
                 if saveFile(fileData: np._Payload!, filename: filename) {
                     //connectedDevicesViewModel.showFileReceivedAlert()
-                    print("File \(filename) saved successfully")
+                    logger.debug("File \(filename, privacy: .private(mask: .hash)) saved successfully")
                     numFilesReceived += 1
                     notificationHapticsGenerator.notificationOccurred(.success)
                 } else {
-                    print("File \(filename) failed to save")
+                    logger.fault("File \(filename, privacy: .public) failed to save")
                     notificationHapticsGenerator.notificationOccurred(.error)
                 }
             } else if let sharedText = np._Body["text"] as? String {
@@ -72,7 +74,7 @@ extension Notification.Name {
                     }
                 }
             } else {
-                print("Nil received when trying to parse filename")
+                logger.fault("Nil received when trying to parse filename")
                 notificationHapticsGenerator.notificationOccurred(.error)
             }
             if numFilesReceived == totalNumOfFilesToReceive {
@@ -85,7 +87,7 @@ extension Notification.Name {
             }
             return true
         }
-        print("Not a share package")
+        logger.debug("Not a share package")
         return false
     }
     
@@ -113,7 +115,7 @@ extension Notification.Name {
                     }
                     url.stopAccessingSecurityScopedResource()
                 } catch {
-                    print("Error reading file on device: \(error)")
+                    logger.fault("Error reading file on device: \(error.localizedDescription, privacy: .public)")
                 }
                 if (contentToSend != nil && lastModifiedDate != nil) {
                     fileDatas.append(contentToSend!)
@@ -125,7 +127,7 @@ extension Notification.Name {
             totalNumOfFiles = fileDatas.count
             sendSinglePayload()
         } else {
-            print("Share plugin busy for this device, ignoring sharing attempt")
+            logger.error("Share plugin busy for this device, ignoring sharing attempt")
             SystemSound.audioToneBusy.play()
         }
     }
@@ -148,7 +150,7 @@ extension Notification.Name {
             //SystemSound.mailSent.play()
             notificationHapticsGenerator.notificationOccurred(.success)
         } else {
-            print("Finished sending a batch of \(totalNumOfFiles) files")
+            logger.debug("Finished sending a batch of \(self.totalNumOfFiles) files")
             SystemSound.mailSent.play()
             isVacant = true
             resetTransferData()
@@ -160,11 +162,11 @@ extension Notification.Name {
         do {
             let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false) // gets URL of app's document directory
             let fileURL = documentDirectory.appendingPathComponent(filename) // adds new file's name to URL
-            //print(fileURL.absoluteString)
+            logger.debug("\(fileURL.absoluteString, privacy: .private(mask: .hash))")
             try fileData.write(to: fileURL) // and save!
             return true
         } catch {
-            print("Error saving file to device \(error)")
+            logger.fault("Error saving file to device \(error.localizedDescription, privacy: .public)")
         }
         return false
     }

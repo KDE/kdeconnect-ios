@@ -18,7 +18,11 @@ import UniformTypeIdentifiers
 import SwiftUI
 import UIKit
 
-class SelfDeviceData: ObservableObject {
+@objc
+class SelfDeviceData: NSObject, ObservableObject {
+    @objc
+    public static let shared = SelfDeviceData()
+    
     @Published var deviceName: String {
         didSet {
             UserDefaults.standard.set(deviceName, forKey: "deviceName")
@@ -43,11 +47,29 @@ class SelfDeviceData: ObservableObject {
         }
     }
     
-    init() {
+    /// Intentionally not persisted
+    @Published var isDebugging: Bool
+    @objc
+    @Published var isDebuggingDiscovery: Bool
+    @objc
+    @Published var isDebuggingNetworkPackage: Bool
+    
+    override init() {
         self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? UIDevice.current.name
         self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme").flatMap(ColorScheme.init)
         self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
         self.appIcon = AppIcon(rawValue: UserDefaults.standard.string(forKey: "appIcon")) ?? .default
+        #if DEBUG
+        let launchArguments = Set(ProcessInfo.processInfo.arguments)
+        self.isDebugging = launchArguments.contains("isDebugging")
+        self.isDebuggingDiscovery = launchArguments.contains("isDebuggingDiscovery")
+        self.isDebuggingNetworkPackage = launchArguments.contains("isDebuggingNetworkPackage")
+        #else
+        self.isDebugging = false
+        self.isDebuggingDiscovery = false
+        self.isDebuggingNetworkPackage = false
+        #endif
+        super.init()
     }
 }
 

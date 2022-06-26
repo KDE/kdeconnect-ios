@@ -39,10 +39,13 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
 
+@import os.log;
+
 @interface LanLinkProvider()
 {
     uint16_t _tcpPort;
     dispatch_queue_t socketQueue;
+    os_log_t logger;
 }
 @property(nonatomic) GCDAsyncUdpSocket* _udpSocket;
 @property(nonatomic) GCDAsyncSocket* _tcpSocket;
@@ -71,6 +74,8 @@
 {
     if (self = [super initWithDelegate:linkProviderDelegate])
     {
+        logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                               NSStringFromClass([self class]).UTF8String);
         _tcpPort=MIN_TCP_PORT;
         [_tcpSocket disconnect];
         [_udpSocket close];
@@ -91,6 +96,14 @@
     return self;
 }
 
+- (os_log_type_t)debugLogLevel {
+    SelfDeviceData *settings = [SelfDeviceData shared];
+    if (settings.isDebuggingDiscovery || settings.isDebuggingNetworkPackage) {
+        return OS_LOG_TYPE_INFO;
+    }
+    return OS_LOG_TYPE_DEBUG;
+}
+
 - (void) loadSecIdentity
 {
     SecIdentityRef identityApp = [_certificateService hostIdentity];
@@ -101,10 +114,10 @@
     OSStatus status = SecIdentityCopyPrivateKey(identityApp, &privateKeyRef);
     if (status != noErr) {
         // Fail to retrieve private key from the .p12 file
-        NSLog(@"Certificate loading failed");
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Certificate loading failed");
     } else {
         _identity = identityApp;
-        NSLog(@"Certificate loaded successfully");
+        os_log_with_type(logger, self.debugLogLevel, "Certificate loaded successfully");
     }
     CFRelease(privateKeyRef);
     // The ownership of SecIdentityRef is in CertificateService
@@ -112,31 +125,31 @@
 
 - (void)setupSocket
 {
-    NSLog(@"lp setup socket");
+    os_log_with_type(logger, self.debugLogLevel, "lp setup socket");
     NSError* err;
     _tcpSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
     _udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
     if (![_udpSocket enableReusePort:true error:&err]) {
-        NSLog(@"udp reuse port option error");
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "udp reuse port option error");
     }
     if (![_udpSocket enableBroadcast:true error:&err]) {
-        NSLog(@"udp listen broadcast error");
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "udp listen broadcast error");
     }
     if (![_udpSocket bindToPort:UDP_PORT error:&err]) {
-        NSLog(@"udp bind error");
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "udp bind error");
     }
 }
 
 - (void)onStart
 {
-    NSLog(@"lp onstart");
+    os_log_with_type(logger, self.debugLogLevel, "lp onstart");
     [self setupSocket];
     NSError* err;
     if (![_udpSocket beginReceiving:&err]) {
-        NSLog(@"LanLinkProvider:UDP socket start error");
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "LanLinkProvider:UDP socket start error: %{public}@", err);
         return;
     }
-    NSLog(@"LanLinkProvider:UDP socket start");
+    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:UDP socket start");
     if (![_tcpSocket isConnected]) {
         while (![_tcpSocket acceptOnPort:_tcpPort error:&err]) {
             _tcpPort++;
@@ -146,7 +159,7 @@
         }
     }
     
-    NSLog(@"LanLinkProvider:setup tcp socket on port %d",_tcpPort);
+    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:setup tcp socket on port %d", _tcpPort);
     
     //Introduce myself , UDP broadcasting my id package
     NetworkPackage* np=[NetworkPackage createIdentityPackage];
@@ -154,7 +167,7 @@
     NSData* data=[np serialize];
     
     // Broadcast to every device first
-    NSLog(@"sending:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "sending: %{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 	[_udpSocket sendData:data  toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
     
     // Then use direct IP in case broadcast is disabled on the router
@@ -166,7 +179,7 @@
 
 - (void)onStop
 {
-    NSLog(@"lp onstop");
+    os_log_with_type(logger, self.debugLogLevel, "lp onstop");
     [_udpSocket close];
     [_tcpSocket disconnect];
     for (GCDAsyncSocket* socket in _pendingSockets) {
@@ -202,7 +215,7 @@
 
 - (void) onRefresh
 {
-    NSLog(@"lp on refresh");
+    os_log_with_type(logger, self.debugLogLevel, "lp on refresh");
     if (![_tcpSocket isConnected]) {
         [self onNetworkChange];
         return;
@@ -212,7 +225,7 @@
         [np setInteger:_tcpPort forKey:@"tcpPort"];
         NSData* data=[np serialize];
         
-        NSLog(@"sending:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "sending: %{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
         
         // Then use direct IP in case broadcast is disabled on the router
@@ -225,7 +238,7 @@
 
 - (void)onNetworkChange
 {
-    NSLog(@"lp on networkchange");
+    os_log_with_type(logger, self.debugLogLevel, "lp on networkchange");
     [self onStop];
     [self onStart];
 }
@@ -233,7 +246,7 @@
 
 - (void) onLinkDestroyed:(BaseLink*)link
 {
-    NSLog(@"lp on linkdestroyed");
+    os_log_with_type(logger, self.debugLogLevel, "lp on linkdestroyed");
     if (link==[_connectedLinks objectForKey:[link _deviceId]]) {
         [_connectedLinks removeObjectForKey:[link _deviceId]];
     }
@@ -249,40 +262,42 @@
 {
     
     // Unserialize received data
-    NSLog(@"lp receive udp package");
+    os_log_with_type(logger, self.debugLogLevel, "lp receive udp package");
 	NetworkPackage* np = [NetworkPackage unserialize:data];
-    NSLog(@"linkprovider:received a udp package from %@",[np objectForKey:@"deviceName"]);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "linkprovider:received a udp package from %{mask.hash}@",[np objectForKey:@"deviceName"]);
     //not id package
     
     if (![np.type isEqualToString:NetworkPackageTypeIdentity]) {
-        NSLog(@"LanLinkProvider:expecting an id package");
+        os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:expecting an id package");
         return;
     }
     
+    NSString *host;
+    uint16_t port;
+    [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
+
     //my own package, don't care
     NetworkPackage* np2=[NetworkPackage createIdentityPackage];
     NSString* myId=[[np2 _Body] valueForKey:@"deviceId"];
     if ([[np objectForKey:@"deviceId"] isEqualToString:myId]){
-        NSLog(@"Ignore my own id package");
+        os_log_with_type(logger, self.debugLogLevel, "Ignore my own id package from %{mask.hash}@:%hu", host, port);
         return;
     }
     
     //deal with id package, might be ipV6 filtering, need to figure out
-    NSString* host;
-    [GCDAsyncUdpSocket getHost:&host port:nil fromAddress:address];
     if ([host hasPrefix:@"::ffff:"]) {
-        NSLog(@"Ignore packet");
+        os_log_with_type(logger, self.debugLogLevel, "Ignore packet");
         return;
     }
     
     // This is very important, as if it doesn't ignore the identity packets of devices that are already connected, the app will respond by TERMINATING the existing connection and establishing a new one. We DO NOT want this.
     if ([ConnectedDevicesViewModel isDeviceCurrentlyPairedAndConnected:[np objectForKey:@"deviceId"]]) {
-        NSLog(@"Received identity packet from %@, which is already connected (aka paired & reachable), ignoring", [np objectForKey:@"deviceName"]);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "Received identity packet from %{mask.hash}@, which is already connected (aka paired & reachable), ignoring", [np objectForKey:@"deviceName"]);
         return;
     }
     
     // Get ready to establish TCP connection to incoming host
-    NSLog(@"LanLinkProvider:id package received, creating link and a TCP connection socket");
+    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:id package received, creating link and a TCP connection socket");
     GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
     uint16_t tcpPort=[np integerForKey:@"tcpPort"];
     
@@ -290,11 +305,11 @@
     if (![socket connectToHost:host onPort:tcpPort error:&error]) {
         // If TCP connection failed, make new packet with _tcpPort, then broadcast again
         
-        NSLog(@"LanLinkProvider:tcp connection error");
-        NSLog(@"try reverse connection");
+        os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:tcp connection error");
+        os_log_with_type(logger, self.debugLogLevel, "try reverse connection");
         [[np2 _Body] setValue:[[NSNumber alloc ] initWithUnsignedInt:_tcpPort] forKey:@"tcpPort"];
         NSData* data=[np serialize];
-        NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        os_log_with_type(logger, self.debugLogLevel, "%{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
         
         // Then use direct IP in case broadcast is disabled on the router
@@ -304,7 +319,7 @@
         }
         return;
     }
-    NSLog(@"connecting");
+    os_log_with_type(logger, self.debugLogLevel, "connecting");
     
     // Now that TCP is successful, I know the incoming host, now it's time for the incoming host
     // to know me, I send ID Packet to incoming Host via the just established TCP
@@ -338,7 +353,7 @@
 // Just
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
-	NSLog(@"TCP server: didAcceptNewSocket");
+    os_log_with_type(logger, self.debugLogLevel, "TCP server: didAcceptNewSocket");
     [_pendingSockets addObject:newSocket];
     long index=[_pendingSockets indexOfObject:newSocket];
     //retrieve id package
@@ -355,7 +370,7 @@
 {
     // Temporally disable
     [sock setDelegate:nil];
-    NSLog(@"tcp socket didConnectToHost %@", host);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "tcp socket didConnectToHost %{mask.hash}@", host);
 
     //create LanLink and inform the background
     NSUInteger index=[_pendingSockets indexOfObject:sock];
@@ -377,7 +392,7 @@
         (id)myCerts,                                        (id)kCFStreamSSLCertificates,
     nil];
 
-    NSLog(@"Start Server TLS");
+    os_log_with_type(logger, self.debugLogLevel, "Start Server TLS");
     [sock startTLS:tlsSettings];
     
     LanLink* oldlink;
@@ -401,15 +416,15 @@
  **/
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    NSLog(@"lp tcp socket didReadData");
-    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    os_log_with_type(logger, self.debugLogLevel, "lp tcp socket didReadData");
+    os_log_with_type(logger, self.debugLogLevel, "%{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
     for (NSString* dataStr in packageArray) {
         if ([dataStr length] > 0) {
             NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
             if (![np.type isEqualToString:NetworkPackageTypeIdentity]) {
-                NSLog(@"lp expecting an id package %@", np.type);
+                os_log_with_type(logger, OS_LOG_TYPE_INFO, "lp expecting an id package instead of %{public}@", np.type);
                 return;
             }
             NSString* deviceId=[np objectForKey:@"deviceId"];
@@ -440,7 +455,7 @@
                                          nil];
             
             [sock startTLS: tlsSettings];
-            NSLog(@"Start Client TLS");
+            os_log_with_type(logger, self.debugLogLevel, "Start Client TLS");
             
             [sock setDelegate:nil];
             [_pendingSockets removeObject:sock];
@@ -510,9 +525,9 @@
  **/
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
-    NSLog(@"tcp socket did Disconnect with error: %@", err);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "tcp socket did Disconnect with error: %{public}@", err);
     if (sock==_tcpSocket) {
-        NSLog(@"tcp server disconnected with error: %@", err);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "tcp server disconnected with error: %{public}@", err);
         _tcpSocket=nil;
     }
     else
@@ -523,7 +538,7 @@
 
 - (BOOL)socketShouldManuallyEvaluateTrust:(GCDAsyncSocket *)sock
 {
-    NSLog(@"Should Evaluate Certificate LanLinkProvider");
+    os_log_with_type(logger, self.debugLogLevel, "Should Evaluate Certificate LanLinkProvider");
     return YES;
 }
 
@@ -531,7 +546,7 @@
 - (BOOL)socket:(GCDAsyncSocket *)sock shouldTrustPeer:(SecTrustRef)trust
 {
     if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
-        NSLog(@"LanLinkProvider's shouldTrustPeer received Certificate from %@, trusting", [sock connectedHost]);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLinkProvider's shouldTrustPeer received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         return YES;
     } else {
         return NO;
@@ -541,7 +556,7 @@
 // After securing, create a LanLink for further communications
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
 {
-    NSLog(@"Connection is secure LanLinkProvider");
+    os_log_with_type(logger, self.debugLogLevel, "Connection is secure LanLinkProvider");
     [sock setDelegate:nil];
     NSUInteger pendingSocketIndex = [_pendingSockets indexOfObject:sock];
     [_pendingSockets removeObject:sock];
@@ -562,7 +577,7 @@
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
     if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
-        NSLog(@"LanLinkProvider's didReceiveTrust received Certificate from %@, trusting", [sock connectedHost]);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLinkProvider's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         completionHandler(YES);// give YES if we want to trust, NO if we don't
     } else {
         completionHandler(NO);

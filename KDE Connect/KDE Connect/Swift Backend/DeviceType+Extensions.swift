@@ -29,16 +29,17 @@ public extension DeviceType {
 
     static var current: DeviceType {
         var macDeviceType: DeviceType {
-            "hw.model".withCString { hwModelCStr in
+            let logger = Logger(category: "DeviceType")
+            return "hw.model".withCString { hwModelCStr in
                 var size = 0
                 if sysctlbyname(hwModelCStr, nil, &size, nil, 0) != 0 {
-                    print("Failed to get size of hw.model (\(String(cString: strerror(errno))))")
+                    logger.fault("Failed to get size of hw.model \(errno, format: .darwinErrno)")
                     return .unknown
                 }
                 precondition(size > 0)
                 var resultCStr = [CChar](repeating: 0, count: size)
                 if sysctlbyname(hwModelCStr, &resultCStr, &size, nil, 0) != 0 {
-                    print("Failed to get hw.model (\(String(cString: strerror(errno))))")
+                    logger.fault("Failed to get hw.model \(errno, format: .darwinErrno)")
                     return .unknown
                 }
                 // https://everymac.com/systems/by_capability/mac-specs-by-machine-model-machine-id.html
@@ -48,7 +49,7 @@ public extension DeviceType {
                 case let model where model.contains("Mac"):
                     return .desktop
                 case let model:
-                    print("Unexpected hw.model (\(model)")
+                    logger.fault("Unexpected hw.model (\(model, privacy: .public)")
                     return .unknown
                 }
             }

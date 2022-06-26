@@ -49,6 +49,8 @@
 
 #import "KeychainItemWrapper.h"
 #import <Security/Security.h>
+#import "KDE_Connect-Swift.h"
+@import os.log;
 
 /*
 
@@ -307,8 +309,10 @@ Keychain API expects as a validly constructed container class.
         // No previous item found; add the new one.
         result = SecItemAdd((CFDictionaryRef)[self dictionaryToSecItemFormat:keychainItemData], NULL);
         
-        NSLog(@"Result %d", result);
-		// NSAssert( result == noErr, @"Couldn't add the Keychain Item." );
+        os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                                        NSStringFromClass([self class]).UTF8String);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "Result %d", result);
+        // NSAssert( result == noErr, @"Couldn't add the Keychain Item." );
     }
 }
 

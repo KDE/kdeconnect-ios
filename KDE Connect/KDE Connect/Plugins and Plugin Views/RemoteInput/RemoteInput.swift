@@ -14,6 +14,7 @@
 
 @objc class RemoteInput : NSObject, Plugin {
     @objc weak var controlDevice: Device!
+    private let logger = Logger()
     
     @objc init (controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -21,7 +22,7 @@
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np.type == .mousePadRequest) {
-            print("Received mousepad command, doing nothing")
+            logger.info("Received mousepad command, doing nothing")
             return true
         }
         return false

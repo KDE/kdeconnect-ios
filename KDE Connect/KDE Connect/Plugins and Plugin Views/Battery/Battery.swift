@@ -17,13 +17,14 @@ import UIKit
 
 // TODO: We might be able to do something with the background activities plugin where it sends out its battery status every once in a while??? But maybe iOS will not unfreeze the entire app for us??? I really don't know...background activity is something that we'll have to figure out later on
 @objc class Battery: NSObject, ObservablePlugin {
-    @objc weak var controlDevice: Device!
+    @objc weak var controlDevice: Device?
     @Published
     @objc var remoteChargeLevel: Int = 0
     @Published
     @objc var remoteIsCharging: Bool = false
     @Published
     @objc var remoteThresholdEvent: Int = 0
+    private let logger = Logger()
     
     @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
@@ -45,13 +46,14 @@ import UIKit
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np.type == .batteryRequest) {
-            print("Battery plugin received a force update request")
+            logger.debug("Battery plugin received a force update request")
             sendBatteryStatusOut()
             return true
         } else if (np.type == .battery) { // received battery info from other device
-            print("Battery plugin received battery status from remote device")
-            DispatchQueue.main.async { [self] in
+            logger.debug("Battery plugin received battery status from remote device")
+            DispatchQueue.main.async { [weak self] in
                 withAnimation {
+                    guard let self = self else { return }
                     self.remoteChargeLevel = np.integer(forKey: "currentCharge")
                     self.remoteIsCharging = np.bool(forKey: "isCharging")
                     self.remoteThresholdEvent = np.integer(forKey: "thresholdEvent")
@@ -71,14 +73,18 @@ import UIKit
             np.setInteger(batteryLevel, forKey: "currentCharge")
             np.setBool((batteryStatus == .charging), forKey: "isCharging")
             np.setInteger(batteryThresholdEvent, forKey: "thresholdEvent")
-            print("Battery status accessed successfully, sending out:")
-            print("BatteryLevel=\(batteryLevel)")
-            print("BatteryisCharging=\(batteryStatus == .charging)")
+            logger.debug("Battery status accessed successfully, sending out:")
+            logger.debug("BatteryLevel=\(batteryLevel)")
+            logger.debug("BatteryisCharging=\(batteryStatus == .charging)")
         } else {
             np.setInteger(0, forKey: "currentCharge")
             np.setBool(false, forKey: "isCharging")
             np.setInteger(0, forKey: "thresholdEvent")
-            print("Battery status reported as unknown, reporting 0 for all values")
+            logger.notice("Battery status reported as unknown, reporting 0 for all values")
+        }
+        guard let controlDevice = controlDevice else {
+            logger.fault("Sending battery status with leaked instance, \(CFGetRetainCount(self)) references remaining")
+            return
         }
         controlDevice.send(np, tag: Int(PACKAGE_TAG_BATTERY))
     }
@@ -86,6 +92,10 @@ import UIKit
     @objc func sendBatteryStatusRequest() {
         let np: NetworkPackage = NetworkPackage(type: .batteryRequest)
         np.setBool(true, forKey: "request")
+        guard let controlDevice = controlDevice else {
+            logger.fault("Requesting battery status with leaked instance, \(CFGetRetainCount(self)) references remaining")
+            return
+        }
         controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
     }
     
