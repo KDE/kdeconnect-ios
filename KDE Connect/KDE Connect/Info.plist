@@ -43,6 +43,15 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>KDE Connect will be able to run in background if be granted always location access</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>KDE Connect will be able to run in background if be granted always location access
+Please proceed to grant always location access</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchScreen</key>

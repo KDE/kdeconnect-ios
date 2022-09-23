@@ -60,6 +60,14 @@ struct SettingsView: View {
                         .labelStyle(.accessibilityTitleOnly)
                         .accentColor(.primary)
                 }
+                
+                NavigationLink {
+                    SettingsBackgroundView()
+                } label: {
+                    Label("Background Execution", systemImage: "pin")
+                        .labelStyle(.accessibilityTitleOnly)
+                        .accentColor(.primary)
+                }
             }
             
             Section(header: Text("Information")) {

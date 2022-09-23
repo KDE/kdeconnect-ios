@@ -28,6 +28,7 @@
 		53A92E6D27ED4F4F0085A10C /* SystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A92E6C27ED4F4F0085A10C /* SystemSound.swift */; };
 		5EA4114427960C1C0044C559 /* libs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114227960C1C0044C559 /* libs.json */; };
 		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
+		5EEC17B928DE3731001C7BC4 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEC17B828DE3731001C7BC4 /* SettingsBackgroundView.swift */; };
 		5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */; };
 		5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */; };
 		5EFFF3082D1B6F3000A3EFCA /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3032D1B6F3000A3EFCA /* InternalBattery.swift */; };
@@ -150,6 +151,7 @@
 		53A92E6C27ED4F4F0085A10C /* SystemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSound.swift; sourceTree = "<group>"; };
 		5EA4114227960C1C0044C559 /* libs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = libs.json; sourceTree = "<group>"; };
 		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5EEC17B828DE3731001C7BC4 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
 		5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibleTextView.swift; sourceTree = "<group>"; };
 		5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
 		5EFFF3022D1B6F3000A3EFCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */,
 				D20922C827C5EC3900AF6F76 /* FeaturesList.swift */,
 				D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */,
+				5EEC17B828DE3731001C7BC4 /* SettingsBackgroundView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				D24FFB4D29E76E8500604DA4 /* FilesTab.swift in Sources */,
 				D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
+				5EEC17B928DE3731001C7BC4 /* SettingsBackgroundView.swift in Sources */,
 				53A0A1DE283ED78700C7C473 /* LocalizedStringKey+Extensions.swift in Sources */,
 				D24FFB4F29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift in Sources */,
 				D27D727F29B051D8002C00B7 /* NetworkChangeMonitor.swift in Sources */,
