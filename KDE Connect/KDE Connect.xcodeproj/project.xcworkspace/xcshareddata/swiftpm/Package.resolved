@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/ApolloZhu/CocoaAsyncSocket",
         "state": {
           "branch": "master",
-          "revision": "43e6bfce048b877f3fc4d55008c41134c5e8ecdd",
+          "revision": "be208949f83e0315ee736a1cf9d0e86a47e2038e",
           "version": null
         }
       },
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/krzyzanowskim/OpenSSL.git",
         "state": {
           "branch": null,
-          "revision": "033fcb41dac96b1b6effa945ca1f9ade002370b2",
-          "version": "1.1.1501"
+          "revision": "9429bf89fe0df2d2f25f3a9a51cbf7092e69640f",
+          "version": "1.1.1700"
         }
       },
       {
