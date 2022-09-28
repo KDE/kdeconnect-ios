@@ -33,14 +33,15 @@ struct ConfigureDeviceByIPView: View {
         List {
             Section(header: Text("Direct Handshake Devices"), footer: Text("Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery")) {
                 ForEach($directIPs) { $address in
-                    TextField("Device IP", text: $address.ip) {
-                        if #available(iOS 15, *) {
+                    TextField("Device IP", text: $address.ip)
+                        .focused($focusedAddressID, equals: address.id)
+                        .onSubmit {
                             withAnimation {
                                 filterAddresses()
                             }
-                        } // filtering on iOS 14 will crash the app
-                    }
-                    .focused($focusedAddressID, equals: address.id)
+                            // filtering on iOS 14 will crash the app, and this
+                            // back-port of onSubmit does nothing on iOS 14.
+                        }
                 }
                 .onDelete(perform: deleteAddress)
             }

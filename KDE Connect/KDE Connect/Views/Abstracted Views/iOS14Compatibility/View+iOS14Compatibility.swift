@@ -153,3 +153,16 @@ extension View {
         }
     }
 }
+
+@available(iOS, introduced: 14, obsoleted: 15, message: "Delete this extension")
+extension View {
+    @ViewBuilder
+    func onSubmit(action: @escaping (() -> Void)) -> some View {
+        if #available(iOS 15, *) {
+            self.onSubmit(action)
+        } else {
+            // ConfigureDeviceByIPView requires onSubmit to be no-op on iOS 14
+            self
+        }
+    }
+}
