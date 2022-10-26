@@ -158,6 +158,8 @@ struct DevicesView: View {
                                     HStack {
                                         Image(systemName: battery.statusSFSymbolName)
                                             .font(.footnote)
+                                            // FIXME: wrong foreground color
+                                            // on iOS 14 when row is selected
                                             .foregroundColor(battery.statusColor)
                                         Text("\(percent: battery.remoteChargeLevel)")
                                             .font(.footnote)

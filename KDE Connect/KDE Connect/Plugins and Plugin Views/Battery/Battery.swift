@@ -114,7 +114,7 @@ import UIKit
         }
     }
     
-    var statusColor: Color {
+    var statusColor: Color? {
         if remoteThresholdEvent == 1 || remoteChargeLevel < 10 {
             return .red
         } else if remoteIsCharging {
@@ -122,7 +122,7 @@ import UIKit
         } else if remoteChargeLevel < 40 {
             return .yellow
         } else {
-            return .primary
+            return nil
         }
     }
     
