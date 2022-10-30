@@ -6,5 +6,9 @@
 	<true/>
 	<key>com.apple.developer.networking.multicast</key>
 	<true/>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)org.kde.kdeconnect</string>
+	</array>
 </dict>
 </plist>
