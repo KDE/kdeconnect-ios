@@ -29,12 +29,12 @@ struct FeaturesList: View {
                 details: Text("May crash when several other devices try to send (large) files to this device at the same time")),
         Feature(Text("Presenter: Control Remote")),
         Feature(Text("Mouse: Control Remote")),
+        Feature(Text("Keyboard: Control Remote")),
         Feature(Text("Run Command: Request")),
     ]
     private let inProgressFeatures: [Feature] = [
         Feature(Text("Share: Send Text & URL"),
                 details: Text("Through the system share sheet")),
-        Feature(Text("Keyboard: Control Remote")),
         Feature(Text("Trusted Networks")),
         Feature(Text("Internationalization & Localization")),
     ]

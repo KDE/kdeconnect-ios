@@ -26,6 +26,18 @@ extension View {
     func focused<T: Hashable>(_ binding: Binding<T?>, equals value: T?) -> some View {
         modifier(iOS14Focus(binding, equals: value))
     }
+    
+    @ViewBuilder
+    func focused(_ binding: Binding<Bool>) -> some View {
+        modifier(iOS14Focus(binding.asOptional, equals: true))
+    }
+}
+
+fileprivate extension Bool {
+    var asOptional: Bool? {
+        get { self }
+        set { self = newValue == true }
+    }
 }
 
 /// Intercepts all UITextFieldDelegate methods and forwarding them to original,
@@ -81,10 +93,19 @@ fileprivate struct iOS14Focus<Value: Hashable>: ViewModifier {
                 }
                 if binding == value {
                     textField.becomeFirstResponder()
+                } else if textField.isFirstResponder {
+                    textField.resignFirstResponder()
                 }
             }
             .onChange(of: binding) { _ in
                 // trigger view update
+            }
+            .introspectKeyboardListener { listener in
+                if binding == value {
+                    listener.becomeFirstResponder()
+                } else if listener.isFirstResponder {
+                    listener.resignFirstResponder()
+                }
             }
     }
 }

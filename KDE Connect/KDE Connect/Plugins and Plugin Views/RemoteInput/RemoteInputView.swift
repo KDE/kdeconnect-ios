@@ -16,10 +16,10 @@ import SwiftUI
 
 struct RemoteInputView: View {
     @Environment(\.colorScheme) var colorScheme
+    @FocusState private var keyboardFocus: Bool = false
     let detailsDeviceId: String
     @State private var previousHorizontalDragOffset: Float = 0.0
     @State private var previousVerticalDragOffset: Float = 0.0
-    
     @State private var previousScrollVerticalDragOffset: Float = 0.0
     @State private var previousScrollHorizontalDragOffset: Float = 0.0
     
@@ -31,6 +31,15 @@ struct RemoteInputView: View {
     
     var body: some View {
         VStack {
+            KeyboardListenerPlaceholderView { key in
+                sendKeyPress(key)
+            } onDeleteBackward: {
+                sendSpecialKeyPress(.delete)
+            } onReturn: {
+                sendSpecialKeyPress(.return)
+            }
+            .focused($keyboardFocus)
+            
             TwoFingerTapView { gesture in
                 sendRightClick()
             }
@@ -137,6 +146,10 @@ struct RemoteInputView: View {
         }
         .navigationTitle("Remote Input")
         .navigationBarItems(trailing:
+                                HStack {
+            Button(action: toggleKeyboard) {
+                Label("Toggle Keyboard", systemImage: "keyboard")
+            }
             Menu {
                 Button(action: sendSingleTap) {
                     Label("Send Single Left Click", systemImage: "cursorarrow.click")
@@ -193,6 +206,7 @@ struct RemoteInputView: View {
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
+        }
         )
         .onAppear {
             cursorSensitivityFromSlider = backgroundService._devices[detailsDeviceId]!._cursorSensitivity
@@ -208,6 +222,12 @@ struct RemoteInputView: View {
     }
     
     func sendSingleTap() {
+        // if keyboard is on, dismiss keyboard and ignore this event
+        if keyboardFocus {
+            keyboardFocus = false
+            return
+        }
+
         UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 0.7
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleClick()
         logger.debug("single clicked")
@@ -217,6 +237,22 @@ struct RemoteInputView: View {
         notificationHapticsGenerator.notificationOccurred(.success)
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendDoubleClick()
         logger.debug("double clicked")
+    }
+    
+    func sendKeyPress(_ keys: String) {
+        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as!
+            RemoteInput).sendKeyPress(keys)
+        logger.debug("key press sent: \(keys)")
+    }
+    
+    func sendSpecialKeyPress(_ key: RemoteInput.SpecialKey) {
+        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as!
+         RemoteInput).sendSpecialKeyPress(key.rawValue)
+        logger.debug("special key press sent: \(String(reflecting: key))")
+    }
+    
+    func toggleKeyboard() {
+        keyboardFocus.toggle()
     }
     
     func sendRightClick() {

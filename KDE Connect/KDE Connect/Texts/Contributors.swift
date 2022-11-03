@@ -31,6 +31,7 @@ enum Contributors {
         case .authors:
             return [
                 Contributor(name: NSLocalizedString("Dan Stoian", comment: ""), kde: "danthedante"),
+                Contributor(name: NSLocalizedString("Han Young", comment: ""), kde: "hanyoung"),
                 Contributor(name: NSLocalizedString("Nicolás Alvarez", comment: ""), kde: "nalvarez"),
                 Contributor(name: NSLocalizedString("Ruixuan Tu", comment: ""), kde: "ruixuantu"),
                 Contributor(name: NSLocalizedString("Wenxuan Xiao", comment: ""), kde: "wxiao"),
