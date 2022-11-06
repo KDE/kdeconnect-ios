@@ -55,7 +55,6 @@ __strong static NSString* _UUID;
 @synthesize _Id;
 @synthesize type;
 @synthesize _Body;
-@synthesize _Payload;
 @synthesize _PayloadSize;
 @synthesize _PayloadTransferInfo;
 
@@ -209,7 +208,9 @@ __strong static NSString* _UUID;
     NSArray* keys=[NSArray arrayWithObjects:@"id",@"type",@"body", nil];
     NSArray* values=[NSArray arrayWithObjects:[self _Id],self.type,[self _Body], nil];
     NSMutableDictionary* info=[NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
-    if (_Payload) {
+    if (_payloadPath) {
+        // TODO: is checking _PayloadSize == 0 then changing it to -1 necessary?
+        // what about empty files e.g. `.gitkeep`?
         [info setObject:[NSNumber numberWithLong:(_PayloadSize?_PayloadSize:-1)] forKey:@"payloadSize"];
         [info setObject: _PayloadTransferInfo forKey:@"payloadTransferInfo"];
     }

@@ -32,12 +32,17 @@ extension Notification.Name {
     
     // Sending
     var isVacant: Bool = true
-    var fileDatas: [Data] = []
-    var fileNames: [String] = []
-    var fileLastModifiedEpochs: [Int] = []
+    var files: [File] = []
     var totalPayloadSize: Int = 0
     var totalNumOfFiles: Int = 0
     var numFilesSuccessfullySent: Int = 0
+    
+    struct File {
+        let path: URL
+        let name: String
+        let lastModifiedEpoch: Int64
+        let size: Int
+    }
     
     private let logger = Logger()
     
@@ -53,7 +58,12 @@ extension Notification.Name {
                 totalNumOfFilesToReceive = np.integer(forKey: "numberOfFiles")
             }
             if let filename = np._Body["filename"] as? String {
-                if saveFile(fileData: np._Payload!, filename: filename) {
+                guard let payloadPath = np.payloadPath else {
+                    logger.fault("File \(filename, privacy: .public) missing actual file contents")
+                    notificationHapticsGenerator.notificationOccurred(.error)
+                    return true
+                }
+                if saveFile(payloadPath, as: filename) {
                     //connectedDevicesViewModel.showFileReceivedAlert()
                     logger.debug("File \(filename, privacy: .private(mask: .hash)) saved successfully")
                     numFilesReceived += 1
@@ -92,9 +102,7 @@ extension Notification.Name {
     }
     
     @objc private func resetTransferData() {
-        fileDatas = []
-        fileNames = []
-        fileLastModifiedEpochs = []
+        files = []
         totalPayloadSize = 0
         totalNumOfFiles = 0
         numFilesSuccessfullySent = 0
@@ -104,27 +112,35 @@ extension Notification.Name {
         if (isVacant) {
             isVacant = false
             for url in fileURLs {
-                var contentToSend: Data? = nil
-                var lastModifiedDate: Date? = nil
+                // start/stopAccessingSecurityScopedResource() is needed for files outside of sandbox;
+                // otherwise we get permission errors.
+                // However, it returns false for files already inside the sandbox,
+                // so omitting the check here.
+                _ = url.startAccessingSecurityScopedResource()
+                defer { url.stopAccessingSecurityScopedResource() }
                 do {
-                    // start/stopAccessingSecurityScopedResource() is needed otherwise we get permission errors
-                    url.startAccessingSecurityScopedResource()
-                    contentToSend = try Data(contentsOf: url)
-                    if let attibute = try? url.resourceValues(forKeys: [.contentModificationDateKey]) {
-                        lastModifiedDate = attibute.contentModificationDate
+                    let attributes = try url.resourceValues(forKeys: [
+                        .contentModificationDateKey,
+                        .fileSizeKey
+                    ])
+                    guard let lastModifiedDate = attributes.contentModificationDate,
+                          let fileSize = attributes.fileSize
+                    else {
+                        logger.fault("Missing metadata for file \(url.lastPathComponent, privacy: .public)")
+                        continue
                     }
-                    url.stopAccessingSecurityScopedResource()
+                    files.append(File(
+                        path: url,
+                        name: url.lastPathComponent,
+                        lastModifiedEpoch: lastModifiedDate.millisecondsSince1970,
+                        size: fileSize
+                    ))
+                    totalPayloadSize += fileSize
                 } catch {
                     logger.fault("Error reading file on device: \(error.localizedDescription, privacy: .public)")
                 }
-                if (contentToSend != nil && lastModifiedDate != nil) {
-                    fileDatas.append(contentToSend!)
-                    fileNames.append(url.lastPathComponent)
-                    fileLastModifiedEpochs.append(Int(lastModifiedDate!.millisecondsSince1970))
-                    totalPayloadSize += contentToSend!.count
-                }
             }
-            totalNumOfFiles = fileDatas.count
+            totalNumOfFiles = files.count
             sendSinglePayload()
         } else {
             logger.error("Share plugin busy for this device, ignoring sharing attempt")
@@ -133,21 +149,19 @@ extension Notification.Name {
     }
     
     @objc func sendSinglePayload() {
-        if ((fileDatas.count == fileNames.count) && (fileDatas.count == fileLastModifiedEpochs.count) && totalPayloadSize > 0 && fileDatas.count > 0 && (numFilesSuccessfullySent < totalNumOfFiles)) {
+        if totalPayloadSize > 0 && !files.isEmpty && numFilesSuccessfullySent < totalNumOfFiles {
+            let currentFile = files.removeFirst()
             let np = NetworkPackage(type: .share)
-            np.setObject(fileNames.first!, forKey: "filename")
-            np.setInteger(fileLastModifiedEpochs.first!, forKey: "lastModified")
+            np.setObject(currentFile.name, forKey: "filename")
+            np.setObject(currentFile.lastModifiedEpoch as NSNumber, forKey: "lastModified")
             np.setInteger(totalPayloadSize, forKey: "totalPayloadSize")
             np.setInteger(totalNumOfFiles, forKey: "numberOfFiles")
-            np._PayloadTransferInfo = ["port":MIN_PAYLOAD_PORT]
-            np._Payload = fileDatas.first
-            np._PayloadSize = fileDatas.first!.count
+            np._PayloadTransferInfo = ["port": MIN_PAYLOAD_PORT]
+            np.payloadPath = currentFile.path
+            np._PayloadSize = currentFile.size
             controlDevice.send(np, tag: Int(PACKAGE_TAG_SHARE))
-            fileDatas.removeFirst()
-            fileNames.removeFirst()
-            fileLastModifiedEpochs.removeFirst()
+            // can't really tell this here but okay:
             numFilesSuccessfullySent += 1
-            //SystemSound.mailSent.play()
             notificationHapticsGenerator.notificationOccurred(.success)
         } else {
             logger.debug("Finished sending a batch of \(self.totalNumOfFiles) files")
@@ -157,13 +171,14 @@ extension Notification.Name {
         }
     }
     
-    @objc private func saveFile(fileData: Data, filename: String) -> Bool {
+    @objc private func saveFile(_ url: URL, as filename: String) -> Bool {
         let fileManager = FileManager.default
         do {
             let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false) // gets URL of app's document directory
             let fileURL = documentDirectory.appendingPathComponent(filename) // adds new file's name to URL
             logger.debug("\(fileURL.absoluteString, privacy: .private(mask: .hash))")
-            try fileData.write(to: fileURL) // and save!
+            try fileManager.moveItem(at: url, to: fileURL) // and save!
+            // FIXME: set file metadata transferred through network package
             return true
         } catch {
             logger.fault("Error saving file to device \(error.localizedDescription, privacy: .public)")

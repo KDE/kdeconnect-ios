@@ -26,7 +26,7 @@ struct FeaturesList: View {
         Feature(Text("Share: Send File"),
                 details: Text("Support for sharing through the system share sheet is in progress")),
         Feature(Text("Share: Receive File, Text, and URL"),
-                details: Text("May crash when several other devices try to send (large) files to this device at the same time")),
+                details: Text("May crash when several other devices try to send files to this device at the same time")),
         Feature(Text("Presenter: Control Remote")),
         Feature(Text("Mouse: Control Remote")),
         Feature(Text("Keyboard: Control Remote")),
