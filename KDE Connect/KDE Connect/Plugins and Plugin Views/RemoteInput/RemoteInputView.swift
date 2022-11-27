@@ -31,8 +31,8 @@ struct RemoteInputView: View {
     
     var body: some View {
         VStack {
-            KeyboardListenerPlaceholderView { key in
-                sendKeyPress(key)
+            KeyboardListenerPlaceholderView { key, modifiers in
+                sendKeyPress(key, modifiers)
             } onDeleteBackward: {
                 sendSpecialKeyPress(.delete)
             } onReturn: {
@@ -239,15 +239,15 @@ struct RemoteInputView: View {
         logger.debug("double clicked")
     }
     
-    func sendKeyPress(_ keys: String) {
+    func sendKeyPress(_ keys: String, _ modifiers: [RemoteInput.KeyModifier]) {
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as!
-            RemoteInput).sendKeyPress(keys)
-        logger.debug("key press sent: \(keys)")
+            RemoteInput).sendKeyPress(keys, modifiers)
+        logger.debug("key press sent: \(keys) with modifiers \(modifiers)")
     }
     
     func sendSpecialKeyPress(_ key: RemoteInput.SpecialKey) {
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as!
-         RemoteInput).sendSpecialKeyPress(key.rawValue)
+         RemoteInput).sendSpecialKeyPress(key)
         logger.debug("special key press sent: \(String(reflecting: key))")
     }
     
