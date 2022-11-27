@@ -135,7 +135,7 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         panel.backgroundColor = UIColor.systemBackground
         panel.distribution = .fillEqually
         panel.spacing = 5
-        panel.frame = CGRectMake(0, 0, 0, 30)
+        panel.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
         panel.addArrangedSubview(ctrl)
         panel.addArrangedSubview(shift)
         panel.addArrangedSubview(alt)
