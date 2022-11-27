@@ -116,6 +116,10 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         ctrl.setTitleColor(UIColor.placeholderText, for: .highlighted)
         ctrl.setTitleColor(UIColor.systemBackground, for: .selected)
         ctrl.addTarget(view, action: #selector(KeyboardListener.ctrlPressed), for: .touchDown)
+        ctrl.layer.cornerRadius = 5
+        ctrl.layer.borderWidth = 1
+        ctrl.layer.borderColor = UIColor.clear.cgColor
+
         
         let shift = UIButton()
         shift.setTitle("Shift", for: .normal)
@@ -123,6 +127,7 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         shift.setTitleColor(UIColor.placeholderText, for: .highlighted)
         shift.setTitleColor(UIColor.systemBackground, for: .selected)
         shift.addTarget(view, action: #selector(KeyboardListener.shiftPressed), for: .touchDown)
+        shift.layer.borderColor = UIColor.clear.cgColor
         
         let alt = UIButton()
         alt.setTitle("Alt", for: .normal)
@@ -130,6 +135,7 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         alt.setTitleColor(UIColor.placeholderText, for: .highlighted)
         alt.setTitleColor(UIColor.systemBackground, for: .selected)
         alt.addTarget(view, action: #selector(KeyboardListener.altPressed), for: .touchDown)
+        alt.layer.borderColor = UIColor.clear.cgColor
         
         let panel = UIStackView()
         panel.backgroundColor = UIColor.systemBackground
