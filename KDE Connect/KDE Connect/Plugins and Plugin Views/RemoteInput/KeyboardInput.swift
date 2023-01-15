@@ -14,76 +14,40 @@ extension View {
     }
 }
 
+public protocol KeyboardListenerDelegate {
+    func onInsertText(_ text: String) -> Void
+    func onDeleteBackward() -> Void
+    func onReturn() -> Void
+}
+
 public class KeyboardListener: UIView, UIKeyInput {
     public var hasText: Bool { false }
     public override var canBecomeFirstResponder: Bool { true }
+    public var delegate: KeyboardListenerDelegate?
+    
+    private var _keyboardPanel: UIView?
     public override var inputAccessoryView: UIView? {
         get {
-            keyboardPanel
+            _keyboardPanel
         }
-        set(panel) {
-            keyboardPanel = panel
-        }
-    }
-    
-    var onInsertText: (_ text: String, _ modifiers: [RemoteInput.KeyModifier]) -> Void = { text, modifier in }
-    var onDeleteBackward: () -> Void = { }
-    var onReturn: () -> Void = { }
-    var keyboardPanel: UIView?
-    var modifiers: [RemoteInput.KeyModifier:UIButton] = [:]
-    
-    @objc fileprivate func ctrlPressed(_ button: UIButton) {
-        button.isSelected = !button.isSelected
-        if button.isSelected {
-            button.backgroundColor = UIColor.link
-            modifiers[.control] = button
-        } else {
-            button.backgroundColor = UIColor.systemBackground
-            modifiers.removeValue(forKey: .control)
-        }
-    }
-    @objc fileprivate func shiftPressed(_ button: UIButton) {
-        button.isSelected = !button.isSelected
-        if button.isSelected {
-            button.backgroundColor = UIColor.link
-            modifiers[.shift] = button
-        } else {
-            button.backgroundColor = UIColor.systemBackground
-            modifiers.removeValue(forKey: .shift)
-        }
-    }
-    @objc fileprivate func altPressed(_ button: UIButton) {
-        button.isSelected = !button.isSelected
-        if button.isSelected {
-            button.backgroundColor = UIColor.link
-            modifiers[.alt] = button
-        } else {
-            button.backgroundColor = UIColor.systemBackground
-            modifiers.removeValue(forKey: .alt)
+        set {
+            _keyboardPanel = newValue
         }
     }
     
     public func insertText(_ text: String) {
-        if text == "\n" {
-            onReturn()
-        } else {
-            onInsertText(text, modifiers.keys.map {$0})
+        if let delegate = delegate {
+            if text == "\n" {
+                delegate.onReturn()
+            } else {
+                delegate.onInsertText(text)
+            }
         }
-        resetModifiers()
     }
     
     public func deleteBackward() {
-        onDeleteBackward()
-        resetModifiers()
-    }
-    
-    private func resetModifiers() {
-        if !modifiers.isEmpty {
-            for button in modifiers.values {
-                button.isSelected = false
-                button.backgroundColor = UIColor.systemBackground
-            }
-            modifiers.removeAll()
+        if let delegate = delegate {
+            delegate.onDeleteBackward()
         }
     }
 }
@@ -99,43 +63,89 @@ func KeyboardListenerPlaceholderView(onInsertText: @escaping (String, [RemoteInp
 }
 
 fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
+    class Coordinator: NSObject, KeyboardListenerDelegate {
+        private var parent: _KeyboardListenerPlaceholderView
+        private var currentModifiers: [RemoteInput.KeyModifier:UIButton] = [:]
+        
+        init(_ parent: _KeyboardListenerPlaceholderView) {
+            self.parent = parent
+        }
+        
+        func onInsertText(_ text: String) {
+            parent.onInsertText(text, Array(currentModifiers.keys))
+            resetModifiers()
+        }
+        
+        func onDeleteBackward() {
+            parent.onDeleteBackward()
+            resetModifiers()
+        }
+        
+        func onReturn() {
+            parent.onReturn()
+            resetModifiers()
+        }
+        
+        private func resetModifiers() {
+            if !currentModifiers.isEmpty {
+                for button in currentModifiers.values {
+                    button.isSelected = false
+                    button.backgroundColor = UIColor.systemBackground
+                }
+                currentModifiers.removeAll()
+            }
+        }
+        
+        private func modifierPressed(_ button: UIButton, type: RemoteInput.KeyModifier) {
+            button.isSelected.toggle()
+            if button.isSelected {
+                button.backgroundColor = UIColor.link
+                currentModifiers[type] = button
+            } else {
+                button.backgroundColor = UIColor.systemBackground
+                currentModifiers.removeValue(forKey: type)
+            }
+        }
+        @objc func ctrlPressed(_ button: UIButton) {
+            modifierPressed(button, type: .control)
+        }
+        @objc func shiftPressed(_ button: UIButton) {
+            modifierPressed(button, type: .shift)
+        }
+        @objc func altPressed(_ button: UIButton) {
+            modifierPressed(button, type: .alt)
+        }
+    }
+    
     typealias UIViewType = KeyboardListener
     let onInsertText: (String, [RemoteInput.KeyModifier]) -> Void
     let onDeleteBackward: () -> Void
     let onReturn: () -> Void
     
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
     func makeUIView(context: Context) -> KeyboardListener {
         let view = KeyboardListener()
-        view.onReturn = onReturn
-        view.onInsertText = onInsertText
-        view.onDeleteBackward = onDeleteBackward
         
-        let ctrl = UIButton()
-        ctrl.setTitle("Ctrl", for: .normal)
-        ctrl.setTitleColor(UIColor.link, for: .normal)
-        ctrl.setTitleColor(UIColor.placeholderText, for: .highlighted)
-        ctrl.setTitleColor(UIColor.systemBackground, for: .selected)
-        ctrl.addTarget(view, action: #selector(KeyboardListener.ctrlPressed), for: .touchDown)
-        ctrl.layer.cornerRadius = 5
-        ctrl.layer.borderWidth = 1
-        ctrl.layer.borderColor = UIColor.clear.cgColor
-
+        let createButton: (String, Selector) -> UIButton = { name, selector in
+            let btn = UIButton()
+            btn.setTitle(name, for: .normal)
+            btn.setTitleColor(UIColor.link, for: .normal)
+            btn.setTitleColor(UIColor.placeholderText, for: .highlighted)
+            btn.setTitleColor(UIColor.systemBackground, for: .selected)
+            btn.addTarget(context.coordinator, action: selector, for: .touchDown)
+            btn.layer.cornerRadius = 8
+            btn.layer.cornerCurve = .continuous
+            btn.layer.borderWidth = 1
+            btn.layer.borderColor = UIColor.clear.cgColor
+            return btn
+        }
         
-        let shift = UIButton()
-        shift.setTitle("Shift", for: .normal)
-        shift.setTitleColor(UIColor.link, for: .normal)
-        shift.setTitleColor(UIColor.placeholderText, for: .highlighted)
-        shift.setTitleColor(UIColor.systemBackground, for: .selected)
-        shift.addTarget(view, action: #selector(KeyboardListener.shiftPressed), for: .touchDown)
-        shift.layer.borderColor = UIColor.clear.cgColor
-        
-        let alt = UIButton()
-        alt.setTitle("Alt", for: .normal)
-        alt.setTitleColor(UIColor.link, for: .normal)
-        alt.setTitleColor(UIColor.placeholderText, for: .highlighted)
-        alt.setTitleColor(UIColor.systemBackground, for: .selected)
-        alt.addTarget(view, action: #selector(KeyboardListener.altPressed), for: .touchDown)
-        alt.layer.borderColor = UIColor.clear.cgColor
+        let ctrl = createButton("Ctrl", #selector(Coordinator.ctrlPressed))
+        let shift = createButton("Shift", #selector(Coordinator.shiftPressed))
+        let alt = createButton("Alt", #selector(Coordinator.altPressed))
         
         let panel = UIStackView()
         panel.backgroundColor = UIColor.systemBackground
@@ -145,7 +155,9 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         panel.addArrangedSubview(ctrl)
         panel.addArrangedSubview(shift)
         panel.addArrangedSubview(alt)
+        
         view.inputAccessoryView = panel
+        view.delegate = context.coordinator
         
         return view
     }
