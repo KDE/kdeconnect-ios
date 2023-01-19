@@ -54,11 +54,13 @@ public class KeyboardListener: UIView, UIKeyInput {
 
 func KeyboardListenerPlaceholderView(onInsertText: @escaping (String, [RemoteInput.KeyModifier]) -> Void = {_, _ in },
                                      onDeleteBackward: @escaping () -> Void = {},
-                                     onReturn: @escaping () -> Void = {}) -> some View {
+                                     onReturn: @escaping () -> Void = {},
+                                     onTab: @escaping () -> Void = {}) -> some View {
     
     return _KeyboardListenerPlaceholderView(onInsertText: onInsertText,
                                             onDeleteBackward: onDeleteBackward,
-                                            onReturn: onReturn)
+                                            onReturn: onReturn,
+                                            onTab: onTab)
     .frame(width: 0, height: 0)
 }
 
@@ -115,12 +117,16 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         @objc func altPressed(_ button: UIButton) {
             modifierPressed(button, type: .alt)
         }
+        @objc func tabPressed(_ button: UIButton) {
+            parent.onTab()
+        }
     }
     
     typealias UIViewType = KeyboardListener
     let onInsertText: (String, [RemoteInput.KeyModifier]) -> Void
     let onDeleteBackward: () -> Void
     let onReturn: () -> Void
+    let onTab: () -> Void
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -142,7 +148,7 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
             btn.layer.borderColor = UIColor.clear.cgColor
             return btn
         }
-        
+        let tab = createButton("Tab", #selector(Coordinator.tabPressed))
         let ctrl = createButton("Ctrl", #selector(Coordinator.ctrlPressed))
         let shift = createButton("Shift", #selector(Coordinator.shiftPressed))
         let alt = createButton("Alt", #selector(Coordinator.altPressed))
@@ -152,6 +158,7 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         panel.distribution = .fillEqually
         panel.spacing = 5
         panel.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
+        panel.addArrangedSubview(tab)
         panel.addArrangedSubview(ctrl)
         panel.addArrangedSubview(shift)
         panel.addArrangedSubview(alt)

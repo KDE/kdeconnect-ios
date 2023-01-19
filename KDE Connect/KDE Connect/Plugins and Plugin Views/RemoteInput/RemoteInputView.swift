@@ -37,6 +37,8 @@ struct RemoteInputView: View {
                 sendSpecialKeyPress(.delete)
             } onReturn: {
                 sendSpecialKeyPress(.return)
+            } onTab: {
+                sendSpecialKeyPress(.tab)
             }
             .focused($keyboardFocus)
             
