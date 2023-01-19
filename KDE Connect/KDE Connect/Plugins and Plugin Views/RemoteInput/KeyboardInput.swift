@@ -156,7 +156,7 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         let panel = UIStackView()
         panel.backgroundColor = UIColor.systemBackground
         panel.distribution = .fillEqually
-        panel.spacing = 5
+        panel.spacing = 8
         panel.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
         panel.addArrangedSubview(tab)
         panel.addArrangedSubview(ctrl)
