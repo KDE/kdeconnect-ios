@@ -18,8 +18,14 @@ default_platform(:ios)
 platform :ios do
   desc "Generate new localized screenshots"
   lane :screenshots do
-    # Create iPad Pro (12.9-inch) (2nd generation) if missing
+    # Create missing simiulators
     sh(%q{
+      if [ -z "`xcrun simctl list devices available | grep 'iPhone 8 Plus'`" ]; then
+        xcrun simctl create 'iPhone 8 Plus' 'com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus';
+      fi
+      if [ -z "`xcrun simctl list devices available | grep 'iPhone 13 Pro Max'`" ]; then
+        xcrun simctl create 'iPhone 13 Pro Max' 'com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro-Max';
+      fi
       if [ -z "`xcrun simctl list devices available | grep 'iPad Pro (12.9-inch) (2nd generation)'`" ]; then
         xcrun simctl create 'iPad Pro (12.9-inch) (2nd generation)' 'com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-';
       fi

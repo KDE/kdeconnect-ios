@@ -1,43 +1,40 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "CocoaAsyncSocket",
-        "repositoryURL": "https://github.com/ApolloZhu/CocoaAsyncSocket",
-        "state": {
-          "branch": "master",
-          "revision": "be208949f83e0315ee736a1cf9d0e86a47e2038e",
-          "version": null
-        }
-      },
-      {
-        "package": "OpenSSL",
-        "repositoryURL": "https://github.com/krzyzanowskim/OpenSSL.git",
-        "state": {
-          "branch": null,
-          "revision": "9429bf89fe0df2d2f25f3a9a51cbf7092e69640f",
-          "version": "1.1.1700"
-        }
-      },
-      {
-        "package": "Introspect",
-        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
-        "state": {
-          "branch": null,
-          "revision": "f2616860a41f9d9932da412a8978fec79c06fe24",
-          "version": "0.1.4"
-        }
-      },
-      {
-        "package": "SwiftUI-MediaPicker",
-        "repositoryURL": "https://github.com/UWAppDev/SwiftUI-MediaPicker.git",
-        "state": {
-          "branch": null,
-          "revision": "96f18b1350873dec0a76355c7060cd0a06100901",
-          "version": "0.2.0"
-        }
+  "pins" : [
+    {
+      "identity" : "cocoaasyncsocket",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ApolloZhu/CocoaAsyncSocket",
+      "state" : {
+        "revision" : "be208949f83e0315ee736a1cf9d0e86a47e2038e"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "openssl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/OpenSSL.git",
+      "state" : {
+        "revision" : "9429bf89fe0df2d2f25f3a9a51cbf7092e69640f",
+        "version" : "1.1.1700"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
+      "state" : {
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
+      }
+    },
+    {
+      "identity" : "swiftui-mediapicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/UWAppDev/SwiftUI-MediaPicker.git",
+      "state" : {
+        "revision" : "96f18b1350873dec0a76355c7060cd0a06100901",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 2
 }
