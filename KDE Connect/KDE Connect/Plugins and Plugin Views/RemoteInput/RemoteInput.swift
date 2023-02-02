@@ -15,9 +15,9 @@
 @objc class RemoteInput : NSObject, Plugin {
     enum SpecialKey: Int {
         case invalid = 0,
-        delete,
-        tab, // also can't type this
-        `return`
+        backspace = 1,
+        tab = 2, // also can't type this
+        `return` = 12
         // there are many other keys, but we can't type them directly on iOS so don't bother (for now)
     }
     @objc weak var controlDevice: Device!

@@ -34,7 +34,7 @@ struct RemoteInputView: View {
             KeyboardListenerPlaceholderView { key in
                 sendKeyPress(key)
             } onDeleteBackward: {
-                sendSpecialKeyPress(.delete)
+                sendSpecialKeyPress(.backspace)
             } onReturn: {
                 sendSpecialKeyPress(.return)
             }
