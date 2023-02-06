@@ -144,8 +144,7 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
             btn.addTarget(context.coordinator, action: selector, for: .touchDown)
             btn.layer.cornerRadius = 8
             btn.layer.cornerCurve = .continuous
-            btn.layer.borderWidth = 1
-            btn.layer.borderColor = UIColor.clear.cgColor
+            btn.layer.borderWidth = 0
             return btn
         }
         let tab = createButton("Tab", #selector(Coordinator.tabPressed))
