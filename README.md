@@ -62,7 +62,7 @@ Many tasks only include a high level description and could be easily misinterpre
 
 ## History of KDE Connect iOS
 
-This project is a continuation of KDE Connect 2014, a codebase that stemmed from the Google Summer of Code 2014 program that remained largely untouched since 2014 until getting picked up again by [Inoki](https://invent.kde.org/wxiao) in 2019, where some tweaks were added to it to support TLS.
+This project is a continuation of [KDE Connect 2014](https://invent.kde.org/wxiao/kdeconnect-ios), a codebase that stemmed from the Google Summer of Code 2014 program that remained largely untouched since 2014 until getting picked up again by [Inoki](https://invent.kde.org/wxiao) in 2019, where some tweaks were added to it to support TLS.
 
 KDE Connect 2021 was started as a project for Google Summer of Code 2021 by student Lucas Wang. As of mid-August 2021, the app compiles and is able to perform all of the functionalities currently implemented (though there are likely some bugs to be found). Currently, the app is not yet ready for Release distribution as it lacks certain functionalities compared to the other KDE Connect versions that either need to be implemented or are likely unviable to implement due to iOS restrictions.
 

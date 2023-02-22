@@ -19,6 +19,7 @@ enum Contributors {
     case maintainers
     case authors
     
+    /// sorted by KDE Identity Username, since name could be localized
     var identities: [Contributor] {
         switch self {
         case .maintainers:
@@ -35,6 +36,7 @@ enum Contributors {
                 Contributor(name: NSLocalizedString("Nicolás Alvarez", comment: ""), kde: "nalvarez"),
                 Contributor(name: NSLocalizedString("Ruixuan Tu", comment: ""), kde: "ruixuantu"),
                 Contributor(name: NSLocalizedString("Wenxuan Xiao", comment: ""), kde: "wxiao"),
+                Contributor(name: NSLocalizedString("Qiao YANG", comment: ""), kde: "yangqiao"),
             ]
         }
     }
