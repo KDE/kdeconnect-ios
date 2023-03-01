@@ -22,7 +22,9 @@ NS: Final[dict[str, str]] = {
     "xliff": "urn:oasis:names:tc:xliff:document:1.2"
 }
 NO_COMMENT: Final[str] = "No comment provided by engineer."
-OBJC_FORMAT: Final[Pattern[AnyStr]] = re.compile(r"%(\d+\$)?@")
+# %@ and other c-format that's the default for SwiftUI programs
+# based on the formatSpecifier function from SwiftUI.swiftmodule swiftinterface
+OBJC_FORMAT: Final[Pattern[AnyStr]] = re.compile(r"%(\d+\$)?(@|lld|d|llu|u|f|lf)")
 SPACE_IN_PATH: Final[str] = "__SpAcE__"
 
 ########################################
