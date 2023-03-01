@@ -35,7 +35,7 @@ SPACE_IN_PATH: Final[str] = "__SpAcE__"
 def xliff2po(xliff_path: str, pot: bool = True, kde: bool = False) -> Catalog:
     catalog = Catalog(
         project="KDE Connect iOS",
-        copyright_holder="KDE Community & contributors",
+        copyright_holder="This_file_is_part_of_KDE",
         msgid_bugs_address="apple-feedback@kde.org",
         header_comment="""\
 # Translations template for PROJECT.
