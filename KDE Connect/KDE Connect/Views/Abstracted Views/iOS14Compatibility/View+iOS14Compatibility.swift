@@ -166,3 +166,27 @@ extension View {
         }
     }
 }
+
+@available(iOS, introduced: 14, obsoleted: 15)
+struct MonospacedDigits: ViewModifier {
+    @Environment(\.font) var font
+
+    func body(content: Content) -> some View {
+        if #available(iOS 15, *) {
+            content
+                .monospacedDigit()
+        } else if let font = font {
+            content
+                .font(font.monospacedDigit())
+        } else {
+            content
+        }
+    }
+}
+
+@available(iOS, introduced: 14, obsoleted: 15)
+extension Text {
+    func monospacedDigit() -> some View {
+        modifier(MonospacedDigits())
+    }
+}

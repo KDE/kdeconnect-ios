@@ -35,7 +35,7 @@
 
 @class CertificateService;
 
-@interface LanLinkProvider : BaseLinkProvider <linkDelegate, GCDAsyncSocketDelegate, GCDAsyncUdpSocketDelegate>
+@interface LanLinkProvider : BaseLinkProvider <LinkDelegate, GCDAsyncSocketDelegate, GCDAsyncUdpSocketDelegate>
 
 - (LanLinkProvider*) initWithDelegate:(id)linkProviderDelegate certificateService:(CertificateService*)certificateService;
 - (void) onStart;

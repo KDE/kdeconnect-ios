@@ -49,14 +49,10 @@
 
 // Lock using _socketsForIncomingPayload
 @property(nonatomic) NSMutableArray<GCDAsyncSocket *> *socketsForIncomingPayload;
-@property(nonatomic) NSMutableArray<NetworkPackage *> *networkPackagesForIncomingPayload;
-@property(nonatomic) NSMutableArray<NSFileHandle *> *incomingPayloads;
-@property(nonatomic) NSMutableArray<NSNumber *> *incomingPayloadsBytesRemaining;
 
 // Lock using _socketsForOutgoingPayload
 @property(nonatomic) NSMutableArray<GCDAsyncSocket *> *socketsForOutgoingPayload;
-@property(nonatomic) NSMutableArray<NetworkPackage *> *networkPackagesForOutgoingPayload;
-@property(nonatomic) NSMutableArray<NSFileHandle *> *outgoingPayloads;
+@property(nonatomic) NSMutableArray<KDEFileTransferItem *> *pendingOutgoingItems;
 
 @property(nonatomic) SecIdentityRef _identity;
 @property(nonatomic) GCDAsyncSocket* _fileServerSocket;
@@ -67,22 +63,23 @@
 @implementation LanLink
 
 @synthesize _deviceId;
-@synthesize _linkDelegate;
 @synthesize _pendingPairNP;
 @synthesize _socket;
 @synthesize _identity;
 @synthesize _fileServerSocket;
 @synthesize _certificateService;
 
-- (LanLink*) init:(GCDAsyncSocket*)socket deviceId:(NSString*) deviceid setDelegate:(id)linkdelegate certificateService:(CertificateService*)certificateService
+- (LanLink *) init:(GCDAsyncSocket*)socket
+          deviceId:(NSString*) deviceId
+       setDelegate:(id<LinkDelegate>)linkDelegate
+certificateService:(CertificateService*)certificateService
 {
-    if (self = [super init:deviceid setDelegate:linkdelegate])
+    if (self = [super init:deviceId setDelegate:linkDelegate])
     {
         logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                NSStringFromClass([self class]).UTF8String);
         _socket=socket;
-        _deviceId=deviceid;
-        _linkDelegate=linkdelegate;
+        _deviceId = deviceId;
         _pendingPairNP=nil;
         [_socket setDelegate:self];
         [_socket performBlock:^{
@@ -92,13 +89,9 @@
         [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
         
         _socketsForOutgoingPayload = [NSMutableArray arrayWithCapacity:1];
-        _networkPackagesForOutgoingPayload = [NSMutableArray arrayWithCapacity:1];
-        _outgoingPayloads = [NSMutableArray arrayWithCapacity:1];
+        _pendingOutgoingItems = [NSMutableArray arrayWithCapacity:1];
         
         _socketsForIncomingPayload = [NSMutableArray arrayWithCapacity:1];
-        _networkPackagesForIncomingPayload = [NSMutableArray arrayWithCapacity:1];
-        _incomingPayloads = [NSMutableArray arrayWithCapacity:1];
-        _incomingPayloadsBytesRemaining = [NSMutableArray arrayWithCapacity:1];
         
         _payloadPort=PAYLOAD_PORT;
         _socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.payload_socketQueue", NULL);
@@ -144,19 +137,7 @@
     }
     
     // If sharing file, start file sharing procedure
-    if (np.payloadPath != nil && tag == PACKAGE_TAG_SHARE) {
-        NSError* err;
-        if (_fileServerSocket == nil) {
-            _fileServerSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
-            if (![_fileServerSocket isConnected]) {
-                if (![_fileServerSocket acceptOnPort:_payloadPort error:&err]) {
-                    os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error binding payload port");
-                    // TODO: investigate if we should abort and not try to send anything
-                } else {
-                    os_log_with_type(logger, self.debugLogLevel, "Binding payload server ok");
-                }
-            }
-        }
+    if (np.payloadPath != nil && np.type == NetworkPackageTypeShare) {
         [np.payloadPath startAccessingSecurityScopedResource];
         NSError *error;
         NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:np.payloadPath
@@ -167,17 +148,37 @@
                              [np objectForKey:@"filename"],
                              error);
             [np.payloadPath stopAccessingSecurityScopedResource];
+            [self.linkDelegate onPackage:np
+                      sendWithPackageTag:PACKAGE_TAG_PAYLOAD
+                         failedWithError:error];
             return NO;
         }
+        
+        if (_fileServerSocket == nil) {
+            _fileServerSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
+            if (![_fileServerSocket isConnected]) {
+                if (![_fileServerSocket acceptOnPort:_payloadPort error:&error]) {
+                    os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error binding payload port");
+                    [self.linkDelegate onPackage:np
+                              sendWithPackageTag:PACKAGE_TAG_PAYLOAD
+                                 failedWithError:error];
+                    return NO;
+                } else {
+                    os_log_with_type(logger, self.debugLogLevel, "Binding payload server ok");
+                }
+            }
+        }
+
         @synchronized (_socketsForOutgoingPayload) {
-            [_networkPackagesForOutgoingPayload addObject:np];
-            [_outgoingPayloads addObject:handle];
+            KDEFileTransferItem *item = [[KDEFileTransferItem alloc] initWithFileHandle:handle
+                                                                         networkPackage:np];
+            [_pendingOutgoingItems addObject:item];
         }
     }
     
     NSData* data=[np serialize];
+    _socket.userData = np;
     [_socket writeData:data withTimeout:-1 tag:tag];
-    // TODO: return YES only when send successfully
     os_log_with_type(logger, self.debugLogLevel, "%{public}@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     return YES;
@@ -188,9 +189,7 @@
     if ([_socket isConnected]) {
         [_socket disconnect];
     }
-    if (_linkDelegate) {
-        [_linkDelegate onLinkDestroyed:self];
-    }
+    [self.linkDelegate onLinkDestroyed:self];
     _pendingPairNP=nil;
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%{mask.hash}@ disconnected",_deviceId);
 }
@@ -225,7 +224,11 @@
     nil];
 
     [newSocket startTLS: tlsSettings];
-    [_socketsForOutgoingPayload insertObject:newSocket atIndex:0];
+    @synchronized (_socketsForOutgoingPayload) {
+        newSocket.userData = _pendingOutgoingItems.firstObject;
+        [_pendingOutgoingItems removeObjectAtIndex:0];
+        [_socketsForOutgoingPayload insertObject:newSocket atIndex:0];
+    }
     os_log_with_type(logger, self.debugLogLevel, "Start Server TLS to send file");
 }
 
@@ -271,7 +274,14 @@
                      "Package received with tag: %{public}@",
                      [NetworkPackage descriptionFor: tag]);
     if (tag==PACKAGE_TAG_PAYLOAD) {
+        NSUInteger readLength = data.length;
         [self writeReceivedChunk:data for:sock];
+        KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+        if (item.totalBytesCompleted == item.totalBytes.longValue || readLength == 0) {
+            [self attachAndProcessPayload:sock];
+        } else {
+            [self receivePayloadWithSocket:sock];
+        }
         return;
     }
     
@@ -294,9 +304,7 @@
         [self sendPayloadWithSocket:sock];
         return;
     }
-    if (_linkDelegate) {
-        [_linkDelegate onSendSuccess:tag];
-    }
+    [self.linkDelegate onPackage:_socket.userData sentWithPackageTag:tag];
 }
 
 /**
@@ -363,8 +371,24 @@
             os_log_with_type(logger, OS_LOG_TYPE_INFO,
                              "llink payload receiving socket disconnected with error: %{public}@",
                              err);
-            [self removeIncomingPayloadReceivingSocket:sock
-                                   deleteTemporaryFile:YES];
+            KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+            if (item.totalBytes == nil
+                && err.domain == GCDAsyncSocketErrorDomain
+                && err.code == GCDAsyncSocketClosedError) {
+                os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                                 "unknown length payload receiving ended with %lu bytes in buffer",
+                                 item.buffer.length);
+                if (item.buffer.length > 0) {
+                    os_log_with_type(logger, OS_LOG_TYPE_INFO,
+                                     "appending remaining bytes in buffer to file handle");
+                    [self writeReceivedChunk:item.buffer for:sock];
+                }
+                [self attachAndProcessPayload:sock];
+            } else {
+                [self removeIncomingPayloadReceivingSocket:sock
+                                       deleteTemporaryFile:YES];
+                [self.linkDelegate onReceivingPayload:item failedWithError:err];
+            }
         }
     }
     @synchronized (_socketsForOutgoingPayload) {
@@ -372,22 +396,13 @@
             os_log_with_type(logger, OS_LOG_TYPE_INFO,
                              "llink payload sending socket disconnected with error: %{public}@",
                              err);
-            [self removeOutgoingPayloadSendingSocket:sock];
+            [self removeOutgoingPayloadSendingSocket:sock error:err];
         }
     }
-    if (_linkDelegate&&(sock==_socket)) {
+    if (self.linkDelegate && (sock == _socket)) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "llink socket did disconnect with error: %{public}@", err);
-        [_linkDelegate onLinkDestroyed:self];
+        [self.linkDelegate onLinkDestroyed:self];
     }
-}
-
-/**
- * Called when a socket has written some data, but has not yet completed the entire write.
- * It may be used to for things such as updating progress bars.
- **/
-- (void)socket:(GCDAsyncSocket *)sock didWritePartialDataOfLength:(NSUInteger)partialLength tag:(long)tag
-{
-    // TODO: report the sending process percentage
 }
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
@@ -395,14 +410,14 @@
     os_log_with_type(logger, self.debugLogLevel, "Connection is secure");
     
     @synchronized(_socketsForOutgoingPayload){
-        if ([_socketsForOutgoingPayload count] > 0) {
+        if ([_socketsForOutgoingPayload containsObject:sock]) {
             // I'm the server
             [self sendPayloadWithSocket: sock];
         }
     }
 
     @synchronized (_socketsForIncomingPayload) {
-        if ([_socketsForIncomingPayload count] > 0) {
+        if ([_socketsForIncomingPayload containsObject:sock]) {
             // I'm the client
             [self receivePayloadWithSocket: sock];
         }
@@ -432,32 +447,25 @@
 #pragma mark - Sending Payloads for Share Plugin
 
 - (void)sendPayloadWithSocket:(GCDAsyncSocket *)sock {
-    NSFileHandle *handle;
-    @synchronized (_socketsForOutgoingPayload) {
-        NSUInteger index=[_socketsForOutgoingPayload indexOfObject:sock];
-        if (index == NSNotFound) {
-            os_log_with_type(logger, OS_LOG_TYPE_FAULT,
-                             "Can't find index of file handle to read from for %{public}@",
-                             sock);
-            return;
-        }
-        handle = _outgoingPayloads[index];
-    }
+    KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+    NSFileHandle *handle = item.fileHandle;
     NSError *error;
     NSData *chunk = [handle readDataUpToLength:CHUNK_SIZE error:&error];
     if (error) {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                          "Failed to read chunk due to %{public}@",
                          error);
-        [self removeOutgoingPayloadSendingSocket:sock];
+        sock.delegate = nil;
+        [sock disconnect];
+        [self removeOutgoingPayloadSendingSocket:sock error:error];
         return;
     }
     if ([chunk length] == 0) {
-        [self removeOutgoingPayloadSendingSocket:sock];
-        if (_linkDelegate) {
-            [_linkDelegate onSendSuccess:PACKAGE_TAG_PAYLOAD];
-        }
+        [self removeOutgoingPayloadSendingSocket:sock error:NULL];
         return;
+    } else {
+        item.totalBytesCompleted += [chunk length];
+        [self.linkDelegate onSendingPayload:item];
     }
     dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, 0);
     t=dispatch_time(t, PAYLOAD_SEND_DELAY*NSEC_PER_MSEC);
@@ -466,20 +474,20 @@
     });
 }
 
-- (void)removeOutgoingPayloadSendingSocket:(GCDAsyncSocket *)sock {
+- (void)removeOutgoingPayloadSendingSocket:(GCDAsyncSocket *)sock
+                                     error:(nullable NSError *)error {
     @synchronized (_socketsForOutgoingPayload) {
-        NSUInteger index = [_socketsForOutgoingPayload indexOfObject:sock];
-        if (index == NSNotFound) {
-            os_log_with_type(logger, OS_LOG_TYPE_INFO,
-                             "Already cleaned up for %{public}@ for outgoing payload",
-                             sock);
-            return;
-        }
-        [_socketsForOutgoingPayload removeObjectAtIndex:index];
-        [_outgoingPayloads removeObjectAtIndex:index];
-        NetworkPackage *np = _networkPackagesForOutgoingPayload[index];
-        [np.payloadPath stopAccessingSecurityScopedResource];
-        [_networkPackagesForOutgoingPayload removeObjectAtIndex:index];
+        [_socketsForOutgoingPayload removeObject:sock];
+    }
+    KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+    NetworkPackage *np = item.networkPackage;
+    [np.payloadPath stopAccessingSecurityScopedResource];
+    if (error) {
+        [self.linkDelegate onPackage:np
+                  sendWithPackageTag:PACKAGE_TAG_PAYLOAD
+                     failedWithError:error];
+    } else {
+        [self.linkDelegate onPackage:np sentWithPackageTag:PACKAGE_TAG_PAYLOAD];
     }
 }
 
@@ -505,12 +513,17 @@
     
     // Received request from remote to start new TLS connection/socket to receive file
     GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
+    
+    KDEFileTransferItem *item = [[KDEFileTransferItem alloc] initWithFileHandle:handle
+                                                                 networkPackage:np];
+    socket.userData = item;
     @synchronized(_socketsForIncomingPayload){
         [_socketsForIncomingPayload addObject:socket];
-        [_networkPackagesForIncomingPayload addObject:np];
-        [_incomingPayloads addObject:handle];
-        [_incomingPayloadsBytesRemaining addObject:[NSNumber numberWithLong:np._PayloadSize]];
     }
+    
+    [self.linkDelegate willReceivePayload:item
+                 totalNumOfFilesToReceive:[np integerForKey:@"numberOfFiles"]];
+    
     os_log_with_type(logger, self.debugLogLevel, "Pending payload: size: %ld", [np _PayloadSize]);
     NSError *error = nil;
     uint16_t tcpPort = [[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
@@ -521,100 +534,75 @@
                          error);
         [self removeIncomingPayloadReceivingSocket:socket
                                deleteTemporaryFile:YES];
+        [self.linkDelegate onReceivingPayload:item failedWithError:error];
     }
 }
 
 - (void)receivePayloadWithSocket:(GCDAsyncSocket *)sock {
-    long length = CHUNK_SIZE;
-    @synchronized (_socketsForIncomingPayload) {
-        NSUInteger index = [_socketsForIncomingPayload indexOfObject:sock];
-        if (index == NSNotFound) {
-            os_log_with_type(logger, OS_LOG_TYPE_FAULT,
-                             "Can't find index of remaining bytes to receive from %{public}@",
-                             sock);
-            return;
-        }
-        long remainingSize = [_incomingPayloadsBytesRemaining[index] longValue];
+    KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+    if (item.totalBytes != nil) {
+        long length = CHUNK_SIZE;
+        long remainingSize = item.totalBytes.longValue - item.totalBytesCompleted;
         if (remainingSize < CHUNK_SIZE) {
             length = remainingSize;
         }
+        os_log_with_type(logger, self.debugLogLevel,
+                         "Reading from socket %{public}@ %ld bytes",
+                         sock, length);
+        [sock readDataToLength:length withTimeout:-1 tag:PACKAGE_TAG_PAYLOAD];
+    } else {
+        [sock readDataWithTimeout:-1 buffer:item.buffer bufferOffset:0 maxLength:CHUNK_SIZE tag:PACKAGE_TAG_PAYLOAD];
     }
-    os_log_with_type(logger, self.debugLogLevel,
-                     "Reading from socket %{public}@ %ld bytes",
-                     _socketsForIncomingPayload, length);
-    [sock readDataToLength:length withTimeout:-1 tag:PACKAGE_TAG_PAYLOAD];
 }
 
 - (void)writeReceivedChunk:(NSData *)data for:(GCDAsyncSocket *)sock {
-    NSFileHandle *handle;
-    long remaining;
-    @synchronized (_socketsForIncomingPayload) {
-        NSUInteger index = [_socketsForIncomingPayload indexOfObject:sock];
-        if (index == NSNotFound) {
-            os_log_with_type(logger, OS_LOG_TYPE_FAULT,
-                             "Can't find index of file handle to write to for %{public}@",
-                             sock);
-            return;
-        }
-        handle = _incomingPayloads[index];
-        remaining = [_incomingPayloadsBytesRemaining[index] longValue];
-        remaining -= data.length;
-        _incomingPayloadsBytesRemaining[index] = [NSNumber numberWithLong: remaining];
-    }
+    KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+    NSFileHandle *handle = item.fileHandle;
     NSError *error;
     [handle writeData:data error:&error];
     if (error) {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                          "Failed to write chunk to temporary file due to %{public}@",
                          error);
+        sock.delegate = nil;
+        [sock disconnect];
         [self removeIncomingPayloadReceivingSocket:sock
                                deleteTemporaryFile:YES];
+        [self.linkDelegate onReceivingPayload:item failedWithError:error];
         return;
     }
-    if (remaining == 0 || data.length == 0) {
-        [self attachAndProcessPayload:sock];
-        return;
-    }
-    [self receivePayloadWithSocket:sock];
+    item.totalBytesCompleted += data.length;
+    item.buffer.length = 0;
+    [self.linkDelegate onReceivingPayload:item];
 }
 
 - (void)attachAndProcessPayload:(GCDAsyncSocket *)sock {
-    NetworkPackage* np;
     @synchronized (_socketsForIncomingPayload) {
-        NSUInteger index = [_socketsForIncomingPayload indexOfObject:sock];
-        if (index == NSNotFound) {
+        BOOL exists = [_socketsForIncomingPayload containsObject:sock];
+        if (!exists) {
             os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                              "Finished writing file but %{public}@ is already cleaned up",
                              sock);
             return;
         }
-        np = _networkPackagesForIncomingPayload[index];
-        np.type = NetworkPackageTypeShare;
         // Ensure that temporary file can't be deleted by removing sock
         [self removeIncomingPayloadReceivingSocket:sock
                                deleteTemporaryFile:NO];
     }
-    [_linkDelegate onPackageReceived:np];
+    KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+    NetworkPackage *np = item.networkPackage;
+    np.type = NetworkPackageTypeShare;
+    [self.linkDelegate onPackageReceived:np];
 }
 
 - (void)removeIncomingPayloadReceivingSocket:(GCDAsyncSocket *)sock
                          deleteTemporaryFile:(BOOL)deleteTemporaryFile {
-    NSURL *url;
     @synchronized(_socketsForIncomingPayload){
-        NSUInteger index=[_socketsForIncomingPayload indexOfObject:sock];
-        if (index == NSNotFound) {
-            os_log_with_type(logger, OS_LOG_TYPE_INFO,
-                             "Already cleaned up for %{public}@ for incoming payload",
-                             sock);
-            return;
-        }
         [_socketsForIncomingPayload removeObject:sock];
-        [_incomingPayloads removeObjectAtIndex:index];
-        [_incomingPayloadsBytesRemaining removeObjectAtIndex:index];
-        NetworkPackage *np = _networkPackagesForIncomingPayload[index];
-        url = np.payloadPath;
-        [_networkPackagesForIncomingPayload removeObjectAtIndex:index];
     }
+    KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
+    NetworkPackage *np = item.networkPackage;
+    NSURL *url = np.payloadPath;
     if (deleteTemporaryFile) {
         NSError *error;
         [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
@@ -637,7 +625,7 @@
     for (NSString* dataStr in packageArray) {
         if ([dataStr length] > 0) {
             NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
-            if (_linkDelegate && np) {
+            if (self.linkDelegate && np) {
                 os_log_with_type(logger, self.debugLogLevel, "llink did read data:\n%{public}@",dataStr);
                 if ([np.type isEqualToString:NetworkPackageTypePair]) {
                     _pendingPairNP=np;
@@ -648,7 +636,7 @@
                     [self createSocketForReceivingPayloadOfNP:np
                                              incomingFromHost:[sock connectedHost]];
                 } else {
-                    [_linkDelegate onPackageReceived:np];
+                    [self.linkDelegate onPackageReceived:np];
                 }
             }
         }

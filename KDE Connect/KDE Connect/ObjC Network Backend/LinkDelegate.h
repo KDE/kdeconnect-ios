@@ -2,6 +2,7 @@
  * SPDX-FileCopyrightText: 2014 YANG Qiao <yangqiao0505@me.com>
  *                         2020 Weixuan Xiao <veyx.shaw@gmail.com>
  *                         2021 Lucas Wang <lucas.wang@tuta.io>
+ *                         2023 Apollo Zhu <public-apollonian@outlook.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -28,17 +29,25 @@
 //----------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NetworkPackage.h"
-#import "LinkDelegate.h"
 
-@interface BaseLink : NSObject
+@class BaseLink;
+@class KDEFileTransferItem;
 
-@property(nonatomic) NSString* _deviceId;
-@property(nonatomic, weak) id<LinkDelegate> linkDelegate;
-//@property(nonatomic) SecKeyRef _publicKey;
+NS_ASSUME_NONNULL_BEGIN
 
-- (BaseLink *)init:(NSString *)deviceId setDelegate:(id<LinkDelegate>)linkDelegate;
-- (BOOL) sendPackage:(NetworkPackage*)np tag:(long)tag;
-- (void) disconnect;
+@protocol LinkDelegate <NSObject>
+@optional
+- (void)onPackageReceived:(NetworkPackage *)np;
+- (void)onSendingPayload:(KDEFileTransferItem *)payload;
+- (void)onPackage:(NetworkPackage *)np sentWithPackageTag:(long)tag;
+- (void)onPackage:(NetworkPackage *)np sendWithPackageTag:(long)tag
+  failedWithError:(NSError *)error;
+- (void)willReceivePayload:(KDEFileTransferItem *)payload
+  totalNumOfFilesToReceive:(long)numberOfFiles;
+- (void)onReceivingPayload:(KDEFileTransferItem *)payload;
+- (void)onReceivingPayload:(KDEFileTransferItem *)payload
+           failedWithError:(NSError *)error;
+- (void)onLinkDestroyed:(BaseLink *)link;
+@end
 
-@end;
+NS_ASSUME_NONNULL_END

@@ -77,7 +77,7 @@ __strong static NSString* _UUID;
     // identity packets so debugging is easier
     [np setObject:@[NetworkPackageTypePing,
                     NetworkPackageTypeShare,
-                    //@"kdeconnect.share.request.update",
+                    NetworkPackageTypeShareRequestUpdate,
                     NetworkPackageTypeFindMyPhoneRequest,
                     NetworkPackageTypeBatteryRequest,
                     NetworkPackageTypeBattery,
@@ -87,7 +87,7 @@ __strong static NSString* _UUID;
                     ] forKey:@"incomingCapabilities"];
     [np setObject:@[NetworkPackageTypePing,
                     NetworkPackageTypeShare,
-                    //@"kdeconnect.share.request.update",
+                    NetworkPackageTypeShareRequestUpdate,
                     NetworkPackageTypeFindMyPhoneRequest,
                     NetworkPackageTypeBatteryRequest,
                     NetworkPackageTypeBattery,
@@ -268,6 +268,7 @@ NetworkPackageType const NetworkPackageTypePing                     = @"kdeconne
 NetworkPackageType const NetworkPackageTypeMPRIS                    = @"kdeconnect.mpris";
 
 NetworkPackageType const NetworkPackageTypeShare                    = @"kdeconnect.share.request";
+NetworkPackageType const NetworkPackageTypeShareRequestUpdate       = @"kdeconnect.share.request.update";
 NetworkPackageType const NetworkPackageTypeShareInternal            = @"kdeconnect.share";
 
 NetworkPackageType const NetworkPackageTypeClipboard                = @"kdeconnect.clipboard";

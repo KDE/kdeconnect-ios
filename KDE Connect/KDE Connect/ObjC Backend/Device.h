@@ -62,7 +62,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 
 @protocol DeviceDelegate;
 
-@interface Device : NSObject <linkDelegate, NSSecureCoding>
+@interface Device : NSObject <LinkDelegate, NSSecureCoding>
 
 @property(readonly, nonatomic) NSString *_id;
 @property(readonly, nonatomic) NSString *_name;
@@ -114,7 +114,6 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 - (void)addLink:(BaseLink *)link;
 - (void)onPackageReceived:(NetworkPackage *)np;
 - (void)onLinkDestroyed:(BaseLink *)link;
-- (void)onSendSuccess:(long)tag;
 - (BOOL)sendPackage:(NetworkPackage *)np tag:(long)tag;
 - (BOOL)isReachable;
 

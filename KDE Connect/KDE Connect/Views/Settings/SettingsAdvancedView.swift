@@ -9,9 +9,23 @@ import SwiftUI
 
 struct SettingsAdvancedView: View {
     @EnvironmentObject private var selfDeviceData: SelfDeviceData
+    let logger = Logger()
 
     var body: some View {
         List {
+            Section {
+                Button {
+                    deleteTemporaries()
+                } label: {
+                    Label("Clear Cache",
+                          systemImage: "trash")
+                }
+            } header: {
+                Text("Chores")
+            } footer: {
+                Text("These should be handled automatically, but you may manually perform some in case if they are not.")
+            }
+            
             Section(header: Text("DANGEROUS OPTIONS"), footer: Text("The options above are irreversible and require a complete app restart to take effect.")) {
                 Button {
                     notificationHapticsGenerator.notificationOccurred(.warning)
@@ -73,6 +87,26 @@ struct SettingsAdvancedView: View {
             }
         }
         .navigationTitle("Advanced Settings")
+    }
+    
+    func deleteTemporaries() {
+        let manager = FileManager.default
+        do {
+            let temporaries = try manager
+                .contentsOfDirectory(at: manager.temporaryDirectory,
+                                     includingPropertiesForKeys: nil)
+            logger.info("Removing \(temporaries.count) temporary files")
+            for file in temporaries {
+                do {
+                    try manager.removeItem(at: file)
+                } catch {
+                    logger.error("Failed to delete \(file, privacy: .private(mask: .hash)) due to \(error.localizedDescription, privacy: .public)")
+                }
+            }
+            logger.debug("Done deleting temporaries")
+        } catch {
+            logger.fault("Failed to get contents of temporary folder due to \(error.localizedDescription, privacy: .public)")
+        }
     }
 }
 

@@ -21,6 +21,13 @@
 		"licenseURL": "https://github.com/krzyzanowskim/OpenSSL/blob/master/LICENSE.txt"
 	},
 	{
+		"id": "swift-collections",
+		"name": "apple/swift-collections",
+		"repo": "https://github.com/apple/swift-collections",
+		"license": "Apache 2.0",
+		"licenseURL": "https://github.com/apple/swift-collections/blob/main/LICENSE.txt"
+	},
+	{
 		"id": "SwiftUI-Introspect",
 		"name": "siteline/SwiftUI-Introspect",
 		"repo": "https://github.com/siteline/SwiftUI-Introspect",

@@ -97,7 +97,10 @@ struct DevicesDetailView: View {
                     if chosenMediaURLs.isEmpty {
                         logger.info("Media Picker picked nothing")
                     } else {
-                        (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenMediaURLs)
+                        DispatchQueue.main.async {
+                            (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share)
+                                .prepAndInitFileSend(fileURLs: chosenMediaURLs)
+                        }
                     }
                 case .failure(let error):
                     logger.error("Media Picker Error: \(error.localizedDescription, privacy: .public)")
@@ -204,13 +207,33 @@ struct DevicesDetailView: View {
                     }
                 }
             }
+            
+            if let device = backgroundService._devices[detailsDeviceId],
+               device._pluginsEnableStatus[.share] as? Bool == true {
+                FileTransferStatusSection(share: device._plugins[.share] as! Share)
+            }
         }
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
     }
 }
 
-//struct DevicesDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DevicesDetailView(detailsDeviceIndex: 0)
-//    }
-//}
+// if DEBUG check needed for setupForUITests
+#if DEBUG
+struct DevicesDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        let detailsDeviceId = "MacBook"
+        setupForUITests()
+        
+        let share = backgroundService
+            ._devices[detailsDeviceId]!
+            ._plugins[.share] as! Share
+        FileTransferStatusSection_Previews
+            .setupForFileTransferUIPreview(in: share)
+        
+        return NavigationView {
+            DevicesDetailView(detailsDeviceId: detailsDeviceId)
+        }
+        .environmentObject(AlertManager())
+    }
+}
+#endif

@@ -32,9 +32,8 @@
 @implementation BaseLink
 
 @synthesize _deviceId;
-@synthesize _linkDelegate;
 
-- (BaseLink*) init:(NSString*)deviceId setDelegate:(id)linkDelegate
+- (BaseLink *)init:(NSString *)deviceId setDelegate:(id<LinkDelegate>)linkDelegate
 {
     if ((self=[super init])) {
         _deviceId=deviceId;

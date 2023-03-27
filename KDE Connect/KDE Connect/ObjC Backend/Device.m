@@ -143,7 +143,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_id);
     [_links addObject:Link];
     //[self saveSetting];
-    [Link set_linkDelegate:self];
+    [Link setLinkDelegate:self];
     if ([_links count]==1) {
         os_log_with_type(logger, self.debugLogLevel, "one link available");
         if (deviceDelegate) {
@@ -198,19 +198,69 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     return false;
 }
 
-- (void) onSendSuccess:(long)tag
-{
+- (void)onPackage:(NetworkPackage *)np sentWithPackageTag:(long)tag {
     os_log_with_type(logger, self.debugLogLevel, "device on send success");
     if (tag==PACKAGE_TAG_PAIR) {
         if (_pairStatus==RequestedByPeer) {
             [self setAsPaired];
         }
     } else if (tag == PACKAGE_TAG_PAYLOAD){
-        /* for (Plugin* plugin in [_plugins allValues]) {
-//            [plugin sentPercentage:100 tag:tag];
-        } */
         os_log_with_type(logger, self.debugLogLevel, "Last payload sent successfully, sending next one");
-        [(Share *)[_plugins objectForKey:NetworkPackageTypeShare] sendSinglePayload];
+        for (id<Plugin> plugin in [_plugins allValues]) {
+            if ([plugin respondsToSelector:@selector(onPackage:sentWithPackageTag:)]) {
+                [plugin onPackage:np sentWithPackageTag:tag];
+            }
+        }
+    }
+}
+
+- (void)onPackage:(NetworkPackage *)np sendWithPackageTag:(long)tag
+  failedWithError:(NSError *)error {
+    switch (tag) {
+        case PACKAGE_TAG_PAYLOAD:
+            for (id<Plugin> plugin in [_plugins allValues]) {
+                if ([plugin respondsToSelector:@selector(onPackage:sendWithPackageTag:failedWithError:)]) {
+                    [plugin onPackage:np sendWithPackageTag:tag
+                      failedWithError:error];
+                }
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)onSendingPayload:(KDEFileTransferItem *)payload {
+    for (id<Plugin> plugin in [_plugins allValues]) {
+        if ([plugin respondsToSelector:@selector(onSendingPayload:)]) {
+            [plugin onSendingPayload:payload];
+        }
+    }
+}
+
+- (void)willReceivePayload:(KDEFileTransferItem *)payload
+  totalNumOfFilesToReceive:(long)numberOfFiles {
+    for (id<Plugin> plugin in [_plugins allValues]) {
+        if ([plugin respondsToSelector:@selector(willReceivePayload:totalNumOfFilesToReceive:)]) {
+            [plugin willReceivePayload:payload totalNumOfFilesToReceive:numberOfFiles];
+        }
+    }
+}
+
+- (void)onReceivingPayload:(KDEFileTransferItem *)payload {
+    for (id<Plugin> plugin in [_plugins allValues]) {
+        if ([plugin respondsToSelector:@selector(onReceivingPayload:)]) {
+            [plugin onReceivingPayload:payload];
+        }
+    }
+}
+
+- (void)onReceivingPayload:(KDEFileTransferItem *)payload
+           failedWithError:(NSError *)error {
+    for (id<Plugin> plugin in [_plugins allValues]) {
+        if ([plugin respondsToSelector:@selector(onReceivingPayload:failedWithError:)]) {
+            [plugin onReceivingPayload:payload failedWithError:error];
+        }
     }
 }
 

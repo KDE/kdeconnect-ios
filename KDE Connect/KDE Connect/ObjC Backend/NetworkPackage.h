@@ -70,6 +70,7 @@ FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypePing;
 FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeMPRIS;
 
 FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeShare;
+FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeShareRequestUpdate;
 FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeShareInternal;
 
 FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeClipboard;
