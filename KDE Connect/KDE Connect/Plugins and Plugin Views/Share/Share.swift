@@ -24,8 +24,8 @@ extension Notification.Name {
 // TODO: Implement fallback on another port when default 1739 is unavaliable
 @objc class Share : NSObject, ObservablePlugin {
     @objc weak var controlDevice: Device!
-    let MIN_PAYLOAD_PORT: Int = 1739
-    let MAX_PAYLOAD_PORT: Int = 1764
+    let minPayloadPort: Int = 1739
+    let maxPayloadPort: Int = 1764
     
     // Receiving
     @Published
@@ -154,7 +154,7 @@ extension Notification.Name {
             do {
                 let attributes = try url.resourceValues(forKeys: [
                     .contentModificationDateKey,
-                    .fileSizeKey
+                    .fileSizeKey,
                 ])
                 guard let fileSize = attributes.fileSize else {
                     logger.fault("Unable to read size of \(url.lastPathComponent, privacy: .public), skipping")
@@ -317,7 +317,7 @@ extension Notification.Name {
             }
             np.setInteger(totalPayloadSize, forKey: "totalPayloadSize")
             np.setInteger(totalNumOfFilesToSend, forKey: "numberOfFiles")
-            np._PayloadTransferInfo = ["port": MIN_PAYLOAD_PORT]
+            np._PayloadTransferInfo = ["port": minPayloadPort]
             np.payloadPath = currentFile.path
             np._PayloadSize = currentFile.totalBytes ?? -1
             controlDevice.send(np, tag: Int(PACKAGE_TAG_SHARE))

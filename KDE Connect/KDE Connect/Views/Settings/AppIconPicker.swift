@@ -54,7 +54,7 @@ enum AppIcon: RawRepresentable, CaseIterable {
         }
     }
     
-    var image_60x60: some View {
+    var image60x60: some View {
         // https://stackoverflow.com/a/22808666
         Image(uiImage: UIImage(named: "\(rawValue ?? "AppIcon")60x60")!)
             .background(Color.black)
@@ -80,7 +80,7 @@ struct AppIconPicker: View {
                     }
                 } label: {
                     AccessibleHStack(spacing: 16) {
-                        icon.image_60x60
+                        icon.image60x60
                         icon.name
                             .foregroundColor(.primary)
                         Spacer()

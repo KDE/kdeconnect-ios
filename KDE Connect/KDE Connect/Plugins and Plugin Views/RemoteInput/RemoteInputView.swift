@@ -40,7 +40,7 @@ struct RemoteInputView: View {
             }
             .focused($keyboardFocus)
             
-            TwoFingerTapView { gesture in
+            TwoFingerTapView { _ in
                 sendRightClick()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -57,7 +57,7 @@ struct RemoteInputView: View {
                         previousHorizontalDragOffset = Float(gesture.translation.width)
                         previousVerticalDragOffset = Float(gesture.translation.height)
                     }
-                    .onEnded { gesture in
+                    .onEnded { _ in
                         previousHorizontalDragOffset = 0.0
                         previousVerticalDragOffset = 0.0
                         logger.debug("Drag ended, resetting to 0.0")
@@ -76,17 +76,17 @@ struct RemoteInputView: View {
                         .gesture(
                             DragGesture()
                                 .onChanged { gesture in
-                                    let DxScroll: Float = Float(gesture.translation.width) - previousScrollHorizontalDragOffset
-                                    let DyScroll: Float = Float(gesture.translation.height) - previousScrollVerticalDragOffset
+                                    let dxScroll: Float = Float(gesture.translation.width) - previousScrollHorizontalDragOffset
+                                    let dyScroll: Float = Float(gesture.translation.height) - previousScrollVerticalDragOffset
                                     //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                                    (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendScroll(Dx: DxScroll * cursorSensitivityFromSlider, Dy: DyScroll * cursorSensitivityFromSlider)
-                                    logger.debug("Scrolled by \(DxScroll) horizontally")
-                                    logger.debug("Scrolled by \(DyScroll) vertically")
+                                    (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendScroll(dx: dxScroll * cursorSensitivityFromSlider, dy: dyScroll * cursorSensitivityFromSlider)
+                                    logger.debug("Scrolled by \(dxScroll) horizontally")
+                                    logger.debug("Scrolled by \(dyScroll) vertically")
                                     //}
                                     previousScrollHorizontalDragOffset = Float(gesture.translation.width)
                                     previousScrollVerticalDragOffset = Float(gesture.translation.height)
                                 }
-                                .onEnded { gesture in
+                                .onEnded { _ in
                                     previousScrollHorizontalDragOffset = 0.0
                                     previousScrollVerticalDragOffset = 0.0
                                     logger.debug("Scroll ended, resetting to 0.0")
@@ -133,11 +133,11 @@ struct RemoteInputView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    .onChange(of: hapticSettings, perform: { style in
+                    .onChange(of: hapticSettings) { style in
                         UIImpactFeedbackGenerator(style: style).impactOccurred()
                         backgroundService._devices[detailsDeviceId]!.hapticStyle = style
                         saveDeviceToUserDefaults(deviceId: detailsDeviceId)
-                    })
+                    }
                     Text("On-Click Haptic Style")
                 }
                 .padding(.all, 15)

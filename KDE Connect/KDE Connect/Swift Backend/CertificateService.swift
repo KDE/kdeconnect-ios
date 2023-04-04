@@ -43,7 +43,7 @@ import CryptoKit
         let keychainItemQuery: CFDictionary = [
             kSecClass: kSecClassIdentity,
             kSecAttrLabel: NetworkPackage.getUUID() as Any,
-            kSecReturnRef: true
+            kSecReturnRef: true,
         ] as CFDictionary
         var identityApp: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &identityApp)
@@ -158,7 +158,7 @@ import CryptoKit
         let keychainItemQuery: CFDictionary = [
             kSecClass: kSecClassCertificate,
             kSecAttrLabel: deviceId as Any,
-            kSecReturnRef: true
+            kSecReturnRef: true,
         ] as CFDictionary
         var remoteSavedCert: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &remoteSavedCert)
@@ -186,7 +186,7 @@ import CryptoKit
         let keychainItemQuery: CFDictionary = [
             kSecAttrLabel: deviceId as Any,
             kSecClass: kSecClassCertificate,
-            kSecValueRef: cert
+            kSecValueRef: cert,
         ] as CFDictionary
         let status: OSStatus = SecItemAdd(keychainItemQuery, nil)
         return (status == 0)

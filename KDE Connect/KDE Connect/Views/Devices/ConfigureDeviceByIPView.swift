@@ -73,7 +73,7 @@ struct ConfigureDeviceByIPView: View {
     }
     
     func filterAddresses() {
-        directIPs = directIPs.filter { $0.ip != "" }
+        directIPs = directIPs.filter { !$0.ip.isEmpty }
     }
 }
 

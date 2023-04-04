@@ -21,7 +21,7 @@ import UIKit
 @objc
 class SelfDeviceData: NSObject, ObservableObject {
     @objc
-    public static let shared = SelfDeviceData()
+    static let shared = SelfDeviceData()
     
     @Published var deviceName: String {
         didSet {
@@ -144,4 +144,4 @@ let allUTTypes: [UTType] = [.aiff, .aliasFile, .appleArchive, .appleProtectedMPE
                             .urlBookmarkData, .usd, .usdz, .utf16ExternalPlainText,
                             .utf16PlainText, .utf8PlainText, .utf8TabSeparatedText, .vCard,
                             .video, .volume, .wav, .webArchive, .webP, .x509Certificate, .xml,
-                            .xmlPropertyList, .xpcService, .yaml, .zip]
+                            .xmlPropertyList, .xpcService, .yaml, .zip,]

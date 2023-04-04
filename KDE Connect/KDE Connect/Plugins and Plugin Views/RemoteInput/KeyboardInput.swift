@@ -9,7 +9,7 @@ import SwiftUI
 import Introspect
 
 extension View {
-    public func introspectKeyboardListener(customize: @escaping (KeyboardListener) -> ()) -> some View {
+    public func introspectKeyboardListener(customize: @escaping (KeyboardListener) -> Void) -> some View {
         introspect(selector: TargetViewSelector.siblingContainingOrAncestorOrAncestorChild, customize: customize)
     }
 }

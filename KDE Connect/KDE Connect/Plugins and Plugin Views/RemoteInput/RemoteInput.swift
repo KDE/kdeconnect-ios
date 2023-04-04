@@ -84,11 +84,11 @@
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
     
-    @objc func sendScroll(Dx: Float, Dy: Float) {
+    @objc func sendScroll(dx: Float, dy: Float) {
         let np: NetworkPackage = NetworkPackage(type: .mousePadRequest)
         np.setBool(true, forKey: "scroll")
-        np.setFloat(Dx, forKey: "dx")
-        np.setFloat(Dy, forKey: "dy")
+        np.setFloat(dx, forKey: "dx")
+        np.setFloat(dy, forKey: "dy")
         controlDevice.send(np, tag: Int(PACKAGE_TAG_MOUSEPAD))
     }
 }

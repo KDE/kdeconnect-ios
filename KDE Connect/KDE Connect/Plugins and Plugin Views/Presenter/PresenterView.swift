@@ -94,7 +94,6 @@ struct PresenterView: View {
             switch currentBroadcastingDeviceOrientation {
             case .portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight:
                 logger.debug("PresenterView appeared with defined orientation")
-                break
             case .faceUp, .faceDown, .unknown:
                 currentBroadcastingDeviceOrientation = .portrait
                 logger.debug("PresenterView appeared without defined orientation, defaulting to portrait")

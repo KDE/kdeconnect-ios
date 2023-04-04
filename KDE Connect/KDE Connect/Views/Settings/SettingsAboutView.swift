@@ -37,7 +37,7 @@ struct SettingsAboutView: View {
                 VStack {
                     HStack {
                         Spacer(minLength: 0.0)
-                        selfDeviceData.appIcon.image_60x60
+                        selfDeviceData.appIcon.image60x60
                             .accessibilityHidden(true)
                         Spacer(minLength: 8.0)
                         VStack {
@@ -169,7 +169,7 @@ struct SettingsAboutView: View {
         }
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.preferredFont(forTextStyle: .body),
-            .foregroundColor: UIColor.label
+            .foregroundColor: UIColor.label,
         ]
         let contributorsJoinedString = ListFormatter.localizedString(byJoining: contributorNames)
         let contributorsListAttributedText = NSMutableAttributedString(string: String(format: template, contributorsJoinedString), attributes: textAttributes)
@@ -179,7 +179,7 @@ struct SettingsAboutView: View {
             let linkAttributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.preferredFont(forTextStyle: .body),
                 .foregroundColor: UIColor.link,
-                .link: kdeInvent + contributor.kde
+                .link: kdeInvent + contributor.kde,
             ]
             let range = (contributorsListAttributedText.string as NSString).range(of: contributor.name)
             contributorsListAttributedText.setAttributes(linkAttributes, range: range)

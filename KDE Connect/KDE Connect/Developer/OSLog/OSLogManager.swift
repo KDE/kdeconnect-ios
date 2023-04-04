@@ -12,14 +12,14 @@ import Combine
 class OSLogManager: ObservableObject {
     private let store: OSLogStore?
     @Published
-    public private(set) var entries: [OSLogEntry] = []
+    private(set) var entries: [OSLogEntry] = []
     @Published
-    public private(set) var categories: Set<String> = []
+    private(set) var categories: Set<String> = []
     private var timerCancellable: AnyCancellable?
     private let dispatchQueue = DispatchQueue(label: UUID().uuidString)
     private let subsystem: String
     
-    public init(subsystem: String = OSLog.subsystem, refreshInterval: TimeInterval = 1) {
+    init(subsystem: String = OSLog.subsystem, refreshInterval: TimeInterval = 1) {
         self.subsystem = subsystem
         do {
             store = try OSLogStore(scope: .currentProcessIdentifier)
