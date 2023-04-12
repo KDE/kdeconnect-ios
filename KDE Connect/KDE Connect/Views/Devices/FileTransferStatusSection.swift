@@ -189,7 +189,7 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
             .init(path: URL(string: "file://1.png")!,
                   name: "Not working.png",
                   error: POSIXError(POSIXErrorCode(rawValue: 32)!),
-                  countOtherFailedFilesInTheSameTransfer: 0)
+                  countOtherFailedFilesInTheSameTransfer: 0),
         ]
         share.currentFilesSending = OrderedDictionary(uniqueKeysWithValues: [
             .init(path: URL(string: "file://3.jpg")!,
@@ -222,7 +222,7 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
                   name: "😅 Unicode 哦.mp4",
                   lastModifiedEpoch: nil,
                   totalBytes: Int.max,
-                  totalBytesCompleted: Int.random(in: 0...Int.max))
+                  totalBytesCompleted: Int.random(in: 0...Int.max)),
         ].map { ($0.path, $0) })
         // Localization: although error messages from CocoaAsyncSocket supports
         // been translated, however the default Export Localizations... action
@@ -239,7 +239,7 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
             .init(path: URL(string: "file://wat.png")!,
                   name: "wAt.png",
                   error: connectionClosed,
-                  countOtherFailedFilesInTheSameTransfer: 2)
+                  countOtherFailedFilesInTheSameTransfer: 2),
         ]
     }
     

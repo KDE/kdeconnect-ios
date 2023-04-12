@@ -15,6 +15,8 @@
 import UIKit
 import SwiftUI
 
+// Intentional naming
+// swiftlint:disable:next type_name
 @main struct KDE_Connect_App: App {
     @ObservedObject var selfDeviceDataForTopLevel: SelfDeviceData = .shared
     @StateObject var alertManager: AlertManager = AlertManager()

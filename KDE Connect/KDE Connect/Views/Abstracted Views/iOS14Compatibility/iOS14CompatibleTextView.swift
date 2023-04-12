@@ -14,6 +14,8 @@ import SwiftUI
         iOS 15 should follow the new convention of using Text() supporting Markdown attributes.
         """
 )
+// iOS 14 is a proprietary name
+// swiftlint:disable:next type_name
 struct iOS14CompatibleTextView: UIViewRepresentable {
     let attributedString: NSAttributedString
 
@@ -37,6 +39,8 @@ struct iOS14CompatibleTextView: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {}
 }
 
+// iOS 14 is a proprietary name
+// swiftlint:disable:next type_name
 struct iOS14CompatibleTextView_Previews: PreviewProvider {
     static var previews: some View {
         iOS14CompatibleTextView(NSAttributedString(string: "Preview"))

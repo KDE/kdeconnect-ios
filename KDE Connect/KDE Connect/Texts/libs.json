@@ -28,6 +28,13 @@
 		"licenseURL": "https://github.com/apple/swift-collections/blob/main/LICENSE.txt"
 	},
 	{
+		"id": "SwiftLint",
+		"name": "realm/SwiftLint",
+		"repo": "https://github.com/realm/SwiftLint",
+		"license": "MIT",
+		"licenseURL": "https://github.com/realm/SwiftLint/blob/master/LICENSE"
+	},
+	{
 		"id": "SwiftUI-Introspect",
 		"name": "siteline/SwiftUI-Introspect",
 		"repo": "https://github.com/siteline/SwiftUI-Introspect",

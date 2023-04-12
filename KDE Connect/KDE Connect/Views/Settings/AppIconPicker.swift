@@ -56,6 +56,8 @@ enum AppIcon: RawRepresentable, CaseIterable {
     
     var image60x60: some View {
         // https://stackoverflow.com/a/22808666
+        // Missing the AppIcon is a serious programmer error
+        // swiftlint:disable:next force_unwrapping
         Image(uiImage: UIImage(named: "\(rawValue ?? "AppIcon")60x60")!)
             .background(Color.black)
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))

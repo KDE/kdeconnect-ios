@@ -14,6 +14,8 @@
 
 import XCTest
 
+// Intentional naming matching app target name
+// swiftlint:disable:next type_name
 class KDE_Connect_UITests: XCTestCase {
 
     override func setUpWithError() throws {

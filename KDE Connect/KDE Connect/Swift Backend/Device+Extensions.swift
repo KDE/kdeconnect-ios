@@ -24,7 +24,8 @@ extension Device {
     // MARK: - Migration
     
     // This section contains code that keeps the project compiling, but
-    #warning("TODO: needs migration")
+    // TODO: needs migration
+    // swiftlint:disable identifier_name
 
     // Please always use the non-deprecated spelling if possible, and
     // follow the compiler warnings when ready to migrate existing code
@@ -46,3 +47,4 @@ extension Device {
         }
     }
 }
+// swiftlint:enable identifier_name

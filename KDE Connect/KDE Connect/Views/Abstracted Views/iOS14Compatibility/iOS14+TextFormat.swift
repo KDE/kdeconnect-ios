@@ -16,6 +16,8 @@ import SwiftUI
 
 @available(iOS, obsoleted: 15,
            message: "Delete this file and use Foundation.FormatStyle instead.")
+// Private type that should not show up in completion
+// swiftlint:disable:next type_name
 protocol _FormatStyle {
     associatedtype FormatInput
     func format(_ value: FormatInput) -> String

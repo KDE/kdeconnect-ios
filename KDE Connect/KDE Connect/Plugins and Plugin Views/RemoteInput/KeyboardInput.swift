@@ -35,6 +35,8 @@ public class KeyboardListener: UIView, UIKeyInput {
     }
 }
 
+// This naming is intentional to mimic a SwiftUI View
+// swiftlint:disable:next identifier_name
 func KeyboardListenerPlaceholderView(onInsertText: @escaping (String) -> Void = {_ in },
                                      onDeleteBackward: @escaping () -> Void = {},
                                      onReturn: @escaping () -> Void = {}) -> some View {

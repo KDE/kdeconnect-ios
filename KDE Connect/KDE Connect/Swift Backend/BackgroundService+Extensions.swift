@@ -17,7 +17,7 @@ import Foundation
 // MARK: - Migration
 
 // This section contains code that keeps the project compiling, but
-#warning("TODO: needs migration")
+// TODO: needs migration
 
 // Please always use the non-deprecated spelling if possible, and
 // follow the compiler warnings when ready to migrate existing code
@@ -25,6 +25,7 @@ import Foundation
 
 extension BackgroundService {
     // @available(*, deprecated, renamed: "devices")
+    // swiftlint:disable:next identifier_name
     var _devices: [String: Device] {
         return devices
     }

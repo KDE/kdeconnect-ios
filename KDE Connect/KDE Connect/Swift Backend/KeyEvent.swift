@@ -15,6 +15,7 @@
 import Foundation
 
 // Uniform Key inputs
+// swiftlint:disable identifier_name
 
 // KeyEvent is NOT a part of any iOS API, it's a custom enum
 // KeyEvent is indeed part of AppKit for macOS (but not any other OS), and SwiftUI for iOS does have
@@ -56,3 +57,4 @@ enum KeyEvent: Int {
     case KEYCODE_F11            = 31
     case KEYCODE_F12            = 32
 }
+// swiftlint:enable identifier_name

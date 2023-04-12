@@ -12,8 +12,11 @@ struct SettingsAboutView: View {
     @Environment(\.openURL) var openURL
     @EnvironmentObject private var selfDeviceData: SelfDeviceData
 
+    // swiftlint:disable force_cast force_unwrapping
+    // These values missing as written is a serious programmer error
     let version: String = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let build: String = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+    // swiftlint:enable force_cast force_unwrapping
 
     struct Library: Decodable, Identifiable {
         let id: String
@@ -25,8 +28,12 @@ struct SettingsAboutView: View {
 
     let libraries: [Library] = {
         let assetPath = Bundle.main.path(forResource: "libs", ofType: "json")
+        // The asset file is static and should be in the correct location.
+        // swiftlint:disable:next force_try force_unwrapping
         let asset = try! Data(contentsOf: URL(fileURLWithPath: assetPath!), options: .mappedIfSafe)
         let decoder = JSONDecoder()
+        // The JSON file is static and should be in the correct format.
+        // swiftlint:disable:next force_try
         let libraries = try! decoder.decode([Library].self, from: asset)
         return libraries
     }()
@@ -110,8 +117,11 @@ struct SettingsAboutView: View {
 
             Section(header: Text("Contributors")) {
                 if #available(iOS 15, *) {
+                    // markdown is actually static text and should always succeed in conversion
+                    // swiftlint:disable force_try
                     Text("Currently maintained by \(try! AttributedString(markdown: getContributorListText(for: .maintainers)))")
                     Text("Also written by \(try! AttributedString(markdown: getContributorListText(for: .authors)))")
+                    // swiftlint:enable force_try
                 } else {
                     Text(getContributorListAttributedTextWrapper(for: .maintainers).string)
                         .opacity(0.0)

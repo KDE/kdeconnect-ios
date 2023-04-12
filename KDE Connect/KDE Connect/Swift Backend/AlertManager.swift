@@ -47,6 +47,8 @@ class AlertManager: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] (alertPresent: Bool) in
                 guard let self = self else { return }
+                // FIXME: remove exception in merge request !98
+                // swiftlint:disable:next empty_count
                 if alertPresent == false && self.queue.count != 0{
                     self.currentAlert = self.queue.removeFirst()
                     self.alertPresent = true

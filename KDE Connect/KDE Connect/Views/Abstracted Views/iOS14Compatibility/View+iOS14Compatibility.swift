@@ -61,11 +61,19 @@ extension View {
 }
 
 @available(iOS, deprecated: 15)
-func Button(_ titleKey: LocalizedStringKey, role: _Button.Role? = nil, action: @escaping () -> Void) -> _Button {
+// This naming is intentional in tricking the compiler
+// swiftlint:disable:next identifier_name
+func Button(
+    _ titleKey: LocalizedStringKey,
+    role: _Button.Role? = nil,
+    action: @escaping () -> Void
+) -> _Button {
     _Button(titleKey, role: role, action: action)
 }
 
 @available(iOS, deprecated: 15)
+// Private type that should not show up in completion
+// swiftlint:disable:next type_name
 struct _Button {
     @available(iOS, deprecated: 15)
     enum Role {
@@ -143,7 +151,7 @@ enum AlertActionBuilder {
 
 @available(iOS, introduced: 14, obsoleted: 15, message: "Delete this extension")
 extension View {
-#warning("TODO: implement refreshable for iOS 14?")
+    /// TODO: implement refreshable for iOS 14?
     @ViewBuilder
     func refreshable(_ action: @escaping @Sendable () async -> Void) -> some View {
         if #available(iOS 15, *) {

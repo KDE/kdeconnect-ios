@@ -72,6 +72,8 @@ fileprivate class UITextFieldDelegateiOS14FocusProxy: NSObject, UITextFieldDeleg
     }
 }
 
+// FIXME: remove exception in merge request !97
+// swiftlint:disable:next type_name
 fileprivate struct iOS14Focus<Value: Hashable>: ViewModifier {
     @Binding private var binding: Value?
     private let value: Value?

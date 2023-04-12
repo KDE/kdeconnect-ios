@@ -593,6 +593,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D2AB56782988E4B9008A2217 /* PBXTargetDependency */,
 			);
 			name = "KDE Connect";
 			packageProductDependencies = (
@@ -680,6 +681,7 @@
 				D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 				D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D21A100629B878B800CE02F8 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				D2D7AB82298C8EA600AB490B /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
 			projectDirPath = "";
@@ -825,6 +827,10 @@
 			isa = PBXTargetDependency;
 			target = A0A0442B267BF38700CC21DD /* KDE Connect */;
 			targetProxy = A0A04449267BF38A00CC21DD /* PBXContainerItemProxy */;
+		};
+		D2AB56782988E4B9008A2217 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = D2AB56772988E4B9008A2217 /* SwiftLintPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1152,12 +1158,28 @@
 				version = 1.0.4;
 			};
 		};
+		D2AB56752988E4B0008A2217 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evfemist/SwiftLint.git";
+			requirement = {
+				kind = revision;
+				revision = a780f2e563d7402f078951c2a0fae0a208548196;
+			};
+		};
 		D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/UWAppDev/SwiftUI-MediaPicker.git";
 			requirement = {
 				kind = exactVersion;
 				version = 0.2.0;
+			};
+		};
+		D2D7AB82298C8EA600AB490B /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.51.0;
 			};
 		};
 		D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
@@ -1188,6 +1210,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D21A100629B878B800CE02F8 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		D2AB56772988E4B9008A2217 /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2AB56752988E4B0008A2217 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
 		};
 		D2D0A89B27688B5500CA9B13 /* MediaPicker */ = {
 			isa = XCSwiftPackageProductDependency;
