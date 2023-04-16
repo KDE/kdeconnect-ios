@@ -34,7 +34,7 @@ enum KeyEvent: Int {
     case KEYCODE_PAGE_DOWN      = 9
     case KEYCODE_MOVE_HOME      = 10
     case KEYCODE_MOVE_END       = 11
-    //case KEYCODE_NUMPAD_ENTER   = 12
+    // case KEYCODE_NUMPAD_ENTER   = 12
     case KEYCODE_ENTER          = 12
     case KEYCODE_FORWARD_DEL    = 13
     case KEYCODE_ESCAPE         = 14

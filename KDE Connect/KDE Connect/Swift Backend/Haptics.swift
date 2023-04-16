@@ -10,7 +10,7 @@ import SwiftUI
 
 // Haptics provider, for a list of the enum values see
 // https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/feedbackstyle
-extension UIImpactFeedbackGenerator.FeedbackStyle : CaseIterable {
+extension UIImpactFeedbackGenerator.FeedbackStyle: CaseIterable {
     public var text: Text {
         switch self {
         case .light: return Text("Light", comment: "Light haptic feedback level")
@@ -27,6 +27,6 @@ extension UIImpactFeedbackGenerator.FeedbackStyle : CaseIterable {
     }
 }
 
-//UIImpactFeedbackGenerator.FeedbackStyle.init(rawValue: Int)
+// UIImpactFeedbackGenerator.FeedbackStyle.init(rawValue: Int)
 
 let notificationHapticsGenerator: UINotificationFeedbackGenerator = UINotificationFeedbackGenerator()

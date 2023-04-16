@@ -48,8 +48,8 @@ struct RunCommandView: View {
     }
 }
 
-//struct RunCommandView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RunCommandView()
-//    }
-//}
+// struct RunCommandView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         RunCommandView()
+//     }
+// }

@@ -12,7 +12,7 @@
 //  Created by Lucas Wang on 2021-09-06.
 //
 
-@objc class RemoteInput : NSObject, Plugin {
+@objc class RemoteInput: NSObject, Plugin {
     enum SpecialKey: Int {
         case invalid = 0,
         backspace = 1,

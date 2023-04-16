@@ -84,7 +84,6 @@ struct PresenterView: View {
                         Image(systemName: "cursorarrow.motionlines")
                     }
                 }
-                
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
@@ -216,7 +215,7 @@ struct PresenterView: View {
     }
     
     func startGyroAndPointer() {
-            //UIImpactFeedbackGenerator(style: .heavy).impactOcurred()
+            // UIImpactFeedbackGenerator(style: .heavy).impactOcurred()
             motionManager.startGyroUpdates(to: .main) { (data, error) in
                 guard let data = data else { return }
                 var dxToSend: Float = 0.0 //

@@ -86,7 +86,6 @@ struct DevicesDetailView: View {
                     } label: {
                         Label("Unpair", systemImage: "wifi.slash")
                     }
-                    
                 } label: {
                     Image(systemName: "ellipsis.circle")
                 }
@@ -179,7 +178,7 @@ struct DevicesDetailView: View {
                 }
                 
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool) {
-                    NavigationLink(destination: RunCommandView(detailsDeviceId: self.detailsDeviceId)){
+                    NavigationLink(destination: RunCommandView(detailsDeviceId: self.detailsDeviceId)) {
                         Label("Run Command", systemImage: "terminal")
                     }
                     .accentColor(.primary)

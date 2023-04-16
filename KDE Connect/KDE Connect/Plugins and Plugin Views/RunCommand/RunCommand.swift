@@ -15,7 +15,7 @@
 import SwiftUI
 
 // TODO: rename to RunCommandPlugin
-@objc class RunCommand : NSObject, ObservablePlugin {
+@objc class RunCommand: NSObject, ObservablePlugin {
     @objc weak var controlDevice: Device!
     @Published
     var commandEntries: [CommandEntry] = []
@@ -25,7 +25,7 @@ import SwiftUI
         self.controlDevice = controlDevice
     }
     
-    typealias CommandsDictionary = [String : [String : String]]
+    typealias CommandsDictionary = [String: [String: String]]
     
     @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
         if (np.type == .runCommand) {

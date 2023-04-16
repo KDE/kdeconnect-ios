@@ -18,7 +18,7 @@ extension Notification.Name {
     static let didReceivePingNotification = Notification.Name("didReceivePingNotification")
 }
 
-@objc class Ping : NSObject, Plugin {
+@objc class Ping: NSObject, Plugin {
     @objc weak var controlDevice: Device!
     
     @objc init (controlDevice: Device) {

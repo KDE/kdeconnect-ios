@@ -17,13 +17,13 @@ import Foundation
 public extension DeviceType {
     var sfSymbolName: String {
         switch (self) {
-            case .unknown: return "questionmark.square.dashed"
-            case .desktop: return "desktopcomputer"
-            case .laptop: return "laptopcomputer"
-            case .phone: return "apps.iphone"
-            case .tablet: return "apps.ipad.landscape"
-            case .tv: return "tv"
-            @unknown default: return "questionmark.square.dashed"
+        case .unknown: return "questionmark.square.dashed"
+        case .desktop: return "desktopcomputer"
+        case .laptop: return "laptopcomputer"
+        case .phone: return "apps.iphone"
+        case .tablet: return "apps.ipad.landscape"
+        case .tv: return "tv"
+        @unknown default: return "questionmark.square.dashed"
         }
     }
 

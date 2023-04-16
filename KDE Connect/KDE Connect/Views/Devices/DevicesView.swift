@@ -30,14 +30,13 @@ struct DevicesView: View {
         viewModel.savedDevices.keys.sorted()
     }
     
-    
     @State private var showingConfigureDevicesByIPView: Bool = false
     @State private var isDeviceDiscoveryHelpPresented = false
         
     @ObservedObject var viewModel: ConnectedDevicesViewModel = connectedDevicesViewModel
     @State private var findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
 
-    //@ObservedObject var localNotificationService = LocalNotificationService()
+    // @ObservedObject var localNotificationService = LocalNotificationService()
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     private let logger = Logger()
     
@@ -167,7 +166,7 @@ struct DevicesView: View {
                                 }
                                 // TODO: Might want to add the device description as
                                 // id:desc dictionary?
-                                //Text(key)
+                                // Text(key)
                             }
                         }
                     }
@@ -247,8 +246,8 @@ struct DevicesView: View {
             } else {
                 ForEach(savedDevicesIds, id: \.self) { key in
                     Button {
-                        //currPairingDeviceId = key
-                        //showingOnSelectSavedDeviceAlert = true
+                        // currPairingDeviceId = key
+                        // showingOnSelectSavedDeviceAlert = true
                     } label: {
                         HStack {
                             Image(systemName: "wifi.slash")
@@ -265,7 +264,7 @@ struct DevicesView: View {
                                 }
                                 // TODO: Might want to add the device description as
                                 // id:desc dictionary?
-                                //Text(key)
+                                // Text(key)
                             }
                         }
                     }
@@ -309,7 +308,6 @@ struct DevicesView: View {
                 backgroundService.pairDevice(deviceId)
             }
         }
-        
     }
     
     func onPairTimeout(toDeviceWithID deviceId: String!) {
@@ -324,7 +322,7 @@ struct DevicesView: View {
     
     func onPairSuccess(withDeviceWithID deviceId: String!) {
         alertManager.queueAlert(title: "Pairing Complete") {
-            currentPairingDeviceName(id: deviceId).map{
+            currentPairingDeviceName(id: deviceId).map {
                 Text("Pairing with \($0) succeeded")
             }
         } buttons: {
@@ -334,7 +332,7 @@ struct DevicesView: View {
     
     func onPairRejected(byDeviceWithID deviceId: String!) {
         alertManager.queueAlert(title: "Pairing Rejected") {
-            currentPairingDeviceName(id: deviceId).map{
+            currentPairingDeviceName(id: deviceId).map {
                 Text("Pairing with \($0) failed")
             }
         } buttons: {
@@ -345,7 +343,7 @@ struct DevicesView: View {
     func showPingAlert() {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 0.8)
         SystemSound.smsReceived.play()
-        alertManager.queueAlert( title: "Ping!") {
+        alertManager.queueAlert(title: "Ping!") {
             Text("Ping received from a connected device.")
         } buttons: {}
     }
@@ -371,7 +369,6 @@ struct DevicesView: View {
             findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
         }
     }
-
     
     func refreshDiscoveryAndList() {
         withAnimation {

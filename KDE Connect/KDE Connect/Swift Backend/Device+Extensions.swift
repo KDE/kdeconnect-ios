@@ -31,7 +31,6 @@ extension Device {
     // follow the compiler warnings when ready to migrate existing code
     // after uncommenting lines containing `@available`
     
-    
     // @available(*, deprecated, renamed: "plugins")
     var _plugins: [NetworkPackage.`Type`: Plugin] {
         plugins

@@ -14,7 +14,7 @@
 
 import Foundation
 
-@objc class Presenter : NSObject, Plugin {
+@objc class Presenter: NSObject, Plugin {
     @objc weak var controlDevice: Device!
     private let logger = Logger()
     

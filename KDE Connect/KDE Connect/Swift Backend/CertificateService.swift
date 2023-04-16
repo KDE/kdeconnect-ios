@@ -15,15 +15,15 @@
 import Foundation
 import Security
 import CryptoKit
-//import OpenSSL
-//import CommonCrypto
+// import OpenSSL
+// import CommonCrypto
 
 @objc class CertificateService: NSObject {
     @objc var hostIdentity: SecIdentity?
     @objc var hostCertificateSHA256HashFormattedString: String?
     private let logger = Logger()
     
-    var tempRemoteCerts: [String : SecCertificate] = [:]
+    var tempRemoteCerts: [String: SecCertificate] = [:]
     
     override init() {
         super.init()
@@ -99,7 +99,7 @@ import CryptoKit
         return arrayOf2CharStrings.joined(separator: ":")
     }
     
-    //@discardableResult
+    // @discardableResult
     @objc func deleteHostCertificateFromKeychain() -> OSStatus {
         let keychainItemQuery: CFDictionary = [
             kSecAttrLabel: NetworkPackage.getUUID() as Any,
@@ -212,7 +212,6 @@ import CryptoKit
         }
         return true
     }
-
 
     // Unused and reference functions
 //    @objc static func verifyRemoteCertificate(trust: SecTrust) -> Bool {

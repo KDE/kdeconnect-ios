@@ -77,8 +77,8 @@ struct ConfigureDeviceByIPView: View {
     }
 }
 
-//struct ConfigureDeviceByIPView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ConfigureDeviceByIPView()
-//    }
-//}
+// struct ConfigureDeviceByIPView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         ConfigureDeviceByIPView()
+//     }
+// }

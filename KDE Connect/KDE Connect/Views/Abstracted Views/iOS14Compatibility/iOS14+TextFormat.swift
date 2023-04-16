@@ -26,7 +26,7 @@ protocol _FormatStyle {
 extension Text {
     init<F: _FormatStyle>(
         _ input: F.FormatInput, format: F
-    ) where F.FormatInput : Equatable {
+    ) where F.FormatInput: Equatable {
         self.init(format.format(input))
     }
 }
@@ -42,7 +42,7 @@ extension LocalizedStringKey.StringInterpolation {
     mutating func appendInterpolation<F: _FormatStyle>(
         _ input: F.FormatInput,
         format: F
-    ) where F.FormatInput : Equatable {
+    ) where F.FormatInput: Equatable {
         // To learn more about appendInterpolation and localization, see
         // - https://onevcat.com/2021/03/swiftui-text-1/
         // - https://onevcat.com/2021/03/swiftui-text-2/

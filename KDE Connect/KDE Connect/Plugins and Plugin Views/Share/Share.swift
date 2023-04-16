@@ -22,7 +22,7 @@ extension Notification.Name {
 }
 
 // TODO: Implement fallback on another port when default 1739 is unavaliable
-@objc class Share : NSObject, ObservablePlugin {
+@objc class Share: NSObject, ObservablePlugin {
     @objc weak var controlDevice: Device!
     let minPayloadPort: Int = 1739
     let maxPayloadPort: Int = 1764
@@ -83,7 +83,7 @@ extension Notification.Name {
                     return true
                 }
                 if saveFile(payloadPath, as: filename) {
-                    //connectedDevicesViewModel.showFileReceivedAlert()
+                    // connectedDevicesViewModel.showFileReceivedAlert()
                     logger.debug("File \(filename, privacy: .private(mask: .hash)) saved successfully")
                     notificationHapticsGenerator.notificationOccurred(.success)
                 } else {
@@ -331,7 +331,7 @@ extension Notification.Name {
     @objc private func saveFile(_ url: URL, as filename: String) -> Bool {
         let fileManager = FileManager.default
         do {
-            let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false) // gets URL of app's document directory
+            let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) // gets URL of app's document directory
             let fileURL = documentDirectory.appendingPathComponent(filename) // adds new file's name to URL
             logger.debug("\(fileURL.absoluteString, privacy: .private(mask: .hash))")
             switch try? fileURL.checkResourceIsReachable() {

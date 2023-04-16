@@ -64,8 +64,8 @@ struct BatteryStatus<ValidBatteryStatusContent: View>: View {
     }
 }
 
-//struct BatteryStatus_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BatteryStatus()
-//    }
-//}
+// struct BatteryStatus_Previews: PreviewProvider {
+//     static var previews: some View {
+//         BatteryStatus()
+//     }
+// }

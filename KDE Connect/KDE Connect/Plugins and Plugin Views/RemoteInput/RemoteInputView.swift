@@ -49,11 +49,11 @@ struct RemoteInputView: View {
                     .onChanged { gesture in
                         let dxDrag: Float = Float(gesture.translation.width) - previousHorizontalDragOffset
                         let dyDrag: Float = Float(gesture.translation.height) - previousVerticalDragOffset
-                        //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
+                        // if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
                         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendMouseDelta(dx: dxDrag * cursorSensitivityFromSlider, dy: dyDrag * cursorSensitivityFromSlider)
                         logger.debug("Moved by \(dxDrag) horizontally")
                         logger.debug("Moved by \(dyDrag) vertically")
-                        //}
+                        // }
                         previousHorizontalDragOffset = Float(gesture.translation.width)
                         previousVerticalDragOffset = Float(gesture.translation.height)
                     }
@@ -72,17 +72,17 @@ struct RemoteInputView: View {
                     Image(systemName: "rectangle.portrait.arrowtriangle.2.outward")
                         .resizable()
                         .frame(width: 110, height: 120)
-                        //.scaledToFit()
+                        // .scaledToFit()
                         .gesture(
                             DragGesture()
                                 .onChanged { gesture in
                                     let dxScroll: Float = Float(gesture.translation.width) - previousScrollHorizontalDragOffset
                                     let dyScroll: Float = Float(gesture.translation.height) - previousScrollVerticalDragOffset
-                                    //if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
+                                    // if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
                                     (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendScroll(dx: dxScroll * cursorSensitivityFromSlider, dy: dyScroll * cursorSensitivityFromSlider)
                                     logger.debug("Scrolled by \(dxScroll) horizontally")
                                     logger.debug("Scrolled by \(dyScroll) vertically")
-                                    //}
+                                    // }
                                     previousScrollHorizontalDragOffset = Float(gesture.translation.width)
                                     previousScrollVerticalDragOffset = Float(gesture.translation.height)
                                 }
@@ -202,7 +202,6 @@ struct RemoteInputView: View {
                         Image(systemName: "cursorarrow.motionlines.click")
                     }
                 }
-                
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
@@ -228,7 +227,7 @@ struct RemoteInputView: View {
             return
         }
 
-        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 0.7
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 0.7
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleClick()
         logger.debug("single clicked")
     }
@@ -256,19 +255,19 @@ struct RemoteInputView: View {
     }
     
     func sendRightClick() {
-        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 1.0
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 1.0
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendRightClick()
         logger.debug("2 finger tap")
     }
     
     func sendSingleHold() {
-        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 0.5
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 0.5
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleHold()
         logger.debug("Long press")
     }
     
     func sendMiddleClick() {
-        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() //intensity: 0.3
+        UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 0.3
         (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendMiddleClick()
         logger.debug("Middle Click")
     }

@@ -70,7 +70,7 @@ struct AppIconPicker: View {
     
     var body: some View {
         List {
-            ForEach(AppIcon.allCases, id:\.self) { icon in
+            ForEach(AppIcon.allCases, id: \.self) { icon in
                 Button {
                     settings.appIcon = icon
                     UIApplication.shared.setAlternateIconName(icon.rawValue) { error in

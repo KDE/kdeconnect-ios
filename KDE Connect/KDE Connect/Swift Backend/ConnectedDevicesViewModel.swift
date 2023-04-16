@@ -24,13 +24,13 @@ extension Notification.Name {
     static let pairRequestRejectedNotification = Notification.Name("pairRequestRejectedNotification")
 }
 
-@objc class ConnectedDevicesViewModel : NSObject, ObservableObject {
+@objc class ConnectedDevicesViewModel: NSObject, ObservableObject {
     @Published
-    var connectedDevices: [String : String] = [:]
+    var connectedDevices: [String: String] = [:]
     @Published
-    var visibleDevices: [String : String] = [:]
+    var visibleDevices: [String: String] = [:]
     @Published
-    var savedDevices: [String : String] = [:]
+    var savedDevices: [String: String] = [:]
     private let logger = Logger()
     
     @objc func onPairRequest(_ deviceId: String!) {

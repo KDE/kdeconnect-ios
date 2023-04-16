@@ -29,7 +29,7 @@ import UIKit
     @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
         super.init()
-        //self.sendBatteryStatusRequest() // no need here, asking in Device() when first link is added
+        // self.sendBatteryStatusRequest() // no need here, asking in Device() when first link is added
         self.startBatteryMonitoring()
         self.sendBatteryStatusOut()
     }

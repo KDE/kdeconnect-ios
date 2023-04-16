@@ -18,7 +18,7 @@ extension Notification.Name {
     static let didReceiveFindMyPhoneRequestNotification = Notification.Name("didReceiveFindMyPhoneRequestNotification")
 }
 
-@objc class FindMyPhone : NSObject, Plugin {
+@objc class FindMyPhone: NSObject, Plugin {
     @objc weak var controlDevice: Device!
     
     @objc init (controlDevice: Device) {
