@@ -32,7 +32,7 @@
 
 @synthesize _linkProviderDelegate;
 
-- (BaseLinkProvider*) initWithDelegate:(id)linkProviderDelegate
+- (BaseLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate
 {
     if ((self=[super init])) {
         _linkProviderDelegate=linkProviderDelegate;

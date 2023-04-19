@@ -37,7 +37,8 @@
 
 @interface LanLinkProvider : BaseLinkProvider <LinkDelegate, GCDAsyncSocketDelegate, GCDAsyncUdpSocketDelegate>
 
-- (LanLinkProvider*) initWithDelegate:(id)linkProviderDelegate certificateService:(CertificateService*)certificateService;
+- (LanLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate
+                   certificateService:(CertificateService *)certificateService;
 - (void) onStart;
 - (void) onRefresh;
 - (void) onStop;

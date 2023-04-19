@@ -29,22 +29,18 @@
 #import <Foundation/Foundation.h>
 #import "NetworkPackage.h"
 #import "BaseLink.h"
+#import "LinkProviderDelegate.h"
 
 @interface BaseLinkProvider : NSObject
 
-@property(nonatomic) id _linkProviderDelegate;
+@property(nonatomic) id<LinkProviderDelegate> _linkProviderDelegate;
 @property(nonatomic) NSMutableDictionary* _connectedLinks;
 
-- (BaseLinkProvider*) initWithDelegate:(id)linkProviderDelegate;
+- (BaseLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate;
 - (void) onStart;
 - (void) onRefresh;
 - (void) onStop;
 - (void) onNetworkChange;
 - (void) onLinkDestroyed:(BaseLink*)link;
 
-@end
-
-@protocol linkProviderDelegate <NSObject>
-@optional
-- (void) onConnectionReceived:(NetworkPackage*)np link:(BaseLink*)link;
 @end

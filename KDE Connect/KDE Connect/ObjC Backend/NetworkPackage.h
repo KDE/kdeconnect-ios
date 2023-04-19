@@ -105,7 +105,7 @@ FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeRunCommand;
 @property(nonatomic) long _PayloadSize;
 
 - (NetworkPackage *) initWithType:(NetworkPackageType)type;
-+ (NetworkPackage *) createIdentityPackage;
++ (NetworkPackage *)createIdentityPackageWithTCPPort:(uint16_t)tcpPort;
 + (NetworkPackage *) createPairPackage;
 + (nullable NSString *) getUUID;
 

@@ -41,7 +41,7 @@
 @class ConnectedDevicesViewModel;
 @class CertificateService;
 
-@interface BackgroundService : NSObject<linkProviderDelegate, DeviceDelegate>
+@interface BackgroundService : NSObject<LinkProviderDelegate, DeviceDelegate>
 
 // TODO: fix casing
 - (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService;
@@ -58,7 +58,6 @@
 //- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc;
 - (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *) getDevicesLists;
 - (void) reloadAllPlugins;
-- (void) refreshVisibleDeviceList;
 
 - (void) onNetworkChange;
 @end

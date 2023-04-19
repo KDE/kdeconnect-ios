@@ -78,15 +78,9 @@ certificateService:(CertificateService*)certificateService
     {
         logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                NSStringFromClass([self class]).UTF8String);
-        _socket=socket;
         _deviceId = deviceId;
         _pendingPairNP=nil;
-        [_socket setDelegate:self];
-        [_socket performBlock:^{
-            [_socket enableBackgroundingOnSocket];
-        }];
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink:lanlink for device:%{mask.hash}@ created",_deviceId);
-        [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
+        [self setSocket:socket];
         
         _socketsForOutgoingPayload = [NSMutableArray arrayWithCapacity:1];
         _pendingOutgoingItems = [NSMutableArray arrayWithCapacity:1];
@@ -182,6 +176,19 @@ certificateService:(CertificateService*)certificateService
     os_log_with_type(logger, self.debugLogLevel, "%{public}@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     return YES;
+}
+
+- (void)setSocket:(GCDAsyncSocket *)newSocket {
+    if (_socket) {
+        _socket.delegate = nil;
+        [_socket disconnect];
+    }
+    _socket = newSocket;
+    [_socket setDelegate:self];
+    os_log_with_type(logger, OS_LOG_TYPE_INFO,
+                     "new lan link socket for device:%{mask.hash}@ configured",
+                     _deviceId);
+    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
 }
 
 - (void) disconnect
@@ -436,7 +443,8 @@ certificateService:(CertificateService*)certificateService
 
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
-    if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithDeviceIDWithTrust:trust deviceId:_deviceId]) {
+    if ([_certificateService verifyCertificateEqualityWithTrust:trust
+                                   fromRemoteDeviceWithDeviceID:_deviceId]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         completionHandler(YES);
     } else {

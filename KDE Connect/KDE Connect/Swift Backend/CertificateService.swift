@@ -108,8 +108,8 @@ import CryptoKit
         return SecItemDelete(keychainItemQuery)
     }
     
-    // This function is called by LanLink's didReceiveTrust
-    @objc func verifyCertificateEqualityFromRemoteDeviceWithDeviceID(trust: SecTrust, deviceId: String) -> Bool {
+    // This function is called by LanLink and LanLinkProvider's didReceiveTrust
+    @objc func verifyCertificateEquality(trust: SecTrust, fromRemoteDeviceWithDeviceID deviceId: String) -> Bool {
         if let remoteCert: SecCertificate = extractRemoteCertFromTrust(trust: trust) {
             if let storedRemoteCert: SecCertificate = extractSavedCertOfRemoteDevice(deviceId: deviceId) {
                 logger.debug("Both remote cert and stored cert exist, checking them for equality")

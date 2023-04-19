@@ -59,8 +59,7 @@ __strong static NSString* _UUID;
 @synthesize _PayloadTransferInfo;
 
 #pragma mark create Package
-+(NetworkPackage*) createIdentityPackage
-{
++ (NetworkPackage *)createIdentityPackageWithTCPPort:(uint16_t)tcpPort {
     NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypeIdentity];
     [np setObject:[NetworkPackage getUUID] forKey:@"deviceId"];
     NSString* deviceName=[[NSUserDefaults standardUserDefaults] stringForKey:@"deviceName"];
@@ -70,7 +69,7 @@ __strong static NSString* _UUID;
     [np setObject:deviceName forKey:@"deviceName"];
     [np setInteger:ProtocolVersion forKey:@"protocolVersion"];
     [np setObject:[Device DeviceType2Str:Device.currentDeviceType] forKey:@"deviceType"];
-    [np setInteger:1716 forKey:@"tcpPort"];
+    [np setInteger:tcpPort forKey:@"tcpPort"];
     
     // TODO: Instead of @[] actually import what plugins are available, UserDefaults to store maybe?
     // For now, manually putting everything in to trick the other device to sending the iOS host the

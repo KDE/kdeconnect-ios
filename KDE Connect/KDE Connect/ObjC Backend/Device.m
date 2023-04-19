@@ -141,29 +141,34 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 - (void)addLink:(BaseLink*)Link {
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_id);
-    [_links addObject:Link];
-    //[self saveSetting];
-    [Link setLinkDelegate:self];
-    if ([_links count]==1) {
+    NSUInteger count;
+    @synchronized (_links) {
+        [_links addObject:Link];
+        //[self saveSetting];
+        [Link setLinkDelegate:self];
+        count = [_links count];
+    }
+    if (count == 1) {
         os_log_with_type(logger, self.debugLogLevel, "one link available");
         if (deviceDelegate) {
             [deviceDelegate onDeviceReachableStatusChanged:self];
         }
-        // If device is just online with its first link, ask for its battery status
-        if ((_pluginsEnableStatus[NetworkPackageTypeBatteryRequest] != nil)
-            && (_pluginsEnableStatus[NetworkPackageTypeBatteryRequest])
-            && ([[_plugins objectForKey:NetworkPackageTypeBatteryRequest] respondsToSelector:@selector(sendBatteryStatusRequest)])) {
-            [[_plugins objectForKey:NetworkPackageTypeBatteryRequest] performSelector:@selector(sendBatteryStatusRequest)];
-        }
+        // If a remembered device is online with its first link, ask for its battery status
+        [self updateBatteryStatus];
     }
 }
+
 // FIXME: This ain't it, doesn't get called when connection is cut (e.g wifi off) from the remote device
 - (void) onLinkDestroyed:(BaseLink *)link
 {
     os_log_with_type(logger, self.debugLogLevel, "device on link destroyed");
-    [_links removeObject:link];
-    os_log_with_type(logger, self.debugLogLevel, "remove link ; %lu remaining", (unsigned long)[_links count]);
-    if ([_links count]==0) {
+    NSUInteger count;
+    @synchronized (_links) {
+        [_links removeObject:link];
+        count = [_links count];
+    }
+    os_log_with_type(logger, self.debugLogLevel, "remove link ; %lu remaining", count);
+    if (count == 0) {
         os_log_with_type(logger, self.debugLogLevel, "no available link");
         if (deviceDelegate) {
             [deviceDelegate onDeviceReachableStatusChanged:self];
@@ -180,16 +185,8 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 - (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag
 {
     os_log_with_type(logger, self.debugLogLevel, "device send package");
-    // TODO: 2 branch has identical code
-    if (![np.type isEqualToString:NetworkPackageTypePair]) {
-        for (BaseLink* link in _links) {
-            if ([link sendPackage:np tag:tag]) {
-                return true;
-            }
-        }
-    }
-    else{
-        for (BaseLink* link in _links) {
+    @synchronized (_links) {
+        for (BaseLink *link in _links) {
             if ([link sendPackage:np tag:tag]) {
                 return true;
             }
@@ -323,7 +320,10 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         }
         //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
     } else {
-        os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "not paired, ignore packages, unpair the device");
+        // old iOS implementations send battery request while the devices are unpaired
+        os_log_with_type(logger, OS_LOG_TYPE_DEFAULT,
+                         "not paired, ignore package of %{public}@, unpair the device",
+                         np.type);
         // remembered devices should have became paired, okay to call unpair.
         [self unpair];
     }
@@ -331,7 +331,8 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 - (BOOL) isReachable
 {
-    return [_links count]!=0; // || _testDevice
+    // synchronize not very helpful
+    return [_links count] != 0;
 }
 
 - (void) loadSetting
@@ -358,11 +359,11 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     _pairStatus=Paired;
     //NSLog(@"paired with %@",_name);
     [self saveSetting];
+    // Request and update battery status for a newly paired device
+    [self updateBatteryStatus];
     if (deviceDelegate) {
         [deviceDelegate onDevicePairSuccess:self];
     }
-    // for (BaseLink* link in _links) {
-    // }
 }
 
 - (void) requestPairing
@@ -430,6 +431,21 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 }
 
 #pragma mark Plugins-related Functions
+
+- (void)updateBatteryStatus {
+    if ((_pluginsEnableStatus[NetworkPackageTypeBatteryRequest] != nil)
+        && (_pluginsEnableStatus[NetworkPackageTypeBatteryRequest])) {
+        id<Plugin> plugin = [_plugins objectForKey:NetworkPackageTypeBatteryRequest];
+        if ([plugin respondsToSelector:@selector(sendBatteryStatusRequest)]) {
+            [plugin performSelector:@selector(sendBatteryStatusRequest)];
+        }
+        // For backward compatibility reasons, we should update the other device
+        if ([plugin respondsToSelector:@selector(sendBatteryStatusOut)]) {
+            [plugin performSelector:@selector(sendBatteryStatusOut)];
+        }
+    }
+}
+
 - (void) reloadPlugins
 {
 //    if (![self isReachable]) {

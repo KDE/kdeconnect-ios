@@ -74,6 +74,7 @@
 		D2423C402914979B00616D70 /* iOS14+TextFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2423C3F2914979B00616D70 /* iOS14+TextFormat.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
+		D27D727F29B051D8002C00B7 /* NetworkChangeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D727E29B051D8002C00B7 /* NetworkChangeMonitor.swift */; };
 		D28C94CA27D1CAAA002EBC2D /* OSLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */; };
 		D28C94CC27D1CAD2002EBC2D /* OSLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */; };
 		D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */; };
@@ -189,6 +190,7 @@
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
 		D275BF2D29A4CD1600CD1CDC /* LinkDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkDelegate.h; sourceTree = "<group>"; };
+		D27D727E29B051D8002C00B7 /* NetworkChangeMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChangeMonitor.swift; sourceTree = "<group>"; };
 		D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogManager.swift; sourceTree = "<group>"; };
 		D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogView.swift; sourceTree = "<group>"; };
 		D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogEntryLogView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkPackage+Extensions.swift"; sourceTree = "<group>"; };
 		D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPackageComposer.swift; sourceTree = "<group>"; };
 		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
+		D2DC60F429B0B01A001F7CB9 /* LinkProviderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkProviderDelegate.h; sourceTree = "<group>"; };
 		D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		D2F7776727C99901008F20A1 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
@@ -238,6 +241,7 @@
 				D275BF2D29A4CD1600CD1CDC /* LinkDelegate.h */,
 				1499A8D72698BF0F00FDF493 /* BaseLink.h */,
 				1499A8D82698BF0F00FDF493 /* BaseLink.m */,
+				D2DC60F429B0B01A001F7CB9 /* LinkProviderDelegate.h */,
 				1499A8D62698BF0F00FDF493 /* BaseLinkProvider.h */,
 				1499A8D92698BF0F00FDF493 /* BaseLinkProvider.m */,
 				1499A8D12698BF0F00FDF493 /* lanBackend */,
@@ -382,6 +386,7 @@
 				53A0A1DB283ED5C400C7C473 /* BackgroundService+Extensions.swift */,
 				53A0A1DD283ED78700C7C473 /* LocalizedStringKey+Extensions.swift */,
 				D20ABB0A29A4A04E006F277B /* FileTransferItem.swift */,
+				D27D727E29B051D8002C00B7 /* NetworkChangeMonitor.swift */,
 			);
 			path = "Swift Backend";
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 				D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
 				53A0A1DE283ED78700C7C473 /* LocalizedStringKey+Extensions.swift in Sources */,
+				D27D727F29B051D8002C00B7 /* NetworkChangeMonitor.swift in Sources */,
 				53A0A1DC283ED5C400C7C473 /* BackgroundService+Extensions.swift in Sources */,
 				D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */,
 				1499A8E72698BFF300FDF493 /* Device.m in Sources */,

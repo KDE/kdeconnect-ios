@@ -1,7 +1,7 @@
 /*
  * SPDX-FileCopyrightText: 2014 YANG Qiao <yangqiao0505@me.com>
- *                         2020-2021 Weixuan Xiao <veyx.shaw@gmail.com>
  *                         2021 Lucas Wang <lucas.wang@tuta.io>
+ *                         2023 Apollo Zhu <public-apollonian@outlook.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -28,22 +28,13 @@
 //----------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "BaseLink.h"
-#import "LanLinkProvider.h"
-#import "GCDAsyncSocket.h"
 
-@class LanLinkProvider;
-@class BaseLink;
-@class Device;
-@class CertificateService;
+NS_ASSUME_NONNULL_BEGIN
 
-@interface LanLink : BaseLink <GCDAsyncSocketDelegate>
-
-- (LanLink *)init:(GCDAsyncSocket*)socket
-         deviceId:(NSString *)deviceId
-      setDelegate:(id<LinkDelegate>)linkDelegate
-certificateService:(CertificateService *)certificateService;
-- (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag;
-- (void)setSocket:(GCDAsyncSocket *)newSocket;
-- (void) disconnect;
+@protocol LinkProviderDelegate <NSObject>
+@optional
+- (void)onConnectionReceived:(NetworkPackage *)np link:(BaseLink *)link;
+- (void)onDeviceIdentityUpdatePackageReceived:(NetworkPackage *)np;
 @end
+
+NS_ASSUME_NONNULL_END

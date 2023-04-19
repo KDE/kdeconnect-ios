@@ -70,13 +70,15 @@
 @synthesize _identity;
 @synthesize _certificateService;
 
-- (LanLinkProvider*) initWithDelegate:(id)linkProviderDelegate certificateService:(CertificateService*)certificateService
+- (LanLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate
+                   certificateService:(CertificateService *)certificateService
 {
     if (self = [super initWithDelegate:linkProviderDelegate])
     {
         logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                NSStringFromClass([self class]).UTF8String);
         _tcpPort=MIN_TCP_PORT;
+        [_tcpSocket setDelegate:nil];
         [_tcpSocket disconnect];
         [_udpSocket close];
         _udpSocket=nil;
@@ -152,6 +154,9 @@
     os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:UDP socket start");
     if (![_tcpSocket isConnected]) {
         while (![_tcpSocket acceptOnPort:_tcpPort error:&err]) {
+            os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                             "tcp socket start on port %hu errored: %{public}@",
+                             _tcpPort, err);
             _tcpPort++;
             if (_tcpPort > MAX_TCP_PORT) {
                 _tcpPort = MIN_TCP_PORT;
@@ -159,11 +164,12 @@
         }
     }
     
-    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:setup tcp socket on port %d", _tcpPort);
+    os_log_with_type(logger, self.debugLogLevel,
+                     "setup tcp socket on port %hu",
+                     _tcpPort);
     
     //Introduce myself , UDP broadcasting my id package
-    NetworkPackage* np=[NetworkPackage createIdentityPackage];
-    [np setInteger:_tcpPort forKey:@"tcpPort"]; // need to give JSON since need to modify tcpport
+    NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
     NSData* data=[np serialize];
     
     // Broadcast to every device first
@@ -181,28 +187,13 @@
 {
     os_log_with_type(logger, self.debugLogLevel, "lp onstop");
     [_udpSocket close];
+    [_tcpSocket setDelegate:nil];
     [_tcpSocket disconnect];
     for (GCDAsyncSocket* socket in _pendingSockets) {
-        if (socket != nil) {
-            [socket disconnect];
-        } else { // do we really have to remove all the nils here?
-            for (int i = 0; i < [_pendingSockets count]; i++) {
-                if (_pendingSockets[i] == nil) {
-                    [_pendingSockets removeObjectAtIndex:i];
-                }
-            }
-        }
+        [socket disconnect];
     }
     for (LanLink* link in [_connectedLinks allValues]) {
-        if (link != nil) {
-            [link disconnect];
-        } else { // do we really have to remove all the nils here?
-            for (NSString* key in [_connectedLinks allKeys]) {
-                if ([_connectedLinks objectForKey:key] == nil) {
-                    [_connectedLinks removeObjectForKey:key];
-                }
-            }
-        }
+        [link disconnect];
     }
     
     [_pendingNps removeAllObjects];
@@ -216,13 +207,14 @@
 - (void) onRefresh
 {
     os_log_with_type(logger, self.debugLogLevel, "lp on refresh");
-    if (![_tcpSocket isConnected]) {
+    // Checking isConnected requires something to be actually connected,
+    // while isDisconnected only check if server socket has started...
+    if (!_tcpSocket || [_tcpSocket isDisconnected]) {
         [self onNetworkChange];
         return;
     }
     if (![_udpSocket isClosed]) {
-        NetworkPackage* np=[NetworkPackage createIdentityPackage];
-        [np setInteger:_tcpPort forKey:@"tcpPort"];
+        NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
         NSData* data=[np serialize];
         
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "sending: %{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
@@ -262,7 +254,10 @@
 {
     
     // Unserialize received data
-    os_log_with_type(logger, self.debugLogLevel, "lp receive udp package");
+    os_log_with_type(logger, self.debugLogLevel,
+                     "lp receive udp package: %{public}@",
+                     [[NSString alloc] initWithData:data
+                                           encoding:NSUTF8StringEncoding]);
 	NetworkPackage* np = [NetworkPackage unserialize:data];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "linkprovider:received a udp package from %{mask.hash}@",[np objectForKey:@"deviceName"]);
     //not id package
@@ -277,7 +272,7 @@
     [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
 
     //my own package, don't care
-    NetworkPackage* np2=[NetworkPackage createIdentityPackage];
+    NetworkPackage *np2 = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
     NSString* myId=[[np2 _Body] valueForKey:@"deviceId"];
     if ([[np objectForKey:@"deviceId"] isEqualToString:myId]){
         os_log_with_type(logger, self.debugLogLevel, "Ignore my own id package from %{mask.hash}@:%hu", host, port);
@@ -290,10 +285,13 @@
         return;
     }
     
-    // This is very important, as if it doesn't ignore the identity packets of devices that are already connected, the app will respond by TERMINATING the existing connection and establishing a new one. We DO NOT want this.
+    // Because we can't tell when another device disconnects from network,
+    // we'll always have to re-attempt connecting to that device whenever
+    // we receive an identity packet, even if it appears connected currently.
     if ([ConnectedDevicesViewModel isDeviceCurrentlyPairedAndConnected:[np objectForKey:@"deviceId"]]) {
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "Received identity packet from %{mask.hash}@, which is already connected (aka paired & reachable), ignoring", [np objectForKey:@"deviceName"]);
-        return;
+        os_log_with_type(logger, OS_LOG_TYPE_INFO,
+                         "Received identity packet from %{mask.hash}@, which is already connected (aka paired & reachable), reconnecting",
+                         [np objectForKey:@"deviceName"]);
     }
     
     // Get ready to establish TCP connection to incoming host
@@ -307,7 +305,6 @@
         
         os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:tcp connection error");
         os_log_with_type(logger, self.debugLogLevel, "try reverse connection");
-        [[np2 _Body] setValue:[[NSNumber alloc ] initWithUnsignedInt:_tcpPort] forKey:@"tcpPort"];
         NSData* data=[np serialize];
         os_log_with_type(logger, self.debugLogLevel, "%{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
@@ -325,7 +322,7 @@
     // to know me, I send ID Packet to incoming Host via the just established TCP
     //if (([np _Payload] == nil) && ([np _PayloadTransferInfo] == nil) && ([np _PayloadSize]) == 0) {
     // TODO: It seems like only identity packets ever show up here, why? Where is the id packet being sent when a new transfer connection is opened then????? This seems to be the ONLY place where ID packets are sent in TCP?
-    NetworkPackage *inp = [NetworkPackage createIdentityPackage];
+    NetworkPackage *inp = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
     NSData *inpData = [inp serialize];
     [socket writeData:inpData withTimeout:0 tag:PACKAGE_TAG_IDENTITY];
     //}
@@ -354,6 +351,9 @@
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
     os_log_with_type(logger, self.debugLogLevel, "TCP server: didAcceptNewSocket");
+    [newSocket performBlock:^{
+        [newSocket enableBackgroundingOnSocket];
+    }];
     [_pendingSockets addObject:newSocket];
     long index=[_pendingSockets indexOfObject:newSocket];
     //retrieve id package
@@ -368,14 +368,24 @@
 // We try to establish TLS with a remote device after receiving their identity packet
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
-    // Temporally disable
-    [sock setDelegate:nil];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "tcp socket didConnectToHost %{mask.hash}@", host);
 
     //create LanLink and inform the background
     NSUInteger index=[_pendingSockets indexOfObject:sock];
     NetworkPackage* np=[_pendingNps objectAtIndex:index];
     NSString* deviceId=[np objectForKey:@"deviceId"];
+    LanLink* link = [_connectedLinks objectForKey:deviceId];
+    
+    // If reusing old link, certificate checking is LanLinkProvider's responsibility
+    if (link) {
+        // Last timing to enableBackgroundingOnSocket before stream opens
+        [sock performBlock:^{
+            [sock enableBackgroundingOnSocket];
+        }];
+        sock.userData = deviceId;
+    } else {
+        [sock setDelegate:nil];
+    }
 
     /* Test with cert file */
     NSArray *myCipherSuite = [[NSArray alloc] initWithObjects:
@@ -395,19 +405,19 @@
     os_log_with_type(logger, self.debugLogLevel, "Start Server TLS");
     [sock startTLS:tlsSettings];
     
-    LanLink* oldlink;
-    if ([[_connectedLinks allKeys] containsObject:deviceId]) {
-        oldlink=[_connectedLinks objectForKey:deviceId];
-    }
-    
-    LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil certificateService:_certificateService];
-    [_pendingSockets removeObject:sock];
-    [_pendingNps removeObject:np];
-    [_connectedLinks setObject:link forKey:[np objectForKey:@"deviceId"]];
-    if (_linkProviderDelegate) {
+    if (link) {
+        // reuse existing link once socket secures
+        [_linkProviderDelegate onDeviceIdentityUpdatePackageReceived:np];
+    } else {
+        link = [[LanLink alloc] init:sock
+                            deviceId:deviceId
+                         setDelegate:nil
+                  certificateService:_certificateService];
+        [_connectedLinks setObject:link forKey:deviceId];
         [_linkProviderDelegate onConnectionReceived:np link:link];
     }
-    [oldlink disconnect];
+    [_pendingSockets removeObject:sock];
+    [_pendingNps removeObject:np];
 }
 
 /**
@@ -460,17 +470,21 @@
             [sock setDelegate:nil];
             [_pendingSockets removeObject:sock];
             
-            LanLink* oldlink;
-            if ([[_connectedLinks allKeys] containsObject:deviceId]) {
-                oldlink=[_connectedLinks objectForKey:deviceId];
+            LanLink *link = [_connectedLinks objectForKey:deviceId];
+            if (link) {
+                // reuse existing link once socket secures
+                [_linkProviderDelegate onDeviceIdentityUpdatePackageReceived:np];
+                return;
             }
-            //create LanLink and inform the background
-            LanLink* link=[[LanLink alloc] init:sock deviceId:[np objectForKey:@"deviceId"] setDelegate:nil certificateService:_certificateService];
-            [_connectedLinks setObject:link forKey:[np objectForKey:@"deviceId"]];
+            // create LanLink and inform the background
+            link = [[LanLink alloc] init:sock
+                              deviceId:deviceId
+                           setDelegate:nil
+                    certificateService:_certificateService];
+            [_connectedLinks setObject:link forKey:deviceId];
             if (_linkProviderDelegate) {
                 [_linkProviderDelegate onConnectionReceived:np link:link];
             }
-            [oldlink disconnect];
         }
     }
     
@@ -525,13 +539,25 @@
  **/
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
-    os_log_with_type(logger, OS_LOG_TYPE_INFO, "tcp socket did Disconnect with error: %{public}@", err);
+    if (sock == nil) {
+        os_log_with_type(logger, OS_LOG_TYPE_INFO,
+                         "deallocated socket disconnected with error: %{public}@",
+                         err);
+        return;
+    }
+    
     if (sock==_tcpSocket) {
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "tcp server disconnected with error: %{public}@", err);
+        os_log_with_type(logger, (err) ? OS_LOG_TYPE_ERROR : OS_LOG_TYPE_INFO,
+                         "tcp server disconnected with error: %{public}@",
+                         err);
+        _tcpSocket.delegate = nil;
         _tcpSocket=nil;
     }
     else
     {
+        os_log_with_type(logger, (err) ? OS_LOG_TYPE_ERROR : OS_LOG_TYPE_INFO,
+                         "tcp socket disconnected with error: %{public}@",
+                         err);
         [_pendingSockets removeObject:sock];
     }
 }
@@ -561,22 +587,29 @@
     NSUInteger pendingSocketIndex = [_pendingSockets indexOfObject:sock];
     [_pendingSockets removeObject:sock];
     
-    /* TODO: remove the old link, or if existing LanLink exists, DON'T create a new one */
-//    LanLink* oldlink;
-//    if ([[_connectedLinks allKeys] containsObject:deviceId]) {
-//        oldlink=[_connectedLinks objectForKey:deviceId];
-//    }
-    //create LanLink and inform the background
     NetworkPackage* pendingNP = [_pendingNps objectAtIndex:pendingSocketIndex];
-    LanLink* link=[[LanLink alloc] init:sock deviceId:[pendingNP objectForKey:@"deviceId"] setDelegate:nil certificateService:_certificateService];
-    [_connectedLinks setObject:link forKey:[pendingNP objectForKey:@"deviceId"]];
-//    [oldlink disconnect];
+    NSString *deviceID = [pendingNP objectForKey:@"deviceId"];
+    // if existing LanLink exists, DON'T create a new one
+    LanLink *link = [_connectedLinks objectForKey:deviceID];
+    if (link) {
+        [link setSocket:sock];
+    } else {
+        // create LanLink and inform the background
+        link = [[LanLink alloc] init:sock
+                            deviceId:deviceID
+                         setDelegate:nil
+                  certificateService:_certificateService];
+        [_connectedLinks setObject:link forKey:deviceID];
+    }
 }
 
-// This doesn't actually get called anywhere, not sure what it does
+// This gets called when we start server TLS reusing an old link, and
+// it's now our term to evaluate client's certificate.
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
-    if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
+    NSString *deviceID = (NSString *)sock.userData;
+    if ([_certificateService verifyCertificateEqualityWithTrust:trust
+                                   fromRemoteDeviceWithDeviceID:deviceID]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLinkProvider's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         completionHandler(YES);// give YES if we want to trust, NO if we don't
     } else {

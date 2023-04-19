@@ -36,12 +36,13 @@
 #import "KDE_Connect-Swift.h"
 @import os.log;
 
-@interface BackgroundService() {
+@interface BackgroundService () <NetworkChangeMonitorDelegate> {
     NSMutableDictionary<NSString *, Device *> *_devices;
     NSMutableDictionary<NSString *, NSData *> *_settings;
     os_log_t logger;
 }
 
+@property(nonatomic) NetworkChangeMonitor *networkChangeMonitor;
 @property(nonatomic) NSMutableArray<BaseLinkProvider *> *_linkProviders;
 @property(nonatomic) NSMutableArray<Device *> *_visibleDevices;
 @property(nonatomic) NSMutableDictionary<NSString *, Device *> *_savedDevices;
@@ -104,6 +105,9 @@
         _backgroundServiceDelegate = connectedDeviceViewModel;
         _certificateService = certificateService;
         
+        _networkChangeMonitor = [[NetworkChangeMonitor alloc] init];
+        _networkChangeMonitor.delegate = self;
+        
         NSDictionary* tempDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];
         if (tempDic != nil) {
             for (NSString* deviceId in [tempDic allKeys]) {
@@ -135,8 +139,6 @@
 //        [_devices setObject:device forKey:deviceId];
 //#endif
         // [_visibleDevices addObject:device];
-        
-        // [self refreshVisibleDeviceList];
     }
     return self;
 }
@@ -171,6 +173,7 @@
 
 - (void) startDiscovery
 {
+    [_networkChangeMonitor startMonitoring];
     os_log_with_type(logger, self.debugLogLevel, "bg start Discovery");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onStart];
@@ -187,6 +190,7 @@
 
 - (void) stopDiscovery
 {
+    [_networkChangeMonitor stopMonitoring];
     os_log_with_type(logger, self.debugLogLevel, "bg stop Discovery");
     for (BaseLinkProvider* lp in _linkProviders) {
         [lp onStop];
@@ -283,7 +287,6 @@
     for (LanLinkProvider* lp in _linkProviders){
         [lp onNetworkChange];
     }
-    [self refreshVisibleDeviceList];
 }
 
 - (void) onConnectionReceived:(NetworkPackage *)np link:(BaseLink *)link
@@ -296,12 +299,31 @@
         Device* device=[_devices objectForKey:deviceId];
         [device updateInfoWithNetworkPackage:np];
         [device addLink:link];
+        [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }
     else{
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "new device from network package: %{public}@", np);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO,
+                         "new device from network package: %{public}@",
+                         np._Id);
         Device *device=[[Device alloc] initWithNetworkPackage:np link:link delegate:self];
         [_devices setObject:device forKey:deviceId];
         [self refreshVisibleDeviceList];
+    }
+}
+
+- (void)onDeviceIdentityUpdatePackageReceived:(NetworkPackage *)np {
+    NSString *deviceID = [np objectForKey:@"deviceId"];
+    os_log_with_type(logger, self.debugLogLevel,
+                     "on identity update for %{mask.hash}@ received",
+                     deviceID);
+    Device *device = [_devices objectForKey:deviceID];
+    if (device) {
+        [device updateInfoWithNetworkPackage:np];
+        [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
+    } else {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT,
+                         "missing device %{mask.hash}@ to update for",
+                         deviceID);
     }
 }
 

@@ -35,8 +35,21 @@ import SwiftUI
                     motionManager.gyroUpdateInterval = 0.025
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                    // In case the app's been chilling suspended for a long time, upon returning ask for updates to all devices's battery statuses
-                    requestBatteryStatusAllDevices()
+                    // In case the app's been chilling suspended for a long time,
+                    // upon returning ask for updates to all devices's battery statuses
+                    // broadcastBatteryStatusAllDevices()
+                    // requestBatteryStatusAllDevices()
+
+                    // However, non of the links are kept alive in background
+                    backgroundService.refreshDiscovery()
+                }
+                .onReceive(NotificationCenter.default
+                    .publisher(for: UIApplication
+                        .didEnterBackgroundNotification)
+                ) { _ in
+                    // Aggressively terminate the socket is the best way
+                    // to prevent weird broken pipe/invalid socket issue
+                    backgroundService.stopDiscovery()
                 }
                 .environmentObject(alertManager)
                 .alert(

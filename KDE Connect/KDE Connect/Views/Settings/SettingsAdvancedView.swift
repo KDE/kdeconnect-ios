@@ -15,6 +15,13 @@ struct SettingsAdvancedView: View {
         List {
             Section {
                 Button {
+                    backgroundService.onNetworkChange()
+                } label: {
+                    Label("Restart Discovery",
+                          systemImage: "exclamationmark.arrow.triangle.2.circlepath")
+                }
+
+                Button {
                     deleteTemporaries()
                 } label: {
                     Label("Clear Cache",

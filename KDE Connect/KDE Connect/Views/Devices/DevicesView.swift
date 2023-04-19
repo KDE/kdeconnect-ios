@@ -44,7 +44,7 @@ struct DevicesView: View {
         VStack {
             devicesList
                 .refreshable {
-                    await refreshDiscoveryAndList()
+                    await refreshDiscovery()
                 }
                 .sheet(isPresented: $isDeviceDiscoveryHelpPresented) {
                     DeviceDiscoveryHelp()
@@ -58,7 +58,7 @@ struct DevicesView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
-                    Button(action: refreshDiscoveryAndList) {
+                    Button(action: refreshDiscovery) {
                         Label("Refresh Discovery", systemImage: "arrow.triangle.2.circlepath")
                     }
                 
@@ -78,9 +78,6 @@ struct DevicesView: View {
             ToolbarItem(placement: .bottomBar) {
                 discoveryHelpButton
             }
-        }
-        .onAppear {
-            broadcastBatteryStatusAllDevices()
         }
     }
     
@@ -370,12 +367,8 @@ struct DevicesView: View {
         }
     }
     
-    func refreshDiscoveryAndList() {
-        withAnimation {
-            backgroundService.refreshDiscovery()
-            backgroundService.refreshVisibleDeviceList()
-            broadcastBatteryStatusAllDevices()
-        }
+    func refreshDiscovery() {
+        backgroundService.refreshDiscovery()
     }
 }
 

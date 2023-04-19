@@ -26,11 +26,11 @@ struct DeviceDiscoveryHelp: View {
                     Text("""
                     If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:
                     
-                    1. "Refresh Discovery" through the \(Image(systemName: "ellipsis.circle")) menu or pull to refresh the Devices list.
+                    1. "Refresh Discovery" through the \(Image(systemName: "ellipsis.circle")) menu or pull to refresh the Devices list, on this and the other devices.
                     
                     2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.
                     
-                    3. Manually add the other devices through the "Configure Devices By IP" in the \(Image(systemName: "ellipsis.circle")) menu.
+                    3. Manually add the other devices through the "Configure Devices By IP" option in the \(Image(systemName: "ellipsis.circle")) menu, and then "Refresh Discovery."
                     
                     4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:
                     
