@@ -33,6 +33,8 @@ import SwiftUI
 #endif
                     backgroundService.startDiscovery()
                     motionManager.gyroUpdateInterval = 0.025
+                    
+                    UIApplication.shared.isIdleTimerDisabled = true
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     // In case the app's been chilling suspended for a long time,
