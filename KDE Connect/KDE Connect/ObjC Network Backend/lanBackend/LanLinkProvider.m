@@ -153,14 +153,15 @@
     }
     os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:UDP socket start");
     if (![_tcpSocket isConnected]) {
-        while (![_tcpSocket acceptOnPort:_tcpPort error:&err]) {
-            os_log_with_type(logger, OS_LOG_TYPE_ERROR,
-                             "tcp socket start on port %hu errored: %{public}@",
-                             _tcpPort, err);
-            _tcpPort++;
-            if (_tcpPort > MAX_TCP_PORT) {
-                _tcpPort = MIN_TCP_PORT;
-            }
+        _tcpPort = [LanLinkProvider openServerSocket:_tcpSocket
+                                onFreePortStartingAt:MIN_TCP_PORT
+                                               error:&err];
+        if (err) {
+            os_log_with_type(logger, OS_LOG_TYPE_FAULT,
+                             "TCP socket start error: %{public}@",
+                             err);
+            [self onStop];
+            return;
         }
     }
     
@@ -320,7 +321,7 @@
     
     // Now that TCP is successful, I know the incoming host, now it's time for the incoming host
     // to know me, I send ID Packet to incoming Host via the just established TCP
-    //if (([np _Payload] == nil) && ([np _PayloadTransferInfo] == nil) && ([np _PayloadSize]) == 0) {
+    //if (([np _Payload] == nil) && ([np PayloadTransferInfo] == nil) && ([np _PayloadSize]) == 0) {
     // TODO: It seems like only identity packets ever show up here, why? Where is the id packet being sent when a new transfer connection is opened then????? This seems to be the ONLY place where ID packets are sent in TCP?
     NetworkPackage *inp = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
     NSData *inpData = [inp serialize];
@@ -617,5 +618,30 @@
     }
 }
 
++ (uint16_t)openServerSocket:(GCDAsyncSocket *)socket
+        onFreePortStartingAt:(uint16_t)minPort
+                       error:(NSError **)errPtr {
+    uint16_t port = minPort;
+    NSError *err;
+    os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
+                                    NSStringFromClass([self class]).UTF8String);
+    
+    while (![socket acceptOnPort:port error:&err]) {
+        os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                         "tcp socket start on port %hu errored: %{public}@",
+                         port, err);
+        port++;
+        if (port > MAX_TCP_PORT) {
+            os_log_with_type(logger, OS_LOG_TYPE_FAULT,
+                             "tcp socket has no available port to use");
+            if (errPtr) {
+                *errPtr = err;
+            }
+            return 0;
+        }
+    }
+    
+    return port;
+}
 
 @end

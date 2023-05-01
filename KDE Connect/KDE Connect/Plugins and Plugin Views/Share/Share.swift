@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2021 Lucas Wang <lucas.wang@tuta.io>
+ *                         2023 Apollo Zhu <public-apollonian@outlook.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -16,16 +17,16 @@ import Foundation
 import AVFoundation
 import UIKit
 import OrderedCollections
+import Photos
 
 extension Notification.Name {
     static let didReceiveFileNotification = Notification.Name("didReceiveFileNotification")
+    static let failedToAddToPhotosLibrary = Notification.Name("failedToAddToPhotosLibrary")
 }
 
 // TODO: Implement fallback on another port when default 1739 is unavaliable
 @objc class Share: NSObject, ObservablePlugin {
     @objc weak var controlDevice: Device!
-    let minPayloadPort: Int = 1739
-    let maxPayloadPort: Int = 1764
     
     // Receiving
     @Published
@@ -82,18 +83,20 @@ extension Notification.Name {
                     notificationHapticsGenerator.notificationOccurred(.error)
                     return true
                 }
-                if saveFile(payloadPath, as: filename) {
-                    // connectedDevicesViewModel.showFileReceivedAlert()
-                    logger.debug("File \(filename, privacy: .private(mask: .hash)) saved successfully")
-                    notificationHapticsGenerator.notificationOccurred(.success)
-                } else {
-                    logger.fault("File \(filename, privacy: .public) failed to save")
-                    notificationHapticsGenerator.notificationOccurred(.error)
-                }
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
-                    self.currentFilesReceiving[payloadPath] = nil
-                    self.bumpNumFilesReceived()
+                Task {
+                    do {
+                        try await save(payloadPath, as: filename, for: np)
+                        // connectedDevicesViewModel.showFileReceivedAlert()
+                        logger.debug("File \(filename, privacy: .private(mask: .hash)) saved successfully")
+                        await notificationHapticsGenerator.notificationOccurred(.success)
+                    } catch {
+                        logger.fault("File \(filename, privacy: .public) failed to save due to \(error.localizedDescription, privacy: .public)")
+                        await notificationHapticsGenerator.notificationOccurred(.error)
+                    }
+                    await MainActor.run {
+                        currentFilesReceiving[payloadPath] = nil
+                        bumpNumFilesReceived()
+                    }
                 }
             } else if let sharedText = np._Body["text"] as? String {
                 // Text sharing: copy to clipboard
@@ -153,21 +156,29 @@ extension Notification.Name {
             defer { url.stopAccessingSecurityScopedResource() }
             do {
                 let attributes = try url.resourceValues(forKeys: [
+                    .creationDateKey,
                     .contentModificationDateKey,
                     .fileSizeKey,
                 ])
+                let filename = url.lastPathComponent
                 guard let fileSize = attributes.fileSize else {
-                    logger.fault("Unable to read size of \(url.lastPathComponent, privacy: .public), skipping")
+                    logger.fault("Unable to read size of \(filename, privacy: .public), skipping")
                     notificationHapticsGenerator.notificationOccurred(.error)
                     continue
                 }
+                
+                let creationDate = attributes.creationDate
+                if creationDate == nil {
+                    logger.error("Unable to read creation time of \(filename, privacy: .public)")
+                }
                 let lastModifiedDate = attributes.contentModificationDate
                 if lastModifiedDate == nil {
-                    logger.error("Unable to read last modified time of \(url.lastPathComponent, privacy: .public)")
+                    logger.error("Unable to read last modified time of \(filename, privacy: .public)")
                 }
                 newFiles.append(FileTransferItemInfo(
                     path: url,
-                    name: url.lastPathComponent,
+                    name: filename,
+                    creationEpoch: creationDate?.millisecondsSince1970,
                     lastModifiedEpoch: lastModifiedDate?.millisecondsSince1970,
                     totalBytes: fileSize
                 ))
@@ -312,12 +323,14 @@ extension Notification.Name {
             
             let np = NetworkPackage(type: .share)
             np.setObject(currentFile.name, forKey: "filename")
+            if let creationTime = currentFile.creationEpoch {
+                np.setObject(creationTime as NSNumber, forKey: "creationTime")
+            }
             if let lastModified = currentFile.lastModifiedEpoch {
                 np.setObject(lastModified as NSNumber, forKey: "lastModified")
             }
             np.setInteger(totalPayloadSize, forKey: "totalPayloadSize")
             np.setInteger(totalNumOfFilesToSend, forKey: "numberOfFiles")
-            np._PayloadTransferInfo = ["port": minPayloadPort]
             np.payloadPath = currentFile.path
             np._PayloadSize = currentFile.totalBytes ?? -1
             controlDevice.send(np, tag: Int(PACKAGE_TAG_SHARE))
@@ -328,28 +341,75 @@ extension Notification.Name {
         }
     }
     
-    @objc private func saveFile(_ url: URL, as filename: String) -> Bool {
-        let fileManager = FileManager.default
-        do {
-            let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) // gets URL of app's document directory
-            let fileURL = documentDirectory.appendingPathComponent(filename) // adds new file's name to URL
-            logger.debug("\(fileURL.absoluteString, privacy: .private(mask: .hash))")
-            switch try? fileURL.checkResourceIsReachable() {
-            case true?:
-                // try fileManager.removeItem(at: fileURL)
-                logger.info("File already exists, skipped")
-                return true
-            case nil: // file doesn't eixst
-                try fileManager.moveItem(at: url, to: fileURL) // and save!
-            case false?: // unsupported file system
-                logger.fault("incorrect url \(url, privacy: .private(mask: .hash))")
-                return false
+    private func save(_ url: URL, as filename: String, for np: NetworkPackage) async throws {
+        func add(as type: PHAssetResourceType) async throws {
+            do {
+                try await PHPhotoLibrary.shared().performChanges {
+                    let request = PHAssetCreationRequest.forAsset()
+                    let options = PHAssetResourceCreationOptions()
+                    options.originalFilename = filename
+                    if let creationTime = np._Body["creationTime"] as? Int64 {
+                        request.creationDate = Date(milliseconds: creationTime)
+                    } else if let lastModified = np._Body["lastModified"] as? Int64 {
+                        request.creationDate = Date(milliseconds: lastModified)
+                    }
+                    request.addResource(with: type, fileURL: url, options: options)
+                }
+                do {
+                    try FileManager.default.removeItem(at: url)
+                } catch {
+                    logger.error("Can't delete file at \(url)")
+                }
+            } catch {
+                logger.error("Can't save to photos library due to \(error)")
+                NotificationCenter.default.post(name: .failedToAddToPhotosLibrary, object: nil)
+                try _saveFile(url, as: filename, for: np)
             }
-            // FIXME: set file metadata transferred through network package
+        }
+        
+        if PHPhotoLibrary.mayAllowAdd,
+           let type = UTType(filenameExtension: (filename as NSString).pathExtension) {
+            if type.conforms(to: .image),
+               SelfDeviceData.shared.savePhotosToPhotosLibrary {
+                try await add(as: .photo)
+                return
+            } else if type.conforms(to: .movie),
+                      SelfDeviceData.shared.saveVideosToPhotosLibrary {
+                try await add(as: .video)
+                return
+            }
+        }
+        
+        try _saveFile(url, as: filename, for: np)
+    }
+    
+    private func _saveFile(_ url: URL, as filename: String, for np: NetworkPackage) throws {
+        let fileManager = FileManager.default
+        let directory = try URL.defaultDestinationDirectory
+        let fileURL = FilesHelper.findNonExistingName(for: filename, at: directory)
+        logger.debug("\(fileURL.absoluteString, privacy: .private(mask: .hash))")
+        try fileManager.moveItem(at: url, to: fileURL) // and save!
+        
+        var attributes = [FileAttributeKey: Any]()
+        if let creationTime = np._Body["creationTime"] as? Int64 {
+            attributes[.creationDate] = Date(milliseconds: creationTime)
+        }
+        if let lastModified = np._Body["lastModified"] as? Int64 {
+            attributes[.modificationDate] = Date(milliseconds: lastModified)
+        }
+        try fileManager.setAttributes(attributes, ofItemAtPath: fileURL.path)
+    }
+}
+
+extension PHPhotoLibrary {
+    static var mayAllowAdd: Bool {
+        switch PHPhotoLibrary.authorizationStatus(for: .addOnly) {
+        case .notDetermined, .authorized, .limited:
             return true
-        } catch {
-            logger.fault("Error saving file to device \(error.localizedDescription, privacy: .public)")
+        case .restricted, .denied:
             return false
+        @unknown default:
+            return true
         }
     }
 }

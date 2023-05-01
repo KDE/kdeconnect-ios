@@ -72,8 +72,11 @@
 		D21A100829B878B800CE02F8 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D21A100729B878B800CE02F8 /* OrderedCollections */; };
 		D2423C3C29148B0200616D70 /* FileTransferStatusSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2423C3B29148B0200616D70 /* FileTransferStatusSection.swift */; };
 		D2423C402914979B00616D70 /* iOS14+TextFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2423C3F2914979B00616D70 /* iOS14+TextFormat.swift */; };
+		D24FFB4D29E76E8500604DA4 /* FilesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FFB4C29E76E8500604DA4 /* FilesTab.swift */; };
+		D24FFB4F29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FFB4E29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
+		D271710929F07E51000CDB7F /* FilesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D271710829F07E51000CDB7F /* FilesHelper.swift */; };
 		D27D727F29B051D8002C00B7 /* NetworkChangeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D727E29B051D8002C00B7 /* NetworkChangeMonitor.swift */; };
 		D28C94CA27D1CAAA002EBC2D /* OSLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */; };
 		D28C94CC27D1CAD2002EBC2D /* OSLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */; };
@@ -84,6 +87,8 @@
 		D298D96B27D2C91F0053F65B /* NetworkPackageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */; };
 		D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */; };
 		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
+		D2E60C3F29FD156C00502F07 /* FileTransferStatusOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E60C3E29FD156C00502F07 /* FileTransferStatusOverview.swift */; };
+		D2E60C4129FDB06000502F07 /* SetupFileTransfersForUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E60C4029FDB06000502F07 /* SetupFileTransfersForUITests.swift */; };
 		D2F7776627C99760008F20A1 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */; };
 		D2FAF12727D2E78900658753 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2FAF12627D2E78900658753 /* Introspect */; };
 		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
@@ -187,8 +192,11 @@
 		D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleHStack.swift; sourceTree = "<group>"; };
 		D2423C3B29148B0200616D70 /* FileTransferStatusSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferStatusSection.swift; sourceTree = "<group>"; };
 		D2423C3F2914979B00616D70 /* iOS14+TextFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+TextFormat.swift"; sourceTree = "<group>"; };
+		D24FFB4C29E76E8500604DA4 /* FilesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesTab.swift; sourceTree = "<group>"; };
+		D24FFB4E29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenReceivedDocumentsFolderButton.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		D26C5134275CBB4800074DB3 /* BatteryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStatus.swift; sourceTree = "<group>"; };
+		D271710829F07E51000CDB7F /* FilesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesHelper.swift; sourceTree = "<group>"; };
 		D275BF2D29A4CD1600CD1CDC /* LinkDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkDelegate.h; sourceTree = "<group>"; };
 		D27D727E29B051D8002C00B7 /* NetworkChangeMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChangeMonitor.swift; sourceTree = "<group>"; };
 		D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogManager.swift; sourceTree = "<group>"; };
@@ -200,6 +208,8 @@
 		D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPackageComposer.swift; sourceTree = "<group>"; };
 		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
 		D2DC60F429B0B01A001F7CB9 /* LinkProviderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkProviderDelegate.h; sourceTree = "<group>"; };
+		D2E60C3E29FD156C00502F07 /* FileTransferStatusOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferStatusOverview.swift; sourceTree = "<group>"; };
+		D2E60C4029FDB06000502F07 /* SetupFileTransfersForUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupFileTransfersForUITests.swift; sourceTree = "<group>"; };
 		D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		D2F7776727C99901008F20A1 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
@@ -409,6 +419,7 @@
 				A0D8CBCB26EF081D00791D07 /* Top Level */,
 				A0D8CBC926EF07C000791D07 /* Abstracted Views */,
 				A0D8CBCC26EF082F00791D07 /* Devices */,
+				D24FFB4929E76CB300604DA4 /* Files */,
 				A0D8CBD326EF090800791D07 /* Settings */,
 			);
 			path = Views;
@@ -464,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				A01FDD2C26C62E170014B165 /* Share.swift */,
+				D271710829F07E51000CDB7F /* FilesHelper.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -528,6 +540,16 @@
 			path = Accessibility;
 			sourceTree = "<group>";
 		};
+		D24FFB4929E76CB300604DA4 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				D24FFB4C29E76E8500604DA4 /* FilesTab.swift */,
+				D2E60C3E29FD156C00502F07 /* FileTransferStatusOverview.swift */,
+				D24FFB4E29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
 		D28C94C827D1CA87002EBC2D /* Developer */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				D2916A4127C98BC200EF0714 /* SetupForUITests.swift */,
+				D2E60C4029FDB06000502F07 /* SetupFileTransfersForUITests.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -738,9 +761,11 @@
 				A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */,
 				A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */,
 				D20FF56727C77E0F00E347F7 /* AccessibleHStack.swift in Sources */,
+				D24FFB4D29E76E8500604DA4 /* FilesTab.swift in Sources */,
 				D20922C927C5EC3900AF6F76 /* FeaturesList.swift in Sources */,
 				A0BECF6826C195240037E299 /* ConnectedDevicesViewModel.swift in Sources */,
 				53A0A1DE283ED78700C7C473 /* LocalizedStringKey+Extensions.swift in Sources */,
+				D24FFB4F29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift in Sources */,
 				D27D727F29B051D8002C00B7 /* NetworkChangeMonitor.swift in Sources */,
 				53A0A1DC283ED5C400C7C473 /* BackgroundService+Extensions.swift in Sources */,
 				D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */,
@@ -764,6 +789,8 @@
 				A0A0445B267BF40400CC21DD /* DevicesView.swift in Sources */,
 				A0D76FCC26E6B034009D9B03 /* RemoteInputView.swift in Sources */,
 				D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */,
+				D271710929F07E51000CDB7F /* FilesHelper.swift in Sources */,
+				D2E60C4129FDB06000502F07 /* SetupFileTransfersForUITests.swift in Sources */,
 				A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */,
 				A01FDD3126C701360014B165 /* Battery.swift in Sources */,
 				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
@@ -780,6 +807,7 @@
 				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
 				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
 				A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */,
+				D2E60C3F29FD156C00502F07 /* FileTransferStatusOverview.swift in Sources */,
 				5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */,
 				D20FF56527C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift in Sources */,
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,

@@ -26,6 +26,11 @@ public extension DeviceType {
         @unknown default: return "questionmark.square.dashed"
         }
     }
+    
+    static var isMac: Bool {
+        let processInfo = ProcessInfo.processInfo
+        return processInfo.isMacCatalystApp || processInfo.isiOSAppOnMac
+    }
 
     static var current: DeviceType {
         var macDeviceType: DeviceType {
@@ -60,8 +65,7 @@ public extension DeviceType {
         case .phone:
             return .phone
         case .pad:
-            let processInfo = ProcessInfo.processInfo
-            if processInfo.isMacCatalystApp || processInfo.isiOSAppOnMac {
+            if isMac {
                 return macDeviceType
             }
             return .tablet

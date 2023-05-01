@@ -39,7 +39,6 @@ struct SettingsView: View {
                 if UIApplication.shared.supportsAlternateIcons {
                     NavigationLink {
                         AppIconPicker()
-                            .environmentObject(selfDeviceDataForSettings)
                     } label: {
                         AccessibleHStack {
                             Label("App Icon", systemImage: "app")
@@ -54,7 +53,6 @@ struct SettingsView: View {
                 
                 NavigationLink {
                     SettingsAdvancedView()
-                        .environmentObject(selfDeviceDataForSettings)
                 } label: {
                     Label("Advanced Settings", systemImage: "wrench.and.screwdriver")
                         .labelStyle(.accessibilityTitleOnly)
@@ -65,7 +63,6 @@ struct SettingsView: View {
             Section(header: Text("Information")) {
                 NavigationLink {
                     SettingsAboutView()
-                        .environmentObject(selfDeviceDataForSettings)
                 } label: {
                     Label("About", systemImage: "info.circle")
                         .labelStyle(.accessibilityTitleOnly)

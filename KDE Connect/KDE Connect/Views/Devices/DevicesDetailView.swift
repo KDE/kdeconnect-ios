@@ -216,18 +216,11 @@ struct DevicesDetailView: View {
     }
 }
 
-// if DEBUG check needed for setupForUITests
 #if DEBUG
 struct DevicesDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let detailsDeviceId = "MacBook"
-        setupForUITests()
-        
-        let share = backgroundService
-            ._devices[detailsDeviceId]!
-            ._plugins[.share] as! Share
-        FileTransferStatusSection_Previews
-            .setupForFileTransferUIPreview(in: share)
+        UIPreview.setupFakeDevices()
         
         return NavigationView {
             DevicesDetailView(detailsDeviceId: detailsDeviceId)

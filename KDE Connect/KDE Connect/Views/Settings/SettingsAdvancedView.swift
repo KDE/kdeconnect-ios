@@ -83,8 +83,6 @@ struct SettingsAdvancedView: View {
                     }
                     NavigationLink {
                         NetworkPackageComposer()
-                            .environmentObject(connectedDevicesViewModel)
-                            .environmentObject(selfDeviceData)
                     } label: {
                         Label("Network Package Composer", systemImage: "network")
                     }

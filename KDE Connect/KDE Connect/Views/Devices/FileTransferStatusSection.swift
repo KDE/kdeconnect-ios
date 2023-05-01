@@ -15,8 +15,14 @@ import SwiftUI
 import OrderedCollections
 import struct CocoaAsyncSocket.GCDAsyncSocketError
 
-struct FileTransferStatus: View {
+struct FileTransferStatus<Content: View>: View {
     let file: FileTransferItemInfo
+    let subtitle: Content
+    
+    init(file: FileTransferItemInfo, @ViewBuilder subtitle: () -> Content = { EmptyView() }) {
+        self.file = file
+        self.subtitle = subtitle()
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,21 +36,28 @@ struct FileTransferStatus: View {
                     .animation(.default, value: file.totalBytesCompleted)
                 
                 HStack {
+                    subtitle
+                    
                     Spacer()
                     
                     Text("\(Int64(completed), format: .byteCount(style: .file)) / \(Int64(total), format: .byteCount(style: .file))")
                         .foregroundColor(.secondary)
                         .font(.caption)
                         .monospacedDigit()
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             } else {
                 HStack(spacing: 8) {
+                    subtitle
+                    
                     Spacer()
                     
                     Text("\(Int64(file.totalBytesCompleted), format: .byteCount(style: .file))")
                         .foregroundColor(.secondary)
                         .font(.caption)
                         .monospacedDigit()
+                        .fixedSize(horizontal: false, vertical: true)
+                    
                     ProgressView()
                 }
             }
@@ -173,7 +186,6 @@ struct FileTransferStatusSection: View {
     }
 }
 
-#if DEBUG
 struct FileTransferStatusSection_Previews: PreviewProvider {
     static let share = Share(controlDevice: Device(
         id: "test", type: .unknown, name: "Test",
@@ -182,7 +194,7 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
         protocolVersion: -1, deviceDelegate: nil
     ))
     
-    static func setupForFileTransferUIPreview(in share: Share) {
+    private static func setupForFileTransferUIPreview(in share: Share) {
         share.totalNumOfFilesToSend = 5
         share.numFilesSuccessfullySent = 2
         share.filesFailedToSend = [
@@ -194,19 +206,16 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
         share.currentFilesSending = OrderedDictionary(uniqueKeysWithValues: [
             .init(path: URL(string: "file://3.jpg")!,
                   name: "3.jpg",
-                  lastModifiedEpoch: nil,
                   totalBytes: 9876543,
                   totalBytesCompleted: Int.random(in: 0...9876543)),
         ].map { ($0.path, $0) })
         share.filesToSend = [
             .init(path: URL(string: "file://4.swift")!,
                   name: "slightly longer.swift",
-                  lastModifiedEpoch: nil,
                   totalBytes: 1024,
                   totalBytesCompleted: Int.random(in: 0...1024)),
             .init(path: URL(string: "file://5.tar.gz")!,
                   name: "this_IS_super_long-FILENAME_0.1.0.tar.gz",
-                  lastModifiedEpoch: nil,
                   totalBytes: 1234567890,
                   totalBytesCompleted: Int.random(in: 0...1234567890)),
         ]
@@ -215,12 +224,10 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
         share.currentFilesReceiving = OrderedDictionary(uniqueKeysWithValues: [
             .init(path: URL(string: "file://2.png")!,
                   name: "2.png",
-                  lastModifiedEpoch: nil,
                   totalBytes: nil,
                   totalBytesCompleted: 1),
             .init(path: URL(string: "file://var/tmp/3.mp4")!,
                   name: "😅 Unicode 哦.mp4",
-                  lastModifiedEpoch: nil,
                   totalBytes: Int.max,
                   totalBytesCompleted: Int.random(in: 0...Int.max)),
         ].map { ($0.path, $0) })
@@ -262,4 +269,3 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
         }
     }
 }
-#endif

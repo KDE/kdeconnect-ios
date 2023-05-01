@@ -45,4 +45,8 @@
 - (void) onNetworkChange;
 - (void) onLinkDestroyed:(BaseLink*)link;
 
++ (uint16_t)openServerSocket:(GCDAsyncSocket *)socket
+        onFreePortStartingAt:(uint16_t)minPort
+                       error:(NSError **)errPtr;
+
 @end

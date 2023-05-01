@@ -22,8 +22,6 @@ struct MainTabView: View {
         TabView {
             NavigationView {
                 DevicesView()
-                    .environmentObject(alertManager)
-                    .environmentObject(SelfDeviceData.shared)
                 
                 Text("Select a device from the Devices list to start.")
                     .navigationTitle("KDE Connect")
@@ -35,6 +33,15 @@ struct MainTabView: View {
             .tabItem {
                 Label("Devices", systemImage: "laptopcomputer.and.iphone")
             }
+            
+            FilesTab()
+                .introspectSplitViewController { splitViewController in
+                    splitViewController.preferredSplitBehavior = .tile
+                    splitViewController.preferredDisplayMode = .oneBesideSecondary
+                }
+                .tabItem {
+                    Label("Files", systemImage: "folder")
+                }
             
             NavigationView {
                 SettingsView()
@@ -74,5 +81,8 @@ struct MainTabView: View {
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
+            .environmentObject(AlertManager())
+            .environmentObject(SelfDeviceData.shared)
+            .environmentObject(connectedDevicesViewModel)
     }
 }

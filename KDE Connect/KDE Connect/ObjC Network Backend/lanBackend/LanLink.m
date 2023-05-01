@@ -151,18 +151,29 @@ certificateService:(CertificateService*)certificateService
         if (_fileServerSocket == nil) {
             _fileServerSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
             if (![_fileServerSocket isConnected]) {
-                if (![_fileServerSocket acceptOnPort:_payloadPort error:&error]) {
-                    os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error binding payload port");
+                _payloadPort = [LanLinkProvider openServerSocket:_fileServerSocket
+                                            onFreePortStartingAt:PAYLOAD_PORT
+                                                           error:&error];
+                if (error) {
+                    os_log_with_type(logger, OS_LOG_TYPE_FAULT,
+                                     "Error binding payload port: %{public}@",
+                                     error);
                     [self.linkDelegate onPackage:np
                               sendWithPackageTag:PACKAGE_TAG_PAYLOAD
                                  failedWithError:error];
                     return NO;
                 } else {
-                    os_log_with_type(logger, self.debugLogLevel, "Binding payload server ok");
+                    os_log_with_type(logger, self.debugLogLevel,
+                                     "Binding payload server on port %hu",
+                                     _payloadPort);
                 }
             }
         }
-
+        NSMutableDictionary<NSString *, id> *infoWithPort = [[NSMutableDictionary alloc]
+                                                             initWithDictionary:np.payloadTransferInfo];
+        infoWithPort[@"port"] = [NSNumber numberWithUnsignedShort:_payloadPort];
+        np.payloadTransferInfo = infoWithPort;
+        
         @synchronized (_socketsForOutgoingPayload) {
             KDEFileTransferItem *item = [[KDEFileTransferItem alloc] initWithFileHandle:handle
                                                                          networkPackage:np];
@@ -469,7 +480,7 @@ certificateService:(CertificateService*)certificateService
         return;
     }
     if ([chunk length] == 0) {
-        [self removeOutgoingPayloadSendingSocket:sock error:NULL];
+        [self removeOutgoingPayloadSendingSocket:sock error:nil];
         return;
     } else {
         item.totalBytesCompleted += [chunk length];
@@ -489,6 +500,7 @@ certificateService:(CertificateService*)certificateService
     }
     KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
     NetworkPackage *np = item.networkPackage;
+    [item.fileHandle closeAndReturnError:nil];
     [np.payloadPath stopAccessingSecurityScopedResource];
     if (error) {
         [self.linkDelegate onPackage:np
@@ -503,10 +515,34 @@ certificateService:(CertificateService*)certificateService
 
 - (void)createSocketForReceivingPayloadOfNP:(NetworkPackage *)np incomingFromHost:(NSString *)host {
     // Create file handle for writing data chunk by chunk to temporary file
+    NSError *errorGettingDefaultDestination;
+    NSURL *destinationDirectory = [NSURL defaultDestinationDirectoryAndReturnError:&errorGettingDefaultDestination];
+    if (errorGettingDefaultDestination) {
+        os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                         "Failed to get destination directory due to %{public}@",
+                         errorGettingDefaultDestination);
+        destinationDirectory = nil;
+    }
+    
+    NSError *errorCreatingTemporaryDirectory = nil;
+    NSString *tempDirectoryPath = [[NSFileManager defaultManager]
+                                   URLForDirectory:NSItemReplacementDirectory
+                                   inDomain:NSUserDomainMask
+                                   appropriateForURL:destinationDirectory
+                                   create:YES
+                                   error:&errorCreatingTemporaryDirectory].path;
+    if (errorCreatingTemporaryDirectory) {
+        os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                         "Failed to create temporary directory due to %{public}@, defaulting to NSTemporaryDirectory",
+                         errorCreatingTemporaryDirectory);
+        tempDirectoryPath = NSTemporaryDirectory();
+    }
+    
     NSString *randomID = [[NSProcessInfo processInfo] globallyUniqueString];
-    // TODO: Replace NSTemporaryDirectory with NSItemReplacementDirectory
-    // when we allow user to specify where they want to save files to
-    NSArray<NSString *> *pathComponents = @[NSTemporaryDirectory(), randomID];
+    NSString *filename = [np objectForKey:@"filename"];
+    randomID = [randomID stringByAppendingPathExtension:filename.pathExtension];
+    
+    NSArray<NSString *> *pathComponents = @[tempDirectoryPath, randomID];
     NSString *tempPath = [NSString pathWithComponents:pathComponents];
     BOOL exists = [[NSFileManager defaultManager]
                    createFileAtPath:tempPath contents:nil attributes:nil];
@@ -534,7 +570,7 @@ certificateService:(CertificateService*)certificateService
     
     os_log_with_type(logger, self.debugLogLevel, "Pending payload: size: %ld", [np _PayloadSize]);
     NSError *error = nil;
-    uint16_t tcpPort = [[[np _PayloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
+    uint16_t tcpPort = [[[np payloadTransferInfo] valueForKey:@"port"] unsignedIntValue];
     // Create new connection here
     if (![socket connectToHost:host onPort:tcpPort error:&error]){
         os_log_with_type(logger, OS_LOG_TYPE_FAULT,
@@ -610,6 +646,7 @@ certificateService:(CertificateService*)certificateService
     }
     KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
     NetworkPackage *np = item.networkPackage;
+    [item.fileHandle closeAndReturnError:nil];
     NSURL *url = np.payloadPath;
     if (deleteTemporaryFile) {
         NSError *error;
@@ -638,9 +675,9 @@ certificateService:(CertificateService*)certificateService
                 if ([np.type isEqualToString:NetworkPackageTypePair]) {
                     _pendingPairNP=np;
                 }
-                // If contains transferinfo, connect to remote using a new socket to transfer payload
+                // If contains transfer info, connect to remote using a new socket to transfer payload
                 // Note: Ubuntu 20.04 sends `payloadSize` and (empty) `payloadTransferInfo` for all packages.
-                if ([np _PayloadTransferInfo] != nil && [[np _PayloadTransferInfo] objectForKey:@"port"] != nil) {
+                if ([np payloadTransferInfo] && [[np payloadTransferInfo] objectForKey:@"port"]) {
                     [self createSocketForReceivingPayloadOfNP:np
                                              incomingFromHost:[sock connectedHost]];
                 } else {

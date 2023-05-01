@@ -47,6 +47,20 @@ class SelfDeviceData: NSObject, ObservableObject {
         }
     }
     
+    @Published var savePhotosToPhotosLibrary: Bool {
+        didSet {
+            UserDefaults.standard.set(savePhotosToPhotosLibrary,
+                                      forKey: "savePhotosToPhotosLibrary")
+        }
+    }
+    
+    @Published var saveVideosToPhotosLibrary: Bool {
+        didSet {
+            UserDefaults.standard.set(saveVideosToPhotosLibrary,
+                                      forKey: "saveVideosToPhotosLibrary")
+        }
+    }
+    
     /// Intentionally not persisted
     @Published var isDebugging: Bool
     @objc
@@ -54,11 +68,17 @@ class SelfDeviceData: NSObject, ObservableObject {
     @objc
     @Published var isDebuggingNetworkPackage: Bool
     
-    override init() {
+    private override init() {
+        UserDefaults.standard.register(defaults: [
+            "savePhotosToPhotosLibrary": !DeviceType.isMac,
+            "saveVideosToPhotosLibrary": !DeviceType.isMac,
+        ])
         self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? UIDevice.current.name
         self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme").flatMap(ColorScheme.init)
         self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
         self.appIcon = AppIcon(rawValue: UserDefaults.standard.string(forKey: "appIcon")) ?? .default
+        self.savePhotosToPhotosLibrary = UserDefaults.standard.bool(forKey: "savePhotosToPhotosLibrary")
+        self.saveVideosToPhotosLibrary = UserDefaults.standard.bool(forKey: "saveVideosToPhotosLibrary")
         #if DEBUG
         let launchArguments = Set(ProcessInfo.processInfo.arguments)
         self.isDebugging = launchArguments.contains("isDebugging")

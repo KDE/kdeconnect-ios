@@ -28,7 +28,7 @@ import SwiftUI
                 .onAppear {
 #if DEBUG
                     if ProcessInfo.processInfo.arguments.contains("setupScreenshotDevices") {
-                        setupForUITests()
+                        UIPreview.setupFakeDevices()
                     }
 #endif
                     backgroundService.startDiscovery()
@@ -53,6 +53,8 @@ import SwiftUI
                     // to prevent weird broken pipe/invalid socket issue
                     backgroundService.stopDiscovery()
                 }
+                .environmentObject(SelfDeviceData.shared)
+                .environmentObject(connectedDevicesViewModel)
                 .environmentObject(alertManager)
                 .alert(
                     alertManager.currentAlert.title,

@@ -26,8 +26,14 @@ platform :ios do
       if [ -z "`xcrun simctl list devices available | grep 'iPhone 13 Pro Max'`" ]; then
         xcrun simctl create 'iPhone 13 Pro Max' 'com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro-Max';
       fi
+      if [ -z "`xcrun simctl list devices available | grep 'iPhone 14 Pro Max'`" ]; then
+        xcrun simctl create 'iPhone 14 Pro Max' 'com.apple.CoreSimulator.SimDeviceType.iPhone-14-Pro-Max';
+      fi
       if [ -z "`xcrun simctl list devices available | grep 'iPad Pro (12.9-inch) (2nd generation)'`" ]; then
         xcrun simctl create 'iPad Pro (12.9-inch) (2nd generation)' 'com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-';
+      fi
+      if [ -z "`xcrun simctl list devices available | grep 'iPad Pro (12.9-inch) (6th generation)'`" ]; then
+        xcrun simctl create 'iPad Pro (12.9-inch) (6th generation)' 'com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-6th-generation-8GB';
       fi
     })
     capture_screenshots(scheme: "KDE ConnectUITests")

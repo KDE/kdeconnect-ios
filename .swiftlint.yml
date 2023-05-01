@@ -98,6 +98,9 @@ trailing_comma:
   mandatory_comma: true
 trailing_whitespace:
   ignores_empty_lines: true
+type_name:
+  excluded:
+    - ID
 unavailable_function:
   severity: error
 unused_import:

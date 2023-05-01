@@ -59,36 +59,44 @@ class KDE_Connect_UITests: XCTestCase {
         if !isPad {
             saveScreenshot("0. Home Screen")
         }
-
         
         app.staticTexts["McIntosh"].tap()
         saveScreenshot("1. Device Details")
 
         app.buttons["Slideshow Remote"].tap()
-        saveScreenshot("2. Slideshow Remote")
+        saveScreenshot("3. Slideshow Remote")
 
         app.navigationBars["Slideshow Remote"].buttons["McIntosh"].tap()
         app.buttons["Run Command"].tap()
-        saveScreenshot("3. Run Command")
+        saveScreenshot("4. Run Command")
 
         app.navigationBars["Run Command"].buttons["McIntosh"].tap()
         app.buttons["Remote Input"].tap()
         if isPad {
-            app.navigationBars["Remote Input"].buttons["More"].tap()
+            app.navigationBars["Remote Input"].images["More"].tap()
         }
-        saveScreenshot("4. Remote Input")
-
+        saveScreenshot("5. Remote Input")
         if isPad {
             app.buttons["Send Single Left Click"].tap()
         }
+        
+        // Order the files tab in front since this is our major feature
+        app.tabBars["Tab Bar"].buttons["Files"].tap()
+        if isPad {
+            app.navigationBars["Status"].buttons["Sending"].tap()
+        } else {
+            app.navigationBars["File Transfers"].buttons["Sending"].tap()
+        }
+        saveScreenshot("2. Files")
+        
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
         if isPad {
             app.staticTexts["Features"].tap()
         }
-        saveScreenshot("5. Settings")
+        saveScreenshot("6. Settings")
 
         app.staticTexts["About"].tap()
-        saveScreenshot("6. About")
+        saveScreenshot("7. About")
     }
 
     func testLaunchPerformance() throws {

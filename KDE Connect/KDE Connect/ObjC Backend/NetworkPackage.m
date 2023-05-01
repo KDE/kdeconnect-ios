@@ -56,7 +56,6 @@ __strong static NSString* _UUID;
 @synthesize type;
 @synthesize _Body;
 @synthesize _PayloadSize;
-@synthesize _PayloadTransferInfo;
 
 #pragma mark create Package
 + (NetworkPackage *)createIdentityPackageWithTCPPort:(uint16_t)tcpPort {
@@ -211,7 +210,7 @@ __strong static NSString* _UUID;
         // TODO: is checking _PayloadSize == 0 then changing it to -1 necessary?
         // what about empty files e.g. `.gitkeep`?
         [info setObject:[NSNumber numberWithLong:(_PayloadSize?_PayloadSize:-1)] forKey:@"payloadSize"];
-        [info setObject: _PayloadTransferInfo forKey:@"payloadTransferInfo"];
+        [info setObject:_payloadTransferInfo forKey:@"payloadTransferInfo"];
     }
     NSError* err=nil;
     NSMutableData* jsonData=[[NSMutableData alloc] initWithData:[NSJSONSerialization dataWithJSONObject:info options:0 error:&err]];
@@ -236,7 +235,7 @@ __strong static NSString* _UUID;
     np.type = [info valueForKey:@"type"];
     [np set_Body:[info valueForKey:@"body"]];
     [np set_PayloadSize:[[info valueForKey:@"payloadSize"]longValue]];
-    [np set_PayloadTransferInfo:[info valueForKey:@"payloadTransferInfo"]];
+    [np setPayloadTransferInfo:[info valueForKey:@"payloadTransferInfo"]];
     
     // NSLog(@"Parsed id: %@, type: %@", [info valueForKey:@"id"], [info valueForKey:@"type"]);
     
@@ -246,7 +245,7 @@ __strong static NSString* _UUID;
         long size=(temp=[np integerForKey:@"size"])?temp:-1;
         [np set_PayloadSize:size];
     }
-    [np set_PayloadTransferInfo:[info valueForKey:@"payloadTransferInfo"]];
+    [np setPayloadTransferInfo:[info valueForKey:@"payloadTransferInfo"]];
     
     // FIXME: error check too late
     if (err) {

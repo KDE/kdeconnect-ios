@@ -34,6 +34,7 @@ class FileTransferItem: NSObject {
         self.info = FileTransferItemInfo(
             path: path,
             name: name,
+            creationEpoch: networkPackage._Body["creationTime"] as? Int64,
             lastModifiedEpoch: networkPackage._Body["lastModified"] as? Int64,
             totalBytes: networkPackage._PayloadSize == -1 ? nil : networkPackage._PayloadSize
         )
@@ -51,11 +52,20 @@ class FileTransferItem: NSObject {
 struct FileTransferItemInfo: Equatable, Identifiable {
     let path: URL
     let name: String
+    let creationEpoch: Int64?
     let lastModifiedEpoch: Int64?
     let totalBytes: Int?
     var totalBytesCompleted: Int = 0
     
     var id: URL { path }
+}
+
+extension FileTransferItemInfo {
+    init(path: URL, name: String, totalBytes: Int?, totalBytesCompleted: Int = 0) {
+        self.init(path: path, name: name,
+                  creationEpoch: nil, lastModifiedEpoch: nil,
+                  totalBytes: totalBytes, totalBytesCompleted: totalBytesCompleted)
+    }
 }
 
 struct FailedFileTransferItemInfo: Identifiable {

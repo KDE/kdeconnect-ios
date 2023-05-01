@@ -133,7 +133,6 @@ struct DevicesView: View {
                         // Use the "key" from ForEach aka device ID to get it from
                         // backgroundService's _devices dictionary for the value (Device class objects)
                         destination: DevicesDetailView(detailsDeviceId: key)
-                            .environmentObject(alertManager)
                     ) {
                         HStack {
                             Image(systemName: "wifi")

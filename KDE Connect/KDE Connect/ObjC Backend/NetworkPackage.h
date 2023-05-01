@@ -101,7 +101,7 @@ FOUNDATION_EXPORT NetworkPackageType const NetworkPackageTypeRunCommand;
 @property(nonatomic) NetworkPackageType type;
 @property(nonatomic) NSMutableDictionary<NSString *, id> *_Body;
 @property(nonatomic, nullable) NSURL *payloadPath;
-@property(nonatomic, nullable) NSDictionary<NSString *, id> *_PayloadTransferInfo;
+@property(nonatomic, nullable) NSDictionary<NSString *, id> *payloadTransferInfo;
 @property(nonatomic) long _PayloadSize;
 
 - (NetworkPackage *) initWithType:(NetworkPackageType)type;
