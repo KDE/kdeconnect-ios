@@ -678,6 +678,13 @@ certificateService:(CertificateService*)certificateService
                 // If contains transfer info, connect to remote using a new socket to transfer payload
                 // Note: Ubuntu 20.04 sends `payloadSize` and (empty) `payloadTransferInfo` for all packages.
                 if ([np payloadTransferInfo] && [[np payloadTransferInfo] objectForKey:@"port"]) {
+                    // "If that field is not set it should generate a filename."
+                    // https://invent.kde.org/network/kdeconnect-kde/-/blob/master/plugins/share/README
+                    if (![np objectForKey:@"filename"]) {
+                        [np setObject:NSLocalizedString(@"untitled",
+                                                        "Filename to use for an unnamed file")
+                               forKey:@"filename"];
+                    }
                     [self createSocketForReceivingPayloadOfNP:np
                                              incomingFromHost:[sock connectedHost]];
                 } else {

@@ -22,7 +22,7 @@ class FileTransferItem: NSObject {
     private(set) var info: FileTransferItemInfo
     let buffer = NSMutableData()
     
-    init?(fileHandle: FileHandle, networkPackage: NetworkPackage) {
+    init(fileHandle: FileHandle, networkPackage: NetworkPackage) {
         self.fileHandle = fileHandle
         self.networkPackage = networkPackage
         guard let path = networkPackage.payloadPath else {

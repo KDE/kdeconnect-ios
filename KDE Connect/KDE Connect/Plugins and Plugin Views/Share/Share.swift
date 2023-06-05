@@ -24,7 +24,6 @@ extension Notification.Name {
     static let failedToAddToPhotosLibrary = Notification.Name("failedToAddToPhotosLibrary")
 }
 
-// TODO: Implement fallback on another port when default 1739 is unavaliable
 @objc class Share: NSObject, ObservablePlugin {
     @objc weak var controlDevice: Device!
     
@@ -80,6 +79,7 @@ extension Notification.Name {
             if let filename = np._Body["filename"] as? String {
                 guard let payloadPath = np.payloadPath else {
                     logger.fault("File \(filename, privacy: .public) missing actual file contents")
+                    // FIXME: show error to UI
                     notificationHapticsGenerator.notificationOccurred(.error)
                     return true
                 }
@@ -91,7 +91,15 @@ extension Notification.Name {
                         await notificationHapticsGenerator.notificationOccurred(.success)
                     } catch {
                         logger.fault("File \(filename, privacy: .public) failed to save due to \(error.localizedDescription, privacy: .public)")
-                        await notificationHapticsGenerator.notificationOccurred(.error)
+                        await MainActor.run {
+                            filesFailedToReceive.append(.init(
+                                path: payloadPath,
+                                name: filename,
+                                error: error,
+                                countOtherFailedFilesInTheSameTransfer: 0
+                            ))
+                            notificationHapticsGenerator.notificationOccurred(.error)
+                        }
                     }
                     await MainActor.run {
                         currentFilesReceiving[payloadPath] = nil
