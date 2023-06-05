@@ -24,12 +24,12 @@ extension View {
     /// - Warning: Update `binding` inside `withAnimation` has no effect.
     @ViewBuilder
     func focused<T: Hashable>(_ binding: Binding<T?>, equals value: T?) -> some View {
-        modifier(iOS14Focus(binding, equals: value))
+        modifier(Focuser(binding, equals: value))
     }
     
     @ViewBuilder
     func focused(_ binding: Binding<Bool>) -> some View {
-        modifier(iOS14Focus(binding.asOptional, equals: true))
+        modifier(Focuser(binding.asOptional, equals: true))
     }
 }
 
@@ -42,7 +42,7 @@ fileprivate extension Bool {
 
 /// Intercepts all UITextFieldDelegate methods and forwarding them to original,
 /// but additionally calling ``didBeginEditing`` and ``didEndEditing``.
-fileprivate class UITextFieldDelegateiOS14FocusProxy: NSObject, UITextFieldDelegate {
+fileprivate class UITextFieldDelegateFocusProxy: NSObject, UITextFieldDelegate {
     weak var forwardingDelegate: UITextFieldDelegate?
     var didBeginEditing: () -> Void = { }
     var didEndEditing: () -> Void = { }
@@ -72,14 +72,12 @@ fileprivate class UITextFieldDelegateiOS14FocusProxy: NSObject, UITextFieldDeleg
     }
 }
 
-// FIXME: remove exception in merge request !97
-// swiftlint:disable:next type_name
-fileprivate struct iOS14Focus<Value: Hashable>: ViewModifier {
+fileprivate struct Focuser<Value: Hashable>: ViewModifier {
     @Binding private var binding: Value?
     private let value: Value?
-    private let textFieldDelegate = UITextFieldDelegateiOS14FocusProxy()
+    private let proxy = UITextFieldDelegateFocusProxy()
     
-    init(_ binding: Binding<Value?>, equals value: Value?){
+    init(_ binding: Binding<Value?>, equals value: Value?) {
         self._binding = binding
         self.value = value
     }
@@ -87,11 +85,11 @@ fileprivate struct iOS14Focus<Value: Hashable>: ViewModifier {
     func body(content: Content) -> some View {
         content
             .introspectTextField { textField in
-                if !(textField.delegate is UITextFieldDelegateiOS14FocusProxy) {
-                    textFieldDelegate.forwardingDelegate = textField.delegate
-                    textFieldDelegate.didBeginEditing = { binding = value }
-                    textFieldDelegate.didEndEditing = { binding = nil }
-                    textField.delegate = textFieldDelegate
+                if !(textField.delegate is UITextFieldDelegateFocusProxy) {
+                    proxy.forwardingDelegate = textField.delegate
+                    proxy.didBeginEditing = { binding = value }
+                    proxy.didEndEditing = { binding = nil }
+                    textField.delegate = proxy
                 }
                 if binding == value {
                     textField.becomeFirstResponder()
