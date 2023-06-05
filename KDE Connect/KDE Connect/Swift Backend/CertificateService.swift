@@ -48,18 +48,21 @@ import CryptoKit
         var identityApp: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &identityApp)
         logger.info("getIdentityFromKeychain completed with \(status)")
-        if (identityApp == nil) {
-            if (generateSecIdentityForUUID(NetworkPackage.getUUID()) == noErr) {
-                // Refetch
-                SecItemCopyMatching(keychainItemQuery, &identityApp);
-                if (identityApp != nil) {
-                    return (identityApp as! SecIdentity);
-                }
-            }
-            return nil
-        } else {
+        if let identityApp = identityApp {
+            // Required by the Swift compiler
+            // swiftlint:disable:next force_cast
             return (identityApp as! SecIdentity)
         }
+        if generateSecIdentityForUUID(NetworkPackage.getUUID()) == noErr {
+            // Refetch
+            SecItemCopyMatching(keychainItemQuery, &identityApp)
+            if let identityApp = identityApp {
+                // Required by the Swift compiler
+                // swiftlint:disable:next force_cast
+                return (identityApp as! SecIdentity)
+            }
+        }
+        return nil
     }
     
     // Run the description given by this func through SHA256HashDividedAndFormatted() to have it fromatted in xx:yy:zz:ww:ee HEX format
@@ -164,7 +167,7 @@ import CryptoKit
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &remoteSavedCert)
         logger.info("extractSavedCertOfRemoteDevice completed with \(status)")
 
-        if remoteSavedCert != nil {
+        if let remoteSavedCert = remoteSavedCert {
             guard backgroundService._devices.keys.contains(deviceId) else {
                 let deleteStatus = deleteRemoteDeviceSavedCert(deviceId: deviceId)
                 logger.notice("Device object is gone but cert is still here? Removing stored cert with status \(deleteStatus)")
