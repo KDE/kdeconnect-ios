@@ -15,22 +15,20 @@
 import UIKit
 import SwiftUI
 
-struct TwoFingerTapView: UIViewRepresentable
-{
-    var tapCallback: (UITapGestureRecognizer) -> Void
+struct TwoFingerTapView: UIViewRepresentable {
+    let tapCallback: (UITapGestureRecognizer) -> Void
     
-    typealias UIViewType = UIView
-    
-    func makeCoordinator() -> TwoFingerTapView.Coordinator
-    {
-        Coordinator(tapCallback: self.tapCallback)
+    func makeCoordinator() -> Coordinator {
+        Coordinator(tapCallback: tapCallback)
     }
     
-    func makeUIView(context: UIViewRepresentableContext<TwoFingerTapView>) -> UIView
-    {
+    func makeUIView(context: Context) -> UIView {
         let view = UIView()
         view.backgroundColor = .systemBackground
-        let twoFingerTapGestureRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(sender:)))
+        let twoFingerTapGestureRecognizer = UITapGestureRecognizer(
+            target: context.coordinator,
+            action: #selector(Coordinator.handleTap(sender:))
+        )
         
         // Set number of touches.
         twoFingerTapGestureRecognizer.numberOfTouchesRequired = 2
@@ -47,29 +45,27 @@ struct TwoFingerTapView: UIViewRepresentable
         
         NSLayoutConstraint.activate([
             instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            instructionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            instructionLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: UIScreen.main.bounds.height / 4),
+            instructionLabel.widthAnchor.constraint(equalTo: view.widthAnchor,
+                                                    multiplier: 0.8),
+            instructionLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
+                                                  constant: UIScreen.main.bounds.height / 4),
         ])
         
         return view
     }
     
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<TwoFingerTapView>)
-    {
+    func updateUIView(_ uiView: UIView, context: Context) {
     }
     
-    class Coordinator
-    {
-        var tapCallback: (UITapGestureRecognizer) -> Void
+    class Coordinator {
+        let tapCallback: (UITapGestureRecognizer) -> Void
         
-        init(tapCallback: @escaping (UITapGestureRecognizer) -> Void)
-        {
+        init(tapCallback: @escaping (UITapGestureRecognizer) -> Void) {
             self.tapCallback = tapCallback
         }
         
-        @objc func handleTap(sender: UITapGestureRecognizer)
-        {
-            self.tapCallback(sender)
+        @objc func handleTap(sender: UITapGestureRecognizer) {
+            tapCallback(sender)
         }
     }
 }
