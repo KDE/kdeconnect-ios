@@ -341,7 +341,7 @@ struct DevicesView: View {
         SystemSound.smsReceived.play()
         alertManager.queueAlert(title: "Ping!") {
             Text("Ping received from a connected device.")
-        } buttons: {}
+        }
     }
     
     func showFindMyPhoneAlert() {

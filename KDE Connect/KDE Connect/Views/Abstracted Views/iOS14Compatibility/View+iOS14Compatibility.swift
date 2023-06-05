@@ -12,7 +12,7 @@ extension View {
     func alert(
         _ titleKey: LocalizedStringKey,
         isPresented: Binding<Bool>,
-        @AlertActionBuilder actions: () -> AlertActionBuilder.Buttons,
+        @AlertActionBuilder actions: () -> AlertActionBuilder.Buttons?,
         @ViewBuilder message: () -> Text?
     ) -> some View {
         if #available(iOS 15, *) {
@@ -21,7 +21,7 @@ extension View {
                 isPresented: isPresented,
                 actions: {
                     switch actions() {
-                    case .none:
+                    case nil:
                         EmptyView()
                     case .dismiss(let button):
                         button.button
@@ -36,7 +36,7 @@ extension View {
             self
                 .alert(isPresented: isPresented) {
                     switch actions() {
-                    case .none:
+                    case nil:
                         return Alert(
                             title: Text(titleKey),
                             message: message()
@@ -105,7 +105,7 @@ struct _Button {
     }
     
     @available(iOS, deprecated: 15)
-   fileprivate var alertButton: Alert.Button {
+    fileprivate var alertButton: Alert.Button {
         switch role {
         case .destructive:
             return .destructive(Text(titleKey), action: action)
@@ -121,20 +121,19 @@ struct _Button {
 @resultBuilder
 enum AlertActionBuilder {
     enum Buttons {
-        case none
         case dismiss(_Button)
         case primary(_Button, secondary: _Button)
     }
     
-    static func buildBlock() -> Buttons {
-        return .none
+    static func buildBlock() -> Buttons? {
+        return nil
     }
     
-    static func buildBlock(_ button: _Button) -> Buttons {
+    static func buildBlock(_ button: _Button) -> Buttons? {
         return .dismiss(button)
     }
     
-    static func buildBlock(_ button1: _Button, _ button2: _Button) -> Buttons {
+    static func buildBlock(_ button1: _Button, _ button2: _Button) -> Buttons? {
         switch (button1.role, button2.role) {
         case (.cancel, .cancel):
             break

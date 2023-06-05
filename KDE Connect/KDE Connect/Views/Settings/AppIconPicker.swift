@@ -78,7 +78,7 @@ struct AppIconPicker: View {
                         alertManager.queueAlert(prioritize: true,
                                                 title: "Failed to Change Icon") {
                             Text(error.localizedDescription)
-                        } buttons: { }
+                        }
                     }
                 } label: {
                     AccessibleHStack(spacing: 16) {

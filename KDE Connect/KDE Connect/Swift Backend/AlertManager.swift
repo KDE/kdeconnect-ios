@@ -12,7 +12,7 @@ import Combine
 struct AlertContent {
     let title: LocalizedStringKey
     @ViewBuilder let content: () -> Text?
-    @AlertActionBuilder let buttons: () -> AlertActionBuilder.Buttons
+    @AlertActionBuilder let buttons: () -> AlertActionBuilder.Buttons?
 }
 
 /**
@@ -37,7 +37,7 @@ class AlertManager: ObservableObject {
     @Published var currentAlert: AlertContent = AlertContent(
         title: "",
         content: { Text("") },
-        buttons: {}
+        buttons: { }
     )
     
     private var cancellables = Set<AnyCancellable>()
@@ -45,11 +45,9 @@ class AlertManager: ObservableObject {
     init() {
         self.$alertPresent
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] (alertPresent: Bool) in
+            .sink { [weak self] alertPresent in
                 guard let self = self else { return }
-                // FIXME: remove exception in merge request !98
-                // swiftlint:disable:next empty_count
-                if alertPresent == false && self.queue.count != 0{
+                if !alertPresent && !self.queue.isEmpty {
                     self.currentAlert = self.queue.removeFirst()
                     self.alertPresent = true
                 }
@@ -71,7 +69,7 @@ class AlertManager: ObservableObject {
         prioritize: Bool = false,
         title: LocalizedStringKey,
         @ViewBuilder content: @escaping () -> Text?,
-        @AlertActionBuilder buttons: @escaping () -> AlertActionBuilder.Buttons
+        @AlertActionBuilder buttons: @escaping () -> AlertActionBuilder.Buttons? = { nil }
     ) {
         if prioritize {
             queue.insert(AlertContent(title: title, content: content, buttons: buttons), at: 0)
