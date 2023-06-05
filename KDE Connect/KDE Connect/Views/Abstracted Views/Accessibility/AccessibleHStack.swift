@@ -43,8 +43,8 @@ struct AccessibleHStack<Content: View>: View {
 struct AccessibleHStack_Previews: PreviewProvider {
     static var previews: some View {
         AccessibleHStack {
-            Text("A")
-            Text("B")
+            Text(verbatim: "A")
+            Text(verbatim: "B")
         }
     }
 }
