@@ -45,37 +45,43 @@ class KDE_Connect_UITests: XCTestCase {
         ]
         app.launch()
         
-        func saveScreenshot(_ name: String) {
+        func saveScreenshot(_ name: String) throws {
             snapshot(name)
             let attachment = XCTAttachment(screenshot: app.screenshot())
             attachment.name = name
             attachment.lifetime = .keepAlways
             add(attachment)
+            if #available(iOS 17.0, *) {
+                try app.performAccessibilityAudit { issue in
+                    dump(issue)
+                    return true
+                }
+            }
         }
         
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         if !isPad {
-            saveScreenshot("0. Home Screen")
+            try saveScreenshot("0. Home Screen")
         }
         
         app.staticTexts["McIntosh"].tap()
-        saveScreenshot("1. Device Details")
+        try saveScreenshot("1. Device Details")
 
         app.buttons["Slideshow Remote"].tap()
-        saveScreenshot("3. Slideshow Remote")
+        try saveScreenshot("3. Slideshow Remote")
 
         app.navigationBars["Slideshow Remote"].buttons["McIntosh"].tap()
         app.buttons["Run Command"].tap()
-        saveScreenshot("4. Run Command")
+        try saveScreenshot("4. Run Command")
 
         app.navigationBars["Run Command"].buttons["McIntosh"].tap()
         app.buttons["Remote Input"].tap()
         if isPad {
             app.navigationBars["Remote Input"].images["More"].tap()
         }
-        saveScreenshot("5. Remote Input")
+        try saveScreenshot("5. Remote Input")
         if isPad {
             app.buttons["Send Single Left Click"].tap()
         }
@@ -87,16 +93,16 @@ class KDE_Connect_UITests: XCTestCase {
         } else {
             app.navigationBars["File Transfers"].buttons["Sending"].tap()
         }
-        saveScreenshot("2. Files")
+        try saveScreenshot("2. Files")
         
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
         if isPad {
             app.staticTexts["Features"].tap()
         }
-        saveScreenshot("6. Settings")
+        try saveScreenshot("6. Settings")
 
         app.staticTexts["About"].tap()
-        saveScreenshot("7. About")
+        try saveScreenshot("7. About")
     }
 
     func testLaunchPerformance() throws {
