@@ -55,6 +55,8 @@ We keep track of tasks for KDE Connect iOS using [Phabricator](https://phabricat
 
 Many tasks only include a high level description and could be easily misinterpreted, so we'd recommend first starting a conversation in the task you are interested in implementing with your high level plan before diving into coding. Especially since KDE Connect iOS 2021 makes heavy use of both Swift and Objective-C and needs to support multiple iOS versions, it can be a bit confusing at first, so feel free to ask the developers some questions!
 
+To build from source, you will need to install [SwiftLint](https://github.com/realm/SwiftLint).
+
 ### Extending to Additional Platforms
 
 - [ ] [Expand to a watchOS](https://community.kde.org/SoK/Ideas/2022#Investigate_Feasibility_of_KDE_Connect_for_watchOS) companion/standalone app?
