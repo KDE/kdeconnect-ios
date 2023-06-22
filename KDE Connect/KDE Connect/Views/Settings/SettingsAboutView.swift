@@ -48,6 +48,7 @@ struct SettingsAboutView: View {
                             .accessibilityHidden(true)
                         Spacer(minLength: 8.0)
                         VStack {
+                            // TODO: update wording about iOS for visionOS
                             if #available(iOS 15, *) {
                                 Text("**KDE Connect** for iOS")
                             } else {

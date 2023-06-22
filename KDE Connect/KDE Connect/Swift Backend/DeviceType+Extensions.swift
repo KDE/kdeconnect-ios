@@ -32,6 +32,7 @@ public extension DeviceType {
         return processInfo.isMacCatalystApp || processInfo.isiOSAppOnMac
     }
 
+    // TODO: what exactly is a visionOS device?
     static var current: DeviceType {
         var macDeviceType: DeviceType {
             let logger = Logger(category: "DeviceType")

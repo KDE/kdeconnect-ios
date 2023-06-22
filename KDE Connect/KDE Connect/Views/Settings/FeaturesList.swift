@@ -62,12 +62,14 @@ struct FeaturesList: View {
         Feature(Text("Notification: Receive from Others")),
         Feature(Text("Notification: Retrieve by Others"),
                 details: Text("Maybe with Apple Notification Center Service (ACNS)")),
+        // TODO: update wording about iOS for visionOS
         Feature(Text("Telephony: SMS/Call Sync"),
                 details: Text("This is likely not possible to implement on iOS")),
     ]
     
     var body: some View {
         List {
+            // TODO: update wording about iOS for visionOS
             Text("As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms.")
             
             if #available(iOS 15, *) {
