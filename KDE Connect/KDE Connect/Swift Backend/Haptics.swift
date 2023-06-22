@@ -10,6 +10,35 @@ import SwiftUI
 
 // Haptics provider, for a list of the enum values see
 // https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/feedbackstyle
+#if os(xrOS)
+public struct UINotificationFeedbackGenerator {
+    public enum FeedbackType: Int {
+        case success = 0
+        case warning = 1
+        case error = 2
+    }
+    
+    func notificationOccurred(_ notificationType: FeedbackType) { }
+}
+
+public struct UIImpactFeedbackGenerator {
+    init(style: FeedbackStyle) { }
+    
+    func impactOccurred(intensity: CGFloat = 0) { }
+    
+    @objc(KDEImpactFeedbackStyle)
+    public enum FeedbackStyle: Int {
+        case light = 0
+        case medium = 1
+        case heavy = 2
+        case soft = 3
+        case rigid = 4
+    }
+}
+#else
+@objc typealias KDEImpactFeedbackStyle = UIImpactFeedbackGenerator.FeedbackStyle
+#endif
+
 extension UIImpactFeedbackGenerator.FeedbackStyle: CaseIterable {
     public var text: Text {
         switch self {

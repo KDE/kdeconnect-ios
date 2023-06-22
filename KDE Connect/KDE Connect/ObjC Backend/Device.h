@@ -89,7 +89,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 // data only and are therefore NOT stored persistently
 // Remote Input
 @property(nonatomic) float _cursorSensitivity;
-@property(nonatomic) UIImpactFeedbackStyle hapticStyle;
+@property(nonatomic) UIImpactFeedbackStyle hapticStyle API_UNAVAILABLE(xros);
 // Presenter
 @property(nonatomic) float _pointerSensitivity;
 

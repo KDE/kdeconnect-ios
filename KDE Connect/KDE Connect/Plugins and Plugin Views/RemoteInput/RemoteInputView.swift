@@ -135,7 +135,9 @@ struct RemoteInputView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .onChange(of: hapticSettings) { style in
                         UIImpactFeedbackGenerator(style: style).impactOccurred()
+                        #if !os(xrOS)
                         backgroundService._devices[detailsDeviceId]!.hapticStyle = style
+                        #endif
                         saveDeviceToUserDefaults(deviceId: detailsDeviceId)
                     }
                     Text("On-Click Haptic Style")
@@ -216,7 +218,9 @@ struct RemoteInputView: View {
             }
             // New device's hapticStyle is automatically 0 (light) as it came from Obj-C initialization
             
+            #if !os(xrOS)
             hapticSettings = backgroundService._devices[detailsDeviceId]!.hapticStyle
+            #endif
         }
     }
     
