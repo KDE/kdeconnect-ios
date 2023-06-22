@@ -54,6 +54,7 @@ enum AppIcon: RawRepresentable, CaseIterable {
         }
     }
     
+    // TODO: need App icon for visionOS
     var image60x60: some View {
         // https://stackoverflow.com/a/22808666
         // Missing the AppIcon is a serious programmer error
