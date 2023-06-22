@@ -53,6 +53,9 @@ struct DevicesView: View {
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
             }
+            #if os(xrOS)
+            .hidden()
+            #endif
         }
         .navigationTitle("Devices")
         .toolbar {

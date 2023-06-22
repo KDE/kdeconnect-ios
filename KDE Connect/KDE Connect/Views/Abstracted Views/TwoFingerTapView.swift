@@ -47,8 +47,9 @@ struct TwoFingerTapView: UIViewRepresentable {
             instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             instructionLabel.widthAnchor.constraint(equalTo: view.widthAnchor,
                                                     multiplier: 0.8),
+            // FIXME: better AutoLayout
             instructionLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
-                                                  constant: UIScreen.main.bounds.height / 4),
+                                                  constant: view.frame.height / 2),
         ])
         
         return view
