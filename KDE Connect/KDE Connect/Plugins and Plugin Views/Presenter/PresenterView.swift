@@ -18,8 +18,12 @@ import UIKit.UIDevice
 struct PresenterView: View {
     let detailsDeviceId: String
     
+    #if os(xrOS)
+    @State var currentBroadcastingDeviceOrientation = UIDeviceOrientation.unknown
+    #else
     /// For translating gyroscope to coordinates
     @State var currentBroadcastingDeviceOrientation = UIDevice.current.orientation
+    #endif
     /// For optimizing layout
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
@@ -88,6 +92,7 @@ struct PresenterView: View {
                 Image(systemName: "ellipsis.circle")
             }
         )
+#if !os(xrOS)
         .onAppear {
             UIDevice.current.beginGeneratingDeviceOrientationNotifications()
             switch currentBroadcastingDeviceOrientation {
@@ -116,6 +121,7 @@ struct PresenterView: View {
                 break
             }
         }
+#endif
     }
     
     var portraitPresenterView: some View {
