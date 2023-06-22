@@ -53,7 +53,7 @@ import CryptoKit
             // swiftlint:disable:next force_cast
             return (identityApp as! SecIdentity)
         }
-        if generateSecIdentityForUUID(NetworkPackage.getUUID()) == noErr {
+        if generateSecIdentity(for: NetworkPackage.getUUID()) == noErr {
             // Refetch
             SecItemCopyMatching(keychainItemQuery, &identityApp)
             if let identityApp = identityApp {
@@ -214,6 +214,10 @@ import CryptoKit
             }
         }
         return true
+    }
+    
+    private func generateSecIdentity(for uuid: String!) -> OSStatus {
+        return noErr
     }
 
     // Unused and reference functions

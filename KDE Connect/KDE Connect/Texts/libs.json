@@ -14,18 +14,18 @@
 		"licenseURL": "https://github.com/fastlane/fastlane/blob/master/LICENSE"
 	},
 	{
-		"id": "OpenSSL",
-		"name": "krzyzanowskim/OpenSSL",
-		"repo": "https://github.com/krzyzanowskim/OpenSSL",
-		"license": "OpenSSL",
-		"licenseURL": "https://github.com/krzyzanowskim/OpenSSL/blob/master/LICENSE.txt"
-	},
-	{
 		"id": "swift-collections",
 		"name": "apple/swift-collections",
 		"repo": "https://github.com/apple/swift-collections",
 		"license": "Apache 2.0",
 		"licenseURL": "https://github.com/apple/swift-collections/blob/main/LICENSE.txt"
+	},
+	{
+		"id": "swift-certificates",
+		"name": "apple/swift-certificates",
+		"repo": "https://github.com/apple/swift-certificates",
+		"license": "Apache 2.0",
+		"licenseURL": "https://github.com/apple/swift-certificates/blob/main/LICENSE.txt"
 	},
 	{
 		"id": "SwiftLint",

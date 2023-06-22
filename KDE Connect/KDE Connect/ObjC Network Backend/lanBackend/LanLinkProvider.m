@@ -108,6 +108,7 @@
 
 - (void) loadSecIdentity
 {
+    return;
     SecIdentityRef identityApp = [_certificateService hostIdentity];
     assert(identityApp != nil);
 

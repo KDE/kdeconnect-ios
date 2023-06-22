@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 1491F15926AC8BD6008C1065 /* OpenSSL */; };
 		1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D42698BF0F00FDF493 /* LanLinkProvider.m */; };
 		1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D52698BF0F00FDF493 /* LanLink.m */; };
 		1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D82698BF0F00FDF493 /* BaseLink.m */; };
@@ -78,6 +77,7 @@
 		D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C5134275CBB4800074DB3 /* BatteryStatus.swift */; };
 		D271710929F07E51000CDB7F /* FilesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D271710829F07E51000CDB7F /* FilesHelper.swift */; };
 		D27D727F29B051D8002C00B7 /* NetworkChangeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D727E29B051D8002C00B7 /* NetworkChangeMonitor.swift */; };
+		D28315BF2A44356B007313EA /* X509 in Frameworks */ = {isa = PBXBuildFile; productRef = D28315BE2A44356B007313EA /* X509 */; };
 		D28C94CA27D1CAAA002EBC2D /* OSLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94C927D1CAAA002EBC2D /* OSLogManager.swift */; };
 		D28C94CC27D1CAD2002EBC2D /* OSLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CB27D1CAD2002EBC2D /* OSLogView.swift */; };
 		D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */; };
@@ -223,7 +223,7 @@
 				D21A100829B878B800CE02F8 /* OrderedCollections in Frameworks */,
 				D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */,
 				D2FAF12727D2E78900658753 /* Introspect in Frameworks */,
-				1491F15A26AC8BD6008C1065 /* OpenSSL in Frameworks */,
+				D28315BF2A44356B007313EA /* X509 in Frameworks */,
 				D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,11 +625,11 @@
 			);
 			name = "KDE Connect";
 			packageProductDependencies = (
-				1491F15926AC8BD6008C1065 /* OpenSSL */,
 				D2D0A89B27688B5500CA9B13 /* MediaPicker */,
 				D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */,
 				D2FAF12627D2E78900658753 /* Introspect */,
 				D21A100729B878B800CE02F8 /* OrderedCollections */,
+				D28315BE2A44356B007313EA /* X509 */,
 			);
 			productName = "KDE Connect Test";
 			productReference = A0A0442C267BF38700CC21DD /* KDE Connect.app */;
@@ -704,12 +704,12 @@
 			);
 			mainGroup = A0A04423267BF38700CC21DD;
 			packageReferences = (
-				1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */,
 				D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */,
 				D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 				D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D21A100629B878B800CE02F8 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				D2D7AB82298C8EA600AB490B /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				D28315BD2A44356B007313EA /* XCRemoteSwiftPackageReference "swift-certificates" */,
 			);
 			productRefGroup = A0A0442D267BF38700CC21DD /* Products */;
 			projectDirPath = "";
@@ -1182,20 +1182,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzyzanowskim/OpenSSL.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.1.1900;
-			};
-		};
 		D21A100629B878B800CE02F8 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
 				kind = exactVersion;
 				version = 1.0.4;
+			};
+		};
+		D28315BD2A44356B007313EA /* XCRemoteSwiftPackageReference "swift-certificates" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-certificates.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.6.0;
 			};
 		};
 		D2AB56752988E4B0008A2217 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
@@ -1241,15 +1241,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1491F15926AC8BD6008C1065 /* OpenSSL */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */;
-			productName = OpenSSL;
-		};
 		D21A100729B878B800CE02F8 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D21A100629B878B800CE02F8 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		D28315BE2A44356B007313EA /* X509 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D28315BD2A44356B007313EA /* XCRemoteSwiftPackageReference "swift-certificates" */;
+			productName = X509;
 		};
 		D2AB56772988E4B9008A2217 /* SwiftLintPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
