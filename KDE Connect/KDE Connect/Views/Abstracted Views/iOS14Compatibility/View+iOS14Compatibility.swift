@@ -148,6 +148,7 @@ enum AlertActionBuilder {
     }
 }
 
+#if !os(xrOS)
 @available(iOS, introduced: 14, obsoleted: 15, message: "Delete this extension")
 extension View {
     /// TODO: implement refreshable for iOS 14?
@@ -197,3 +198,4 @@ extension Text {
         modifier(MonospacedDigits())
     }
 }
+#endif
