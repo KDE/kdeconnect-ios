@@ -1,0 +1,1 @@
+- [ ] I understand that GitHub is only a read-only mirror of the KDE project and will instead open a merge request on [KDE's GitLab](https://invent.kde.org/network/kdeconnect-ios)
