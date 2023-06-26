@@ -2,6 +2,7 @@
  * SPDX-FileCopyrightText: 2014 YANG Qiao <yangqiao0505@me.com>
  *                         2020-2021 Weixuan Xiao <veyx.shaw@gmail.com>
  *                         2021 Lucas Wang <lucas.wang@tuta.io>
+ *                         2022-2023 Apollo Zhu <public-apollonian@outlook.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -47,10 +48,10 @@
     dispatch_queue_t socketQueue;
     os_log_t logger;
 }
-@property(nonatomic) GCDAsyncUdpSocket* _udpSocket;
-@property(nonatomic) GCDAsyncSocket* _tcpSocket;
-@property(nonatomic) NSMutableArray* _pendingSockets;
-@property(nonatomic) NSMutableArray* _pendingNps;
+@property(nonatomic) GCDAsyncUdpSocket *udpSocket;
+@property(nonatomic) GCDAsyncSocket *tcpSocket;
+@property(nonatomic) NSMutableArray<GCDAsyncSocket *> *pendingSockets;
+@property(nonatomic) NSMutableArray<NetworkPackage *> *pendingNPs;
 @property(nonatomic) SecCertificateRef _certificate;
 //@property(nonatomic) NSString * _certificateRequestPEM;
 @property(nonatomic) SecIdentityRef _identity;
@@ -59,12 +60,7 @@
 
 @implementation LanLinkProvider
 
-@synthesize _connectedLinks;
 @synthesize _linkProviderDelegate;
-@synthesize _pendingNps;
-@synthesize _pendingSockets;
-@synthesize _tcpSocket;
-@synthesize _udpSocket;
 @synthesize _certificate;
 //@synthesize _certificateRequestPEM;
 @synthesize _identity;
@@ -84,8 +80,8 @@
         _udpSocket=nil;
         _tcpSocket=nil;
         _pendingSockets=[NSMutableArray arrayWithCapacity:1];
-        _pendingNps=[NSMutableArray arrayWithCapacity:1];
-        _connectedLinks=[NSMutableDictionary dictionaryWithCapacity:1];
+        _pendingNPs = [NSMutableArray arrayWithCapacity:1];
+        self.connectedLinks = [NSMutableDictionary dictionaryWithCapacity:1];
         _linkProviderDelegate=linkProviderDelegate;
         socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.socketqueue", NULL);
         
@@ -125,6 +121,7 @@
     // The ownership of SecIdentityRef is in CertificateService
 }
 
+/// Requires @synchronized (self)
 - (void)setupSocket
 {
     os_log_with_type(logger, self.debugLogLevel, "lp setup socket");
@@ -142,67 +139,78 @@
     }
 }
 
-- (void)onStart
-{
-    os_log_with_type(logger, self.debugLogLevel, "lp onstart");
-    [self setupSocket];
-    NSError* err;
-    if (![_udpSocket beginReceiving:&err]) {
-        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "LanLinkProvider:UDP socket start error: %{public}@", err);
-        return;
-    }
-    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:UDP socket start");
-    if (![_tcpSocket isConnected]) {
-        _tcpPort = [LanLinkProvider openServerSocket:_tcpSocket
-                                onFreePortStartingAt:MIN_TCP_PORT
-                                               error:&err];
-        if (err) {
+- (void)onStart {
+    @synchronized (self) {
+        os_log_with_type(logger, self.debugLogLevel, "lp onstart");
+        [self setupSocket];
+        NSError *err;
+        if (![_udpSocket beginReceiving:&err]) {
             os_log_with_type(logger, OS_LOG_TYPE_FAULT,
-                             "TCP socket start error: %{public}@",
+                             "UDP socket start error: %{public}@",
                              err);
-            [self onStop];
             return;
         }
-    }
-    
-    os_log_with_type(logger, self.debugLogLevel,
-                     "setup tcp socket on port %hu",
-                     _tcpPort);
-    
-    //Introduce myself , UDP broadcasting my id package
-    NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
-    NSData* data=[np serialize];
-    
-    // Broadcast to every device first
-    os_log_with_type(logger, OS_LOG_TYPE_INFO, "sending: %{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-	[_udpSocket sendData:data  toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
-    
-    // Then use direct IP in case broadcast is disabled on the router
-    NSArray* directIPs=[ConnectedDevicesViewModel getDirectIPList];
-    for (NSString* address in directIPs) {
-        [_udpSocket sendData:data  toHost:address port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
+        os_log_with_type(logger, self.debugLogLevel,
+                         "UDP socket start");
+        if (![_tcpSocket isConnected]) {
+            _tcpPort = [LanLinkProvider openServerSocket:_tcpSocket
+                                    onFreePortStartingAt:MIN_TCP_PORT
+                                                   error:&err];
+            if (err) {
+                os_log_with_type(logger, OS_LOG_TYPE_FAULT,
+                                 "TCP socket start error: %{public}@",
+                                 err);
+                [self onStop];
+                return;
+            }
+        }
+        
+        os_log_with_type(logger, self.debugLogLevel,
+                         "setup tcp socket on port %hu",
+                         _tcpPort);
+        
+        //Introduce myself , UDP broadcasting my id package
+        NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
+        NSData *data = [np serialize];
+        
+        // Broadcast to every device first
+        os_log_with_type(logger, OS_LOG_TYPE_INFO,
+                         "sending: %{public}@",
+                         [[NSString alloc] initWithData:data
+                                               encoding:NSUTF8StringEncoding]);
+        [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT
+                 withTimeout:-1 tag:UDPBROADCAST_TAG];
+        
+        // Then use direct IP in case broadcast is disabled on the router
+        NSArray<NSString *> *directIPs = [ConnectedDevicesViewModel getDirectIPList];
+        for (NSString *address in directIPs) {
+            [_udpSocket sendData:data toHost:address port:PORT
+                     withTimeout:-1 tag:UDPBROADCAST_TAG];
+        }
     }
 }
 
-- (void)onStop
-{
-    os_log_with_type(logger, self.debugLogLevel, "lp onstop");
-    [_udpSocket close];
-    [_tcpSocket setDelegate:nil];
-    [_tcpSocket disconnect];
-    for (GCDAsyncSocket* socket in _pendingSockets) {
-        [socket disconnect];
+- (void)onStop {
+    @synchronized (self) {
+        os_log_with_type(logger, self.debugLogLevel, "lp onstop");
+        [_udpSocket setDelegate:nil];
+        [_tcpSocket setDelegate:nil];
+        [_udpSocket close];
+        [_tcpSocket disconnect];
+        
+        for (GCDAsyncSocket *socket in _pendingSockets) {
+            [socket disconnect];
+        }
+        for (BaseLink *link in [self.connectedLinks allValues]) {
+            [link disconnect];
+        }
+        
+        [_pendingNPs removeAllObjects];
+        [_pendingSockets removeAllObjects];
+        [self.connectedLinks removeAllObjects];
+        _udpSocket = nil;
+        _tcpSocket = nil;
     }
-    for (LanLink* link in [_connectedLinks allValues]) {
-        [link disconnect];
-    }
-    
-    [_pendingNps removeAllObjects];
-    [_pendingSockets removeAllObjects];
-    [_connectedLinks removeAllObjects];
-    _udpSocket=nil;
-    _tcpSocket=nil;
-
 }
 
 - (void) onRefresh
@@ -240,8 +248,8 @@
 - (void) onLinkDestroyed:(BaseLink*)link
 {
     os_log_with_type(logger, self.debugLogLevel, "lp on linkdestroyed");
-    if (link==[_connectedLinks objectForKey:[link _deviceId]]) {
-        [_connectedLinks removeObjectForKey:[link _deviceId]];
+    if (link == self.connectedLinks[[link _deviceId]]) {
+        [self.connectedLinks removeObjectForKey:[link _deviceId]];
     }
 }
 
@@ -329,10 +337,10 @@
     //}
     
     //add to pending connection list
-    @synchronized(_pendingNps)
+    @synchronized(_pendingNPs)
     {
         [_pendingSockets insertObject:socket atIndex:0];
-        [_pendingNps insertObject:np atIndex:0];
+        [_pendingNPs insertObject:np atIndex:0];
     }
 }
 
@@ -373,9 +381,9 @@
 
     //create LanLink and inform the background
     NSUInteger index=[_pendingSockets indexOfObject:sock];
-    NetworkPackage* np=[_pendingNps objectAtIndex:index];
+    NetworkPackage* np=[_pendingNPs objectAtIndex:index];
     NSString* deviceId=[np objectForKey:@"deviceId"];
-    LanLink* link = [_connectedLinks objectForKey:deviceId];
+    BaseLink *link = self.connectedLinks[deviceId];
     
     // If reusing old link, certificate checking is LanLinkProvider's responsibility
     if (link) {
@@ -414,11 +422,11 @@
                             deviceId:deviceId
                          setDelegate:nil
                   certificateService:_certificateService];
-        [_connectedLinks setObject:link forKey:deviceId];
+        self.connectedLinks[deviceId] = link;
         [_linkProviderDelegate onConnectionReceived:np link:link];
     }
     [_pendingSockets removeObject:sock];
-    [_pendingNps removeObject:np];
+    [_pendingNPs removeObject:np];
 }
 
 /**
@@ -471,7 +479,7 @@
             [sock setDelegate:nil];
             [_pendingSockets removeObject:sock];
             
-            LanLink *link = [_connectedLinks objectForKey:deviceId];
+            BaseLink *link = self.connectedLinks[deviceId];
             if (link) {
                 // reuse existing link once socket secures
                 [_linkProviderDelegate onDeviceIdentityUpdatePackageReceived:np];
@@ -482,7 +490,7 @@
                               deviceId:deviceId
                            setDelegate:nil
                     certificateService:_certificateService];
-            [_connectedLinks setObject:link forKey:deviceId];
+            self.connectedLinks[deviceId] = link;
             if (_linkProviderDelegate) {
                 [_linkProviderDelegate onConnectionReceived:np link:link];
             }
@@ -588,10 +596,10 @@
     NSUInteger pendingSocketIndex = [_pendingSockets indexOfObject:sock];
     [_pendingSockets removeObject:sock];
     
-    NetworkPackage* pendingNP = [_pendingNps objectAtIndex:pendingSocketIndex];
+    NetworkPackage* pendingNP = [_pendingNPs objectAtIndex:pendingSocketIndex];
     NSString *deviceID = [pendingNP objectForKey:@"deviceId"];
     // if existing LanLink exists, DON'T create a new one
-    LanLink *link = [_connectedLinks objectForKey:deviceID];
+    LanLink *link = (LanLink *)self.connectedLinks[deviceID];
     if (link) {
         [link setSocket:sock];
     } else {
@@ -600,7 +608,7 @@
                             deviceId:deviceID
                          setDelegate:nil
                   certificateService:_certificateService];
-        [_connectedLinks setObject:link forKey:deviceID];
+        self.connectedLinks[deviceID] = link;
     }
 }
 

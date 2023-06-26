@@ -39,11 +39,6 @@
 
 - (LanLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate
                    certificateService:(CertificateService *)certificateService;
-- (void) onStart;
-- (void) onRefresh;
-- (void) onStop;
-- (void) onNetworkChange;
-- (void) onLinkDestroyed:(BaseLink*)link;
 
 + (uint16_t)openServerSocket:(GCDAsyncSocket *)socket
         onFreePortStartingAt:(uint16_t)minPort

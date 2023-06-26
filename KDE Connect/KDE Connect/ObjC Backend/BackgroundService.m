@@ -44,7 +44,7 @@
 
 @property(nonatomic) NetworkChangeMonitor *networkChangeMonitor;
 @property(nonatomic) NSMutableArray<BaseLinkProvider *> *_linkProviders;
-@property(nonatomic) NSMutableArray<Device *> *_visibleDevices;
+@property(nonatomic) NSMutableArray<Device *> *visibleDevices;
 @property(nonatomic) NSMutableDictionary<NSString *, Device *> *_savedDevices;
 @property(nonatomic, assign) ConnectedDevicesViewModel *_backgroundServiceDelegate;
 @property(nonatomic, assign) CertificateService *_certificateService;
@@ -60,7 +60,6 @@
     _devices = [[NSMutableDictionary alloc] initWithDictionary:devices];
 }
 @synthesize _linkProviders;
-@synthesize _visibleDevices;
 - (void)setSettings:(NSDictionary<NSString *, NSData *> *)settings
 {
     _settings = [[NSMutableDictionary alloc] initWithDictionary:settings];
@@ -247,17 +246,23 @@
 }
 
 - (void)refreshVisibleDeviceList {
-    NSMutableArray *newVisibleDevices = [[NSMutableArray alloc] init];
+    NSMutableArray<Device *> *newVisibleDevices = [[NSMutableArray alloc] init];
     
     for (Device* device in [_devices allValues]) {
         if ([device isReachable]) {
             [newVisibleDevices addObject:device];
         }
     }
-    BOOL updated = ![newVisibleDevices isEqualToArray:_visibleDevices];
-    os_log_with_type(logger, self.debugLogLevel, "bg on device refresh visible device list, %{public}@",
-          updated ? @"UPDATED" : @"NO UPDATE");
-    _visibleDevices = newVisibleDevices;
+    BOOL updated;
+    @synchronized (_visibleDevices) {
+        updated = ![newVisibleDevices isEqualToArray:_visibleDevices];
+        os_log_with_type(logger, self.debugLogLevel,
+                         "bg on device refresh visible device list, %{public}@",
+                         updated ? @"UPDATED" : @"NO UPDATE");
+        if (updated) {
+            [_visibleDevices setArray:newVisibleDevices];
+        }
+    }
     if (_backgroundServiceDelegate && updated) {
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }

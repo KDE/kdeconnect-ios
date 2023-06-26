@@ -661,10 +661,6 @@ certificateService:(CertificateService*)certificateService
 
 #pragma mark - Others
 
-- (void)dealloc {
-    os_log_with_type(logger, self.debugLogLevel, "Lan Link destroyed");
-}
-
 - (void)readThroughLatestPackets:(GCDAsyncSocket *)sock : (NSString *) jsonStr {
     NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
     for (NSString* dataStr in packageArray) {
