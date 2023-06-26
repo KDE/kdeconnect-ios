@@ -339,6 +339,15 @@
     }
 }
 
+- (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error {
+    os_log_with_type(logger, OS_LOG_TYPE_FAULT, "udp socket closed due to %@", error);
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError * _Nullable)error
+{
+    os_log_with_type(logger, OS_LOG_TYPE_FAULT, "udp socket did not send data due to %@", error);
+}
+
 #pragma mark TCP Socket Delegate
 /**
  * Called when a socket accepts a connection.
