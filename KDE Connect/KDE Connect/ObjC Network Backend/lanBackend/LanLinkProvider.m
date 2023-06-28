@@ -56,6 +56,7 @@
 //@property(nonatomic) NSString * _certificateRequestPEM;
 @property(nonatomic) SecIdentityRef _identity;
 @property(nonatomic,assign) CertificateService* _certificateService;
+@property(nonatomic, retain) MDNSDiscovery *mdnsDiscovery;
 @end
 
 @implementation LanLinkProvider
@@ -89,6 +90,8 @@
         _certificateService = certificateService;
         _identity = NULL;
         [self loadSecIdentity];
+
+        _mdnsDiscovery = [[MDNSDiscovery alloc] init];
     }
 
     return self;
@@ -168,7 +171,10 @@
         os_log_with_type(logger, self.debugLogLevel,
                          "setup tcp socket on port %hu",
                          _tcpPort);
-        
+
+        [_mdnsDiscovery startDiscovering];
+        [_mdnsDiscovery startAnnouncingWithTcpPort: _tcpPort];
+
         [self sendUdpIdentityPacket:[ConnectedDevicesViewModel getDirectIPList] includeBroadcast:true];
     }
 }
@@ -203,6 +209,10 @@
 - (void)onStop {
     @synchronized (self) {
         os_log_with_type(logger, self.debugLogLevel, "lp onstop");
+
+        [_mdnsDiscovery stopAnnouncing];
+        [_mdnsDiscovery stopDiscovering];
+
         [_udpSocket setDelegate:nil];
         [_tcpSocket setDelegate:nil];
         [_udpSocket close];
@@ -233,6 +243,8 @@
         return;
     }
 
+    [_mdnsDiscovery stopDiscovering];
+    [_mdnsDiscovery startDiscovering];
     [self sendUdpIdentityPacket:[ConnectedDevicesViewModel getDirectIPList] includeBroadcast:true];
 }
 
