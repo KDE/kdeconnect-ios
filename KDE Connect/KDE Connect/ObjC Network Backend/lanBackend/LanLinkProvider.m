@@ -436,7 +436,7 @@
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
     os_log_with_type(logger, self.debugLogLevel, "lp tcp socket didReadData");
-    os_log_with_type(logger, self.debugLogLevel, "%{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    //os_log_with_type(logger, self.debugLogLevel, "%{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
     for (NSString* dataStr in packageArray) {
