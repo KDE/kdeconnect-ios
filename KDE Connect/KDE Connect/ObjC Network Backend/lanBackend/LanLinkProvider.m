@@ -169,24 +169,34 @@
                          "setup tcp socket on port %hu",
                          _tcpPort);
         
-        //Introduce myself , UDP broadcasting my id package
-        NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
-        NSData *data = [np serialize];
-        
-        // Broadcast to every device first
-        os_log_with_type(logger, OS_LOG_TYPE_INFO,
-                         "sending: %{public}@",
-                         [[NSString alloc] initWithData:data
-                                               encoding:NSUTF8StringEncoding]);
-        [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT
-                 withTimeout:-1 tag:UDPBROADCAST_TAG];
-        
-        // Then use direct IP in case broadcast is disabled on the router
-        NSArray<NSString *> *directIPs = [ConnectedDevicesViewModel getDirectIPList];
-        for (NSString *address in directIPs) {
-            [_udpSocket sendData:data toHost:address port:PORT
-                     withTimeout:-1 tag:UDPBROADCAST_TAG];
-        }
+        [self sendUdpIdentityPacket:[ConnectedDevicesViewModel getDirectIPList] includeBroadcast:true];
+    }
+}
+
+- (void)sendUdpIdentityPacket:(NSArray<NSString *> *)ipAddresses includeBroadcast:(bool)includeBroadcast
+{
+    if (!_udpSocket) {
+        os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                         "Trying to send identity packet when udp socket doesn't exist");
+        return;
+    }
+    if ([_udpSocket isClosed]) {
+        os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                         "Trying to send identity packet when udp socket is closed");
+        return;
+    }
+
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "sendUdpIdentityPacket");
+
+    NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
+    NSData *data = [np serialize];
+
+    if (includeBroadcast) {
+        [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
+    }
+
+    for (NSString *address in ipAddresses) {
+        [_udpSocket sendData:data toHost:address port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
     }
 }
 
@@ -222,19 +232,8 @@
         [self onNetworkChange];
         return;
     }
-    if (![_udpSocket isClosed]) {
-        NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
-        NSData* data=[np serialize];
-        
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "sending: %{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
-        
-        // Then use direct IP in case broadcast is disabled on the router
-        NSArray* directIPs=[ConnectedDevicesViewModel getDirectIPList];
-        for (NSString* address in directIPs) {
-            [_udpSocket sendData:data  toHost:address port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
-        }
-    }
+
+    [self sendUdpIdentityPacket:[ConnectedDevicesViewModel getDirectIPList] includeBroadcast:true];
 }
 
 - (void)onNetworkChange
@@ -314,15 +313,11 @@
         
         os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:tcp connection error");
         os_log_with_type(logger, self.debugLogLevel, "try reverse connection");
-        NSData* data=[np serialize];
-        os_log_with_type(logger, self.debugLogLevel, "%{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        [_udpSocket sendData:data toHost:@"255.255.255.255" port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
         
-        // Then use direct IP in case broadcast is disabled on the router
-        NSArray* directIPs=[ConnectedDevicesViewModel getDirectIPList];
-        for (NSString* address in directIPs) {
-            [_udpSocket sendData:data  toHost:address port:PORT withTimeout:-1 tag:UDPBROADCAST_TAG];
-        }
+        NSMutableArray* ips = [[NSMutableArray alloc] init];
+        [ips addObject:host];
+        [self sendUdpIdentityPacket:ips includeBroadcast:false];
+
         return;
     }
     os_log_with_type(logger, self.debugLogLevel, "connecting");
