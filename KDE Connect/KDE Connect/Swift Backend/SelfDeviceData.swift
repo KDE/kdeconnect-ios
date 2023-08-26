@@ -61,6 +61,13 @@ class SelfDeviceData: NSObject, ObservableObject {
         }
     }
     
+    @Published var disableUdpBroadcastDiscovery: Bool {
+        didSet {
+            UserDefaults.standard.set(disableUdpBroadcastDiscovery,
+                                      forKey: "disableUdpBroadcastDiscovery")
+        }
+    }
+    
     /// Intentionally not persisted
     @Published var isDebugging: Bool
     @objc
@@ -76,6 +83,7 @@ class SelfDeviceData: NSObject, ObservableObject {
         self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? UIDevice.current.name
         self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme").flatMap(ColorScheme.init)
         self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
+        self.disableUdpBroadcastDiscovery = UserDefaults.standard.bool(forKey: "disableUdpBroadcastDiscovery") ?? false
         self.appIcon = AppIcon(rawValue: UserDefaults.standard.string(forKey: "appIcon")) ?? .default
         self.savePhotosToPhotosLibrary = UserDefaults.standard.bool(forKey: "savePhotosToPhotosLibrary")
         self.saveVideosToPhotosLibrary = UserDefaults.standard.bool(forKey: "saveVideosToPhotosLibrary")

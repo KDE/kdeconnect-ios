@@ -11,8 +11,22 @@ struct SettingsAdvancedView: View {
     @EnvironmentObject private var selfDeviceData: SelfDeviceData
     let logger = Logger()
 
+    @State var disableUdpBroadcastDiscovery: Bool = false
+
     var body: some View {
         List {
+            Section {
+                Toggle("Disable UDP Broadcast", isOn: $disableUdpBroadcastDiscovery)
+            } header: {
+                Text("Experimental functionalities")
+            }
+            .onAppear {
+                disableUdpBroadcastDiscovery = self.selfDeviceData.disableUdpBroadcastDiscovery
+            }
+            .onChange(of: disableUdpBroadcastDiscovery) { value in
+                self.selfDeviceData.disableUdpBroadcastDiscovery = value
+            }
+
             Section {
                 Button {
                     backgroundService.onNetworkChange()

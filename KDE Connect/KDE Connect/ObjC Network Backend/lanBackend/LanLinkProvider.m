@@ -134,6 +134,7 @@
     if (![_udpSocket enableReusePort:true error:&err]) {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT, "udp reuse port option error");
     }
+    // We will still listen to UDP Broadcast for backward compatibility
     if (![_udpSocket enableBroadcast:true error:&err]) {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT, "udp listen broadcast error");
     }
@@ -175,7 +176,9 @@
         [_mdnsDiscovery startDiscovering];
         [_mdnsDiscovery startAnnouncingWithTcpPort: _tcpPort];
 
-        [self sendUdpIdentityPacket:[ConnectedDevicesViewModel getDirectIPList] includeBroadcast:true];
+        // UDP Broadcast is not disabled
+        bool includeBroadcast = ![[NSUserDefaults standardUserDefaults] boolForKey:@"disableUdpBroadcastDiscovery"];
+        [self sendUdpIdentityPacket:[ConnectedDevicesViewModel getDirectIPList] includeBroadcast:includeBroadcast];
     }
 }
 
