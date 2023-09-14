@@ -120,7 +120,7 @@ struct PresenterView: View {
     
     var portraitPresenterView: some View {
         Group {
-            if backgroundService._devices[detailsDeviceId]!._type == .desktop {
+            if backgroundService._devices[detailsDeviceId]!._type == .desktop || backgroundService._devices[detailsDeviceId]!._type == .laptop {
                 Image(systemName: "wand.and.rays")
                     .resizable()
                     .frame(width: 110, height: 110)
