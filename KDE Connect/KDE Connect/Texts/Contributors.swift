@@ -33,6 +33,7 @@ enum Contributors {
                             kde: "apollozhu"),
                 Contributor(name: NSLocalizedString("Dan Stoian", comment: ""), kde: "danthedante"),
                 Contributor(name: NSLocalizedString("Han Young", comment: ""), kde: "hanyoung"),
+                Contributor(name: NSLocalizedString("James Rosson", comment: ""), kde: "jrosson"),
                 Contributor(name: NSLocalizedString("Nicolás Alvarez", comment: ""), kde: "nalvarez"),
                 Contributor(name: NSLocalizedString("Ruixuan Tu", comment: ""), kde: "ruixuantu"),
                 Contributor(name: NSLocalizedString("Weixuan Xiao", comment: ""), kde: "wxiao"),
