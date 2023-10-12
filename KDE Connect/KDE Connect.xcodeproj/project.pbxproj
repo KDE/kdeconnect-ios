@@ -1187,16 +1187,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/OpenSSL.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.1.1900;
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.1.1900;
 			};
 		};
 		D21A100629B878B800CE02F8 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.0.4;
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.4;
 			};
 		};
 		D2AB56752988E4B0008A2217 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
@@ -1219,8 +1219,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint.git";
 			requirement = {
-				kind = exactVersion;
-				version = 0.51.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.51.0;
 			};
 		};
 		D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
