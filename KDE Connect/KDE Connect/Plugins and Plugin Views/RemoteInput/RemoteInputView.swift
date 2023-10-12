@@ -145,8 +145,7 @@ struct RemoteInputView: View {
             }
         }
         .navigationTitle("Remote Input")
-        .navigationBarItems(trailing:
-                                HStack {
+        .navigationBarItems(trailing: HStack {
             Button(action: toggleKeyboard) {
                 Label("Toggle Keyboard", systemImage: "keyboard")
             }
@@ -205,8 +204,7 @@ struct RemoteInputView: View {
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
-        }
-        )
+        })
         .onAppear {
             cursorSensitivityFromSlider = backgroundService._devices[detailsDeviceId]!._cursorSensitivity
             // If new device, give default sensitivity of 3.0

@@ -159,7 +159,7 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
         let type: String
         let protocolVersion: Int
 
-        fileprivate static func getDeviceInfo() -> DeviceInfo {
+        fileprivate static func getDeviceInfo() -> Self {
             let package = NetworkPackage.createIdentityPackage(withTCPPort: 0)
             return Self(
                 id: package.object(forKey: "deviceId") as! String,

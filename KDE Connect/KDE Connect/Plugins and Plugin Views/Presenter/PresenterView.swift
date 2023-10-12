@@ -216,7 +216,7 @@ struct PresenterView: View {
     
     func startGyroAndPointer() {
             // UIImpactFeedbackGenerator(style: .heavy).impactOcurred()
-            motionManager.startGyroUpdates(to: .main) { (data, error) in
+            motionManager.startGyroUpdates(to: .main) { data, _ in
                 guard let data = data else { return }
                 var dxToSend: Float = 0.0 //
                 var dyToSend: Float = 0.0

@@ -88,7 +88,7 @@ import SwiftUI
     }
     
     private func processCommandsDict(_ commandsDict: CommandsDictionary) -> [CommandEntry] {
-        return commandsDict.compactMap { (commandKey, commandInfo) in
+        return commandsDict.compactMap { commandKey, commandInfo in
             if let commandName = commandInfo["name"],
                let command = commandInfo["command"] {
                 let commandEntry = CommandEntry(name: commandName, command: command, key: commandKey)
