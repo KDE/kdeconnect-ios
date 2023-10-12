@@ -18,7 +18,7 @@ public class KeyboardListener: UIView, UIKeyInput {
     public var hasText: Bool { false }
     public override var canBecomeFirstResponder: Bool { true }
     
-    var onInsertText: (_ text: String) -> Void = { text in }
+    var onInsertText: (_ text: String) -> Void = { _ in }
     var onDeleteBackward: () -> Void = { }
     var onReturn: () -> Void = { }
     
@@ -37,10 +37,9 @@ public class KeyboardListener: UIView, UIKeyInput {
 
 // This naming is intentional to mimic a SwiftUI View
 // swiftlint:disable:next identifier_name
-func KeyboardListenerPlaceholderView(onInsertText: @escaping (String) -> Void = {_ in },
+func KeyboardListenerPlaceholderView(onInsertText: @escaping (String) -> Void = { _ in },
                                      onDeleteBackward: @escaping () -> Void = {},
                                      onReturn: @escaping () -> Void = {}) -> some View {
-    
     return _KeyboardListenerPlaceholderView(onInsertText: onInsertText,
                                             onDeleteBackward: onDeleteBackward,
                                             onReturn: onReturn)

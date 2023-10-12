@@ -13,7 +13,7 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
     private static let domain = ""
     private var browser: NWBrowser?
     private var service: NetService?
-    private var tcpPort : UInt16 = 0
+    private var tcpPort: UInt16 = 0
 
     private static let logger = Logger()
 
