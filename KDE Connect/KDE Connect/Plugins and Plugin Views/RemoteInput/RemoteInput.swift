@@ -27,12 +27,10 @@
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) {
         if (np.type == .mousePadRequest) {
             logger.info("Received mousepad command, doing nothing")
-            return true
         }
-        return false
     }
     
     @objc func sendMouseDelta(dx: Float, dy: Float) {

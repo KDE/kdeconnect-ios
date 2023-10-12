@@ -56,10 +56,10 @@ extension Notification.Name {
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) {
         logger.debug("Share plugin received something")
-        switch np.type {
-        case .shareRequestUpdate:
+        
+        if (np.type == .shareRequestUpdate) {
             DispatchQueue.main.async { [weak self, logger] in
                 guard let self else { return }
                 if self.totalNumOfFilesToReceive > 0 {
@@ -73,15 +73,14 @@ extension Notification.Name {
                     logger.debug("Received update packet but not receiving files")
                 }
             }
-            return true
-        case .share:
+        } else if (np.type == .share) {
             logger.debug("Share Plugin received a valid Share package")
             if let filename = np._Body["filename"] as? String {
                 guard let payloadPath = np.payloadPath else {
                     logger.fault("File \(filename, privacy: .public) missing actual file contents")
                     // FIXME: show error to UI
                     notificationHapticsGenerator.notificationOccurred(.error)
-                    return true
+                    return
                 }
                 Task {
                     do {
@@ -121,10 +120,6 @@ extension Notification.Name {
                 logger.fault("Nil received when trying to parse filename")
                 notificationHapticsGenerator.notificationOccurred(.error)
             }
-            return true
-        default:
-            logger.debug("Not a share package")
-            return false
         }
     }
     

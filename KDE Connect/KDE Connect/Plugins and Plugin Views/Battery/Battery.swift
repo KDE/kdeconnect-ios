@@ -44,11 +44,10 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(self.batteryLevelDidChange(notification:)), name: UIDevice.batteryLevelDidChangeNotification, object: UIDevice.current)
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) {
         if (np.type == .batteryRequest) {
             logger.debug("Battery plugin received a force update request")
             sendBatteryStatusOut()
-            return true
         } else if (np.type == .battery) { // received battery info from other device
             logger.debug("Battery plugin received battery status from remote device")
             DispatchQueue.main.async { [weak self] in
@@ -59,9 +58,7 @@ import UIKit
                     self.remoteThresholdEvent = np.integer(forKey: "thresholdEvent")
                 }
             }
-            return true
         }
-        return false
     }
     
     @objc func sendBatteryStatusOut() {

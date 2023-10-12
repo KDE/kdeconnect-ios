@@ -27,7 +27,7 @@ import SwiftUI
     
     typealias CommandsDictionary = [String: [String: String]]
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) {
         if (np.type == .runCommand) {
             if np.bodyHasKey("commandList") {
                 // Process the received commandList here
@@ -49,9 +49,7 @@ import SwiftUI
             } else {
                 logger.info("RunCommand packet received with no commandList, ignoring")
             }
-            return true
         }
-        return false
     }
     
     @objc func runCommand(cmdKey: String) {

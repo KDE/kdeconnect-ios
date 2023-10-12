@@ -22,12 +22,10 @@ import Foundation
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) {
         if (np.type == .presenter) {
             logger.info("Presenter received a package, can't do anything about it, ignoring")
-            return true
         }
-        return false
     }
     
     @objc func sendNext() {

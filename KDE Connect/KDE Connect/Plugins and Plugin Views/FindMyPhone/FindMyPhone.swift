@@ -25,12 +25,10 @@ extension Notification.Name {
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) {
         if (np.type == .findMyPhoneRequest) {
             NotificationCenter.default.post(name: .didReceiveFindMyPhoneRequestNotification, object: nil)
-            return true
         }
-        return false
     }
     
     @objc func sendFindMyPhoneRequest() {

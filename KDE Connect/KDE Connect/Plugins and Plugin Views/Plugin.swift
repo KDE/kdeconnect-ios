@@ -16,7 +16,7 @@
 import Foundation
 
 @objc protocol Plugin: NSObjectProtocol {
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool
+    @objc func onDevicePackageReceived(np: NetworkPackage)
     @objc optional func onPackage(_ np: NetworkPackage,
                                   sentWithPackageTag packageTag: Int)
     @objc optional func onPackage(_ np: NetworkPackage,

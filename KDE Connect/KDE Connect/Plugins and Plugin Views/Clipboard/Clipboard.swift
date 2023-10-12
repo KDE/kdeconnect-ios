@@ -23,7 +23,7 @@ import UIKit
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) -> Bool {
+    @objc func onDevicePackageReceived(np: NetworkPackage) {
         if (np.type == .clipboard || np.type == .clipboardConnect) {
             if (np.object(forKey: "content") != nil) {
                 if (np.type == .clipboard) {
@@ -34,7 +34,6 @@ import UIKit
                     let packetTimeStamp: Int = np.integer(forKey: "timestamp")
                     if (packetTimeStamp == 0 || packetTimeStamp < Self.lastLocalClipboardUpdateTimestamp) {
                         logger.info("Invalid timestamp from \(np.type.rawValue, privacy: .public), doing nothing")
-                        return false
                     } else {
                         UIPasteboard.general.string = np.object(forKey: "content") as? String
                         Self.lastLocalClipboardUpdateTimestamp = Int(Date().millisecondsSince1970)
@@ -44,9 +43,7 @@ import UIKit
             } else {
                 logger.debug("Received nil for the content of the remote device's \(np.type.rawValue, privacy: .public), doing nothing")
             }
-            return true
         }
-        return false
     }
     
     // FIXME: unused function
