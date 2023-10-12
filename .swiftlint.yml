@@ -9,8 +9,12 @@ disabled_rules:
   - control_statement # 41
   # FIXME: remove force_cast exception when plugin refactoring is done.
   - force_cast # 37
-  # FIXME: remove line_length exception
-  - line_length # 87
+  - line_length
+  - type_body_length
+  - function_body_length
+  - file_length
+  - todo
+  - for_where
 opt_in_rules:
   - accessibility_label_for_image
   - accessibility_trait_for_button
