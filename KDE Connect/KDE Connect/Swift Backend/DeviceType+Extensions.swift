@@ -75,8 +75,6 @@ public extension DeviceType {
             return .unknown
         case .mac:
             return macDeviceType
-        case .vision:
-            return .unknown
         @unknown default:
             return .unknown
         }
