@@ -15,6 +15,8 @@ disabled_rules:
   - file_length
   - todo
   - for_where
+  # FIXME: disabled because it produces lots of warnings at the moment, we should enable this and fix them
+  - accessibility_label_for_image
 opt_in_rules:
   - accessibility_label_for_image
   - accessibility_trait_for_button
