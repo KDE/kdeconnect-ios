@@ -17,8 +17,6 @@ build_project:
   script:
     # change working directory to the one containing Xcode project
     - cd 'KDE Connect'
-    # clean any previous build data
-    - xcodebuild clean -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
     # build the project and run the tests
     # FIXME: remove `arch -arm64` when GitLab CI supports running natively on M1 Macs
     - arch -arm64 xcodebuild test -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
