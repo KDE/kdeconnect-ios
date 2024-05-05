@@ -19,8 +19,9 @@ build_project:
     - cd 'KDE Connect'
     # build the project and run the tests
     # FIXME: remove `arch -arm64` when GitLab CI supports running natively on M1 Macs
+    # List available "destinations" with: xcrun simctl list
     - arch -arm64 xcodebuild test -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
-      -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.2'
+      -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=17.0'
       -skipPackagePluginValidation
   tags:
     - macOS
