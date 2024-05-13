@@ -415,18 +415,11 @@
         [sock setDelegate:nil];
     }
 
-    /* Test with cert file */
-    NSArray *myCipherSuite = [[NSArray alloc] initWithObjects:
-        [NSNumber numberWithInt: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256],
-        [NSNumber numberWithInt: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384],
-        [NSNumber numberWithInt: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA],
-    nil];
     NSArray *myCerts = [[NSArray alloc] initWithObjects: (__bridge id)_identity, nil];
     NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
         (id)[NSNumber numberWithBool:YES],                  (id)kCFStreamSSLIsServer,
         (id)[NSNumber numberWithBool:YES],                  (id)GCDAsyncSocketManuallyEvaluateTrust,
         (id)[NSNumber numberWithInt:kAlwaysAuthenticate],   (id)GCDAsyncSocketSSLClientSideAuthenticate,
-        (id)myCipherSuite,                                  (id)GCDAsyncSocketSSLCipherSuites,
         (id)myCerts,                                        (id)kCFStreamSSLCertificates,
     nil];
 
@@ -471,11 +464,6 @@
             NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
             
             /*NSLog(@"%@", _certificate);*/
-            NSArray *myCipherSuite = [[NSArray alloc] initWithObjects:
-                                      [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256],
-                                      [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384],
-                                      [[NSNumber alloc] initWithInt: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA],
-                                      nil];
             /* TLS */
             NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
                                          //(id)kCFStreamSocketSecurityLevelNegotiatedSSL, (id)kCFStreamSSLLevel,
@@ -487,7 +475,6 @@
                                          // (id)[[SecKeyWrapper sharedWrapper] getPrivateKeyRef], (id),
                                          //(id)kCFBooleanTrue,        (id)GCDAsyncSocketManuallyEvaluateTrust,
                                          (__bridge CFArrayRef) myCerts, (id)kCFStreamSSLCertificates,
-                                         (__bridge CFArrayRef) myCipherSuite, (id)GCDAsyncSocketSSLCipherSuites,
                                          (id)[NSNumber numberWithInt:0],       (id)kCFStreamSSLIsServer,
                                          (id)[NSNumber numberWithInt:1], (id)GCDAsyncSocketManuallyEvaluateTrust,
                                          nil];

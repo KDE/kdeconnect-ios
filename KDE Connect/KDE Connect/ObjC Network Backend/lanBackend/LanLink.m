@@ -229,16 +229,10 @@ certificateService:(CertificateService*)certificateService
 
     /* TLS Connection */
     NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
-    NSArray *myCipherSuite = [[NSArray alloc] initWithObjects:
-                              [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256],
-                              [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384],
-                              [[NSNumber alloc] initWithInt: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA],
-                              nil];
 
     NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
          (id)[NSNumber numberWithInt:1],    (id)kCFStreamSSLIsServer,
          (__bridge CFArrayRef) myCerts, (id)kCFStreamSSLCertificates,
-         (__bridge CFArrayRef) myCipherSuite, (id)GCDAsyncSocketSSLCipherSuites,
     nil];
 
     [newSocket startTLS: tlsSettings];
@@ -261,17 +255,11 @@ certificateService:(CertificateService*)certificateService
 
     /* TLS Connection */
     NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
-    NSArray *myCipherSuite = [[NSArray alloc] initWithObjects:
-                              [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256],
-                              [[NSNumber alloc] initWithInt: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384],
-                              [[NSNumber alloc] initWithInt: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA],
-                              nil];
 
     NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
          (id)[NSNumber numberWithInt:0],    (id)kCFStreamSSLIsServer,
          (id)[NSNumber numberWithInt:1],    (id)GCDAsyncSocketManuallyEvaluateTrust,
          (__bridge CFArrayRef) myCerts, (id)kCFStreamSSLCertificates,
-         (__bridge CFArrayRef) myCipherSuite, (id)GCDAsyncSocketSSLCipherSuites,
     nil];
 
     //NSLog(@"%@", myCerts);
