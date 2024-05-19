@@ -15,12 +15,13 @@ test:
   script:
     # change working directory to the one containing Xcode project
     - cd 'KDE Connect'
-    # build the project and run the tests
+    # build the project. We can't run the tests because that requires a signed build.
     # FIXME: remove `arch -arm64` when GitLab CI supports running natively on M1 Macs
     # List available "destinations" with: xcrun simctl list
-    - arch -arm64 xcodebuild test -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
+    # skipPackagePluginValidation skips running SwiftLintPlugin, which is not available in the CI
+    - arch -arm64 xcodebuild build -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
       -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=17.0'
-      -skipPackagePluginValidation CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+      -skipPackagePluginValidation CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
   tags:
     - macOS
 
