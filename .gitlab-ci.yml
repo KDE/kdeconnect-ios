@@ -20,7 +20,7 @@ test:
     # List available "destinations" with: xcrun simctl list
     - arch -arm64 xcodebuild test -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
       -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=17.0'
-      -skipPackagePluginValidation
+      -skipPackagePluginValidation CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
   tags:
     - macOS
 
