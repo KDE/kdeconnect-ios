@@ -25,6 +25,12 @@
 
 @import os.log;
 
+NSString* getSslError(void) {
+    char buf[256];
+    ERR_error_string_n(ERR_get_error(), buf, sizeof(buf));
+    return [NSString stringWithUTF8String:buf];
+}
+
 OSStatus generateSecIdentityForUUID(NSString *uuid)
 {
     os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
@@ -34,27 +40,56 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     NSDictionary *spec = @{(__bridge id)kSecClass: (id)kSecClassIdentity};
     SecItemDelete((__bridge CFDictionaryRef)spec);
 
-    // Generate a private key
-    EVP_PKEY * pkey;
-    pkey = EVP_PKEY_new();
+
+    EVP_PKEY_CTX *pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_EC, NULL);
+    if (!pctx) {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Generate EC Private Key failed to allocate context");
+        return errSecAllocate;
+    }
     
-    RSA * rsa = RSA_new();
-    BIGNUM* bignum_exponent = BN_new();
-    BN_set_word(bignum_exponent, (unsigned long) RSA_F4);
-    RSA_generate_key_ex(rsa, 2048, bignum_exponent, NULL);
+    if (EVP_PKEY_keygen_init(pctx) <= 0) {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Generate EC Private Key failed to initialize context");
+        EVP_PKEY_CTX_free(pctx);
+        return errSecParam;
+    }
+    
+    if (EVP_PKEY_CTX_set_ec_paramgen_curve_nid(pctx, NID_X9_62_prime256v1) <= 0) {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Generate EC Private Key failed to set curve");
+        EVP_PKEY_CTX_free(pctx);
+        return errSecParam;
+    }
 
-    EVP_PKEY_assign_RSA(pkey, rsa);
+    EVP_PKEY *pkey = EVP_PKEY_new();
+    if (!pkey) {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Generate EC Private Key failed to allocate private key");
+        return errSecAllocate;
+    }
 
+    if (EVP_PKEY_keygen(pctx, &pkey) <= 0) {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Generate EC Private Key failed to generate private key");
+        EVP_PKEY_free(pkey);
+        EVP_PKEY_CTX_free(pctx);
+        return errSecParam;
+    }
+
+    EVP_PKEY_CTX_free(pctx);
+    
     // Generate an X.509 cert
     X509 *x509;
     x509 = X509_new();
 
+    const int x509version = 3;
+    X509_set_version(x509, x509version - 1); // version is 0-indexed
+    
     ASN1_INTEGER_set(X509_get_serialNumber(x509), 10);
 
     X509_gmtime_adj(X509_get_notBefore(x509), 0);
     X509_gmtime_adj(X509_get_notAfter(x509), 31536000L);
 
-    X509_set_pubkey(x509, pkey);
+    if (!X509_set_pubkey(x509, pkey)) {
+        EVP_PKEY_free(pkey);
+        @throw [[NSException alloc] initWithName:@"Fail set cert key" reason:getSslError() userInfo:nil];
+    }
 
     X509_NAME *name;
     name = X509_get_subject_name(x509);
@@ -66,14 +101,17 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     X509_NAME_add_entry_by_txt(name, "CN", MBSTRING_ASC,    // CN = common name is UUID
             (unsigned char *)[uuid UTF8String], -1, -1, 0);
 
+    X509_set_subject_name(x509, name);
     X509_set_issuer_name(x509, name);
     
-    if (!X509_sign(x509, pkey, EVP_md5())) {
-        @throw [[NSException alloc] initWithName:@"Fail sign cert" reason:@"Error" userInfo:nil];
+    if (!X509_sign(x509, pkey, EVP_sha512())) {
+        EVP_PKEY_free(pkey);
+        @throw [[NSException alloc] initWithName:@"Fail sign cert" reason:getSslError() userInfo:nil];
     }
 
     if (!X509_check_private_key(x509, pkey)) {
-        @throw [[NSException alloc] initWithName:@"Fail validate cert" reason:@"Error" userInfo:nil];
+        EVP_PKEY_free(pkey);
+        @throw [[NSException alloc] initWithName:@"Fail validate cert" reason:getSslError() userInfo:nil];
     }
 
     // Load algo and encryption components
@@ -98,6 +136,7 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     if (![[NSFileManager defaultManager] createFileAtPath:p12FilePath contents:nil attributes:nil])
     {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error creating file for P12");
+        EVP_PKEY_free(pkey);
         @throw [[NSException alloc] initWithName:@"Fail getP12File" reason:@"Fail Error creating file for P12" userInfo:nil];
     }
 
@@ -109,6 +148,8 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     PKCS12_free(p12);
     fclose(p12File);
     [outputFileHandle closeFile];
+    
+    EVP_PKEY_free(pkey);
     
     // Read as NSData
     NSData *p12Data = [NSData dataWithContentsOfFile:p12FilePath];
