@@ -18,25 +18,25 @@ import CocoaAsyncSocket
 @objcMembers
 class FileTransferItem: NSObject {
     let fileHandle: FileHandle
-    let networkPackage: NetworkPackage
+    let networkPacket: NetworkPacket
     private(set) var info: FileTransferItemInfo
     let buffer = NSMutableData()
     
-    init(fileHandle: FileHandle, networkPackage: NetworkPackage) {
+    init(fileHandle: FileHandle, networkPacket: NetworkPacket) {
         self.fileHandle = fileHandle
-        self.networkPackage = networkPackage
-        guard let path = networkPackage.payloadPath else {
-            preconditionFailure("NetworkPackage missing payloadPath")
+        self.networkPacket = networkPacket
+        guard let path = networkPacket.payloadPath else {
+            preconditionFailure("NetworkPacket missing payloadPath")
         }
-        guard let name = networkPackage._Body["filename"] as? String else {
-            preconditionFailure("file transfer package missing filename")
+        guard let name = networkPacket._Body["filename"] as? String else {
+            preconditionFailure("file transfer packet missing filename")
         }
         self.info = FileTransferItemInfo(
             path: path,
             name: name,
-            creationEpoch: networkPackage._Body["creationTime"] as? Int64,
-            lastModifiedEpoch: networkPackage._Body["lastModified"] as? Int64,
-            totalBytes: networkPackage._PayloadSize == -1 ? nil : networkPackage._PayloadSize
+            creationEpoch: networkPacket._Body["creationTime"] as? Int64,
+            lastModifiedEpoch: networkPacket._Body["lastModified"] as? Int64,
+            totalBytes: networkPacket._PayloadSize == -1 ? nil : networkPacket._PayloadSize
         )
         super.init()
     }
@@ -72,7 +72,7 @@ struct FailedFileTransferItemInfo: Identifiable {
     let path: URL
     let name: String
     let error: Error
-    /// Sometimes file transfers are packaged together and we don't know
+    /// Sometimes file transfers are packetd together and we don't know
     /// exact file names, so the other related files are just a number.
     let countOtherFailedFilesInTheSameTransfer: Int
     

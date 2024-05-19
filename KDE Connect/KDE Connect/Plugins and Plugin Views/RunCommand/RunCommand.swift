@@ -27,7 +27,7 @@ import SwiftUI
     
     typealias CommandsDictionary = [String: [String: String]]
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) {
+    @objc func onDevicePacketReceived(np: NetworkPacket) {
         if (np.type == .runCommand) {
             if np.bodyHasKey("commandList") {
                 // Process the received commandList here
@@ -53,21 +53,21 @@ import SwiftUI
     }
     
     @objc func runCommand(cmdKey: String) {
-        let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
+        let np: NetworkPacket = NetworkPacket(type: .runCommandRequest)
         np.setObject(cmdKey, forKey: "key")
-        controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
+        controlDevice.send(np, tag: Int(PACKET_TAG_NORMAL))
     }
     
     @objc func requestCommandList() {
-        let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
+        let np: NetworkPacket = NetworkPacket(type: .runCommandRequest)
         np.setBool(true, forKey: "requestCommandList")
-        controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
+        controlDevice.send(np, tag: Int(PACKET_TAG_NORMAL))
     }
     
-    @objc func sendSetupPackage() {
-        let np: NetworkPackage = NetworkPackage(type: .runCommandRequest)
+    @objc func sendSetupPacket() {
+        let np: NetworkPacket = NetworkPacket(type: .runCommandRequest)
         np.setBool(true, forKey: "setup")
-        controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
+        controlDevice.send(np, tag: Int(PACKET_TAG_NORMAL))
     }
     
     private func processCommandsJSON(_ json: String) -> CommandsDictionary {

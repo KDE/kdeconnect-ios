@@ -26,7 +26,7 @@
 //
 //---------------------------------------------------------------------
 
-#import "NetworkPackage.h"
+#import "NetworkPacket.h"
 #import "Device.h"
 #import "KDE_Connect-Swift.h"
 #import "KeychainItemWrapper.h"
@@ -39,9 +39,9 @@
 __strong static NSString* _UUID;
 
 #pragma mark Implementation
-@implementation NetworkPackage
+@implementation NetworkPacket
 
-- (NetworkPackage*) initWithType:(NetworkPackageType)type
+- (NetworkPacket*) initWithType:(NetworkPacketType)type
 {
     if ((self=[super init]))
     {
@@ -57,10 +57,10 @@ __strong static NSString* _UUID;
 @synthesize _Body;
 @synthesize _PayloadSize;
 
-#pragma mark create Package
-+ (NetworkPackage *)createIdentityPackageWithTCPPort:(uint16_t)tcpPort {
-    NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypeIdentity];
-    [np setObject:[NetworkPackage getUUID] forKey:@"deviceId"];
+#pragma mark create Packet
++ (NetworkPacket *)createIdentityPacketWithTCPPort:(uint16_t)tcpPort {
+    NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypeIdentity];
+    [np setObject:[NetworkPacket getUUID] forKey:@"deviceId"];
     NSString* deviceName=[[NSUserDefaults standardUserDefaults] stringForKey:@"deviceName"];
     if (deviceName == nil) {
         deviceName=[UIDevice currentDevice].name;
@@ -73,32 +73,32 @@ __strong static NSString* _UUID;
     // TODO: Instead of @[] actually import what plugins are available, UserDefaults to store maybe?
     // For now, manually putting everything in to trick the other device to sending the iOS host the
     // identity packets so debugging is easier
-    [np setObject:@[NetworkPackageTypePing,
-                    NetworkPackageTypeShare,
-                    NetworkPackageTypeShareRequestUpdate,
-                    NetworkPackageTypeFindMyPhoneRequest,
-                    NetworkPackageTypeBatteryRequest,
-                    NetworkPackageTypeBattery,
-                    NetworkPackageTypeClipboard,
-                    NetworkPackageTypeClipboardConnect,
-                    NetworkPackageTypeRunCommand
+    [np setObject:@[NetworkPacketTypePing,
+                    NetworkPacketTypeShare,
+                    NetworkPacketTypeShareRequestUpdate,
+                    NetworkPacketTypeFindMyPhoneRequest,
+                    NetworkPacketTypeBatteryRequest,
+                    NetworkPacketTypeBattery,
+                    NetworkPacketTypeClipboard,
+                    NetworkPacketTypeClipboardConnect,
+                    NetworkPacketTypeRunCommand
                     ] forKey:@"incomingCapabilities"];
-    [np setObject:@[NetworkPackageTypePing,
-                    NetworkPackageTypeShare,
-                    NetworkPackageTypeShareRequestUpdate,
-                    NetworkPackageTypeFindMyPhoneRequest,
-                    NetworkPackageTypeBatteryRequest,
-                    NetworkPackageTypeBattery,
-                    NetworkPackageTypeClipboard,
-                    NetworkPackageTypeClipboardConnect,
-                    NetworkPackageTypeMousePadRequest,
-                    NetworkPackageTypePresenter,
-                    NetworkPackageTypeRunCommandRequest
+    [np setObject:@[NetworkPacketTypePing,
+                    NetworkPacketTypeShare,
+                    NetworkPacketTypeShareRequestUpdate,
+                    NetworkPacketTypeFindMyPhoneRequest,
+                    NetworkPacketTypeBatteryRequest,
+                    NetworkPacketTypeBattery,
+                    NetworkPacketTypeClipboard,
+                    NetworkPacketTypeClipboardConnect,
+                    NetworkPacketTypeMousePadRequest,
+                    NetworkPacketTypePresenter,
+                    NetworkPacketTypeRunCommandRequest
                     ] forKey:@"outgoingCapabilities"];
     
-    if ([[SelfDeviceData shared] isDebuggingNetworkPackage]) {
-        [np setObject:[NetworkPackage allPackageTypes] forKey:@"incomingCapabilities"];
-        [np setObject:[NetworkPackage allPackageTypes] forKey:@"outgoingCapabilities"];
+    if ([[SelfDeviceData shared] isDebuggingNetworkPacket]) {
+        [np setObject:[NetworkPacket allPacketTypes] forKey:@"incomingCapabilities"];
+        [np setObject:[NetworkPacket allPacketTypes] forKey:@"outgoingCapabilities"];
     }
     
     // FIXME: Remove object
@@ -130,7 +130,7 @@ __strong static NSString* _UUID;
     os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                     NSStringFromClass([self class]).UTF8String);
     os_log_type_t debugLogLevel;
-    if ([[SelfDeviceData shared] isDebuggingNetworkPackage]) {
+    if ([[SelfDeviceData shared] isDebuggingNetworkPacket]) {
         debugLogLevel = OS_LOG_TYPE_INFO;
     } else {
         debugLogLevel = OS_LOG_TYPE_DEBUG;
@@ -139,9 +139,9 @@ __strong static NSString* _UUID;
     return _UUID;
 }
 
-+ (NetworkPackage*) createPairPackage
++ (NetworkPacket*) createPairPacket
 {
-    NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypePair];
+    NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypePair];
     [np setBool:YES forKey:@"pair"];
 
     return np;
@@ -224,9 +224,9 @@ __strong static NSString* _UUID;
     return jsonData;
 }
 
-+ (NetworkPackage*) unserialize:(NSData*)data
++ (NetworkPacket*) unserialize:(NSData*)data
 {
-    NetworkPackage* np=[[NetworkPackage alloc] init];
+    NetworkPacket* np=[[NetworkPacket alloc] init];
     NSError* err=nil;
     NSDictionary* info=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
 
@@ -256,35 +256,35 @@ __strong static NSString* _UUID;
 
 @end
 
-#pragma mark - Package Types
+#pragma mark - Packet Types
 
-NetworkPackageType const NetworkPackageTypeIdentity                 = @"kdeconnect.identity";
-NetworkPackageType const NetworkPackageTypeEncrypted                = @"kdeconnect.encrypted";
-NetworkPackageType const NetworkPackageTypePair                     = @"kdeconnect.pair";
-NetworkPackageType const NetworkPackageTypePing                     = @"kdeconnect.ping";
+NetworkPacketType const NetworkPacketTypeIdentity                 = @"kdeconnect.identity";
+NetworkPacketType const NetworkPacketTypeEncrypted                = @"kdeconnect.encrypted";
+NetworkPacketType const NetworkPacketTypePair                     = @"kdeconnect.pair";
+NetworkPacketType const NetworkPacketTypePing                     = @"kdeconnect.ping";
 
-NetworkPackageType const NetworkPackageTypeMPRIS                    = @"kdeconnect.mpris";
+NetworkPacketType const NetworkPacketTypeMPRIS                    = @"kdeconnect.mpris";
 
-NetworkPackageType const NetworkPackageTypeShare                    = @"kdeconnect.share.request";
-NetworkPackageType const NetworkPackageTypeShareRequestUpdate       = @"kdeconnect.share.request.update";
-NetworkPackageType const NetworkPackageTypeShareInternal            = @"kdeconnect.share";
+NetworkPacketType const NetworkPacketTypeShare                    = @"kdeconnect.share.request";
+NetworkPacketType const NetworkPacketTypeShareRequestUpdate       = @"kdeconnect.share.request.update";
+NetworkPacketType const NetworkPacketTypeShareInternal            = @"kdeconnect.share";
 
-NetworkPackageType const NetworkPackageTypeClipboard                = @"kdeconnect.clipboard";
-NetworkPackageType const NetworkPackageTypeClipboardConnect         = @"kdeconnect.clipboard.connect";
+NetworkPacketType const NetworkPacketTypeClipboard                = @"kdeconnect.clipboard";
+NetworkPacketType const NetworkPacketTypeClipboardConnect         = @"kdeconnect.clipboard.connect";
 
-NetworkPackageType const NetworkPackageTypeBattery                  = @"kdeconnect.battery";
-NetworkPackageType const NetworkPackageTypeCalendar                 = @"kdeconnect.calendar";
-// NetworkPackageType const NetworkPackageTypeReminder                 = @"kdeconnect.reminder";
-NetworkPackageType const NetworkPackageTypeContact                  = @"kdeconnect.contact";
+NetworkPacketType const NetworkPacketTypeBattery                  = @"kdeconnect.battery";
+NetworkPacketType const NetworkPacketTypeCalendar                 = @"kdeconnect.calendar";
+// NetworkPacketType const NetworkPacketTypeReminder                 = @"kdeconnect.reminder";
+NetworkPacketType const NetworkPacketTypeContact                  = @"kdeconnect.contact";
 
-NetworkPackageType const NetworkPackageTypeBatteryRequest           = @"kdeconnect.battery.request";
-NetworkPackageType const NetworkPackageTypeFindMyPhoneRequest       = @"kdeconnect.findmyphone.request";
+NetworkPacketType const NetworkPacketTypeBatteryRequest           = @"kdeconnect.battery.request";
+NetworkPacketType const NetworkPacketTypeFindMyPhoneRequest       = @"kdeconnect.findmyphone.request";
 
-NetworkPackageType const NetworkPackageTypeMousePadRequest          = @"kdeconnect.mousepad.request";
-NetworkPackageType const NetworkPackageTypeMousePadKeyboardState    = @"kdeconnect.mousepad.keyboardstate";
-NetworkPackageType const NetworkPackageTypeMousePadEcho             = @"kdeconnect.mousepad.echo";
+NetworkPacketType const NetworkPacketTypeMousePadRequest          = @"kdeconnect.mousepad.request";
+NetworkPacketType const NetworkPacketTypeMousePadKeyboardState    = @"kdeconnect.mousepad.keyboardstate";
+NetworkPacketType const NetworkPacketTypeMousePadEcho             = @"kdeconnect.mousepad.echo";
 
-NetworkPackageType const NetworkPackageTypePresenter                = @"kdeconnect.presenter";
+NetworkPacketType const NetworkPacketTypePresenter                = @"kdeconnect.presenter";
 
-NetworkPackageType const NetworkPackageTypeRunCommandRequest        = @"kdeconnect.runcommand.request";
-NetworkPackageType const NetworkPackageTypeRunCommand               = @"kdeconnect.runcommand";
+NetworkPacketType const NetworkPacketTypeRunCommandRequest        = @"kdeconnect.runcommand.request";
+NetworkPacketType const NetworkPacketTypeRunCommand               = @"kdeconnect.runcommand";

@@ -27,7 +27,7 @@
 //----------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NetworkPackage.h"
+#import "NetworkPacket.h"
 #import "BaseLink.h"
 #import "LinkProviderDelegate.h"
 

@@ -97,7 +97,7 @@ struct DeviceDetailPluginSettingsView: View {
         // Swift & Objective-C inter-op issue:
         // Objective-C can't have BOOL in Dictionary
         // swiftlint:disable:next force_cast
-        let fetchedDictionary = backgroundService.devices[detailsDeviceId]!._pluginsEnableStatus as! [NetworkPackage.`Type`: Bool]
+        let fetchedDictionary = backgroundService.devices[detailsDeviceId]!._pluginsEnableStatus as! [NetworkPacket.`Type`: Bool]
         withAnimation {
             isPingEnabled = fetchedDictionary[.ping] ?? true
             isShareEnabled = fetchedDictionary[.share] ?? true

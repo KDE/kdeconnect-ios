@@ -12,7 +12,7 @@
 		1499A8DB2698BF0F00FDF493 /* LanLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D52698BF0F00FDF493 /* LanLink.m */; };
 		1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D82698BF0F00FDF493 /* BaseLink.m */; };
 		1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8D92698BF0F00FDF493 /* BaseLinkProvider.m */; };
-		1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E02698BF6900FDF493 /* NetworkPackage.m */; };
+		1499A8E22698BF6900FDF493 /* NetworkPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E02698BF6900FDF493 /* NetworkPacket.m */; };
 		1499A8E72698BFF300FDF493 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E32698BFF300FDF493 /* Device.m */; };
 		1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499A8E62698BFF300FDF493 /* KeychainItemWrapper.m */; };
 		14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */; };
@@ -84,8 +84,8 @@
 		D28C94CE27D1CDB6002EBC2D /* OSLogEntryLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */; };
 		D28C94D127D1CEB9002EBC2D /* OSLog+KDE Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28C94D027D1CEB9002EBC2D /* OSLog+KDE Connect.swift */; };
 		D2916A4227C98BC200EF0714 /* SetupForUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2916A4127C98BC200EF0714 /* SetupForUITests.swift */; };
-		D298D96927D2C8810053F65B /* NetworkPackage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */; };
-		D298D96B27D2C91F0053F65B /* NetworkPackageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */; };
+		D298D96927D2C8810053F65B /* NetworkPacket+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96827D2C8810053F65B /* NetworkPacket+Extensions.swift */; };
+		D298D96B27D2C91F0053F65B /* NetworkPacketComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298D96A27D2C91F0053F65B /* NetworkPacketComposer.swift */; };
 		D2A8720E282C95D700DE980E /* DeviceDiscoveryHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */; };
 		D2D0A89C27688B5500CA9B13 /* MediaPicker in Frameworks */ = {isa = PBXBuildFile; productRef = D2D0A89B27688B5500CA9B13 /* MediaPicker */; };
 		D2E60C3F29FD156C00502F07 /* FileTransferStatusOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E60C3E29FD156C00502F07 /* FileTransferStatusOverview.swift */; };
@@ -123,8 +123,8 @@
 		1499A8D72698BF0F00FDF493 /* BaseLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLink.h; sourceTree = "<group>"; };
 		1499A8D82698BF0F00FDF493 /* BaseLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLink.m; sourceTree = "<group>"; };
 		1499A8D92698BF0F00FDF493 /* BaseLinkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLinkProvider.m; sourceTree = "<group>"; };
-		1499A8DF2698BF6900FDF493 /* NetworkPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPackage.h; sourceTree = "<group>"; };
-		1499A8E02698BF6900FDF493 /* NetworkPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPackage.m; sourceTree = "<group>"; };
+		1499A8DF2698BF6900FDF493 /* NetworkPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPacket.h; sourceTree = "<group>"; };
+		1499A8E02698BF6900FDF493 /* NetworkPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPacket.m; sourceTree = "<group>"; };
 		1499A8E32698BFF300FDF493 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
 		1499A8E42698BFF300FDF493 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		1499A8E52698BFF300FDF493 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 		D28C94CD27D1CDB6002EBC2D /* OSLogEntryLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogEntryLogView.swift; sourceTree = "<group>"; };
 		D28C94D027D1CEB9002EBC2D /* OSLog+KDE Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+KDE Connect.swift"; sourceTree = "<group>"; };
 		D2916A4127C98BC200EF0714 /* SetupForUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupForUITests.swift; sourceTree = "<group>"; };
-		D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkPackage+Extensions.swift"; sourceTree = "<group>"; };
-		D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPackageComposer.swift; sourceTree = "<group>"; };
+		D298D96827D2C8810053F65B /* NetworkPacket+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkPacket+Extensions.swift"; sourceTree = "<group>"; };
+		D298D96A27D2C91F0053F65B /* NetworkPacketComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPacketComposer.swift; sourceTree = "<group>"; };
 		D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryHelp.swift; sourceTree = "<group>"; };
 		D2DC60F429B0B01A001F7CB9 /* LinkProviderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkProviderDelegate.h; sourceTree = "<group>"; };
 		D2E60C3E29FD156C00502F07 /* FileTransferStatusOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferStatusOverview.swift; sourceTree = "<group>"; };
@@ -279,8 +279,8 @@
 			children = (
 				1499A8E52698BFF300FDF493 /* Device.h */,
 				1499A8E32698BFF300FDF493 /* Device.m */,
-				1499A8DF2698BF6900FDF493 /* NetworkPackage.h */,
-				1499A8E02698BF6900FDF493 /* NetworkPackage.m */,
+				1499A8DF2698BF6900FDF493 /* NetworkPacket.h */,
+				1499A8E02698BF6900FDF493 /* NetworkPacket.m */,
 				A0BECF6426C0ED890037E299 /* BackgroundService.h */,
 				A0BECF6526C0EDD10037E299 /* BackgroundService.m */,
 				14B95A2A272ED7C8003F3B01 /* CertificateServiceHelper.m */,
@@ -556,7 +556,7 @@
 		D28C94C827D1CA87002EBC2D /* Developer */ = {
 			isa = PBXGroup;
 			children = (
-				D298D96727D2C8640053F65B /* NetworkPackage */,
+				D298D96727D2C8640053F65B /* NetworkPacket */,
 				D28C94CF27D1CDE2002EBC2D /* OSLog */,
 				D2916A4027C98B9800EF0714 /* UITests */,
 			);
@@ -583,13 +583,13 @@
 			path = UITests;
 			sourceTree = "<group>";
 		};
-		D298D96727D2C8640053F65B /* NetworkPackage */ = {
+		D298D96727D2C8640053F65B /* NetworkPacket */ = {
 			isa = PBXGroup;
 			children = (
-				D298D96827D2C8810053F65B /* NetworkPackage+Extensions.swift */,
-				D298D96A27D2C91F0053F65B /* NetworkPackageComposer.swift */,
+				D298D96827D2C8810053F65B /* NetworkPacket+Extensions.swift */,
+				D298D96A27D2C91F0053F65B /* NetworkPacketComposer.swift */,
 			);
-			path = NetworkPackage;
+			path = NetworkPacket;
 			sourceTree = "<group>";
 		};
 		D2FBA1F7277179A300EBA686 /* Frameworks */ = {
@@ -760,7 +760,7 @@
 			files = (
 				1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */,
 				1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */,
-				1499A8E22698BF6900FDF493 /* NetworkPackage.m in Sources */,
+				1499A8E22698BF6900FDF493 /* NetworkPacket.m in Sources */,
 				DB8E559E2815961200101059 /* iOS14+FocusState.swift in Sources */,
 				A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */,
 				A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */,
@@ -785,7 +785,7 @@
 				A09CFCDF2737195E007008A6 /* View+iOS14Compatibility.swift in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
 				D2423C3C29148B0200616D70 /* FileTransferStatusSection.swift in Sources */,
-				D298D96B27D2C91F0053F65B /* NetworkPackageComposer.swift in Sources */,
+				D298D96B27D2C91F0053F65B /* NetworkPacketComposer.swift in Sources */,
 				A0D8CBD526EF1A4700791D07 /* SettingsAdvancedView.swift in Sources */,
 				D28C94CA27D1CAAA002EBC2D /* OSLogManager.swift in Sources */,
 				D20ABB0B29A4A04E006F277B /* FileTransferItem.swift in Sources */,
@@ -826,7 +826,7 @@
 				53A0A1D4283ED43200C7C473 /* DeviceType+Extensions.swift in Sources */,
 				A0CA112526F3CF66006F6EAC /* CommandEntry.swift in Sources */,
 				53A0A1D6283ED49E00C7C473 /* Device+Extensions.swift in Sources */,
-				D298D96927D2C8810053F65B /* NetworkPackage+Extensions.swift in Sources */,
+				D298D96927D2C8810053F65B /* NetworkPacket+Extensions.swift in Sources */,
 				A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */,
 				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,
 				D2916A4227C98BC200EF0714 /* SetupForUITests.swift in Sources */,

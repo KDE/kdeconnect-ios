@@ -23,7 +23,7 @@ import UIKit
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) {
+    @objc func onDevicePacketReceived(np: NetworkPacket) {
         if (np.type == .clipboard || np.type == .clipboardConnect) {
             if (np.object(forKey: "content") != nil) {
                 if (np.type == .clipboard) {
@@ -49,10 +49,10 @@ import UIKit
     // FIXME: unused function
     func connectClipboardContent() {
         if let clipboardContent = UIPasteboard.general.string {
-            let np = NetworkPackage(type: .clipboardConnect)
+            let np = NetworkPacket(type: .clipboardConnect)
             np.setObject(clipboardContent, forKey: "content")
             np.setInteger(Self.lastLocalClipboardUpdateTimestamp, forKey: "timestamp")
-            controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
+            controlDevice.send(np, tag: Int(PACKET_TAG_CLIPBOARD))
         } else {
             logger.info("Attempt to connect local clipboard content with remote device returned nil")
         }
@@ -60,9 +60,9 @@ import UIKit
     
     func sendClipboardContentOut() {
         if let clipboardContent = UIPasteboard.general.string {
-            let np = NetworkPackage(type: .clipboard)
+            let np = NetworkPacket(type: .clipboard)
             np.setObject(clipboardContent, forKey: "content")
-            controlDevice.send(np, tag: Int(PACKAGE_TAG_CLIPBOARD))
+            controlDevice.send(np, tag: Int(PACKET_TAG_CLIPBOARD))
         } else {
             logger.info("Attempt to grab and update local clipboard content returned nil")
         }

@@ -114,7 +114,7 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
     }
 
     private func processBrowserResults(_ results: Set<NWBrowser.Result>) {
-        let ownDeviceId = NetworkPackage.getUUID()
+        let ownDeviceId = NetworkPacket.getUUID()
         for result in results {
             if case let .service(name: name, type: _, domain: _, interface: _) = result.endpoint {
                 if name == ownDeviceId {
@@ -127,7 +127,7 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
                     switch state {
                     case .ready:
                         Self.logger.info("MDNS sending identity packet to \(result.endpoint.debugDescription)")
-                        let np = NetworkPackage.createIdentityPackage(withTCPPort: self.tcpPort)
+                        let np = NetworkPacket.createIdentityPacket(withTCPPort: self.tcpPort)
                         let data = np.serialize()
                         connection.send(content: data, completion: .contentProcessed { error in
                             if (error != nil) {
@@ -160,12 +160,12 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
         let protocolVersion: Int
 
         fileprivate static func getDeviceInfo() -> Self {
-            let package = NetworkPackage.createIdentityPackage(withTCPPort: 0)
+            let packet = NetworkPacket.createIdentityPacket(withTCPPort: 0)
             return Self(
-                id: package.object(forKey: "deviceId") as! String,
-                name: package.object(forKey: "deviceName") as! String,
-                type: package.object(forKey: "deviceType") as! String,
-                protocolVersion: package.integer(forKey: "protocolVersion")
+                id: packet.object(forKey: "deviceId") as! String,
+                name: packet.object(forKey: "deviceName") as! String,
+                type: packet.object(forKey: "deviceType") as! String,
+                protocolVersion: packet.integer(forKey: "protocolVersion")
             )
         }
 

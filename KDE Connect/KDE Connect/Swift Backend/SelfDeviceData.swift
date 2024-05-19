@@ -73,7 +73,7 @@ class SelfDeviceData: NSObject, ObservableObject {
     @objc
     @Published var isDebuggingDiscovery: Bool
     @objc
-    @Published var isDebuggingNetworkPackage: Bool
+    @Published var isDebuggingNetworkPacket: Bool
     
     private override init() {
         UserDefaults.standard.register(defaults: [
@@ -91,11 +91,11 @@ class SelfDeviceData: NSObject, ObservableObject {
         let launchArguments = Set(ProcessInfo.processInfo.arguments)
         self.isDebugging = launchArguments.contains("isDebugging")
         self.isDebuggingDiscovery = launchArguments.contains("isDebuggingDiscovery")
-        self.isDebuggingNetworkPackage = launchArguments.contains("isDebuggingNetworkPackage")
+        self.isDebuggingNetworkPacket = launchArguments.contains("isDebuggingNetworkPacket")
         #else
         self.isDebugging = false
         self.isDebuggingDiscovery = false
-        self.isDebuggingNetworkPackage = false
+        self.isDebuggingNetworkPacket = false
         #endif
         super.init()
     }

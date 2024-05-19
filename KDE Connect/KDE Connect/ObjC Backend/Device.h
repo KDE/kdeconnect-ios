@@ -29,12 +29,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseLink.h"
-#import "NetworkPackage.h"
+#import "NetworkPacket.h"
 #import "UIKit/UIKit.h"
 //#import "deviceDelegate.h"
 //#import "BackgroundService.h"
 @class BaseLink;
-@class NetworkPackage;
+@class NetworkPacket;
 @protocol Plugin;
 //@class Ping;
 //@class Share;
@@ -73,7 +73,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 @property(readonly, nonatomic) NSArray<NSString *> *_outgoingCapabilities;
 
 @property(nonatomic) NSMutableArray* _links;
-@property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPackageType, id<Plugin>> *plugins;
+@property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPacketType, id<Plugin>> *plugins;
 @property(nonatomic) NSMutableArray* _failedPlugins;
 
 @property(nonatomic, copy) NSString* _SHA256HashFormatted;
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 //@property(readonly,nonatomic) BOOL _testDevice;
 
 // Plugin enable status
-@property(nonatomic, setter=setPluginsEnableStatus:) NSDictionary<NetworkPackageType, NSNumber *> *pluginsEnableStatus;
+@property(nonatomic, setter=setPluginsEnableStatus:) NSDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus;
 
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
 // data only and are therefore NOT stored persistently
@@ -104,17 +104,17 @@ typedef NS_ENUM(NSUInteger, DeviceType)
       outgoingCapabilities:(NSArray<NSString *> *)outgoingCapabilities
            protocolVersion:(NSInteger)protocolVersion
             deviceDelegate:(id<DeviceDelegate>)deviceDelegate;
-- (instancetype)initWithNetworkPackage:(NetworkPackage *)np
+- (instancetype)initWithNetworkPacket:(NetworkPacket *)np
                                   link:(BaseLink*)link
                               delegate:(id<DeviceDelegate>)deviceDelegate;
 - (NSInteger) compareProtocolVersion;
 
 #pragma mark Link-related Functions
-- (void)updateInfoWithNetworkPackage:(NetworkPackage *)np;
+- (void)updateInfoWithNetworkPacket:(NetworkPacket *)np;
 - (void)addLink:(BaseLink *)link;
-- (void)onPackageReceived:(NetworkPackage *)np;
+- (void)onPacketReceived:(NetworkPacket *)np;
 - (void)onLinkDestroyed:(BaseLink *)link;
-- (BOOL)sendPackage:(NetworkPackage *)np tag:(long)tag;
+- (BOOL)sendPacket:(NetworkPacket *)np tag:(long)tag;
 - (BOOL)isReachable;
 
 #pragma mark Pairing-related Functions

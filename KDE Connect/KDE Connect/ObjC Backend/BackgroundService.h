@@ -31,7 +31,7 @@
 #import "BaseLink.h"
 #import "BaseLinkProvider.h"
 #import "Device.h"
-#import "NetworkPackage.h"
+#import "NetworkPacket.h"
 //#import "PluginFactory.h"
 //#import "deviceDelegate.h"
 //#import "KDE_Connect-Swift.h"

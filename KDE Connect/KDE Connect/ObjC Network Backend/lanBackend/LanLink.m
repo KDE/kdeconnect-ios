@@ -45,7 +45,7 @@
 }
 
 @property(nonatomic) GCDAsyncSocket* _socket;
-@property(nonatomic) NetworkPackage* _pendingPairNP;
+@property(nonatomic) NetworkPacket* _pendingPairNP;
 
 // Lock using _socketsForIncomingPayload
 @property(nonatomic) NSMutableArray<GCDAsyncSocket *> *socketsForIncomingPayload;
@@ -97,7 +97,7 @@ certificateService:(CertificateService*)certificateService
 }
 
 - (os_log_type_t)debugLogLevel {
-    if ([SelfDeviceData shared].isDebuggingNetworkPackage) {
+    if ([SelfDeviceData shared].isDebuggingNetworkPacket) {
         return OS_LOG_TYPE_INFO;
     }
     return OS_LOG_TYPE_DEBUG;
@@ -122,16 +122,16 @@ certificateService:(CertificateService*)certificateService
     // The ownership of SecIdentityRef is in CertificateService
 }
 
-- (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag
+- (BOOL) sendPacket:(NetworkPacket *)np tag:(long)tag
 {
-    os_log_with_type(logger, self.debugLogLevel, "llink send package");
+    os_log_with_type(logger, self.debugLogLevel, "llink send packet");
     if (![_socket isConnected]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%@ disconnected", _deviceId);
         return NO;
     }
     
     // If sharing file, start file sharing procedure
-    if (np.payloadPath != nil && np.type == NetworkPackageTypeShare) {
+    if (np.payloadPath != nil && np.type == NetworkPacketTypeShare) {
         [np.payloadPath startAccessingSecurityScopedResource];
         NSError *error;
         NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:np.payloadPath
@@ -142,8 +142,8 @@ certificateService:(CertificateService*)certificateService
                              [np objectForKey:@"filename"],
                              error);
             [np.payloadPath stopAccessingSecurityScopedResource];
-            [self.linkDelegate onPackage:np
-                      sendWithPackageTag:PACKAGE_TAG_PAYLOAD
+            [self.linkDelegate onPacket:np
+                      sendWithPacketTag:PACKET_TAG_PAYLOAD
                          failedWithError:error];
             return NO;
         }
@@ -158,8 +158,8 @@ certificateService:(CertificateService*)certificateService
                     os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                                      "Error binding payload port: %{public}@",
                                      error);
-                    [self.linkDelegate onPackage:np
-                              sendWithPackageTag:PACKAGE_TAG_PAYLOAD
+                    [self.linkDelegate onPacket:np
+                              sendWithPacketTag:PACKET_TAG_PAYLOAD
                                  failedWithError:error];
                     return NO;
                 } else {
@@ -176,7 +176,7 @@ certificateService:(CertificateService*)certificateService
         
         @synchronized (_socketsForOutgoingPayload) {
             KDEFileTransferItem *item = [[KDEFileTransferItem alloc] initWithFileHandle:handle
-                                                                         networkPackage:np];
+                                                                         networkPacket:np];
             [_pendingOutgoingItems addObject:item];
         }
     }
@@ -199,7 +199,7 @@ certificateService:(CertificateService*)certificateService
     os_log_with_type(logger, OS_LOG_TYPE_INFO,
                      "new lan link socket for device:%{mask.hash}@ configured",
                      _deviceId);
-    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
+    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKET_TAG_NORMAL];
 }
 
 - (void) disconnect
@@ -274,12 +274,12 @@ certificateService:(CertificateService*)certificateService
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
     // If the data received has a payload tag (indicating that it is a payload, e.g file transferred
-    // from the Share plugin, prepare a NetworkPackage with the payload in it and give it to the
+    // from the Share plugin, prepare a NetworkPacket with the payload in it and give it to the
     // Plugins to handle it
     os_log_with_type(logger, self.debugLogLevel,
-                     "Package received with tag: %{public}@",
-                     [NetworkPackage descriptionFor: tag]);
-    if (tag==PACKAGE_TAG_PAYLOAD) {
+                     "Packet received with tag: %{public}@",
+                     [NetworkPacket descriptionFor: tag]);
+    if (tag==PACKET_TAG_PAYLOAD) {
         NSUInteger readLength = data.length;
         [self writeReceivedChunk:data for:sock];
         KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
@@ -292,8 +292,8 @@ certificateService:(CertificateService*)certificateService
     }
     
     os_log_with_type(logger, self.debugLogLevel, "llink did read data");
-    // BUG even if we read with a separator LFData, it's still possible to receive several data package together. So we split the string and retrieve the package
-    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKAGE_TAG_NORMAL];
+    // BUG even if we read with a separator LFData, it's still possible to receive several data packet together. So we split the string and retrieve the packet
+    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKET_TAG_NORMAL];
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "Received: %{public}@", jsonStr);
     [self readThroughLatestPackets:sock :jsonStr];
@@ -305,12 +305,12 @@ certificateService:(CertificateService*)certificateService
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     os_log_with_type(logger, self.debugLogLevel,
                      "llink didWriteData for tag %{public}@",
-                     [NetworkPackage descriptionFor:tag]);
-    if (tag == PACKAGE_TAG_PAYLOAD) {
+                     [NetworkPacket descriptionFor:tag]);
+    if (tag == PACKET_TAG_PAYLOAD) {
         [self sendPayloadWithSocket:sock];
         return;
     }
-    [self.linkDelegate onPackage:_socket.userData sentWithPackageTag:tag];
+    [self.linkDelegate onPacket:_socket.userData sentWithPacketTag:tag];
 }
 
 /**
@@ -477,7 +477,7 @@ certificateService:(CertificateService*)certificateService
     dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, 0);
     t=dispatch_time(t, PAYLOAD_SEND_DELAY*NSEC_PER_MSEC);
     dispatch_after(t,_socketQueue, ^(void){
-        [sock writeData:chunk withTimeout:-1 tag:PACKAGE_TAG_PAYLOAD];
+        [sock writeData:chunk withTimeout:-1 tag:PACKET_TAG_PAYLOAD];
     });
 }
 
@@ -487,21 +487,21 @@ certificateService:(CertificateService*)certificateService
         [_socketsForOutgoingPayload removeObject:sock];
     }
     KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
-    NetworkPackage *np = item.networkPackage;
+    NetworkPacket *np = item.networkPacket;
     [item.fileHandle closeAndReturnError:nil];
     [np.payloadPath stopAccessingSecurityScopedResource];
     if (error) {
-        [self.linkDelegate onPackage:np
-                  sendWithPackageTag:PACKAGE_TAG_PAYLOAD
+        [self.linkDelegate onPacket:np
+                  sendWithPacketTag:PACKET_TAG_PAYLOAD
                      failedWithError:error];
     } else {
-        [self.linkDelegate onPackage:np sentWithPackageTag:PACKAGE_TAG_PAYLOAD];
+        [self.linkDelegate onPacket:np sentWithPacketTag:PACKET_TAG_PAYLOAD];
     }
 }
 
 #pragma mark - Receiving Payloads for Share Plugin
 
-- (void)createSocketForReceivingPayloadOfNP:(NetworkPackage *)np incomingFromHost:(NSString *)host {
+- (void)createSocketForReceivingPayloadOfNP:(NetworkPacket *)np incomingFromHost:(NSString *)host {
     // Create file handle for writing data chunk by chunk to temporary file
     NSError *errorGettingDefaultDestination;
     NSURL *destinationDirectory = [NSURL defaultDestinationDirectoryAndReturnError:&errorGettingDefaultDestination];
@@ -547,7 +547,7 @@ certificateService:(CertificateService*)certificateService
     GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
     
     KDEFileTransferItem *item = [[KDEFileTransferItem alloc] initWithFileHandle:handle
-                                                                 networkPackage:np];
+                                                                 networkPacket:np];
     socket.userData = item;
     @synchronized(_socketsForIncomingPayload){
         [_socketsForIncomingPayload addObject:socket];
@@ -581,9 +581,9 @@ certificateService:(CertificateService*)certificateService
         os_log_with_type(logger, self.debugLogLevel,
                          "Reading from socket %{public}@ %ld bytes",
                          sock, length);
-        [sock readDataToLength:length withTimeout:-1 tag:PACKAGE_TAG_PAYLOAD];
+        [sock readDataToLength:length withTimeout:-1 tag:PACKET_TAG_PAYLOAD];
     } else {
-        [sock readDataWithTimeout:-1 buffer:item.buffer bufferOffset:0 maxLength:CHUNK_SIZE tag:PACKAGE_TAG_PAYLOAD];
+        [sock readDataWithTimeout:-1 buffer:item.buffer bufferOffset:0 maxLength:CHUNK_SIZE tag:PACKET_TAG_PAYLOAD];
     }
 }
 
@@ -622,9 +622,9 @@ certificateService:(CertificateService*)certificateService
                                deleteTemporaryFile:NO];
     }
     KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
-    NetworkPackage *np = item.networkPackage;
-    np.type = NetworkPackageTypeShare;
-    [self.linkDelegate onPackageReceived:np];
+    NetworkPacket *np = item.networkPacket;
+    np.type = NetworkPacketTypeShare;
+    [self.linkDelegate onPacketReceived:np];
 }
 
 - (void)removeIncomingPayloadReceivingSocket:(GCDAsyncSocket *)sock
@@ -633,7 +633,7 @@ certificateService:(CertificateService*)certificateService
         [_socketsForIncomingPayload removeObject:sock];
     }
     KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
-    NetworkPackage *np = item.networkPackage;
+    NetworkPacket *np = item.networkPacket;
     [item.fileHandle closeAndReturnError:nil];
     NSURL *url = np.payloadPath;
     if (deleteTemporaryFile) {
@@ -650,17 +650,17 @@ certificateService:(CertificateService*)certificateService
 #pragma mark - Others
 
 - (void)readThroughLatestPackets:(GCDAsyncSocket *)sock : (NSString *) jsonStr {
-    NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
-    for (NSString* dataStr in packageArray) {
+    NSArray* packetArray=[jsonStr componentsSeparatedByString:@"\n"];
+    for (NSString* dataStr in packetArray) {
         if ([dataStr length] > 0) {
-            NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
+            NetworkPacket* np=[NetworkPacket unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
             if (self.linkDelegate && np) {
                 os_log_with_type(logger, self.debugLogLevel, "llink did read data:\n%{public}@",dataStr);
-                if ([np.type isEqualToString:NetworkPackageTypePair]) {
+                if ([np.type isEqualToString:NetworkPacketTypePair]) {
                     _pendingPairNP=np;
                 }
                 // If contains transfer info, connect to remote using a new socket to transfer payload
-                // Note: Ubuntu 20.04 sends `payloadSize` and (empty) `payloadTransferInfo` for all packages.
+                // Note: Ubuntu 20.04 sends `payloadSize` and (empty) `payloadTransferInfo` for all packets.
                 if ([np payloadTransferInfo] && [[np payloadTransferInfo] objectForKey:@"port"]) {
                     // "If that field is not set it should generate a filename."
                     // https://invent.kde.org/network/kdeconnect-kde/-/blob/master/plugins/share/README
@@ -672,7 +672,7 @@ certificateService:(CertificateService*)certificateService
                     [self createSocketForReceivingPayloadOfNP:np
                                              incomingFromHost:[sock connectedHost]];
                 } else {
-                    [self.linkDelegate onPackageReceived:np];
+                    [self.linkDelegate onPacketReceived:np];
                 }
             }
         }

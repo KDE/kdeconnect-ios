@@ -28,7 +28,7 @@
 //----------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NetworkPackage.h"
+#import "NetworkPacket.h"
 #import "LinkDelegate.h"
 
 @interface BaseLink : NSObject
@@ -38,7 +38,7 @@
 //@property(nonatomic) SecKeyRef _publicKey;
 
 - (BaseLink *)init:(NSString *)deviceId setDelegate:(id<LinkDelegate>)linkDelegate;
-- (BOOL) sendPackage:(NetworkPackage*)np tag:(long)tag;
+- (BOOL) sendPacket:(NetworkPacket*)np tag:(long)tag;
 - (void) disconnect;
 
 @end;

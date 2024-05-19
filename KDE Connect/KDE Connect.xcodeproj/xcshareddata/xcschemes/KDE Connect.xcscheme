@@ -80,7 +80,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "isDebuggingNetworkPackage"
+            argument = "isDebuggingNetworkPacket"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument

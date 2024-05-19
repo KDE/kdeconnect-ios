@@ -37,10 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol LinkDelegate <NSObject>
 @optional
-- (void)onPackageReceived:(NetworkPackage *)np;
+- (void)onPacketReceived:(NetworkPacket *)np;
 - (void)onSendingPayload:(KDEFileTransferItem *)payload;
-- (void)onPackage:(NetworkPackage *)np sentWithPackageTag:(long)tag;
-- (void)onPackage:(NetworkPackage *)np sendWithPackageTag:(long)tag
+- (void)onPacket:(NetworkPacket *)np sentWithPacketTag:(long)tag;
+- (void)onPacket:(NetworkPacket *)np sendWithPacketTag:(long)tag
   failedWithError:(NSError *)error;
 - (void)willReceivePayload:(KDEFileTransferItem *)payload
   totalNumOfFilesToReceive:(long)numberOfFiles;

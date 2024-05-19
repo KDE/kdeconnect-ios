@@ -96,9 +96,9 @@ struct SettingsAdvancedView: View {
                         }
                     }
                     NavigationLink {
-                        NetworkPackageComposer()
+                        NetworkPacketComposer()
                     } label: {
-                        Label("Network Package Composer", systemImage: "network")
+                        Label("Network Packet Composer", systemImage: "network")
                     }
                 } header: {
                     Text("Developer")

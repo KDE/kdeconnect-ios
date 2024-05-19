@@ -42,7 +42,7 @@ import CryptoKit
     @objc func getHostIdentityFromKeychain() -> SecIdentity? {
         let keychainItemQuery: CFDictionary = [
             kSecClass: kSecClassIdentity,
-            kSecAttrLabel: NetworkPackage.getUUID() as Any,
+            kSecAttrLabel: NetworkPacket.getUUID() as Any,
             kSecReturnRef: true,
         ] as CFDictionary
         var identityApp: AnyObject? = nil
@@ -53,7 +53,7 @@ import CryptoKit
             // swiftlint:disable:next force_cast
             return (identityApp as! SecIdentity)
         }
-        if generateSecIdentityForUUID(NetworkPackage.getUUID()) == noErr {
+        if generateSecIdentityForUUID(NetworkPacket.getUUID()) == noErr {
             // Refetch
             SecItemCopyMatching(keychainItemQuery, &identityApp)
             if let identityApp = identityApp {
@@ -105,7 +105,7 @@ import CryptoKit
     // @discardableResult
     @objc func deleteHostCertificateFromKeychain() -> OSStatus {
         let keychainItemQuery: CFDictionary = [
-            kSecAttrLabel: NetworkPackage.getUUID() as Any,
+            kSecAttrLabel: NetworkPacket.getUUID() as Any,
             kSecClass: kSecClassIdentity,
         ] as CFDictionary
         return SecItemDelete(keychainItemQuery)

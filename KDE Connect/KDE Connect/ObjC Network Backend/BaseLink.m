@@ -42,7 +42,7 @@
     return self;
 }
 
-- (BOOL) sendPackage:(NetworkPackage*)np tag:(long)tag
+- (BOOL) sendPacket:(NetworkPacket*)np tag:(long)tag
 {
     return NO;
 }

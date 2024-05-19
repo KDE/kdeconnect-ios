@@ -56,7 +56,7 @@ extension Notification.Name {
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) {
+    @objc func onDevicePacketReceived(np: NetworkPacket) {
         logger.debug("Share plugin received something")
         
         if (np.type == .shareRequestUpdate) {
@@ -74,7 +74,7 @@ extension Notification.Name {
                 }
             }
         } else if (np.type == .share) {
-            logger.debug("Share Plugin received a valid Share package")
+            logger.debug("Share Plugin received a valid Share packet")
             if let filename = np._Body["filename"] as? String {
                 guard let payloadPath = np.payloadPath else {
                     logger.fault("File \(filename, privacy: .public) missing actual file contents")
@@ -198,10 +198,10 @@ extension Notification.Name {
             filesFailedToSend = []
             sendSinglePayload()
         } else {
-            let np = NetworkPackage(type: .shareRequestUpdate)
+            let np = NetworkPacket(type: .shareRequestUpdate)
             np.setInteger(totalNumOfFilesToSend, forKey: "numberOfFiles")
             np.setInteger(totalPayloadSize, forKey: "totalPayloadSize")
-            controlDevice.send(np, tag: Int(PACKAGE_TAG_SHARE))
+            controlDevice.send(np, tag: Int(PACKET_TAG_SHARE))
         }
     }
     
@@ -269,8 +269,8 @@ extension Notification.Name {
         }
     }
     
-    func onPackage(_ np: NetworkPackage, sentWithPackageTag packageTag: Int) {
-        guard packageTag == PACKAGE_TAG_PAYLOAD else { return }
+    func onPacket(_ np: NetworkPacket, sentWithPacketTag packetTag: Int) {
+        guard packetTag == PACKET_TAG_PAYLOAD else { return }
         guard let path = np.payloadPath else {
             logger.fault("Cannot remove file for \(np) after successfully sent")
             return
@@ -289,10 +289,10 @@ extension Notification.Name {
         }
     }
     
-    func onPackage(_ np: NetworkPackage,
-                   sendWithPackageTag packageTag: Int,
+    func onPacket(_ np: NetworkPacket,
+                   sendWithPacketTag packetTag: Int,
                    failedWithError error: Error) {
-        guard packageTag == PACKAGE_TAG_PAYLOAD else { return }
+        guard packetTag == PACKET_TAG_PAYLOAD else { return }
 
         guard let path = np.payloadPath else {
             logger.fault("Cannot remove file for \(np) after failed to send with \(error)")
@@ -324,7 +324,7 @@ extension Notification.Name {
             let currentFile = filesToSend.removeFirst()
             currentFilesSending[currentFile.path] = currentFile
             
-            let np = NetworkPackage(type: .share)
+            let np = NetworkPacket(type: .share)
             np.setObject(currentFile.name, forKey: "filename")
             if let creationTime = currentFile.creationEpoch {
                 np.setObject(creationTime as NSNumber, forKey: "creationTime")
@@ -336,7 +336,7 @@ extension Notification.Name {
             np.setInteger(totalNumOfFilesToSend, forKey: "numberOfFiles")
             np.payloadPath = currentFile.path
             np._PayloadSize = currentFile.totalBytes ?? -1
-            controlDevice.send(np, tag: Int(PACKAGE_TAG_SHARE))
+            controlDevice.send(np, tag: Int(PACKET_TAG_SHARE))
         } else if currentFilesSending.isEmpty {
             logger.debug("Finished sending a batch of \(self.totalNumOfFilesToSend) files")
             SystemSound.mailSent.play()
@@ -344,7 +344,7 @@ extension Notification.Name {
         }
     }
     
-    private func save(_ url: URL, as filename: String, for np: NetworkPackage) async throws {
+    private func save(_ url: URL, as filename: String, for np: NetworkPacket) async throws {
         func add(as type: PHAssetResourceType) async throws {
             do {
                 try await PHPhotoLibrary.shared().performChanges {
@@ -386,7 +386,7 @@ extension Notification.Name {
         try _saveFile(url, as: filename, for: np)
     }
     
-    private func _saveFile(_ url: URL, as filename: String, for np: NetworkPackage) throws {
+    private func _saveFile(_ url: URL, as filename: String, for np: NetworkPacket) throws {
         let fileManager = FileManager.default
         let directory = try URL.defaultDestinationDirectory
         let fileURL = FilesHelper.findNonExistingName(for: filename, at: directory)

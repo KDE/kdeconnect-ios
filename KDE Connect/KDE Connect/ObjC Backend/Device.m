@@ -34,8 +34,8 @@
 static const NSTimeInterval kPairingTimeout = 30.0;
 
 @implementation Device {
-    NSMutableDictionary<NetworkPackageType, id<Plugin>> *_plugins;
-    NSMutableDictionary<NetworkPackageType, NSNumber *> *_pluginsEnableStatus;
+    NSMutableDictionary<NetworkPacketType, id<Plugin>> *_plugins;
+    NSMutableDictionary<NetworkPacketType, NSNumber *> *_pluginsEnableStatus;
     os_log_t logger;
 }
 
@@ -46,7 +46,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 @synthesize _type;
 @synthesize deviceDelegate;
 @synthesize _links;
-- (void)setPlugins:(NSDictionary<NetworkPackageType, NSNumber *> *)plugins
+- (void)setPlugins:(NSDictionary<NetworkPacketType, NSNumber *> *)plugins
 {
     _plugins = [[NSMutableDictionary alloc] initWithDictionary:plugins];
 }
@@ -55,7 +55,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 @synthesize _outgoingCapabilities;
 //@synthesize _testDevice;
 
-- (void)setPluginsEnableStatus:(NSDictionary<NetworkPackageType, NSNumber *> *)pluginsEnableStatus
+- (void)setPluginsEnableStatus:(NSDictionary<NetworkPacketType, NSNumber *> *)pluginsEnableStatus
 {
     _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithDictionary:pluginsEnableStatus];
 }
@@ -99,7 +99,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     return self;
 }
 
-- (instancetype)initWithNetworkPackage:(NetworkPackage *)np
+- (instancetype)initWithNetworkPacket:(NetworkPacket *)np
                                   link:(BaseLink*)link
                               delegate:(id<DeviceDelegate>)deviceDelegate {
     if (self = [self initWithID:[np objectForKey:@"deviceId"]
@@ -128,7 +128,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 #pragma mark Link-related Functions
 
-- (void)updateInfoWithNetworkPackage:(NetworkPackage*)np {
+- (void)updateInfoWithNetworkPacket:(NetworkPacket*)np {
     if (_protocolVersion!=[np integerForKey:@"protocolVersion"]) {
         os_log_with_type(logger, self.debugLogLevel, "using different protocol version");
     }
@@ -182,12 +182,12 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     }
 }
 
-- (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag
+- (BOOL) sendPacket:(NetworkPacket *)np tag:(long)tag
 {
-    os_log_with_type(logger, self.debugLogLevel, "device send package");
+    os_log_with_type(logger, self.debugLogLevel, "device send packet");
     @synchronized (_links) {
         for (BaseLink *link in _links) {
-            if ([link sendPackage:np tag:tag]) {
+            if ([link sendPacket:np tag:tag]) {
                 return true;
             }
         }
@@ -195,29 +195,29 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     return false;
 }
 
-- (void)onPackage:(NetworkPackage *)np sentWithPackageTag:(long)tag {
+- (void)onPacket:(NetworkPacket *)np sentWithPacketTag:(long)tag {
     os_log_with_type(logger, self.debugLogLevel, "device on send success");
-    if (tag==PACKAGE_TAG_PAIR) {
+    if (tag==PACKET_TAG_PAIR) {
         if (_pairStatus==RequestedByPeer) {
             [self setAsPaired];
         }
-    } else if (tag == PACKAGE_TAG_PAYLOAD){
+    } else if (tag == PACKET_TAG_PAYLOAD){
         os_log_with_type(logger, self.debugLogLevel, "Last payload sent successfully, sending next one");
         for (id<Plugin> plugin in [_plugins allValues]) {
-            if ([plugin respondsToSelector:@selector(onPackage:sentWithPackageTag:)]) {
-                [plugin onPackage:np sentWithPackageTag:tag];
+            if ([plugin respondsToSelector:@selector(onPacket:sentWithPacketTag:)]) {
+                [plugin onPacket:np sentWithPacketTag:tag];
             }
         }
     }
 }
 
-- (void)onPackage:(NetworkPackage *)np sendWithPackageTag:(long)tag
+- (void)onPacket:(NetworkPacket *)np sendWithPacketTag:(long)tag
   failedWithError:(NSError *)error {
     switch (tag) {
-        case PACKAGE_TAG_PAYLOAD:
+        case PACKET_TAG_PAYLOAD:
             for (id<Plugin> plugin in [_plugins allValues]) {
-                if ([plugin respondsToSelector:@selector(onPackage:sendWithPackageTag:failedWithError:)]) {
-                    [plugin onPackage:np sendWithPackageTag:tag
+                if ([plugin respondsToSelector:@selector(onPacket:sendWithPacketTag:failedWithError:)]) {
+                    [plugin onPacket:np sendWithPacketTag:tag
                       failedWithError:error];
                 }
             }
@@ -261,10 +261,10 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     }
 }
 
-- (void)onPackageReceived:(NetworkPackage *)np {
-    os_log_with_type(logger, self.debugLogLevel, "device on package received");
-    if ([np.type isEqualToString:NetworkPackageTypePair]) {
-        os_log_with_type(logger, self.debugLogLevel, "Pair package received");
+- (void)onPacketReceived:(NetworkPacket *)np {
+    os_log_with_type(logger, self.debugLogLevel, "device on packet received");
+    if ([np.type isEqualToString:NetworkPacketTypePair]) {
+        os_log_with_type(logger, self.debugLogLevel, "Pair packet received");
         BOOL wantsPair=[np boolForKey:@"pair"];
         if (wantsPair==[self isPaired]) {
             os_log_with_type(logger, self.debugLogLevel, "already done, paired:%d",wantsPair);
@@ -314,15 +314,15 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         }
     } else if ([self isPaired]) {
         // TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling function elsewhere in Swift
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "received a plugin package: %{public}@", np.type);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "received a plugin packet: %{public}@", np.type);
         for (id<Plugin> plugin in [_plugins allValues]) {
-            [plugin onDevicePackageReceivedWithNp:np];
+            [plugin onDevicePacketReceivedWithNp:np];
         }
         //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
     } else {
         // old iOS implementations send battery request while the devices are unpaired
         os_log_with_type(logger, OS_LOG_TYPE_DEFAULT,
-                         "not paired, ignore package of %{public}@, unpair the device",
+                         "not paired, ignore packet of %{public}@, unpair the device",
                          np.type);
         // remembered devices should have became paired, okay to call unpair.
         [self unpair];
@@ -390,8 +390,8 @@ static const NSTimeInterval kPairingTimeout = 30.0;
             [self performSelector:@selector(requestPairingTimeout:) withObject:nil afterDelay:kPairingTimeout];
         });
     }
-    NetworkPackage* np=[NetworkPackage createPairPackage];
-    [self sendPackage:np tag:PACKAGE_TAG_PAIR];
+    NetworkPacket* np=[NetworkPacket createPairPacket];
+    [self sendPacket:np tag:PACKET_TAG_PAIR];
 }
 
 - (void)requestPairingTimeout:(id)sender {
@@ -418,24 +418,24 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     os_log_with_type(logger, self.debugLogLevel, "device unpair");
     _pairStatus=NotPaired;
 
-    NetworkPackage* np=[[NetworkPackage alloc] initWithType:NetworkPackageTypePair];
+    NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypePair];
     [np setBool:false forKey:@"pair"];
-    [self sendPackage:np tag:PACKAGE_TAG_UNPAIR];
+    [self sendPacket:np tag:PACKET_TAG_UNPAIR];
 }
 
 - (void) acceptPairing
 {
     os_log_with_type(logger, self.debugLogLevel, "device accepted pair request");
-    NetworkPackage* np=[NetworkPackage createPairPackage];
-    [self sendPackage:np tag:PACKAGE_TAG_PAIR];
+    NetworkPacket* np=[NetworkPacket createPairPacket];
+    [self sendPacket:np tag:PACKET_TAG_PAIR];
 }
 
 #pragma mark Plugins-related Functions
 
 - (void)updateBatteryStatus {
-    if ((_pluginsEnableStatus[NetworkPackageTypeBatteryRequest] != nil)
-        && (_pluginsEnableStatus[NetworkPackageTypeBatteryRequest])) {
-        id<Plugin> plugin = [_plugins objectForKey:NetworkPackageTypeBatteryRequest];
+    if ((_pluginsEnableStatus[NetworkPacketTypeBatteryRequest] != nil)
+        && (_pluginsEnableStatus[NetworkPacketTypeBatteryRequest])) {
+        id<Plugin> plugin = [_plugins objectForKey:NetworkPacketTypeBatteryRequest];
         if ([plugin respondsToSelector:@selector(sendBatteryStatusRequest)]) {
             [plugin performSelector:@selector(sendBatteryStatusRequest)];
         }
@@ -458,41 +458,41 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     [_pluginsEnableStatus removeAllObjects];
     
     for (NSString* pluginID in _incomingCapabilities) {
-        if ([pluginID isEqualToString:NetworkPackageTypePing]) {
-            [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:NetworkPackageTypePing];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypePing];
+        if ([pluginID isEqualToString:NetworkPacketTypePing]) {
+            [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:NetworkPacketTypePing];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePing];
             
-        } else if ([pluginID isEqualToString:NetworkPackageTypeShare]) {
-            [_plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:NetworkPackageTypeShare];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeShare];
+        } else if ([pluginID isEqualToString:NetworkPacketTypeShare]) {
+            [_plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:NetworkPacketTypeShare];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeShare];
             
-        } else if ([pluginID isEqualToString:NetworkPackageTypeFindMyPhoneRequest]) {
-            [_plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:NetworkPackageTypeFindMyPhoneRequest];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeFindMyPhoneRequest];
+        } else if ([pluginID isEqualToString:NetworkPacketTypeFindMyPhoneRequest]) {
+            [_plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:NetworkPacketTypeFindMyPhoneRequest];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeFindMyPhoneRequest];
             
-        } else if ([pluginID isEqualToString:NetworkPackageTypeBatteryRequest]) {
-            [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:NetworkPackageTypeBatteryRequest];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeBatteryRequest];
+        } else if ([pluginID isEqualToString:NetworkPacketTypeBatteryRequest]) {
+            [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:NetworkPacketTypeBatteryRequest];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeBatteryRequest];
             
-        } else if ([pluginID isEqualToString:NetworkPackageTypeClipboard]) {
-            [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:NetworkPackageTypeClipboard];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeClipboard];
+        } else if ([pluginID isEqualToString:NetworkPacketTypeClipboard]) {
+            [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:NetworkPacketTypeClipboard];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeClipboard];
             
-        } else if ([pluginID isEqualToString:NetworkPackageTypeMousePadRequest]) {
-            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:NetworkPackageTypeMousePadRequest];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeMousePadRequest];
+        } else if ([pluginID isEqualToString:NetworkPacketTypeMousePadRequest]) {
+            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:NetworkPacketTypeMousePadRequest];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeMousePadRequest];
             
-        } else if ([pluginID isEqualToString:NetworkPackageTypePresenter]) {
-            [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:NetworkPackageTypePresenter];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypePresenter];
+        } else if ([pluginID isEqualToString:NetworkPacketTypePresenter]) {
+            [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:NetworkPacketTypePresenter];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePresenter];
         }
     }
     
     // for the capabilities that are ONLY in the outgoing section of KDE Connect iOS
     for (NSString* pluginID in _outgoingCapabilities) {
-        if ([pluginID isEqualToString:NetworkPackageTypeRunCommand]) {
-            [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:NetworkPackageTypeRunCommand];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPackageTypeRunCommand];
+        if ([pluginID isEqualToString:NetworkPacketTypeRunCommand]) {
+            [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:NetworkPacketTypeRunCommand];
+            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeRunCommand];
             
         }
     }

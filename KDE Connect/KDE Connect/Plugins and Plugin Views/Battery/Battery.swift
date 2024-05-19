@@ -44,7 +44,7 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(self.batteryLevelDidChange(notification:)), name: UIDevice.batteryLevelDidChangeNotification, object: UIDevice.current)
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) {
+    @objc func onDevicePacketReceived(np: NetworkPacket) {
         if (np.type == .batteryRequest) {
             logger.debug("Battery plugin received a force update request")
             sendBatteryStatusOut()
@@ -64,7 +64,7 @@ import UIKit
     @objc func sendBatteryStatusOut() {
         let batteryLevel: Int = Int(UIDevice.current.batteryLevel * 100)
         let batteryStatus = UIDevice.current.batteryState
-        let np: NetworkPackage = NetworkPackage(type: .battery)
+        let np: NetworkPacket = NetworkPacket(type: .battery)
         if (batteryStatus != .unknown) {
             let batteryThresholdEvent: Int = (batteryLevel < 10) ? 1 : 0
             np.setInteger(batteryLevel, forKey: "currentCharge")
@@ -83,17 +83,17 @@ import UIKit
             logger.fault("Sending battery status with leaked instance, \(CFGetRetainCount(self)) references remaining")
             return
         }
-        controlDevice.send(np, tag: Int(PACKAGE_TAG_BATTERY))
+        controlDevice.send(np, tag: Int(PACKET_TAG_BATTERY))
     }
     
     @objc func sendBatteryStatusRequest() {
-        let np: NetworkPackage = NetworkPackage(type: .batteryRequest)
+        let np: NetworkPacket = NetworkPacket(type: .batteryRequest)
         np.setBool(true, forKey: "request")
         guard let controlDevice = controlDevice else {
             logger.fault("Requesting battery status with leaked instance, \(CFGetRetainCount(self)) references remaining")
             return
         }
-        controlDevice.send(np, tag: Int(PACKAGE_TAG_NORMAL))
+        controlDevice.send(np, tag: Int(PACKET_TAG_NORMAL))
     }
     
     var statusSFSymbolName: String {

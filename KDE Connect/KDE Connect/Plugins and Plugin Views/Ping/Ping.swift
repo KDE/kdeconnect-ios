@@ -25,14 +25,14 @@ extension Notification.Name {
         self.controlDevice = controlDevice
     }
     
-    @objc func onDevicePackageReceived(np: NetworkPackage) {
+    @objc func onDevicePacketReceived(np: NetworkPacket) {
         if (np.type == .ping) {
             NotificationCenter.default.post(name: .didReceivePingNotification, object: nil)
         }
     }
     
     @objc func sendPing() {
-        let np: NetworkPackage = NetworkPackage(type: .ping)
-        controlDevice.send(np, tag: Int(PACKAGE_TAG_PING))
+        let np: NetworkPacket = NetworkPacket(type: .ping)
+        controlDevice.send(np, tag: Int(PACKET_TAG_PING))
     }
 }

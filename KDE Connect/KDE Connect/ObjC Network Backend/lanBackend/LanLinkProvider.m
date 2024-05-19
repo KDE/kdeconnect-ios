@@ -29,7 +29,7 @@
 //----------------------------------------------------------------------
 
 #import "LanLinkProvider.h"
-#import "NetworkPackage.h"
+#import "NetworkPacket.h"
 #import "KDE_Connect-Swift.h"
 
 #import <Security/Security.h>
@@ -51,7 +51,7 @@
 @property(nonatomic) GCDAsyncUdpSocket *udpSocket;
 @property(nonatomic) GCDAsyncSocket *tcpSocket;
 @property(nonatomic) NSMutableArray<GCDAsyncSocket *> *pendingSockets;
-@property(nonatomic) NSMutableArray<NetworkPackage *> *pendingNPs;
+@property(nonatomic) NSMutableArray<NetworkPacket *> *pendingNPs;
 @property(nonatomic) SecCertificateRef _certificate;
 //@property(nonatomic) NSString * _certificateRequestPEM;
 @property(nonatomic) SecIdentityRef _identity;
@@ -99,7 +99,7 @@
 
 - (os_log_type_t)debugLogLevel {
     SelfDeviceData *settings = [SelfDeviceData shared];
-    if (settings.isDebuggingDiscovery || settings.isDebuggingNetworkPackage) {
+    if (settings.isDebuggingDiscovery || settings.isDebuggingNetworkPacket) {
         return OS_LOG_TYPE_INFO;
     }
     return OS_LOG_TYPE_DEBUG;
@@ -197,7 +197,7 @@
 
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "sendUdpIdentityPacket");
 
-    NetworkPackage *np = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
+    NetworkPacket *np = [NetworkPacket createIdentityPacketWithTCPPort:_tcpPort];
     NSData *data = [np serialize];
 
     if (includeBroadcast) {
@@ -278,15 +278,15 @@
     
     // Unserialize received data
     os_log_with_type(logger, self.debugLogLevel,
-                     "lp receive udp package: %{public}@",
+                     "lp receive udp packet: %{public}@",
                      [[NSString alloc] initWithData:data
                                            encoding:NSUTF8StringEncoding]);
-	NetworkPackage* np = [NetworkPackage unserialize:data];
-    os_log_with_type(logger, OS_LOG_TYPE_INFO, "linkprovider:received a udp package from %{mask.hash}@",[np objectForKey:@"deviceName"]);
-    //not id package
+	NetworkPacket* np = [NetworkPacket unserialize:data];
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "linkprovider:received a udp packet from %{mask.hash}@",[np objectForKey:@"deviceName"]);
+    //not id packet
     
-    if (![np.type isEqualToString:NetworkPackageTypeIdentity]) {
-        os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:expecting an id package");
+    if (![np.type isEqualToString:NetworkPacketTypeIdentity]) {
+        os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:expecting an id packet");
         return;
     }
     
@@ -294,15 +294,15 @@
     uint16_t port;
     [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
 
-    //my own package, don't care
-    NetworkPackage *np2 = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
+    //my own packet, don't care
+    NetworkPacket *np2 = [NetworkPacket createIdentityPacketWithTCPPort:_tcpPort];
     NSString* myId=[[np2 _Body] valueForKey:@"deviceId"];
     if ([[np objectForKey:@"deviceId"] isEqualToString:myId]){
-        os_log_with_type(logger, self.debugLogLevel, "Ignore my own id package from %{mask.hash}@:%hu", host, port);
+        os_log_with_type(logger, self.debugLogLevel, "Ignore my own id packet from %{mask.hash}@:%hu", host, port);
         return;
     }
     
-    //deal with id package, might be ipV6 filtering, need to figure out
+    //deal with id packet, might be ipV6 filtering, need to figure out
     if ([host hasPrefix:@"::ffff:"]) {
         os_log_with_type(logger, self.debugLogLevel, "Ignore packet");
         return;
@@ -318,7 +318,7 @@
     }
     
     // Get ready to establish TCP connection to incoming host
-    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:id package received, creating link and a TCP connection socket");
+    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:id packet received, creating link and a TCP connection socket");
     GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
     uint16_t tcpPort=[np integerForKey:@"tcpPort"];
     
@@ -341,9 +341,9 @@
     // to know me, I send ID Packet to incoming Host via the just established TCP
     //if (([np _Payload] == nil) && ([np PayloadTransferInfo] == nil) && ([np _PayloadSize]) == 0) {
     // TODO: It seems like only identity packets ever show up here, why? Where is the id packet being sent when a new transfer connection is opened then????? This seems to be the ONLY place where ID packets are sent in TCP?
-    NetworkPackage *inp = [NetworkPackage createIdentityPackageWithTCPPort:_tcpPort];
+    NetworkPacket *inp = [NetworkPacket createIdentityPacketWithTCPPort:_tcpPort];
     NSData *inpData = [inp serialize];
-    [socket writeData:inpData withTimeout:0 tag:PACKAGE_TAG_IDENTITY];
+    [socket writeData:inpData withTimeout:0 tag:PACKET_TAG_IDENTITY];
     //}
     
     //add to pending connection list
@@ -384,7 +384,7 @@
     }];
     [_pendingSockets addObject:newSocket];
     long index=[_pendingSockets indexOfObject:newSocket];
-    //retrieve id package
+    //retrieve id packet
     [newSocket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:index];
 }
 
@@ -400,7 +400,7 @@
 
     //create LanLink and inform the background
     NSUInteger index=[_pendingSockets indexOfObject:sock];
-    NetworkPackage* np=[_pendingNPs objectAtIndex:index];
+    NetworkPacket* np=[_pendingNPs objectAtIndex:index];
     NSString* deviceId=[np objectForKey:@"deviceId"];
     BaseLink *link = self.connectedLinks[deviceId];
     
@@ -428,7 +428,7 @@
     
     if (link) {
         // reuse existing link once socket secures
-        [_linkProviderDelegate onDeviceIdentityUpdatePackageReceived:np];
+        [_linkProviderDelegate onDeviceIdentityUpdatePacketReceived:np];
     } else {
         link = [[LanLink alloc] init:sock
                             deviceId:deviceId
@@ -450,12 +450,12 @@
     os_log_with_type(logger, self.debugLogLevel, "lp tcp socket didReadData");
     //os_log_with_type(logger, self.debugLogLevel, "%{public}@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSArray* packageArray=[jsonStr componentsSeparatedByString:@"\n"];
-    for (NSString* dataStr in packageArray) {
+    NSArray* packetArray=[jsonStr componentsSeparatedByString:@"\n"];
+    for (NSString* dataStr in packetArray) {
         if ([dataStr length] > 0) {
-            NetworkPackage* np=[NetworkPackage unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
-            if (![np.type isEqualToString:NetworkPackageTypeIdentity]) {
-                os_log_with_type(logger, OS_LOG_TYPE_INFO, "lp expecting an id package instead of %{public}@", np.type);
+            NetworkPacket* np=[NetworkPacket unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
+            if (![np.type isEqualToString:NetworkPacketTypeIdentity]) {
+                os_log_with_type(logger, OS_LOG_TYPE_INFO, "lp expecting an id packet instead of %{public}@", np.type);
                 return;
             }
             NSString* deviceId=[np objectForKey:@"deviceId"];
@@ -488,7 +488,7 @@
             BaseLink *link = self.connectedLinks[deviceId];
             if (link) {
                 // reuse existing link once socket secures
-                [_linkProviderDelegate onDeviceIdentityUpdatePackageReceived:np];
+                [_linkProviderDelegate onDeviceIdentityUpdatePacketReceived:np];
                 return;
             }
             // create LanLink and inform the background
@@ -602,7 +602,7 @@
     NSUInteger pendingSocketIndex = [_pendingSockets indexOfObject:sock];
     [_pendingSockets removeObject:sock];
     
-    NetworkPackage* pendingNP = [_pendingNPs objectAtIndex:pendingSocketIndex];
+    NetworkPacket* pendingNP = [_pendingNPs objectAtIndex:pendingSocketIndex];
     NSString *deviceID = [pendingNP objectForKey:@"deviceId"];
     // if existing LanLink exists, DON'T create a new one
     LanLink *link = (LanLink *)self.connectedLinks[deviceID];

@@ -16,11 +16,11 @@
 import Foundation
 
 @objc protocol Plugin: NSObjectProtocol {
-    @objc func onDevicePackageReceived(np: NetworkPackage)
-    @objc optional func onPackage(_ np: NetworkPackage,
-                                  sentWithPackageTag packageTag: Int)
-    @objc optional func onPackage(_ np: NetworkPackage,
-                                  sendWithPackageTag packageTag: Int,
+    @objc func onDevicePacketReceived(np: NetworkPacket)
+    @objc optional func onPacket(_ np: NetworkPacket,
+                                  sentWithPacketTag packetTag: Int)
+    @objc optional func onPacket(_ np: NetworkPacket,
+                                  sendWithPacketTag packetTag: Int,
                                   failedWithError error: Error)
     
     // MARK: payload related

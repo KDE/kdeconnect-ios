@@ -1,5 +1,5 @@
 //
-//  NetworkPackageComposer.swift
+//  NetworkPacketComposer.swift
 //  KDE Connect
 //
 //  Created by Apollo Zhu on 3/4/22.
@@ -8,10 +8,10 @@
 import SwiftUI
 import Introspect
 
-struct NetworkPackageComposer: View {
-    @State private var networkPackageToSend: String = ""
+struct NetworkPacketComposer: View {
+    @State private var networkPacketToSend: String = ""
     @State private var tag: Int = 0
-    @State private var npType: NetworkPackage.`Type` = .identity
+    @State private var npType: NetworkPacket.`Type` = .identity
     @State private var deviceID: String = ""
     @EnvironmentObject private var connectedDevicesViewModel: ConnectedDevicesViewModel
     @EnvironmentObject private var selfDeviceData: SelfDeviceData
@@ -38,45 +38,45 @@ struct NetworkPackageComposer: View {
                     }
                 }
                 
-                Picker("Package Type", selection: $npType) {
-                    ForEach(NetworkPackage.allPackageTypes, id: \.self) { type in
+                Picker("Packet Type", selection: $npType) {
+                    ForEach(NetworkPacket.allPacketTypes, id: \.self) { type in
                         Text(type.rawValue)
                             .font(.system(.body, design: .monospaced))
                     }
                 }
                 
-                Picker("Package Tag", selection: $tag) {
-                    ForEach(NetworkPackage.allPackageTags, id: \.self) { tag in
-                        Text(NetworkPackage.description(for: tag))
+                Picker("Packet Tag", selection: $tag) {
+                    ForEach(NetworkPacket.allPacketTags, id: \.self) { tag in
+                        Text(NetworkPacket.description(for: tag))
                             .font(.system(.body, design: .monospaced))
                     }
                 }
             }
             
             Section {
-                TextEditor(text: $networkPackageToSend)
+                TextEditor(text: $networkPacketToSend)
                     .font(.system(.body, design: .monospaced))
-                    .foregroundColor(isValidPackageBody ? nil : .red)
+                    .foregroundColor(isValidPacketBody ? nil : .red)
                     .autocapitalization(.none)
                     .introspectTextView { textView in
                         textView.smartQuotesType = .no
                     }
-                    .onChange(of: networkPackageToSend) { newValue in
-                        if newValue == "isDebuggingNetworkPackage" {
+                    .onChange(of: networkPacketToSend) { newValue in
+                        if newValue == "isDebuggingNetworkPacket" {
                             withAnimation {
-                                selfDeviceData.isDebuggingNetworkPackage = true
+                                selfDeviceData.isDebuggingNetworkPacket = true
                             }
                         }
                     }
             } header: {
-                Text("Package Body")
+                Text("Packet Body")
             } footer: {
                 Label {
-                    Text(isValidPackageBody ? LocalizedStringKey("Valid") : LocalizedStringKey("Invalid"))
-                        .foregroundColor(isValidPackageBody ? nil : .red)
+                    Text(isValidPacketBody ? LocalizedStringKey("Valid") : LocalizedStringKey("Invalid"))
+                        .foregroundColor(isValidPacketBody ? nil : .red)
                 } icon: {
-                    Image(systemName: isValidPackageBody ? "checkmark.circle.fill" : "x.circle.fill")
-                        .foregroundColor(isValidPackageBody ? .green : .red)
+                    Image(systemName: isValidPacketBody ? "checkmark.circle.fill" : "x.circle.fill")
+                        .foregroundColor(isValidPacketBody ? .green : .red)
                 }
             }
             
@@ -85,10 +85,10 @@ struct NetworkPackageComposer: View {
                     logger.error("No device with ID \(deviceID, privacy: .private(mask: .hash))")
                     return
                 }
-                let np = NetworkPackage(type: npType)
+                let np = NetworkPacket(type: npType)
                 do {
-                    if !networkPackageToSend.isEmpty {
-                        np._Body = try packageBody
+                    if !networkPacketToSend.isEmpty {
+                        np._Body = try packetBody
                     }
                 } catch {
                     logger.info("Not JSON because \(error.localizedDescription, privacy: .public)")
@@ -96,28 +96,28 @@ struct NetworkPackageComposer: View {
                 device.send(np, tag: tag)
             } label: {
                 Label {
-                    Text("Send Network Package")
+                    Text("Send Network Packet")
                 } icon: {
-                    if selfDeviceData.isDebuggingNetworkPackage {
+                    if selfDeviceData.isDebuggingNetworkPacket {
                         Image(systemName: "hammer.fill")
                     }
                 }
             }
             .disabled(deviceID.isEmpty
-                      || !isValidPackageBody
+                      || !isValidPacketBody
                       || !(connectedDevicesViewModel.connectedDevices.keys.contains(deviceID)
                            || connectedDevicesViewModel.visibleDevices.keys.contains(deviceID)))
         }
-        .navigationTitle("Network Package Composer")
+        .navigationTitle("Network Packet Composer")
     }
     
-    private var isValidPackageBody: Bool {
-        networkPackageToSend.isEmpty || (try? packageBody) != nil
+    private var isValidPacketBody: Bool {
+        networkPacketToSend.isEmpty || (try? packetBody) != nil
     }
     
-    private var packageBody: NSMutableDictionary {
+    private var packetBody: NSMutableDictionary {
         get throws {
-            let body = try JSONSerialization.jsonObject(with: Data(networkPackageToSend.utf8),
+            let body = try JSONSerialization.jsonObject(with: Data(networkPacketToSend.utf8),
                                                         options: .mutableContainers)
             if let dictionary = body as? NSMutableDictionary {
                 return dictionary
@@ -139,10 +139,10 @@ struct NetworkPackageComposer: View {
     }
 }
 
-struct NetworkPackageComposer_Previews: PreviewProvider {
+struct NetworkPacketComposer_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            NetworkPackageComposer()
+            NetworkPacketComposer()
         }
     }
 }

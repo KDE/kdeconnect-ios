@@ -294,7 +294,7 @@
     }
 }
 
-- (void) onConnectionReceived:(NetworkPackage *)np link:(BaseLink *)link
+- (void) onConnectionReceived:(NetworkPacket *)np link:(BaseLink *)link
 {
     os_log_with_type(logger, self.debugLogLevel, "bg on connection received");
     NSString* deviceId=[np objectForKey:@"deviceId"];
@@ -302,28 +302,28 @@
     if ([_devices valueForKey:deviceId]) {
         os_log_with_type(logger, self.debugLogLevel, "known device");
         Device* device=[_devices objectForKey:deviceId];
-        [device updateInfoWithNetworkPackage:np];
+        [device updateInfoWithNetworkPacket:np];
         [device addLink:link];
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }
     else{
         os_log_with_type(logger, OS_LOG_TYPE_INFO,
-                         "new device from network package: %{public}@",
+                         "new device from network packet: %{public}@",
                          np._Id);
-        Device *device=[[Device alloc] initWithNetworkPackage:np link:link delegate:self];
+        Device *device=[[Device alloc] initWithNetworkPacket:np link:link delegate:self];
         [_devices setObject:device forKey:deviceId];
         [self refreshVisibleDeviceList];
     }
 }
 
-- (void)onDeviceIdentityUpdatePackageReceived:(NetworkPackage *)np {
+- (void)onDeviceIdentityUpdatePacketReceived:(NetworkPacket *)np {
     NSString *deviceID = [np objectForKey:@"deviceId"];
     os_log_with_type(logger, self.debugLogLevel,
                      "on identity update for %{mask.hash}@ received",
                      deviceID);
     Device *device = [_devices objectForKey:deviceID];
     if (device) {
-        [device updateInfoWithNetworkPackage:np];
+        [device updateInfoWithNetworkPacket:np];
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     } else {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT,

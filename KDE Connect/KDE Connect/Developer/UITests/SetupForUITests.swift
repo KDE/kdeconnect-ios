@@ -69,7 +69,7 @@ enum UIPreview {
         connectedDevicesViewModel.savedDevices = devicesDictionary(for: .iPhone, .android)
     }
     
-    static let allCapabilities = NetworkPackage.allPackageTypes.map { $0.rawValue }
+    static let allCapabilities = NetworkPacket.allPacketTypes.map { $0.rawValue }
     
     static func makeDevice(id: DeviceID, type: DeviceType, name: String) -> Device {
         return Device(

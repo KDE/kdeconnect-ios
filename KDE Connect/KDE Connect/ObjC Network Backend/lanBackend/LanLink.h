@@ -43,7 +43,7 @@
          deviceId:(NSString *)deviceId
       setDelegate:(id<LinkDelegate>)linkDelegate
 certificateService:(CertificateService *)certificateService;
-- (BOOL) sendPackage:(NetworkPackage *)np tag:(long)tag;
+- (BOOL) sendPacket:(NetworkPacket *)np tag:(long)tag;
 - (void)setSocket:(GCDAsyncSocket *)newSocket;
 - (void) disconnect;
 @end
