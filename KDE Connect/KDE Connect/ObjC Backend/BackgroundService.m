@@ -29,10 +29,6 @@
 
 #import "BackgroundService.h"
 #import "LanLinkProvider.h"
-//#import "SettingsStore.h"
-//#import "PluginFactory.h"
-//#import "KeychainItemWrapper.h"
-//#import "Device.h"
 #import "KDE_Connect-Swift.h"
 @import os.log;
 
@@ -45,7 +41,6 @@
 @property(nonatomic) NetworkChangeMonitor *networkChangeMonitor;
 @property(nonatomic) NSMutableArray<BaseLinkProvider *> *_linkProviders;
 @property(nonatomic) NSMutableArray<Device *> *visibleDevices;
-@property(nonatomic) NSMutableDictionary<NSString *, Device *> *_savedDevices;
 @property(nonatomic, assign) ConnectedDevicesViewModel *_backgroundServiceDelegate;
 @property(nonatomic, assign) CertificateService *_certificateService;
 
@@ -64,7 +59,6 @@
 {
     _settings = [[NSMutableDictionary alloc] initWithDictionary:settings];
 }
-@synthesize _savedDevices;
 
 //+ (id) sharedInstance
 //{
@@ -98,7 +92,7 @@
         _devices=[NSMutableDictionary dictionaryWithCapacity:1];
         _visibleDevices=[NSMutableArray arrayWithCapacity:1];
         _settings=[NSMutableDictionary dictionaryWithCapacity:1];
-        _savedDevices = [NSMutableDictionary dictionary];
+       
        //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
         
         _backgroundServiceDelegate = connectedDeviceViewModel;
@@ -107,29 +101,10 @@
         _networkChangeMonitor = [[NetworkChangeMonitor alloc] init];
         _networkChangeMonitor.delegate = self;
         
-        NSDictionary* tempDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];
-        if (tempDic != nil) {
-            for (NSString* deviceId in [tempDic allKeys]) {
-                NSData* deviceData = tempDic[deviceId];
-                [_settings setObject:deviceData forKey:deviceId]; // do this here since Settings holds exclusively encoded Data, NOT Device objects, otherwise will throw "non-property list" error upon trying to save to UserDefaults
-                NSError* error;
-                Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
-                os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device with pair status %lu is decoded from UserDefaults as: %{public}@ with error %{public}@", [device _pairStatus], device, error);
-                if ([device _pairStatus] == Paired) {
-                    device.deviceDelegate = self;
-                    //[device reloadPlugins];
-                    [_savedDevices setObject:device forKey:deviceId];
-                } else {
-                    os_log_with_type(logger, self.debugLogLevel, "Not loading device above since it's previous status is NOT paired.");
-                }
-            }
-        }
-        
-        os_log_with_type(logger, self.debugLogLevel, "%{public}@", _savedDevices);
         //[[NSUserDefaults standardUserDefaults] registerDefaults:_settings];
         //[[NSUserDefaults standardUserDefaults] synchronize];
         [self registerLinkProviders];
-        [self loadRemenberedDevices];
+        [self loadRememberedDevices];
         //[PluginFactory sharedInstance];
         
 //#ifdef DEBUG
@@ -149,10 +124,31 @@
     return OS_LOG_TYPE_DEBUG;
 }
 
-// TODO: fix typo in this name
-- (void) loadRemenberedDevices
+- (void) loadRememberedDevices
 {
-    for (Device* device in [_savedDevices allValues]) {
+    NSMutableDictionary<NSString *, Device *> *savedDevices = [NSMutableDictionary dictionary];
+   
+    NSDictionary* tempDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];
+    if (tempDic != nil) {
+        for (NSString* deviceId in [tempDic allKeys]) {
+            NSData* deviceData = tempDic[deviceId];
+            [_settings setObject:deviceData forKey:deviceId]; // do this here since Settings holds exclusively encoded Data, NOT Device objects, otherwise will throw "non-property list" error upon trying to save to UserDefaults
+            NSError* error;
+            Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
+            os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device with pair status %lu is decoded from UserDefaults as: %{public}@ with error %{public}@", [device _pairStatus], device, error);
+            if ([device _pairStatus] == Paired) {
+                device.deviceDelegate = self;
+                //[device reloadPlugins];
+                [savedDevices setObject:device forKey:deviceId];
+            } else {
+                os_log_with_type(logger, self.debugLogLevel, "Not loading device above since it's previous status is NOT paired.");
+            }
+        }
+    }
+    
+    os_log_with_type(logger, self.debugLogLevel, "%{public}@", savedDevices);
+
+    for (Device* device in [savedDevices allValues]) {
         //Device* device=[[Device alloc] init:deviceId setDelegate:self];
         [_devices setObject:device forKey:[device _id]];
         //[_settings setObject:device forKey:[device _id]];
@@ -270,8 +266,7 @@
 
 #pragma mark reactions
 - (void) onDeviceReachableStatusChanged:(Device*)device
-{   // TODO: Is this what gets called when paired device goes offline/becomes "remembered device"
-    // FIXME: NOOOOOOOOOO ITS NOT, must be somewhere else, but this is called by Device when links == 0 aka unreachable????
+{   // Gets called by Device when links == 0 aka device becomes unreachable/offline/becomes "remembered device"
     os_log_with_type(logger, self.debugLogLevel, "bg on device reachable status changed");
     if (![device isReachable]) {
         os_log_with_type(logger, self.debugLogLevel, "bg device not reachable");

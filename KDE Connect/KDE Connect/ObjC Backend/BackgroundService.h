@@ -32,10 +32,6 @@
 #import "BaseLinkProvider.h"
 #import "Device.h"
 #import "NetworkPacket.h"
-//#import "PluginFactory.h"
-//#import "deviceDelegate.h"
-//#import "KDE_Connect-Swift.h"
-//@class PluginFactory;
 @class BaseLink;
 @class Device;
 @class ConnectedDevicesViewModel;

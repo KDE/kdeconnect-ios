@@ -144,7 +144,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     NSUInteger count;
     @synchronized (_links) {
         [_links addObject:Link];
-        //[self saveSetting];
         [Link setLinkDelegate:self];
         count = [_links count];
     }
@@ -335,14 +334,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     return [_links count] != 0;
 }
 
-- (void) loadSetting
-{
-}
-
-- (void) saveSetting
-{
-}
-
 #pragma mark Pairing-related Functions
 - (BOOL) isPaired
 {
@@ -358,7 +349,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 {
     _pairStatus=Paired;
     //NSLog(@"paired with %@",_name);
-    [self saveSetting];
     // Request and update battery status for a newly paired device
     [self updateBatteryStatus];
     if (deviceDelegate) {
