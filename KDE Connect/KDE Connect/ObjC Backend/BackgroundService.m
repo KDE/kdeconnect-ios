@@ -118,7 +118,7 @@
 }
 
 - (os_log_type_t)debugLogLevel {
-    if ([SelfDeviceData shared].isDebuggingDiscovery) {
+    if ([KdeConnectSettings shared].isDebuggingDiscovery) {
         return OS_LOG_TYPE_INFO;
     }
     return OS_LOG_TYPE_DEBUG;

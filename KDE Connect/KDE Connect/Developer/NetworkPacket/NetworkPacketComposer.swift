@@ -14,7 +14,7 @@ struct NetworkPacketComposer: View {
     @State private var npType: NetworkPacket.`Type` = .identity
     @State private var deviceID: String = ""
     @EnvironmentObject private var connectedDevicesViewModel: ConnectedDevicesViewModel
-    @EnvironmentObject private var selfDeviceData: SelfDeviceData
+    @EnvironmentObject private var kdeConnectSettings: KdeConnectSettings
     private let logger = Logger()
     
     var body: some View {
@@ -64,7 +64,7 @@ struct NetworkPacketComposer: View {
                     .onChange(of: networkPacketToSend) { newValue in
                         if newValue == "isDebuggingNetworkPacket" {
                             withAnimation {
-                                selfDeviceData.isDebuggingNetworkPacket = true
+                                kdeConnectSettings.isDebuggingNetworkPacket = true
                             }
                         }
                     }
@@ -98,7 +98,7 @@ struct NetworkPacketComposer: View {
                 Label {
                     Text("Send Network Packet")
                 } icon: {
-                    if selfDeviceData.isDebuggingNetworkPacket {
+                    if kdeConnectSettings.isDebuggingNetworkPacket {
                         Image(systemName: "hammer.fill")
                     }
                 }

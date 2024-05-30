@@ -15,7 +15,7 @@
 import SwiftUI
 
 struct ConfigureDeviceByIPView: View {
-    @ObservedObject var selfDeviceDataForIPConfig: SelfDeviceData = .shared
+    @ObservedObject var kdeConnectSettingsForIPConfig: KdeConnectSettings = .shared
     @FocusState var focusedAddressID: UUID?
     
     struct DirectIPaddress: Identifiable {
@@ -25,7 +25,7 @@ struct ConfigureDeviceByIPView: View {
     
     @State var directIPs: [DirectIPaddress] = [] {
         didSet {
-            selfDeviceDataForIPConfig.directIPs = directIPs.map(\.ip)
+            kdeConnectSettingsForIPConfig.directIPs = directIPs.map(\.ip)
         }
     }
 
@@ -63,7 +63,7 @@ struct ConfigureDeviceByIPView: View {
         })
         .onDisappear(perform: filterAddresses)
         .onAppear {
-            directIPs = selfDeviceDataForIPConfig.directIPs.map { DirectIPaddress(ip: $0) }
+            directIPs = kdeConnectSettingsForIPConfig.directIPs.map { DirectIPaddress(ip: $0) }
             filterAddresses()
         }
     }

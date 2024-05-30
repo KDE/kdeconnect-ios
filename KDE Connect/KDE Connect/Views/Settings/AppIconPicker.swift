@@ -65,7 +65,7 @@ enum AppIcon: RawRepresentable, CaseIterable {
 }
 
 struct AppIconPicker: View {
-    @EnvironmentObject var settings: SelfDeviceData
+    @EnvironmentObject var settings: KdeConnectSettings
     @EnvironmentObject var alertManager: AlertManager
     
     var body: some View {
@@ -105,7 +105,7 @@ struct AppIconPicker_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AppIconPicker()
-                .environmentObject(SelfDeviceData.shared)
+                .environmentObject(KdeConnectSettings.shared)
         }
     }
 }

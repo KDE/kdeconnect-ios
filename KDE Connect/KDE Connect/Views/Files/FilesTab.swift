@@ -15,7 +15,7 @@ import SwiftUI
 import Photos
 
 struct FilesTab: View {
-    @EnvironmentObject private var selfDeviceData: SelfDeviceData
+    @EnvironmentObject private var kdeConnectSettings: KdeConnectSettings
     
     @State private var photoLibraryAuthorizationStatus: PHAuthorizationStatus = .notDetermined
     @State private var category: Category = .receiving
@@ -138,12 +138,12 @@ struct FilesTab: View {
     
     @ViewBuilder
     var saveToPhotosToggles: some View {
-        Toggle(isOn: $selfDeviceData.savePhotosToPhotosLibrary) {
+        Toggle(isOn: $kdeConnectSettings.savePhotosToPhotosLibrary) {
             Label("Save photos to the photo library",
                   systemImage: "photo.on.rectangle.angled")
         }
         
-        Toggle(isOn: $selfDeviceData.saveVideosToPhotosLibrary) {
+        Toggle(isOn: $kdeConnectSettings.saveVideosToPhotosLibrary) {
             Label("Save videos to the photo library",
                   systemImage: "film")
         }
@@ -161,12 +161,12 @@ struct FilesTab_Previews: PreviewProvider {
 
         return Group {
             previewLayouts
-                .environmentObject(SelfDeviceData.shared)
+                .environmentObject(KdeConnectSettings.shared)
                 .environmentObject(connectedDevicesViewModel)
             
             // When there are no transfers
             previewLayouts
-                .environmentObject(SelfDeviceData.shared)
+                .environmentObject(KdeConnectSettings.shared)
                 .environmentObject(ConnectedDevicesViewModel())
         }
     }

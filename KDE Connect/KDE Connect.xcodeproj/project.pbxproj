@@ -47,7 +47,7 @@
 		A0AAA99726E2D968003883A7 /* ConfigureDeviceByIPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */; };
 		A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0852E26E576950010AE9D /* Clipboard.swift */; };
 		A0B8727D267BFBC500F0EB72 /* SettingsDeviceNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */; };
-		A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */; };
+		A0B8727F267BFE3E00F0EB72 /* KdeConnectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8727E267BFE3E00F0EB72 /* KdeConnectSettings.swift */; };
 		A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */; };
 		A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */; };
 		A0BECF6626C0EDD10037E299 /* BackgroundService.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BECF6526C0EDD10037E299 /* BackgroundService.m */; };
@@ -168,7 +168,7 @@
 		A0AAA99626E2D967003883A7 /* ConfigureDeviceByIPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureDeviceByIPView.swift; sourceTree = "<group>"; };
 		A0B0852E26E576950010AE9D /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeviceNameView.swift; sourceTree = "<group>"; };
-		A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDeviceData.swift; sourceTree = "<group>"; };
+		A0B8727E267BFE3E00F0EB72 /* KdeConnectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KdeConnectSettings.swift; sourceTree = "<group>"; };
 		A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChosenThemeView.swift; sourceTree = "<group>"; };
 		A0B87286267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailPluginSettingsView.swift; sourceTree = "<group>"; };
 		A0BECF6426C0ED890037E299 /* BackgroundService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundService.h; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 				A0BECF6726C195240037E299 /* ConnectedDevicesViewModel.swift */,
 				A0C00FC426F5807C007EFCCA /* CertificateService.swift */,
 				A0FB449926BA796400733914 /* Backend.swift */,
-				A0B8727E267BFE3E00F0EB72 /* SelfDeviceData.swift */,
+				A0B8727E267BFE3E00F0EB72 /* KdeConnectSettings.swift */,
 				A2D0C2B427CD471700C7217F /* AlertManager.swift */,
 				53A92E6C27ED4F4F0085A10C /* SystemSound.swift */,
 				53A0A1D1283ED2B600C7C473 /* Haptics.swift */,
@@ -810,7 +810,7 @@
 				1499A8DC2698BF0F00FDF493 /* BaseLink.m in Sources */,
 				A0A04430267BF38700CC21DD /* KDE_Connect_App.swift in Sources */,
 				A0B87285267E73E700F0EB72 /* SettingsChosenThemeView.swift in Sources */,
-				A0B8727F267BFE3E00F0EB72 /* SelfDeviceData.swift in Sources */,
+				A0B8727F267BFE3E00F0EB72 /* KdeConnectSettings.swift in Sources */,
 				A0B0852F26E576950010AE9D /* Clipboard.swift in Sources */,
 				D2E60C3F29FD156C00502F07 /* FileTransferStatusOverview.swift in Sources */,
 				5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */,

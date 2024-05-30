@@ -82,7 +82,7 @@ struct TabView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
             .environmentObject(AlertManager())
-            .environmentObject(SelfDeviceData.shared)
+            .environmentObject(KdeConnectSettings.shared)
             .environmentObject(connectedDevicesViewModel)
     }
 }

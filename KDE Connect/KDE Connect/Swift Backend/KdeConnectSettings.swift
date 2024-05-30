@@ -19,9 +19,9 @@ import SwiftUI
 import UIKit
 
 @objc
-class SelfDeviceData: NSObject, ObservableObject {
+class KdeConnectSettings: NSObject, ObservableObject {
     @objc
-    static let shared = SelfDeviceData()
+    static let shared = KdeConnectSettings()
     
     @Published var deviceName: String {
         didSet {

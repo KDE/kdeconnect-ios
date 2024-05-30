@@ -30,8 +30,8 @@ let certificateService: CertificateService = CertificateService()
 let connectedDevicesViewModel: ConnectedDevicesViewModel = ConnectedDevicesViewModel()
 
 // Global ObservableObject to be Observed by needed structs for app-wide information
-@available(*, deprecated, renamed: "SelfDeviceData.shared")
-let selfDeviceData: SelfDeviceData = .shared
+@available(*, deprecated, renamed: "KdeConnectSettings.shared")
+let kdeConnectSettings: KdeConnectSettings = .shared
 
 // Background Service provider, bridged from Obj-C codebase
 let backgroundService: BackgroundService = {

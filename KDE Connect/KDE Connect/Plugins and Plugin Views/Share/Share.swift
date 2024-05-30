@@ -373,11 +373,11 @@ extension Notification.Name {
         if PHPhotoLibrary.mayAllowAdd,
            let type = UTType(filenameExtension: (filename as NSString).pathExtension) {
             if type.conforms(to: .image),
-               SelfDeviceData.shared.savePhotosToPhotosLibrary {
+               KdeConnectSettings.shared.savePhotosToPhotosLibrary {
                 try await add(as: .photo)
                 return
             } else if type.conforms(to: .movie),
-                      SelfDeviceData.shared.saveVideosToPhotosLibrary {
+                      KdeConnectSettings.shared.saveVideosToPhotosLibrary {
                 try await add(as: .video)
                 return
             }

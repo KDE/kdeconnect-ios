@@ -85,6 +85,6 @@ extension Notification.Name {
     }
     
     @objc static func getDirectIPList() -> [String] {
-        return SelfDeviceData.shared.directIPs
+        return KdeConnectSettings.shared.directIPs
     }
 }

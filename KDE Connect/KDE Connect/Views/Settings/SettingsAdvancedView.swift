@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsAdvancedView: View {
-    @EnvironmentObject private var selfDeviceData: SelfDeviceData
+    @EnvironmentObject private var kdeConnectSettings: KdeConnectSettings
     let logger = Logger()
 
     @State var disableUdpBroadcastDiscovery: Bool = false
@@ -21,10 +21,10 @@ struct SettingsAdvancedView: View {
                 Text("Experimental functionalities")
             }
             .onAppear {
-                disableUdpBroadcastDiscovery = self.selfDeviceData.disableUdpBroadcastDiscovery
+                disableUdpBroadcastDiscovery = self.kdeConnectSettings.disableUdpBroadcastDiscovery
             }
             .onChange(of: disableUdpBroadcastDiscovery) { value in
-                self.selfDeviceData.disableUdpBroadcastDiscovery = value
+                self.kdeConnectSettings.disableUdpBroadcastDiscovery = value
             }
 
             Section {
@@ -82,7 +82,7 @@ struct SettingsAdvancedView: View {
                 }
             }
         
-            if selfDeviceData.isDebugging {
+            if kdeConnectSettings.isDebugging {
                 Section {
                     if #available(iOS 15.0, *) {
                         NavigationLink {

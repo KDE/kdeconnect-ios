@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsAboutView: View {
     @Environment(\.openURL) var openURL
-    @EnvironmentObject private var selfDeviceData: SelfDeviceData
+    @EnvironmentObject private var kdeConnectSettings: KdeConnectSettings
 
     // swiftlint:disable force_cast force_unwrapping
     // These values missing as written is a serious programmer error
@@ -44,7 +44,7 @@ struct SettingsAboutView: View {
                 VStack {
                     HStack {
                         Spacer(minLength: 0.0)
-                        selfDeviceData.appIcon.image60x60
+                        kdeConnectSettings.appIcon.image60x60
                             .accessibilityHidden(true)
                         Spacer(minLength: 8.0)
                         VStack {
@@ -56,22 +56,22 @@ struct SettingsAboutView: View {
                             Label {
                                 Text("Version: \(version) (\(build))")
                             } icon: {
-                                if selfDeviceData.isDebugging {
+                                if kdeConnectSettings.isDebugging {
                                     Image(systemName: "hammer.fill")
                                         .foregroundColor(.primary)
                                 }
                             }
-                            .accessibilityValue(selfDeviceData.isDebugging ? Text("Debug mode") : Text(""))
+                            .accessibilityValue(kdeConnectSettings.isDebugging ? Text("Debug mode") : Text(""))
                             .onTapGesture(count: 10) {
                                 withAnimation {
-                                    selfDeviceData.isDebugging = true
+                                    kdeConnectSettings.isDebugging = true
                                 }
                             }
-                            .accessibilityAddTraits(selfDeviceData.isDebugging ? [] : .isButton)
-                            .accessibilityHint(selfDeviceData.isDebugging ? Text("") : Text("Double tap to activate debug mode"))
+                            .accessibilityAddTraits(kdeConnectSettings.isDebugging ? [] : .isButton)
+                            .accessibilityHint(kdeConnectSettings.isDebugging ? Text("") : Text("Double tap to activate debug mode"))
                             .accessibilityAction {
                                 withAnimation {
-                                    selfDeviceData.isDebugging = true
+                                    kdeConnectSettings.isDebugging = true
                                 }
                             }
                             Text("© KDE Community & contributors")
@@ -214,6 +214,6 @@ struct SettingsAboutView: View {
 struct SettingsAboutView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsAboutView()
-            .environmentObject(SelfDeviceData.shared)
+            .environmentObject(KdeConnectSettings.shared)
     }
 }

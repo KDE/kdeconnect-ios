@@ -18,7 +18,7 @@ import AVFoundation
 
 struct DevicesView: View {
     @EnvironmentObject var alertManager: AlertManager
-    @EnvironmentObject private var selfDeviceData: SelfDeviceData
+    @EnvironmentObject private var kdeConnectSettings: KdeConnectSettings
 
     var connectedDevicesIds: [String] {
         viewModel.connectedDevices.keys.sorted()
@@ -376,7 +376,7 @@ struct DevicesView_Previews: PreviewProvider {
         NavigationView {
             DevicesView()
                 .listStyle(.sidebar)
-                .environmentObject(SelfDeviceData.shared)
+                .environmentObject(KdeConnectSettings.shared)
         }
     }
 }

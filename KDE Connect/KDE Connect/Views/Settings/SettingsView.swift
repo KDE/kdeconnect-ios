@@ -8,30 +8,30 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject private var selfDeviceDataForSettings: SelfDeviceData = .shared
+    @ObservedObject private var kdeConnectSettingsForSettings: KdeConnectSettings = .shared
     
     var body: some View {
         List {
             // These could go in sections to give them each descriptions and space
             Section(header: Text("General")) {
-                NavigationLink(destination: SettingsDeviceNameView(deviceName: $selfDeviceDataForSettings.deviceName)) {
+                NavigationLink(destination: SettingsDeviceNameView(deviceName: $kdeConnectSettingsForSettings.deviceName)) {
                     AccessibleHStack {
                         Label("Device Name", systemImage: DeviceType.current.sfSymbolName)
                             .labelStyle(.accessibilityTitleOnly)
                             .accentColor(.primary)
                         Spacer()
-                        Text(selfDeviceDataForSettings.deviceName)
+                        Text(kdeConnectSettingsForSettings.deviceName)
                             .foregroundColor(.secondary)
                     }
                 }
                 
-                NavigationLink(destination: SettingsChosenThemeView(chosenTheme: $selfDeviceDataForSettings.chosenTheme)) {
+                NavigationLink(destination: SettingsChosenThemeView(chosenTheme: $kdeConnectSettingsForSettings.chosenTheme)) {
                     AccessibleHStack {
                         Label("App Theme", systemImage: "lightbulb")
                             .labelStyle(.accessibilityTitleOnly)
                             .accentColor(.primary)
                         Spacer()
-                        selfDeviceDataForSettings.chosenTheme.text
+                        kdeConnectSettingsForSettings.chosenTheme.text
                             .foregroundColor(.secondary)
                     }
                 }
@@ -45,7 +45,7 @@ struct SettingsView: View {
                                 .labelStyle(.accessibilityTitleOnly)
                                 .accentColor(.primary)
                             Spacer()
-                            selfDeviceDataForSettings.appIcon.name
+                            kdeConnectSettingsForSettings.appIcon.name
                                 .foregroundColor(.secondary)
                         }
                     }

@@ -98,7 +98,7 @@
 }
 
 - (os_log_type_t)debugLogLevel {
-    SelfDeviceData *settings = [SelfDeviceData shared];
+    KdeConnectSettings *settings = [KdeConnectSettings shared];
     if (settings.isDebuggingDiscovery || settings.isDebuggingNetworkPacket) {
         return OS_LOG_TYPE_INFO;
     }

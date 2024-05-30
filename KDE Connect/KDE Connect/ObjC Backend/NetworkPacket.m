@@ -96,7 +96,7 @@ __strong static NSString* _UUID;
                     NetworkPacketTypeRunCommandRequest
                     ] forKey:@"outgoingCapabilities"];
     
-    if ([[SelfDeviceData shared] isDebuggingNetworkPacket]) {
+    if ([[KdeConnectSettings shared] isDebuggingNetworkPacket]) {
         [np setObject:[NetworkPacket allPacketTypes] forKey:@"incomingCapabilities"];
         [np setObject:[NetworkPacket allPacketTypes] forKey:@"outgoingCapabilities"];
     }
@@ -130,7 +130,7 @@ __strong static NSString* _UUID;
     os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                     NSStringFromClass([self class]).UTF8String);
     os_log_type_t debugLogLevel;
-    if ([[SelfDeviceData shared] isDebuggingNetworkPacket]) {
+    if ([[KdeConnectSettings shared] isDebuggingNetworkPacket]) {
         debugLogLevel = OS_LOG_TYPE_INFO;
     } else {
         debugLogLevel = OS_LOG_TYPE_DEBUG;

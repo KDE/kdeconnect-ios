@@ -16,7 +16,7 @@
 import SwiftUI
 
 struct DeviceDiscoveryHelp: View {
-    @EnvironmentObject private var selfDeviceData: SelfDeviceData
+    @EnvironmentObject private var kdeConnectSettings: KdeConnectSettings
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -40,9 +40,9 @@ struct DeviceDiscoveryHelp: View {
                          destination: URL(string: "https://userbase.kde.org/KDEConnect#Troubleshooting")!)
                 }
                 .padding()
-                .accessibilityAddTraits(selfDeviceData.isDebuggingDiscovery ? [] : .isButton)
+                .accessibilityAddTraits(kdeConnectSettings.isDebuggingDiscovery ? [] : .isButton)
                 .accessibilityHint(
-                    selfDeviceData.isDebuggingDiscovery
+                    kdeConnectSettings.isDebuggingDiscovery
                     ? Text("Debugging device discovery")
                     : Text("Double tap to activate debugging device discovery")
                 )
@@ -56,7 +56,7 @@ struct DeviceDiscoveryHelp: View {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        if selfDeviceData.isDebuggingDiscovery {
+                        if kdeConnectSettings.isDebuggingDiscovery {
                             Label("Done", systemImage: "hammer.fill")
                         } else {
                             Text("Done")
@@ -70,8 +70,8 @@ struct DeviceDiscoveryHelp: View {
 
     private func enableDebuggingDiscovery() {
         withAnimation {
-            selfDeviceData.isDebugging = true
-            selfDeviceData.isDebuggingDiscovery = true
+            kdeConnectSettings.isDebugging = true
+            kdeConnectSettings.isDebuggingDiscovery = true
         }
     }
 }

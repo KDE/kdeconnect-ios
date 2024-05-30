@@ -18,13 +18,13 @@ import SwiftUI
 // Intentional naming
 // swiftlint:disable:next type_name
 @main struct KDE_Connect_App: App {
-    @ObservedObject var selfDeviceDataForTopLevel: SelfDeviceData = .shared
+    @ObservedObject var kdeConnectSettingsForTopLevel: KdeConnectSettings = .shared
     @StateObject var alertManager: AlertManager = AlertManager()
     
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .preferredColorScheme(selfDeviceDataForTopLevel.chosenTheme)
+                .preferredColorScheme(kdeConnectSettingsForTopLevel.chosenTheme)
                 .onAppear {
 #if DEBUG
                     if ProcessInfo.processInfo.arguments.contains("setupScreenshotDevices") {
@@ -53,7 +53,7 @@ import SwiftUI
                     // to prevent weird broken pipe/invalid socket issue
                     backgroundService.stopDiscovery()
                 }
-                .environmentObject(SelfDeviceData.shared)
+                .environmentObject(KdeConnectSettings.shared)
                 .environmentObject(connectedDevicesViewModel)
                 .environmentObject(alertManager)
                 .alert(

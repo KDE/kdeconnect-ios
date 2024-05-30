@@ -97,7 +97,7 @@ certificateService:(CertificateService*)certificateService
 }
 
 - (os_log_type_t)debugLogLevel {
-    if ([SelfDeviceData shared].isDebuggingNetworkPacket) {
+    if ([KdeConnectSettings shared].isDebuggingNetworkPacket) {
         return OS_LOG_TYPE_INFO;
     }
     return OS_LOG_TYPE_DEBUG;
