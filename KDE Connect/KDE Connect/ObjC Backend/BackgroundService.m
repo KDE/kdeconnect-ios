@@ -29,6 +29,7 @@
 
 #import "BackgroundService.h"
 #import "LanLinkProvider.h"
+#import "LoopbackLinkProvider.h"
 #import "KDE_Connect-Swift.h"
 @import os.log;
 
@@ -161,7 +162,7 @@
 - (void) registerLinkProviders
 {
     os_log_with_type(logger, self.debugLogLevel, "bg register linkproviders");
-    // TO-DO: read setting for linkProvider registration
+    //LoopbackLinkProvider* linkProvider=[[LoopbackLinkProvider alloc] initWithDelegate:self];
     LanLinkProvider* linkProvider=[[LanLinkProvider alloc] initWithDelegate:self certificateService:_certificateService];
     [_linkProviders addObject:linkProvider];
 }
