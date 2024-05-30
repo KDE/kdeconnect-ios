@@ -104,8 +104,8 @@
         
         //[[NSUserDefaults standardUserDefaults] registerDefaults:_settings];
         //[[NSUserDefaults standardUserDefaults] synchronize];
-        [self registerLinkProviders];
         [self loadRememberedDevices];
+        [self registerLinkProviders];
         //[PluginFactory sharedInstance];
         
 //#ifdef DEBUG
