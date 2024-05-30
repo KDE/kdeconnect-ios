@@ -52,7 +52,7 @@ extension Notification.Name {
         
         let status = CertificateService.shared.saveRemoteDeviceCertToKeychain(cert: cert, deviceId: deviceId)
         logger.info("Remote certificate saved into local Keychain with status \(status)")
-        backgroundService._devices[deviceId]!._SHA256HashFormatted = CertificateService.shared.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(CertificateService.shared.tempRemoteCerts[deviceId]!) as Data).description)
+        backgroundService._devices[deviceId]!._SHA256HashFormatted = CertificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(CertificateService.shared.tempRemoteCerts[deviceId]!) as Data).description)
         
         onDevicesListUpdated()
         NotificationCenter.default.post(name: .pairRequestSucceedNotification, object: nil,

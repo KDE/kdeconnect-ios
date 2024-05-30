@@ -4,45 +4,25 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-// Original header below:
-//
-//  CertificateService.swift
-//  KDE Connect Test
-//
-//  Created by Lucas Wang on 2021-09-17.
-//
-
 import Foundation
 import Security
 import CryptoKit
-// import OpenSSL
-// import CommonCrypto
 
 @objc class CertificateService: NSObject {
     // Certificate Service provider, to be used for all certificate and Keychain operations
     @objc static let shared: CertificateService = CertificateService()
     
-    @objc var hostIdentity: SecIdentity?
-    @objc var hostCertificateSHA256HashFormattedString: String?
+    @objc let hostIdentity: SecIdentity
     private let logger = Logger()
     
     var tempRemoteCerts: [String: SecCertificate] = [:]
     
     override init() {
+        hostIdentity = Self.loadIdentityFromKeychain()
         super.init()
-        hostIdentity = getHostIdentityFromKeychain()
-        hostCertificateSHA256HashFormattedString = getHostSHA256HashFullyFormatted()
     }
     
-    @objc func getHostSHA256HashFullyFormatted() -> String {
-        return SHA256HashDividedAndFormatted(hashDescription: getHostCertificateSHA256HexDescriptionString())
-    }
-    
-    @objc func reFetchHostIdentity() {
-        hostIdentity = getHostIdentityFromKeychain()
-    }
-    
-    @objc func getHostIdentityFromKeychain() -> SecIdentity? {
+    static func loadIdentityFromKeychain() -> SecIdentity {
         let keychainItemQuery: CFDictionary = [
             kSecClass: kSecClassIdentity,
             kSecAttrLabel: KdeConnectSettings.getUUID() as Any,
@@ -50,45 +30,36 @@ import CryptoKit
         ] as CFDictionary
         var identityApp: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &identityApp)
-        logger.info("getIdentityFromKeychain completed with \(status)")
-        if let identityApp = identityApp {
-            // Required by the Swift compiler
-            // swiftlint:disable:next force_cast
-            return (identityApp as! SecIdentity)
-        }
-        if generateSecIdentityForUUID(KdeConnectSettings.getUUID()) == noErr {
-            // Refetch
-            SecItemCopyMatching(keychainItemQuery, &identityApp)
-            if let identityApp = identityApp {
-                // Required by the Swift compiler
-                // swiftlint:disable:next force_cast
-                return (identityApp as! SecIdentity)
+        Logger().info("getIdentityFromKeychain completed with \(status)")
+        if (identityApp == nil) {
+            Logger().info("generateSecIdentity")
+            if generateSecIdentityForUUID(KdeConnectSettings.getUUID()) == noErr {
+                SecItemCopyMatching(keychainItemQuery, &identityApp)
             }
         }
-        return nil
+        return (identityApp as! SecIdentity)
     }
     
-    // Run the description given by this func through SHA256HashDividedAndFormatted() to have it fromatted in xx:yy:zz:ww:ee HEX format
-    @objc func getHostCertificateSHA256HexDescriptionString() -> String {
-        if let hostIdentity: SecIdentity = hostIdentity {
-            var secCert: SecCertificate? = nil
-            let status: OSStatus = SecIdentityCopyCertificate(hostIdentity, &secCert)
-            logger.info("SecIdentityCopyCertificate completed with \(status)")
-            if (secCert != nil) {
-                return SHA256.hash(data: SecCertificateCopyData(secCert!) as Data).description
-            } else {
-                logger.fault("secCert is nil")
-                return "ERROR getting SHA256 from host's certificate"
-            }
-        } else {
-            logger.fault("hostIdentity is nil")
-            return "ERROR getting SHA256 from host's certificate"
-        }
+    func getHostCertificate() -> SecCertificate {
+        var secCert: SecCertificate? = nil
+        let status: OSStatus = SecIdentityCopyCertificate(hostIdentity, &secCert)
+        logger.info("SecIdentityCopyCertificate completed with \(status)")
+        return secCert!
+    }
+    
+    func getHostCertificateSHA256HashFormattedString() -> String {
+        return Self.getCertHash(cert: getHostCertificate())
+    }
+    
+    static func getCertHash(cert: SecCertificate) -> String {
+        let certData = SecCertificateCopyData(cert) as Data
+        let certHash = SHA256.hash(data: certData)
+        return SHA256HashDividedAndFormatted(hashDescription: certHash.description)
     }
     
     // Given a standard, no-space SHA256 hash, insert : dividers every 2 characters
     // It isn't terribly efficient to convert Subtring to String like this but it works?
-    @objc func SHA256HashDividedAndFormatted(hashDescription: String) -> String {
+    @objc static func SHA256HashDividedAndFormatted(hashDescription: String) -> String {
         // hashDescription looks like: "SHA256 digest: xxxxxxyyyyyyssssssyyyysysss", so the third element of the split separated by " " is just the hash string
         var justTheHashString: String = (hashDescription.components(separatedBy: " "))[2]
         var arrayOf2CharStrings: [String] = []
@@ -120,7 +91,8 @@ import CryptoKit
             if let storedRemoteCert: SecCertificate = extractSavedCertOfRemoteDevice(deviceId: deviceId) {
                 logger.debug("Both remote cert and stored cert exist, checking them for equality")
                 if ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data)) {
-                    backgroundService._devices[deviceId]!._SHA256HashFormatted = SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(remoteCert) as Data).description)
+                    // FIXME: This is a weird place to update the device info in backgroundService._devices[
+                    backgroundService._devices[deviceId]!._SHA256HashFormatted = Self.getCertHash(cert: remoteCert)
                     tempRemoteCerts[deviceId] = remoteCert
                     return true
                 } else {
