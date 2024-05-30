@@ -152,8 +152,10 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         if (deviceDelegate) {
             [deviceDelegate onDeviceReachableStatusChanged:self];
         }
-        // If a remembered device is online with its first link, ask for its battery status
-        [self updateBatteryStatus];
+        // FIXME: Move this to the battery plugin itself
+        if (_pairStatus == Paired) {
+            [self updateBatteryStatus];
+        }
     }
 }
 
