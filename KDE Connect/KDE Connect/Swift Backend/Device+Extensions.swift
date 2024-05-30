@@ -15,12 +15,6 @@
 import Foundation
 
 extension Device {
-    @objc
-    @available(swift, obsoleted: 1.0, message: "Use 'DeviceType.current' instead")
-    static var currentDeviceType: DeviceType {
-        return DeviceType.current
-    }
-    
     // MARK: - Migration
     
     // This section contains code that keeps the project compiling, but

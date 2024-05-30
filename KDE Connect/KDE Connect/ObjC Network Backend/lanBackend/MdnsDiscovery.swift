@@ -65,7 +65,7 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
 
         self.tcpPort = tcpPort
 
-        let ownDeviceInfo = DeviceInfo.getDeviceInfo()
+        let ownDeviceInfo = DeviceInfo.getOwn()
         // We can't use NWListener until allowLocalEndpointReuse is fixed
         // https://developer.apple.com/forums/thread/129452
         // https://openradar.appspot.com/FB8658821
@@ -76,7 +76,7 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
             port: Int32(tcpPort)
         )
         self.service = service
-        service.setTXTRecord(ownDeviceInfo.txtRecordData)
+        service.setTXTRecord(Self.deviceInfoToMdnsData(ownDeviceInfo: ownDeviceInfo))
         service.includesPeerToPeer = true
         service.delegate = self
         service.publish()
@@ -114,7 +114,7 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
     }
 
     private func processBrowserResults(_ results: Set<NWBrowser.Result>) {
-        let ownDeviceId = NetworkPacket.getUUID()
+        let ownDeviceId = KdeConnectSettings.getUUID()
         for result in results {
             if case let .service(name: name, type: _, domain: _, interface: _) = result.endpoint {
                 if name == ownDeviceId {
@@ -153,40 +153,23 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
         }
     }
 
-    private struct DeviceInfo {
-        let id: String
-        let name: String
-        let type: String
-        let protocolVersion: Int
-
-        fileprivate static func getDeviceInfo() -> Self {
-            let packet = NetworkPacket.createIdentityPacket(withTCPPort: 0)
-            return Self(
-                id: packet.object(forKey: "deviceId") as! String,
-                name: packet.object(forKey: "deviceName") as! String,
-                type: packet.object(forKey: "deviceType") as! String,
-                protocolVersion: packet.integer(forKey: "protocolVersion")
-            )
+    fileprivate static func deviceInfoToMdnsData(ownDeviceInfo: DeviceInfo) -> Data {
+        let record = [
+            "id": Data(ownDeviceInfo.id.utf8),
+            "name": Data(ownDeviceInfo.name.utf8),
+            "type": Data(ownDeviceInfo.getTypeAsString().utf8),
+            "protocol": Data("\(ownDeviceInfo.protocolVersion)".utf8),
+        ]
+        let data = NetService.data(fromTXTRecord: record)
+        switch data.count {
+        case ...512:
+            logger.debug("TXT record size: \(data.count) bytes, okay")
+        case ...65535:
+            logger.error("TXT record size: \(data.count) bytes, exceeds the maximum RECOMMENDED size of 512 bytes")
+        default:
+            logger.fault("TXT record size: \(data.count) bytes, exceeds the maximum size of 65535 bytes")
         }
-
-        fileprivate var txtRecordData: Data {
-            let record = [
-                "id": Data(id.utf8),
-                "name": Data(name.utf8),
-                "type": Data(type.utf8),
-                "protocol": Data("\(protocolVersion)".utf8),
-            ]
-            let data = NetService.data(fromTXTRecord: record)
-            switch data.count {
-            case ...512:
-                logger.debug("TXT record size: \(data.count) bytes, okay")
-            case ...65535:
-                logger.error("TXT record size: \(data.count) bytes, exceeds the maximum RECOMMENDED size of 512 bytes")
-            default:
-                logger.fault("TXT record size: \(data.count) bytes, exceeds the maximum size of 65535 bytes")
-            }
-            return data
-        }
+        return data
     }
 }
 

@@ -22,7 +22,7 @@ public extension DeviceType {
         case .laptop: return "laptopcomputer"
         case .phone: return "apps.iphone"
         case .tablet: return "apps.ipad.landscape"
-        case .tv: return "tv"
+        case .appletv: return "tv"
         @unknown default: return "questionmark.square.dashed"
         }
     }
@@ -70,11 +70,13 @@ public extension DeviceType {
             }
             return .tablet
         case .tv:
-            return .tv
+            return .appletv
         case .carPlay:
             return .unknown
         case .mac:
             return macDeviceType
+        case .vision:
+            return .unknown
         @unknown default:
             return .unknown
         }

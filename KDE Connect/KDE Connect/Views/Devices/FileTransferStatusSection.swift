@@ -187,12 +187,12 @@ struct FileTransferStatusSection: View {
 }
 
 struct FileTransferStatusSection_Previews: PreviewProvider {
-    static let share = Share(controlDevice: Device(
-        id: "test", type: .unknown, name: "Test",
-        incomingCapabilities: [],
-        outgoingCapabilities: [],
-        protocolVersion: -1, deviceDelegate: nil
-    ))
+    static let share = Share(
+        controlDevice: Device(
+            link: BaseLink(DeviceInfo.getOwn()),
+            delegate: nil
+        )
+    )
     
     private static func setupForFileTransferUIPreview(in share: Share) {
         share.totalNumOfFilesToSend = 5

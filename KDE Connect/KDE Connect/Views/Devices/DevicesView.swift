@@ -145,7 +145,7 @@ struct DevicesView: View {
                                         .font(.title3)
                                         .fontWeight(.bold)
                                     if let device = backgroundService._devices[key] {
-                                        Image(systemName: device._type.sfSymbolName)
+                                        Image(systemName: device._deviceInfo.type.sfSymbolName)
                                             .font(.title3)
                                     }
                                 }
@@ -208,7 +208,7 @@ struct DevicesView: View {
                                         .fontWeight(.bold)
                                         .foregroundColor(.primary)
                                     if let device = backgroundService._devices[key] {
-                                        Image(systemName: device._type.sfSymbolName)
+                                        Image(systemName: device._deviceInfo.type.sfSymbolName)
                                             .font(.title3)
                                             .foregroundColor(.primary)
                                     }
@@ -255,7 +255,7 @@ struct DevicesView: View {
                                     Text(viewModel.savedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
-                                    Image(systemName: backgroundService._devices[key]!._type.sfSymbolName)
+                                    Image(systemName: backgroundService._devices[key]!._deviceInfo.type.sfSymbolName)
                                         .font(.title3)
                                 }
                                 // TODO: Might want to add the device description as
@@ -278,7 +278,7 @@ struct DevicesView: View {
     }
     
     func currentPairingDeviceName(id: String) -> String? {
-        backgroundService._devices[id]?._name
+        backgroundService._devices[id]?._deviceInfo.name
     }
 
     func deleteDevice(at offsets: IndexSet) {
@@ -286,7 +286,7 @@ struct DevicesView: View {
             .map { (offset: $0, id: savedDevicesIds[$0]) }
             .forEach { device in
                 // TODO: Update Device.m to indicate nullability
-                let name = backgroundService._devices[device.id]!._name!
+                let name = backgroundService._devices[device.id]!._deviceInfo.name
                 logger.info("Remembered device \(name, privacy: .private(mask: .hash)) removed at index \(device.offset)")
                 backgroundService.unpairDevice(device.id)
             }

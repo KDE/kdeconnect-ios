@@ -30,6 +30,7 @@
 		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
 		5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */; };
 		5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */; };
+		744FF3AE2C06C5EB001B6234 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744FF3AD2C06C5EB001B6234 /* DeviceInfo.swift */; };
 		A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2626C4F6D50014B165 /* Plugin.swift */; };
 		A01FDD2926C4F8420014B165 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2826C4F8420014B165 /* Ping.swift */; };
 		A01FDD2D26C62E180014B165 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2C26C62E170014B165 /* Share.swift */; };
@@ -114,7 +115,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1499A8D02698BF0F00FDF493 /* LanLink-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LanLink-Bridging-Header.h"; sourceTree = "<group>"; };
+		1499A8D02698BF0F00FDF493 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		1499A8D22698BF0F00FDF493 /* LanLinkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanLinkProvider.h; sourceTree = "<group>"; };
 		1499A8D32698BF0F00FDF493 /* LanLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanLink.h; sourceTree = "<group>"; };
 		1499A8D42698BF0F00FDF493 /* LanLinkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanLinkProvider.m; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibleTextView.swift; sourceTree = "<group>"; };
 		5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
+		744FF3AD2C06C5EB001B6234 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		A01FDD2626C4F6D50014B165 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		A01FDD2826C4F8420014B165 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		A01FDD2C26C62E170014B165 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
@@ -257,7 +259,6 @@
 				1499A8D62698BF0F00FDF493 /* BaseLinkProvider.h */,
 				1499A8D92698BF0F00FDF493 /* BaseLinkProvider.m */,
 				1499A8D12698BF0F00FDF493 /* lanBackend */,
-				1499A8D02698BF0F00FDF493 /* LanLink-Bridging-Header.h */,
 			);
 			path = "ObjC Network Backend";
 			sourceTree = "<group>";
@@ -277,6 +278,7 @@
 		1499A8DE2698BF4900FDF493 /* ObjC Backend */ = {
 			isa = PBXGroup;
 			children = (
+				1499A8D02698BF0F00FDF493 /* Bridging-Header.h */,
 				1499A8E52698BFF300FDF493 /* Device.h */,
 				1499A8E32698BFF300FDF493 /* Device.m */,
 				1499A8DF2698BF6900FDF493 /* NetworkPacket.h */,
@@ -385,6 +387,7 @@
 		A0D8CBC626EF06FA00791D07 /* Swift Backend */ = {
 			isa = PBXGroup;
 			children = (
+				744FF3AD2C06C5EB001B6234 /* DeviceInfo.swift */,
 				A0BECF6726C195240037E299 /* ConnectedDevicesViewModel.swift */,
 				A0C00FC426F5807C007EFCCA /* CertificateService.swift */,
 				A0FB449926BA796400733914 /* Backend.swift */,
@@ -828,6 +831,7 @@
 				53A0A1D6283ED49E00C7C473 /* Device+Extensions.swift in Sources */,
 				D298D96927D2C8810053F65B /* NetworkPacket+Extensions.swift in Sources */,
 				A0D76FD226E73F12009D9B03 /* TapRecognizerViewModifier.swift in Sources */,
+				744FF3AE2C06C5EB001B6234 /* DeviceInfo.swift in Sources */,
 				A0D8CBDA26F02C7D00791D07 /* Presenter.swift in Sources */,
 				D2916A4227C98BC200EF0714 /* SetupForUITests.swift in Sources */,
 				A0C00FC526F5807C007EFCCA /* CertificateService.swift in Sources */,
@@ -1020,7 +1024,7 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Backend/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1051,7 +1055,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Network Backend/LanLink-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Backend/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

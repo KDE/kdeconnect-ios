@@ -35,6 +35,7 @@
 //#import "BackgroundService.h"
 @class BaseLink;
 @class NetworkPacket;
+@class DeviceInfo;
 @protocol Plugin;
 //@class Ping;
 //@class Share;
@@ -50,27 +51,13 @@ typedef NS_ENUM(NSUInteger, PairStatus)
     Paired=3
 };
 
-typedef NS_ENUM(NSUInteger, DeviceType)
-{
-    DeviceTypeUnknown=0,
-    DeviceTypeDesktop=1,
-    DeviceTypeLaptop=2,
-    DeviceTypePhone=3,
-    DeviceTypeTablet=4,
-    DeviceTypeTv=5,
-};
-
 @protocol DeviceDelegate;
 
 @interface Device : NSObject <LinkDelegate, NSSecureCoding>
 
-@property(readonly, nonatomic) NSString *_id;
-@property(readonly, nonatomic) NSString *_name;
-@property(readonly, nonatomic) DeviceType _type;
-@property(readonly, nonatomic) NSInteger _protocolVersion;
+@property(readonly, nonatomic) DeviceInfo *_deviceInfo;
+
 @property(readonly, nonatomic) PairStatus _pairStatus;
-@property(readonly, nonatomic) NSArray<NSString *> *_incomingCapabilities;
-@property(readonly, nonatomic) NSArray<NSString *> *_outgoingCapabilities;
 
 @property(nonatomic) NSMutableArray* _links;
 @property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPacketType, id<Plugin>> *plugins;
@@ -97,20 +84,12 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 @property (class, readonly) BOOL supportsSecureCoding;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithID:(NSString *)deviceID
-                      type:(DeviceType)deviceType
-                      name:(NSString *)deviceName
-      incomingCapabilities:(NSArray<NSString *> *)incomingCapabilities
-      outgoingCapabilities:(NSArray<NSString *> *)outgoingCapabilities
-           protocolVersion:(NSInteger)protocolVersion
-            deviceDelegate:(id<DeviceDelegate>)deviceDelegate;
-- (instancetype)initWithNetworkPacket:(NetworkPacket *)np
-                                  link:(BaseLink*)link
+- (instancetype)initWithLink:(BaseLink*)link
                               delegate:(id<DeviceDelegate>)deviceDelegate;
 - (NSInteger) compareProtocolVersion;
 
 #pragma mark Link-related Functions
-- (void)updateInfoWithNetworkPacket:(NetworkPacket *)np;
+- (bool)updateInfo:(DeviceInfo *)newDeviceInfo;
 - (void)addLink:(BaseLink *)link;
 - (void)onPacketReceived:(NetworkPacket *)np;
 - (void)onLinkDestroyed:(BaseLink *)link;
@@ -129,10 +108,6 @@ typedef NS_ENUM(NSUInteger, DeviceType)
 #pragma mark Plugin-related Functions
 - (void) reloadPlugins;
 // - (NSArray*) getPluginViews:(UIViewController*)vc;
-
-#pragma mark enum tools
-+ (NSString*)DeviceType2Str:(DeviceType)type;
-+ (DeviceType)Str2DeviceType:(NSString*)str;
 @end
 
 @protocol DeviceDelegate <NSObject>

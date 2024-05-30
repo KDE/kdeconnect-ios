@@ -31,13 +31,12 @@
 
 @implementation BaseLink
 
-@synthesize _deviceId;
+@synthesize _deviceInfo;
 
-- (BaseLink *)init:(NSString *)deviceId setDelegate:(id<LinkDelegate>)linkDelegate
+- (BaseLink *)init:(DeviceInfo *)deviceInfo
 {
-    if ((self=[super init])) {
-        _deviceId=deviceId;
-        _linkDelegate=linkDelegate;
+    if (self=[super init]) {
+        _deviceInfo = deviceInfo;
     }
     return self;
 }

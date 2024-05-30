@@ -135,7 +135,7 @@
             [_settings setObject:deviceData forKey:deviceId]; // do this here since Settings holds exclusively encoded Data, NOT Device objects, otherwise will throw "non-property list" error upon trying to save to UserDefaults
             NSError* error;
             Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
-            os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device with pair status %lu is decoded from UserDefaults as: %{public}@ with error %{public}@", [device _pairStatus], device, error);
+            os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device with pair status %lu is decoded from UserDefaults as: %{public}@. Errors: %{public}@", [device _pairStatus], device, error);
             if ([device _pairStatus] == Paired) {
                 device.deviceDelegate = self;
                 //[device reloadPlugins];
@@ -150,8 +150,8 @@
 
     for (Device* device in [savedDevices allValues]) {
         //Device* device=[[Device alloc] init:deviceId setDelegate:self];
-        [_devices setObject:device forKey:[device _id]];
-        //[_settings setObject:device forKey:[device _id]];
+        [_devices setObject:device forKey:device._deviceInfo.id];
+        //[_settings setObject:device forKey:device._deviceInfo.id];
     }
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
@@ -200,15 +200,15 @@
     NSMutableDictionary* _rememberedDevicesList=[NSMutableDictionary dictionaryWithCapacity:1];
     for (Device *device in [_devices allValues]) {
         if ((![device isReachable]) && [device isPaired]) {
-            [_rememberedDevicesList setValue:[device _name] forKey:[device _id]];
+            [_rememberedDevicesList setValue:device._deviceInfo.name forKey:device._deviceInfo.id];
             
         } else if([device isPaired] && [device isReachable]){
             //[device reloadPlugins];
-            [_connectedDevicesList setValue:[device _name] forKey:[device _id]];
+            [_connectedDevicesList setValue:device._deviceInfo.name forKey:device._deviceInfo.id];
             //TODO: move this to a different thread maybe, and also in Swift
             //[device reloadPlugins];
         } else if ((![device isPaired]) && [device isReachable]) {
-            [_visibleDevicesList setValue:[device _name] forKey:[device _id]];
+            [_visibleDevicesList setValue:device._deviceInfo.name forKey:device._deviceInfo.id];
         }
     }
     NSDictionary* list=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -270,11 +270,11 @@
     os_log_with_type(logger, self.debugLogLevel, "bg on device reachable status changed");
     if (![device isReachable]) {
         os_log_with_type(logger, self.debugLogLevel, "bg device not reachable");
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "%{mask.hash}@", [device _id]);
-        //[_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:[device _id]];
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "%{mask.hash}@", device._deviceInfo.id);
+        //[_backgroundServiceDelegate currDeviceDetailsViewDisconnectedFromRemote:device._deviceInfo.id];
     }
     if (![device isPaired] && ![device isReachable]) {
-        [_devices removeObjectForKey:[device _id]];
+        [_devices removeObjectForKey:device._deviceInfo.id];
         os_log_with_type(logger, self.debugLogLevel, "bg destroy device");
     }
     //[self refreshDiscovery];
@@ -284,28 +284,28 @@
 - (void) onNetworkChange
 {
     os_log_with_type(logger, self.debugLogLevel, "bg on network change");
-    for (LanLinkProvider* lp in _linkProviders){
+    for (BaseLinkProvider* lp in _linkProviders){
         [lp onNetworkChange];
     }
 }
 
-- (void) onConnectionReceived:(NetworkPacket *)np link:(BaseLink *)link
+- (void) onConnectionReceived:(BaseLink *)link
 {
     os_log_with_type(logger, self.debugLogLevel, "bg on connection received");
-    NSString* deviceId=[np objectForKey:@"deviceId"];
+    NSString* deviceId=[link _deviceInfo].id;
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "Device discovered: %{mask.hash}@",deviceId);
     if ([_devices valueForKey:deviceId]) {
         os_log_with_type(logger, self.debugLogLevel, "known device");
         Device* device=[_devices objectForKey:deviceId];
-        [device updateInfoWithNetworkPacket:np];
         [device addLink:link];
+        [device updateInfo:[link _deviceInfo]];
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }
     else{
         os_log_with_type(logger, OS_LOG_TYPE_INFO,
                          "new device from network packet: %{public}@",
-                         np._Id);
-        Device *device=[[Device alloc] initWithNetworkPacket:np link:link delegate:self];
+                         deviceId);
+        Device *device=[[Device alloc] initWithLink:link delegate:self];
         [_devices setObject:device forKey:deviceId];
         [self refreshVisibleDeviceList];
     }
@@ -318,7 +318,7 @@
                      deviceID);
     Device *device = [_devices objectForKey:deviceID];
     if (device) {
-        [device updateInfoWithNetworkPacket:np];
+        [device updateInfo:[DeviceInfo fromNetworkPacket:np]];
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     } else {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT,
@@ -339,7 +339,7 @@
 {
     os_log_with_type(logger, self.debugLogLevel, "bg on device pair request");
     if (_backgroundServiceDelegate) {
-        [_backgroundServiceDelegate onPairRequest:[device _id]];
+        [_backgroundServiceDelegate onPairRequest:device._deviceInfo.id];
     }
 }
 
@@ -347,9 +347,9 @@
 {
     os_log_with_type(logger, self.debugLogLevel, "bg on device pair timeout");
     if (_backgroundServiceDelegate) {
-        [_backgroundServiceDelegate onPairTimeout:[device _id]];
+        [_backgroundServiceDelegate onPairTimeout:device._deviceInfo.id];
     }
-    [_settings removeObjectForKey:[device _id]];
+    [_settings removeObjectForKey:device._deviceInfo.id];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
 }
 
@@ -358,13 +358,13 @@
     //NSLog(@"%lu", [device _type]);
     os_log_with_type(logger, self.debugLogLevel, "bg on device pair success");
     if (_backgroundServiceDelegate) {
-        [_backgroundServiceDelegate onPairSuccess:[device _id]];
+        [_backgroundServiceDelegate onPairSuccess:device._deviceInfo.id];
     }
     //[device setAsPaired]; is already called in the caller of this method
     NSError* error;
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "device object with pair status %lu encoded into UserDefaults as: %{public}@ with error: %{public}@", [device _pairStatus], deviceData, error);
-    [_settings setValue:deviceData forKey:[device _id]]; //[device _name]
+    [_settings setValue:deviceData forKey:device._deviceInfo.id]; //[device _name]
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
 }
 
@@ -372,14 +372,14 @@
 {
     os_log_with_type(logger, self.debugLogLevel, "bg on device pair rejected");
     if (_backgroundServiceDelegate) {
-        [_backgroundServiceDelegate onPairRejected:[device _id]];
+        [_backgroundServiceDelegate onPairRejected:device._deviceInfo.id];
     }
-    [_settings removeObjectForKey:[device _id]];
+    [_settings removeObjectForKey:device._deviceInfo.id];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
 }
 
 - (void)onDeviceUnpaired:(Device *)device {
-    NSString *deviceId = [device _id];
+    NSString *deviceId = device._deviceInfo.id;
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "bg on device unpair %{mask.hash}@", deviceId);
     [_settings removeObjectForKey:deviceId];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];

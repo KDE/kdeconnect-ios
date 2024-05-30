@@ -61,9 +61,7 @@
 
 @implementation LanLinkProvider
 
-@synthesize _linkProviderDelegate;
 @synthesize _certificate;
-//@synthesize _certificateRequestPEM;
 @synthesize _identity;
 @synthesize _certificateService;
 
@@ -83,7 +81,6 @@
         _pendingSockets=[NSMutableArray arrayWithCapacity:1];
         _pendingNPs = [NSMutableArray arrayWithCapacity:1];
         self.connectedLinks = [NSMutableDictionary dictionaryWithCapacity:1];
-        _linkProviderDelegate=linkProviderDelegate;
         socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.socketqueue", NULL);
         
         // Load private key and certificate
@@ -262,8 +259,8 @@
 - (void) onLinkDestroyed:(BaseLink*)link
 {
     os_log_with_type(logger, self.debugLogLevel, "lp on linkdestroyed");
-    if (link == self.connectedLinks[[link _deviceId]]) {
-        [self.connectedLinks removeObjectForKey:[link _deviceId]];
+    if (link == self.connectedLinks[[link _deviceInfo].id]) {
+        [self.connectedLinks removeObjectForKey:[link _deviceInfo].id];
     }
 }
 
@@ -428,14 +425,13 @@
     
     if (link) {
         // reuse existing link once socket secures
-        [_linkProviderDelegate onDeviceIdentityUpdatePacketReceived:np];
+        [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:np];
     } else {
         link = [[LanLink alloc] init:sock
-                            deviceId:deviceId
-                         setDelegate:nil
+                          deviceInfo:[DeviceInfo fromNetworkPacket:np]
                   certificateService:_certificateService];
         self.connectedLinks[deviceId] = link;
-        [_linkProviderDelegate onConnectionReceived:np link:link];
+        [[self _linkProviderDelegate] onConnectionReceived:link];
     }
     [_pendingSockets removeObject:sock];
     [_pendingNPs removeObject:np];
@@ -488,17 +484,16 @@
             BaseLink *link = self.connectedLinks[deviceId];
             if (link) {
                 // reuse existing link once socket secures
-                [_linkProviderDelegate onDeviceIdentityUpdatePacketReceived:np];
+                [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:np];
                 return;
             }
             // create LanLink and inform the background
             link = [[LanLink alloc] init:sock
-                              deviceId:deviceId
-                           setDelegate:nil
+                              deviceInfo:[DeviceInfo fromNetworkPacket:np]
                     certificateService:_certificateService];
             self.connectedLinks[deviceId] = link;
-            if (_linkProviderDelegate) {
-                [_linkProviderDelegate onConnectionReceived:np link:link];
+            if ([self _linkProviderDelegate]) {
+                [[self _linkProviderDelegate] onConnectionReceived:link];
             }
         }
     }
@@ -611,8 +606,7 @@
     } else {
         // create LanLink and inform the background
         link = [[LanLink alloc] init:sock
-                            deviceId:deviceID
-                         setDelegate:nil
+                          deviceInfo:[DeviceInfo fromNetworkPacket:pendingNP]
                   certificateService:_certificateService];
         self.connectedLinks[deviceID] = link;
     }

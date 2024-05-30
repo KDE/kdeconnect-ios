@@ -60,7 +60,7 @@ enum UIPreview {
                 name: NSLocalizedString("Plasma",
                                         comment: "Name of KDE's graphical workspaces environment, used as App Store screenshot device name of a desktop device")
             ),
-        ].map { ($0._id, $0) })
+        ].map { ($0._deviceInfo.id, $0) })
         
         setupFileTransfers()
         
@@ -69,20 +69,24 @@ enum UIPreview {
         connectedDevicesViewModel.savedDevices = devicesDictionary(for: .iPhone, .android)
     }
     
-    static let allCapabilities = NetworkPacket.allPacketTypes.map { $0.rawValue }
-    
     static func makeDevice(id: DeviceID, type: DeviceType, name: String) -> Device {
         return Device(
-            id: id.rawValue, type: type, name: name,
-            incomingCapabilities: allCapabilities,
-            outgoingCapabilities: allCapabilities,
-            protocolVersion: 0,
-            deviceDelegate: backgroundService
+            link: BaseLink(
+                DeviceInfo(
+                    id: id.rawValue,
+                    protocolVersion: KdeConnectSettings.CurrentProtocolVersion,
+                    name: name,
+                    type: type,
+                    incomingCapabilities: NetworkPacket.allPacketTypes,
+                    outgoingCapabilities: NetworkPacket.allPacketTypes
+                )
+            ),
+            delegate: backgroundService
         )!
     }
     
     static func devicesDictionary(for ids: DeviceID...) -> [String: String] {
-        Dictionary(uniqueKeysWithValues: ids.map { ($0.rawValue, backgroundService.devices[$0.rawValue]!._name) })
+        Dictionary(uniqueKeysWithValues: ids.map { ($0.rawValue, backgroundService.devices[$0.rawValue]!._deviceInfo.name) })
     }
 }
 #endif

@@ -39,11 +39,8 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     os_log_t logger;
 }
 
-@synthesize _id;
-@synthesize _name;
+@synthesize _deviceInfo;
 @synthesize _pairStatus;
-@synthesize _protocolVersion;
-@synthesize _type;
 @synthesize deviceDelegate;
 @synthesize _links;
 - (void)setPlugins:(NSDictionary<NetworkPacketType, NSNumber *> *)plugins
@@ -51,8 +48,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     _plugins = [[NSMutableDictionary alloc] initWithDictionary:plugins];
 }
 @synthesize _failedPlugins;
-@synthesize _incomingCapabilities;
-@synthesize _outgoingCapabilities;
 //@synthesize _testDevice;
 
 - (void)setPluginsEnableStatus:(NSDictionary<NetworkPacketType, NSNumber *> *)pluginsEnableStatus
@@ -69,46 +64,21 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 // Presenter
 @synthesize _pointerSensitivity;
 
-- (instancetype)initWithID:(NSString *)deviceID
-                      type:(DeviceType)deviceType
-                      name:(NSString *)deviceName
-      incomingCapabilities:(NSArray<NSString *> *)incomingCapabilities
-      outgoingCapabilities:(NSArray<NSString *> *)outgoingCapabilities
-           protocolVersion:(NSInteger)protocolVersion
-            deviceDelegate:(id<DeviceDelegate>)deviceDelegate
-{
+- (instancetype)initWithLink:(BaseLink*)link
+                              delegate:(id<DeviceDelegate>)deviceDelegate {
     if (self = [super init]) {
         logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                NSStringFromClass([self class]).UTF8String);
-        _id = deviceID;
-        _type = deviceType;
-        _name = deviceName;
-        _incomingCapabilities = incomingCapabilities;
-        _outgoingCapabilities = outgoingCapabilities;
+        _pairStatus = NotPaired;
+        _deviceInfo = [link _deviceInfo];
         _links = [NSMutableArray arrayWithCapacity:1];
         _plugins = [NSMutableDictionary dictionaryWithCapacity:1];
         _failedPlugins = [NSMutableArray arrayWithCapacity:1];
-        _protocolVersion = protocolVersion;
         _pluginsEnableStatus = [NSMutableDictionary dictionary];
         self.deviceDelegate = deviceDelegate;
         _cursorSensitivity = 3.0;
         _hapticStyle = 0;
         _pointerSensitivity = 3.0;
-        [self reloadPlugins];
-    }
-    return self;
-}
-
-- (instancetype)initWithNetworkPacket:(NetworkPacket *)np
-                                  link:(BaseLink*)link
-                              delegate:(id<DeviceDelegate>)deviceDelegate {
-    if (self = [self initWithID:[np objectForKey:@"deviceId"]
-                           type:[Device Str2DeviceType:[np objectForKey:@"deviceType"]]
-                           name:[np objectForKey:@"deviceName"]
-           incomingCapabilities:[np objectForKey:@"incomingCapabilities"]
-           outgoingCapabilities:[np objectForKey:@"outgoingCapabilities"]
-                protocolVersion:[np integerForKey:@"protocolVersion"]
-                 deviceDelegate:deviceDelegate]) {
         [self addLink:link];
     }
     return self;
@@ -128,23 +98,18 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 #pragma mark Link-related Functions
 
-- (void)updateInfoWithNetworkPacket:(NetworkPacket*)np {
-    if (_protocolVersion!=[np integerForKey:@"protocolVersion"]) {
-        os_log_with_type(logger, self.debugLogLevel, "using different protocol version");
-    }
-    _id=[np objectForKey:@"deviceId"];
-    _name=[np objectForKey:@"deviceName"];
-    _type=[Device Str2DeviceType:[np objectForKey:@"deviceType"]];
-    _incomingCapabilities=[np objectForKey:@"incomingCapabilities"];
-    _outgoingCapabilities=[np objectForKey:@"outgoingCapabilities"];
+- (bool)updateInfo:(DeviceInfo*)newDeviceInfo {
+    // TODO: Notify of the change
+    _deviceInfo=newDeviceInfo;
+    return true;
 }
 
-- (void)addLink:(BaseLink*)Link {
-    os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_id);
+- (void)addLink:(BaseLink*)link {
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_deviceInfo.id);
     NSUInteger count;
     @synchronized (_links) {
-        [_links addObject:Link];
-        [Link setLinkDelegate:self];
+        [_links addObject:link];
+        [link setLinkDelegate:self];
         count = [_links count];
     }
     if (count == 1) {
@@ -152,6 +117,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         if (deviceDelegate) {
             [deviceDelegate onDeviceReachableStatusChanged:self];
         }
+        [self reloadPlugins];
         // FIXME: Move this to the battery plugin itself
         if (_pairStatus == Paired) {
             [self updateBatteryStatus];
@@ -159,7 +125,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     }
 }
 
-// FIXME: This ain't it, doesn't get called when connection is cut (e.g wifi off) from the remote device
+// FIXME: This doesn't get called when connection is cut (e.g wifi off) from the remote device
 - (void) onLinkDestroyed:(BaseLink *)link
 {
     os_log_with_type(logger, self.debugLogLevel, "device on link destroyed");
@@ -352,10 +318,10 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     _pairStatus=Paired;
     //NSLog(@"paired with %@",_name);
     // Request and update battery status for a newly paired device
-    [self updateBatteryStatus];
     if (deviceDelegate) {
         [deviceDelegate onDevicePairSuccess:self];
     }
+    [self updateBatteryStatus];
 }
 
 - (void) requestPairing
@@ -449,7 +415,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     [_failedPlugins removeAllObjects];
     [_pluginsEnableStatus removeAllObjects];
     
-    for (NSString* pluginID in _incomingCapabilities) {
+    for (NSString* pluginID in _deviceInfo.incomingCapabilities) {
         if ([pluginID isEqualToString:NetworkPacketTypePing]) {
             [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:NetworkPacketTypePing];
             [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePing];
@@ -481,7 +447,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     }
     
     // for the capabilities that are ONLY in the outgoing section of KDE Connect iOS
-    for (NSString* pluginID in _outgoingCapabilities) {
+    for (NSString* pluginID in _deviceInfo.outgoingCapabilities) {
         if ([pluginID isEqualToString:NetworkPacketTypeRunCommand]) {
             [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:NetworkPacketTypeRunCommand];
             [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeRunCommand];
@@ -525,53 +491,15 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 //    return views;
 //}
 
-#pragma mark enum tools
-+ (NSString*)DeviceType2Str:(DeviceType)type
-{
-    switch (type) {
-        case DeviceTypeDesktop:
-            return @"desktop";
-        case DeviceTypeLaptop:
-            return @"laptop";
-        case DeviceTypePhone:
-            return @"phone";
-        case DeviceTypeTablet:
-            return @"tablet";
-        case DeviceTypeTv:
-            return @"tv";
-        case DeviceTypeUnknown:
-            return @"unknown";
-    }
-}
-+ (DeviceType)Str2DeviceType:(NSString*)str
-{
-    if ([str isEqualToString:@"desktop"]) {
-        return DeviceTypeDesktop;
-    }
-    if ([str isEqualToString:@"laptop"]) {
-        return DeviceTypeLaptop;
-    }
-    if ([str isEqualToString:@"phone"]) {
-        return DeviceTypePhone;
-    }
-    if ([str isEqualToString:@"tablet"]) {
-        return DeviceTypeTablet;
-    }
-    if ([str isEqualToString:@"tv"]) {
-        return DeviceTypeTv;
-    }
-    return DeviceTypeUnknown;
-}
-
 #pragma mark En/Decoding Methods
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:_id forKey:@"_id"];
-    [coder encodeObject:_name forKey:@"_name"];
-    [coder encodeInteger:_type forKey:@"_type"];
-    [coder encodeInteger:_protocolVersion forKey:@"_protocolVersion"];
+    [coder encodeObject:_deviceInfo.id forKey:@"_id"];
+    [coder encodeObject:_deviceInfo.name forKey:@"_name"];
+    [coder encodeInteger:_deviceInfo.type forKey:@"_type"];
+    [coder encodeInteger:_deviceInfo.protocolVersion forKey:@"_protocolVersion"];
+    [coder encodeObject:_deviceInfo.incomingCapabilities forKey:@"_incomingCapabilities"];
+    [coder encodeObject:_deviceInfo.outgoingCapabilities forKey:@"_outgoingCapabilities"];
     [coder encodeInteger:_pairStatus forKey:@"_pairStatus"];
-    [coder encodeObject:_incomingCapabilities forKey:@"_incomingCapabilities"];
-    [coder encodeObject:_outgoingCapabilities forKey:@"_outgoingCapabilities"];
     [coder encodeObject:_pluginsEnableStatus forKey:@"_pluginsEnableStatus"];
     [coder encodeFloat:_cursorSensitivity forKey:@"_cursorSensitivity"];
     [coder encodeInteger:_hapticStyle forKey:@"_hapticStyle"];
@@ -581,13 +509,20 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
     if (self = [super init]) {
-        _id = [coder decodeObjectForKey:@"_id"];
-        _name = [coder decodeObjectForKey:@"_name"];
-        _type = [coder decodeIntegerForKey:@"_type"];
-        _protocolVersion = [coder decodeIntegerForKey:@"_protocolVersion"];
+        NSString* id = [coder decodeObjectForKey:@"_id"];
+        NSString* name = [coder decodeObjectForKey:@"_name"];
+        NSInteger type = [coder decodeIntegerForKey:@"_type"];
+        NSInteger protocolVersion = [coder decodeIntegerForKey:@"_protocolVersion"];
+        NSArray<NSString*>* incomingCapabilities = [coder decodeArrayOfObjectsOfClass:[NSString class] forKey:@"_incomingCapabilities"];
+        NSArray<NSString*>* outgoingCapabilities = [coder decodeArrayOfObjectsOfClass:[NSString class] forKey:@"_outgoingCapabilities"];
+        _deviceInfo = [[DeviceInfo alloc] initWithId:id
+                                      protocolVersion:protocolVersion
+                                                 name:name
+                                                 type:type
+                                 incomingCapabilities:incomingCapabilities
+                                 outgoingCapabilities:outgoingCapabilities
+        ];
         _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
-        _incomingCapabilities = [coder decodeArrayOfObjectsOfClass:[NSString class] forKey:@"_incomingCapabilities"];
-        _outgoingCapabilities = [coder decodeArrayOfObjectsOfClass:[NSString class] forKey:@"_outgoingCapabilities"];
         _pluginsEnableStatus = (NSMutableDictionary*)[(NSDictionary*)[coder decodeDictionaryWithKeysOfClass:[NSString class] objectsOfClass:[NSNumber class] forKey:@"_pluginsEnableStatus"] mutableCopy];
         _cursorSensitivity = [coder decodeFloatForKey:@"_cursorSensitivity"];
         _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];

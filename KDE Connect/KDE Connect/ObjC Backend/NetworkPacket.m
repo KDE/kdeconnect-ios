@@ -29,14 +29,11 @@
 #import "NetworkPacket.h"
 #import "Device.h"
 #import "KDE_Connect-Swift.h"
-#import "KeychainItemWrapper.h"
 @import UIKit;
 
 @import os.log;
 
 #define LFDATA [NSData dataWithBytes:"\x0A" length:1]
-
-__strong static NSString* _UUID;
 
 #pragma mark Implementation
 @implementation NetworkPacket
@@ -59,84 +56,16 @@ __strong static NSString* _UUID;
 
 #pragma mark create Packet
 + (NetworkPacket *)createIdentityPacketWithTCPPort:(uint16_t)tcpPort {
+    DeviceInfo* ownDeviceInfo = [DeviceInfo getOwn];
     NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypeIdentity];
-    [np setObject:[NetworkPacket getUUID] forKey:@"deviceId"];
-    NSString* deviceName=[[NSUserDefaults standardUserDefaults] stringForKey:@"deviceName"];
-    if (deviceName == nil) {
-        deviceName=[UIDevice currentDevice].name;
-    }
-    [np setObject:deviceName forKey:@"deviceName"];
-    [np setInteger:ProtocolVersion forKey:@"protocolVersion"];
-    [np setObject:[Device DeviceType2Str:Device.currentDeviceType] forKey:@"deviceType"];
+    [np setObject:ownDeviceInfo.id forKey:@"deviceId"];
+    [np setObject:ownDeviceInfo.name forKey:@"deviceName"];
+    [np setInteger:ownDeviceInfo.protocolVersion forKey:@"protocolVersion"];
+    [np setObject:[ownDeviceInfo getTypeAsString] forKey:@"deviceType"];
     [np setInteger:tcpPort forKey:@"tcpPort"];
-    
-    // TODO: Instead of @[] actually import what plugins are available, UserDefaults to store maybe?
-    // For now, manually putting everything in to trick the other device to sending the iOS host the
-    // identity packets so debugging is easier
-    [np setObject:@[NetworkPacketTypePing,
-                    NetworkPacketTypeShare,
-                    NetworkPacketTypeShareRequestUpdate,
-                    NetworkPacketTypeFindMyPhoneRequest,
-                    NetworkPacketTypeBatteryRequest,
-                    NetworkPacketTypeBattery,
-                    NetworkPacketTypeClipboard,
-                    NetworkPacketTypeClipboardConnect,
-                    NetworkPacketTypeRunCommand
-                    ] forKey:@"incomingCapabilities"];
-    [np setObject:@[NetworkPacketTypePing,
-                    NetworkPacketTypeShare,
-                    NetworkPacketTypeShareRequestUpdate,
-                    NetworkPacketTypeFindMyPhoneRequest,
-                    NetworkPacketTypeBatteryRequest,
-                    NetworkPacketTypeBattery,
-                    NetworkPacketTypeClipboard,
-                    NetworkPacketTypeClipboardConnect,
-                    NetworkPacketTypeMousePadRequest,
-                    NetworkPacketTypePresenter,
-                    NetworkPacketTypeRunCommandRequest
-                    ] forKey:@"outgoingCapabilities"];
-    
-    if ([[KdeConnectSettings shared] isDebuggingNetworkPacket]) {
-        [np setObject:[NetworkPacket allPacketTypes] forKey:@"incomingCapabilities"];
-        [np setObject:[NetworkPacket allPacketTypes] forKey:@"outgoingCapabilities"];
-    }
-    
-    // FIXME: Remove object
-//    [np setObject:[[PluginFactory sharedInstance] getSupportedIncomingInterfaces] forKey:@"SupportedIncomingInterfaces"];
-//    [np setObject:[[PluginFactory sharedInstance] getSupportedOutgoingInterfaces] forKey:@"SupportedOutgoingInterfaces"];
-//    
+    [np setObject:ownDeviceInfo.incomingCapabilities forKey:@"incomingCapabilities"];
+    [np setObject:ownDeviceInfo.outgoingCapabilities forKey:@"outgoingCapabilities"];
     return np;
-}
-
-//Never touch these!
-+ (NSString*) getUUID
-{
-    if (!_UUID) {
-        NSString* group = @"5433B4KXM8.org.kde.kdeconnect";
-        KeychainItemWrapper* wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"org.kde.kdeconnect-ios" accessGroup:group];
-        _UUID = [wrapper objectForKey:(__bridge id)(kSecValueData)];
-        if (!_UUID || [_UUID length] < 1) {
-            // FIXME: identifierForVendor might be nil
-            // Documentation reads:
-            // If the value is nil, wait and get the value again later.
-            // This happens, for example, after the device has been restarted
-            // but before the user has unlocked the device.
-            _UUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-            _UUID = [_UUID stringByReplacingOccurrencesOfString:@"-" withString:@""];
-            _UUID = [_UUID stringByReplacingOccurrencesOfString:@"_" withString:@""];
-            [wrapper setObject:_UUID forKey:(__bridge id)(kSecValueData)];
-        }
-    }
-    os_log_t logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
-                                    NSStringFromClass([self class]).UTF8String);
-    os_log_type_t debugLogLevel;
-    if ([[KdeConnectSettings shared] isDebuggingNetworkPacket]) {
-        debugLogLevel = OS_LOG_TYPE_INFO;
-    } else {
-        debugLogLevel = OS_LOG_TYPE_DEBUG;
-    }
-    os_log_with_type(logger, debugLogLevel, "Get UUID %{mask.hash}@", _UUID);
-    return _UUID;
 }
 
 + (NetworkPacket*) createPairPacket
@@ -197,6 +126,10 @@ __strong static NSString* _UUID;
 }
 
 - (id)objectForKey:(NSString *)key{
+    return [_Body objectForKey:key];
+}
+
+- (NSString*)stringForKey:(NSString *)key{
     return [_Body objectForKey:key];
 }
 

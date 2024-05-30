@@ -31,13 +31,15 @@
 #import "NetworkPacket.h"
 #import "LinkDelegate.h"
 
+@class DeviceInfo;
+
 @interface BaseLink : NSObject
 
-@property(nonatomic) NSString* _deviceId;
+@property(nonatomic) DeviceInfo* _deviceInfo;
 @property(nonatomic, weak) id<LinkDelegate> linkDelegate;
 //@property(nonatomic) SecKeyRef _publicKey;
 
-- (BaseLink *)init:(NSString *)deviceId setDelegate:(id<LinkDelegate>)linkDelegate;
+- (BaseLink *)init:(DeviceInfo *)deviceInfo;
 - (BOOL) sendPacket:(NetworkPacket*)np tag:(long)tag;
 - (void) disconnect;
 

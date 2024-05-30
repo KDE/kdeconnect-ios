@@ -40,10 +40,9 @@
 @interface LanLink : BaseLink <GCDAsyncSocketDelegate>
 
 - (LanLink *)init:(GCDAsyncSocket*)socket
-         deviceId:(NSString *)deviceId
-      setDelegate:(id<LinkDelegate>)linkDelegate
+       deviceInfo:(DeviceInfo*)deviceInfo
 certificateService:(CertificateService *)certificateService;
 - (BOOL) sendPacket:(NetworkPacket *)np tag:(long)tag;
-- (void)setSocket:(GCDAsyncSocket *)newSocket;
+- (void) setSocket:(GCDAsyncSocket *)newSocket;
 - (void) disconnect;
 @end

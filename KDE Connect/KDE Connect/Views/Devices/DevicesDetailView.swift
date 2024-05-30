@@ -41,7 +41,7 @@ struct DevicesDetailView: View {
                     EmptyView()
                 }
             }
-            .navigationTitle(backgroundService._devices[detailsDeviceId]!._name)
+            .navigationTitle(backgroundService._devices[detailsDeviceId]!._deviceInfo.name)
             .navigationBarItems(trailing:
                 Menu {
                 if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] as! Bool) {
@@ -76,7 +76,7 @@ struct DevicesDetailView: View {
                     
                     Button {
                         alertManager.queueAlert(prioritize: true, title: "Unpair With Device?") {
-                            Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._name)?")
+                            Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._deviceInfo.name)?")
                         } buttons: {
                             Button("No, Stay Paired", role: .cancel) {}
                             Button("Yes, Unpair", role: .destructive) {

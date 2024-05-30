@@ -54,7 +54,6 @@
 #define PORT                    1716    /* Fallback */
 #define MIN_TCP_PORT            1716
 #define MAX_TCP_PORT            1764
-#define ProtocolVersion         7
 
 #pragma mark - Packet Types
 
@@ -105,9 +104,8 @@ FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeRunCommand;
 @property(nonatomic) long _PayloadSize;
 
 - (NetworkPacket *) initWithType:(NetworkPacketType)type;
-+ (NetworkPacket *)createIdentityPacketWithTCPPort:(uint16_t)tcpPort;
++ (NetworkPacket *) createIdentityPacketWithTCPPort:(uint16_t)tcpPort;
 + (NetworkPacket *) createPairPacket;
-+ (nullable NSString *) getUUID;
 
 - (BOOL)bodyHasKey:(nonnull NSString *)key;
 - (void)setBool:(BOOL)value         forKey:(NSString *)key;
@@ -120,6 +118,7 @@ FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeRunCommand;
 - (double)doubleForKey:(NSString *)key;
 - (NSInteger)integerForKey:(NSString *)key;
 - (nullable id)objectForKey:(NSString *)key;
+- (NSString*)stringForKey:(NSString *)key;
 
 #pragma mark Serialize
 - (nullable NSData *) serialize;

@@ -60,6 +60,6 @@ func saveDeviceToUserDefaults(deviceId: String) {
         Logger(category: "Device").fault("\(error.localizedDescription, privacy: .public)")
         return
     }
-    backgroundService.settings[backgroundService.devices[deviceId]!._id] = deviceData
+    backgroundService.settings[backgroundService.devices[deviceId]!._deviceInfo.id] = deviceData
     UserDefaults.standard.setValue(backgroundService.settings, forKey: "savedDevices")
 }

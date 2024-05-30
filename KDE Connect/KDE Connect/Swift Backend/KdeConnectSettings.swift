@@ -12,16 +12,63 @@
 //  Created by Lucas Wang on 2021-06-17.
 //
 
-import Foundation
-import Combine
 import UniformTypeIdentifiers
 import SwiftUI
-import UIKit
 
+import os.log
 @objc
 class KdeConnectSettings: NSObject, ObservableObject {
     @objc
     static let shared = KdeConnectSettings()
+
+    static let CurrentProtocolVersion = 7
+    
+    // FIXME: actually read what plugins are available
+    static let IncomingCapabilities: [NetworkPacket.`Type`] = [
+        .ping,
+        .share,
+        .shareRequestUpdate,
+        .findMyPhoneRequest,
+        .batteryRequest,
+        .battery,
+        .clipboard,
+        .clipboardConnect,
+        .runCommand,
+    ]
+    static let OutgoingCapabilities: [NetworkPacket.`Type`] = [
+        .ping,
+        .share,
+        .shareRequestUpdate,
+        .findMyPhoneRequest,
+        .batteryRequest,
+        .battery,
+        .clipboard,
+        .clipboardConnect,
+        .mousePadRequest,
+        .presenter,
+        .runCommandRequest,
+    ]
+    
+    private static var cachedUuid: String?
+
+    static func getUUID() -> String {
+        if cachedUuid == nil {
+            let group = "5433B4KXM8.org.kde.kdeconnect"
+            let wrapper = KeychainItemWrapper(identifier: "org.kde.kdeconnect-ios", accessGroup: group)!
+            if let savedUUID = wrapper.object(forKey: kSecValueData as String) as? String, !savedUUID.isEmpty {
+                cachedUuid = savedUUID
+            } else {
+                // identifierForVendor can be nil if called when a device has restarted but not been unlocked yet
+                if let identifierForVendor = UIDevice.current.identifierForVendor {
+                    cachedUuid = identifierForVendor.uuidString.replacingOccurrences(of: "-", with: "")
+                    wrapper.setObject(cachedUuid, forKey: kSecValueData as String)
+                }
+            }
+            let logger = OSLog(subsystem: NSStringFromClass(self), category: "UUIDManager")
+            os_log("Get UUID %{mask.hash}@", log: logger, type: .info, cachedUuid ?? "")
+        }
+        return cachedUuid!
+    }
     
     @Published var deviceName: String {
         didSet {

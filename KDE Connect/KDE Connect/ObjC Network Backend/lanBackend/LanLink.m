@@ -62,7 +62,6 @@
 
 @implementation LanLink
 
-@synthesize _deviceId;
 @synthesize _pendingPairNP;
 @synthesize _socket;
 @synthesize _identity;
@@ -70,15 +69,13 @@
 @synthesize _certificateService;
 
 - (LanLink *) init:(GCDAsyncSocket*)socket
-          deviceId:(NSString*) deviceId
-       setDelegate:(id<LinkDelegate>)linkDelegate
+        deviceInfo:(DeviceInfo*)deviceInfo
 certificateService:(CertificateService*)certificateService
 {
-    if (self = [super init:deviceId setDelegate:linkDelegate])
+    if (self = [super init:deviceInfo])
     {
         logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                NSStringFromClass([self class]).UTF8String);
-        _deviceId = deviceId;
         _pendingPairNP=nil;
         [self setSocket:socket];
         
@@ -126,7 +123,7 @@ certificateService:(CertificateService*)certificateService
 {
     os_log_with_type(logger, self.debugLogLevel, "llink send packet");
     if (![_socket isConnected]) {
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%@ disconnected", _deviceId);
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%@ disconnected", [self _deviceInfo].id);
         return NO;
     }
     
@@ -198,7 +195,7 @@ certificateService:(CertificateService*)certificateService
     [_socket setDelegate:self];
     os_log_with_type(logger, OS_LOG_TYPE_INFO,
                      "new lan link socket for device:%{mask.hash}@ configured",
-                     _deviceId);
+                     [self _deviceInfo].id);
     [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKET_TAG_NORMAL];
 }
 
@@ -209,7 +206,7 @@ certificateService:(CertificateService*)certificateService
     }
     [self.linkDelegate onLinkDestroyed:self];
     _pendingPairNP=nil;
-    os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%{mask.hash}@ disconnected",_deviceId);
+    os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink: Device:%{mask.hash}@ disconnected", [self _deviceInfo].id);
 }
 
 #pragma mark TCP delegate
@@ -443,7 +440,7 @@ certificateService:(CertificateService*)certificateService
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
     if ([_certificateService verifyCertificateEqualityWithTrust:trust
-                                   fromRemoteDeviceWithDeviceID:_deviceId]) {
+                                   fromRemoteDeviceWithDeviceID:[self _deviceInfo].id]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         completionHandler(YES);
     } else {

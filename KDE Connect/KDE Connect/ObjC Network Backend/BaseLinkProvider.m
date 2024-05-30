@@ -34,8 +34,8 @@
 
 - (BaseLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate
 {
-    if ((self=[super init])) {
-        _linkProviderDelegate=linkProviderDelegate;
+    if (self=[super init]) {
+        _linkProviderDelegate = linkProviderDelegate;
     }
     return self;
 }
