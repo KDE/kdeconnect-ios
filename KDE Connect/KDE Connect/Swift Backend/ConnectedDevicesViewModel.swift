@@ -44,15 +44,15 @@ extension Notification.Name {
     }
     
     @objc func onPairSuccess(_ deviceId: String!) {
-        guard let cert = certificateService.tempRemoteCerts[deviceId] else {
+        guard let cert = CertificateService.shared.tempRemoteCerts[deviceId] else {
             SystemSound.audioError.play()
             logger.fault("Pairing succeeded without certificate for remote device \(deviceId!, privacy: .private(mask: .hash))")
             return
         }
         
-        let status = certificateService.saveRemoteDeviceCertToKeychain(cert: cert, deviceId: deviceId)
+        let status = CertificateService.shared.saveRemoteDeviceCertToKeychain(cert: cert, deviceId: deviceId)
         logger.info("Remote certificate saved into local Keychain with status \(status)")
-        backgroundService._devices[deviceId]!._SHA256HashFormatted = certificateService.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(certificateService.tempRemoteCerts[deviceId]!) as Data).description)
+        backgroundService._devices[deviceId]!._SHA256HashFormatted = CertificateService.shared.SHA256HashDividedAndFormatted(hashDescription: SHA256.hash(data: SecCertificateCopyData(CertificateService.shared.tempRemoteCerts[deviceId]!) as Data).description)
         
         onDevicesListUpdated()
         NotificationCenter.default.post(name: .pairRequestSucceedNotification, object: nil,

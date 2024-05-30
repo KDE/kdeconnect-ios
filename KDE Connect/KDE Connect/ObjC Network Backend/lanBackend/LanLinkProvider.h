@@ -33,12 +33,9 @@
 #import "GCDAsyncUdpSocket.h"
 #import "GCDAsyncSocket.h"
 
-@class CertificateService;
-
 @interface LanLinkProvider : BaseLinkProvider <LinkDelegate, GCDAsyncSocketDelegate, GCDAsyncUdpSocketDelegate>
 
-- (LanLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate
-                   certificateService:(CertificateService *)certificateService;
+- (LanLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate;
 
 + (uint16_t)openServerSocket:(GCDAsyncSocket *)socket
         onFreePortStartingAt:(uint16_t)minPort

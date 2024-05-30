@@ -27,21 +27,15 @@
 //
 //----------------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
 #import "BaseLink.h"
-#import "LanLinkProvider.h"
 #import "GCDAsyncSocket.h"
 
-@class LanLinkProvider;
 @class BaseLink;
-@class Device;
-@class CertificateService;
 
 @interface LanLink : BaseLink <GCDAsyncSocketDelegate>
 
 - (LanLink *)init:(GCDAsyncSocket*)socket
-       deviceInfo:(DeviceInfo*)deviceInfo
-certificateService:(CertificateService *)certificateService;
+       deviceInfo:(DeviceInfo*)deviceInfo;
 - (BOOL) sendPacket:(NetworkPacket *)np tag:(long)tag;
 - (void) setSocket:(GCDAsyncSocket *)newSocket;
 - (void) disconnect;

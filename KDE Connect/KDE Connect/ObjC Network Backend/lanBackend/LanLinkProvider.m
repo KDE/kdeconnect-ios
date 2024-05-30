@@ -55,7 +55,6 @@
 @property(nonatomic) SecCertificateRef _certificate;
 //@property(nonatomic) NSString * _certificateRequestPEM;
 @property(nonatomic) SecIdentityRef _identity;
-@property(nonatomic,assign) CertificateService* _certificateService;
 @property(nonatomic, retain) MDNSDiscovery *mdnsDiscovery;
 @end
 
@@ -63,10 +62,8 @@
 
 @synthesize _certificate;
 @synthesize _identity;
-@synthesize _certificateService;
 
 - (LanLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate
-                   certificateService:(CertificateService *)certificateService
 {
     if (self = [super initWithDelegate:linkProviderDelegate])
     {
@@ -83,8 +80,6 @@
         self.connectedLinks = [NSMutableDictionary dictionaryWithCapacity:1];
         socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.socketqueue", NULL);
         
-        // Load private key and certificate
-        _certificateService = certificateService;
         _identity = NULL;
         [self loadSecIdentity];
 
@@ -104,7 +99,7 @@
 
 - (void) loadSecIdentity
 {
-    SecIdentityRef identityApp = [_certificateService hostIdentity];
+    SecIdentityRef identityApp = [[CertificateService shared] hostIdentity];
     assert(identityApp != nil);
 
     // Validate private key
@@ -428,8 +423,7 @@
         [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:np];
     } else {
         link = [[LanLink alloc] init:sock
-                          deviceInfo:[DeviceInfo fromNetworkPacket:np]
-                  certificateService:_certificateService];
+                          deviceInfo:[DeviceInfo fromNetworkPacket:np]];
         self.connectedLinks[deviceId] = link;
         [[self _linkProviderDelegate] onConnectionReceived:link];
     }
@@ -489,8 +483,7 @@
             }
             // create LanLink and inform the background
             link = [[LanLink alloc] init:sock
-                              deviceInfo:[DeviceInfo fromNetworkPacket:np]
-                    certificateService:_certificateService];
+                              deviceInfo:[DeviceInfo fromNetworkPacket:np]];
             self.connectedLinks[deviceId] = link;
             if ([self _linkProviderDelegate]) {
                 [[self _linkProviderDelegate] onConnectionReceived:link];
@@ -581,7 +574,7 @@
 // This doesn't actually get called anywhere, not sure what it does
 - (BOOL)socket:(GCDAsyncSocket *)sock shouldTrustPeer:(SecTrustRef)trust
 {
-    if ([_certificateService verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
+    if ([[CertificateService shared] verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLinkProvider's shouldTrustPeer received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         return YES;
     } else {
@@ -606,8 +599,7 @@
     } else {
         // create LanLink and inform the background
         link = [[LanLink alloc] init:sock
-                          deviceInfo:[DeviceInfo fromNetworkPacket:pendingNP]
-                  certificateService:_certificateService];
+                          deviceInfo:[DeviceInfo fromNetworkPacket:pendingNP]];
         self.connectedLinks[deviceID] = link;
     }
 }
@@ -617,7 +609,7 @@
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
     NSString *deviceID = (NSString *)sock.userData;
-    if ([_certificateService verifyCertificateEqualityWithTrust:trust
+    if ([[CertificateService shared] verifyCertificateEqualityWithTrust:trust
                                    fromRemoteDeviceWithDeviceID:deviceID]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLinkProvider's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         completionHandler(YES);// give YES if we want to trust, NO if we don't

@@ -19,6 +19,9 @@ import CryptoKit
 // import CommonCrypto
 
 @objc class CertificateService: NSObject {
+    // Certificate Service provider, to be used for all certificate and Keychain operations
+    @objc static let shared: CertificateService = CertificateService()
+    
     @objc var hostIdentity: SecIdentity?
     @objc var hostCertificateSHA256HashFormattedString: String?
     private let logger = Logger()

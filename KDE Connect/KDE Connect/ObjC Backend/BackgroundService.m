@@ -43,14 +43,12 @@
 @property(nonatomic) NSMutableArray<BaseLinkProvider *> *_linkProviders;
 @property(nonatomic) NSMutableArray<Device *> *visibleDevices;
 @property(nonatomic, assign) ConnectedDevicesViewModel *_backgroundServiceDelegate;
-@property(nonatomic, assign) CertificateService *_certificateService;
 
 @end
 
 @implementation BackgroundService
 
 @synthesize _backgroundServiceDelegate;
-@synthesize _certificateService;
 - (void)setDevices:(NSDictionary<NSString *, Device *> *)devices
 {
     _devices = [[NSMutableDictionary alloc] initWithDictionary:devices];
@@ -79,14 +77,14 @@
 //    return self;
 //}
 
-- (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService
+- (BackgroundService*) initWithConnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel
 {
     if ((self=[super init])) {
         logger = os_log_create([NSString kdeConnectOSLogSubsystem].UTF8String,
                                         NSStringFromClass([self class]).UTF8String);
         // MARK: comment this out for production, this is for debugging, for clearing the saved devices dictionary in UserDefaults
         //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
-        //[_certificateService deleteAllItemsFromKeychain];
+        //[[CertificateService shared] deleteAllItemsFromKeychain];
         //NSLog(@"Host identity deleted from keychain with exit code %i", [KeychainOperations deleteHostCertificateFromKeychain]);
         
         _linkProviders=[NSMutableArray arrayWithCapacity:1];
@@ -97,7 +95,6 @@
        //[[SettingsStore alloc] initWithPath:KDECONNECT_REMEMBERED_DEV_FILE_PATH];
         
         _backgroundServiceDelegate = connectedDeviceViewModel;
-        _certificateService = certificateService;
         
         _networkChangeMonitor = [[NetworkChangeMonitor alloc] init];
         _networkChangeMonitor.delegate = self;
@@ -163,7 +160,7 @@
 {
     os_log_with_type(logger, self.debugLogLevel, "bg register linkproviders");
     //LoopbackLinkProvider* linkProvider=[[LoopbackLinkProvider alloc] initWithDelegate:self];
-    LanLinkProvider* linkProvider=[[LanLinkProvider alloc] initWithDelegate:self certificateService:_certificateService];
+    LanLinkProvider* linkProvider=[[LanLinkProvider alloc] initWithDelegate:self];
     [_linkProviders addObject:linkProvider];
 }
 
@@ -385,7 +382,7 @@
     [_settings removeObjectForKey:deviceId];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
     device._SHA256HashFormatted = nil;
-    BOOL status = [_certificateService deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
+    BOOL status = [[CertificateService shared] deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "Device remove, stored cert also removed with status %d", status);
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];

@@ -35,12 +35,10 @@
 @class BaseLink;
 @class Device;
 @class ConnectedDevicesViewModel;
-@class CertificateService;
 
 @interface BackgroundService : NSObject<LinkProviderDelegate, DeviceDelegate>
 
-// TODO: fix casing
-- (BackgroundService*) initWithconnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel certificateService:(CertificateService*) certificateService;
+- (BackgroundService*) initWithConnectedDeviceViewModel:(ConnectedDevicesViewModel*)connectedDeviceViewModel;
 @property(nonatomic, setter=setDevices:) NSDictionary<NSString *, Device *> *devices;
 @property(nonatomic, setter=setSettings:) NSDictionary<NSString *, NSData *> *settings;
 

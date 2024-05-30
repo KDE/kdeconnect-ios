@@ -28,6 +28,7 @@
 //----------------------------------------------------------------------
 
 #import "LanLink.h"
+#import "LanLinkProvider.h"
 #import "KDE_Connect-Swift.h"
 
 @import os.log;
@@ -56,7 +57,6 @@
 
 @property(nonatomic) SecIdentityRef _identity;
 @property(nonatomic) GCDAsyncSocket* _fileServerSocket;
-@property(nonatomic,assign) CertificateService* _certificateService;
 
 @end
 
@@ -66,11 +66,9 @@
 @synthesize _socket;
 @synthesize _identity;
 @synthesize _fileServerSocket;
-@synthesize _certificateService;
 
 - (LanLink *) init:(GCDAsyncSocket*)socket
         deviceInfo:(DeviceInfo*)deviceInfo
-certificateService:(CertificateService*)certificateService
 {
     if (self = [super init:deviceInfo])
     {
@@ -87,7 +85,6 @@ certificateService:(CertificateService*)certificateService
         _payloadPort=PAYLOAD_PORT;
         _socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.payload_socketQueue", NULL);
     
-        _certificateService = certificateService;
         [self loadSecIdentity];
     }
     return self;
@@ -102,7 +99,7 @@ certificateService:(CertificateService*)certificateService
 
 - (void) loadSecIdentity
 {
-    SecIdentityRef identityApp = [_certificateService hostIdentity];
+    SecIdentityRef identityApp = [[CertificateService shared] hostIdentity];
     assert(identityApp != nil);
 
     // Validate private key
@@ -439,7 +436,7 @@ certificateService:(CertificateService*)certificateService
 
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
-    if ([_certificateService verifyCertificateEqualityWithTrust:trust
+    if ([[CertificateService shared] verifyCertificateEqualityWithTrust:trust
                                    fromRemoteDeviceWithDeviceID:[self _deviceInfo].id]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLink's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
         completionHandler(YES);

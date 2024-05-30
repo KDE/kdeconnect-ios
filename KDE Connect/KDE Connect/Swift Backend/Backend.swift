@@ -17,9 +17,6 @@ import CoreMotion
 
 // A place to house miscellaneous functions and variables for global usage by the rest of the app
 
-// Certificate Service provider, to be used for all certificate and Keychain operations
-let certificateService: CertificateService = CertificateService()
-
 // ViewModel object for devices-related functionalities
 // TODO: Should this be kept global or local to DevicesView()? Reference might break if this is
 // TODO: if global, make singelton
@@ -43,8 +40,7 @@ let backgroundService: BackgroundService = {
     return BackgroundService(
         // disconnect background service from connected devices view model if taking screenshots
         // so the UI testing instances will only access to fake devices
-        connectedDeviceViewModel: setupScreenshotDevices ? nil : connectedDevicesViewModel,
-        certificateService: certificateService
+        connectedDeviceViewModel: setupScreenshotDevices ? nil : connectedDevicesViewModel
     )
 }()
 
