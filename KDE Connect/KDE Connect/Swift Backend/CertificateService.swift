@@ -182,12 +182,6 @@ import CryptoKit
         }
     }
     
-    // This function is called by LanLinkProvider's shouldTrustPeer and didReceiveTrust, and as far as I can tell, doesn't actually get called (what is this even for)??
-    @objc func verifyCertificateEqualityFromRemoteDevice(trust: SecTrust) -> Bool {
-        logger.fault("OH WOW HOW DID WE GET HERE?")
-        return true
-    }
-    
     @objc func saveRemoteDeviceCertToKeychain(cert: SecCertificate, deviceId: String) -> Bool {
         let keychainItemQuery: CFDictionary = [
             kSecAttrLabel: deviceId as Any,

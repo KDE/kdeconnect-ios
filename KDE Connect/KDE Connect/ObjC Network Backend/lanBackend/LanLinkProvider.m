@@ -571,17 +571,6 @@
     return YES;
 }
 
-// This doesn't actually get called anywhere, not sure what it does
-- (BOOL)socket:(GCDAsyncSocket *)sock shouldTrustPeer:(SecTrustRef)trust
-{
-    if ([[CertificateService shared] verifyCertificateEqualityFromRemoteDeviceWithTrust:trust]) {
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLinkProvider's shouldTrustPeer received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
 // After securing, create a LanLink for further communications
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
 {
