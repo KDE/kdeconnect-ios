@@ -187,7 +187,7 @@ struct DevicesView: View {
                     Button {
                         alertManager.queueAlert(prioritize: true, title: "Initiate Pairing?") {
                             currentPairingDeviceName(id: key).map {
-                                Text("Request to pair with \($0)?")
+                                Text("Request to pair with '\($0)'\nVerification key: \(CertificateService.shared.getVerificationKey(deviceId: key))")
                             }
                         } buttons: {
                             Button("Cancel", role: .cancel) {}
@@ -296,7 +296,7 @@ struct DevicesView: View {
 //        self.localNotificationService.sendNotification(title: "Incoming Pairing Request", subtitle: nil, body: "\(viewModel.visibleDevices[currPairingDeviceId!] ?? "ERROR") wants to pair with this device", launchIn: 2)
         alertManager.queueAlert(title: "Incoming Pairing Request") {
             currentPairingDeviceName(id: deviceId).map {
-                Text("\($0) wants to pair with this device")
+                Text("Pair request from '\($0)'\nVerification key: \(CertificateService.shared.getVerificationKey(deviceId: deviceId))")
             }
         } buttons: {
             Button("Do Not Pair", role: .cancel) {}
@@ -309,7 +309,7 @@ struct DevicesView: View {
     func onPairTimeout(toDeviceWithID deviceId: String!) {
         alertManager.queueAlert(title: "Pairing Timed Out") {
             currentPairingDeviceName(id: deviceId).map {
-                Text("Pairing with \($0) failed")
+                Text("Pairing with '\($0)' failed")
             }
         } buttons: {
             Button("OK", role: .cancel) {}
@@ -319,7 +319,7 @@ struct DevicesView: View {
     func onPairSuccess(withDeviceWithID deviceId: String!) {
         alertManager.queueAlert(title: "Pairing Complete") {
             currentPairingDeviceName(id: deviceId).map {
-                Text("Pairing with \($0) succeeded")
+                Text("Pairing with '\($0)' succeeded")
             }
         } buttons: {
             Button("Nice", role: .cancel) {}
@@ -329,7 +329,7 @@ struct DevicesView: View {
     func onPairRejected(byDeviceWithID deviceId: String!) {
         alertManager.queueAlert(title: "Pairing Rejected") {
             currentPairingDeviceName(id: deviceId).map {
-                Text("Pairing with \($0) failed")
+                Text("Pairing with '\($0)' failed")
             }
         } buttons: {
             Button("OK", role: .cancel) {}

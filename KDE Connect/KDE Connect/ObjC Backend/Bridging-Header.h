@@ -15,3 +15,4 @@
 #import "KeychainItemWrapper.h"
 
 OSStatus generateSecIdentityForUUID(NSString *uuid);
+NSData* getPublicKeyDERFromCertificate(SecCertificateRef certificate);

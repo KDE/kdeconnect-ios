@@ -186,3 +186,37 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
 
     return noErr;
 }
+
+NSData* getPublicKeyDERFromCertificate(SecCertificateRef certificate) {
+    CFDataRef certificateData = SecCertificateCopyData(certificate);
+    const uint8_t *certBytes = CFDataGetBytePtr(certificateData);
+    long certLength = CFDataGetLength(certificateData);
+
+    const unsigned char *p = certBytes;
+    X509 *x509 = d2i_X509(NULL, &p, certLength);
+    CFRelease(certificateData);
+
+    if (x509 == NULL) {
+        return nil;
+    }
+
+    EVP_PKEY *pkey = X509_get_pubkey(x509);
+    if (pkey == NULL) {
+        X509_free(x509);
+        return nil;
+    }
+    
+    unsigned char *spkiDataPointer = NULL;
+    int spkiLength = i2d_PUBKEY(pkey, &spkiDataPointer);
+
+    NSData *spkiData = nil;
+    if (spkiLength > 0 && spkiDataPointer != NULL) {
+        spkiData = [NSData dataWithBytes:spkiDataPointer length:spkiLength];
+        OPENSSL_free(spkiDataPointer);
+    }
+
+    X509_free(x509);
+    EVP_PKEY_free(pkey);
+    
+    return spkiData;
+}

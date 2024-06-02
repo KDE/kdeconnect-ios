@@ -60,6 +60,30 @@ import CryptoKit
         return sha256AsStringWithDividers(hash: certHash)
     }
     
+    func getVerificationKey(deviceId: String) -> String {
+        let remoteCert = backgroundService.devices[deviceId]!._deviceInfo.cert
+        let remoteData = getPublicKeyDERFromCertificate(remoteCert)!
+        
+        let localCert = getHostCertificate()
+        let localData = getPublicKeyDERFromCertificate(localCert)!
+        
+        let combinedData = if (remoteData.lexicographicallyPrecedes(localData)) {
+            localData + remoteData
+        } else {
+            remoteData + localData
+        }
+        
+        return Self.sha256AsString(hash: SHA256.hash(data: combinedData)).prefix(8).uppercased()
+    }
+    
+    static func dataToHexString(data: Data) -> String {
+        let hexString = NSMutableString(capacity: data.count*2)
+        data.forEach { byte in
+            hexString.appendFormat("%02x", byte)
+        }
+        return hexString as String
+    }
+
     static func sha256AsString(hash: SHA256.Digest) -> String {
         // hash description looks like: "SHA256 digest: xxxxxxyyyyyyssssssyyyysysss", so the third element of the split separated by " " is just the hash string
         return (hash.description.components(separatedBy: " "))[2]
