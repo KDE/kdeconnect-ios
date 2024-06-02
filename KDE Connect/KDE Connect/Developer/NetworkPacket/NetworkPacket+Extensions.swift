@@ -11,7 +11,6 @@ extension NetworkPacket {
     @objc
     static let allPacketTypes: [`Type`] = [
         .identity,
-        .encrypted,
         .pair,
         .ping,
         .MPRIS,
@@ -40,7 +39,6 @@ extension NetworkPacket {
         case -1: return "PACKET_TAG_PAYLOAD"
         case  0: return "PACKET_TAG_NORMAL"
         case  1: return "PACKET_TAG_IDENTITY"
-        case  2: return "PACKET_TAG_ENCRYPTED"
         case  3: return "PACKET_TAG_PAIR"
         case  4: return "PACKET_TAG_UNPAIR"
         case  5: return "PACKET_TAG_PING"

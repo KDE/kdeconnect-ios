@@ -192,7 +192,6 @@
 #pragma mark - Packet Types
 
 NetworkPacketType const NetworkPacketTypeIdentity                 = @"kdeconnect.identity";
-NetworkPacketType const NetworkPacketTypeEncrypted                = @"kdeconnect.encrypted";
 NetworkPacketType const NetworkPacketTypePair                     = @"kdeconnect.pair";
 NetworkPacketType const NetworkPacketTypePing                     = @"kdeconnect.ping";
 

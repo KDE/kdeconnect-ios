@@ -37,7 +37,6 @@
 #define PACKET_TAG_PAYLOAD     -1
 #define PACKET_TAG_NORMAL      0
 #define PACKET_TAG_IDENTITY    1
-#define PACKET_TAG_ENCRYPTED   2
 #define PACKET_TAG_PAIR        3
 #define PACKET_TAG_UNPAIR      4
 #define PACKET_TAG_PING        5
@@ -62,7 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NSString *NetworkPacketType NS_TYPED_ENUM NS_SWIFT_NAME(NetworkPacket.Type);
 
 FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeIdentity;
-FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeEncrypted;
 FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypePair;
 FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypePing;
 
