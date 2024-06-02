@@ -59,6 +59,12 @@ class DeviceInfo: NSObject {
             outgoingCapabilities: networkPacket.object(forKey: "outgoingCapabilities") as! [NetworkPacket.`Type`]
         )
     }
+
+    static func isValidIdentityPacket(networkPacket: NetworkPacket) -> Bool {
+        return networkPacket.type == .identity &&
+            !filterDeviceName(name: networkPacket.string(forKey: "deviceName")).isEmpty &&
+            !networkPacket.string(forKey: "deviceId").isEmpty
+    }
     
     static func filterDeviceName(name: String) -> String {
         // swiftlint:disable:next force_try
@@ -72,6 +78,7 @@ class DeviceInfo: NSObject {
                 withTemplate: ""
             )
             .prefix(nameMaxLength)
+            .trimmingCharacters(in: CharacterSet(charactersIn: " \t"))
         )
     }
     

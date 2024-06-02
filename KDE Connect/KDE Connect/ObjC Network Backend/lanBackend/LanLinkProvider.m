@@ -277,7 +277,7 @@
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "linkprovider:received a udp packet from %{mask.hash}@",[np objectForKey:@"deviceName"]);
     //not id packet
     
-    if (![np.type isEqualToString:NetworkPacketTypeIdentity]) {
+    if (![DeviceInfo isValidIdentityPacketWithNetworkPacket:np]) {
         os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:expecting an id packet");
         return;
     }
@@ -429,7 +429,7 @@
     for (NSString* dataStr in packetArray) {
         if ([dataStr length] > 0) {
             NetworkPacket* np=[NetworkPacket unserialize:[dataStr dataUsingEncoding:NSUTF8StringEncoding]];
-            if (![np.type isEqualToString:NetworkPacketTypeIdentity]) {
+            if (![DeviceInfo isValidIdentityPacketWithNetworkPacket:np]) {
                 os_log_with_type(logger, OS_LOG_TYPE_INFO, "lp expecting an id packet instead of %{public}@", np.type);
                 return;
             }
