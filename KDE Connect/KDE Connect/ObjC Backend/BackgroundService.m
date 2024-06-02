@@ -309,19 +309,19 @@
     }
 }
 
-- (void)onDeviceIdentityUpdatePacketReceived:(NetworkPacket *)np {
-    NSString *deviceID = [np objectForKey:@"deviceId"];
+- (void)onDeviceIdentityUpdatePacketReceived:(DeviceInfo *)deviceInfo {
+    NSString *deviceId = [deviceInfo id];
     os_log_with_type(logger, self.debugLogLevel,
                      "on identity update for %{mask.hash}@ received",
-                     deviceID);
-    Device *device = [_devices objectForKey:deviceID];
+                     deviceId);
+    Device *device = [_devices objectForKey:deviceId];
     if (device) {
-        [device updateInfo:[DeviceInfo fromNetworkPacket:np]];
+        [device updateInfo:deviceInfo];
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     } else {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                          "missing device %{mask.hash}@ to update for",
-                         deviceID);
+                         deviceId);
     }
 }
 
@@ -381,7 +381,6 @@
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "bg on device unpair %{mask.hash}@", deviceId);
     [_settings removeObjectForKey:deviceId];
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
-    device._SHA256HashFormatted = nil;
     BOOL status = [[CertificateService shared] deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "Device remove, stored cert also removed with status %d", status);
     if (_backgroundServiceDelegate) {

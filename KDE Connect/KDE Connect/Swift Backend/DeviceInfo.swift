@@ -19,16 +19,18 @@ public enum DeviceType: Int {
 class DeviceInfo: NSObject {
     let id: String
     let name: String
-    let type: DeviceType // DeviceType2Str
+    let type: DeviceType
+    let cert: SecCertificate
     let protocolVersion: Int
     let incomingCapabilities: [NetworkPacket.`Type`]
     let outgoingCapabilities: [NetworkPacket.`Type`]
 
-    init(id: String, protocolVersion: Int, name: String, type: DeviceType, incomingCapabilities: [NetworkPacket.`Type`], outgoingCapabilities: [NetworkPacket.`Type`]) {
+    init(id: String, name: String, type: DeviceType, cert: SecCertificate, protocolVersion: Int, incomingCapabilities: [NetworkPacket.`Type`], outgoingCapabilities: [NetworkPacket.`Type`]) {
         self.id = id
-        self.protocolVersion = protocolVersion
         self.name = name
         self.type = type
+        self.cert = cert
+        self.protocolVersion = protocolVersion
         self.incomingCapabilities = incomingCapabilities
         self.outgoingCapabilities = outgoingCapabilities
     }
@@ -36,21 +38,23 @@ class DeviceInfo: NSObject {
     static func getOwn() -> DeviceInfo {
         return DeviceInfo(
             id: KdeConnectSettings.getUUID(),
-            protocolVersion: KdeConnectSettings.CurrentProtocolVersion,
             name: KdeConnectSettings.shared.deviceName,
             type: DeviceType.current,
+            cert: CertificateService.shared.getHostCertificate(),
+            protocolVersion: KdeConnectSettings.CurrentProtocolVersion,
             // FIXME: actually read what plugins are available
             incomingCapabilities: KdeConnectSettings.IncomingCapabilities,
             outgoingCapabilities: KdeConnectSettings.OutgoingCapabilities
         )
     }
 
-    static func from(networkPacket: NetworkPacket) -> DeviceInfo {
+    static func from(networkPacket: NetworkPacket, cert: SecCertificate) -> DeviceInfo {
         return DeviceInfo(
             id: networkPacket.string(forKey: "deviceId"),
-            protocolVersion: networkPacket.integer(forKey: "protocolVersion"),
             name: networkPacket.string(forKey: "deviceName"),
             type: strToDeviceType(str: networkPacket.string(forKey: "deviceType")),
+            cert: cert,
+            protocolVersion: networkPacket.integer(forKey: "protocolVersion"),
             incomingCapabilities: networkPacket.object(forKey: "outgoingCapabilities") as! [NetworkPacket.`Type`],
             outgoingCapabilities: networkPacket.object(forKey: "outgoingCapabilities") as! [NetworkPacket.`Type`]
         )

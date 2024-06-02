@@ -68,7 +68,7 @@ struct DevicesDetailView: View {
                     
                     Button {
                         alertManager.queueAlert(prioritize: true, title: "Encryption Info") {
-                            Text("SHA256 fingerprint of your device certificate is:\n\(CertificateService.shared.getHostCertificateSHA256HashFormattedString())\n\nSHA256 fingerprint of remote device certificate is: \n\((backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted == nil || backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted.isEmpty) ? "Unable to retrieve fingerprint of remote device." : backgroundService._devices[detailsDeviceId]!._SHA256HashFormatted)")
+                            Text("SHA256 fingerprint of your device certificate is:\n\(CertificateService.shared.getHostCertificateSHA256HashFormattedString())\n\nSHA256 fingerprint of remote device certificate is: \n\(CertificateService.shared.getRemoteCertificateSHA256HashFormattedString(deviceId: detailsDeviceId))")
                         }
                     } label: {
                         Label("Encryption Info", systemImage: "lock.doc")

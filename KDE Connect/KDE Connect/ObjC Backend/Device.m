@@ -54,7 +54,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
 {
     _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithDictionary:pluginsEnableStatus];
 }
-@synthesize _SHA256HashFormatted;
 
 // TODO: plugins should be saving their own preferences
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
@@ -504,7 +503,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     [coder encodeFloat:_cursorSensitivity forKey:@"_cursorSensitivity"];
     [coder encodeInteger:_hapticStyle forKey:@"_hapticStyle"];
     [coder encodeFloat:_pointerSensitivity forKey:@"_pointerSensitivity"];
-    [coder encodeObject:_SHA256HashFormatted forKey:@"_SHA256HashFormatted"];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
@@ -515,19 +513,20 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         NSInteger protocolVersion = [coder decodeIntegerForKey:@"_protocolVersion"];
         NSArray<NSString*>* incomingCapabilities = [coder decodeArrayOfObjectsOfClass:[NSString class] forKey:@"_incomingCapabilities"];
         NSArray<NSString*>* outgoingCapabilities = [coder decodeArrayOfObjectsOfClass:[NSString class] forKey:@"_outgoingCapabilities"];
+        SecCertificateRef cert = [[CertificateService shared] extractSavedCertOfRemoteDeviceWithDeviceId:id];
         _deviceInfo = [[DeviceInfo alloc] initWithId:id
-                                      protocolVersion:protocolVersion
-                                                 name:name
-                                                 type:type
-                                 incomingCapabilities:incomingCapabilities
-                                 outgoingCapabilities:outgoingCapabilities
+                                                name:name
+                                                type:type
+                                                cert:cert
+                                    protocolVersion:protocolVersion
+                                incomingCapabilities:incomingCapabilities
+                                outgoingCapabilities:outgoingCapabilities
         ];
         _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
         _pluginsEnableStatus = (NSMutableDictionary*)[(NSDictionary*)[coder decodeDictionaryWithKeysOfClass:[NSString class] objectsOfClass:[NSNumber class] forKey:@"_pluginsEnableStatus"] mutableCopy];
         _cursorSensitivity = [coder decodeFloatForKey:@"_cursorSensitivity"];
         _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];
         _pointerSensitivity = [coder decodeFloatForKey:@"_pointerSensitivity"];
-        _SHA256HashFormatted = [coder decodeObjectForKey:@"_SHA256HashFormatted"];
         
         // To be set later in backgroundServices
         deviceDelegate = nil;

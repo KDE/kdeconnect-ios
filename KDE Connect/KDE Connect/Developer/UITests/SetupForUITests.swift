@@ -74,9 +74,10 @@ enum UIPreview {
             link: BaseLink(
                 DeviceInfo(
                     id: id.rawValue,
-                    protocolVersion: KdeConnectSettings.CurrentProtocolVersion,
                     name: name,
                     type: type,
+                    cert: CertificateService.shared.getHostCertificate(),
+                    protocolVersion: KdeConnectSettings.CurrentProtocolVersion,
                     incomingCapabilities: NetworkPacket.allPacketTypes,
                     outgoingCapabilities: NetworkPacket.allPacketTypes
                 )

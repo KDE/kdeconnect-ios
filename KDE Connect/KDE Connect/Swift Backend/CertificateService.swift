@@ -15,8 +15,6 @@ import CryptoKit
     @objc let hostIdentity: SecIdentity
     private let logger = Logger()
     
-    var tempRemoteCerts: [String: SecCertificate] = [:]
-    
     override init() {
         hostIdentity = Self.loadIdentityFromKeychain()
         super.init()
@@ -51,17 +49,25 @@ import CryptoKit
         return Self.getCertHash(cert: getHostCertificate())
     }
     
+    func getRemoteCertificateSHA256HashFormattedString(deviceId: String) -> String {
+        let cert = backgroundService._devices[deviceId]!._deviceInfo.cert
+        return Self.getCertHash(cert: cert)
+    }
+    
     static func getCertHash(cert: SecCertificate) -> String {
         let certData = SecCertificateCopyData(cert) as Data
         let certHash = SHA256.hash(data: certData)
-        return SHA256HashDividedAndFormatted(hashDescription: certHash.description)
+        return sha256AsStringWithDividers(hash: certHash)
+    }
+    
+    static func sha256AsString(hash: SHA256.Digest) -> String {
+        // hash description looks like: "SHA256 digest: xxxxxxyyyyyyssssssyyyysysss", so the third element of the split separated by " " is just the hash string
+        return (hash.description.components(separatedBy: " "))[2]
     }
     
     // Given a standard, no-space SHA256 hash, insert : dividers every 2 characters
-    // It isn't terribly efficient to convert Subtring to String like this but it works?
-    @objc static func SHA256HashDividedAndFormatted(hashDescription: String) -> String {
-        // hashDescription looks like: "SHA256 digest: xxxxxxyyyyyyssssssyyyysysss", so the third element of the split separated by " " is just the hash string
-        var justTheHashString: String = (hashDescription.components(separatedBy: " "))[2]
+    static func sha256AsStringWithDividers(hash: SHA256.Digest) -> String {
+        var justTheHashString = sha256AsString(hash: hash)
         var arrayOf2CharStrings: [String] = []
         while (!justTheHashString.isEmpty) {
             let firstString: String = String(justTheHashString.first!)
@@ -91,9 +97,6 @@ import CryptoKit
             if let storedRemoteCert: SecCertificate = extractSavedCertOfRemoteDevice(deviceId: deviceId) {
                 logger.debug("Both remote cert and stored cert exist, checking them for equality")
                 if ((SecCertificateCopyData(remoteCert) as Data) == (SecCertificateCopyData(storedRemoteCert) as Data)) {
-                    // FIXME: This is a weird place to update the device info in backgroundService._devices[
-                    backgroundService._devices[deviceId]!._SHA256HashFormatted = Self.getCertHash(cert: remoteCert)
-                    tempRemoteCerts[deviceId] = remoteCert
                     return true
                 } else {
                     logger.error("reject remote device for having a different certificate from the stored certificate")
@@ -101,7 +104,6 @@ import CryptoKit
                 }
             } else {
                 logger.debug("remote cert exists, but nothing stored, setting up for new remote device")
-                tempRemoteCerts[deviceId] = remoteCert
                 return true
             }
         } else {
@@ -141,17 +143,7 @@ import CryptoKit
         var remoteSavedCert: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &remoteSavedCert)
         logger.info("extractSavedCertOfRemoteDevice completed with \(status)")
-
-        if let remoteSavedCert = remoteSavedCert {
-            guard backgroundService._devices.keys.contains(deviceId) else {
-                let deleteStatus = deleteRemoteDeviceSavedCert(deviceId: deviceId)
-                logger.notice("Device object is gone but cert is still here? Removing stored cert with status \(deleteStatus)")
-                return nil
-            }
-            return (remoteSavedCert as! SecCertificate)
-        } else {
-            return nil
-        }
+        return (remoteSavedCert as! SecCertificate?)
     }
     
     @objc func saveRemoteDeviceCertToKeychain(cert: SecCertificate, deviceId: String) -> Bool {
@@ -185,6 +177,18 @@ import CryptoKit
         return true
     }
 
+    // FIXME: the temp remote cert functions are here because I dind't find a way to do this from Objective-C inside LanLink.
+    var tempRemoteCerts: [String: SecCertificate] = [:]
+
+    @objc func storeTempRemoteCert(fromTrust: SecTrust, deviceId: String) {
+        let remoteCert: SecCertificate = extractRemoteCertFromTrust(trust: fromTrust)!
+        tempRemoteCerts[deviceId] = remoteCert
+    }
+
+    @objc func getTempRemoteCert(deviceId: String) -> SecCertificate {
+        return tempRemoteCerts[deviceId]!
+    }
+    
     // Unused and reference functions
 //    @objc static func verifyRemoteCertificate(trust: SecTrust) -> Bool {
 //

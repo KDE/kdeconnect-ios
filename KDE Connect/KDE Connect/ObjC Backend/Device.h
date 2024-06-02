@@ -63,8 +63,6 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 @property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPacketType, id<Plugin>> *plugins;
 @property(nonatomic) NSMutableArray* _failedPlugins;
 
-@property(nonatomic, copy) NSString* _SHA256HashFormatted;
-
 @property(nonatomic) id<DeviceDelegate> deviceDelegate;
 
 //@property(readonly,nonatomic) BOOL _testDevice;

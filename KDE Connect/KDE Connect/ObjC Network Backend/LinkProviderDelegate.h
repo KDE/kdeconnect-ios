@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol LinkProviderDelegate <NSObject>
 @optional
 - (void)onConnectionReceived:(BaseLink *)link;
-- (void)onDeviceIdentityUpdatePacketReceived:(NetworkPacket *)np;
+- (void)onDeviceIdentityUpdatePacketReceived:(DeviceInfo *)deviceInfo;
 @end
 
 NS_ASSUME_NONNULL_END

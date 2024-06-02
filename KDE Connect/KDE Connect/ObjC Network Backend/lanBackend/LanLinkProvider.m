@@ -396,15 +396,11 @@
     NSString* deviceId=[np objectForKey:@"deviceId"];
     BaseLink *link = self.connectedLinks[deviceId];
     
-    // If reusing old link, certificate checking is LanLinkProvider's responsibility
     if (link) {
         // Last timing to enableBackgroundingOnSocket before stream opens
         [sock performBlock:^{
             [sock enableBackgroundingOnSocket];
         }];
-        sock.userData = deviceId;
-    } else {
-        [sock setDelegate:nil];
     }
 
     NSArray *myCerts = [[NSArray alloc] initWithObjects: (__bridge id)_identity, nil];
@@ -416,19 +412,8 @@
     nil];
 
     os_log_with_type(logger, self.debugLogLevel, "Start Server TLS");
-    [sock startTLS:tlsSettings];
-    
-    if (link) {
-        // reuse existing link once socket secures
-        [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:np];
-    } else {
-        link = [[LanLink alloc] init:sock
-                          deviceInfo:[DeviceInfo fromNetworkPacket:np]];
-        self.connectedLinks[deviceId] = link;
-        [[self _linkProviderDelegate] onConnectionReceived:link];
-    }
-    [_pendingSockets removeObject:sock];
-    [_pendingNPs removeObject:np];
+    sock.userData = np;
+    [sock startTLS:tlsSettings]; // Will call didReceiveTrust and then socketDidSecure
 }
 
 /**
@@ -469,28 +454,11 @@
                                          (id)[NSNumber numberWithInt:1], (id)GCDAsyncSocketManuallyEvaluateTrust,
                                          nil];
             
-            [sock startTLS: tlsSettings];
             os_log_with_type(logger, self.debugLogLevel, "Start Client TLS");
-            
-            [sock setDelegate:nil];
-            [_pendingSockets removeObject:sock];
-            
-            BaseLink *link = self.connectedLinks[deviceId];
-            if (link) {
-                // reuse existing link once socket secures
-                [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:np];
-                return;
-            }
-            // create LanLink and inform the background
-            link = [[LanLink alloc] init:sock
-                              deviceInfo:[DeviceInfo fromNetworkPacket:np]];
-            self.connectedLinks[deviceId] = link;
-            if ([self _linkProviderDelegate]) {
-                [[self _linkProviderDelegate] onConnectionReceived:link];
-            }
+            sock.userData = np;
+            [sock startTLS: tlsSettings]; // Will call didReceiveTrust and then socketDidSecure
         }
     }
-    
 }
 
 /**
@@ -575,21 +543,26 @@
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
 {
     os_log_with_type(logger, self.debugLogLevel, "Connection is secure LanLinkProvider");
-    [sock setDelegate:nil];
-    NSUInteger pendingSocketIndex = [_pendingSockets indexOfObject:sock];
-    [_pendingSockets removeObject:sock];
-    
-    NetworkPacket* pendingNP = [_pendingNPs objectAtIndex:pendingSocketIndex];
-    NSString *deviceID = [pendingNP objectForKey:@"deviceId"];
+
+    NetworkPacket* np = (NetworkPacket *)sock.userData;
+    NSString *deviceId = [np objectForKey:@"deviceId"];
+    SecCertificateRef cert = [[CertificateService shared] getTempRemoteCertWithDeviceId:deviceId];
+    DeviceInfo* deviceInfo = [DeviceInfo fromNetworkPacket:np cert:cert];
+
     // if existing LanLink exists, DON'T create a new one
-    LanLink *link = (LanLink *)self.connectedLinks[deviceID];
+    LanLink *link = (LanLink *)self.connectedLinks[deviceId];
     if (link) {
         [link setSocket:sock];
+        // reuse existing link once socket secures
+        [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:deviceInfo];
+        return;
     } else {
         // create LanLink and inform the background
-        link = [[LanLink alloc] init:sock
-                          deviceInfo:[DeviceInfo fromNetworkPacket:pendingNP]];
-        self.connectedLinks[deviceID] = link;
+        link = [[LanLink alloc] init:sock deviceInfo:deviceInfo];
+        self.connectedLinks[deviceId] = link;
+        if ([self _linkProviderDelegate]) {
+            [[self _linkProviderDelegate] onConnectionReceived:link];
+        }
     }
 }
 
@@ -597,10 +570,12 @@
 // it's now our term to evaluate client's certificate.
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
 {
-    NSString *deviceID = (NSString *)sock.userData;
+    NetworkPacket *np = (NetworkPacket *)sock.userData;
+    NSString* deviceId=[np objectForKey:@"deviceId"];
     if ([[CertificateService shared] verifyCertificateEqualityWithTrust:trust
-                                   fromRemoteDeviceWithDeviceID:deviceID]) {
+                                           fromRemoteDeviceWithDeviceID:deviceId]) {
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "LanLinkProvider's didReceiveTrust received Certificate from %{mask.hash}@, trusting", [sock connectedHost]);
+        [[CertificateService shared] storeTempRemoteCertFromTrust:trust deviceId:deviceId];
         completionHandler(YES);// give YES if we want to trust, NO if we don't
     } else {
         completionHandler(NO);
