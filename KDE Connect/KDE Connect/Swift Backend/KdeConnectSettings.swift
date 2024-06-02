@@ -72,7 +72,7 @@ class KdeConnectSettings: NSObject, ObservableObject {
     
     @Published var deviceName: String {
         didSet {
-            UserDefaults.standard.set(deviceName, forKey: "deviceName")
+            UserDefaults.standard.set(DeviceInfo.filterDeviceName(name: deviceName), forKey: "deviceName")
         }
     }
     

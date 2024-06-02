@@ -51,12 +51,27 @@ class DeviceInfo: NSObject {
     static func from(networkPacket: NetworkPacket, cert: SecCertificate) -> DeviceInfo {
         return DeviceInfo(
             id: networkPacket.string(forKey: "deviceId"),
-            name: networkPacket.string(forKey: "deviceName"),
+            name: filterDeviceName(name: networkPacket.string(forKey: "deviceName")),
             type: strToDeviceType(str: networkPacket.string(forKey: "deviceType")),
             cert: cert,
             protocolVersion: networkPacket.integer(forKey: "protocolVersion"),
             incomingCapabilities: networkPacket.object(forKey: "outgoingCapabilities") as! [NetworkPacket.`Type`],
             outgoingCapabilities: networkPacket.object(forKey: "outgoingCapabilities") as! [NetworkPacket.`Type`]
+        )
+    }
+    
+    static func filterDeviceName(name: String) -> String {
+        // swiftlint:disable:next force_try
+        let nameInvalidCharactersRegex = try! NSRegularExpression(pattern: "[\"',;:.!?()\\[\\]<>]")
+        let nameMaxLength = 32
+        
+        return String(
+            nameInvalidCharactersRegex.stringByReplacingMatches(
+                in: name,
+                range: NSRange(location: 0, length: name.count),
+                withTemplate: ""
+            )
+            .prefix(nameMaxLength)
         )
     }
     
