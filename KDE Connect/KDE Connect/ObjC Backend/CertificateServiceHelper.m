@@ -83,8 +83,9 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     
     ASN1_INTEGER_set(X509_get_serialNumber(x509), 10);
 
-    X509_gmtime_adj(X509_get_notBefore(x509), 0);
-    X509_gmtime_adj(X509_get_notAfter(x509), 31536000L);
+    const long year = 31536000;
+    X509_gmtime_adj(X509_get_notBefore(x509), -year);
+    X509_gmtime_adj(X509_get_notAfter(x509), 10 * year);
 
     if (!X509_set_pubkey(x509, pkey)) {
         EVP_PKEY_free(pkey);
