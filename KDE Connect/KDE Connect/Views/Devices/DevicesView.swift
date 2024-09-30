@@ -255,8 +255,10 @@ struct DevicesView: View {
                                     Text(viewModel.savedDevices[key] ?? "???")
                                         .font(.title3)
                                         .fontWeight(.bold)
-                                    Image(systemName: backgroundService._devices[key]!._deviceInfo.type.sfSymbolName)
-                                        .font(.title3)
+                                    if let device = backgroundService._devices[key] {
+                                        Image(systemName: device._deviceInfo.type.sfSymbolName)
+                                            .font(.title3)
+                                    }
                                 }
                                 // TODO: Might want to add the device description as
                                 // id:desc dictionary?
