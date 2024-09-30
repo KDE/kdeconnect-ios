@@ -18,10 +18,10 @@ import Foundation
 @objc protocol Plugin: NSObjectProtocol {
     @objc func onDevicePacketReceived(np: NetworkPacket)
     @objc optional func onPacket(_ np: NetworkPacket,
-                                  sentWithPacketTag packetTag: Int)
+                                 sentWithPacketTag packetTag: Int)
     @objc optional func onPacket(_ np: NetworkPacket,
-                                  sendWithPacketTag packetTag: Int,
-                                  failedWithError error: Error)
+                                 sendWithPacketTag packetTag: Int,
+                                 failedWithError error: Error)
     
     // MARK: payload related
     @objc optional func onSendingPayload(_ payload: FileTransferItem)

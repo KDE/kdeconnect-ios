@@ -289,9 +289,7 @@ extension Notification.Name {
         }
     }
     
-    func onPacket(_ np: NetworkPacket,
-                   sendWithPacketTag packetTag: Int,
-                   failedWithError error: Error) {
+    func onPacket(_ np: NetworkPacket, sendWithPacketTag packetTag: Int, failedWithError error: Error) {
         guard packetTag == PACKET_TAG_PAYLOAD else { return }
 
         guard let path = np.payloadPath else {
