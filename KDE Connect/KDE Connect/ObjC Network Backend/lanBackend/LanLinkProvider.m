@@ -213,16 +213,19 @@
         [_udpSocket close];
         [_tcpSocket disconnect];
         
-        for (GCDAsyncSocket *socket in _pendingSockets) {
-            [socket disconnect];
+        @synchronized(_pendingSockets) {
+            for (GCDAsyncSocket *socket in _pendingSockets) {
+                [socket disconnect];
+            }
+            [_pendingSockets removeAllObjects];
+            [_pendingNPs removeAllObjects];
         }
+
         for (BaseLink *link in [self.connectedLinks allValues]) {
             [link disconnect];
         }
-        
-        [_pendingNPs removeAllObjects];
-        [_pendingSockets removeAllObjects];
         [self.connectedLinks removeAllObjects];
+
         _udpSocket = nil;
         _tcpSocket = nil;
     }
@@ -339,10 +342,9 @@
     //}
     
     //add to pending connection list
-    @synchronized(_pendingNPs)
-    {
-        [_pendingSockets insertObject:socket atIndex:0];
+    @synchronized(_pendingSockets) {
         [_pendingNPs insertObject:np atIndex:0];
+        [_pendingSockets insertObject:socket atIndex:0];
     }
 }
 
@@ -374,7 +376,9 @@
     [newSocket performBlock:^{
         [newSocket enableBackgroundingOnSocket];
     }];
-    [_pendingSockets addObject:newSocket];
+    @synchronized(_pendingSockets) {
+        [_pendingSockets addObject:newSocket];
+    }
     long index=[_pendingSockets indexOfObject:newSocket];
     //retrieve id packet
     [newSocket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:index];
@@ -529,7 +533,9 @@
         os_log_with_type(logger, (err) ? OS_LOG_TYPE_ERROR : OS_LOG_TYPE_INFO,
                          "tcp socket disconnected with error: %{public}@",
                          err);
-        [_pendingSockets removeObject:sock];
+        @synchronized(_pendingSockets) {
+            [_pendingSockets removeObject:sock];
+        }
     }
 }
 
