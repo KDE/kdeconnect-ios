@@ -5,6 +5,8 @@
 //  Created by Ruixuan Tu on 2022-01-20.
 //
 
+#if !os(macOS)
+
 import UIKit
 import SwiftUI
 
@@ -46,3 +48,5 @@ struct iOS14CompatibleTextView_Previews: PreviewProvider {
         iOS14CompatibleTextView(NSAttributedString(string: "Preview"))
     }
 }
+
+#endif

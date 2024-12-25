@@ -5,6 +5,8 @@
 //  Created by Apollo Zhu on 4/29/23.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 struct FileTransferStatusOverview: View {
@@ -143,3 +145,5 @@ struct FileTransferStatusOverview_Previews: PreviewProvider {
             .environmentObject(connectedDevicesViewModel)
     }
 }
+
+#endif

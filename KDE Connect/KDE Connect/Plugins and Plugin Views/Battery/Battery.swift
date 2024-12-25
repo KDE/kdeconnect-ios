@@ -13,7 +13,11 @@
 //
 
 import SwiftUI
+#if !os(macOS)
 import UIKit
+#else
+import AppKit
+#endif
 
 // TODO: We might be able to do something with the background activities plugin where it sends out its battery status every once in a while??? But maybe iOS will not unfreeze the entire app for us??? I really don't know...background activity is something that we'll have to figure out later on
 @objc class Battery: NSObject, ObservablePlugin {
@@ -24,6 +28,10 @@ import UIKit
     @objc var remoteIsCharging: Bool = false
     @Published
     @objc var remoteThresholdEvent: Int = 0
+#if os(macOS)
+    var batteryObserver: BatteryObserver? = nil
+#endif
+    
     private let logger = Logger()
     
     @objc init(controlDevice: Device) {
@@ -35,6 +43,7 @@ import UIKit
     }
     
     @objc func startBatteryMonitoring() {
+#if !os(macOS)
         UIDevice.current.isBatteryMonitoringEnabled = true
         
         // Tip: to add an observer with a function/selector in another class that is not self,
@@ -42,6 +51,9 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(self.batteryStateDidChange(notification:)), name: UIDevice.batteryStateDidChangeNotification, object: UIDevice.current)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.batteryLevelDidChange(notification:)), name: UIDevice.batteryLevelDidChangeNotification, object: UIDevice.current)
+#else
+        self.batteryObserver = BatteryObserver(batteryInfoDidChange)
+#endif
     }
     
     @objc func onDevicePacketReceived(np: NetworkPacket) {
@@ -62,9 +74,10 @@ import UIKit
     }
     
     @objc func sendBatteryStatusOut() {
+        let np: NetworkPacket = NetworkPacket(type: .battery)
+#if !os(macOS)
         let batteryLevel: Int = Int(UIDevice.current.batteryLevel * 100)
         let batteryStatus = UIDevice.current.batteryState
-        let np: NetworkPacket = NetworkPacket(type: .battery)
         if (batteryStatus != .unknown) {
             let batteryThresholdEvent: Int = (batteryLevel < 10) ? 1 : 0
             np.setInteger(batteryLevel, forKey: "currentCharge")
@@ -79,6 +92,26 @@ import UIKit
             np.setInteger(0, forKey: "thresholdEvent")
             logger.notice("Battery status reported as unknown, reporting 0 for all values")
         }
+#else
+        let internalFinder = InternalFinder()
+        if (internalFinder.batteryPresent) {
+            let internalBattery = internalFinder.getInternalBattery()
+            let batteryLevel = Int(internalBattery?.charge ?? 0)
+            let acPowered: Bool = internalBattery?.acPowered ?? false
+            let batteryThresholdEvent: Int = (batteryLevel < 10) ? 1 : 0
+            np.setInteger(Int(batteryLevel), forKey: "currentCharge")
+            np.setBool((internalBattery?.acPowered ?? false), forKey: "isCharging")
+            np.setInteger(batteryThresholdEvent, forKey: "thresholdEvent")
+            print("Battery status accessed successfully, sending out:")
+            print("BatteryLevel=\(batteryLevel)")
+            print("BatteryisCharging=\(acPowered)")
+        } else {
+            np.setInteger(0, forKey: "currentCharge")
+            np.setBool(false, forKey: "isCharging")
+            np.setInteger(0, forKey: "thresholdEvent")
+            print("Battery status reported as unknown, reporting 0 for all values")
+        }
+#endif
         guard let controlDevice = controlDevice else {
             logger.fault("Sending battery status with leaked instance, \(CFGetRetainCount(self)) references remaining")
             return
@@ -111,7 +144,7 @@ import UIKit
         }
     }
     
-    var statusColor: Color? {
+    var statusColor: Color {
         if remoteThresholdEvent == 1 || remoteChargeLevel < 10 {
             return .red
         } else if remoteIsCharging {
@@ -119,13 +152,18 @@ import UIKit
         } else if remoteChargeLevel < 40 {
             return .yellow
         } else {
-            return nil
+#if !os(macOS)
+            return .primary
+#else
+            return .blue
+#endif
         }
     }
     
     // Global functions for setting up and responding to the device's own events when battery
     // status changes
     
+#if !os(macOS)
     // When the state of the battery changes: plugged, unplugged, full charge, unknown
     @objc func batteryStateDidChange(notification: Notification) {
         sendBatteryStatusOut()
@@ -135,6 +173,11 @@ import UIKit
     @objc func batteryLevelDidChange(notification: Notification) {
         sendBatteryStatusOut()
     }
+#else
+    func batteryInfoDidChange(info: BatteryInfo) {
+        sendBatteryStatusOut()
+    }
+#endif
 }
 
 // Global functions for Battery handling

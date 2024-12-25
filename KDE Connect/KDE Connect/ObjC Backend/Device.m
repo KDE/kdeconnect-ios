@@ -76,7 +76,9 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         _pluginsEnableStatus = [NSMutableDictionary dictionary];
         self.deviceDelegate = deviceDelegate;
         _cursorSensitivity = 3.0;
+#if !TARGET_OS_OSX
         _hapticStyle = 0;
+#endif
         _pointerSensitivity = 3.0;
         [self addLink:link];
     }
@@ -501,7 +503,9 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     [coder encodeInteger:_pairStatus forKey:@"_pairStatus"];
     [coder encodeObject:_pluginsEnableStatus forKey:@"_pluginsEnableStatus"];
     [coder encodeFloat:_cursorSensitivity forKey:@"_cursorSensitivity"];
+#if !TARGET_OS_OSX
     [coder encodeInteger:_hapticStyle forKey:@"_hapticStyle"];
+#endif
     [coder encodeFloat:_pointerSensitivity forKey:@"_pointerSensitivity"];
 }
 
@@ -525,7 +529,9 @@ static const NSTimeInterval kPairingTimeout = 30.0;
         _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
         _pluginsEnableStatus = (NSMutableDictionary*)[(NSDictionary*)[coder decodeDictionaryWithKeysOfClass:[NSString class] objectsOfClass:[NSNumber class] forKey:@"_pluginsEnableStatus"] mutableCopy];
         _cursorSensitivity = [coder decodeFloatForKey:@"_cursorSensitivity"];
+#if !TARGET_OS_OSX
         _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];
+#endif
         _pointerSensitivity = [coder decodeFloatForKey:@"_pointerSensitivity"];
         
         // To be set later in backgroundServices

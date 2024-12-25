@@ -104,6 +104,9 @@ FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeRunCommand;
 - (NetworkPacket *) initWithType:(NetworkPacketType)type;
 + (NetworkPacket *) createIdentityPacketWithTCPPort:(uint16_t)tcpPort;
 + (NetworkPacket *) createPairPacket;
+#if TARGET_OS_OSX
++ (NSString *) getMacUUID;
+#endif
 
 - (BOOL)bodyHasKey:(nonnull NSString *)key;
 - (void)setBool:(BOOL)value         forKey:(NSString *)key;

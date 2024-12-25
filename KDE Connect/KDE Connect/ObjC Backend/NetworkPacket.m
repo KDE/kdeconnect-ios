@@ -29,7 +29,12 @@
 #import "NetworkPacket.h"
 #import "Device.h"
 #import "KDE_Connect-Swift.h"
+#if !TARGET_OS_OSX
 @import UIKit;
+#else
+@import SystemConfiguration;
+#import <IOKit/IOKitLib.h>
+#endif
 
 @import os.log;
 
@@ -75,6 +80,20 @@
 
     return np;
 }
+
+#if TARGET_OS_OSX
+// https://stackoverflow.com/questions/11113735/how-to-identify-a-mac-system-uniquely
++ (NSString *) getMacUUID {
+    io_service_t platformExpert = IOServiceGetMatchingService(kIOMainPortDefault,IOServiceMatching("IOPlatformExpertDevice"));
+    if (!platformExpert) return nil;
+
+    CFTypeRef serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,CFSTR(kIOPlatformUUIDKey),kCFAllocatorDefault, 0);
+    if (!serialNumberAsCFString) return nil;
+
+    IOObjectRelease(platformExpert);
+    return (__bridge NSString *)(serialNumberAsCFString);
+}
+#endif
 
 //
 - (BOOL) bodyHasKey:(NSString*)key

@@ -12,6 +12,9 @@
 //  Created by Lucas Wang on 2021-06-17.
 //
 
+
+#if !os(macOS)
+
 import SwiftUI
 
 struct MainTabView: View {
@@ -86,3 +89,5 @@ struct TabView_Previews: PreviewProvider {
             .environmentObject(connectedDevicesViewModel)
     }
 }
+
+#endif

@@ -12,6 +12,8 @@
 //  Created by Lucas Wang on 2021-09-06.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 struct RemoteInputView: View {
@@ -276,3 +278,5 @@ struct MousePadView_Previews: PreviewProvider {
         RemoteInputView(detailsDeviceId: "HI")
     }
 }
+
+#endif

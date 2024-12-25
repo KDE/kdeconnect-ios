@@ -373,9 +373,11 @@
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
     os_log_with_type(logger, self.debugLogLevel, "TCP server: didAcceptNewSocket");
+#if !TARGET_OS_OSX
     [newSocket performBlock:^{
         [newSocket enableBackgroundingOnSocket];
     }];
+#endif
     @synchronized(_pendingSockets) {
         [_pendingSockets addObject:newSocket];
     }
@@ -397,6 +399,7 @@
     //create LanLink and inform the background
     NSUInteger index=[_pendingSockets indexOfObject:sock];
     NetworkPacket* np=[_pendingNPs objectAtIndex:index];
+#if !TARGET_OS_OSX
     NSString* deviceId=[np objectForKey:@"deviceId"];
     BaseLink *link = self.connectedLinks[deviceId];
     
@@ -406,6 +409,7 @@
             [sock enableBackgroundingOnSocket];
         }];
     }
+#endif
 
     NSArray *myCerts = [[NSArray alloc] initWithObjects: (__bridge id)_identity, nil];
     NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:

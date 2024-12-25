@@ -12,6 +12,8 @@
 //  Created by Apollo Zhu on 2/24/22.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 enum AppIcon: RawRepresentable, CaseIterable {
@@ -109,3 +111,5 @@ struct AppIconPicker_Previews: PreviewProvider {
         }
     }
 }
+
+#endif

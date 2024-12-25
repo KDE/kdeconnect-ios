@@ -27,7 +27,9 @@ struct RunCommandView: View {
             ForEach(runCommandPlugin.commandEntries) { entry in
                 Button {
                     runCommandPlugin.runCommand(cmdKey: entry.key)
+#if !os(macOS)
                     notificationHapticsGenerator.notificationOccurred(.success)
+#endif
                 } label: {
                     VStack(alignment: .leading) {
                         Text(entry.name)
@@ -42,9 +44,11 @@ struct RunCommandView: View {
         }
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
         .navigationTitle("Run Command")
+#if !os(macOS)
         .navigationBarItems(trailing: Button(action: runCommandPlugin.sendSetupPacket) {
             Image(systemName: "command") // is there a better choice for this? This is a nice reference though I think
         })
+#endif
     }
 }
 

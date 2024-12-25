@@ -30,7 +30,9 @@
 #import <Foundation/Foundation.h>
 #import "BaseLink.h"
 #import "NetworkPacket.h"
+#if !TARGET_OS_OSX
 #import "UIKit/UIKit.h"
+#endif
 //#import "deviceDelegate.h"
 //#import "BackgroundService.h"
 @class BaseLink;
@@ -74,7 +76,9 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 // data only and are therefore NOT stored persistently
 // Remote Input
 @property(nonatomic) float _cursorSensitivity;
+#if !TARGET_OS_OSX
 @property(nonatomic) UIImpactFeedbackStyle hapticStyle;
+#endif
 // Presenter
 @property(nonatomic) float _pointerSensitivity;
 

@@ -59,6 +59,9 @@ public extension DeviceType {
                 }
             }
         }
+#if os(macOS)
+        return macDeviceType
+#else
         switch UIDevice.current.userInterfaceIdiom {
         case .unspecified:
             return .unknown
@@ -80,5 +83,6 @@ public extension DeviceType {
         @unknown default:
             return .unknown
         }
+#endif
     }
 }

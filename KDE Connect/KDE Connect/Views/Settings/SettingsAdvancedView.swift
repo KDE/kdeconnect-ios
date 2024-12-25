@@ -5,6 +5,8 @@
 //  Created by Lucas Wang on 2021-09-12.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 struct SettingsAdvancedView: View {
@@ -134,3 +136,5 @@ struct SettingsAdvancedView: View {
 //         SettingsAdvancedView()
 //     }
 // }
+
+#endif

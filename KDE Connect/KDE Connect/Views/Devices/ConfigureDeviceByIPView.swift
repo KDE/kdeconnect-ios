@@ -12,6 +12,8 @@
 //  Created by Lucas Wang on 2021-09-03.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 struct ConfigureDeviceByIPView: View {
@@ -82,3 +84,5 @@ struct ConfigureDeviceByIPView: View {
 //         ConfigureDeviceByIPView()
 //     }
 // }
+
+#endif

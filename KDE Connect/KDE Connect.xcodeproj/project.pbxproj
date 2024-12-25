@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,11 @@
 		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
 		5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */; };
 		5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */; };
+		5EFFF3082D1B6F3000A3EFCA /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3032D1B6F3000A3EFCA /* InternalBattery.swift */; };
+		5EFFF3092D1B6F3000A3EFCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3022D1B6F3000A3EFCA /* AppDelegate.swift */; };
+		5EFFF30A2D1B6F3000A3EFCA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3062D1B6F3000A3EFCA /* NotificationManager.swift */; };
+		5EFFF30B2D1B6F3000A3EFCA /* InternalBatteryFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3042D1B6F3000A3EFCA /* InternalBatteryFinder.swift */; };
+		5EFFF30C2D1B6F3000A3EFCA /* InternalBatteryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3052D1B6F3000A3EFCA /* InternalBatteryMonitor.swift */; };
 		744FF3AE2C06C5EB001B6234 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744FF3AD2C06C5EB001B6234 /* DeviceInfo.swift */; };
 		749868B12C070320003B37FA /* LoopbackLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 749868AD2C070320003B37FA /* LoopbackLink.m */; };
 		749868B22C070320003B37FA /* LoopbackLinkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 749868B02C070320003B37FA /* LoopbackLinkProvider.m */; };
@@ -147,6 +152,11 @@
 		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibleTextView.swift; sourceTree = "<group>"; };
 		5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
+		5EFFF3022D1B6F3000A3EFCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5EFFF3032D1B6F3000A3EFCA /* InternalBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
+		5EFFF3042D1B6F3000A3EFCA /* InternalBatteryFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBatteryFinder.swift; sourceTree = "<group>"; };
+		5EFFF3052D1B6F3000A3EFCA /* InternalBatteryMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBatteryMonitor.swift; sourceTree = "<group>"; };
+		5EFFF3062D1B6F3000A3EFCA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		744FF3AD2C06C5EB001B6234 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		749868AD2C070320003B37FA /* LoopbackLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopbackLink.m; sourceTree = "<group>"; };
 		749868AE2C070320003B37FA /* LoopbackLinkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopbackLinkProvider.h; sourceTree = "<group>"; };
@@ -224,6 +234,12 @@
 		D2F7776727C99901008F20A1 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5E1BB96C2D1B92AC0024F3FF /* Mac */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Mac; sourceTree = "<group>"; };
+		5E6C9AB82D1B807400F48F25 /* Mac */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Mac; sourceTree = "<group>"; };
+		5E997BBF2D1B7E300052D2C9 /* Mac */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Mac; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A0A04429267BF38700CC21DD /* Frameworks */ = {
@@ -306,6 +322,18 @@
 				5EA4114227960C1C0044C559 /* libs.json */,
 			);
 			path = Texts;
+			sourceTree = "<group>";
+		};
+		5EFFF3072D1B6F3000A3EFCA /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				5EFFF3022D1B6F3000A3EFCA /* AppDelegate.swift */,
+				5EFFF3032D1B6F3000A3EFCA /* InternalBattery.swift */,
+				5EFFF3042D1B6F3000A3EFCA /* InternalBatteryFinder.swift */,
+				5EFFF3052D1B6F3000A3EFCA /* InternalBatteryMonitor.swift */,
+				5EFFF3062D1B6F3000A3EFCA /* NotificationManager.swift */,
+			);
+			path = Mac;
 			sourceTree = "<group>";
 		};
 		749868AC2C0702DC003B37FA /* LoopbackBackend */ = {
@@ -421,6 +449,7 @@
 				53A0A1DD283ED78700C7C473 /* LocalizedStringKey+Extensions.swift */,
 				D20ABB0A29A4A04E006F277B /* FileTransferItem.swift */,
 				D27D727E29B051D8002C00B7 /* NetworkChangeMonitor.swift */,
+				5EFFF3072D1B6F3000A3EFCA /* Mac */,
 			);
 			path = "Swift Backend";
 			sourceTree = "<group>";
@@ -452,6 +481,7 @@
 		A0D8CBCB26EF081D00791D07 /* Top Level */ = {
 			isa = PBXGroup;
 			children = (
+				5E997BBF2D1B7E300052D2C9 /* Mac */,
 				A0A0442F267BF38700CC21DD /* KDE_Connect_App.swift */,
 				A0A04431267BF38700CC21DD /* MainTabView.swift */,
 			);
@@ -461,6 +491,7 @@
 		A0D8CBCC26EF082F00791D07 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				5E6C9AB82D1B807400F48F25 /* Mac */,
 				A0A0445A267BF40400CC21DD /* DevicesView.swift */,
 				D2A8720D282C95D700DE980E /* DeviceDiscoveryHelp.swift */,
 				A0A0445C267BF41200CC21DD /* DevicesDetailView.swift */,
@@ -525,6 +556,7 @@
 		A0D8CBD326EF090800791D07 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5E1BB96C2D1B92AC0024F3FF /* Mac */,
 				A0A0445E267BF41B00CC21DD /* SettingsView.swift */,
 				A0B8727C267BFBC500F0EB72 /* SettingsDeviceNameView.swift */,
 				A0B87284267E73E600F0EB72 /* SettingsChosenThemeView.swift */,
@@ -646,6 +678,11 @@
 			);
 			dependencies = (
 				D2AB56782988E4B9008A2217 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5E1BB96C2D1B92AC0024F3FF /* Mac */,
+				5E6C9AB82D1B807400F48F25 /* Mac */,
+				5E997BBF2D1B7E300052D2C9 /* Mac */,
 			);
 			name = "KDE Connect";
 			packageProductDependencies = (
@@ -798,6 +835,11 @@
 				A0FB449A26BA796400733914 /* Backend.swift in Sources */,
 				A0D76FCE26E6F562009D9B03 /* RemoteInput.swift in Sources */,
 				D20FCC41282F4D5500A6E16B /* Contributors.swift in Sources */,
+				5EFFF3082D1B6F3000A3EFCA /* InternalBattery.swift in Sources */,
+				5EFFF3092D1B6F3000A3EFCA /* AppDelegate.swift in Sources */,
+				5EFFF30A2D1B6F3000A3EFCA /* NotificationManager.swift in Sources */,
+				5EFFF30B2D1B6F3000A3EFCA /* InternalBatteryFinder.swift in Sources */,
+				5EFFF30C2D1B6F3000A3EFCA /* InternalBatteryMonitor.swift in Sources */,
 				D28C94CC27D1CAD2002EBC2D /* OSLogView.swift in Sources */,
 				3D5C169E2A49934A005F423D /* MdnsDiscovery.swift in Sources */,
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
@@ -1030,7 +1072,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KDE Connect/Preview Content\"";
-				DEVELOPMENT_TEAM = 5433B4KXM8;
+				DEVELOPMENT_TEAM = 3ZWV7C62H6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "KDE Connect/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1038,11 +1080,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.4.1;
-				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
+				PRODUCT_BUNDLE_IDENTIFIER = asia.turx.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Backend/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1070,10 +1116,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "KDE Connect/ObjC Backend/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

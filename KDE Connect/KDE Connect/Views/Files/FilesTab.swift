@@ -11,6 +11,8 @@
 //  Created by Apollo Zhu on 4/12/23.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import Photos
 
@@ -190,4 +192,6 @@ struct FilesTab_Previews: PreviewProvider {
             .previewDisplayName("Regular")
     }
 }
+#endif
+
 #endif

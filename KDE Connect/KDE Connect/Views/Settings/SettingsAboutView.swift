@@ -5,6 +5,8 @@
 //  Created by Ruixuan Tu on 2022-01-16.
 //
 
+#if !os(macOS)
+
 import UIKit
 import SwiftUI
 
@@ -217,3 +219,5 @@ struct SettingsAboutView_Previews: PreviewProvider {
             .environmentObject(KdeConnectSettings.shared)
     }
 }
+
+#endif

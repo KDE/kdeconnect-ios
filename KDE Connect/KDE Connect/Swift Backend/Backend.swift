@@ -44,8 +44,10 @@ let backgroundService: BackgroundService = {
     )
 }()
 
+#if !os(macOS)
 // Device motion manager
 let motionManager: CMMotionManager = CMMotionManager()
+#endif
 
 // Given the deviceId, saves/overwrites the device object from _device into _settings by encoding it and then into UserDefaults
 func saveDeviceToUserDefaults(deviceId: String) {

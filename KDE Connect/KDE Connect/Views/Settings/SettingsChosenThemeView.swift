@@ -5,6 +5,8 @@
 //  Created by Lucas Wang on 2021-06-19.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 struct SettingsChosenThemeView: View {
@@ -28,3 +30,5 @@ struct SettingsChosenThemeView_Previews: PreviewProvider {
         SettingsChosenThemeView(chosenTheme: .constant(nil))
     }
 }
+
+#endif

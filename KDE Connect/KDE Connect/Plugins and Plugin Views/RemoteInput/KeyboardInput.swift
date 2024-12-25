@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+#if !os(macOS)
+
 import UIKit
 import SwiftUI
 import Introspect
@@ -64,3 +66,5 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
         // do nothing
     }
 }
+
+#endif

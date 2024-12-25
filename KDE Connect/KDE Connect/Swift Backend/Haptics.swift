@@ -5,6 +5,8 @@
 //  Created by Claudio Cambra on 25/5/22.
 //
 
+#if !os(macOS)
+
 import Foundation
 import SwiftUI
 
@@ -30,3 +32,5 @@ extension UIImpactFeedbackGenerator.FeedbackStyle: CaseIterable {
 // UIImpactFeedbackGenerator.FeedbackStyle.init(rawValue: Int)
 
 let notificationHapticsGenerator: UINotificationFeedbackGenerator = UINotificationFeedbackGenerator()
+
+#endif

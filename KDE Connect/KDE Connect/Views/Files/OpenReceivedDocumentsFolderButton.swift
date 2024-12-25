@@ -11,6 +11,8 @@
 //  Created by Apollo Zhu on 4/12/23.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 struct OpenReceivedDocumentsFolderButton: View {
@@ -72,3 +74,5 @@ struct OpenDocumentsFolderInFilesButton_Previews: PreviewProvider {
         OpenReceivedDocumentsFolderButton()
     }
 }
+
+#endif

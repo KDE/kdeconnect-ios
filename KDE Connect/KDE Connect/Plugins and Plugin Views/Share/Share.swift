@@ -15,7 +15,11 @@
 
 import Foundation
 import AVFoundation
+#if !os(macOS)
 import UIKit
+#else
+import AppKit
+#endif
 import OrderedCollections
 import Photos
 
@@ -79,7 +83,9 @@ extension Notification.Name {
                 guard let payloadPath = np.payloadPath else {
                     logger.fault("File \(filename, privacy: .public) missing actual file contents")
                     // FIXME: show error to UI
+#if !os(macOS)
                     notificationHapticsGenerator.notificationOccurred(.error)
+#endif
                     return
                 }
                 Task {
@@ -87,7 +93,9 @@ extension Notification.Name {
                         try await save(payloadPath, as: filename, for: np)
                         // connectedDevicesViewModel.showFileReceivedAlert()
                         logger.debug("File \(filename, privacy: .private(mask: .hash)) saved successfully")
+#if !os(macOS)
                         await notificationHapticsGenerator.notificationOccurred(.success)
+#endif
                     } catch {
                         logger.fault("File \(filename, privacy: .public) failed to save due to \(error.localizedDescription, privacy: .public)")
                         await MainActor.run {
@@ -97,7 +105,9 @@ extension Notification.Name {
                                 error: error,
                                 countOtherFailedFilesInTheSameTransfer: 0
                             ))
+#if !os(macOS)
                             notificationHapticsGenerator.notificationOccurred(.error)
+#endif
                         }
                     }
                     await MainActor.run {
@@ -107,18 +117,28 @@ extension Notification.Name {
                 }
             } else if let sharedText = np._Body["text"] as? String {
                 // Text sharing: copy to clipboard
+#if !os(macOS)
                 UIPasteboard.general.string = sharedText
+#else
+                NSPasteboard.general.setString(sharedText, forType: .string)
+#endif
             } else if let sharedURLText = np._Body["url"] as? String {
                 // TODO: avoid to handle URL open in the share extension
                 // URL sharing: open it through URL scheme
                 if let sharedURL = URL(string: sharedURLText) {
                     DispatchQueue.main.async {
+#if !os(macOS)
                         UIApplication.shared.open(sharedURL)
+#else
+                        NSWorkspace.shared.open(sharedURL)
+#endif
                     }
                 }
             } else {
                 logger.fault("Nil received when trying to parse filename")
+#if !os(macOS)
                 notificationHapticsGenerator.notificationOccurred(.error)
+#endif
             }
         }
     }
@@ -166,7 +186,9 @@ extension Notification.Name {
                 let filename = url.lastPathComponent
                 guard let fileSize = attributes.fileSize else {
                     logger.fault("Unable to read size of \(filename, privacy: .public), skipping")
+#if !os(macOS)
                     notificationHapticsGenerator.notificationOccurred(.error)
+#endif
                     continue
                 }
                 
@@ -250,7 +272,9 @@ extension Notification.Name {
                 if noConcurrentJobs {
                     // Only 1 concurrent receiving job,
                     // cancellation cancels everything
+#if !os(macOS)
                     notificationHapticsGenerator.notificationOccurred(.error)
+#endif
                     self.numFilesReceived = 0
                     self.totalNumOfFilesToReceive = 0
                 } else {
@@ -281,7 +305,9 @@ extension Notification.Name {
             
             if self.currentFilesSending.removeValue(forKey: path) != nil {
                 self.numFilesSuccessfullySent += 1
+#if !os(macOS)
                 notificationHapticsGenerator.notificationOccurred(.success)
+#endif
                 self.sendSinglePayload()
             } else {
                 self.logger.fault("Sent \(np) not currently sending")
@@ -310,7 +336,9 @@ extension Notification.Name {
             } else {
                 logger.fault("Cannot find info for \(np) after failed to send with \(error)")
             }
+#if !os(macOS)
             notificationHapticsGenerator.notificationOccurred(.error)
+#endif
             self.resetTransferData()
         }
     }

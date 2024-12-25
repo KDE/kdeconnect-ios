@@ -5,6 +5,8 @@
 //  Created by Lucas Wang on 2021-06-17.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 
 struct SettingsView: View {
@@ -92,3 +94,5 @@ struct SettingsView: View {
 //         SettingsView()
 //     }
 // }
+
+#endif

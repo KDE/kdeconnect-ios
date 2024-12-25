@@ -12,6 +12,8 @@
 //  Created by Lucas Wang on 2021-09-13.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import UIKit.UIDevice
 
@@ -275,3 +277,5 @@ struct PresenterView_Previews: PreviewProvider {
         PresenterView(detailsDeviceId: "Hi")
     }
 }
+
+#endif

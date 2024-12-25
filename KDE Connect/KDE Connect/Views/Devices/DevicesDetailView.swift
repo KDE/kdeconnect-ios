@@ -12,6 +12,8 @@
 //  Created by Lucas Wang on 2021-06-17.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import UniformTypeIdentifiers
 import MediaPicker
@@ -228,4 +230,6 @@ struct DevicesDetailView_Previews: PreviewProvider {
         .environmentObject(AlertManager())
     }
 }
+#endif
+
 #endif

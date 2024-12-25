@@ -58,11 +58,17 @@ class KdeConnectSettings: NSObject, ObservableObject {
             if let savedUUID = wrapper.object(forKey: kSecValueData as String) as? String, !savedUUID.isEmpty {
                 cachedUuid = savedUUID
             } else {
+#if !os(macOS)
                 // identifierForVendor can be nil if called when a device has restarted but not been unlocked yet
                 if let identifierForVendor = UIDevice.current.identifierForVendor {
                     cachedUuid = identifierForVendor.uuidString.replacingOccurrences(of: "-", with: "")
                     wrapper.setObject(cachedUuid, forKey: kSecValueData as String)
                 }
+#else
+                let identifierForVendor = NetworkPacket.getMacUUID()
+                cachedUuid = identifierForVendor.replacingOccurrences(of: "-", with: "")
+                wrapper.setObject(cachedUuid, forKey: kSecValueData as String)
+#endif
             }
             let logger = OSLog(subsystem: NSStringFromClass(self), category: "UUIDManager")
             os_log("Get UUID %{mask.hash}@", log: logger, type: .info, cachedUuid ?? "")
@@ -127,7 +133,12 @@ class KdeConnectSettings: NSObject, ObservableObject {
             "savePhotosToPhotosLibrary": !DeviceType.isMac,
             "saveVideosToPhotosLibrary": !DeviceType.isMac,
         ])
-        self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? UIDevice.current.name
+#if !os(macOS)
+        let fallbackName = UIDevice.current.name
+#else
+        let fallbackName = Host.current().localizedName ?? "Unknown Hostname"
+#endif
+        self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? fallbackName
         self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme").flatMap(ColorScheme.init)
         self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
         self.disableUdpBroadcastDiscovery = UserDefaults.standard.bool(forKey: "disableUdpBroadcastDiscovery")

@@ -12,6 +12,8 @@
 //  Created by Apollo Zhu on 4/24/22.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import Introspect
 
@@ -109,3 +111,5 @@ fileprivate struct Focuser<Value: Hashable>: ViewModifier {
             }
     }
 }
+
+#endif

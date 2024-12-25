@@ -12,6 +12,8 @@
 //  Created by Lucas Wang on 2021-06-17.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import Combine
 import AVFoundation
@@ -382,3 +384,5 @@ struct DevicesView_Previews: PreviewProvider {
         }
     }
 }
+
+#endif

@@ -5,6 +5,8 @@
 //  Created by Apollo Zhu on 3/4/22.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import Introspect
 
@@ -146,3 +148,5 @@ struct NetworkPacketComposer_Previews: PreviewProvider {
         }
     }
 }
+
+#endif

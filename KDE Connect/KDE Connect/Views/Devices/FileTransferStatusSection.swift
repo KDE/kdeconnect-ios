@@ -11,6 +11,8 @@
 //  Created by Apollo Zhu on 11/3/22.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import OrderedCollections
 import struct CocoaAsyncSocket.GCDAsyncSocketError
@@ -269,3 +271,5 @@ struct FileTransferStatusSection_Previews: PreviewProvider {
         }
     }
 }
+
+#endif

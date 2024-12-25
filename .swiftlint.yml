@@ -113,6 +113,8 @@ unused_import:
   require_explicit_imports: true
 weak_delegate:
   severity: error
+empty_count:
+  severity: warning
 
 excluded:
   - KDE Connect/fastlane
