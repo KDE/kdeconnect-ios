@@ -27,13 +27,13 @@ public class KeyboardListener: UIView, UIKeyInput {
     public override var canBecomeFirstResponder: Bool { true }
     public weak var delegate: KeyboardListenerDelegate?
     
-    private var _keyboardPanel: UIView?
+    private var _inputAccessoryView: UIView?
     public override var inputAccessoryView: UIView? {
         get {
-            _keyboardPanel
+            _inputAccessoryView
         }
         set {
-            _keyboardPanel = newValue
+            _inputAccessoryView = newValue
         }
     }
     
@@ -48,18 +48,18 @@ public class KeyboardListener: UIView, UIKeyInput {
     }
     
     public func deleteBackward() {
-        if let delegate = delegate {
-            delegate.onDeleteBackward()
-        }
+        delegate?.onDeleteBackward()
     }
 }
 
 // This naming is intentional to mimic a SwiftUI View
 // swiftlint:disable:next identifier_name
-func KeyboardListenerPlaceholderView(onInsertText: @escaping (String, [RemoteInput.KeyModifier]) -> Void = { _, _ in },
-                                     onDeleteBackward: @escaping () -> Void = {},
-                                     onReturn: @escaping () -> Void = {},
-                                     onTab: @escaping () -> Void = {}) -> some View {
+func KeyboardListenerPlaceholderView(
+    onInsertText: @escaping (String, [RemoteInput.KeyModifier]) -> Void = { _, _ in },
+    onDeleteBackward: @escaping () -> Void = {},
+    onReturn: @escaping () -> Void = {},
+    onTab: @escaping () -> Void = {}
+) -> some View {
     return _KeyboardListenerPlaceholderView(onInsertText: onInsertText,
                                             onDeleteBackward: onDeleteBackward,
                                             onReturn: onReturn,
@@ -138,22 +138,36 @@ fileprivate struct _KeyboardListenerPlaceholderView: UIViewRepresentable {
     func makeUIView(context: Context) -> KeyboardListener {
         let view = KeyboardListener()
         
-        let createButton: (String, Selector) -> UIButton = { name, selector in
-            let btn = UIButton()
-            btn.setTitle(name, for: .normal)
-            btn.setTitleColor(UIColor.link, for: .normal)
-            btn.setTitleColor(UIColor.placeholderText, for: .highlighted)
-            btn.setTitleColor(UIColor.systemBackground, for: .selected)
-            btn.addTarget(context.coordinator, action: selector, for: .touchDown)
-            btn.layer.cornerRadius = 8
-            btn.layer.cornerCurve = .continuous
-            btn.layer.borderWidth = 0
-            return btn
+        let createButton: (String, @escaping (UIButton) -> Void) -> UIButton = { name, actionHandler in
+            let button = UIButton()
+            button.setTitle(name, for: .normal)
+            button.setTitleColor(UIColor.link, for: .normal)
+            button.setTitleColor(UIColor.placeholderText, for: .highlighted)
+            button.setTitleColor(UIColor.systemBackground, for: .selected)
+            button.backgroundColor = UIColor.systemBackground
+            button.layer.cornerRadius = 8
+            button.layer.cornerCurve = .continuous
+            button.layer.borderWidth = 0
+            
+            let action = UIAction { _ in
+                actionHandler(button)
+            }
+            button.addAction(action, for: .touchUpInside)
+            return button
         }
-        let tab = createButton("Tab", #selector(Coordinator.tabPressed))
-        let ctrl = createButton("Ctrl", #selector(Coordinator.ctrlPressed))
-        let shift = createButton("Shift", #selector(Coordinator.shiftPressed))
-        let alt = createButton("Alt", #selector(Coordinator.altPressed))
+        
+        let tab = createButton("Tab") { sender in
+            context.coordinator.tabPressed(sender)
+        }
+        let ctrl = createButton("Ctrl") { sender in
+            context.coordinator.ctrlPressed(sender)
+        }
+        let shift = createButton("Shift") { sender in
+            context.coordinator.shiftPressed(sender)
+        }
+        let alt = createButton("Alt") { sender in
+            context.coordinator.altPressed(sender)
+        }
         
         let panel = UIStackView()
         panel.backgroundColor = UIColor.systemBackground
