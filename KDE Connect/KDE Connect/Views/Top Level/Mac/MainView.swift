@@ -49,7 +49,7 @@ struct MainView: View {
                 HStack {
                     Spacer().frame(maxWidth: .infinity)
                     HStack {
-                        DeviceItemView(deviceId: "0", parent: nil, deviceName: $selfData.deviceName, emoji: DevicesView.getEmojiFromDeviceType(DeviceType.current), connState: .local)
+                        DeviceItemView(deviceId: "0", parent: nil, deviceName: $selfData.deviceName, icon: DevicesView.getIconFromDeviceType(DeviceType.current), connState: .local)
                             .padding(.all)
                     }.frame(maxWidth: .infinity)
                     if !self.showingHelpWindow {

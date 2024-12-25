@@ -14,17 +14,17 @@ struct DeviceItemView: View {
     let deviceId: String
     let parent: DevicesView?
     @Binding var deviceName: String
-    let emoji: String
+    let icon: Image
     let connState: DevicesView.ConnectionState
     let mockBatteryLevel: Int?
     @State var backgroundColor: Color
     @Environment(\.colorScheme) var colorScheme
     
-    init(deviceId: String, parent: DevicesView? = nil, deviceName: Binding<String>, emoji: String, connState: DevicesView.ConnectionState, mockBatteryLevel: Int? = nil) {
+    init(deviceId: String, parent: DevicesView? = nil, deviceName: Binding<String>, icon: Image, connState: DevicesView.ConnectionState, mockBatteryLevel: Int? = nil) {
         self.deviceId = deviceId
         self.parent = parent
         self._deviceName = deviceName
-        self.emoji = emoji
+        self.icon = icon
         self.connState = connState
         self.mockBatteryLevel = mockBatteryLevel
         switch (connState) {
@@ -107,7 +107,7 @@ struct DeviceItemView: View {
                         .font(.system(.footnote, design: .rounded).weight(.light))
                         .foregroundColor(.black)
                 }
-                Text(emoji)
+                icon
                     .font(.system(size: 32))
                     .shadow(radius: 1)
             }
@@ -212,7 +212,7 @@ struct DeviceItemView: View {
 
 struct DeviceIcon_Previews: PreviewProvider {
     static var previews: some View {
-        DeviceItemView(deviceId: "0", parent: nil, deviceName: .constant("TURX's MacBook Pro"), emoji: "\u{1F5A5}", connState: .local)
+        DeviceItemView(deviceId: "0", parent: nil, deviceName: .constant("TURX's MacBook Pro"), icon: Image(systemName: "laptopcomputer"), connState: .local)
     }
 }
 

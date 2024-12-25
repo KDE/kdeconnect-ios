@@ -54,7 +54,7 @@ struct HelpView: View {
                 HStack {
                     VStack(spacing: 5) {
                         Text("Help").font(.title)
-                        Text(helpText()).fixedSize()
+                        Text(helpText()).fixedSize().frame(maxWidth: .infinity)
                     }
                     Spacer()
                 }

@@ -49,22 +49,22 @@ struct DevicesView: View {
         self.genMode = genMode
     }
     
-    static func getEmojiFromDeviceType(_ deviceType: DeviceType) -> String {
+    static func getIconFromDeviceType(_ deviceType: DeviceType) -> Image {
         switch (deviceType) {
         case .desktop:
-            return "\u{1F5A5}"
+            return Image(systemName: "desktopcomputer")
         case .laptop:
-            return "\u{1F4BB}"
+            return Image(systemName: "laptopcomputer")
         case .phone:
-            return "\u{1F4F1}"
+            return Image(systemName: "smartphone")
         case .tablet:
-            return "\u{1F3AC}"
+            return Image(systemName: "ipad")
         case .appletv:
-            return "\u{1F4FA}"
+            return Image(systemName: "tv")
         case .unknown:
-            return "\u{2754}"
+            return Image(systemName: "questionmark")
         @unknown default:
-            return "\u{2753}"
+            return Image(systemName: "questionmark")
         }
     }
     
@@ -74,17 +74,17 @@ struct DevicesView: View {
             return []
         case .demo:
             return [
-                DeviceItemView(deviceId: "1", parent: self, deviceName: .constant("My iPhone"), emoji: DevicesView.getEmojiFromDeviceType(.phone), connState: .connected, mockBatteryLevel: 67),
-                DeviceItemView(deviceId: "2", parent: self, deviceName: .constant("My iMac"), emoji: DevicesView.getEmojiFromDeviceType(.desktop), connState: .connected),
-                DeviceItemView(deviceId: "3", parent: self, deviceName: .constant("My MacBook"), emoji: DevicesView.getEmojiFromDeviceType(.laptop), connState: .saved),
-                DeviceItemView(deviceId: "4", parent: self, deviceName: .constant("My iPad"), emoji: DevicesView.getEmojiFromDeviceType(.tablet), connState: .visible),
-                DeviceItemView(deviceId: "5", parent:self, deviceName: .constant("My Apple TV"), emoji: DevicesView.getEmojiFromDeviceType(.appletv), connState: .visible),
-                DeviceItemView(deviceId: "6", deviceName: .constant("Unknown device"), emoji: DevicesView.getEmojiFromDeviceType(.unknown), connState: .visible)
+                DeviceItemView(deviceId: "1", parent: self, deviceName: .constant("My iPhone"), icon: DevicesView.getIconFromDeviceType(.phone), connState: .connected, mockBatteryLevel: 67),
+                DeviceItemView(deviceId: "2", parent: self, deviceName: .constant("My iMac"), icon: DevicesView.getIconFromDeviceType(.desktop), connState: .connected),
+                DeviceItemView(deviceId: "3", parent: self, deviceName: .constant("My MacBook"), icon: DevicesView.getIconFromDeviceType(.laptop), connState: .saved),
+                DeviceItemView(deviceId: "4", parent: self, deviceName: .constant("My iPad"), icon: DevicesView.getIconFromDeviceType(.tablet), connState: .visible),
+                DeviceItemView(deviceId: "5", parent:self, deviceName: .constant("My Apple TV"), icon: DevicesView.getIconFromDeviceType(.appletv), connState: .visible),
+                DeviceItemView(deviceId: "6", deviceName: .constant("Unknown device"), icon: DevicesView.getIconFromDeviceType(.unknown), connState: .visible)
             ]
         case .hundred:
             var deviceIcons = [DeviceItemView]()
             for demoDeviceId in 1...100 {
-                deviceIcons.append(DeviceItemView(deviceId: String(demoDeviceId), parent: self, deviceName: .constant(String(demoDeviceId)), emoji: "\u{1F4F1}", connState: .saved))
+                deviceIcons.append(DeviceItemView(deviceId: String(demoDeviceId), parent: self, deviceName: .constant(String(demoDeviceId)), icon: DevicesView.getIconFromDeviceType(.phone), connState: .saved))
             }
             return deviceIcons
         case .normal:
@@ -94,7 +94,7 @@ struct DevicesView: View {
                     deviceId: key,
                     parent: self,
                     deviceName: .constant(viewModel.connectedDevices[key] ?? "Unknown device"),
-                    emoji: DevicesView.getEmojiFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
+                    icon: DevicesView.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
                     connState: .connected
                 ))
             }
@@ -103,7 +103,7 @@ struct DevicesView: View {
                     deviceId: key,
                     parent: self,
                     deviceName: .constant(viewModel.savedDevices[key] ?? "Unknown device"),
-                    emoji: DevicesView.getEmojiFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
+                    icon: DevicesView.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
                     connState: .saved
                 ))
             }
@@ -112,7 +112,7 @@ struct DevicesView: View {
                     deviceId: key,
                     parent: self,
                     deviceName: .constant(viewModel.visibleDevices[key] ?? "Unknown device"),
-                    emoji: DevicesView.getEmojiFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
+                    icon: DevicesView.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
                     connState: .visible
                 ))
             }

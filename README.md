@@ -1,10 +1,10 @@
-# The Official Repository of KDE Connect iOS
+# The Official Repository of KDE Connect iOS/macOS
 
 **TL;DR: [Download from the App Store](https://apps.apple.com/app/kde-connect/id1580245991) on an iOS >= 14 or macOS >= 13 device!**
 
 ---
 
-This project is the iOS version of the group of applications called KDE Connect, which uses the LAN network to integrate devices together. For information on KDE Connect, check out:
+This project is the iOS/macOS version of the group of applications called KDE Connect, which uses the LAN network to integrate devices together. For information on KDE Connect, check out:
 
 - [The KDE Community Wiki](https://community.kde.org/KDEConnect)
 - [The KDE UserBase Wiki](https://userbase.kde.org/KDEConnect)
