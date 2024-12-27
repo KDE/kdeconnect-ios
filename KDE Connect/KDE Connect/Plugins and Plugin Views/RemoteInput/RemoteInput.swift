@@ -20,6 +20,11 @@
         `return` = 12
         // there are many other keys, but we can't type them directly on iOS so don't bother (for now)
     }
+    enum KeyModifier: Int {
+        case control = 0,
+        shift,
+        alt
+    }
     @objc weak var controlDevice: Device!
     private let logger = Logger()
     
@@ -52,15 +57,25 @@
         controlDevice.send(np, tag: Int(PACKET_TAG_MOUSEPAD))
     }
     
-    @objc func sendKeyPress(_ keys: String) {
+    func sendKeyPress(_ keys: String, _ modifiers: [KeyModifier] = []) {
         let np = NetworkPacket(type: .mousePadRequest)
         np.setObject(keys, forKey: "key")
+        for modifier in modifiers {
+            switch modifier {
+            case .alt:
+                np.setBool(true, forKey: "alt")
+            case .control:
+                np.setBool(true, forKey: "ctrl")
+            case .shift:
+                np.setBool(true, forKey: "shift")
+            }
+        }
         controlDevice.send(np, tag: Int(PACKET_TAG_MOUSEPAD))
     }
     
-    @objc func sendSpecialKeyPress(_ key: Int) {
+    func sendSpecialKeyPress(_ key: SpecialKey) {
         let np = NetworkPacket(type: .mousePadRequest)
-        np.setInteger(key, forKey: "specialKey")
+        np.setInteger(key.rawValue, forKey: "specialKey")
         controlDevice.send(np, tag: Int(PACKET_TAG_MOUSEPAD))
     }
     
