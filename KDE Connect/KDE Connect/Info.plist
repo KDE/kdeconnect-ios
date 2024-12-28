@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -20,14 +22,18 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Discover and connect to other devices using KDE Connect.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_kdeconnect._udp</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Discover and connect to other devices using KDE Connect.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Save received images to your Photo Library instead of the Files app.</string>
 	<key>UIApplicationSceneManifest</key>
@@ -51,10 +57,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-	</array>
-	<key>NSBonjourServices</key>
-	<array>
-		<string>_kdeconnect._udp</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
