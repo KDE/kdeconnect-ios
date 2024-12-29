@@ -61,12 +61,12 @@ class KdeConnectSettings: NSObject, ObservableObject {
 #if !os(macOS)
                 // identifierForVendor can be nil if called when a device has restarted but not been unlocked yet
                 if let identifierForVendor = UIDevice.current.identifierForVendor {
-                    cachedUuid = identifierForVendor.uuidString.replacingOccurrences(of: "-", with: "")
+                    cachedUuid = identifierForVendor.uuidString.replacingOccurrences(of: "-", with: "_").lowercased()
                     wrapper.setObject(cachedUuid, forKey: kSecValueData as String)
                 }
 #else
                 let identifierForVendor = NetworkPacket.getMacUUID()
-                cachedUuid = identifierForVendor.replacingOccurrences(of: "-", with: "")
+                cachedUuid = identifierForVendor.replacingOccurrences(of: "-", with: "_").lowercased()
                 wrapper.setObject(cachedUuid, forKey: kSecValueData as String)
 #endif
             }
