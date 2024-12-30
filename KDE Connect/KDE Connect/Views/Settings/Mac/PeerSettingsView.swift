@@ -29,7 +29,7 @@ struct PeerSettingsView: View {
     @State var editingIndex = -1
     
     var peerList: some View {
-        ForEach(self.$directIPs.indices, id:\.self) { ind in
+        ForEach(self.$directIPs.indices, id: \.self) { ind in
             HStack {
                 if self.selectedIndex == ind && self.editingIndex == ind {
                     TextField("", text: self.$directIPs[ind])
@@ -40,8 +40,11 @@ struct PeerSettingsView: View {
                             self.editingIndex = -1
                         }
                 } else {
-                    Text(self.directIPs[ind])
-                        .padding(.horizontal, 4)
+                    HStack {
+                        Text(self.directIPs[ind]).padding(.horizontal, 4)
+                        Spacer()
+                    }
+                        .contentShape(Rectangle())
                         .foregroundColor(self.selectedIndex == ind ? .white : .black)
                         .onTapGesture {
                             if self.selectedIndex == ind {
@@ -50,7 +53,7 @@ struct PeerSettingsView: View {
                                 self.selectedIndex = ind
                                 self.editingIndex = -1
                             }
-                        }
+                    }
                 }
                 Spacer()
             }
@@ -61,10 +64,11 @@ struct PeerSettingsView: View {
     
     var mainFrame: some View {
         HStack {
-            if self.directIPs.count > 0 {
+            if !self.directIPs.isEmpty {
                 ScrollView(showsIndicators: true) {
                     peerList
-                }.background(.white)
+                }
+                    .background(.white)
                     .onTapGesture {
                         self.selectedIndex = -1
                         self.editingIndex = -1

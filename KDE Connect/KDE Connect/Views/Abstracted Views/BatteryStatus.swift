@@ -50,8 +50,12 @@ struct BatteryStatus<ValidBatteryStatusContent: View>: View {
             if isEnabled == nil || battery.remoteChargeLevel == 0 {
                 makeNoBatteryView()
             } else if isEnabled == false {
+#if !os(macOS)
                 Text("Battery Plugin Disabled")
                     .font(.footnote)
+#else
+                makeNoBatteryView()
+#endif
             } else {
                 validBatteryContent(battery)
             }
@@ -59,8 +63,12 @@ struct BatteryStatus<ValidBatteryStatusContent: View>: View {
     }
     
     private static func makeNoBatteryView() -> some View {
+#if !os(macOS)
         Text("No battery detected in device")
             .font(.footnote)
+#else
+        EmptyView()
+#endif
     }
 }
 
