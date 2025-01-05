@@ -11,10 +11,15 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject private var kdeConnectSettings: KdeConnectSettings = KdeConnectSettings.shared
+    @Binding private var grantedNotificationPermission: Bool
+    
+    init(grantedNotificationPermission: Binding<Bool>) {
+        self._grantedNotificationPermission = grantedNotificationPermission
+    }
     
     var body: some View {
         TabView {
-            DeviceSettingsView(deviceName: $kdeConnectSettings.deviceName)
+            DeviceSettingsView(deviceName: $kdeConnectSettings.deviceName, grantedNotificationPermission: $grantedNotificationPermission)
                 .tabItem {
                     Label("Device", systemImage: "display")
                 }
@@ -37,7 +42,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(grantedNotificationPermission: .constant(false))
     }
 }
 

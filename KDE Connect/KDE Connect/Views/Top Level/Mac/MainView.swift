@@ -12,17 +12,22 @@ import Combine
 import AVFoundation
 
 struct MainView: View {
-    static var mainViewSingleton: MainView?
+    static var mainViewSingleton: Self?
     var deviceView: DevicesView?
+    var notificationView: NotificationView?
     @Environment(\.openWindow) private var openWindow
     @State static var findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
     @ObservedObject var selfData = KdeConnectSettings.shared
     @State var disabledSingletonConflict: Bool
+    @Binding var grantedNotificationPermission: Bool
     @Binding var showingHelpWindow: Bool
+    @EnvironmentObject var inAppNotificationManager: InAppNotificationManager
     
-    init(showingHelpWindow: Binding<Bool>) {
+    init(grantedNotificationPermission: Binding<Bool>, showingHelpWindow: Binding<Bool>) {
         self.deviceView = DevicesView()
+        self.notificationView = NotificationView()
         self._disabledSingletonConflict = State(initialValue: false)
+        self._grantedNotificationPermission = grantedNotificationPermission
         self._showingHelpWindow = showingHelpWindow
     }
     
@@ -44,6 +49,9 @@ struct MainView: View {
     var body: some View {
         if !self.disabledSingletonConflict {
             VStack {
+                if !self.grantedNotificationPermission && !inAppNotificationManager.requests.isEmpty {
+                    notificationView
+                }
                 deviceView
                 Divider()
                 HStack {
@@ -128,24 +136,24 @@ struct MainView: View {
     }
     
     func onPairTimeout(toDeviceWithID deviceId: String!) {
-        notificationManager.post(title: "Pairing Timed Out", body: "Pairing with \(currentPairingDeviceName(id: deviceId) ?? "Unknown device") failed")
+        notificationManager.post(title: "Pairing Timed Out", body: "Pairing with \(currentPairingDeviceName(id: deviceId) ?? "Unknown device") failed", categoryIdentifier: "FAILURE")
     }
     
     func onPairSuccess(withDeviceWithID deviceId: String!) {
-        notificationManager.post(title: "Pairing Complete", body: "Pairing with \(currentPairingDeviceName(id: deviceId) ?? "Unknown device") succeeded")
+        notificationManager.post(title: "Pairing Complete", body: "Pairing with \(currentPairingDeviceName(id: deviceId) ?? "Unknown device") succeeded", categoryIdentifier: "SUCCESS")
     }
     
     func onPairRejected(byDeviceWithID deviceId: String!) {
-        notificationManager.post(title: "Pairing Rejected", body: "Pairing with \(currentPairingDeviceName(id: deviceId) ?? "Unknown device") failed")
+        notificationManager.post(title: "Pairing Rejected", body: "Pairing with \(currentPairingDeviceName(id: deviceId) ?? "Unknown device") failed", categoryIdentifier: "FAILURE")
     }
     
     func showPingAlert() {
         SystemSound.smsReceived.play()
-        notificationManager.post(title: "Ping!", body: "Ping received from a connected device.")
+        notificationManager.post(title: "Ping!", body: "Ping received from a connected device", categoryIdentifier: "NORMAL")
     }
     
     func showFindMyPhoneAlert() {
-        notificationManager.post(title: "Find My Mac Mode", body: "Find My Mac initiated from a remote device", categoryIdentifier: "FIND_MY_DEVICE", interruptionLevel: .critical)
+        notificationManager.post(title: "Find My Mac", body: "Find My Mac initiated from a remote device", categoryIdentifier: "FIND_MY_DEVICE", interruptionLevel: .critical)
         // TODO: notification does not stay
     }
     
@@ -172,7 +180,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(showingHelpWindow: .constant(false))
+        MainView(grantedNotificationPermission: .constant(false), showingHelpWindow: .constant(false))
     }
 }
 

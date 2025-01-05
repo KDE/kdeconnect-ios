@@ -9,20 +9,26 @@
 
 import Foundation
 import UserNotifications
+import SwiftUICore
 
 class NotificationManager: ObservableObject {
-    var categories: Set<UNNotificationCategory>
-    
-    init() {
+    static let categories: Set<UNNotificationCategory> = {
         let acceptAction = UNNotificationAction(identifier: "PAIR_ACCEPT_ACTION", title: "Accept", options: [])
         let declineAction = UNNotificationAction(identifier: "PAIR_DECLINE_ACTION", title: "Decline", options: [])
         let foundAction = UNNotificationAction(identifier: "FMD_FOUND_ACTION", title: "Found", options: [])
         let normalCategory = UNNotificationCategory(identifier: "NORMAL", actions: [], intentIdentifiers: [])
+        let successCategory = UNNotificationCategory(identifier: "SUCCESS", actions: [], intentIdentifiers: [])
+        let failureCategory = UNNotificationCategory(identifier: "FAILURE", actions: [], intentIdentifiers: [])
         let pairRequestCategory = UNNotificationCategory(identifier: "PAIR_REQUEST", actions: [ acceptAction, declineAction ], intentIdentifiers: [], options: .customDismissAction)
         let findMyDeviceCategory = UNNotificationCategory(identifier: "FIND_MY_DEVICE", actions: [ foundAction ], intentIdentifiers: [], options: .customDismissAction)
-        categories = [ normalCategory, pairRequestCategory, findMyDeviceCategory ]
+        return [ normalCategory, successCategory, failureCategory, pairRequestCategory, findMyDeviceCategory ]
+    }()
+    @ObservedObject var inAppNotificationManager: InAppNotificationManager
+    
+    init(_ inAppNotificationManager: InAppNotificationManager) {
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.setNotificationCategories(categories)
+        notificationCenter.setNotificationCategories(Self.categories)
+        self.inAppNotificationManager = inAppNotificationManager
     }
     
     func pairRequestPost(title: String, body: String, deviceId: String) {
@@ -30,6 +36,12 @@ class NotificationManager: ObservableObject {
     }
     
     func post(title: String, body: String, userInfo: [AnyHashable: Any] = [:], categoryIdentifier: String = "NORMAL", interruptionLevel: UNNotificationInterruptionLevel = .timeSensitive) {
+        let prepared = NotificationManager.prepareRequest(title: title, body: body, userInfo: userInfo, categoryIdentifier: categoryIdentifier, interruptionLevel: interruptionLevel)
+        inAppNotificationManager.addNotification(request: prepared.request, remover: prepared.remover)
+        UNUserNotificationCenter.current().add(prepared.request)
+    }
+    
+    static func prepareRequest(title: String, body: String, userInfo: [AnyHashable: Any] = [:], categoryIdentifier: String = "NORMAL", interruptionLevel: UNNotificationInterruptionLevel = .timeSensitive) -> (request: UNNotificationRequest, remover: () -> Void) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
@@ -37,12 +49,15 @@ class NotificationManager: ObservableObject {
         content.categoryIdentifier = categoryIdentifier
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        
         let uuidString = UUID().uuidString
         let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-        
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request)
+        let remover = {
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: [ uuidString ])
+            notificationCenter.removeDeliveredNotifications(withIdentifiers: [ uuidString ])
+        }
+        
+        return (request, remover)
     }
 }
 

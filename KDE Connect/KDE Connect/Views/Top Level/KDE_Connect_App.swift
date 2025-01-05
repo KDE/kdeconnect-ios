@@ -26,18 +26,26 @@ import SwiftUI
 #if !os(macOS)
     @StateObject var alertManager: AlertManager = AlertManager()
 #else
-    @StateObject var notificationManager: NotificationManager = NotificationManager()
+    @StateObject var inAppNotificationManager: InAppNotificationManager
+    @StateObject var notificationManager: NotificationManager
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @State var disabledByNotGrantedNotificationPermission: Bool = false
+    @State var grantedNotificationPermission: Bool = false
     @State var showingHelpWindow: Bool = false
+    
+    init() {
+        let inAppNotificationManager = InAppNotificationManager()
+        let notificationManager = NotificationManager(inAppNotificationManager)
+        _inAppNotificationManager = StateObject(wrappedValue: inAppNotificationManager)
+        _notificationManager = StateObject(wrappedValue: notificationManager)
+    }
     
     func requestNotification() {
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if error != nil {
-                self.disabledByNotGrantedNotificationPermission = true
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
+            if error == nil {
+                self.grantedNotificationPermission = true
             } else {
-                self.disabledByNotGrantedNotificationPermission = false
+                self.grantedNotificationPermission = false
             }
         }
     }
@@ -88,35 +96,24 @@ import SwiftUI
         }
 #else
         WindowGroup("Connect", id: "connect") {
-            if !self.disabledByNotGrantedNotificationPermission {
-                MainView(showingHelpWindow: self.$showingHelpWindow)
-                    .preferredColorScheme(kdeConnectSettingsForTopLevel.chosenTheme)
-                    .onAppear {
-                        NSApplication.shared.applicationIconImage = NSImage(named: (kdeConnectSettingsForTopLevel.appIcon.rawValue ?? "AppIcon"))
-                        requestNotification()
-                        backgroundService.startDiscovery()
-                        requestBatteryStatusAllDevices()
-                    }
-                    .environmentObject(notificationManager)
-                    .onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification)) { _ in
-                        requestNotification()
-                    }
-            } else {
-                AskNotificationView()
-                    .preferredColorScheme(kdeConnectSettingsForTopLevel.chosenTheme)
-                    .onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification)) { _ in
-                        requestNotification()
-                    }
-            }
+            MainView(grantedNotificationPermission: self.$grantedNotificationPermission, showingHelpWindow: self.$showingHelpWindow)
+                .preferredColorScheme(kdeConnectSettingsForTopLevel.chosenTheme)
+                .onAppear {
+                    NSApplication.shared.applicationIconImage = NSImage(named: (kdeConnectSettingsForTopLevel.appIcon.rawValue ?? "AppIcon"))
+                    requestNotification()
+                    backgroundService.startDiscovery()
+                    requestBatteryStatusAllDevices()
+                }
+                .environmentObject(notificationManager)
+                .environmentObject(inAppNotificationManager)
+                .onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification)) { _ in
+                    requestNotification()
+                }
         }
         .commands {
             CommandMenu("Devices") {
-                if !self.disabledByNotGrantedNotificationPermission {
-                    Button("Refresh Discovery") {
-                        MainView.mainViewSingleton?.refreshDiscoveryAndList()
-                    }
-                } else {
-                    Label("Refresh Discovery", systemImage: "")
+                Button("Refresh Discovery") {
+                    MainView.mainViewSingleton?.refreshDiscoveryAndList()
                 }
                 Button("Show Received Files in Finder") {
                     let fileManager = FileManager.default
@@ -139,15 +136,9 @@ import SwiftUI
         .windowStyle(.hiddenTitleBar)
         
         Settings {
-            if !self.disabledByNotGrantedNotificationPermission {
-                SettingsView()
-                    .preferredColorScheme(kdeConnectSettingsForTopLevel.chosenTheme)
-                    .environmentObject(kdeConnectSettingsForTopLevel)
-            } else {
-                AskNotificationView()
-                    .preferredColorScheme(kdeConnectSettingsForTopLevel.chosenTheme)
-                    .frame(width: 450, height: 250)
-            }
+            SettingsView(grantedNotificationPermission: self.$grantedNotificationPermission)
+                .preferredColorScheme(kdeConnectSettingsForTopLevel.chosenTheme)
+                .environmentObject(kdeConnectSettingsForTopLevel)
         }
 #endif
     }
