@@ -1076,7 +1076,7 @@
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "KDE Connect/Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST))",
@@ -1115,7 +1115,7 @@
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "KDE Connect/Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST))",
