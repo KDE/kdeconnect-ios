@@ -21,6 +21,8 @@ import CryptoKit
     }
     
     static func loadIdentityFromKeychain() -> SecIdentity {
+        // ref: https://developer.apple.com/documentation/network/creating_an_identity_for_local_network_tls
+#if !os(macOS)
         let keychainItemQuery: CFDictionary = [
             kSecClass: kSecClassIdentity,
             kSecAttrLabel: KdeConnectSettings.getUUID() as Any,
@@ -29,11 +31,47 @@ import CryptoKit
         var identityApp: AnyObject? = nil
         let status: OSStatus = SecItemCopyMatching(keychainItemQuery, &identityApp)
         Logger().info("getIdentityFromKeychain completed with \(status)")
+#else
+        var identityApp: SecIdentity? = nil
+        let getquery = [
+            kSecClass: kSecClassCertificate,
+            kSecAttrLabel: KdeConnectSettings.getUUID() as Any,
+            kSecReturnRef: true,
+            kSecMatchLimit: kSecMatchLimitOne,
+        ] as NSDictionary
+        var item: CFTypeRef?
+        func macFetchIdentity() {
+            // normally will print error -25300 at the first launch as there is no identity
+            let status = SecItemCopyMatching(getquery as CFDictionary, &item)
+            guard status == errSecSuccess else {
+                print("getHostIdentityFromKeychain status failed with \(status)")
+                return
+            }
+            print("loadIdentityFromKeychain status failed with \(status)")
+            let certificate = item as! SecCertificate
+            let identityStatus = SecIdentityCreateWithCertificate(nil, certificate, &identityApp)
+            guard identityStatus == errSecSuccess else {
+                print("loadIdentityFromKeychain identityStatus failed with \(identityStatus)")
+                return
+            }
+        }
+        macFetchIdentity()
+#endif
         if (identityApp == nil) {
             Logger().info("generateSecIdentity")
+#if !os(macOS)
             if generateSecIdentityForUUID(KdeConnectSettings.getUUID()) == noErr {
                 SecItemCopyMatching(keychainItemQuery, &identityApp)
             }
+#else
+            // remove old identity on macOS
+            // normally will print error -25300 at the first launch as there is no identity
+            deleteHostCertificateFromKeychain()
+            if (generateSecIdentityForUUID(KdeConnectSettings.getUUID()) == noErr) {
+                // Refetch
+                macFetchIdentity()
+            }
+#endif
         }
         return (identityApp as! SecIdentity)
     }
@@ -107,12 +145,34 @@ import CryptoKit
     }
     
     // @discardableResult
-    @objc func deleteHostCertificateFromKeychain() -> OSStatus {
+    @objc static func deleteHostCertificateFromKeychain() -> OSStatus {
+#if !os(macOS)
         let keychainItemQuery: CFDictionary = [
             kSecAttrLabel: KdeConnectSettings.getUUID() as Any,
             kSecClass: kSecClassIdentity,
         ] as CFDictionary
         return SecItemDelete(keychainItemQuery)
+#else
+        let deleteCertQuery: NSDictionary = [
+            kSecAttrLabel: KdeConnectSettings.getUUID() as Any,
+            kSecClass: kSecClassCertificate,
+        ] as NSDictionary
+        let deleteCertStatus = SecItemDelete(deleteCertQuery)
+        guard deleteCertStatus == errSecSuccess else {
+            print("deleteHostCertificateFromKeychain deleteCert failed with status \(deleteCertStatus)")
+            return deleteCertStatus
+        }
+        let deleteKeyQuery: NSDictionary = [
+            kSecAttrLabel: "KDE Connect" as Any,
+            kSecClass: kSecClassKey,
+        ] as NSDictionary
+        let deleteKeyStatus = SecItemDelete(deleteKeyQuery)
+        guard deleteKeyStatus == errSecSuccess else {
+            print("deleteHostCertificateFromKeychain deleteKey failed with status \(deleteKeyStatus)")
+            return deleteKeyStatus
+        }
+        return errSecSuccess
+#endif
     }
     
     // This function is called by LanLink and LanLinkProvider's didReceiveTrust
@@ -190,15 +250,61 @@ import CryptoKit
     }
     
     @objc func deleteAllItemsFromKeychain() -> Bool {
+#if !os(macOS)
         let allSecItemClasses: [CFString] = [kSecClassGenericPassword, kSecClassInternetPassword, kSecClassCertificate, kSecClassKey, kSecClassIdentity]
         for itemClass in allSecItemClasses {
             let keychainItemQuery: CFDictionary = [kSecClass: itemClass] as CFDictionary
             let status: OSStatus = SecItemDelete(keychainItemQuery)
-            if (status != 0) {
-                logger.error("Failed to remove 1 certificate in keychain with error code \(status), continuing to attempt to remove all")
+            if (status != errSecSuccess) {
+                print("Failed to remove 1 certificate in \(itemClass) keychain with error code \(status), continuing to attempt to remove all")
             }
         }
-        return true
+#else
+        print("deleteAllItemsFromKeychain - host cert")
+        let deleteHostCertificateFromKeychainStatus = Self.deleteHostCertificateFromKeychain()
+        if deleteHostCertificateFromKeychainStatus != errSecSuccess {
+            print("deleteAllItemsFromKeychain failed to remove host cert with status \(deleteHostCertificateFromKeychainStatus)")
+        }
+        print("deleteAllItemsFromKeychain - other certs")
+        let getCertsQuery: NSDictionary = [
+            kSecClass: kSecClassCertificate,
+            kSecReturnRef: true,
+            kSecMatchLimit: kSecMatchLimitAll,
+        ] as NSDictionary
+        var certs: AnyObject? = nil
+        let getCertsQueryStatus: OSStatus = SecItemCopyMatching(getCertsQuery, &certs)
+        guard getCertsQueryStatus == errSecSuccess else {
+            print("deleteAllItemsFromKeychain getCertsQueryStatus failed with status \(getCertsQueryStatus)")
+            return (getCertsQueryStatus != 0)
+        }
+        let numCerts = (certs as! NSArray).count
+        for certIndex in 0...(numCerts - 1) {
+            let cert: SecCertificate = (certs as! NSArray)[certIndex] as! SecCertificate
+            let digest: String = extractSecCertificateDigest(cert)
+            if (digest.contains("/OU=Kde connect") && digest.contains("/O=KDE")) {
+                print("deleteAllItemsFromKeychain to remove cert with digest \(digest)")
+                let removeCertQuery: NSDictionary = [
+                    kSecClass: kSecClassCertificate,
+                    kSecValueRef: cert,
+                    kSecMatchLimit: kSecMatchLimitOne,
+                ] as NSDictionary
+                let removeCertQueryStatus: OSStatus = SecItemDelete(removeCertQuery)
+                if removeCertQueryStatus != errSecSuccess {
+                    print("deleteAllItemsFromKeychain failed to remove this cert with status \(removeCertQueryStatus)")
+                }
+            }
+        }
+        print("deleteAllItemsFromKeychain - UUID")
+        let removeUUIDQuery: NSDictionary = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrLabel: "kdeconnect-uuid",
+        ] as NSDictionary
+        let removeUUIDQueryStatus: OSStatus = SecItemDelete(removeUUIDQuery)
+        if removeUUIDQueryStatus != errSecSuccess {
+            print("deleteAllItemsFromKeychain failed to remove UUID with status \(removeUUIDQueryStatus)")
+        }
+#endif
+        return (errSecSuccess != 0)
     }
 
     // FIXME: the temp remote cert functions are here because I dind't find a way to do this from Objective-C inside LanLink.

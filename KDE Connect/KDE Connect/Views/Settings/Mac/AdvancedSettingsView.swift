@@ -11,6 +11,7 @@ struct AdvancedSettingsView: View {
     var body: some View {
         VStack {
             Spacer()
+            
             Button {
                 backgroundService.stopDiscovery()
                 CertificateService.shared.deleteAllItemsFromKeychain()
@@ -28,10 +29,12 @@ struct AdvancedSettingsView: View {
                 }
                 .foregroundColor(.red)
             }.buttonStyle(.plain)
+            
             Spacer()
+            
             Button {
                 backgroundService.stopDiscovery()
-                CertificateService.shared.deleteHostCertificateFromKeychain()
+                CertificateService.deleteHostCertificateFromKeychain()
                 exit(0)
             } label: {
                 HStack {
@@ -45,6 +48,31 @@ struct AdvancedSettingsView: View {
                 }
                 .foregroundColor(.red)
             }.buttonStyle(.plain)
+            
+            Spacer()
+            
+            Button {
+                backgroundService.stopDiscovery()
+                // ref: https://stackoverflow.com/questions/43402032/how-to-remove-all-userdefaults-data-swift
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
+                UserDefaults.standard.synchronize()
+                print("deleted settings, remaining: \(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)")
+                CertificateService.shared.deleteAllItemsFromKeychain()
+            } label: {
+                HStack {
+                    Image(systemName: "delete.right")
+                    VStack(alignment: .leading) {
+                        Text("Forget all")
+                            .font(.headline)
+                        Text("Delete all saved settings and devices. Requires the app to be fully restarted.")
+                            .font(.caption)
+                    }
+                }
+                .foregroundColor(.red)
+            }.buttonStyle(.plain)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
             Spacer()
         }.padding(.all)
     }

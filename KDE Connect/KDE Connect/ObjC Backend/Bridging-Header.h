@@ -16,3 +16,6 @@
 
 OSStatus generateSecIdentityForUUID(NSString *uuid);
 NSData* getPublicKeyDERFromCertificate(SecCertificateRef certificate);
+#if TARGET_OS_OSX
+NSString* extractSecCertificateDigest(SecCertificateRef certificate);
+#endif

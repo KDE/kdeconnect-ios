@@ -69,7 +69,7 @@ struct SettingsAdvancedView: View {
                 
                 Button {
                     notificationHapticsGenerator.notificationOccurred(.warning)
-                    CertificateService.shared.deleteHostCertificateFromKeychain()
+                    CertificateService.deleteHostCertificateFromKeychain()
                 } label: {
                     HStack {
                         Image(systemName: "delete.right")
@@ -77,6 +77,27 @@ struct SettingsAdvancedView: View {
                             Text("Delete host certificate")
                                 .font(.headline)
                             Text("Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again.")
+                                .font(.caption)
+                        }
+                    }
+                    .foregroundColor(.red)
+                }
+                
+                Button {
+                    notificationHapticsGenerator.notificationOccurred(.warning)
+                    // ref: https://stackoverflow.com/questions/43402032/how-to-remove-all-userdefaults-data-swift
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
+                    print("deleted settings, remaining: \(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)")
+                    CertificateService.shared.deleteAllItemsFromKeychain()
+                } label: {
+                    HStack {
+                        Image(systemName: "delete.right")
+                        VStack(alignment: .leading) {
+                            Text("Forget all")
+                                .font(.headline)
+                            Text("Delete all saved settings and devices. Requires the app to be fully restarted.")
                                 .font(.caption)
                         }
                     }
