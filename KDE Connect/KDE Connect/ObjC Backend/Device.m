@@ -32,6 +32,7 @@
 #import "KDE_Connect-Swift.h"
 @import os.log;
 static const NSTimeInterval kPairingTimeout = 30.0;
+static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 @implementation Device {
     NSMutableDictionary<NetworkPacketType, id<Plugin>> *_plugins;
@@ -39,10 +40,13 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     os_log_t logger;
 }
 
+@synthesize _pairingTimestamp;
 @synthesize _deviceInfo;
 @synthesize _pairStatus;
 @synthesize deviceDelegate;
 @synthesize _links;
+
+
 - (void)setPlugins:(NSDictionary<NetworkPacketType, NSNumber *> *)plugins
 {
     _plugins = [[NSMutableDictionary alloc] initWithDictionary:plugins];
@@ -162,7 +166,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     os_log_with_type(logger, self.debugLogLevel, "device on send success");
     if (tag==PACKET_TAG_PAIR) {
         if (_pairStatus==RequestedByPeer) {
-            [self setAsPaired];
+            [self pairingDone];
         }
     } else if (tag == PACKET_TAG_PAYLOAD){
         os_log_with_type(logger, self.debugLogLevel, "Last payload sent successfully, sending next one");
@@ -224,57 +228,76 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     }
 }
 
+- (void)onPairingPacket:(NetworkPacket *)np {
+    os_log_with_type(logger, self.debugLogLevel, "Pair packet received");
+    BOOL wantsPair=[np boolForKey:@"pair"];
+    if (wantsPair==[self isPaired]) {
+        os_log_with_type(logger, self.debugLogLevel, "already done, paired:%d",wantsPair);
+        if (_pairStatus==Requested) {
+            os_log_with_type(logger, self.debugLogLevel, "canceled by other peer");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
+            });
+            _pairStatus=NotPaired;
+            if (deviceDelegate) {
+                [deviceDelegate onDevicePairRejected:self];
+            }
+        } else if (wantsPair) {
+            [self acceptPairing];
+        }
+        return;
+    }
+    if (wantsPair) {
+        os_log_with_type(logger, self.debugLogLevel, "pair request");
+        if ((_pairStatus)==Requested) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
+            });
+            [self pairingDone];
+        }
+        else{
+            
+            if (_deviceInfo.protocolVersion >= 8) {
+                _pairingTimestamp = [np integerForKey:@"timestamp"];
+                if (_pairingTimestamp <= 0) {
+                    _pairStatus = NotPaired;
+                    return;
+                }
+                NSInteger currentTimestamp = [[NSDate date] timeIntervalSince1970];
+                if (labs(_pairingTimestamp - currentTimestamp) > allowedTimestampDifferenceSeconds) {
+                    _pairStatus = NotPaired;
+                    // Pairing failed: clocks don't match
+                    return;
+                }
+            }
+
+            _pairStatus=RequestedByPeer;
+            if (deviceDelegate) {
+                [deviceDelegate onDevicePairRequest:self];
+            }
+        }
+    } else {
+        //NSLog(@"unpair request");
+        if (_pairStatus==Requested) {
+            //NSLog(@"canceled by other peer");
+            _pairStatus=NotPaired;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
+            });
+        } else if (_pairStatus==Paired) {
+            // okay to call unpair directly because other is reachable
+            [self unpair];
+            if (deviceDelegate) {
+                [deviceDelegate onDeviceUnpaired:self];
+            }
+        }
+    }
+}
+
 - (void)onPacketReceived:(NetworkPacket *)np {
     os_log_with_type(logger, self.debugLogLevel, "device on packet received");
     if ([np.type isEqualToString:NetworkPacketTypePair]) {
-        os_log_with_type(logger, self.debugLogLevel, "Pair packet received");
-        BOOL wantsPair=[np boolForKey:@"pair"];
-        if (wantsPair==[self isPaired]) {
-            os_log_with_type(logger, self.debugLogLevel, "already done, paired:%d",wantsPair);
-            if (_pairStatus==Requested) {
-                os_log_with_type(logger, self.debugLogLevel, "canceled by other peer");
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
-                });
-                _pairStatus=NotPaired;
-                if (deviceDelegate) {
-                    [deviceDelegate onDevicePairRejected:self];
-                }
-            } else if (wantsPair) {
-                [self acceptPairing];
-            }
-            return;
-        }
-        if (wantsPair) {
-            os_log_with_type(logger, self.debugLogLevel, "pair request");
-            if ((_pairStatus)==Requested) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
-                });
-                [self setAsPaired];
-            }
-            else{
-                _pairStatus=RequestedByPeer;
-                if (deviceDelegate) {
-                    [deviceDelegate onDevicePairRequest:self];
-                }
-            }
-        } else {
-            //NSLog(@"unpair request");
-            if (_pairStatus==Requested) {
-                //NSLog(@"canceled by other peer");
-                _pairStatus=NotPaired;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestPairingTimeout:) object:nil];
-                });
-            } else if (_pairStatus==Paired) {
-                // okay to call unpair directly because other is reachable
-                [self unpair];
-                if (deviceDelegate) {
-                    [deviceDelegate onDeviceUnpaired:self];
-                }
-            }
-        }
+        [self onPairingPacket:np];
     } else if ([self isPaired]) {
         // TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling function elsewhere in Swift
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "received a plugin packet: %{public}@", np.type);
@@ -309,7 +332,7 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     return _pairStatus==Requested;
 }
 
-- (void) setAsPaired
+- (void) pairingDone
 {
     _pairStatus=Paired;
     //NSLog(@"paired with %@",_name);
@@ -344,7 +367,8 @@ static const NSTimeInterval kPairingTimeout = 30.0;
             [self performSelector:@selector(requestPairingTimeout:) withObject:nil afterDelay:kPairingTimeout];
         });
     }
-    NetworkPacket* np=[NetworkPacket createPairPacket];
+    _pairingTimestamp = [[NSDate date] timeIntervalSince1970];
+    NetworkPacket* np=[NetworkPacket createPairRequestPacket:_pairingTimestamp];
     [self sendPacket:np tag:PACKET_TAG_PAIR];
 }
 
@@ -372,15 +396,14 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     os_log_with_type(logger, self.debugLogLevel, "device unpair");
     _pairStatus=NotPaired;
 
-    NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypePair];
-    [np setBool:false forKey:@"pair"];
+    NetworkPacket* np=[NetworkPacket createPairAcceptPacket:NO];
     [self sendPacket:np tag:PACKET_TAG_UNPAIR];
 }
 
 - (void) acceptPairing
 {
     os_log_with_type(logger, self.debugLogLevel, "device accepted pair request");
-    NetworkPacket* np=[NetworkPacket createPairPacket];
+    NetworkPacket* np=[NetworkPacket createPairAcceptPacket:YES];
     [self sendPacket:np tag:PACKET_TAG_PAIR];
 }
 

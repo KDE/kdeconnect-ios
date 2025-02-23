@@ -60,6 +60,7 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 @property(readonly, nonatomic) DeviceInfo *_deviceInfo;
 
 @property(readonly, nonatomic) PairStatus _pairStatus;
+@property(readonly, nonatomic) long _pairingTimestamp;
 
 @property(nonatomic) NSMutableArray* _links;
 @property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPacketType, id<Plugin>> *plugins;
@@ -100,7 +101,6 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 #pragma mark Pairing-related Functions
 - (BOOL)isPaired;
 - (BOOL)isPaireRequested;
-//- (void)setAsPaired; // Is this needed to be public?
 - (void)requestPairing;
 - (void)setAsUnpaired;
 - (void)unpair;

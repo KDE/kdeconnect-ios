@@ -358,7 +358,6 @@
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onPairSuccess:device._deviceInfo.id];
     }
-    //[device setAsPaired]; is already called in the caller of this method
     NSError* error;
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "device object with pair status %lu encoded into UserDefaults as: %{public}@ with error: %{public}@", [device _pairStatus], deviceData, error);

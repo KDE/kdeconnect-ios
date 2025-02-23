@@ -78,11 +78,18 @@
     return np;
 }
 
-+ (NetworkPacket*) createPairPacket
++ (NetworkPacket*) createPairRequestPacket:(NSInteger)pairingTimestamp
 {
     NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypePair];
     [np setBool:YES forKey:@"pair"];
+    [np setInteger:pairingTimestamp forKey:@"timestamp"];
+    return np;
+}
 
++ (NetworkPacket*) createPairAcceptPacket:(BOOL)accept
+{
+    NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypePair];
+    [np setBool:accept forKey:@"pair"];
     return np;
 }
 
