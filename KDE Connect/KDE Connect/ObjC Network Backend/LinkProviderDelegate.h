@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)onConnectionReceived:(BaseLink *)link;
 - (void)onDeviceIdentityUpdatePacketReceived:(DeviceInfo *)deviceInfo;
+- (DeviceInfo * _Nullable)getTrustedDeviceInfo:(NSString *)deviceId;
 @end
 
 NS_ASSUME_NONNULL_END

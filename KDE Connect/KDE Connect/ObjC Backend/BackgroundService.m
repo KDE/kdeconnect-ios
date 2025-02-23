@@ -309,6 +309,13 @@
     }
 }
 
+- (DeviceInfo * _Nullable)getTrustedDeviceInfo:(NSString *)deviceId
+{
+    Device *device = [_devices objectForKey:deviceId];
+    if (!device) return NULL;
+    return [device _deviceInfo];
+}
+
 - (void)onDeviceIdentityUpdatePacketReceived:(DeviceInfo *)deviceInfo {
     NSString *deviceId = [deviceInfo id];
     os_log_with_type(logger, self.debugLogLevel,

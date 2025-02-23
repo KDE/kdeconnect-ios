@@ -55,6 +55,9 @@
 }
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NetworkPacket *secureIdentity = [NetworkPacket unserialize:data];
+    if (![DeviceInfo isValidIdentityPacketWithNetworkPacket:secureIdentity]) {
+        return;
+    }
     [_lanLinkProvider finishAddingSocket:sock forIdentityPacket:secureIdentity];
 }
 @end
@@ -306,6 +309,16 @@
         return;
     }
     
+    NSString* deviceId=[np objectForKey:@"deviceId"];
+    DeviceInfo* deviceInfo = [[self _linkProviderDelegate] getTrustedDeviceInfo:deviceId];
+    if (deviceInfo != NULL) {
+        NSInteger receivedProtocolVersion = [np integerForKey:@"protocolVersion"];
+        if ([deviceInfo protocolVersion] > receivedProtocolVersion) {
+            os_log_with_type(logger, OS_LOG_TYPE_INFO, "Refusing to connect to a device using an older protocol version");
+            return;
+        }
+    }
+
     NSString *host;
     uint16_t port;
     [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
@@ -463,12 +476,17 @@
                 return;
             }
             NSString* deviceId=[np objectForKey:@"deviceId"];
-            
-            /* Test with cert file */
-            NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
-            
-            /*NSLog(@"%@", _certificate);*/
+            DeviceInfo* deviceInfo = [[self _linkProviderDelegate] getTrustedDeviceInfo:deviceId];
+            if (deviceInfo != NULL) {
+                NSInteger receivedProtocolVersion = [np integerForKey:@"protocolVersion"];
+                if ([deviceInfo protocolVersion] > receivedProtocolVersion) {
+                    os_log_with_type(logger, OS_LOG_TYPE_INFO, "Refusing to connect to a device using an older protocol version");
+                    return;
+                }
+            }
+
             /* TLS */
+            NSArray *myCerts = [[NSArray alloc] initWithObjects:(__bridge id)_identity, /*(__bridge id)cert2UseRef,*/ nil];
             NSDictionary *tlsSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
                                          //(id)kCFStreamSocketSecurityLevelNegotiatedSSL, (id)kCFStreamSSLLevel,
                                          //(id)kCFBooleanFalse,       (id)kCFStreamSSLAllowsExpiredCertificates,  /* Disallowed expired certificate   */
