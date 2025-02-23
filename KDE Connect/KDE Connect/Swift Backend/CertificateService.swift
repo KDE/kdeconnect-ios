@@ -79,7 +79,9 @@ import CryptoKit
     func getHostCertificate() -> SecCertificate {
         var secCert: SecCertificate? = nil
         let status: OSStatus = SecIdentityCopyCertificate(hostIdentity, &secCert)
-        logger.info("SecIdentityCopyCertificate completed with \(status)")
+        if (status != 0) {
+            logger.info("SecIdentityCopyCertificate completed with \(status)")
+        }
         return secCert!
     }
     

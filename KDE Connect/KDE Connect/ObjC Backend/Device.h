@@ -88,7 +88,6 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithLink:(BaseLink*)link
                               delegate:(id<DeviceDelegate>)deviceDelegate;
-- (NSInteger) compareProtocolVersion;
 
 #pragma mark Link-related Functions
 - (bool)updateInfo:(DeviceInfo *)newDeviceInfo;

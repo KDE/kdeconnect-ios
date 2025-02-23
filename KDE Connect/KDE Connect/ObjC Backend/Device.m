@@ -92,11 +92,6 @@ static const NSTimeInterval kPairingTimeout = 30.0;
     return OS_LOG_TYPE_DEBUG;
 }
 
-- (NSInteger) compareProtocolVersion
-{
-    return 0;
-}
-
 #pragma mark Link-related Functions
 
 - (bool)updateInfo:(DeviceInfo*)newDeviceInfo {
