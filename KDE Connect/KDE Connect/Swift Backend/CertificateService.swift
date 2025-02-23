@@ -101,16 +101,22 @@ import CryptoKit
     }
     
     func getVerificationKey(deviceId: String) -> String {
-        let remoteCert = backgroundService.devices[deviceId]!._deviceInfo.cert
+        let device = backgroundService.devices[deviceId]!
+    
+        let remoteCert = device._deviceInfo.cert
         let remoteData = getPublicKeyDERFromCertificate(remoteCert)!
         
         let localCert = getHostCertificate()
         let localData = getPublicKeyDERFromCertificate(localCert)!
         
-        let combinedData = if (remoteData.lexicographicallyPrecedes(localData)) {
+        var combinedData = if (remoteData.lexicographicallyPrecedes(localData)) {
             localData + remoteData
         } else {
             remoteData + localData
+        }
+
+        if (device._deviceInfo.protocolVersion >= 8) {
+            combinedData += String(device._pairingTimestamp).utf8
         }
         
         return Self.sha256AsString(hash: SHA256.hash(data: combinedData)).prefix(8).uppercased()

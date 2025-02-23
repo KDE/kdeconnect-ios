@@ -189,7 +189,7 @@ struct DevicesView: View {
                     Button {
                         alertManager.queueAlert(prioritize: true, title: "Initiate Pairing?") {
                             currentPairingDeviceName(id: key).map {
-                                Text("Request to pair with '\($0)'\nVerification key: \(CertificateService.shared.getVerificationKey(deviceId: key))")
+                                Text("Request to pair with '\($0)'")
                             }
                         } buttons: {
                             Button("Cancel", role: .cancel) {}
@@ -215,8 +215,14 @@ struct DevicesView: View {
                                             .foregroundColor(.primary)
                                     }
                                 }
-                                Text("Tap to start pairing")
-                                    .font(.subheadline)
+                                let device = backgroundService._devices[key]
+                                if (device?._pairStatus == PairStatus.Requested) {
+                                    Text("Verification key: \(CertificateService.shared.getVerificationKey(deviceId: key))")
+                                        .font(.subheadline)
+                                } else {
+                                    Text("Tap to start pairing")
+                                        .font(.subheadline)
+                                }
                             }
                         }
                     }
@@ -303,7 +309,9 @@ struct DevicesView: View {
                 Text("Pair request from '\($0)'\nVerification key: \(CertificateService.shared.getVerificationKey(deviceId: deviceId))")
             }
         } buttons: {
-            Button("Do Not Pair", role: .cancel) {}
+            Button("Do Not Pair", role: .cancel) {
+                backgroundService.unpairDevice(deviceId)
+            }
             Button("Pair") {
                 backgroundService.pairDevice(deviceId)
             }
