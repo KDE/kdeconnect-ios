@@ -101,6 +101,7 @@ FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeRunCommand;
 @property(nonatomic) long _PayloadSize;
 
 - (NetworkPacket *) initWithType:(NetworkPacketType)type;
++ (NetworkPacket *) createIdentityPacket;
 + (NetworkPacket *) createIdentityPacketWithTCPPort:(uint16_t)tcpPort;
 + (NetworkPacket *) createPairPacket;
 #if TARGET_OS_OSX

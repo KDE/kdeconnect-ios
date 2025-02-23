@@ -42,6 +42,24 @@
 
 @import os.log;
 
+
+@interface V8IdentityExchangeDelegate : NSObject <GCDAsyncSocketDelegate>
+@property (nonatomic, strong) LanLinkProvider *lanLinkProvider;
+@end
+@implementation V8IdentityExchangeDelegate
+- (instancetype)init:(LanLinkProvider *)provider {
+    if (self = [super init]) {
+        _lanLinkProvider = provider;
+    }
+    return self;
+}
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+    NetworkPacket *secureIdentity = [NetworkPacket unserialize:data];
+    [_lanLinkProvider finishAddingSocket:sock forIdentityPacket:secureIdentity];
+}
+@end
+
+
 @interface LanLinkProvider()
 {
     uint16_t _tcpPort;
@@ -55,6 +73,7 @@
 @property(nonatomic) SecCertificateRef _certificate;
 //@property(nonatomic) NSString * _certificateRequestPEM;
 @property(nonatomic) SecIdentityRef _identity;
+@property(nonatomic) V8IdentityExchangeDelegate* v8IdentityExchangeDelegate;
 @property(nonatomic, retain) MDNSDiscovery *mdnsDiscovery;
 @end
 
@@ -79,6 +98,8 @@
         _pendingNPs = [NSMutableArray arrayWithCapacity:1];
         self.connectedLinks = [NSMutableDictionary dictionaryWithCapacity:1];
         socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.socketqueue", NULL);
+        
+        _v8IdentityExchangeDelegate = [[V8IdentityExchangeDelegate alloc] init:self];
         
         _identity = NULL;
         [self loadSecIdentity];
@@ -555,6 +576,19 @@
     os_log_with_type(logger, self.debugLogLevel, "Connection is secure LanLinkProvider");
 
     NetworkPacket* np = (NetworkPacket *)sock.userData;
+    NSInteger protocolVersion = [np integerForKey:@"protocolVersion"];
+    if (protocolVersion >= 8) {
+        NetworkPacket *myIdentity = [NetworkPacket createIdentityPacket];
+        [sock writeData:[myIdentity serialize] withTimeout:0 tag:PACKET_TAG_IDENTITY];
+        [sock setDelegate:_v8IdentityExchangeDelegate]; // the delegate will call finishAddingSocket
+        [sock readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:0];
+    } else {
+        [self finishAddingSocket:sock forIdentityPacket:np];
+    }
+}
+
+- (void) finishAddingSocket:(GCDAsyncSocket*)sock forIdentityPacket:(NetworkPacket*)np
+{
     NSString *deviceId = [np objectForKey:@"deviceId"];
     SecCertificateRef cert = [[CertificateService shared] getTempRemoteCertWithDeviceId:deviceId];
     DeviceInfo* deviceInfo = [DeviceInfo fromNetworkPacket:np cert:cert];

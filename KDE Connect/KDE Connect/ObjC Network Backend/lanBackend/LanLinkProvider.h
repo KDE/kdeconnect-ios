@@ -41,4 +41,6 @@
         onFreePortStartingAt:(uint16_t)minPort
                        error:(NSError **)errPtr;
 
+- (void) finishAddingSocket:(GCDAsyncSocket*)sock forIdentityPacket:(NetworkPacket*)np;
+
 @end

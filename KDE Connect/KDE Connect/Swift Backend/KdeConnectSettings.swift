@@ -21,7 +21,7 @@ class KdeConnectSettings: NSObject, ObservableObject {
     @objc
     static let shared = KdeConnectSettings()
 
-    static let CurrentProtocolVersion = 7
+    static let CurrentProtocolVersion = 8
     
     // FIXME: actually read what plugins are available
     static let IncomingCapabilities: [NetworkPacket.`Type`] = [

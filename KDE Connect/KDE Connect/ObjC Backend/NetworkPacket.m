@@ -58,16 +58,23 @@
 @synthesize _PayloadSize;
 
 #pragma mark create Packet
-+ (NetworkPacket *)createIdentityPacketWithTCPPort:(uint16_t)tcpPort {
++ (NetworkPacket *)createIdentityPacket
+{
     DeviceInfo* ownDeviceInfo = [DeviceInfo getOwn];
     NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypeIdentity];
     [np setObject:ownDeviceInfo.id forKey:@"deviceId"];
     [np setObject:ownDeviceInfo.name forKey:@"deviceName"];
     [np setInteger:ownDeviceInfo.protocolVersion forKey:@"protocolVersion"];
     [np setObject:[ownDeviceInfo getTypeAsString] forKey:@"deviceType"];
-    [np setInteger:tcpPort forKey:@"tcpPort"];
     [np setObject:ownDeviceInfo.incomingCapabilities forKey:@"incomingCapabilities"];
     [np setObject:ownDeviceInfo.outgoingCapabilities forKey:@"outgoingCapabilities"];
+    return np;
+}
+
++ (NetworkPacket *)createIdentityPacketWithTCPPort:(uint16_t)tcpPort
+{
+    NetworkPacket* np=[self createIdentityPacket];
+    [np setInteger:tcpPort forKey:@"tcpPort"];
     return np;
 }
 
