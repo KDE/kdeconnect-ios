@@ -94,7 +94,6 @@ FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeRunCommand;
 
 @interface NetworkPacket : NSObject
 
-@property(nonatomic) NSNumber *_Id;
 @property(nonatomic) NetworkPacketType type;
 @property(nonatomic) NSMutableDictionary<NSString *, id> *_Body;
 @property(nonatomic, nullable) NSURL *payloadPath;

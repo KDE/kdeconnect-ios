@@ -47,14 +47,12 @@
 {
     if ((self=[super init]))
     {
-        _Id=[NSNumber numberWithLong:[[NSDate date] timeIntervalSince1970]];
         self.type=type;
         _Body=[NSMutableDictionary dictionary];
     }
     return self;
 }
 
-@synthesize _Id;
 @synthesize type;
 @synthesize _Body;
 @synthesize _PayloadSize;
@@ -156,7 +154,8 @@
 - (NSData*) serialize
 {
     NSArray* keys=[NSArray arrayWithObjects:@"id",@"type",@"body", nil];
-    NSArray* values=[NSArray arrayWithObjects:[self _Id],self.type,[self _Body], nil];
+    NSNumber* _id = [NSNumber numberWithLong:[[NSDate date] timeIntervalSince1970]];
+    NSArray* values=[NSArray arrayWithObjects:_id, self.type, [self _Body], nil];
     NSMutableDictionary* info=[NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
     if (_payloadPath) {
         // TODO: is checking _PayloadSize == 0 then changing it to -1 necessary?
@@ -183,13 +182,12 @@
     NSDictionary* info=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
 
     // FIXME: add missing null check
-    [np set_Id:[info valueForKey:@"id"]];
     np.type = [info valueForKey:@"type"];
     [np set_Body:[info valueForKey:@"body"]];
     [np set_PayloadSize:[[info valueForKey:@"payloadSize"]longValue]];
     [np setPayloadTransferInfo:[info valueForKey:@"payloadTransferInfo"]];
     
-    // NSLog(@"Parsed id: %@, type: %@", [info valueForKey:@"id"], [info valueForKey:@"type"]);
+    // NSLog(@"Parsed type: %@", [info valueForKey:@"type"]);
     
     //TO-DO should change for laptop
     if ([np _PayloadSize]==-1) {
