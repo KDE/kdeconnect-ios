@@ -36,8 +36,8 @@ class BatteryInfo {
             stopNotificationSource()
         }
         notificationSource = IOPSNotificationCreateRunLoopSource({ _ in
-            BatteryInfo.shared.observers.forEach { (_, value) in
-                value.observer?.batteryInfo(didChange: BatteryInfo.shared)
+            Self.shared.observers.forEach { _, value in
+                value.observer?.batteryInfo(didChange: Self.shared)
             }
         }, nil).takeRetainedValue() as CFRunLoopSource
         CFRunLoopAddSource(CFRunLoopGetCurrent(), notificationSource, .defaultMode)
@@ -48,14 +48,14 @@ class BatteryInfo {
     }
     
     func addObserver(_ observer: ObserverProtocol) {
-        if observers.count == 0 {
+        if observers.isEmpty {
             startNotificationSource()
         }
         observers[ObjectIdentifier(observer)] = Observation(observer: observer)
     }
     func removeObserver(_ observer: ObserverProtocol) {
         observers.removeValue(forKey: ObjectIdentifier(observer))
-        if observers.count == 0 {
+        if observers.isEmpty {
             stopNotificationSource()
         }
     }
@@ -64,13 +64,13 @@ class BatteryInfo {
 }
 
 class BatteryObserver: BatteryInfo.ObserverProtocol {
-    var batteryInfoClosure: (_ info: BatteryInfo) -> ()
+    var batteryInfoClosure: (_ info: BatteryInfo) -> Void
     
     func batteryInfo(didChange info: BatteryInfo) {
         self.batteryInfoClosure(info)
     }
     
-    init(_ callback: @escaping (_ info: BatteryInfo) -> ()) {
+    init(_ callback: @escaping (_ info: BatteryInfo) -> Void) {
         self.batteryInfoClosure = callback
         BatteryInfo.shared.addObserver(self)
     }

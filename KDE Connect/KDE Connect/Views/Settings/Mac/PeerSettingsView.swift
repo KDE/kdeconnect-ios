@@ -9,18 +9,18 @@
 
 import SwiftUI
 
-//struct EditButtonStyle: ButtonStyle {
-//    func makeBody(configuration: Configuration) -> some View {
-//        HStack {
-//            configuration.label
-//                .padding(.horizontal, 4)
-//        }
-//        .background(.gray)
-//        .foregroundColor(.white)
-//        .border(.black)
-//        .clipShape(Rectangle())
-//    }
-//}
+// struct EditButtonStyle: ButtonStyle {
+//     func makeBody(configuration: Configuration) -> some View {
+//         HStack {
+//             configuration.label
+//                 .padding(.horizontal, 4)
+//         }
+//         .background(.gray)
+//         .foregroundColor(.white)
+//         .border(.black)
+//         .clipShape(Rectangle())
+//     }
+// }
 
 struct PeerSettingsView: View {
     @Binding var directIPs: [String]
@@ -90,8 +90,7 @@ struct PeerSettingsView: View {
             }
             if colorScheme == .light {
                 mainFrame
-            }
-            else {
+            } else {
                 mainFrame.colorInvert()
             }
             HStack {

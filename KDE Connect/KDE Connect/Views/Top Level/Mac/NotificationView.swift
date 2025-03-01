@@ -82,7 +82,9 @@ struct NotificationView: View {
         }
         selectedRequest = inAppNotificationManager.requests[selectedNotificationIndex]
         selectedRemover = { inAppNotificationManager.removeNotification(at: selectedNotificationIndex) }
-        let selectedCategoryActions = NotificationManager.categories.first(where: { $0.identifier == selectedRequest!.content.categoryIdentifier })!.actions
+        let selectedCategoryActions = NotificationManager.categories
+            .first { $0.identifier == selectedRequest!.content.categoryIdentifier }!
+            .actions
         backgroundColor = switch selectedRequest!.content.categoryIdentifier {
             case "PAIR_REQUEST": .yellow
             case "NORMAL": .secondary
@@ -163,9 +165,9 @@ struct NotificationView: View {
             .onAppear {
                 updateSelection()
             }
-            .onChange(of: inAppNotificationManager.requests, perform: { _ in
+            .onChange(of: inAppNotificationManager.requests) { _ in
                 updateSelection()
-            })
+            }
         }
         .padding(4)
     }

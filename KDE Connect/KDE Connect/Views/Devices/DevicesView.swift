@@ -46,7 +46,7 @@ struct DevicesView: View {
         VStack {
             devicesList
                 .refreshable {
-                    await refreshDiscovery()
+                    refreshDiscovery()
                 }
                 .sheet(isPresented: $isDeviceDiscoveryHelpPresented) {
                     DeviceDiscoveryHelp()

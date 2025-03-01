@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if self.needMenuUpdate == true {
                 if safe {
                     safe = false
-                    self.menu?.items.removeAll(where: { !self.allowedMenus.contains($0.title) })
+                    self.menu?.items.removeAll { !self.allowedMenus.contains($0.title) }
                     safe = true
                 }
                 self.needMenuUpdate = false

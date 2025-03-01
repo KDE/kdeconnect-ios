@@ -36,7 +36,7 @@ class NotificationManager: ObservableObject {
     }
     
     func post(title: String, body: String, userInfo: [AnyHashable: Any] = [:], categoryIdentifier: String = "NORMAL", interruptionLevel: UNNotificationInterruptionLevel = .timeSensitive) {
-        let prepared = NotificationManager.prepareRequest(title: title, body: body, userInfo: userInfo, categoryIdentifier: categoryIdentifier, interruptionLevel: interruptionLevel)
+        let prepared = Self.prepareRequest(title: title, body: body, userInfo: userInfo, categoryIdentifier: categoryIdentifier, interruptionLevel: interruptionLevel)
         inAppNotificationManager.addNotification(request: prepared.request, remover: prepared.remover)
         UNUserNotificationCenter.current().add(prepared.request)
     }

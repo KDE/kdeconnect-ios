@@ -123,19 +123,21 @@ struct DeviceItemView: View {
             withAnimation {
                 self.backgroundColor = getBackgroundColor(newValue)
             }
-        }.onTapGesture {
+        }
+        .onTapGesture {
             parent?.clickedDeviceId = self.deviceId
-        }.onDrop(of: [.fileURL], isTargeted: nil) { providers in
+        }
+        .onDrop(of: [.fileURL], isTargeted: nil) { providers in
             // Ref: https://stackoverflow.com/questions/60831260/swiftui-drag-and-drop-files
             if isPluginAvailable(.share) {
                 var droppedFileURLs: [URL] = []
                 providers.forEach { provider in
-                    provider.loadDataRepresentation(forTypeIdentifier: "public.file-url", completionHandler: { (data, error) in
+                    provider.loadDataRepresentation(forTypeIdentifier: "public.file-url") { data, _ in
                         if let data = data, let path = NSString(data: data, encoding: 4), let url = URL(string: path as String) {
                             droppedFileURLs.append(url)
                             print("File drppped: ", url)
                         }
-                    })
+                    }
                 }
                 while droppedFileURLs.count != providers.count {
                     continue // block thread until all providers are proceeded
@@ -151,7 +153,8 @@ struct DeviceItemView: View {
                 }
                 return false
             }
-        }.contextMenu {
+        }
+        .contextMenu {
             if parent?.clickedDeviceId == self.deviceId {
                 if self.connState == .connected || self.connState == .saved {
                     Button("Unpair") {
@@ -191,19 +194,21 @@ struct DeviceItemView: View {
                     }
                 }
             }
-        }.mediaImporter(isPresented: $showingPhotosPicker, allowedMediaTypes: .all, allowsMultipleSelection: true) { result in
+        }
+        .mediaImporter(isPresented: $showingPhotosPicker, allowedMediaTypes: .all, allowsMultipleSelection: true) { result in
             if case .success(let chosenMediaURLs) = result, !chosenMediaURLs.isEmpty {
                 (backgroundService._devices[self.deviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenMediaURLs)
             } else {
                 print("Media Picker Result: \(result)")
             }
-        }.fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
+        }
+        .fileImporter(isPresented: $showingFilePicker, allowedContentTypes: allUTTypes, allowsMultipleSelection: true) { result in
             do {
                 chosenFileURLs = try result.get()
             } catch {
                 print("Document Picker Error")
             }
-            if (chosenFileURLs.count > 0) {
+            if (!chosenFileURLs.isEmpty) {
                 (backgroundService._devices[self.deviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
             }
         }

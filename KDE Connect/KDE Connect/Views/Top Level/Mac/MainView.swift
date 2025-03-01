@@ -33,7 +33,7 @@ struct MainView: View {
     
     func helpButton(_ action: @escaping () -> Void) -> some View {
         // ref: https://blog.urtti.com/creating-a-macos-help-button-in-swiftui
-        Button(action: action, label: {
+        Button(action: action) {
             ZStack {
                 Circle()
                     .strokeBorder(Color(NSColor.controlShadowColor), lineWidth: 0.5)
@@ -42,7 +42,7 @@ struct MainView: View {
                     .frame(width: 20, height: 20)
                 Text("?").font(.system(size: 15, weight: .medium ))
             }
-        })
+        }
         .buttonStyle(PlainButtonStyle())
     }
     
@@ -72,19 +72,19 @@ struct MainView: View {
                     }
                 }
             }
-            .refreshable(action: {
+            .refreshable {
                 refreshDiscoveryAndList()
-            })
+            }
             .onAppear {
-                self.disabledSingletonConflict = MainView.mainViewSingleton != nil
+                self.disabledSingletonConflict = Self.mainViewSingleton != nil
                 if !self.disabledSingletonConflict {
-                    MainView.mainViewSingleton = self
+                    Self.mainViewSingleton = self
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: .didReceivePairRequestNotification, object: nil)
                 .receive(on: RunLoop.main)) { notification in
                     onPairRequest(fromDeviceWithID: notification.userInfo?["deviceID"] as? String)
-                }
+            }
             .onReceive(NotificationCenter.default.publisher(for: .pairRequestTimedOutNotification, object: nil)
                         .receive(on: RunLoop.main)) { notification in
                 onPairTimeout(toDeviceWithID: notification.userInfo?["deviceID"] as? String)
@@ -104,9 +104,9 @@ struct MainView: View {
             .onReceive(NotificationCenter.default.publisher(for: .didReceiveFindMyPhoneRequestNotification, object: nil)
                         .receive(on: RunLoop.main)) { _ in
                 showFindMyPhoneAlert()
-                MainView.updateFindMyPhoneTimer(isRunning: true) // TODO: alert sound does not work
+                Self.updateFindMyPhoneTimer(isRunning: true) // TODO: alert sound does not work
             }
-            .onReceive(MainView.findMyPhoneTimer) { _ in
+            .onReceive(Self.findMyPhoneTimer) { _ in
                 SystemSound.calendarAlert.play()
             }
         } else {
@@ -159,13 +159,13 @@ struct MainView: View {
     
     static func updateFindMyPhoneTimer(isRunning: Bool) {
         if isRunning {
-            MainView.findMyPhoneTimer = Deferred {
+            Self.findMyPhoneTimer = Deferred {
                 Just(Date())
             }
             .append(Timer.publish(every: 4, on: .main, in: .common).autoconnect())
             .eraseToAnyPublisher()
         } else {
-            MainView.findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
+            Self.findMyPhoneTimer = Empty<Date, Never>().eraseToAnyPublisher()
         }
     }
     

@@ -201,7 +201,7 @@ struct DevicesDetailView: View {
                             Text("Battery Level")
                         } icon: {
                             Image(systemName: battery.statusSFSymbolName)
-                                .foregroundColor(battery.statusColor ?? .primary)
+                                .foregroundColor(battery.statusColor)
                         }
                         Spacer()
                         Text("\(percent: battery.remoteChargeLevel)")

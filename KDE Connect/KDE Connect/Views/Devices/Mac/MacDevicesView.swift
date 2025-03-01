@@ -74,17 +74,17 @@ struct DevicesView: View {
             return []
         case .demo:
             return [
-                DeviceItemView(deviceId: "1", parent: self, deviceName: .constant("My iPhone"), icon: DevicesView.getIconFromDeviceType(.phone), connState: .connected, mockBatteryLevel: 67),
-                DeviceItemView(deviceId: "2", parent: self, deviceName: .constant("My iMac"), icon: DevicesView.getIconFromDeviceType(.desktop), connState: .connected),
-                DeviceItemView(deviceId: "3", parent: self, deviceName: .constant("My MacBook"), icon: DevicesView.getIconFromDeviceType(.laptop), connState: .saved),
-                DeviceItemView(deviceId: "4", parent: self, deviceName: .constant("My iPad"), icon: DevicesView.getIconFromDeviceType(.tablet), connState: .visible),
-                DeviceItemView(deviceId: "5", parent:self, deviceName: .constant("My Apple TV"), icon: DevicesView.getIconFromDeviceType(.appletv), connState: .visible),
-                DeviceItemView(deviceId: "6", deviceName: .constant("Unknown device"), icon: DevicesView.getIconFromDeviceType(.unknown), connState: .visible)
+                DeviceItemView(deviceId: "1", parent: self, deviceName: .constant("My iPhone"), icon: Self.getIconFromDeviceType(.phone), connState: .connected, mockBatteryLevel: 67),
+                DeviceItemView(deviceId: "2", parent: self, deviceName: .constant("My iMac"), icon: Self.getIconFromDeviceType(.desktop), connState: .connected),
+                DeviceItemView(deviceId: "3", parent: self, deviceName: .constant("My MacBook"), icon: Self.getIconFromDeviceType(.laptop), connState: .saved),
+                DeviceItemView(deviceId: "4", parent: self, deviceName: .constant("My iPad"), icon: Self.getIconFromDeviceType(.tablet), connState: .visible),
+                DeviceItemView(deviceId: "5", parent: self, deviceName: .constant("My Apple TV"), icon: Self.getIconFromDeviceType(.appletv), connState: .visible),
+                DeviceItemView(deviceId: "6", deviceName: .constant("Unknown device"), icon: Self.getIconFromDeviceType(.unknown), connState: .visible),
             ]
         case .hundred:
             var deviceIcons = [DeviceItemView]()
             for demoDeviceId in 1...100 {
-                deviceIcons.append(DeviceItemView(deviceId: String(demoDeviceId), parent: self, deviceName: .constant(String(demoDeviceId)), icon: DevicesView.getIconFromDeviceType(.phone), connState: .saved))
+                deviceIcons.append(DeviceItemView(deviceId: String(demoDeviceId), parent: self, deviceName: .constant(String(demoDeviceId)), icon: Self.getIconFromDeviceType(.phone), connState: .saved))
             }
             return deviceIcons
         case .normal:
@@ -94,7 +94,7 @@ struct DevicesView: View {
                     deviceId: key,
                     parent: self,
                     deviceName: .constant(viewModel.connectedDevices[key] ?? "Unknown device"),
-                    icon: DevicesView.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
+                    icon: Self.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
                     connState: .connected
                 ))
             }
@@ -103,7 +103,7 @@ struct DevicesView: View {
                     deviceId: key,
                     parent: self,
                     deviceName: .constant(viewModel.savedDevices[key] ?? "Unknown device"),
-                    icon: DevicesView.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
+                    icon: Self.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
                     connState: .saved
                 ))
             }
@@ -112,7 +112,7 @@ struct DevicesView: View {
                     deviceId: key,
                     parent: self,
                     deviceName: .constant(viewModel.visibleDevices[key] ?? "Unknown device"),
-                    icon: DevicesView.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
+                    icon: Self.getIconFromDeviceType(backgroundService._devices[key]?._deviceInfo.type ?? .unknown),
                     connState: .visible
                 ))
             }

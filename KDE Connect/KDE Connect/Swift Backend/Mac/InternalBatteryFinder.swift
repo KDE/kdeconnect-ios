@@ -20,17 +20,15 @@ public class InternalFinder {
     public init() { }
     
     public var batteryPresent: Bool {
-        get {
-            if !self.internalChecked {
-                let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
-                let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
-                
-                self.hasInternalBattery = sources.count > 0
-                self.internalChecked = true
-            }
+        if !self.internalChecked {
+            let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
+            let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
             
-            return self.hasInternalBattery
+            self.hasInternalBattery = !sources.isEmpty
+            self.internalChecked = true
         }
+        
+        return self.hasInternalBattery
     }
     
     fileprivate func open() {
@@ -64,9 +62,9 @@ public class InternalFinder {
         let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
         let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
         
-        for ps in sources {
+        for source in sources {
             // Fetch the information for a given power source out of our snapshot
-            let info = IOPSGetPowerSourceDescription(snapshot, ps).takeUnretainedValue() as! Dictionary<String, Any>
+            let info = IOPSGetPowerSourceDescription(snapshot, source).takeUnretainedValue() as! [String: Any]
             
             // Pull out the name and capacity
             battery.name = info[kIOPSNameKey] as? String
