@@ -61,7 +61,7 @@ class DeviceInfo: NSObject {
     }
 
     // swiftlint:disable:next force_try
-    private static let validDeviceIdRegex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9_]{32,38}$")
+    private static let validDeviceIdRegex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9_-]{32,38}$")
 
     static func isValidDeviceId(deviceId: String) -> Bool {
         let range = NSRange(location: 0, length: deviceId.utf16.count)
