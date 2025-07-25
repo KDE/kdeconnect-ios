@@ -44,54 +44,56 @@ struct DevicesDetailView: View {
                 }
             }
             .navigationTitle(backgroundService._devices[detailsDeviceId]!._deviceInfo.name)
-            .navigationBarItems(trailing:
-                Menu {
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] as! Bool) {
-                        Button {
-                            (backgroundService._devices[detailsDeviceId]!._plugins[.ping] as! Ping).sendPing()
-                        } label: {
-                            Label("Send Ping", systemImage: "megaphone")
-                        }
-                    }
-                    
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] as! Bool) {
-                        Button {
-                            (backgroundService._devices[detailsDeviceId]!._plugins[.findMyPhoneRequest] as! FindMyPhone).sendFindMyPhoneRequest()
-                        } label: {
-                            Label("Ring Device", systemImage: "bell")
-                        }
-                    }
-                    
-                    Button {
-                        showingPluginSettingsView = true
-                    } label: {
-                        Label("Plugin Settings", systemImage: "dot.arrowtriangles.up.right.down.left.circle")
-                    }
-                    
-                    Button {
-                        alertManager.queueAlert(prioritize: true, title: "Encryption Info") {
-                            Text("SHA256 fingerprint of your device certificate is:\n\(CertificateService.shared.getHostCertificateSHA256HashFormattedString())\n\nSHA256 fingerprint of remote device certificate is: \n\(CertificateService.shared.getRemoteCertificateSHA256HashFormattedString(deviceId: detailsDeviceId))")
-                        }
-                    } label: {
-                        Label("Encryption Info", systemImage: "lock.doc")
-                    }
-                    
-                    Button {
-                        alertManager.queueAlert(prioritize: true, title: "Unpair With Device?") {
-                            Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._deviceInfo.name)?")
-                        } buttons: {
-                            Button("No, Stay Paired", role: .cancel) {}
-                            Button("Yes, Unpair", role: .destructive) {
-                                backgroundService.unpairDevice(detailsDeviceId)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] as! Bool) {
+                            Button {
+                                (backgroundService._devices[detailsDeviceId]!._plugins[.ping] as! Ping).sendPing()
+                            } label: {
+                                Label("Send Ping", systemImage: "megaphone")
                             }
                         }
+                        
+                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] as! Bool) {
+                            Button {
+                                (backgroundService._devices[detailsDeviceId]!._plugins[.findMyPhoneRequest] as! FindMyPhone).sendFindMyPhoneRequest()
+                            } label: {
+                                Label("Ring Device", systemImage: "bell")
+                            }
+                        }
+                        
+                        Button {
+                            showingPluginSettingsView = true
+                        } label: {
+                            Label("Plugin Settings", systemImage: "dot.arrowtriangles.up.right.down.left.circle")
+                        }
+                        
+                        Button {
+                            alertManager.queueAlert(prioritize: true, title: "Encryption Info") {
+                                Text("SHA256 fingerprint of your device certificate is:\n\(CertificateService.shared.getHostCertificateSHA256HashFormattedString())\n\nSHA256 fingerprint of remote device certificate is: \n\(CertificateService.shared.getRemoteCertificateSHA256HashFormattedString(deviceId: detailsDeviceId))")
+                            }
+                        } label: {
+                            Label("Encryption Info", systemImage: "lock.doc")
+                        }
+                        
+                        Button {
+                            alertManager.queueAlert(prioritize: true, title: "Unpair With Device?") {
+                                Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._deviceInfo.name)?")
+                            } buttons: {
+                                Button("No, Stay Paired", role: .cancel) {}
+                                Button("Yes, Unpair", role: .destructive) {
+                                    backgroundService.unpairDevice(detailsDeviceId)
+                                }
+                            }
+                        } label: {
+                            Label("Unpair", systemImage: "wifi.slash")
+                        }
                     } label: {
-                        Label("Unpair", systemImage: "wifi.slash")
+                        Image(systemName: "ellipsis.circle")
                     }
-                } label: {
-                    Image(systemName: "ellipsis.circle")
                 }
-            )
+            }
             .mediaImporter(isPresented: $showingPhotosPicker, allowedMediaTypes: .all, allowsMultipleSelection: true) { result in
                 switch result {
                 case .success(let chosenMediaURLs):

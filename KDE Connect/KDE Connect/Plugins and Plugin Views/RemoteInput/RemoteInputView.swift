@@ -149,66 +149,70 @@ struct RemoteInputView: View {
             }
         }
         .navigationTitle("Remote Input")
-        .navigationBarItems(trailing: HStack {
-            Button(action: toggleKeyboard) {
-                Label("Toggle Keyboard", systemImage: "keyboard")
-            }
-            Menu {
-                Button(action: sendSingleTap) {
-                    Label("Send Single Left Click", systemImage: "cursorarrow.click")
-                }
-                
-                Button(action: sendDoubleTap) {
-                    Label("Send Double Left Click", systemImage: "cursorarrow.click.2")
-                }
-                
-                Button(action: sendRightClick) {
-                    Label("Send Right Click", systemImage: "line.diagonal.arrow")
-                }
-                
-                Button(action: sendSingleHold) {
-                    Label("Send Left Hold", systemImage: "cursorarrow.rays")
-                }
-                
-                Button(action: sendMiddleClick) {
-                    Label("Send Middle Click", systemImage: "square.and.line.vertical.and.square")
-                }
-                
-                Button {
-                    withAnimation {
-                        showingSensitivitySlider.toggle()
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    Button(action: toggleKeyboard) {
+                        Label("Toggle Keyboard", systemImage: "keyboard")
                     }
-                } label: {
-                    Label {
-                        if showingSensitivitySlider {
-                            Text("Hide Sensitivity Slider")
-                        } else {
-                            Text("Show Sensitivity Slider")
+                    Menu {
+                        Button(action: sendSingleTap) {
+                            Label("Send Single Left Click", systemImage: "cursorarrow.click")
                         }
-                    } icon: {
-                        Image(systemName: "cursorarrow.motionlines")
-                    }
-                }
-                
-                Button {
-                    withAnimation {
-                        showingHapticSegmentPicker.toggle()
-                    }
-                } label: {
-                    Label {
-                        if showingHapticSegmentPicker {
-                            Text("Hide Haptics Style Selector")
-                        } else {
-                            Text("Show Haptics Style Selector")
+                        
+                        Button(action: sendDoubleTap) {
+                            Label("Send Double Left Click", systemImage: "cursorarrow.click.2")
                         }
-                    } icon: {
-                        Image(systemName: "cursorarrow.motionlines.click")
+                        
+                        Button(action: sendRightClick) {
+                            Label("Send Right Click", systemImage: "line.diagonal.arrow")
+                        }
+                        
+                        Button(action: sendSingleHold) {
+                            Label("Send Left Hold", systemImage: "cursorarrow.rays")
+                        }
+                        
+                        Button(action: sendMiddleClick) {
+                            Label("Send Middle Click", systemImage: "square.and.line.vertical.and.square")
+                        }
+                        
+                        Button {
+                            withAnimation {
+                                showingSensitivitySlider.toggle()
+                            }
+                        } label: {
+                            Label {
+                                if showingSensitivitySlider {
+                                    Text("Hide Sensitivity Slider")
+                                } else {
+                                    Text("Show Sensitivity Slider")
+                                }
+                            } icon: {
+                                Image(systemName: "cursorarrow.motionlines")
+                            }
+                        }
+                        
+                        Button {
+                            withAnimation {
+                                showingHapticSegmentPicker.toggle()
+                            }
+                        } label: {
+                            Label {
+                                if showingHapticSegmentPicker {
+                                    Text("Hide Haptics Style Selector")
+                                } else {
+                                    Text("Show Haptics Style Selector")
+                                }
+                            } icon: {
+                                Image(systemName: "cursorarrow.motionlines.click")
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
                     }
                 }
-            } label: {
-                Image(systemName: "ellipsis.circle")
             }
-        })
+        }
         .onAppear {
             cursorSensitivityFromSlider = backgroundService._devices[detailsDeviceId]!._cursorSensitivity
             // If new device, give default sensitivity of 3.0

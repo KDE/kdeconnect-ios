@@ -61,35 +61,37 @@ struct PresenterView: View {
             }
         }
         .navigationTitle("Slideshow Remote")
-        .navigationBarItems(trailing:
-            Menu {
-                Button(action: sendGoFullscreenAction) {
-                    Label("Go FullScreen", systemImage: "arrow.up.left.and.arrow.down.right")
-                }
-                
-                Button(action: sendEscapeKey) {
-                    Label("Exit Presentation", systemImage: "arrowshape.turn.up.left")
-                }
-                
-                Button {
-                    withAnimation {
-                        showingSensitivitySlider.toggle()
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Button(action: sendGoFullscreenAction) {
+                        Label("Go FullScreen", systemImage: "arrow.up.left.and.arrow.down.right")
+                    }
+                    
+                    Button(action: sendEscapeKey) {
+                        Label("Exit Presentation", systemImage: "arrowshape.turn.up.left")
+                    }
+                    
+                    Button {
+                        withAnimation {
+                            showingSensitivitySlider.toggle()
+                        }
+                    } label: {
+                        Label {
+                            if showingSensitivitySlider {
+                                Text("Hide Sensitivity Slider")
+                            } else {
+                                Text("Show Sensitivity Slider")
+                            }
+                        } icon: {
+                            Image(systemName: "cursorarrow.motionlines")
+                        }
                     }
                 } label: {
-                    Label {
-                        if showingSensitivitySlider {
-                            Text("Hide Sensitivity Slider")
-                        } else {
-                            Text("Show Sensitivity Slider")
-                        }
-                    } icon: {
-                        Image(systemName: "cursorarrow.motionlines")
-                    }
+                    Image(systemName: "ellipsis.circle")
                 }
-            } label: {
-                Image(systemName: "ellipsis.circle")
             }
-        )
+        }
         .onAppear {
             UIDevice.current.beginGeneratingDeviceOrientationNotifications()
             switch currentBroadcastingDeviceOrientation {

@@ -49,20 +49,24 @@ struct ConfigureDeviceByIPView: View {
             }
         }
         .navigationTitle("Configure Devices By IP")
-        .navigationBarItems(trailing: Button {
-            if let emptyIP = directIPs.first(where: { $0.ip.isEmpty }) {
-                focusedAddressID = emptyIP.id
-            } else {
-                let newAddress = DirectIPaddress(ip: "")
-                withAnimation {
-                    directIPs.append(newAddress)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    if let emptyIP = directIPs.first(where: { $0.ip.isEmpty }) {
+                        focusedAddressID = emptyIP.id
+                    } else {
+                        let newAddress = DirectIPaddress(ip: "")
+                        withAnimation {
+                            directIPs.append(newAddress)
+                        }
+                        // iOS14+FocusState doesn't work if setting focus state inside withAnimation
+                        focusedAddressID = newAddress.id
+                    }
+                } label: {
+                    Image(systemName: "plus")
                 }
-                // iOS14+FocusState doesn't work if setting focus state inside withAnimation
-                focusedAddressID = newAddress.id
             }
-        } label: {
-            Image(systemName: "plus")
-        })
+        }
         .onDisappear(perform: filterAddresses)
         .onAppear {
             directIPs = kdeConnectSettingsForIPConfig.directIPs.map { DirectIPaddress(ip: $0) }

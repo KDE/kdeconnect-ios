@@ -45,9 +45,13 @@ struct RunCommandView: View {
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
         .navigationTitle("Run Command")
 #if !os(macOS)
-        .navigationBarItems(trailing: Button(action: runCommandPlugin.sendSetupPacket) {
-            Image(systemName: "command") // is there a better choice for this? This is a nice reference though I think
-        })
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: runCommandPlugin.sendSetupPacket) {
+                    Image(systemName: "command") // is there a better choice for this? This is a nice reference though I think
+                }
+            }
+        }
 #endif
     }
 }
