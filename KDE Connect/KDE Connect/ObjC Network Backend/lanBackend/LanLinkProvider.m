@@ -44,21 +44,34 @@
 
 
 @interface V8IdentityExchangeDelegate : NSObject <GCDAsyncSocketDelegate>
-@property (nonatomic, strong) LanLinkProvider *lanLinkProvider;
+@property (nonatomic) LanLinkProvider *lanLinkProvider;
+@property (nonatomic) NSString *deviceId;
+@property (nonatomic) NSInteger protocolVersion;
 @end
 @implementation V8IdentityExchangeDelegate
-- (instancetype)init:(LanLinkProvider *)provider {
+- (instancetype)init:(LanLinkProvider *)provider deviceId:(NSString *)deviceId protocolVersion:(NSInteger)protocolVersion {
     if (self = [super init]) {
         _lanLinkProvider = provider;
+        _deviceId = deviceId;
+        _protocolVersion = protocolVersion;
     }
     return self;
 }
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+    [_lanLinkProvider.v8delegates removeObject:self];
     NetworkPacket *secureIdentity = [NetworkPacket unserialize:data];
     if (![DeviceInfo isValidIdentityPacketWithNetworkPacket:secureIdentity]) {
         return;
     }
+    NSString *newDeviceId = [secureIdentity objectForKey:@"deviceId"];
+    NSInteger newProtocolVersion = [secureIdentity integerForKey:@"protocolVersion"];
+    if (_protocolVersion != newProtocolVersion || ![_deviceId isEqualToString:newDeviceId]) {
+        return;
+    }
     [_lanLinkProvider finishAddingSocket:sock forIdentityPacket:secureIdentity];
+}
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
+    [_lanLinkProvider.v8delegates removeObject:self];
 }
 @end
 
@@ -76,7 +89,6 @@
 @property(nonatomic) SecCertificateRef _certificate;
 //@property(nonatomic) NSString * _certificateRequestPEM;
 @property(nonatomic) SecIdentityRef _identity;
-@property(nonatomic) V8IdentityExchangeDelegate* v8IdentityExchangeDelegate;
 @property(nonatomic, retain) MDNSDiscovery *mdnsDiscovery;
 @end
 
@@ -97,13 +109,12 @@
         [_udpSocket close];
         _udpSocket=nil;
         _tcpSocket=nil;
+        _v8delegates = [NSMutableArray arrayWithCapacity:1];
         _pendingSockets=[NSMutableArray arrayWithCapacity:1];
         _pendingNPs = [NSMutableArray arrayWithCapacity:1];
         self.connectedLinks = [NSMutableDictionary dictionaryWithCapacity:1];
         socketQueue=dispatch_queue_create("com.kde.org.kdeconnect.socketqueue", NULL);
-        
-        _v8IdentityExchangeDelegate = [[V8IdentityExchangeDelegate alloc] init:self];
-        
+
         _identity = NULL;
         [self loadSecIdentity];
 
@@ -595,10 +606,13 @@
 
     NetworkPacket* np = (NetworkPacket *)sock.userData;
     NSInteger protocolVersion = [np integerForKey:@"protocolVersion"];
+    NSString *deviceId = [np objectForKey:@"deviceId"];
     if (protocolVersion >= 8) {
+        V8IdentityExchangeDelegate *delegate = [[V8IdentityExchangeDelegate alloc] init:self deviceId:deviceId protocolVersion:protocolVersion];
+        [self.v8delegates addObject:delegate];
         NetworkPacket *myIdentity = [NetworkPacket createIdentityPacket];
         [sock writeData:[myIdentity serialize] withTimeout:0 tag:PACKET_TAG_IDENTITY];
-        [sock setDelegate:_v8IdentityExchangeDelegate]; // the delegate will call finishAddingSocket
+        [sock setDelegate:delegate]; // the delegate will call finishAddingSocket
         [sock readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:0];
     } else {
         [self finishAddingSocket:sock forIdentityPacket:np];

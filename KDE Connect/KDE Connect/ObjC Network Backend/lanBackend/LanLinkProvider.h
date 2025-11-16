@@ -33,7 +33,11 @@
 #import "GCDAsyncUdpSocket.h"
 #import "GCDAsyncSocket.h"
 
+@class V8IdentityExchangeDelegate;
+
 @interface LanLinkProvider : BaseLinkProvider <LinkDelegate, GCDAsyncSocketDelegate, GCDAsyncUdpSocketDelegate>
+
+@property(nonatomic) NSMutableArray<V8IdentityExchangeDelegate *> *v8delegates;
 
 - (LanLinkProvider *)initWithDelegate:(id<LinkProviderDelegate>)linkProviderDelegate;
 
