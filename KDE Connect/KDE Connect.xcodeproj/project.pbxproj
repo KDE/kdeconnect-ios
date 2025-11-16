@@ -1084,7 +1084,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
@@ -1123,7 +1123,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kde.kdeconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
