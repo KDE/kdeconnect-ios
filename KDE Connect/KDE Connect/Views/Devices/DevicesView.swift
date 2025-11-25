@@ -76,10 +76,10 @@ struct DevicesView: View {
                     Image(systemName: "ellipsis.circle")
                 }
             }
-            
-            ToolbarItem(placement: .bottomBar) {
-                discoveryHelpButton
-            }
+        }
+        .bottomOverlay {
+            discoveryHelpButton
+                .padding(.bottom, 8)
         }
     }
     
@@ -234,11 +234,22 @@ struct DevicesView: View {
     }
     
     private var discoveryHelpButton: some View {
-        Button {
+        let button = Button {
             isDeviceDiscoveryHelpPresented = true
         } label: {
             Text("Can't find your devices here?")
                 .foregroundColor(.accentColor)
+        }
+        return Group {
+            if #available(iOS 26.0, *) {
+                button
+                    .buttonStyle(.glass)
+            } else {
+                button
+                    .padding(8)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .clipShape(Capsule())
+            }
         }
     }
     

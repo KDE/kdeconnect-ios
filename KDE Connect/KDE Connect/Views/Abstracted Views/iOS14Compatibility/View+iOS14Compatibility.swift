@@ -197,3 +197,18 @@ extension Text {
         modifier(MonospacedDigits())
     }
 }
+
+@available(iOS, introduced: 14, obsoleted: 15, message: "Delete this extension")
+extension View {
+    @ViewBuilder
+    func bottomOverlay<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
+        if #available(iOS 15, *) {
+            self.overlay(alignment: .bottom, content: content)
+        } else {
+            VStack {
+                Spacer()
+                content()
+            }
+        }
+    }
+}
