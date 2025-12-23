@@ -376,6 +376,9 @@
     // to know me, I send ID Packet to incoming Host via the just established TCP
     //if (([np _Payload] == nil) && ([np PayloadTransferInfo] == nil) && ([np _PayloadSize]) == 0) {
     NetworkPacket *inp = [NetworkPacket createIdentityPacket];
+    NSInteger targetProtocolVersion = [np integerForKey:@"protocolVersion"];
+    [inp setInteger:targetProtocolVersion forKey:@"targetProtocolVersion"];
+    [inp setObject:deviceId forKey:@"targetDeviceId"];
     NSData *inpData = [inp serialize];
     [socket writeData:inpData withTimeout:0 tag:PACKET_TAG_IDENTITY];
     
@@ -479,6 +482,22 @@
                 os_log_with_type(logger, OS_LOG_TYPE_INFO, "lp expecting an id packet instead of %{public}@", np.type);
                 return;
             }
+
+            NSString *targetDeviceId = [np objectForKey:@"targetDeviceId"];
+            NSNumber *targetProtocolVersionNumber = [np objectForKey:@"targetProtocolVersion"];
+            if (targetDeviceId != nil && ![targetDeviceId isEqualToString:[KdeConnectSettings getUUID]]) {
+                os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                                "Received a connection request for a device that isn't me: %{public}@",
+                                targetDeviceId);
+                return;
+            }
+            if (targetProtocolVersionNumber != nil && [targetProtocolVersionNumber integerValue] != [KdeConnectSettings CurrentProtocolVersion]) {
+                os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                                "Received a connection request for a protocol version that isn't mine: %ld",
+                                (long)[targetProtocolVersionNumber integerValue]);
+                return;
+            }
+
             NSString* deviceId=[np objectForKey:@"deviceId"];
             DeviceInfo* deviceInfo = [[self _linkProviderDelegate] getTrustedDeviceInfo:deviceId];
             if (deviceInfo != NULL) {
