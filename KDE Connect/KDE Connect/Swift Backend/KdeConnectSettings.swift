@@ -51,6 +51,7 @@ class KdeConnectSettings: NSObject, ObservableObject {
     
     private static var cachedUuid: String?
 
+    @objc
     static func getUUID() -> String {
         if cachedUuid == nil {
             let group = "5433B4KXM8.org.kde.kdeconnect"

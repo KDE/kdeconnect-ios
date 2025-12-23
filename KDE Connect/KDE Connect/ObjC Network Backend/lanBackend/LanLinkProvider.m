@@ -224,7 +224,8 @@
 
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "sendUdpIdentityPacket");
 
-    NetworkPacket *np = [NetworkPacket createIdentityPacketWithTCPPort:_tcpPort];
+    NetworkPacket *np = [NetworkPacket createIdentityPacket];
+    [np setInteger:_tcpPort forKey:@"tcpPort"];
     NSData *data = [np serialize];
 
     if (includeBroadcast) {
@@ -305,6 +306,15 @@
 //a new device is introducing itself to me
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext
 {
+    NSString *host;
+    uint16_t port;
+    [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
+
+    //deal with id packet, might be ipV6 filtering, need to figure out
+    if ([host hasPrefix:@"::ffff:"]) {
+        os_log_with_type(logger, self.debugLogLevel, "Ignore packet");
+        return;
+    }
     
     // Unserialize received data
     os_log_with_type(logger, self.debugLogLevel,
@@ -319,8 +329,25 @@
         os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:expecting an id packet");
         return;
     }
+
+    NSString* deviceId = [np objectForKey:@"deviceId"];
+
+    // my own packet, ignore
+    NSString* myId = [KdeConnectSettings getUUID];
+    if ([deviceId isEqualToString:myId]){
+        os_log_with_type(logger, self.debugLogLevel, "Ignore my own id packet from %{mask.hash}@:%hu", host, port);
+        return;
+    }
+
+    // Get ready to establish TCP connection to incoming host
+    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:id packet received, creating link and a TCP connection socket");
+    GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
+    uint16_t tcpPort=[np integerForKey:@"tcpPort"];
+    if (tcpPort < MIN_TCP_PORT || tcpPort > MAX_TCP_PORT) {
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "TCP port outside of kdeconnect's range");
+        return;
+    }
     
-    NSString* deviceId=[np objectForKey:@"deviceId"];
     DeviceInfo* deviceInfo = [[self _linkProviderDelegate] getTrustedDeviceInfo:deviceId];
     if (deviceInfo != NULL) {
         NSInteger receivedProtocolVersion = [np integerForKey:@"protocolVersion"];
@@ -330,38 +357,6 @@
         }
     }
 
-    NSString *host;
-    uint16_t port;
-    [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
-
-    //my own packet, don't care
-    NetworkPacket *np2 = [NetworkPacket createIdentityPacketWithTCPPort:_tcpPort];
-    NSString* myId=[[np2 _Body] valueForKey:@"deviceId"];
-    if ([[np objectForKey:@"deviceId"] isEqualToString:myId]){
-        os_log_with_type(logger, self.debugLogLevel, "Ignore my own id packet from %{mask.hash}@:%hu", host, port);
-        return;
-    }
-    
-    //deal with id packet, might be ipV6 filtering, need to figure out
-    if ([host hasPrefix:@"::ffff:"]) {
-        os_log_with_type(logger, self.debugLogLevel, "Ignore packet");
-        return;
-    }
-    
-    // Because we can't tell when another device disconnects from network,
-    // we'll always have to re-attempt connecting to that device whenever
-    // we receive an identity packet, even if it appears connected currently.
-    if ([ConnectedDevicesViewModel isDeviceCurrentlyPairedAndConnected:[np objectForKey:@"deviceId"]]) {
-        os_log_with_type(logger, OS_LOG_TYPE_INFO,
-                         "Received identity packet from %{mask.hash}@, which is already connected (aka paired & reachable), reconnecting",
-                         [np objectForKey:@"deviceName"]);
-    }
-    
-    // Get ready to establish TCP connection to incoming host
-    os_log_with_type(logger, self.debugLogLevel, "LanLinkProvider:id packet received, creating link and a TCP connection socket");
-    GCDAsyncSocket* socket=[[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
-    uint16_t tcpPort=[np integerForKey:@"tcpPort"];
-    
     NSError* error=nil;
     if (![socket connectToHost:host onPort:tcpPort error:&error]) {
         // If TCP connection failed, make new packet with _tcpPort, then broadcast again
@@ -380,11 +375,9 @@
     // Now that TCP is successful, I know the incoming host, now it's time for the incoming host
     // to know me, I send ID Packet to incoming Host via the just established TCP
     //if (([np _Payload] == nil) && ([np PayloadTransferInfo] == nil) && ([np _PayloadSize]) == 0) {
-    // TODO: It seems like only identity packets ever show up here, why? Where is the id packet being sent when a new transfer connection is opened then????? This seems to be the ONLY place where ID packets are sent in TCP?
-    NetworkPacket *inp = [NetworkPacket createIdentityPacketWithTCPPort:_tcpPort];
+    NetworkPacket *inp = [NetworkPacket createIdentityPacket];
     NSData *inpData = [inp serialize];
     [socket writeData:inpData withTimeout:0 tag:PACKET_TAG_IDENTITY];
-    //}
     
     //add to pending connection list
     @synchronized(_pendingSockets) {

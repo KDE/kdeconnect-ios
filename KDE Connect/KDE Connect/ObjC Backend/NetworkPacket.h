@@ -102,7 +102,6 @@ FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeRunCommand;
 
 - (NetworkPacket *) initWithType:(NetworkPacketType)type;
 + (NetworkPacket *) createIdentityPacket;
-+ (NetworkPacket *) createIdentityPacketWithTCPPort:(uint16_t)tcpPort;
 + (NetworkPacket *) createPairRequestPacket:(NSInteger)pairingTimestamp;
 + (NetworkPacket *) createPairAcceptPacket:(BOOL)accept;
 #if TARGET_OS_OSX

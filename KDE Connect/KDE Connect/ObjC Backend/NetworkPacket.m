@@ -71,13 +71,6 @@
     return np;
 }
 
-+ (NetworkPacket *)createIdentityPacketWithTCPPort:(uint16_t)tcpPort
-{
-    NetworkPacket* np=[self createIdentityPacket];
-    [np setInteger:tcpPort forKey:@"tcpPort"];
-    return np;
-}
-
 + (NetworkPacket*) createPairRequestPacket:(NSInteger)pairingTimestamp
 {
     NetworkPacket* np=[[NetworkPacket alloc] initWithType:NetworkPacketTypePair];

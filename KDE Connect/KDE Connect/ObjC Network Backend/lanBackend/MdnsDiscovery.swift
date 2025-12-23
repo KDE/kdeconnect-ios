@@ -127,7 +127,8 @@ public class MDNSDiscovery: NSObject, NetServiceDelegate {
                     switch state {
                     case .ready:
                         Self.logger.info("MDNS sending identity packet to \(result.endpoint.debugDescription)")
-                        let np = NetworkPacket.createIdentityPacket(withTCPPort: self.tcpPort)
+                        let np = NetworkPacket.createIdentity()
+                        np.setInteger(Int(self.tcpPort), forKey: "tcpPort")
                         let data = np.serialize()
                         connection.send(content: data, completion: .contentProcessed { error in
                             if (error != nil) {
