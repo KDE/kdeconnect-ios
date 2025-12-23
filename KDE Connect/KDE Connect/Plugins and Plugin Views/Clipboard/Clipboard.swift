@@ -19,7 +19,7 @@ import AppKit
 #endif
 
 @objc class Clipboard: NSObject, Plugin {
-    static var lastLocalClipboardUpdateTimestamp: Int = 0
+    static var lastLocalClipboardUpdateTimestamp: Int = Int(Date().millisecondsSince1970)
     @objc weak var controlDevice: Device!
     private let logger = Logger()
     
