@@ -27,15 +27,14 @@ struct SettingsView: View {
                     }
                 }
                 
-                NavigationLink(destination: SettingsChosenThemeView(chosenTheme: $kdeConnectSettingsForSettings.chosenTheme)) {
-                    AccessibleHStack {
-                        Label("App Theme", systemImage: "lightbulb")
-                            .labelStyle(.accessibilityTitleOnly)
-                            .accentColor(.primary)
-                        Spacer()
-                        kdeConnectSettingsForSettings.chosenTheme.text
-                            .foregroundColor(.secondary)
+                AccessibleHStack {
+                    Label {
+                        SettingsChosenThemeView(chosenTheme: $kdeConnectSettingsForSettings.chosenTheme)
+                    } icon: {
+                        Image(systemName: "lightbulb")
                     }
+                    .labelStyle(.accessibilityTitleOnly)
+                    .accentColor(.primary)
                 }
                 
                 if UIApplication.shared.supportsAlternateIcons {
