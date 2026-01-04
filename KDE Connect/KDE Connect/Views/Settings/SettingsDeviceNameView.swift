@@ -9,13 +9,19 @@ import SwiftUI
 
 struct SettingsDeviceNameView: View {
     @Binding var deviceName: String
+    @FocusState private var focused = false
     
     var body: some View {
-        VStack {
-            TextField("The name of the device as recognized by KDE Connect", text: $deviceName)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            Spacer()
+        List {
+            Section {
+                TextField("Device name", text: $deviceName)
+                    .focused($focused)
+            } footer: {
+                Text("The name of the device as recognized by KDE Connect")
+            }
+        }
+        .onAppear {
+            focused = true
         }
         .navigationTitle("Device Name")
     }
