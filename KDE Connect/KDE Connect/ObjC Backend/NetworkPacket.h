@@ -49,10 +49,12 @@
 // #define PACKET_TAG_REMINDER    12
 #define PACKET_TAG_CONTACT     13 
 
-#define UDP_PORT                1716
-#define PORT                    1716    /* Fallback */
-#define MIN_TCP_PORT            1716
-#define MAX_TCP_PORT            1764
+#define UDP_PORT                 1716
+#define PORT                     1716    /* Fallback */
+#define MIN_TCP_PORT             1716
+#define MAX_TCP_PORT             1764
+#define MAX_IDENTITY_PACKET_SIZE 8192
+#define MAX_PACKET_SIZE          32 * 1024 * 1024
 
 #pragma mark - Packet Types
 

@@ -424,7 +424,7 @@
     }
     long index=[_pendingSockets indexOfObject:newSocket];
     //retrieve id packet
-    [newSocket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:index];
+    [newSocket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 maxLength:MAX_IDENTITY_PACKET_SIZE tag:index];
 }
 
 /**
@@ -625,7 +625,7 @@
         NetworkPacket *myIdentity = [NetworkPacket createIdentityPacket];
         [sock writeData:[myIdentity serialize] withTimeout:0 tag:PACKET_TAG_IDENTITY];
         [sock setDelegate:delegate]; // the delegate will call finishAddingSocket
-        [sock readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:0];
+        [sock readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 maxLength:MAX_IDENTITY_PACKET_SIZE tag:0];
     } else {
         [self finishAddingSocket:sock forIdentityPacket:np];
     }

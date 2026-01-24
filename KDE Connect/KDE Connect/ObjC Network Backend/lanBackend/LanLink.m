@@ -193,7 +193,7 @@
     os_log_with_type(logger, OS_LOG_TYPE_INFO,
                      "new lan link socket for device:%{mask.hash}@ configured",
                      [self _deviceInfo].id);
-    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKET_TAG_NORMAL];
+    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 maxLength:MAX_PACKET_SIZE tag:PACKET_TAG_NORMAL];
 }
 
 - (void) disconnect
@@ -287,7 +287,7 @@
     
     os_log_with_type(logger, self.debugLogLevel, "llink did read data");
     // BUG even if we read with a separator LFData, it's still possible to receive several data packet together. So we split the string and retrieve the packet
-    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 tag:PACKET_TAG_NORMAL];
+    [_socket readDataToData:[GCDAsyncSocket LFData] withTimeout:-1 maxLength:MAX_PACKET_SIZE tag:PACKET_TAG_NORMAL];
     NSString * jsonStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "Received: %{public}@", jsonStr);
     [self readThroughLatestPackets:sock :jsonStr];
