@@ -186,7 +186,7 @@ struct DeviceItemView: View {
                             }
                         }
                     } else if self.connState == .connected {
-                        Button("Plugins if reachable") {}.disabled(true)
+                        Button("Plugins If Reachable") {}.disabled(true)
                     }
                 } else {
                     Button("Pair") {

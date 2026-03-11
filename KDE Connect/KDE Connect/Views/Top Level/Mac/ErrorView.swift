@@ -19,7 +19,7 @@ struct ErrorView: View {
             Spacer()
             Text("Error Occured").font(.largeTitle)
             Spacer()
-            Text("Reason: " + self.reason)
+            Text("Reason: \(self.reason)")
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

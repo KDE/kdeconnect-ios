@@ -33,7 +33,7 @@ struct ConfigureDeviceByIPView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Direct Handshake Devices"), footer: Text("Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery")) {
+            Section(header: Text("Direct Handshake Devices"), footer: Text("Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery.")) {
                 ForEach($directIPs) { $address in
                     TextField("Device IP", text: $address.ip)
                         .focused($focusedAddressID, equals: address.id)
