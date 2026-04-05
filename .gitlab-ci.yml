@@ -7,20 +7,17 @@
 # Lifted from: https://about.gitlab.com/2016/03/10/setting-up-gitlab-ci-for-ios-projects/
 # This file assumes an own GitLab CI runner, setup on a macOS system.
 stages:
-  - test
+  - build
 #   - archive
 
-test:
-  stage: test
+build:
+  stage: build
   script:
-    # change working directory to the one containing Xcode project
     - cd 'KDE Connect'
-    # build the project. We can't run the tests because that requires a signed build.
-    # FIXME: remove `arch -arm64` when GitLab CI supports running natively on M1 Macs
     # List available "destinations" with: xcrun simctl list
     # skipPackagePluginValidation skips running SwiftLintPlugin, which is not available in the CI
-    - arch -arm64 xcodebuild build -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
-      -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=17.0'
+    - xcodebuild build -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
+      -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest'
       -skipPackagePluginValidation CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
   tags:
     - macOS
