@@ -86,7 +86,7 @@ import SwiftUI
     }
     
     private func processCommandsDict(_ commandsDict: CommandsDictionary) -> [CommandEntry] {
-        return commandsDict.compactMap { commandKey, commandInfo in
+        let entries = commandsDict.compactMap { commandKey, commandInfo in
             if let commandName = commandInfo["name"],
                let command = commandInfo["command"] {
                 let commandEntry = CommandEntry(name: commandName, command: command, key: commandKey)
@@ -96,5 +96,6 @@ import SwiftUI
                 return nil
             }
         }
+        return entries.sorted { $0.name == $1.name ? $0.key < $1.key : $0.name < $1.name }
     }
 }
