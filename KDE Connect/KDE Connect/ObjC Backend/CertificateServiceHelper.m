@@ -20,6 +20,7 @@
 #include <openssl/x509.h>
 #include <openssl/rsa.h>
 #include <openssl/evp.h>
+#include <openssl/provider.h>
 
 #import "KDE_Connect-Swift.h"
 
@@ -127,17 +128,50 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
 
     // Create p12 format data
     PKCS12 *p12 = NULL;
-#if !TARGET_OS_OSX
-    p12 = PKCS12_create(/* password */ "", /* name */ "KDE Connect", pkey, x509,
-                        /* ca */ NULL, /* nid_key */ 0, /* nid_cert */ 0,
-                        /* iter */ 0, /* mac_iter */ PKCS12_DEFAULT_ITER, /* keytype */ 0);
-#else
-    p12 = PKCS12_create(/* password */ NULL, /* name */ "KDE Connect", pkey, x509,
-                        /* ca */ NULL, /* nid_key */ 0, /* nid_cert */ 0,
-                        /* iter */ 0, /* mac_iter */ PKCS12_DEFAULT_ITER, /* keytype */ 0);
+    const char *p12Password = "";
+#if TARGET_OS_OSX
+    p12Password = NULL;
 #endif
-    if(!p12) {
-        @throw [[NSException alloc] initWithName:@"Fail getP12File" reason:@"Error creating PKCS#12 structure" userInfo:nil];
+    
+    if (@available(iOS 18.0, *)) {
+        // This generation with default parameters was carried over from KDE Connect iOS 2018+
+        p12 = PKCS12_create(/* password */ p12Password, /* name */ "KDE Connect", pkey, x509,
+                            /* ca */ NULL, /* nid_key */ 0, /* nid_cert */ 0,
+                            /* iter */ 0, /* mac_iter */ PKCS12_DEFAULT_ITER, /* keytype */ 0);
+        if (!p12) {
+            @throw [[NSException alloc] initWithName:@"Fail getP12File" reason:@"Error creating PKCS#12 structure (iOS 18+ parameters)" userInfo:nil];
+        }
+    } else { // if iOS version is 17 and below
+        // Why we need to use OpenSSL legacy providers: https://developer.apple.com/forums/thread/723242?answerId=748776022#748776022
+        // Otherwise <=iOS 17 will not work with OpenSSL v3
+        OSSL_PROVIDER *legacyProvider = OSSL_PROVIDER_load(NULL, "legacy");
+        OSSL_PROVIDER *defaultProvider = OSSL_PROVIDER_load(NULL, "default");
+        
+        if (!legacyProvider) {
+            os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Failed to load OpenSSL legacy provider — PKCS12 import will fail on iOS ≤17");
+        }
+            
+        // Create p12 format data using legacy algorithms rather than defaults for OpenSSL v3
+        p12 = PKCS12_create_ex(p12Password, "KDE Connect", pkey, x509,
+                               /* ca */ NULL,
+                               NID_pbe_WithSHA1And3_Key_TripleDES_CBC,
+                               NID_pbe_WithSHA1And40BitRC2_CBC,
+                               PKCS12_DEFAULT_ITER, /* mac_iter */ -1, /* keytype */ 0,
+                               /* libctx */ NULL, /* propq */ NULL);
+            
+            if (!p12) {
+                OSSL_PROVIDER_unload(legacyProvider);
+                OSSL_PROVIDER_unload(defaultProvider);
+                @throw [[NSException alloc] initWithName:@"Fail getP12File" reason:@"Error creating PKCS#12 structure (iOS <=17 parameters with OpenSSL legacy modules)" userInfo:nil];
+            }
+            
+            // Explicitly set SHA-1 MAC (this is a iOS <=17 OpenSSL legacy modules exclusive step)
+            if (1 != PKCS12_set_mac(p12, p12Password, -1, NULL, 0, PKCS12_DEFAULT_ITER, EVP_sha1())) {
+                os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Failed to set P12 MAC (iOS <=17 OpenSSL Legacy exclusive step: %@", getSslError());
+            }
+            
+            OSSL_PROVIDER_unload(legacyProvider);
+            OSSL_PROVIDER_unload(defaultProvider);
     }
 
     // Write into `tmp/rsaPrivate.p12`
@@ -159,7 +193,6 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     PKCS12_free(p12);
     fclose(p12File);
     [outputFileHandle closeFile];
-    
     EVP_PKEY_free(pkey);
     
     // Read as NSData
