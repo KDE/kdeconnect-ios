@@ -9,7 +9,7 @@
 
 import Foundation
 import UserNotifications
-import SwiftUICore
+import SwiftUI
 
 class NotificationManager: ObservableObject {
     static let categories: Set<UNNotificationCategory> = {

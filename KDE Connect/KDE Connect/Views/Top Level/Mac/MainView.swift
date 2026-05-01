@@ -72,9 +72,9 @@ struct MainView: View {
                     }
                 }
             }
-            .refreshable {
+            .refreshable(action: {
                 refreshDiscoveryAndList()
-            }
+            })
             .onAppear {
                 self.disabledSingletonConflict = Self.mainViewSingleton != nil
                 if !self.disabledSingletonConflict {

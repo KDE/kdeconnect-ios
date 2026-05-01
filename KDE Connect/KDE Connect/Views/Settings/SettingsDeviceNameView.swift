@@ -9,8 +9,15 @@ import SwiftUI
 
 struct SettingsDeviceNameView: View {
     @Binding var deviceName: String
-    @FocusState private var focused = false
-    
+    // iOS14+FocusState.swift: aliases FocusState to SwiftUI.State
+    // macOS: real SwiftUI.FocusState
+#if os(macOS)
+    @FocusState var focused: Bool
+#else
+    @FocusState var focused = false
+#endif
+
+
     var body: some View {
         List {
             Section {

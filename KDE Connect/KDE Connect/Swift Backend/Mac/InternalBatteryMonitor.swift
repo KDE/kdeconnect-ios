@@ -36,8 +36,8 @@ class BatteryInfo {
             stopNotificationSource()
         }
         notificationSource = IOPSNotificationCreateRunLoopSource({ _ in
-            Self.shared.observers.forEach { _, value in
-                value.observer?.batteryInfo(didChange: Self.shared)
+            BatteryInfo.shared.observers.forEach { _, value in
+                value.observer?.batteryInfo(didChange: BatteryInfo.shared)
             }
         }, nil).takeRetainedValue() as CFRunLoopSource
         CFRunLoopAddSource(CFRunLoopGetCurrent(), notificationSource, .defaultMode)
