@@ -203,12 +203,16 @@ extension View {
     @ViewBuilder
     func bottomOverlay<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
         if #available(iOS 15, *) {
-            self.overlay(alignment: .bottom, content: content)
-        } else {
-            VStack {
-                Spacer()
+            self.safeAreaInset(edge: .bottom, alignment: .center, spacing: 0) {
                 content()
             }
+        } else {
+            self.overlay(
+                VStack {
+                    Spacer()
+                    content()
+                }
+            )
         }
     }
 }
