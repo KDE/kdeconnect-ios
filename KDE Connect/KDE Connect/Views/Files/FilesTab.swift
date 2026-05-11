@@ -20,7 +20,6 @@ struct FilesTab: View {
     @EnvironmentObject private var kdeConnectSettings: KdeConnectSettings
     
     @State private var photoLibraryAuthorizationStatus: PHAuthorizationStatus = .notDetermined
-    @State private var category: Category = .receiving
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.openURL) private var openURL
@@ -36,11 +35,6 @@ struct FilesTab: View {
     var body: some View {
         NavigationView {
             list
-                .toolbar {
-                    if horizontalSizeClass != .regular {
-                        categoryPicker
-                    }
-                }
                 .navigationTitle("File Transfers")
                 .onAppear {
                     updateAuthorizationStatus()
@@ -53,7 +47,7 @@ struct FilesTab: View {
                 }
             
             List {
-                FileTransferStatusOverview(category: category)
+                overviews
                 
                 if #available(iOS 15, *) {
                     // To keep the background color consistent
@@ -61,11 +55,6 @@ struct FilesTab: View {
                     Spacer()
                         .listRowBackground(Color.clear)
                 } // no workaround needed for iOS 14
-            }
-            .toolbar {
-                if horizontalSizeClass == .regular {
-                    categoryPicker
-                }
             }
             .navigationTitle("Status")
         }
@@ -89,21 +78,16 @@ struct FilesTab: View {
         List {
             additions
             
-            FileTransferStatusOverview(category: category)
+            overviews
         }
         .listStyle(.insetGrouped)
     }
     
-    var categoryPicker: some View {
-        Picker("Category", selection: $category) {
-            Text("Receiving")
-                .tag(Category.receiving)
-            Text("Sending")
-                .tag(Category.sending)
-            Text("Errored")
-                .tag(Category.errored)
-        }
-        .pickerStyle(.segmented)
+    @ViewBuilder
+    var overviews: some View {
+        FileTransferStatusOverview(category: .receiving)
+        FileTransferStatusOverview(category: .sending)
+        FileTransferStatusOverview(category: .errored)
     }
     
     @ViewBuilder

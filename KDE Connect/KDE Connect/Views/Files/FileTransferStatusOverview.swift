@@ -17,11 +17,33 @@ struct FileTransferStatusOverview: View {
     private var connectedDevicesIds: [String] {
         viewModel.connectedDevices.keys.sorted()
     }
+    
+    private func hasAny(_ keyPath: KeyPath<Share, some Collection>) -> Bool {
+        connectedDevicesIds.contains { deviceID in
+            guard let device = backgroundService._devices[deviceID],
+                  device._pluginsEnableStatus[.share] as? Bool == true,
+                  let share = device._plugins[.share] as? Share
+            else { return false }
+            return !share[keyPath: keyPath].isEmpty
+        }
+    }
+    
+    private var hasReceivingFiles: Bool {
+        hasAny(\.currentFilesReceiving.keys)
+    }
+    
+    private var hasSendingFiles: Bool {
+        hasAny(\.currentFilesSending.keys)
+    }
+    
+    private var hasFilesWaitingToSend: Bool {
+        hasAny(\.filesToSend)
+    }
 
     var body: some View {
-        Section {
-            switch category {
-            case .receiving:
+        switch category {
+        case .receiving where hasReceivingFiles:
+            Section {
                 ObservingForEachShare(ofDeviceWithIDs: connectedDevicesIds) { deviceID, share in
                     ForEach(share.currentFilesReceiving.values) { file in
                         FileTransferStatus(file: file) {
@@ -33,7 +55,11 @@ struct FileTransferStatusOverview: View {
                         }
                     }
                 }
-            case .sending:
+            } header: {
+                Text("Receiving")
+            }
+        case .sending where hasSendingFiles:
+            Section {
                 ObservingForEachShare(ofDeviceWithIDs: connectedDevicesIds) { deviceID, share in
                     ForEach(share.currentFilesSending.values) { file in
                         FileTransferStatus(file: file) {
@@ -45,27 +71,31 @@ struct FileTransferStatusOverview: View {
                         }
                     }
                 }
-            case .errored:
-                EmptyView()
+            } header: {
+                Text("Sending")
             }
+        default:
+            EmptyView()
         }
         
         switch category {
-        case .receiving:
-            EmptyView()
-        case .sending:
-            ObservingForEachShare(ofDeviceWithIDs: connectedDevicesIds) { deviceID, share in
-                if !share.filesToSend.isEmpty {
-                    Section {
+        case .sending where hasFilesWaitingToSend:
+            Section {
+                ObservingForEachShare(ofDeviceWithIDs: connectedDevicesIds) { deviceID, share in
+                    if !share.filesToSend.isEmpty {
                         ForEach(share.filesToSend) { file in
-                            FileTransferStatus(file: file)
-                        }
-                    } header: {
-                        if let name = viewModel.connectedDevices[deviceID] {
-                            Text("Waiting to send to \(name)")
+                            FileTransferStatus(file: file) {
+                                if let name = viewModel.connectedDevices[deviceID] {
+                                    Text("To \(Text(name).bold())")
+                                        .foregroundColor(.secondary)
+                                        .font(.caption)
+                                }
+                            }
                         }
                     }
                 }
+            } header: {
+                Text("Waiting to send")
             }
         case .errored:
             ObservingForEachShare(ofDeviceWithIDs: connectedDevicesIds) { deviceID, share in
@@ -99,6 +129,8 @@ struct FileTransferStatusOverview: View {
                     }
                 }
             }
+        default:
+            EmptyView()
         }
     }
 }
