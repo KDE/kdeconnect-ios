@@ -153,7 +153,7 @@ struct DevicesDetailView: View {
                     Button {
                         (backgroundService._devices[detailsDeviceId]!._plugins[.clipboard] as! Clipboard).sendClipboardContentOut()
                     } label: {
-                        Label("Push Local Clipboard", systemImage: "square.and.arrow.up.on.square.fill")
+                        Label("Push Local Clipboard", systemImage: "arrow.up.doc.on.clipboard")
                     }
                     .accentColor(.primary)
                 }
