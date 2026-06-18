@@ -427,7 +427,7 @@
 // This gets called when a saved device comes back online, AND when initially pairing
 // So we need to deal with 2 possibilities here:
 
-// TODO: when shouldTrustPeer gets called, there are 2 possibilities:
+// TODO: when didReceiveTrust gets called, there are 2 possibilities:
 // 1. If device is new/never been paired before, just trust it
 // 2. If device's been paired before, check for the already stored certificate to check whether
 // its signature matches that of the device trying to connect
