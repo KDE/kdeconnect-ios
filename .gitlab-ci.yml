@@ -13,7 +13,6 @@ stages:
 build:
   stage: build
   script:
-    - cd 'KDE Connect'
     # List available "destinations" with: xcrun simctl list
     # skipPackagePluginValidation skips running SwiftLintPlugin, which is not available in the CI
     - xcodebuild build -project 'KDE Connect.xcodeproj' -scheme 'KDE Connect'
