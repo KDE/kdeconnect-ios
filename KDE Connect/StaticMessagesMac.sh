@@ -5,6 +5,7 @@
 
 # The name of catalog we create (without the .pot extension), sourced from the scripty scripts
 FILENAME="kdeconnect-ios"
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 PROJECT="KDE Connect.xcodeproj"
 SCHEME="KDE Connect"
@@ -70,6 +71,14 @@ function export_pot_file # First parameter will be the path of the pot file we h
     mkdir -p "$(dirname "$potfile")" && \
         msgcat --use-first --output-file="$potfile" "$workdir"/*.pot
     local status=$?
+    if [ "$status" -eq 0 ]; then
+        while IFS= read -r -d '' xlf; do
+            python3 "$SCRIPT_DIR/scripts/preserve_xliff_notes.py" "$xlf" "$potfile" || {
+                status=$?
+                break
+            }
+        done < <(find "$workdir" -type f \( -name '*.xliff' -o -name '*.xlf' \) -print0)
+    fi
     rm -rf "$workdir"
     return "$status"
 }
