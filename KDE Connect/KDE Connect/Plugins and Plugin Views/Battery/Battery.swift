@@ -130,39 +130,20 @@ import AppKit
     }
     
     var statusSFSymbolName: String {
-        if #available(iOS 15.0, macOS 12.0, *) {
-            // Use SF Symbols 3 battery icons
-            let level = remoteChargeLevel
-            let baseIcon: String
-            if remoteThresholdEvent == 1 || level < 13 {
-                baseIcon = "battery.0"
-            } else if level < 38 {
-                baseIcon = "battery.25"
-            } else if level < 63 {
-                baseIcon = "battery.50"
-            } else if level < 88 {
-                baseIcon = "battery.75"
-            } else {
-                baseIcon = "battery.100"
-            }
-            if remoteIsCharging {
-                return baseIcon + ".bolt"
-            }
-            return baseIcon
+        let level = remoteChargeLevel
+        let baseIcon: String
+        if remoteThresholdEvent == 1 || level < 13 {
+            baseIcon = "battery.0"
+        } else if level < 38 {
+            baseIcon = "battery.25"
+        } else if level < 63 {
+            baseIcon = "battery.50"
+        } else if level < 88 {
+            baseIcon = "battery.75"
         } else {
-            // Fallback for iOS 14 and earlier (limited battery icon options)
-            if remoteThresholdEvent == 1 || remoteChargeLevel < 10 {
-                return "battery.0"
-            } else if remoteIsCharging {
-                return "battery.100.bolt"
-            } else if remoteChargeLevel >= 40 {
-                return "battery.100"
-            } else if remoteChargeLevel < 40 {
-                return "battery.25"
-            } else {
-                return "camera.metering.unknown"
-            }
+            baseIcon = "battery.100"
         }
+        return remoteIsCharging ? baseIcon + ".bolt" : baseIcon
     }
     
     var statusColor: Color {

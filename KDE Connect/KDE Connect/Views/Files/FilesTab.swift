@@ -54,7 +54,7 @@ struct FilesTab: View {
                     // when there are no transfers going on...
                     Spacer()
                         .listRowBackground(Color.clear)
-                } // no workaround needed for iOS 14
+                }
             }
             .navigationTitle("Status")
         }

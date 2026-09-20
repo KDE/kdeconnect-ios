@@ -114,22 +114,11 @@ struct SettingsAboutView: View {
             .foregroundColor(.primary)
 
             Section(header: Text("Contributors")) {
-                if #available(iOS 15, *) {
-                    // markdown is actually static text and should always succeed in conversion
-                    // swiftlint:disable force_try
-                    Text("Currently maintained by \(try! AttributedString(markdown: getContributorListText(for: .maintainers)))")
-                    Text("Also written by \(try! AttributedString(markdown: getContributorListText(for: .authors)))")
-                    // swiftlint:enable force_try
-                } else {
-                    Text(getContributorListAttributedTextWrapper(for: .maintainers).string)
-                        .opacity(0.0)
-                        .accessibilityHidden(true)
-                        .overlay(iOS14CompatibleTextView(getContributorListAttributedTextWrapper(for: .maintainers)))
-                    Text(getContributorListAttributedTextWrapper(for: .authors).string)
-                        .opacity(0.0)
-                        .accessibilityHidden(true)
-                        .overlay(iOS14CompatibleTextView(getContributorListAttributedTextWrapper(for: .authors)))
-                }
+                // Markdown is static text and should always succeed in conversion.
+                // swiftlint:disable force_try
+                Text("Currently maintained by \(try! AttributedString(markdown: getContributorListText(for: .maintainers)))")
+                Text("Also written by \(try! AttributedString(markdown: getContributorListText(for: .authors)))")
+                // swiftlint:enable force_try
             }
 
             Section(header: Text("Third-Party Libraries")) {
@@ -164,53 +153,6 @@ struct SettingsAboutView: View {
         return ListFormatter.localizedString(byJoining: list)
     }
 
-    @available(iOS, deprecated: 15, message:
-            """
-            Manually generated attributed text should only be used for backwards compatibility with iOS 14.
-            iOS 15 should follow the new convention of using Text() supporting Markdown attributes.
-            """
-    )
-    func getContributorListAttributedText(template: String, for category: Contributors) -> NSAttributedString {
-        let contributors = category.identities
-        let contributorNames = contributors.map {
-            $0.name
-        }
-        let textAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.preferredFont(forTextStyle: .body),
-            .foregroundColor: UIColor.label,
-        ]
-        let contributorsJoinedString = ListFormatter.localizedString(byJoining: contributorNames)
-        let contributorsListAttributedText = NSMutableAttributedString(string: String(format: template, contributorsJoinedString), attributes: textAttributes)
-        // can be optimized to O(n) by a more complicated way
-        // Swift String indices: https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html#ID494
-        for contributor in contributors {
-            let linkAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.preferredFont(forTextStyle: .body),
-                .foregroundColor: UIColor.link,
-                .link: kdeInvent + contributor.kde,
-            ]
-            let range = (contributorsListAttributedText.string as NSString).range(of: contributor.name)
-            contributorsListAttributedText.setAttributes(linkAttributes, range: range)
-        }
-        return contributorsListAttributedText
-    }
-
-    @available(iOS, deprecated: 15, message:
-            """
-            Manually generated attributed text should only be used for backwards compatibility with iOS 14.
-            iOS 15 should follow the new convention of using Text() supporting Markdown attributes.
-            """
-    )
-    func getContributorListAttributedTextWrapper(for category: Contributors) -> NSAttributedString {
-        let template: String
-        switch category {
-        case .maintainers:
-            template = NSLocalizedString("Currently maintained by %@", comment: "maintainer localized string")
-        case .authors:
-            template = NSLocalizedString("Also written by %@", comment: "author localized string")
-        }
-        return getContributorListAttributedText(template: template, for: category)
-    }
 }
 
 struct SettingsAboutView_Previews: PreviewProvider {

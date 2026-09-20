@@ -41,8 +41,6 @@ struct ConfigureDeviceByIPView: View {
                             withAnimation {
                                 filterAddresses()
                             }
-                            // filtering on iOS 14 will crash the app, and this
-                            // back-port of onSubmit does nothing on iOS 14.
                         }
                 }
                 .onDelete(perform: deleteAddress)
@@ -59,7 +57,6 @@ struct ConfigureDeviceByIPView: View {
                         withAnimation {
                             directIPs.append(newAddress)
                         }
-                        // iOS14+FocusState doesn't work if setting focus state inside withAnimation
                         focusedAddressID = newAddress.id
                     }
                 } label: {

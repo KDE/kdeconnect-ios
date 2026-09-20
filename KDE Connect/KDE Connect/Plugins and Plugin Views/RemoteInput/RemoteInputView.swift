@@ -18,7 +18,7 @@ import SwiftUI
 
 struct RemoteInputView: View {
     @Environment(\.colorScheme) var colorScheme
-    @FocusState private var keyboardFocus: Bool = false
+    @FocusState private var keyboardFocus: Bool
     let detailsDeviceId: String
     @State private var previousHorizontalDragOffset: Float = 0.0
     @State private var previousVerticalDragOffset: Float = 0.0

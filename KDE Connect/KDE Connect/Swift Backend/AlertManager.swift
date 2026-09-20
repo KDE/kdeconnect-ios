@@ -12,7 +12,7 @@ import Combine
 struct AlertContent {
     let title: LocalizedStringKey
     @ViewBuilder let content: () -> Text?
-    @AlertActionBuilder let buttons: () -> AlertActionBuilder.Buttons?
+    let buttons: () -> AnyView
 }
 
 /**
@@ -37,7 +37,7 @@ class AlertManager: ObservableObject {
     @Published var currentAlert: AlertContent = AlertContent(
         title: "",
         content: { Text("") },
-        buttons: { }
+        buttons: { AnyView(EmptyView()) }
     )
     
     private var cancellables = Set<AnyCancellable>()
@@ -65,16 +65,21 @@ class AlertManager: ObservableObject {
      - content: Content (message) of the alert.
      - buttons: Buttons for the alert.
      */
-    func queueAlert(
+    func queueAlert<Actions: View>(
         prioritize: Bool = false,
         title: LocalizedStringKey,
         @ViewBuilder content: @escaping () -> Text?,
-        @AlertActionBuilder buttons: @escaping () -> AlertActionBuilder.Buttons? = { nil }
+        @ViewBuilder buttons: @escaping () -> Actions = { EmptyView() }
     ) {
+        let alert = AlertContent(
+            title: title,
+            content: content,
+            buttons: { AnyView(buttons()) }
+        )
         if prioritize {
-            queue.insert(AlertContent(title: title, content: content, buttons: buttons), at: 0)
+            queue.insert(alert, at: 0)
         } else {
-            queue.append(AlertContent(title: title, content: content, buttons: buttons))
+            queue.append(alert)
         }
         if !alertPresent {
             currentAlert = queue.removeFirst()

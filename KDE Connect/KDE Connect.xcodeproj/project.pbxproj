@@ -28,7 +28,6 @@
 		53A92E6D27ED4F4F0085A10C /* SystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A92E6C27ED4F4F0085A10C /* SystemSound.swift */; };
 		5EA4114427960C1C0044C559 /* libs.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114227960C1C0044C559 /* libs.json */; };
 		5EA4114627960D0B0044C559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4114527960D0B0044C559 /* Assets.xcassets */; };
-		5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */; };
 		5EFA051C279432CA009C91D2 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */; };
 		5EFFF3082D1B6F3000A3EFCA /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3032D1B6F3000A3EFCA /* InternalBattery.swift */; };
 		5EFFF3092D1B6F3000A3EFCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFFF3022D1B6F3000A3EFCA /* AppDelegate.swift */; };
@@ -43,7 +42,6 @@
 		A01FDD2D26C62E180014B165 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2C26C62E170014B165 /* Share.swift */; };
 		A01FDD2F26C6FD110014B165 /* FindMyPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */; };
 		A01FDD3126C701360014B165 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FDD3026C701360014B165 /* Battery.swift */; };
-		A09CFCDF2737195E007008A6 /* View+iOS14Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */; };
 		A0A04430267BF38700CC21DD /* KDE_Connect_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0442F267BF38700CC21DD /* KDE_Connect_App.swift */; };
 		A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A04431267BF38700CC21DD /* MainTabView.swift */; };
 		A0A04437267BF38A00CC21DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A04436267BF38A00CC21DD /* Preview Assets.xcassets */; };
@@ -80,7 +78,6 @@
 		D20FF56727C77E0F00E347F7 /* AccessibleHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */; };
 		D21A100829B878B800CE02F8 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D21A100729B878B800CE02F8 /* OrderedCollections */; };
 		D2423C3C29148B0200616D70 /* FileTransferStatusSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2423C3B29148B0200616D70 /* FileTransferStatusSection.swift */; };
-		D2423C402914979B00616D70 /* iOS14+TextFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2423C3F2914979B00616D70 /* iOS14+TextFormat.swift */; };
 		D24FFB4D29E76E8500604DA4 /* FilesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FFB4C29E76E8500604DA4 /* FilesTab.swift */; };
 		D24FFB4F29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FFB4E29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift */; };
 		D264C2DB27C8667800BD8AFB /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */; };
@@ -101,7 +98,6 @@
 		D2F7776627C99760008F20A1 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */; };
 		D2FAF12727D2E78900658753 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2FAF12627D2E78900658753 /* Introspect */; };
 		D2FBA1F9277179A300EBA686 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = D2FBA1F8277179A300EBA686 /* CocoaAsyncSocket */; };
-		DB8E559E2815961200101059 /* iOS14+FocusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E559D2815961200101059 /* iOS14+FocusState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,7 +146,6 @@
 		53A92E6C27ED4F4F0085A10C /* SystemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSound.swift; sourceTree = "<group>"; };
 		5EA4114227960C1C0044C559 /* libs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = libs.json; sourceTree = "<group>"; };
 		5EA4114527960D0B0044C559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS14CompatibleTextView.swift; sourceTree = "<group>"; };
 		5EFA051B279432CA009C91D2 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
 		5EFFF3022D1B6F3000A3EFCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EFFF3032D1B6F3000A3EFCA /* InternalBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
@@ -168,7 +163,6 @@
 		A01FDD2E26C6FD110014B165 /* FindMyPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyPhone.swift; sourceTree = "<group>"; };
 		A01FDD3026C701360014B165 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		A034ADA726BF32F500A7CC70 /* KDE Connect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KDE Connect.entitlements"; sourceTree = "<group>"; };
-		A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+iOS14Compatibility.swift"; sourceTree = "<group>"; };
 		A0A0442C267BF38700CC21DD /* KDE Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KDE Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0442F267BF38700CC21DD /* KDE_Connect_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDE_Connect_App.swift; sourceTree = "<group>"; };
 		A0A04431267BF38700CC21DD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -211,7 +205,6 @@
 		D20FF56427C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityTitleOnlyLabelStyle.swift; sourceTree = "<group>"; };
 		D20FF56627C77E0F00E347F7 /* AccessibleHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleHStack.swift; sourceTree = "<group>"; };
 		D2423C3B29148B0200616D70 /* FileTransferStatusSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferStatusSection.swift; sourceTree = "<group>"; };
-		D2423C3F2914979B00616D70 /* iOS14+TextFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+TextFormat.swift"; sourceTree = "<group>"; };
 		D24FFB4C29E76E8500604DA4 /* FilesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesTab.swift; sourceTree = "<group>"; };
 		D24FFB4E29E7854000604DA4 /* OpenReceivedDocumentsFolderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenReceivedDocumentsFolderButton.swift; sourceTree = "<group>"; };
 		D264C2DA27C8667800BD8AFB /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
@@ -232,7 +225,6 @@
 		D2E60C4029FDB06000502F07 /* SetupFileTransfersForUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupFileTransfersForUITests.swift; sourceTree = "<group>"; };
 		D2F7776427C9970E008F20A1 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		D2F7776727C99901008F20A1 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
-		DB8E559D2815961200101059 /* iOS14+FocusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOS14+FocusState.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -461,7 +453,6 @@
 				A0D76FCF26E73412009D9B03 /* TwoFingerTapView.swift */,
 				A0D76FD126E73F12009D9B03 /* TapRecognizerViewModifier.swift */,
 				D26C5134275CBB4800074DB3 /* BatteryStatus.swift */,
-				DB8E559C281595EF00101059 /* iOS14Compatibility */,
 			);
 			path = "Abstracted Views";
 			sourceTree = "<group>";
@@ -652,17 +643,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DB8E559C281595EF00101059 /* iOS14Compatibility */ = {
-			isa = PBXGroup;
-			children = (
-				A09CFCDE2737195E007008A6 /* View+iOS14Compatibility.swift */,
-				5EF3BDAA27995FCE005C2E3A /* iOS14CompatibleTextView.swift */,
-				DB8E559D2815961200101059 /* iOS14+FocusState.swift */,
-				D2423C3F2914979B00616D70 /* iOS14+TextFormat.swift */,
-			);
-			path = iOS14Compatibility;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -819,7 +799,6 @@
 				1499A8DA2698BF0F00FDF493 /* LanLinkProvider.m in Sources */,
 				1499A8DD2698BF0F00FDF493 /* BaseLinkProvider.m in Sources */,
 				1499A8E22698BF6900FDF493 /* NetworkPacket.m in Sources */,
-				DB8E559E2815961200101059 /* iOS14+FocusState.swift in Sources */,
 				A01FDD2726C4F6D50014B165 /* Plugin.swift in Sources */,
 				A2D0C2B527CD471700C7217F /* AlertManager.swift in Sources */,
 				D20FF56727C77E0F00E347F7 /* AccessibleHStack.swift in Sources */,
@@ -845,7 +824,6 @@
 				1499A8E82698BFF300FDF493 /* KeychainItemWrapper.m in Sources */,
 				A0D8CBD826F02C6700791D07 /* PresenterView.swift in Sources */,
 				A0CA112126F3C7ED006F6EAC /* RunCommandView.swift in Sources */,
-				A09CFCDF2737195E007008A6 /* View+iOS14Compatibility.swift in Sources */,
 				A0B87287267F16E100F0EB72 /* DeviceDetailPluginSettingsView.swift in Sources */,
 				D2423C3C29148B0200616D70 /* FileTransferStatusSection.swift in Sources */,
 				D298D96B27D2C91F0053F65B /* NetworkPacketComposer.swift in Sources */,
@@ -864,7 +842,6 @@
 				A01FDD3126C701360014B165 /* Battery.swift in Sources */,
 				A01FDD2926C4F8420014B165 /* Ping.swift in Sources */,
 				D28C94D127D1CEB9002EBC2D /* OSLog+KDE Connect.swift in Sources */,
-				5EF3BDAB27995FCE005C2E3A /* iOS14CompatibleTextView.swift in Sources */,
 				A0AAA99726E2D968003883A7 /* ConfigureDeviceByIPView.swift in Sources */,
 				D26C5135275CBB4800074DB3 /* BatteryStatus.swift in Sources */,
 				A0A04432267BF38700CC21DD /* MainTabView.swift in Sources */,
@@ -881,7 +858,6 @@
 				D20FF56527C77DF000E347F7 /* AccessibilityTitleOnlyLabelStyle.swift in Sources */,
 				A01FDD2D26C62E180014B165 /* Share.swift in Sources */,
 				53A0A1D2283ED2B600C7C473 /* Haptics.swift in Sources */,
-				D2423C402914979B00616D70 /* iOS14+TextFormat.swift in Sources */,
 				749868B12C070320003B37FA /* LoopbackLink.m in Sources */,
 				14B95A2B272ED7C8003F3B01 /* CertificateServiceHelper.m in Sources */,
 				53A0A1D8283ED55200C7C473 /* KeyEvent.swift in Sources */,
@@ -993,7 +969,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1050,7 +1026,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1077,7 +1053,7 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "KDE Connect/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST))",
 					"@executable_path/Frameworks",
@@ -1116,7 +1092,7 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "KDE Connect/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST))",
 					"@executable_path/Frameworks",
@@ -1145,7 +1121,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				INFOPLIST_FILE = "KDE Connect Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1167,7 +1143,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5433B4KXM8;
 				INFOPLIST_FILE = "KDE Connect Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

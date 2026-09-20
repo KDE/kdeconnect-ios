@@ -77,7 +77,7 @@ struct DevicesView: View {
                 }
             }
         }
-        .bottomOverlay {
+        .safeAreaInset(edge: .bottom, alignment: .center, spacing: 0) {
             discoveryHelpButton
                 .padding(.bottom, 8)
         }
@@ -156,7 +156,6 @@ struct DevicesView: View {
                                         Image(systemName: battery.statusSFSymbolName)
                                             .font(.footnote)
                                             // FIXME: wrong foreground color
-                                            // on iOS 14 when row is selected
                                             .foregroundColor(battery.statusColor)
                                         Text("\(percent: battery.remoteChargeLevel)")
                                             .font(.footnote)
