@@ -11,5 +11,5 @@ function export_pot_file # First parameter will be a path that will contain seve
 
 function import_po_files # First parameter will be a path that will contain several .po files with the format LANG.po
 {
-    # noop
+    : # noop
 }
