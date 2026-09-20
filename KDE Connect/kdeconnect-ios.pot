@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-20 10:44+0200\n"
+"POT-Creation-Date: 2026-09-20 14:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,24 +26,12 @@ msgid "Save received images to your Photo Library instead of the Files app."
 msgstr "Save received images to your Photo Library instead of the Files app."
 
 #, fuzzy
-msgid "%@"
-msgstr "%@"
-
-#, fuzzy
-msgid "%@ / %@"
-msgstr "%@ / %@"
-
-#, fuzzy
 msgid "%@ and %lld other files"
 msgstr "%@ and %lld other files"
 
 #, fuzzy
 msgid "%@ for iOS"
 msgstr "%@ for iOS"
-
-#, fuzzy
-msgid "%lld / %lld"
-msgstr "%lld / %lld"
 
 #, fuzzy
 msgid "**KDE Connect** for iOS"
@@ -246,10 +234,6 @@ msgstr "Cursor Sensitivity"
 #, fuzzy
 msgid "DANGEROUS OPTIONS"
 msgstr "DANGEROUS OPTIONS"
-
-#, fuzzy
-msgid "Dan Stoian"
-msgstr "Dan Stoian"
 
 #, fuzzy
 msgid "Dark"
@@ -468,10 +452,6 @@ msgid "Go FullScreen"
 msgstr "Go FullScreen"
 
 #, fuzzy
-msgid "Han Young"
-msgstr "Han Young"
-
-#, fuzzy
 msgid "Haptics Style"
 msgstr "Haptics Style"
 
@@ -582,10 +562,6 @@ msgid "Invalid"
 msgstr "Invalid"
 
 #, fuzzy
-msgid "James Rosson"
-msgstr "James Rosson"
-
-#, fuzzy
 msgid "Keyboard: Control Remote"
 msgstr "Keyboard: Control Remote"
 
@@ -608,10 +584,6 @@ msgstr "Logs"
 #, fuzzy
 msgid "Logs for %@"
 msgstr "Logs for %@"
-
-#, fuzzy
-msgid "Lucas Wang"
-msgstr "Lucas Wang"
 
 #, fuzzy
 msgid "MPRIS: Control Remote Media & Respond"
@@ -674,10 +646,6 @@ msgstr "Network Packet Composer"
 #, fuzzy
 msgid "Nice"
 msgstr "Nice"
-
-#, fuzzy
-msgid "Nicolás Alvarez"
-msgstr "Nicolás Alvarez"
 
 #, fuzzy
 msgid "No additional devices are discovered on this network."
@@ -836,10 +804,6 @@ msgid "Push Local Clipboard"
 msgstr "Push Local Clipboard"
 
 #, fuzzy
-msgid "Qiao YANG"
-msgstr "Qiao YANG"
-
-#, fuzzy
 msgid "Reason: %@"
 msgstr "Reason: %@"
 
@@ -898,10 +862,6 @@ msgstr "Ring/Find My Phone"
 #, fuzzy
 msgid "Rounded Rectangle"
 msgstr "Rounded Rectangle"
-
-#, fuzzy
-msgid "Ruixuan Tu"
-msgstr "Ruixuan Tu"
 
 #, fuzzy
 msgid "Run Command"
@@ -1168,10 +1128,6 @@ msgstr "Waiting to send"
 #, fuzzy
 msgid "Website"
 msgstr "Website"
-
-#, fuzzy
-msgid "Weixuan Xiao"
-msgstr "Weixuan Xiao"
 
 #, fuzzy
 msgid "Wiki & User Manual"

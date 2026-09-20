@@ -42,7 +42,7 @@ struct FileTransferStatus<Content: View>: View {
                     
                     Spacer()
                     
-                    Text("\(Int64(completed), format: .byteCount(style: .file)) / \(Int64(total), format: .byteCount(style: .file))")
+                    Text(verbatim: "\(Int64(completed).formatted(.byteCount(style: .file))) / \(Int64(total).formatted(.byteCount(style: .file)))")
                         .foregroundColor(.secondary)
                         .font(.caption)
                         .monospacedDigit()
@@ -54,7 +54,7 @@ struct FileTransferStatus<Content: View>: View {
                     
                     Spacer()
                     
-                    Text("\(Int64(file.totalBytesCompleted), format: .byteCount(style: .file))")
+                    Text(verbatim: Int64(file.totalBytesCompleted).formatted(.byteCount(style: .file)))
                         .foregroundColor(.secondary)
                         .font(.caption)
                         .monospacedDigit()

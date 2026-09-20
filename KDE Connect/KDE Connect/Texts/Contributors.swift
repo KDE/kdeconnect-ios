@@ -24,20 +24,20 @@ enum Contributors {
         switch self {
         case .maintainers:
             return [
-                Contributor(name: NSLocalizedString("Lucas Wang", comment: ""), kde: "lucaswzx"),
+                Contributor(name: "Lucas Wang", kde: "lucaswzx"),
             ]
         case .authors:
             return [
                 Contributor(name: NSLocalizedString("Apollo Zhu",
                                                     comment: "Please use 朱智语 in languages with these characters."),
                             kde: "apollozhu"),
-                Contributor(name: NSLocalizedString("Dan Stoian", comment: ""), kde: "danthedante"),
-                Contributor(name: NSLocalizedString("Han Young", comment: ""), kde: "hanyoung"),
-                Contributor(name: NSLocalizedString("James Rosson", comment: ""), kde: "jrosson"),
-                Contributor(name: NSLocalizedString("Nicolás Alvarez", comment: ""), kde: "nalvarez"),
-                Contributor(name: NSLocalizedString("Ruixuan Tu", comment: ""), kde: "ruixuantu"),
-                Contributor(name: NSLocalizedString("Weixuan Xiao", comment: ""), kde: "wxiao"),
-                Contributor(name: NSLocalizedString("Qiao YANG", comment: ""), kde: "yangqiao"),
+                Contributor(name: "Dan Stoian", kde: "danthedante"),
+                Contributor(name: "Han Young", kde: "hanyoung"),
+                Contributor(name: "James Rosson", kde: "jrosson"),
+                Contributor(name: "Nicolás Alvarez", kde: "nalvarez"),
+                Contributor(name: "Ruixuan Tu", kde: "ruixuantu"),
+                Contributor(name: "Weixuan Xiao", kde: "wxiao"),
+                Contributor(name: "Qiao YANG", kde: "yangqiao"),
             ]
         }
     }

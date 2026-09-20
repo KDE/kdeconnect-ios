@@ -53,7 +53,7 @@ struct SettingsAboutView: View {
                             if #available(iOS 15, *) {
                                 Text("**KDE Connect** for iOS")
                             } else {
-                                Text("\(Text("KDE Connect").bold()) for iOS")
+                                Text("\(Text(verbatim: "KDE Connect").bold()) for iOS")
                             }
                             Label {
                                 Text("Version: \(version) (\(build))")

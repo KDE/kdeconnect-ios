@@ -136,7 +136,7 @@ struct NotificationView: View {
         ZStack {
             VStack {
                 HStack {
-                    Text("\(selectedNotificationIndex + 1) / \(inAppNotificationManager.requests.count)")
+                    Text(verbatim: "\(selectedNotificationIndex + 1) / \(inAppNotificationManager.requests.count)")
                     Spacer()
                     Text(selectedRequest?.content.title ?? "")
                     Spacer()
