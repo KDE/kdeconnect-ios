@@ -98,7 +98,7 @@ struct NetworkPacketComposer: View {
                 device.send(np, tag: tag)
             } label: {
                 Label {
-                    Text("Send Network Packet")
+                    Text("Send")
                 } icon: {
                     if kdeConnectSettings.isDebuggingNetworkPacket {
                         Image(systemName: "hammer.fill")
