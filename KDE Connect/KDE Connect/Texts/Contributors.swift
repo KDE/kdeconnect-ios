@@ -38,6 +38,7 @@ enum Contributors {
                 Contributor(name: "Ruixuan Tu", kde: "ruixuantu"),
                 Contributor(name: "Weixuan Xiao", kde: "wxiao"),
                 Contributor(name: "Qiao YANG", kde: "yangqiao"),
+                Contributor(name: "Albert Vaca Cintora", kde: "albertvaka"),
             ]
         }
     }
