@@ -31,9 +31,26 @@ def main(xliff_path: str, pot_path: str) -> None:
     contents = pot.read_text()
     for source, note_texts in notes.items():
         marker = f"msgid {po_string(source)}"
-        comments = "".join(f"#. {note}\n" for note in sorted(note_texts))
-        if marker in contents and comments not in contents:
-            contents = contents.replace(marker, f"{comments}{marker}")
+        search_from = 0
+
+        while (marker_pos := contents.find(marker, search_from)) != -1:
+            entry_start = contents.rfind("\n\n", 0, marker_pos) + 2
+            entry_end = contents.find("\n\n", marker_pos)
+            if entry_end == -1:
+                entry_end = len(contents)
+            entry = contents[entry_start:entry_end]
+            missing_notes = [
+                note for note in sorted(note_texts) if f"#. {note}\n" not in entry
+            ]
+
+            if missing_notes:
+                comments = "".join(f"#. {note}\n" for note in missing_notes)
+                context_pos = entry.find("msgctxt ")
+                insert_at = entry_start + (context_pos if context_pos != -1 else marker_pos - entry_start)
+                contents = contents[:insert_at] + comments + contents[insert_at:]
+                marker_pos += len(comments)
+
+            search_from = marker_pos + len(marker)
     pot.write_text(contents)
 
 

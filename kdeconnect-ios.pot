@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-20 15:03+0200\n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,9 +13,9 @@ msgstr ""
 "X-Generator: Translate Toolkit 3.19.17\n"
 
 #, fuzzy
-msgctxt ""
 #. Bundle display name
 #. Bundle name
+msgctxt ""
 msgid "KDE Connect"
 msgstr "KDE Connect"
 
