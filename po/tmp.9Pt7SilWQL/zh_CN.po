@@ -1,0 +1,860 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-20 15:03+0200\n"
+"PO-Revision-Date: 2026-09-22 01:47\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.19.17\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/kdeconnect-ios/kdeconnect-"
+"ios._static_.pot\n"
+"X-Crowdin-File-ID: 60487\n"
+
+#. Bundle display name
+#. Bundle name
+#, fuzzy
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr ""
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr ""
+
+msgid "%@ and %lld other files"
+msgstr ""
+
+msgid "%@ for iOS"
+msgstr ""
+
+msgid "**KDE Connect** for iOS"
+msgstr ""
+
+msgid "+"
+msgstr ""
+
+msgid "-"
+msgstr ""
+
+msgid "?"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+msgid "Advanced Settings"
+msgstr ""
+
+msgid "All Messages"
+msgstr ""
+
+msgid "Also written by %@"
+msgstr ""
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr ""
+
+msgid "App Icon"
+msgstr ""
+
+msgid "App Icon:"
+msgstr ""
+
+msgid "App Theme:"
+msgstr ""
+
+msgid "Application"
+msgstr ""
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+
+msgid "Available themes"
+msgstr ""
+
+msgid "Background Activity"
+msgstr ""
+
+msgid "Battery Level"
+msgstr ""
+
+msgid "Battery Plugin Disabled"
+msgstr ""
+
+msgid "Battery Status"
+msgstr ""
+
+msgid "Can't find your devices here?"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Category: %@"
+msgstr ""
+
+msgid "Check out the merge requests"
+msgstr ""
+
+msgid "Choose App Icon"
+msgstr ""
+
+msgid "Chores"
+msgstr ""
+
+msgid "Classic"
+msgstr ""
+
+msgid "Clear Cache"
+msgstr ""
+
+msgid "Clipboard Sync"
+msgstr ""
+
+msgid "Clipboard: Push & Receive Text"
+msgstr ""
+
+msgid "Clipboard: Sync"
+msgstr ""
+
+msgid "Configure Devices By IP"
+msgstr ""
+
+msgid "Configure Devices by IP:"
+msgstr ""
+
+msgid "Connect"
+msgstr ""
+
+msgid "Connected Devices"
+msgstr ""
+
+msgid "Connectivity Report"
+msgstr ""
+
+msgid "Contacts"
+msgstr ""
+
+msgid "Contribute to KDE Connect"
+msgstr ""
+
+msgid "Contributors"
+msgstr ""
+
+msgid "Copy path to the folder containing received files"
+msgstr ""
+
+msgid "Currently maintained by %@"
+msgstr ""
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr ""
+
+msgid "Cursor Sensitivity"
+msgstr ""
+
+msgid "DANGEROUS OPTIONS"
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "Debug mode"
+msgstr ""
+
+msgid "Debugging device discovery"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+
+msgid "Delete host certificate"
+msgstr ""
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+
+msgid "Developer"
+msgstr ""
+
+msgid "Device"
+msgstr ""
+
+msgid "Device Discovery"
+msgstr ""
+
+msgid "Device IP"
+msgstr ""
+
+msgid "Device Name"
+msgstr ""
+
+msgid "Device Name:"
+msgstr ""
+
+msgid "Device Offline"
+msgstr ""
+
+msgid "Device Status"
+msgstr ""
+
+msgid "Device name"
+msgstr ""
+
+msgid "Devices"
+msgstr ""
+
+msgid "Direct Handshake Devices"
+msgstr ""
+
+msgid "Disable UDP Broadcast"
+msgstr ""
+
+msgid "Discovered Devices"
+msgstr ""
+
+msgid "Discovery & Pairing"
+msgstr ""
+
+msgid "Do Not Pair"
+msgstr ""
+
+msgid "Donate"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Double tap to activate debug mode"
+msgstr ""
+
+msgid "Double tap to activate debugging device discovery"
+msgstr ""
+
+msgid "Enable/Disable Plugins"
+msgstr ""
+
+msgid "Encryption Info"
+msgstr ""
+
+msgid "Erase saved devices cache"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Error Occured"
+msgstr ""
+
+msgid "Errors and Faults"
+msgstr ""
+
+msgid "Exit Presentation"
+msgstr ""
+
+msgid "Experimental functionalities"
+msgstr ""
+
+msgid "Failed to Change Icon"
+msgstr ""
+
+msgid "Failed to receive %lld files"
+msgstr ""
+
+msgid "Failed to receive from %@"
+msgstr ""
+
+msgid "Failed to send %lld files"
+msgstr ""
+
+msgid "Failed to send to %@"
+msgstr ""
+
+msgid "Fault"
+msgstr ""
+
+msgid "Features"
+msgstr ""
+
+msgid "File Transfers"
+msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid "Find My Device"
+msgstr ""
+
+msgid "Find My Phone Mode"
+msgstr ""
+
+msgid "Find My Phone initiated from a remote device"
+msgstr ""
+
+msgid "Forget all"
+msgstr ""
+
+msgid "From %@"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Go FullScreen"
+msgstr ""
+
+msgid "Haptics Style"
+msgstr ""
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Hide Haptics Style Selector"
+msgstr ""
+
+msgid "Hide Sensitivity Slider"
+msgstr ""
+
+msgid "I FOUND IT!"
+msgstr ""
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+
+msgid "In progress"
+msgstr ""
+
+msgid "Incoming Pairing Request"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+msgid "Initiate Pairing?"
+msgstr ""
+
+msgid "Integration with Siri Shortcuts"
+msgstr ""
+
+msgid "Integration with the system share sheet is in development"
+msgstr ""
+
+msgid "Internationalization & Localization"
+msgstr ""
+
+msgid "Invalid"
+msgstr ""
+
+msgid "Keyboard: Control Remote"
+msgstr ""
+
+msgid "License"
+msgstr ""
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr ""
+
+msgid "Lock Screen: Control Remote"
+msgstr ""
+
+msgid "Logs"
+msgstr ""
+
+msgid "Logs for %@"
+msgstr ""
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr ""
+
+msgid "Manage received files in the Files app"
+msgstr ""
+
+msgid "May not work with KDE Connect for Windows"
+msgstr ""
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr ""
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr ""
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr ""
+
+msgid "Mouse: Control Remote"
+msgstr ""
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+
+msgid "Network Packet Composer"
+msgstr ""
+
+msgid "Nice"
+msgstr ""
+
+msgid "No additional devices are discovered on this network."
+msgstr ""
+
+msgid "No battery detected in device"
+msgstr ""
+
+msgid "No currently connected devices."
+msgstr ""
+
+msgid "No device discovered in the current network."
+msgstr ""
+
+msgid "No matching logs yet"
+msgstr ""
+
+msgid "No, Stay Paired"
+msgstr ""
+
+msgid "Not yet implemented"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Notification: Receive from Others"
+msgstr ""
+
+msgid "Notification: Retrieve by Others"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "On-Click Haptic Style"
+msgstr ""
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr ""
+
+msgid "Out-App Notification:"
+msgstr ""
+
+msgid "Packet Body"
+msgstr ""
+
+msgid "Packet Tag"
+msgstr ""
+
+msgid "Packet Type"
+msgstr ""
+
+msgid "Pair"
+msgstr ""
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+
+msgid "Pairing Complete"
+msgstr ""
+
+msgid "Pairing Rejected"
+msgstr ""
+
+msgid "Pairing Timed Out"
+msgstr ""
+
+msgid "Pairing with '%@' failed"
+msgstr ""
+
+msgid "Pairing with '%@' succeeded"
+msgstr ""
+
+msgid "Peer"
+msgstr ""
+
+msgid "Ping"
+msgstr ""
+
+msgid "Ping received from a connected device."
+msgstr ""
+
+msgid "Ping!"
+msgstr ""
+
+msgid "Plasma Bigscreen"
+msgstr ""
+
+msgid "Playground"
+msgstr ""
+
+msgid "Plugin Settings"
+msgstr ""
+
+msgid "Plugins If Reachable"
+msgstr ""
+
+msgid "Pointer Sensitivity"
+msgstr ""
+
+msgid "Preparing Media…"
+msgstr ""
+
+msgid "Presenter: Control Remote"
+msgstr ""
+
+msgid "Preview: "
+msgstr ""
+
+msgid "Previously connected devices will appear here."
+msgstr ""
+
+msgid "Push Local Clipboard"
+msgstr ""
+
+msgid "Reason: %@"
+msgstr ""
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+
+msgid "Receiving"
+msgstr ""
+
+msgid "Receiving file %lld of %lld"
+msgstr ""
+
+msgid "Refresh Discovery"
+msgstr ""
+
+msgid "Remembered Devices"
+msgstr ""
+
+msgid "Remote Input"
+msgstr ""
+
+msgid "Report Bug"
+msgstr ""
+
+msgid "Request to pair with '%@'"
+msgstr ""
+
+msgid "Restart Discovery"
+msgstr ""
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr ""
+
+msgid "Ring Device"
+msgstr ""
+
+msgid "Ring/Find My Phone"
+msgstr ""
+
+msgid "Rounded Rectangle"
+msgstr ""
+
+msgid "Run Command"
+msgstr ""
+
+msgid "Run Command: Request"
+msgstr ""
+
+msgid "Run Command: Respond"
+msgstr ""
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr ""
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+
+msgid "Save photos to the photo library"
+msgstr ""
+
+msgid "Save videos to the photo library"
+msgstr ""
+
+msgid "Screensaver: Inhibit Remote"
+msgstr ""
+
+msgid "Select a device from the Devices list to start."
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+msgid "Send Double Left Click"
+msgstr ""
+
+msgid "Send Files"
+msgstr ""
+
+msgid "Send Left Hold"
+msgstr ""
+
+msgid "Send Middle Click"
+msgstr ""
+
+msgid "Send Photos and Videos"
+msgstr ""
+
+msgid "Send Ping"
+msgstr ""
+
+msgid "Send Right Click"
+msgstr ""
+
+msgid "Send Single Left Click"
+msgstr ""
+
+msgid "Sending"
+msgstr ""
+
+msgid "Sending file %lld of %lld"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Share/File Transfer"
+msgstr ""
+
+msgid "Share: Receive File, Text, and URL"
+msgstr ""
+
+msgid "Share: Send File"
+msgstr ""
+
+msgid "Share: Send Text & URL"
+msgstr ""
+
+msgid "Show Haptics Style Selector"
+msgstr ""
+
+msgid "Show Received Files in Finder"
+msgstr ""
+
+msgid "Show Sensitivity Slider"
+msgstr ""
+
+msgid "Slideshow Remote"
+msgstr ""
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr ""
+
+msgid "Source Code"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Supported"
+msgstr ""
+
+msgid "System Default"
+msgstr ""
+
+msgid "System Volume: Control Remote & Respond"
+msgstr ""
+
+msgid "Take Photo: Respond"
+msgstr ""
+
+msgid "Tap to start pairing"
+msgstr ""
+
+msgid "Telephony: SMS/Call Sync"
+msgstr ""
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr ""
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+
+msgid "These should work with little to no issues"
+msgstr ""
+
+msgid "Third-Party Libraries"
+msgstr ""
+
+msgid "This is likely not possible to implement on iOS"
+msgstr ""
+
+msgid "Through the system share sheet"
+msgstr ""
+
+msgid "To %@"
+msgstr ""
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+
+msgid "Toggle Keyboard"
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
+msgid "Trusted Networks"
+msgstr ""
+
+msgid "Unknown Theme"
+msgstr ""
+
+msgid "Unpair"
+msgstr ""
+
+msgid "Unpair With Device?"
+msgstr ""
+
+msgid "Unpair with %@?"
+msgstr ""
+
+msgid "Valid"
+msgstr ""
+
+msgid "Verification key: %@"
+msgstr ""
+
+msgid "Version: %@ (%@)"
+msgstr ""
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr ""
+
+msgid "Waiting for logs..."
+msgstr ""
+
+msgid "Waiting to send"
+msgstr ""
+
+msgid "Website"
+msgstr ""
+
+msgid "Wiki & User Manual"
+msgstr ""
+
+msgid "Yes, Unpair"
+msgstr ""
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr ""
+
+msgid "© KDE Community & contributors"
+msgstr ""

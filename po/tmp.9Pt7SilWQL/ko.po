@@ -1,0 +1,1166 @@
+# SPDX-FileCopyrightText: 2026 Shinjo Park <peremen@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-20 15:03+0200\n"
+"PO-Revision-Date: 2026-09-21 15:39+0200\n"
+"Last-Translator: Shinjo Park <peremen@gmail.com>\n"
+"Language-Team: Korean\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 26.08.1\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr "KDE Connect를 사용하여 다른 장치를 탐색하고 연결합니다."
+
+#, fuzzy
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr "Save received images to your Photo Library instead of the Files app."
+
+#, fuzzy
+msgid "%@ and %lld other files"
+msgstr "%@ and %lld other files"
+
+#, fuzzy
+msgid "%@ for iOS"
+msgstr "%@ for iOS"
+
+#, fuzzy
+msgid "**KDE Connect** for iOS"
+msgstr "**KDE Connect** for iOS"
+
+#, fuzzy
+msgid "+"
+msgstr "+"
+
+#, fuzzy
+msgid "-"
+msgstr "-"
+
+#, fuzzy
+msgid "?"
+msgstr "?"
+
+#, fuzzy
+msgid "About"
+msgstr "About"
+
+#, fuzzy
+msgid "Actions"
+msgstr "Actions"
+
+#, fuzzy
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+
+#, fuzzy
+msgid "Advanced"
+msgstr "Advanced"
+
+#, fuzzy
+msgid "Advanced Settings"
+msgstr "Advanced Settings"
+
+#, fuzzy
+msgid "All Messages"
+msgstr "All Messages"
+
+#, fuzzy
+msgid "Also written by %@"
+msgstr "Also written by %@"
+
+#, fuzzy
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+#, fuzzy
+msgid "App Icon"
+msgstr "App Icon"
+
+#, fuzzy
+msgid "App Icon:"
+msgstr "App Icon:"
+
+#, fuzzy
+msgid "App Theme:"
+msgstr "App Theme:"
+
+#, fuzzy
+msgid "Application"
+msgstr "Application"
+
+#, fuzzy
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+
+#, fuzzy
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+
+#, fuzzy
+msgid "Available themes"
+msgstr "Available themes"
+
+#, fuzzy
+msgid "Background Activity"
+msgstr "Background Activity"
+
+#, fuzzy
+msgid "Battery Level"
+msgstr "Battery Level"
+
+#, fuzzy
+msgid "Battery Plugin Disabled"
+msgstr "Battery Plugin Disabled"
+
+#, fuzzy
+msgid "Battery Status"
+msgstr "Battery Status"
+
+#, fuzzy
+msgid "Can't find your devices here?"
+msgstr "Can't find your devices here?"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgid "Category: %@"
+msgstr "Category: %@"
+
+#, fuzzy
+msgid "Check out the merge requests"
+msgstr "Check out the merge requests"
+
+#, fuzzy
+msgid "Choose App Icon"
+msgstr "Choose App Icon"
+
+#, fuzzy
+msgid "Chores"
+msgstr "Chores"
+
+#, fuzzy
+msgid "Classic"
+msgstr "Classic"
+
+#, fuzzy
+msgid "Clear Cache"
+msgstr "Clear Cache"
+
+#, fuzzy
+msgid "Clipboard Sync"
+msgstr "Clipboard Sync"
+
+#, fuzzy
+msgid "Clipboard: Push & Receive Text"
+msgstr "Clipboard: Push & Receive Text"
+
+#, fuzzy
+msgid "Clipboard: Sync"
+msgstr "Clipboard: Sync"
+
+#, fuzzy
+msgid "Configure Devices By IP"
+msgstr "Configure Devices By IP"
+
+#, fuzzy
+msgid "Configure Devices by IP:"
+msgstr "Configure Devices by IP:"
+
+#, fuzzy
+msgid "Connect"
+msgstr "Connect"
+
+#, fuzzy
+msgid "Connected Devices"
+msgstr "Connected Devices"
+
+#, fuzzy
+msgid "Connectivity Report"
+msgstr "Connectivity Report"
+
+#, fuzzy
+msgid "Contacts"
+msgstr "Contacts"
+
+#, fuzzy
+msgid "Contribute to KDE Connect"
+msgstr "Contribute to KDE Connect"
+
+#, fuzzy
+msgid "Contributors"
+msgstr "Contributors"
+
+#, fuzzy
+msgid "Copy path to the folder containing received files"
+msgstr "Copy path to the folder containing received files"
+
+#, fuzzy
+msgid "Currently maintained by %@"
+msgstr "Currently maintained by %@"
+
+#, fuzzy
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr "Currently, the app must stay in the foreground to work properly"
+
+#, fuzzy
+msgid "Cursor Sensitivity"
+msgstr "Cursor Sensitivity"
+
+#, fuzzy
+msgid "DANGEROUS OPTIONS"
+msgstr "DANGEROUS OPTIONS"
+
+#, fuzzy
+msgid "Dark"
+msgstr "Dark"
+
+#, fuzzy
+msgid "Debug"
+msgstr "Debug"
+
+#, fuzzy
+msgid "Debug mode"
+msgstr "Debug mode"
+
+#, fuzzy
+msgid "Debugging device discovery"
+msgstr "Debugging device discovery"
+
+#, fuzzy
+msgid "Default"
+msgstr "Default"
+
+#, fuzzy
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+
+#, fuzzy
+msgid "Delete host certificate"
+msgstr "Delete host certificate"
+
+#, fuzzy
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+
+#, fuzzy
+msgid "Developer"
+msgstr "Developer"
+
+#, fuzzy
+msgid "Device"
+msgstr "Device"
+
+#, fuzzy
+msgid "Device Discovery"
+msgstr "Device Discovery"
+
+#, fuzzy
+msgid "Device IP"
+msgstr "Device IP"
+
+#, fuzzy
+msgid "Device Name"
+msgstr "Device Name"
+
+#, fuzzy
+msgid "Device Name:"
+msgstr "Device Name:"
+
+#, fuzzy
+msgid "Device Offline"
+msgstr "Device Offline"
+
+#, fuzzy
+msgid "Device Status"
+msgstr "Device Status"
+
+#, fuzzy
+msgid "Device name"
+msgstr "Device name"
+
+#, fuzzy
+msgid "Devices"
+msgstr "Devices"
+
+#, fuzzy
+msgid "Direct Handshake Devices"
+msgstr "Direct Handshake Devices"
+
+#, fuzzy
+msgid "Disable UDP Broadcast"
+msgstr "Disable UDP Broadcast"
+
+#, fuzzy
+msgid "Discovered Devices"
+msgstr "Discovered Devices"
+
+#, fuzzy
+msgid "Discovery & Pairing"
+msgstr "Discovery & Pairing"
+
+#, fuzzy
+msgid "Do Not Pair"
+msgstr "Do Not Pair"
+
+#, fuzzy
+msgid "Donate"
+msgstr "Donate"
+
+#, fuzzy
+msgid "Done"
+msgstr "Done"
+
+#, fuzzy
+msgid "Double tap to activate debug mode"
+msgstr "Double tap to activate debug mode"
+
+#, fuzzy
+msgid "Double tap to activate debugging device discovery"
+msgstr "Double tap to activate debugging device discovery"
+
+#, fuzzy
+msgid "Enable/Disable Plugins"
+msgstr "Enable/Disable Plugins"
+
+#, fuzzy
+msgid "Encryption Info"
+msgstr "Encryption Info"
+
+#, fuzzy
+msgid "Erase saved devices cache"
+msgstr "Erase saved devices cache"
+
+#, fuzzy
+msgid "Error"
+msgstr "Error"
+
+#, fuzzy
+msgid "Error Occured"
+msgstr "Error Occured"
+
+#, fuzzy
+msgid "Errors and Faults"
+msgstr "Errors and Faults"
+
+#, fuzzy
+msgid "Exit Presentation"
+msgstr "Exit Presentation"
+
+#, fuzzy
+msgid "Experimental functionalities"
+msgstr "Experimental functionalities"
+
+#, fuzzy
+msgid "Failed to Change Icon"
+msgstr "Failed to Change Icon"
+
+#, fuzzy
+msgid "Failed to receive %lld files"
+msgstr "Failed to receive %lld files"
+
+#, fuzzy
+msgid "Failed to receive from %@"
+msgstr "Failed to receive from %@"
+
+#, fuzzy
+msgid "Failed to send %lld files"
+msgstr "Failed to send %lld files"
+
+#, fuzzy
+msgid "Failed to send to %@"
+msgstr "Failed to send to %@"
+
+#, fuzzy
+msgid "Fault"
+msgstr "Fault"
+
+#, fuzzy
+msgid "Features"
+msgstr "Features"
+
+#, fuzzy
+msgid "File Transfers"
+msgstr "File Transfers"
+
+#, fuzzy
+msgid "Files"
+msgstr "Files"
+
+#, fuzzy
+msgid "Find My Device"
+msgstr "Find My Device"
+
+#, fuzzy
+msgid "Find My Phone Mode"
+msgstr "Find My Phone Mode"
+
+#, fuzzy
+msgid "Find My Phone initiated from a remote device"
+msgstr "Find My Phone initiated from a remote device"
+
+#, fuzzy
+msgid "Forget all"
+msgstr "Forget all"
+
+#, fuzzy
+msgid "From %@"
+msgstr "From %@"
+
+#, fuzzy
+msgid "General"
+msgstr "General"
+
+#, fuzzy
+msgid "Go FullScreen"
+msgstr "Go FullScreen"
+
+#, fuzzy
+msgid "Haptics Style"
+msgstr "Haptics Style"
+
+#, fuzzy
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Heavy"
+
+#, fuzzy
+msgid "Help"
+msgstr "Help"
+
+#, fuzzy
+msgid "Hide Haptics Style Selector"
+msgstr "Hide Haptics Style Selector"
+
+#, fuzzy
+msgid "Hide Sensitivity Slider"
+msgstr "Hide Sensitivity Slider"
+
+#, fuzzy
+msgid "I FOUND IT!"
+msgstr "I FOUND IT!"
+
+#, fuzzy
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+
+#, fuzzy
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+
+#, fuzzy
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+
+#, fuzzy
+msgid "In progress"
+msgstr "In progress"
+
+#, fuzzy
+msgid "Incoming Pairing Request"
+msgstr "Incoming Pairing Request"
+
+#, fuzzy
+msgid "Info"
+msgstr "Info"
+
+#, fuzzy
+msgid "Information"
+msgstr "Information"
+
+#, fuzzy
+msgid "Initiate Pairing?"
+msgstr "Initiate Pairing?"
+
+#, fuzzy
+msgid "Integration with Siri Shortcuts"
+msgstr "Integration with Siri Shortcuts"
+
+#, fuzzy
+msgid "Integration with the system share sheet is in development"
+msgstr "Integration with the system share sheet is in development"
+
+#, fuzzy
+msgid "Internationalization & Localization"
+msgstr "Internationalization & Localization"
+
+#, fuzzy
+msgid "Invalid"
+msgstr "Invalid"
+
+#, fuzzy
+msgid "Keyboard: Control Remote"
+msgstr "Keyboard: Control Remote"
+
+#, fuzzy
+msgid "License"
+msgstr "License"
+
+#, fuzzy
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Light"
+
+#, fuzzy
+msgid "Lock Screen: Control Remote"
+msgstr "Lock Screen: Control Remote"
+
+#, fuzzy
+msgid "Logs"
+msgstr "Logs"
+
+#, fuzzy
+msgid "Logs for %@"
+msgstr "Logs for %@"
+
+#, fuzzy
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: Control Remote Media & Respond"
+
+#, fuzzy
+msgid "Manage received files in the Files app"
+msgstr "Manage received files in the Files app"
+
+#, fuzzy
+msgid "May not work with KDE Connect for Windows"
+msgstr "May not work with KDE Connect for Windows"
+
+#, fuzzy
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
+
+#, fuzzy
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Maybe with Apple Notification Center Service (ACNS)"
+
+#, fuzzy
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Medium"
+
+#, fuzzy
+msgid "Mouse: Control Remote"
+msgstr "Mouse: Control Remote"
+
+#, fuzzy
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+
+#, fuzzy
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+
+#, fuzzy
+msgid "Network Packet Composer"
+msgstr "Network Packet Composer"
+
+#, fuzzy
+msgid "Nice"
+msgstr "Nice"
+
+#, fuzzy
+msgid "No additional devices are discovered on this network."
+msgstr "No additional devices are discovered on this network."
+
+#, fuzzy
+msgid "No battery detected in device"
+msgstr "No battery detected in device"
+
+#, fuzzy
+msgid "No currently connected devices."
+msgstr "No currently connected devices."
+
+#, fuzzy
+msgid "No device discovered in the current network."
+msgstr "No device discovered in the current network."
+
+#, fuzzy
+msgid "No matching logs yet"
+msgstr "No matching logs yet"
+
+#, fuzzy
+msgid "No, Stay Paired"
+msgstr "No, Stay Paired"
+
+#, fuzzy
+msgid "Not yet implemented"
+msgstr "Not yet implemented"
+
+#, fuzzy
+msgid "Notice"
+msgstr "Notice"
+
+#, fuzzy
+msgid "Notification: Receive from Others"
+msgstr "Notification: Receive from Others"
+
+#, fuzzy
+msgid "Notification: Retrieve by Others"
+msgstr "Notification: Retrieve by Others"
+
+#, fuzzy
+msgid "OK"
+msgstr "OK"
+
+#, fuzzy
+msgid "On-Click Haptic Style"
+msgstr "On-Click Haptic Style"
+
+#, fuzzy
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Other"
+
+#, fuzzy
+msgid "Out-App Notification:"
+msgstr "Out-App Notification:"
+
+#, fuzzy
+msgid "Packet Body"
+msgstr "Packet Body"
+
+#, fuzzy
+msgid "Packet Tag"
+msgstr "Packet Tag"
+
+#, fuzzy
+msgid "Packet Type"
+msgstr "Packet Type"
+
+#, fuzzy
+msgid "Pair"
+msgstr "Pair"
+
+#, fuzzy
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+
+#, fuzzy
+msgid "Pairing Complete"
+msgstr "Pairing Complete"
+
+#, fuzzy
+msgid "Pairing Rejected"
+msgstr "Pairing Rejected"
+
+#, fuzzy
+msgid "Pairing Timed Out"
+msgstr "Pairing Timed Out"
+
+#, fuzzy
+msgid "Pairing with '%@' failed"
+msgstr "Pairing with '%@' failed"
+
+#, fuzzy
+msgid "Pairing with '%@' succeeded"
+msgstr "Pairing with '%@' succeeded"
+
+#, fuzzy
+msgid "Peer"
+msgstr "Peer"
+
+#, fuzzy
+msgid "Ping"
+msgstr "Ping"
+
+#, fuzzy
+msgid "Ping received from a connected device."
+msgstr "Ping received from a connected device."
+
+#, fuzzy
+msgid "Ping!"
+msgstr "Ping!"
+
+#, fuzzy
+msgid "Plasma Bigscreen"
+msgstr "Plasma Bigscreen"
+
+#, fuzzy
+msgid "Playground"
+msgstr "Playground"
+
+#, fuzzy
+msgid "Plugin Settings"
+msgstr "Plugin Settings"
+
+#, fuzzy
+msgid "Plugins If Reachable"
+msgstr "Plugins If Reachable"
+
+#, fuzzy
+msgid "Pointer Sensitivity"
+msgstr "Pointer Sensitivity"
+
+#, fuzzy
+msgid "Preparing Media…"
+msgstr "Preparing Media…"
+
+#, fuzzy
+msgid "Presenter: Control Remote"
+msgstr "Presenter: Control Remote"
+
+#, fuzzy
+msgid "Preview: "
+msgstr "Preview: "
+
+#, fuzzy
+msgid "Previously connected devices will appear here."
+msgstr "Previously connected devices will appear here."
+
+#, fuzzy
+msgid "Push Local Clipboard"
+msgstr "Push Local Clipboard"
+
+#, fuzzy
+msgid "Reason: %@"
+msgstr "Reason: %@"
+
+#, fuzzy
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+
+#, fuzzy
+msgid "Receiving"
+msgstr "Receiving"
+
+#, fuzzy
+msgid "Receiving file %lld of %lld"
+msgstr "Receiving file %lld of %lld"
+
+#, fuzzy
+msgid "Refresh Discovery"
+msgstr "Refresh Discovery"
+
+#, fuzzy
+msgid "Remembered Devices"
+msgstr "Remembered Devices"
+
+#, fuzzy
+msgid "Remote Input"
+msgstr "Remote Input"
+
+#, fuzzy
+msgid "Report Bug"
+msgstr "Report Bug"
+
+#, fuzzy
+msgid "Request to pair with '%@'"
+msgstr "Request to pair with '%@'"
+
+#, fuzzy
+msgid "Restart Discovery"
+msgstr "Restart Discovery"
+
+#, fuzzy
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Rigid"
+
+#, fuzzy
+msgid "Ring Device"
+msgstr "Ring Device"
+
+#, fuzzy
+msgid "Ring/Find My Phone"
+msgstr "Ring/Find My Phone"
+
+#, fuzzy
+msgid "Rounded Rectangle"
+msgstr "Rounded Rectangle"
+
+#, fuzzy
+msgid "Run Command"
+msgstr "Run Command"
+
+#, fuzzy
+msgid "Run Command: Request"
+msgstr "Run Command: Request"
+
+#, fuzzy
+msgid "Run Command: Respond"
+msgstr "Run Command: Respond"
+
+#, fuzzy
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: Access Remote & Initiate File Server"
+
+#, fuzzy
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+
+#, fuzzy
+msgid "Save photos to the photo library"
+msgstr "Save photos to the photo library"
+
+#, fuzzy
+msgid "Save videos to the photo library"
+msgstr "Save videos to the photo library"
+
+#, fuzzy
+msgid "Screensaver: Inhibit Remote"
+msgstr "Screensaver: Inhibit Remote"
+
+#, fuzzy
+msgid "Select a device from the Devices list to start."
+msgstr "Select a device from the Devices list to start."
+
+#, fuzzy
+msgid "Send"
+msgstr "Send"
+
+#, fuzzy
+msgid "Send Double Left Click"
+msgstr "Send Double Left Click"
+
+#, fuzzy
+msgid "Send Files"
+msgstr "Send Files"
+
+#, fuzzy
+msgid "Send Left Hold"
+msgstr "Send Left Hold"
+
+#, fuzzy
+msgid "Send Middle Click"
+msgstr "Send Middle Click"
+
+#, fuzzy
+msgid "Send Photos and Videos"
+msgstr "Send Photos and Videos"
+
+#, fuzzy
+msgid "Send Ping"
+msgstr "Send Ping"
+
+#, fuzzy
+msgid "Send Right Click"
+msgstr "Send Right Click"
+
+#, fuzzy
+msgid "Send Single Left Click"
+msgstr "Send Single Left Click"
+
+#, fuzzy
+msgid "Sending"
+msgstr "Sending"
+
+#, fuzzy
+msgid "Sending file %lld of %lld"
+msgstr "Sending file %lld of %lld"
+
+#, fuzzy
+msgid "Settings"
+msgstr "Settings"
+
+#, fuzzy
+msgid "Share/File Transfer"
+msgstr "Share/File Transfer"
+
+#, fuzzy
+msgid "Share: Receive File, Text, and URL"
+msgstr "Share: Receive File, Text, and URL"
+
+#, fuzzy
+msgid "Share: Send File"
+msgstr "Share: Send File"
+
+#, fuzzy
+msgid "Share: Send Text & URL"
+msgstr "Share: Send Text & URL"
+
+#, fuzzy
+msgid "Show Haptics Style Selector"
+msgstr "Show Haptics Style Selector"
+
+#, fuzzy
+msgid "Show Received Files in Finder"
+msgstr "Show Received Files in Finder"
+
+#, fuzzy
+msgid "Show Sensitivity Slider"
+msgstr "Show Sensitivity Slider"
+
+#, fuzzy
+msgid "Slideshow Remote"
+msgstr "Slideshow Remote"
+
+#, fuzzy
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "Soft"
+
+#, fuzzy
+msgid "Source Code"
+msgstr "Source Code"
+
+#, fuzzy
+msgid "Status"
+msgstr "Status"
+
+#, fuzzy
+msgid "Supported"
+msgstr "Supported"
+
+#, fuzzy
+msgid "System Default"
+msgstr "System Default"
+
+#, fuzzy
+msgid "System Volume: Control Remote & Respond"
+msgstr "System Volume: Control Remote & Respond"
+
+#, fuzzy
+msgid "Take Photo: Respond"
+msgstr "Take Photo: Respond"
+
+#, fuzzy
+msgid "Tap to start pairing"
+msgstr "Tap to start pairing"
+
+#, fuzzy
+msgid "Telephony: SMS/Call Sync"
+msgstr "Telephony: SMS/Call Sync"
+
+#, fuzzy
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "The name of the device as recognized by KDE Connect"
+
+#, fuzzy
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+
+#, fuzzy
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+
+#, fuzzy
+msgid "These should work with little to no issues"
+msgstr "These should work with little to no issues"
+
+#, fuzzy
+msgid "Third-Party Libraries"
+msgstr "Third-Party Libraries"
+
+#, fuzzy
+msgid "This is likely not possible to implement on iOS"
+msgstr "This is likely not possible to implement on iOS"
+
+#, fuzzy
+msgid "Through the system share sheet"
+msgstr "Through the system share sheet"
+
+#, fuzzy
+msgid "To %@"
+msgstr "To %@"
+
+#, fuzzy
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+
+#, fuzzy
+msgid "Toggle Keyboard"
+msgstr "Toggle Keyboard"
+
+#, fuzzy
+msgid "Troubleshooting"
+msgstr "Troubleshooting"
+
+#, fuzzy
+msgid "Trusted Networks"
+msgstr "Trusted Networks"
+
+#, fuzzy
+msgid "Unknown Theme"
+msgstr "Unknown Theme"
+
+#, fuzzy
+msgid "Unpair"
+msgstr "Unpair"
+
+#, fuzzy
+msgid "Unpair With Device?"
+msgstr "Unpair With Device?"
+
+#, fuzzy
+msgid "Unpair with %@?"
+msgstr "Unpair with %@?"
+
+#, fuzzy
+msgid "Valid"
+msgstr "Valid"
+
+#, fuzzy
+msgid "Verification key: %@"
+msgstr "Verification key: %@"
+
+#, fuzzy
+msgid "Version: %@ (%@)"
+msgstr "Version: %@ (%@)"
+
+#, fuzzy
+msgid "Waiting for %lld other files to start transferring"
+msgstr "Waiting for %lld other files to start transferring"
+
+#, fuzzy
+msgid "Waiting for logs..."
+msgstr "Waiting for logs..."
+
+#, fuzzy
+msgid "Waiting to send"
+msgstr "Waiting to send"
+
+#, fuzzy
+msgid "Website"
+msgstr "Website"
+
+#, fuzzy
+msgid "Wiki & User Manual"
+msgstr "Wiki & User Manual"
+
+#, fuzzy
+msgid "Yes, Unpair"
+msgstr "Yes, Unpair"
+
+#, fuzzy
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+
+#, fuzzy
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "untitled"
+
+#, fuzzy
+msgid "© KDE Community & contributors"
+msgstr "© KDE Community & contributors"
