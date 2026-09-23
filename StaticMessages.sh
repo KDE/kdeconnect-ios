@@ -5,7 +5,7 @@
 EXPORTS_POT_DIR=1
 FILE_PREFIX=kdeconnect-ios
 
-function export_pot_file # First parameter will be the path of the directory where we have to store the pot files
+function export_pot_dir # First parameter will be the path of the directory where we have to store the pot files
 {
     potdir=$1
     cp kdeconnect-ios.pot $potdir
