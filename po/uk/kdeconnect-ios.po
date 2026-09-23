@@ -1,0 +1,920 @@
+# SPDX-FileCopyrightText: 2026 Yuri Chornoivan <yurchor@ukr.net>
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"PO-Revision-Date: 2026-09-21 19:22+0300\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 25.12.1\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr ""
+"Виявлення інших пристроїв та встановлення з'єднання з ними за допомогою KDE "
+"Connect."
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr ""
+"Зберегти отримані зображення до вашої бібліотеки фотографі, а не програми "
+"«Файли»."
+
+msgid "%@ and %lld other files"
+msgstr "%@ і %lld інших файлів"
+
+msgid "%@ for iOS"
+msgstr "%@ для iOS"
+
+msgid "**KDE Connect** for iOS"
+msgstr "**KDE Connect** для iOS"
+
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "?"
+msgstr "?"
+
+msgid "About"
+msgstr "Про програму"
+
+msgid "Actions"
+msgstr "Дії"
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Додайте сюди локальні IP-адреси інших пристроїв, якщо вони їх не буде "
+"показано після автоматичного пошуку."
+
+msgid "Advanced"
+msgstr "Додатково"
+
+msgid "Advanced Settings"
+msgstr "Додаткові параметри"
+
+msgid "All Messages"
+msgstr "Усі повідомлення"
+
+msgid "Also written by %@"
+msgstr "Також написано %@"
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+msgid "App Icon"
+msgstr "Піктограма програми"
+
+msgid "App Icon:"
+msgstr "Піктограма програми:"
+
+msgid "App Theme:"
+msgstr "Тема програми:"
+
+msgid "Application"
+msgstr "Програма"
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"Як проєкт із відкритим початковим кодом, ми вважаємо важливим бути "
+"відвертими щодо наших поточних і майбутніх планів із приведення KDE Connect "
+"для iOS у відповідність до версій для всіх інших платформ."
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Надайте дозвіл на доступ до фотографій у програмі «Параметри», щоб зберігати "
+"отримані фото й відео у вашій фотобібліотеці."
+
+msgid "Available themes"
+msgstr "Доступні теми"
+
+msgid "Background Activity"
+msgstr "Фонова робота"
+
+msgid "Battery Level"
+msgstr "Рівень заряду акумулятора"
+
+msgid "Battery Plugin Disabled"
+msgstr "Додаток акумулятора вимкнено"
+
+msgid "Battery Status"
+msgstr "Стан заряду акумулятора"
+
+msgid "Can't find your devices here?"
+msgstr "Не вдається знайти ваші пристрої тут?"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Category: %@"
+msgstr "Категорія: %@"
+
+msgid "Check out the merge requests"
+msgstr "Отримати запити щодо об'єднання"
+
+msgid "Choose App Icon"
+msgstr "Виберіть піктограму програми"
+
+msgid "Chores"
+msgstr "Прибирання"
+
+msgid "Classic"
+msgstr "Класична"
+
+msgid "Clear Cache"
+msgstr "Спорожнити кеш"
+
+msgid "Clipboard Sync"
+msgstr "Синхронізація буфера"
+
+msgid "Clipboard: Push & Receive Text"
+msgstr "Буфер обміну: надсилання і отримання тексту"
+
+msgid "Clipboard: Sync"
+msgstr "Буфер обміну: синхронізація"
+
+msgid "Configure Devices By IP"
+msgstr "Налаштовування пристроїв за IP"
+
+msgid "Configure Devices by IP:"
+msgstr "Налаштовування пристроїв за IP:"
+
+msgid "Connect"
+msgstr "З'єднатися"
+
+msgid "Connected Devices"
+msgstr "З’єднані пристрої"
+
+msgid "Connectivity Report"
+msgstr "Звіт щодо з'єднання"
+
+msgid "Contacts"
+msgstr "Контакти"
+
+msgid "Contribute to KDE Connect"
+msgstr "Участь у проєкті KDE Connect"
+
+msgid "Contributors"
+msgstr "Учасники розробки"
+
+msgid "Copy path to the folder containing received files"
+msgstr "Копіювати шлях до теки, що містить отримані файли"
+
+msgid "Currently maintained by %@"
+msgstr "Супровід поточної версії здійснюють %@"
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr ""
+"У поточній версії для належної роботи програма має лишатися на передньому "
+"плані"
+
+msgid "Cursor Sensitivity"
+msgstr "Чутливість вказівника"
+
+msgid "DANGEROUS OPTIONS"
+msgstr "НЕБЕЗПЕЧНІ ПАРАМЕТРИ"
+
+msgid "Dark"
+msgstr "Темна"
+
+msgid "Debug"
+msgstr "Діагностика"
+
+msgid "Debug mode"
+msgstr "Діагностичний режим"
+
+msgid "Debugging device discovery"
+msgstr "Діагностика виявлення пристроїв"
+
+msgid "Default"
+msgstr "Типовий"
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Вилучити усі збережені параметри і записи пристроїв. Потребує повного "
+"перезапуску програми."
+
+msgid "Delete host certificate"
+msgstr "Вилучити сертифікат вузла"
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Вилучити сертифікат вузла і створити його після перезапуску. Потрібен повний "
+"перезапуск програми. ПРИМІТКА: це унеможливить з'єднання з пристроями, з "
+"якими було встановлено з'єднання раніше. Вам доведеться розірвати зв'язок з "
+"іншими віддаленими пристроями та створити її знову."
+
+msgid "Developer"
+msgstr "Розробник"
+
+msgid "Device"
+msgstr "Пристрій"
+
+msgid "Device Discovery"
+msgstr "Виявлення пристроїв"
+
+msgid "Device IP"
+msgstr "IP пристрою"
+
+msgid "Device Name"
+msgstr "Назва пристрою"
+
+msgid "Device Name:"
+msgstr "Назва пристрою:"
+
+msgid "Device Offline"
+msgstr "Пристрій поза мережею"
+
+msgid "Device Status"
+msgstr "Стан пристрою"
+
+msgid "Device name"
+msgstr "Назва пристрою"
+
+msgid "Devices"
+msgstr "Пристрої"
+
+msgid "Direct Handshake Devices"
+msgstr "Пристрої безпосереднього обміну даними для прив'язки"
+
+msgid "Disable UDP Broadcast"
+msgstr "Вимкнути трансляцію UDP"
+
+msgid "Discovered Devices"
+msgstr "Виявлені пристрої"
+
+msgid "Discovery & Pairing"
+msgstr "Виявлення і пов'язування"
+
+msgid "Do Not Pair"
+msgstr "Не пов'язувати"
+
+msgid "Donate"
+msgstr "Підтримати фінансово"
+
+msgid "Done"
+msgstr "Виконано"
+
+msgid "Double tap to activate debug mode"
+msgstr "Двічі натисніть для активації режиму діагностики"
+
+msgid "Double tap to activate debugging device discovery"
+msgstr "Подвійне натискання для активації діагностичного виявлення пристроїв"
+
+msgid "Enable/Disable Plugins"
+msgstr "Увімкнути або вимкнути додатки"
+
+msgid "Encryption Info"
+msgstr "Дані щодо шифрування"
+
+msgid "Erase saved devices cache"
+msgstr "Витерти кеш збережених пристроїв"
+
+msgid "Error"
+msgstr "Помилка"
+
+msgid "Error Occured"
+msgstr "Сталася помилка"
+
+msgid "Errors and Faults"
+msgstr "Помилки і невдачі"
+
+msgid "Exit Presentation"
+msgstr "Вийти з презентації"
+
+msgid "Experimental functionalities"
+msgstr "Експериментальні функціональні можливості"
+
+msgid "Failed to Change Icon"
+msgstr "Не вдалося змінити піктограму"
+
+msgid "Failed to receive %lld files"
+msgstr "Не вдалося отримати %lld файлів"
+
+msgid "Failed to receive from %@"
+msgstr "Не вдалося отримати дані з %@"
+
+msgid "Failed to send %lld files"
+msgstr "Не вдалося надіслати %lld файлів"
+
+msgid "Failed to send to %@"
+msgstr "Не вдалося надіслати дані до %@"
+
+msgid "Fault"
+msgstr "Невдача"
+
+msgid "Features"
+msgstr "Можливості"
+
+msgid "File Transfers"
+msgstr "Передавання файлів"
+
+msgid "Files"
+msgstr "Файли"
+
+msgid "Find My Device"
+msgstr "Знайти пристрій"
+
+msgid "Find My Phone Mode"
+msgstr "Режим пошуку телефону"
+
+msgid "Find My Phone initiated from a remote device"
+msgstr "З віддаленого пристрою ініційовано пошук телефону"
+
+msgid "Forget all"
+msgstr "Забути всі"
+
+msgid "From %@"
+msgstr "Від %@"
+
+msgid "General"
+msgstr "Загальне"
+
+msgid "Go FullScreen"
+msgstr "Повноекранний режим"
+
+msgid "Haptics Style"
+msgstr "Стиль тактильного відгуку"
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Важкий"
+
+msgid "Help"
+msgstr "Довідка"
+
+msgid "Hide Haptics Style Selector"
+msgstr "Приховати засіб вибору стилю тактильного відгуку"
+
+msgid "Hide Sensitivity Slider"
+msgstr "Приховати повзунок чутливості"
+
+msgid "I FOUND IT!"
+msgstr "ЗНАЙДЕНО!"
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"Якщо KDE Connect не вдається виявити інші пристрої, спробуйте таке:\n"
+"\n"
+"1. Виберіть пункт «Оновити виявлення» у меню %@ або потягніть список "
+"пристроїв донизу, щоб оновити його (як на цьому, так і на інших пристроях).\n"
+"\n"
+"2. Переконайтеся, що на інших пристроях також запущено KDE Connect і їх "
+"з'єднано з тією самою мережею, що й цей пристрій.\n"
+"\n"
+"3. Додайте інші пристрої вручну за допомогою пункту «Налаштувати пристрої за "
+"IP» у меню %@, а потім виберіть «Оновити виявлення».\n"
+"\n"
+"4. Ознайомтеся з іншими підходами у підручнику користувача, наприклад, щодо "
+"налаштування брандмауерів на інших пристроях:\n"
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"Якщо збережений пристрій уже в мережі, але його тут не показано, спробуйте "
+"оновити список виявлених пристроїв."
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Якщо з’явилися «фантомні» пристрої або щось працює некоректно, проблему може "
+"вирішити вилучення усіх збережених даних про пристрої. Після цього слід "
+"повністю перезапустити програму."
+
+msgid "In progress"
+msgstr "Виконуємо"
+
+msgid "Incoming Pairing Request"
+msgstr "Вхідний запит щодо пов'язування"
+
+msgid "Info"
+msgstr "Відомості"
+
+msgid "Information"
+msgstr "Відомості"
+
+msgid "Initiate Pairing?"
+msgstr "Ініціювати пов'язування?"
+
+msgid "Integration with Siri Shortcuts"
+msgstr "Інтеграція зі скороченнями Siri"
+
+msgid "Integration with the system share sheet is in development"
+msgstr "Інтеграцію із аркушем спільних ресурсів системи ще не реалізовано"
+
+msgid "Internationalization & Localization"
+msgstr "Переклади та локалізація"
+
+msgid "Invalid"
+msgstr "Некоректний"
+
+msgid "Keyboard: Control Remote"
+msgstr "Клавіатура: керування віддаленим пристроєм"
+
+msgid "License"
+msgstr "Ліцензування"
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Світла"
+
+msgid "Lock Screen: Control Remote"
+msgstr "Блокування екрана: керування віддаленим пристроєм"
+
+msgid "Logs"
+msgstr "Журнал"
+
+msgid "Logs for %@"
+msgstr "Журнал для %@"
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: керування віддаленими мультимедійними даними та відповіддю"
+
+msgid "Manage received files in the Files app"
+msgstr "Керувати отриманими файлами у програмі «Файли»"
+
+msgid "May not work with KDE Connect for Windows"
+msgstr "Може не працювати з KDE Connect для Windows"
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Можливо, через схему адреси та інтеграцію зі скороченнями Siri"
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Можливо, зі службою центру сповіщень Apple (ACNS)"
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Середній"
+
+msgid "Mouse: Control Remote"
+msgstr "Миша: керування віддаленим"
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"Пересувайте палець екраном, щоб керувати курсором миші. Торкніться одним "
+"пальцем для клацання лівою кнопкою миші. Торкніться двома пальцями для "
+"клацання правою кнопкою миші. Використовуйте тривале натискання для "
+"активації функції перетягування зі скиданням. Або скористайтеся меню у "
+"верхньому правому куті, щоб безпосередньо надсилати команди клацання.\n"
+"\n"
+"Перетягуйте одним пальцем по зображенню коліщатка гортання у верхній частині "
+"екрана, щоб гортати вміст як по вертикалі, так і по горизонталі. Торкніться "
+"коліщатка гортання для клацання середньою кнопкою миші."
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Багатоплатформова програма, за допомогою якої пристрої (наприклад ваш "
+"телефон і комп'ютер) можуть обмінюватися даними"
+
+msgid "Network Packet Composer"
+msgstr "Редактор пакетів мережі"
+
+msgid "Nice"
+msgstr "Пріоритетність"
+
+msgid "No additional devices are discovered on this network."
+msgstr "У цій мережі не виявлено додаткових пристроїв."
+
+msgid "No battery detected in device"
+msgstr "На пристрої не виявлено акумуляторів"
+
+msgid "No currently connected devices."
+msgstr "Зараз немає з'єднаних пристроїв."
+
+msgid "No device discovered in the current network."
+msgstr "У поточній мережі не виявлено жодного пристрою."
+
+msgid "No matching logs yet"
+msgstr "Ще немає відповідного журналу"
+
+msgid "No, Stay Paired"
+msgstr "Ні, лишати пов'язаним"
+
+msgid "Not yet implemented"
+msgstr "Ще не реалізовано"
+
+msgid "Notice"
+msgstr "Зауваження"
+
+msgid "Notification: Receive from Others"
+msgstr "Сповіщення: отримання з інших"
+
+msgid "Notification: Retrieve by Others"
+msgstr "Сповіщення: отримання іншими"
+
+msgid "OK"
+msgstr "Гаразд"
+
+msgid "On-Click Haptic Style"
+msgstr "Тактильний стиль «при клацанні»"
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Інший"
+
+msgid "Out-App Notification:"
+msgstr "Сповіщення поза програмою:"
+
+msgid "Packet Body"
+msgstr "Вміст пакета"
+
+msgid "Packet Tag"
+msgstr "Мітка пакета"
+
+msgid "Packet Type"
+msgstr "Тип пакета"
+
+msgid "Pair"
+msgstr "Пов'язати"
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"Запит щодо пов'язування від «%@»\n"
+"Ключ перевірки: %@"
+
+msgid "Pairing Complete"
+msgstr "Пов'язування завершено"
+
+msgid "Pairing Rejected"
+msgstr "У пов'язуванні відмовлено"
+
+msgid "Pairing Timed Out"
+msgstr "Перевищено час очікування на пов'язування"
+
+msgid "Pairing with '%@' failed"
+msgstr "Не вдалося виконати пов'язування з «%@»"
+
+msgid "Pairing with '%@' succeeded"
+msgstr "Успішне пов'язування з «%@»"
+
+msgid "Peer"
+msgstr "Вузол"
+
+msgid "Ping"
+msgstr "Луна-імпульс"
+
+msgid "Ping received from a connected device."
+msgstr "Від з'єднаного пристрою отримано луна-імпульс."
+
+msgid "Ping!"
+msgstr "Пінг!"
+
+msgid "Plasma Bigscreen"
+msgstr "Плазма для великих екранів"
+
+msgid "Playground"
+msgstr "Ігровий майданчик"
+
+msgid "Plugin Settings"
+msgstr "Параметри додатка"
+
+msgid "Plugins If Reachable"
+msgstr "Додатки, якщо доступні"
+
+msgid "Pointer Sensitivity"
+msgstr "Чутливість вказівника"
+
+msgid "Preparing Media…"
+msgstr "Приготування мультимедіа…"
+
+msgid "Presenter: Control Remote"
+msgstr "Презентація: керування віддаленим"
+
+msgid "Preview: "
+msgstr "Перегляд: "
+
+msgid "Previously connected devices will appear here."
+msgstr "Тут буде показано раніше з'єднані пристрої."
+
+msgid "Push Local Clipboard"
+msgstr "Надіслати локальний вміст буфера"
+
+msgid "Reason: %@"
+msgstr "Причина: %@"
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Отримані фотографії та відео будуть збережені в програмі «Файли», оскільки "
+"ви не можете надати нам доступ до своєї медіатеки."
+
+msgid "Receiving"
+msgstr "Отримання"
+
+msgid "Receiving file %lld of %lld"
+msgstr "Отримання файла %lld з %lld"
+
+msgid "Refresh Discovery"
+msgstr "Оновити виявлення"
+
+msgid "Remembered Devices"
+msgstr "Відомі пристрої"
+
+msgid "Remote Input"
+msgstr "Дистанційне введення"
+
+msgid "Report Bug"
+msgstr "Повідомити про ваду"
+
+msgid "Request to pair with '%@'"
+msgstr "Запит щодо пов'язування з «%@»"
+
+msgid "Restart Discovery"
+msgstr "Перезапустити виявлення"
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Жорстко"
+
+msgid "Ring Device"
+msgstr "Дзвінок на пристрої"
+
+msgid "Ring/Find My Phone"
+msgstr "Дзвінок/Пошук телефону"
+
+msgid "Rounded Rectangle"
+msgstr "Округлений прямокутник"
+
+msgid "Run Command"
+msgstr "Виконати команду"
+
+msgid "Run Command: Request"
+msgstr "Виконання команди: запит"
+
+msgid "Run Command: Respond"
+msgstr "Виконання команди: відповідь"
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: доступ до віддаленого сховища та ініціалізація файлового сервера"
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"Відбиток SHA256 сертифіката вашого пристрою:\n"
+"%@\n"
+"\n"
+"Відбиток SHA256 сертифіката віддаленого пристрою: \n"
+"%@"
+
+msgid "Save photos to the photo library"
+msgstr "Зберігати фотографії до фотобібліотеки"
+
+msgid "Save videos to the photo library"
+msgstr "Зберігати відео до фотобібліотеки"
+
+msgid "Screensaver: Inhibit Remote"
+msgstr "Зберігач екрана: блокування дистанційного керування"
+
+msgid "Select a device from the Devices list to start."
+msgstr "Виберіть пристрій для запуску зі списку пристроїв."
+
+msgid "Send"
+msgstr "Надіслати"
+
+msgid "Send Double Left Click"
+msgstr "Надіслати подвійне клацання лівою"
+
+msgid "Send Files"
+msgstr "Надіслати файли"
+
+msgid "Send Left Hold"
+msgstr "Надіслати утримання лівої"
+
+msgid "Send Middle Click"
+msgstr "Надіслати клацання лівою кнопкою"
+
+msgid "Send Photos and Videos"
+msgstr "Надіслати фотографії і відео"
+
+msgid "Send Ping"
+msgstr "Надіслати сигнал підтримання зв’язку"
+
+msgid "Send Right Click"
+msgstr "Надіслати клацання правою кнопкою"
+
+msgid "Send Single Left Click"
+msgstr "Надіслати одинарне клацання лівою"
+
+msgid "Sending"
+msgstr "Надсилання"
+
+msgid "Sending file %lld of %lld"
+msgstr "Надсилання файла %lld з %lld"
+
+msgid "Settings"
+msgstr "Параметри"
+
+msgid "Share/File Transfer"
+msgstr "Оприлюднення/Передавання файлівShare/File Transfer"
+
+msgid "Share: Receive File, Text, and URL"
+msgstr "Оприлюднення: отримання файла, тексту та адреси"
+
+msgid "Share: Send File"
+msgstr "Оприлюднення: надіслати файла"
+
+msgid "Share: Send Text & URL"
+msgstr "Оприлюднення: надіслати текст і адресу"
+
+msgid "Show Haptics Style Selector"
+msgstr "Показати засіб вибору стилю тактильного відгуку"
+
+msgid "Show Received Files in Finder"
+msgstr "Показати отримані файли у Finder"
+
+msgid "Show Sensitivity Slider"
+msgstr "Показати повзунок чутливості"
+
+msgid "Slideshow Remote"
+msgstr "Віддалений показ слайдів"
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "М’який"
+
+msgid "Source Code"
+msgstr "Початковий код"
+
+msgid "Status"
+msgstr "Стан"
+
+msgid "Supported"
+msgstr "Передбачено підтримку"
+
+msgid "System Default"
+msgstr "Типова для системи"
+
+msgid "System Volume: Control Remote & Respond"
+msgstr "Гучність системи: керування віддаленим і відповідь"
+
+msgid "Take Photo: Respond"
+msgstr "Створення фотографії: відповідь"
+
+msgid "Tap to start pairing"
+msgstr "Торкніться, щоб почати пов'язування"
+
+msgid "Telephony: SMS/Call Sync"
+msgstr "Телефонія: синхронізація SMS/викликів"
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "Назва пристрою, яку розпізнано KDE Connect"
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"Наслідки застосування вибраних вище параметрів не можна скасувати; щоб вони "
+"набули чинності, потрібно повністю перезапустити програму."
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"Ці дії мають виконуватися автоматично, але за потреби ви можете наказати "
+"виконати деякі з них вручну."
+
+msgid "These should work with little to no issues"
+msgstr "Мають працювати з небагатьма проблемами або без проблем"
+
+msgid "Third-Party Libraries"
+msgstr "Сторонні бібліотеки"
+
+msgid "This is likely not possible to implement on iOS"
+msgstr "Ймовірно, це неможливо реалізувати у iOS"
+
+msgid "Through the system share sheet"
+msgstr "За допомогою аркуша спільного використання системи"
+
+msgid "To %@"
+msgstr "До %@"
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"Щоб встановити з'єднання із службами з пам'яті, переконайтеся, що їх "
+"з'єднано із тією самою мережею, що і пристрій."
+
+msgid "Toggle Keyboard"
+msgstr "Увімкнути/Вимкнути клавіатуру"
+
+msgid "Troubleshooting"
+msgstr "Усування проблем"
+
+msgid "Trusted Networks"
+msgstr "Надійні мережі"
+
+msgid "Unknown Theme"
+msgstr "Невідома тема"
+
+msgid "Unpair"
+msgstr "Скасувати пов’язування"
+
+msgid "Unpair With Device?"
+msgstr "Скасувати прив'язку до пристрою?"
+
+msgid "Unpair with %@?"
+msgstr "Скасувати прив'язку до %@?"
+
+msgid "Valid"
+msgstr "Чинне"
+
+msgid "Verification key: %@"
+msgstr "Ключ перевірки: %@"
+
+msgid "Version: %@ (%@)"
+msgstr "Версія: %@ (%@)"
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr "Очікування на початок передавання %lld інших файлів"
+
+msgid "Waiting for logs..."
+msgstr "Очікування на журнал..."
+
+msgid "Waiting to send"
+msgstr "Очікування на надсилання"
+
+msgid "Website"
+msgstr "Сайт"
+
+msgid "Wiki & User Manual"
+msgstr "Вікі і підручник користувача"
+
+msgid "Yes, Unpair"
+msgstr "Так, скасувати прив'язку"
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"Ви можете вмикати або вимикати додатки окремо. Деякі додатки мають власні "
+"налаштування, які можна знайти на відповідних для них панелях перегляду."
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "без назви"
+
+msgid "© KDE Community & contributors"
+msgstr "© Спільнота та учасники KDE"

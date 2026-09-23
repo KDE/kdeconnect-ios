@@ -1,0 +1,913 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"PO-Revision-Date: 2026-09-22 07:09+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: \n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.9\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr "Odkrijte in povežite se z drugimi napravami z uporabo KDE Connect."
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr ""
+"Shranite prejete slike v knjižnico fotografij namesto v aplikacijo datotek."
+
+msgid "%@ and %lld other files"
+msgstr "%@ in %lld drugih datotek"
+
+msgid "%@ for iOS"
+msgstr "%@ za iOS"
+
+msgid "**KDE Connect** for iOS"
+msgstr "**KDE Connect** za iOS"
+
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "?"
+msgstr "?"
+
+msgid "About"
+msgstr "O programu"
+
+msgid "Actions"
+msgstr "Dejanja"
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Tukaj dodajte lokalne naslove IP drugih naprav, če se zaradi težav te ne "
+"prikažejo pri samodejnem odkrivanju."
+
+msgid "Advanced"
+msgstr "Napredno"
+
+msgid "Advanced Settings"
+msgstr "Napredne nastavitve"
+
+msgid "All Messages"
+msgstr "Vsa sporočila"
+
+msgid "Also written by %@"
+msgstr "Napisal tudi %@"
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+msgid "App Icon"
+msgstr "Ikona aplikacije"
+
+msgid "App Icon:"
+msgstr "Ikona aplikacije:"
+
+msgid "App Theme:"
+msgstr "Tema aplikacije:"
+
+msgid "Application"
+msgstr "Aplikacija"
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"Kot projekt odprte kode menimo, da je pomembna preglednost glede naših "
+"trenutnih in prihodnjih načrtov za uskladitev različice KDE Connect za iOS z "
+"različicami za druge platforme."
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Odobrite dostop do fotografij v aplikaciji Nastavitve, da boste lahko "
+"prejete fotografije in videoposnetke shranili v knjižnico fotografij"
+
+msgid "Available themes"
+msgstr "Razpoložljive teme"
+
+msgid "Background Activity"
+msgstr "Dejavnost v ozadju"
+
+msgid "Battery Level"
+msgstr "Raven napolnjenosti baterije"
+
+msgid "Battery Plugin Disabled"
+msgstr "Vtičnik za baterijo je onemogočen"
+
+msgid "Battery Status"
+msgstr "Stanje baterije"
+
+msgid "Can't find your devices here?"
+msgstr "Ne najdete svojih naprav?"
+
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgid "Category: %@"
+msgstr "Kategorija: %@"
+
+msgid "Check out the merge requests"
+msgstr "Preglejte si zahteve za združitev (merge requests)"
+
+msgid "Choose App Icon"
+msgstr "Izberite ikono aplikacije"
+
+msgid "Chores"
+msgstr "Rutinska opravila"
+
+msgid "Classic"
+msgstr "Klasično"
+
+msgid "Clear Cache"
+msgstr "Počisti predpomnilnik"
+
+msgid "Clipboard Sync"
+msgstr "Sinhronizacija odložišča"
+
+msgid "Clipboard: Push & Receive Text"
+msgstr "Odložišče: Pošiljanje in prejemanje besedila"
+
+msgid "Clipboard: Sync"
+msgstr "Odložišče: Sinhronizacija"
+
+msgid "Configure Devices By IP"
+msgstr "Konfiguriraj naprave prek naslova IP"
+
+msgid "Configure Devices by IP:"
+msgstr "Konfiguriraj naprave prek naslova IP:"
+
+msgid "Connect"
+msgstr "Poveži"
+
+msgid "Connected Devices"
+msgstr "Povezane naprave"
+
+msgid "Connectivity Report"
+msgstr "Poročilo o povezljivosti"
+
+msgid "Contacts"
+msgstr "Stiki"
+
+msgid "Contribute to KDE Connect"
+msgstr "Prispevajte k KDE Connect"
+
+msgid "Contributors"
+msgstr "Sodelavci"
+
+msgid "Copy path to the folder containing received files"
+msgstr "Kopiraj pot do mape s prejetimi datotekami"
+
+msgid "Currently maintained by %@"
+msgstr "Trenutno vzdržuje %@"
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr "Trenutno mora aplikacija ostati v ospredju, da deluje pravilno"
+
+msgid "Cursor Sensitivity"
+msgstr "Občutljivost kazalca"
+
+msgid "DANGEROUS OPTIONS"
+msgstr "NEVARNE MOŽNOSTI"
+
+msgid "Dark"
+msgstr "Temno"
+
+msgid "Debug"
+msgstr "Odpravljanje napak"
+
+msgid "Debug mode"
+msgstr "Način odpravljanja napak"
+
+msgid "Debugging device discovery"
+msgstr "Odkrivanje naprav za odpravljanje napak"
+
+msgid "Default"
+msgstr "Privzeto"
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Izbriši vse shranjene nastavitve in naprave. Zahteva, da se aplikacija v "
+"celoti znova zažene."
+
+msgid "Delete host certificate"
+msgstr "Izbriši potrdilo gostitelja"
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Izbriši potrdilo gostitelja in ga ponovno ustvari ob ponovnem zagonu. "
+"Zahteva, da se aplikacija v celoti znova zažene. OPOMBA: zaradi tega se "
+"naprava ne bo mogla povezati s prej povezanimi napravami. To napravo morate "
+"razdružiti z drugimi oddaljenimi napravami in jih znova združiti."
+
+msgid "Developer"
+msgstr "Razvijalec"
+
+msgid "Device"
+msgstr "Naprava"
+
+msgid "Device Discovery"
+msgstr "Odkrivanje naprav"
+
+msgid "Device IP"
+msgstr "IP naprave"
+
+msgid "Device Name"
+msgstr "Ime naprave"
+
+msgid "Device Name:"
+msgstr "Ime naprave:"
+
+msgid "Device Offline"
+msgstr "Naprava brez povezave"
+
+msgid "Device Status"
+msgstr "Stanje naprave"
+
+msgid "Device name"
+msgstr "Ime naprave"
+
+msgid "Devices"
+msgstr "Naprave"
+
+msgid "Direct Handshake Devices"
+msgstr "Naprave za neposredno rokovanje"
+
+msgid "Disable UDP Broadcast"
+msgstr "Onemogoči oddajanje UDP"
+
+msgid "Discovered Devices"
+msgstr "Odkrite naprave"
+
+msgid "Discovery & Pairing"
+msgstr "Odkrivanje in uparjanje"
+
+msgid "Do Not Pair"
+msgstr "Ne uparjaj"
+
+msgid "Donate"
+msgstr "Doniraj"
+
+msgid "Done"
+msgstr "Končano"
+
+msgid "Double tap to activate debug mode"
+msgstr "Dvakrat se dotaknite za aktivacijo načina odpravljanja napak"
+
+msgid "Double tap to activate debugging device discovery"
+msgstr ""
+"Dvakrat se dotaknite za aktivacijo odkrivanja naprav za odpravljanje napak"
+
+msgid "Enable/Disable Plugins"
+msgstr "Omogoči/onemogoči vtičnike"
+
+msgid "Encryption Info"
+msgstr "Informacije o šifriranju"
+
+msgid "Erase saved devices cache"
+msgstr "Izbriši shranjeni predpomnilnik naprav"
+
+msgid "Error"
+msgstr "Napaka"
+
+msgid "Error Occured"
+msgstr "Prišlo je do napake"
+
+msgid "Errors and Faults"
+msgstr "Napake in okvare"
+
+msgid "Exit Presentation"
+msgstr "Zapri predstavitev"
+
+msgid "Experimental functionalities"
+msgstr "Poskusne funkcionalnosti"
+
+msgid "Failed to Change Icon"
+msgstr "Ikone ni bilo mogoče spremeniti"
+
+msgid "Failed to receive %lld files"
+msgstr "%lld datotek ni bilo mogoče prejeti"
+
+msgid "Failed to receive from %@"
+msgstr "Ni bilo mogoče prejeti od %@"
+
+msgid "Failed to send %lld files"
+msgstr "%lld datotek ni bilo mogoče poslati"
+
+msgid "Failed to send to %@"
+msgstr "Ni bilo mogoče poslati %@"
+
+msgid "Fault"
+msgstr "Napaka"
+
+msgid "Features"
+msgstr "Lastnosti"
+
+msgid "File Transfers"
+msgstr "Prenosi datotek"
+
+msgid "Files"
+msgstr "Datoteke"
+
+msgid "Find My Device"
+msgstr "Najdi mojo napravo"
+
+msgid "Find My Phone Mode"
+msgstr "Najdi način moj telefon"
+
+msgid "Find My Phone initiated from a remote device"
+msgstr "Poišči moj telefon, sprožen z oddaljene naprave"
+
+msgid "Forget all"
+msgstr "Pozabi vse"
+
+msgid "From %@"
+msgstr "Od %@"
+
+msgid "General"
+msgstr "Splošno"
+
+msgid "Go FullScreen"
+msgstr "Pojdi v celozaslonski način"
+
+msgid "Haptics Style"
+msgstr "Haptics Style"
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Težko"
+
+msgid "Help"
+msgstr "Pomoč"
+
+msgid "Hide Haptics Style Selector"
+msgstr "Skrij izbirnik sloga Haptics"
+
+msgid "Hide Sensitivity Slider"
+msgstr "Skrij drsnik za občutljivost"
+
+msgid "I FOUND IT!"
+msgstr "NAŠEL SEM GA!"
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"Če ima KDE Connect težave z odkrivanjem drugih naprav, lahko poskusite s "
+"kombinacijo naslednjih rešitev: \n"
+"\n"
+"1. Izvedite \"Osveži odkrivanje\" prek menija %@ ali povlecite seznam naprav "
+"navzdol, da ga osvežite – tako na tej kot na drugih napravah.\n"
+"\n"
+"2. Prepričajte se, da tudi na drugih napravah teče KDE Connect in da so "
+"povezane v isto omrežje kot ta naprava.\n"
+"\n"
+"3. Druge naprave ročno dodajte prek možnosti \"Konfiguriraj naprave prek IP-"
+"ja\" v meniju %@ in nato izberite \"Osveži odkrivanje\".\n"
+"\n"
+"4. Preverite druge rešitve v uporabniškem priročniku, na primer "
+"konfiguracijo vdorobranov na drugih napravah:\n"
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"Če je shranjena naprava že povezana, a ni prikazana tukaj, poskusite z "
+"možnostjo \"Osveži odkrivanje\"."
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Če so prisotne »fantomske« naprave ali kaj ne deluje pravilno, lahko težavo "
+"odpravite z brisanjem vseh shranjenih podatkov o napravah. Za to je potreben "
+"popoln ponovni zagon aplikacije."
+
+msgid "In progress"
+msgstr "V teku"
+
+msgid "Incoming Pairing Request"
+msgstr "Prejeta zahteva za uparjanje"
+
+msgid "Info"
+msgstr "Informacije"
+
+msgid "Information"
+msgstr "Informacije"
+
+msgid "Initiate Pairing?"
+msgstr "Naj začnem uparjanje?"
+
+msgid "Integration with Siri Shortcuts"
+msgstr "Integracija z bližnjicami Siri"
+
+msgid "Integration with the system share sheet is in development"
+msgstr "Integracija s sistemskim seznamom skupnih virov je v razvoju"
+
+msgid "Internationalization & Localization"
+msgstr "Internacionalizacija in lokalizacija"
+
+msgid "Invalid"
+msgstr "Neveljavno"
+
+msgid "Keyboard: Control Remote"
+msgstr "Tipkovnica: Daljinski upravljalnik"
+
+msgid "License"
+msgstr "Licenca"
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Svetloba"
+
+msgid "Lock Screen: Control Remote"
+msgstr "Zaklenjeni zaslon: Daljinski upravljalnik"
+
+msgid "Logs"
+msgstr "Dnevniki"
+
+msgid "Logs for %@"
+msgstr "Dnevniki za %@"
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: Daljinski upravljalnik medijev in odgovor"
+
+msgid "Manage received files in the Files app"
+msgstr "Upravljajte prejete datoteke v aplikaciji Datoteke"
+
+msgid "May not work with KDE Connect for Windows"
+msgstr "Morda ne bo delovalo s KDE Connect za Windows"
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Morda prek sheme URL in integracije z bližnjicami Siri"
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Morda s storitvijo Apple Notification Center Service (ACNS)."
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Srednje"
+
+msgid "Mouse: Control Remote"
+msgstr "Miška: Daljinski upravljalnik"
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"S premikanjem prsta po zaslonu premikate kazalec miške. Z enim prstom "
+"tapnite za levi klik. Z dvema prstoma tapnite za desni klik. Za aktiviranje "
+"funkcije »povleci in spusti« (drag-and-drop) uporabite dolg pritisk. Za "
+"neposredno pošiljanje klikov lahko uporabite tudi meni v zgornjem desnem "
+"kotu.\n"
+"\n"
+"Z enim prstom povlecite po »kolescu za pomikanje« (Scroll Wheel) zgoraj za "
+"navpično in vodoravno pomikanje. Za srednji klik tapnite na »kolesce za "
+"pomikanje«."
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Večplatformska aplikacija, ki omogoča komunikacijo med vašimi napravami "
+"(npr. telefonom in računalnikom)"
+
+msgid "Network Packet Composer"
+msgstr "Sestavljalnik omrežnih paketov"
+
+msgid "Nice"
+msgstr "Nice"
+
+msgid "No additional devices are discovered on this network."
+msgstr "V tem omrežju ni odkritih dodatnih naprav."
+
+msgid "No battery detected in device"
+msgstr "V napravi ni zaznane baterije"
+
+msgid "No currently connected devices."
+msgstr "Trenutno ni povezanih naprav."
+
+msgid "No device discovered in the current network."
+msgstr "V trenutnem omrežju ni odkritih naprav."
+
+msgid "No matching logs yet"
+msgstr "Še ni ustreznih dnevniških zapisov"
+
+msgid "No, Stay Paired"
+msgstr "Ne, ohrani povezavo"
+
+msgid "Not yet implemented"
+msgstr "Še ni implementirano"
+
+msgid "Notice"
+msgstr "Obvestilo"
+
+msgid "Notification: Receive from Others"
+msgstr "Obvestilo: Prejmi od drugih"
+
+msgid "Notification: Retrieve by Others"
+msgstr "Obvestilo: Pridobijo drugi"
+
+msgid "OK"
+msgstr "V redu"
+
+msgid "On-Click Haptic Style"
+msgstr "Haptični odziv ob kliku"
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Drugo"
+
+msgid "Out-App Notification:"
+msgstr "Obvestilo zunaj aplikacije:"
+
+msgid "Packet Body"
+msgstr "Vsebina paketa"
+
+msgid "Packet Tag"
+msgstr "Oznaka paketa"
+
+msgid "Packet Type"
+msgstr "Vrsta paketa"
+
+msgid "Pair"
+msgstr "Par"
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"Zahteva za uparjanje od »%@«;\n"
+"Potrditveni ključ: %@"
+
+msgid "Pairing Complete"
+msgstr "Uparjanje končano"
+
+msgid "Pairing Rejected"
+msgstr "Uparjanje zavrnjeno"
+
+msgid "Pairing Timed Out"
+msgstr "Čas za seznanitev je potekel"
+
+msgid "Pairing with '%@' failed"
+msgstr "Seznanitev z »%@« ni uspela"
+
+msgid "Pairing with '%@' succeeded"
+msgstr "Seznanitev z »%@« je uspela"
+
+msgid "Peer"
+msgstr "Enakovredna naprava (peer)"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Ping received from a connected device."
+msgstr "Prejet ping od povezane naprave."
+
+msgid "Ping!"
+msgstr "Ping!"
+
+msgid "Plasma Bigscreen"
+msgstr "Plasma Bigscreen"
+
+msgid "Playground"
+msgstr "Igrišče (Playground)"
+
+msgid "Plugin Settings"
+msgstr "Nastavitve vtičnikov"
+
+msgid "Plugins If Reachable"
+msgstr "Vtičniki, če so dosegljivi"
+
+msgid "Pointer Sensitivity"
+msgstr "Občutljivost kazalca"
+
+msgid "Preparing Media…"
+msgstr "Priprava predstavnosti…"
+
+msgid "Presenter: Control Remote"
+msgstr "Voditelj: Daljinski upravljalnik"
+
+msgid "Preview: "
+msgstr "Predogled: "
+
+msgid "Previously connected devices will appear here."
+msgstr "Tukaj bodo prikazane predhodno povezane naprave."
+
+msgid "Push Local Clipboard"
+msgstr "Potisni lokalno odložišče"
+
+msgid "Reason: %@"
+msgstr "Razlog: %@"
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Prejete fotografije in videoposnetki bodo shranjeni v aplikaciji Datoteke, "
+"ker nam ne morete omogočiti dostopa do vaše knjižnice fotografij."
+
+msgid "Receiving"
+msgstr "Prejemanje"
+
+msgid "Receiving file %lld of %lld"
+msgstr "Prejemanje datoteke %lld od %lld"
+
+msgid "Refresh Discovery"
+msgstr "Osveži odkritje"
+
+msgid "Remembered Devices"
+msgstr "Shranjene naprave"
+
+msgid "Remote Input"
+msgstr "Oddaljeni vhod"
+
+msgid "Report Bug"
+msgstr "Prijavi napako"
+
+msgid "Request to pair with '%@'"
+msgstr "Zahteva za uparjanje z '%@'"
+
+msgid "Restart Discovery"
+msgstr "Znova zaženite Discovery"
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Togo"
+
+msgid "Ring Device"
+msgstr "Zvonjenje naprave"
+
+msgid "Ring/Find My Phone"
+msgstr "Zvoni/Poišči moj telefon"
+
+msgid "Rounded Rectangle"
+msgstr "Zaobljen pravokotnik"
+
+msgid "Run Command"
+msgstr "Zaženi ukaz"
+
+msgid "Run Command: Request"
+msgstr "Zaženi ukaz: Zahteva"
+
+msgid "Run Command: Respond"
+msgstr "Zaženi ukaz: odgovori"
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: Oddaljeni dostop in zagon datotečnega strežnika"
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"Prstni odtis SHA256 potrdila vaše naprave je: %@  Prstni odtis SHA256 "
+"potrdila oddaljene naprave je: %@"
+
+msgid "Save photos to the photo library"
+msgstr "Shrani fotografije v knjižnico fotografij"
+
+msgid "Save videos to the photo library"
+msgstr "Shrani videoposnetke v knjižnico fotografij"
+
+msgid "Screensaver: Inhibit Remote"
+msgstr "Ohranjevalnik zaslona: Onemogoči daljinski upravljalnik"
+
+msgid "Select a device from the Devices list to start."
+msgstr "Za začetek izberite napravo s seznama naprav."
+
+msgid "Send"
+msgstr "Pošlji"
+
+msgid "Send Double Left Click"
+msgstr "Pošlji dvojni levi klik"
+
+msgid "Send Files"
+msgstr "Pošlji datoteke"
+
+msgid "Send Left Hold"
+msgstr "Pošlji pridržanje leve tipke"
+
+msgid "Send Middle Click"
+msgstr "Pošlji srednji klik"
+
+msgid "Send Photos and Videos"
+msgstr "Pošlji fotografije in videoposnetke"
+
+msgid "Send Ping"
+msgstr "Pošlji ping"
+
+msgid "Send Right Click"
+msgstr "Pošlji desni klik"
+
+msgid "Send Single Left Click"
+msgstr "Pošlji enojni levi klik"
+
+msgid "Sending"
+msgstr "Pošiljanje"
+
+msgid "Sending file %lld of %lld"
+msgstr "Pošiljanje datoteke %lld od %lld"
+
+msgid "Settings"
+msgstr "Nastavitve"
+
+msgid "Share/File Transfer"
+msgstr "Deli/Prenos datotek"
+
+msgid "Share: Receive File, Text, and URL"
+msgstr "Deli: Prejmi datoteko, besedilo in URL"
+
+msgid "Share: Send File"
+msgstr "Deli: Pošlji datoteko"
+
+msgid "Share: Send Text & URL"
+msgstr "Deli: Pošlji besedilo in URL"
+
+msgid "Show Haptics Style Selector"
+msgstr "Prikaži izbirnik haptičnih slogov"
+
+msgid "Show Received Files in Finder"
+msgstr "Prikaži prejete datoteke v Finderju"
+
+msgid "Show Sensitivity Slider"
+msgstr "Prikaži drsnik občutljivosti"
+
+msgid "Slideshow Remote"
+msgstr "Predstavitev na daljavo"
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "Mehka"
+
+msgid "Source Code"
+msgstr "Izvorna koda"
+
+msgid "Status"
+msgstr "Stanje"
+
+msgid "Supported"
+msgstr "Podprto"
+
+msgid "System Default"
+msgstr "Privzeto sistemsko"
+
+msgid "System Volume: Control Remote & Respond"
+msgstr "Glasnost sistema: Upravljaj daljinski upravljalnik in odgovori"
+
+msgid "Take Photo: Respond"
+msgstr "Posnemi fotografijo: Odgovori"
+
+msgid "Tap to start pairing"
+msgstr "Dotaknite se za začetek uparjanja"
+
+msgid "Telephony: SMS/Call Sync"
+msgstr "Telefonija: Sinhronizacija SMS/klicev"
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "Ime naprave, kot jo prepozna KDE Connect"
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"Zgornje možnosti so nepreklicne in zahtevajo popoln ponovni zagon "
+"aplikacije, da začnejo veljati."
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"Te bi se morale obravnavati samodejno, vendar lahko nekatere ročno izvedete, "
+"če se ne."
+
+msgid "These should work with little to no issues"
+msgstr "To bi moralo delovati z malo ali nič težavami"
+
+msgid "Third-Party Libraries"
+msgstr "Knjižnice drugih ponudnikov"
+
+msgid "This is likely not possible to implement on iOS"
+msgstr "Tega verjetno ni mogoče implementirati v sistemu iOS"
+
+msgid "Through the system share sheet"
+msgstr "Prek sistemske tabele za skupno rabo"
+
+msgid "To %@"
+msgstr "Za %@"
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"Za povezavo s shranjenimi napravami se prepričajte, da so povezane v isto "
+"omrežje kot ta naprava."
+
+msgid "Toggle Keyboard"
+msgstr "Preklopi tipkovnico"
+
+msgid "Troubleshooting"
+msgstr "Odpravljanje težav"
+
+msgid "Trusted Networks"
+msgstr "Zaupanja vredna omrežja"
+
+msgid "Unknown Theme"
+msgstr "Neznana tema"
+
+msgid "Unpair"
+msgstr "Prekini povezavo"
+
+msgid "Unpair With Device?"
+msgstr "Prekiniti povezavo z napravo?"
+
+msgid "Unpair with %@?"
+msgstr "Naj prekinem povezavo z %@?"
+
+msgid "Valid"
+msgstr "Veljavno"
+
+msgid "Verification key: %@"
+msgstr "Ključ za preverjanje: %@"
+
+msgid "Version: %@ (%@)"
+msgstr "Različica: %@ (%@)"
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr "Čakanje na začetek prenosa %lld drugih datotek"
+
+msgid "Waiting for logs..."
+msgstr "Čakanje na dnevnike..."
+
+msgid "Waiting to send"
+msgstr "Čakanje na pošiljanje"
+
+msgid "Website"
+msgstr "Spletno mesto"
+
+msgid "Wiki & User Manual"
+msgstr "Wiki in uporabniški priročnik"
+
+msgid "Yes, Unpair"
+msgstr "Da, prekini povezavo"
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"Vstavke lahko omogočite ali onemogočite posamično. Nekateri vstavki imajo "
+"lastne posebne nastavitve, ki jih najdete v ustreznih pogledih."
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "brez naslova"
+
+msgid "© KDE Community & contributors"
+msgstr "© Skupnost KDE in sodelavci"

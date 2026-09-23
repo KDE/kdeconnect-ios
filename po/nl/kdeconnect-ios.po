@@ -1,0 +1,914 @@
+# SPDX-FileCopyrightText: 2026 Freek de Kruijf <freekdekruijf@kde.nl>
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"PO-Revision-Date: 2026-09-21 12:56+0200\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 26.08.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr "Ontdek andere apparaten en maak er verbinding mee via KDE Connect."
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr ""
+"Sla ontvangen afbeeldingen op in uw fotobibliotheek in plaats van in de "
+"Bestanden-toepassing."
+
+msgid "%@ and %lld other files"
+msgstr "%@ en %lld andere bestanden"
+
+msgid "%@ for iOS"
+msgstr "%@ voor iOS"
+
+msgid "**KDE Connect** for iOS"
+msgstr "**KDE Connect** voor iOS"
+
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "?"
+msgstr "?"
+
+msgid "About"
+msgstr "Info over"
+
+msgid "Actions"
+msgstr "Acties"
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Voeg hier de lokale IP-adressen van andere apparaten toe als ze niet goed "
+"verschijnen bij de automatische detectie."
+
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+msgid "Advanced Settings"
+msgstr "Geavanceerde instellingen"
+
+msgid "All Messages"
+msgstr "Alle meldingen"
+
+msgid "Also written by %@"
+msgstr "Ook geschreven door %@"
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+msgid "App Icon"
+msgstr "Toepassingspictogram"
+
+msgid "App Icon:"
+msgstr "Toepassingspictogram:"
+
+msgid "App Theme:"
+msgstr "Toepassingsthema:"
+
+msgid "Application"
+msgstr "Toepassing"
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"Als open-sourceproject vinden we het belangrijk om transparant te zijn over "
+"onze huidige en toekomstige plannen om KDE Connect voor iOS op één lijn te "
+"brengen met alle andere platforms."
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Geef via de toepassing Instellingen toestemming voor toegang tot Foto's om "
+"ontvangen foto's en video's in uw fotobibliotheek op te slaan."
+
+msgid "Available themes"
+msgstr "Beschikbare thema's"
+
+msgid "Background Activity"
+msgstr "Achtergrondactiviteit"
+
+msgid "Battery Level"
+msgstr "Batterijniveau"
+
+msgid "Battery Plugin Disabled"
+msgstr "Batterij-plugin uitgeschakeld"
+
+msgid "Battery Status"
+msgstr "Batterijstatus"
+
+msgid "Can't find your devices here?"
+msgstr "Kunt u uw apparaten hier niet vinden?"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Category: %@"
+msgstr "Categorie: %@"
+
+msgid "Check out the merge requests"
+msgstr "Bekijk de mengverzoeken (merge requests)"
+
+msgid "Choose App Icon"
+msgstr "Toepassingspictogram kiezen"
+
+msgid "Chores"
+msgstr "Klusjes"
+
+msgid "Classic"
+msgstr "Klassiek"
+
+msgid "Clear Cache"
+msgstr "Cache wissen"
+
+msgid "Clipboard Sync"
+msgstr "Klembordsynchronisatie"
+
+msgid "Clipboard: Push & Receive Text"
+msgstr "Klembord: tekst verzenden en ontvangen"
+
+msgid "Clipboard: Sync"
+msgstr "Klembord: synchronisatie"
+
+msgid "Configure Devices By IP"
+msgstr "Apparaten configureren per IP-adres"
+
+msgid "Configure Devices by IP:"
+msgstr "Apparaten configureren per IP-adres:"
+
+msgid "Connect"
+msgstr "Verbinden"
+
+msgid "Connected Devices"
+msgstr "Verbonden apparaten"
+
+msgid "Connectivity Report"
+msgstr "Rapport over connectiviteit"
+
+msgid "Contacts"
+msgstr "Contactpersonen"
+
+msgid "Contribute to KDE Connect"
+msgstr "Draag bij aan KDE Connect"
+
+msgid "Contributors"
+msgstr "Met dank aan"
+
+msgid "Copy path to the folder containing received files"
+msgstr "Pad kopiëren naar de map met ontvangen bestanden"
+
+msgid "Currently maintained by %@"
+msgstr "Momenteel onderhouden door %@"
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr "Momenteel moet de toepassing op de voorgrond blijven om goed te werken"
+
+msgid "Cursor Sensitivity"
+msgstr "Cursorgevoeligheid"
+
+msgid "DANGEROUS OPTIONS"
+msgstr "GEVAARLIJKE OPTIES"
+
+msgid "Dark"
+msgstr "Donker"
+
+msgid "Debug"
+msgstr "Debuggen"
+
+msgid "Debug mode"
+msgstr "Modus debug"
+
+msgid "Debugging device discovery"
+msgstr "Fouten opsporen in apparaat ontdekken"
+
+msgid "Default"
+msgstr "Standaard"
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Verwijder alle opgeslagen instellingen en apparaten. Hiervoor moet de "
+"toepassing volledig opnieuw worden opgestart."
+
+msgid "Delete host certificate"
+msgstr "Host-certificaat verwijderen"
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Verwijder het host-certificaat en genereer het opnieuw bij het herstarten. "
+"Hiervoor moet de toepassing volledig opnieuw worden opgestart. LET OP: "
+"hierdoor kan het apparaat geen verbinding meer maken met apparaten waarmee "
+"eerder verbinding was gemaakt. U moet de koppeling tussen dit apparaat en de "
+"andere apparaten opheffen en ze opnieuw koppelen."
+
+msgid "Developer"
+msgstr "Ontwikkelaar"
+
+msgid "Device"
+msgstr "Apparaat"
+
+msgid "Device Discovery"
+msgstr "Apparaat ontdekken"
+
+msgid "Device IP"
+msgstr "Apparaat-IP-adres"
+
+msgid "Device Name"
+msgstr "Apparaatnaam"
+
+msgid "Device Name:"
+msgstr "Apparaatnaam:"
+
+msgid "Device Offline"
+msgstr "Apparaat offline"
+
+msgid "Device Status"
+msgstr "Apparaatstatus"
+
+msgid "Device name"
+msgstr "Apparaatnaam"
+
+msgid "Devices"
+msgstr "Apparaten"
+
+msgid "Direct Handshake Devices"
+msgstr "Directe handshake apparaten"
+
+msgid "Disable UDP Broadcast"
+msgstr "UDP-broadcast uitschakelen"
+
+msgid "Discovered Devices"
+msgstr "Ontdekte apparaten"
+
+msgid "Discovery & Pairing"
+msgstr "Ontdekken & paren"
+
+msgid "Do Not Pair"
+msgstr "Niet paren"
+
+msgid "Donate"
+msgstr "Doneren"
+
+msgid "Done"
+msgstr "Gereed"
+
+msgid "Double tap to activate debug mode"
+msgstr "Dubbel tikken om modus debug te activeren"
+
+msgid "Double tap to activate debugging device discovery"
+msgstr "Dubbel tikken om fouten opsporen in apparaat ontdekken te activeren"
+
+msgid "Enable/Disable Plugins"
+msgstr "Plug-ins in-/uitschakelen"
+
+msgid "Encryption Info"
+msgstr "Versleutelde informatie"
+
+msgid "Erase saved devices cache"
+msgstr "Cache met opgeslagen apparaten wissen"
+
+msgid "Error"
+msgstr "Fout"
+
+msgid "Error Occured"
+msgstr "Er is een fout opgetreden"
+
+msgid "Errors and Faults"
+msgstr "Fouten"
+
+msgid "Exit Presentation"
+msgstr "Presentatie beëindigen"
+
+msgid "Experimental functionalities"
+msgstr "Experimentele functionaliteiten"
+
+msgid "Failed to Change Icon"
+msgstr "Pictogram wijzigen is mislukt"
+
+msgid "Failed to receive %lld files"
+msgstr "Ontvangen van %lld bestanden is mislukt"
+
+msgid "Failed to receive from %@"
+msgstr "Van %@ ontvangen is mislukt"
+
+msgid "Failed to send %lld files"
+msgstr "Verzenden van %lld bestanden is mislukt"
+
+msgid "Failed to send to %@"
+msgstr "Verzenden naar %@ is mislukt"
+
+msgid "Fault"
+msgstr "Fout"
+
+msgid "Features"
+msgstr "Mogelijkheden"
+
+msgid "File Transfers"
+msgstr "Bestandsoverdracht"
+
+msgid "Files"
+msgstr "Bestanden"
+
+msgid "Find My Device"
+msgstr "Mijn apparaat zoeken"
+
+msgid "Find My Phone Mode"
+msgstr "Modus Mijn telefoon zoeken"
+
+msgid "Find My Phone initiated from a remote device"
+msgstr "Mijn telefoon zoeken geïnitieerd vanaf een apparaat op afstand"
+
+msgid "Forget all"
+msgstr "Alles vergeten"
+
+msgid "From %@"
+msgstr "Vanaf %@"
+
+msgid "General"
+msgstr "Algemeen"
+
+msgid "Go FullScreen"
+msgstr "Ga naar volledig scherm"
+
+msgid "Haptics Style"
+msgstr "Stijl Haptics"
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Zwaar"
+
+msgid "Help"
+msgstr "Help"
+
+msgid "Hide Haptics Style Selector"
+msgstr "Selector voor stijl Haptics verbergen"
+
+msgid "Hide Sensitivity Slider"
+msgstr "Gevoeligheidsschuifregelaar verbergen"
+
+msgid "I FOUND IT!"
+msgstr "IK HEB HET GEVONDEN!"
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"Als KDE Connect moeite heeft met het vinden van andere apparaten, kunt u een "
+"combinatie van de volgende oplossingen proberen:\n"
+"1. Kies \"Detectie vernieuwen\" in het %@-menu of trek de apparatenlijst "
+"omlaag om deze te vernieuwen; doe dit zowel op dit apparaat als op de andere "
+"apparaten.\n"
+"2. Zorg ervoor dat op de andere apparaten ook KDE Connect draait en dat ze "
+"met hetzelfde netwerk zijn verbonden als dit apparaat.\n"
+"3. Voeg de andere apparaten handmatig toe via de optie \"Apparaten "
+"configureren op IP-adres\" in het %@-menu en kies vervolgens \"Detectie "
+"vernieuwen\".\n"
+"4. Bekijk andere oplossingen in de gebruikershandleiding, zoals het "
+"configureren van de firewalls van de andere apparaten:\n"
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"Als een onthouden apparaat al online is maar hier niet wordt weergegeven, "
+"probeer dan Detectie vernieuwen."
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Als er spookapparaten zijn of iets niet naar behoren werkt, kan het wissen "
+"van alle opgeslagen apparaatgegevens dit mogelijk oplossen. Hiervoor moet de "
+"toepassing volledig opnieuw worden opgestart."
+
+msgid "In progress"
+msgstr "In uitvoering"
+
+msgid "Incoming Pairing Request"
+msgstr "Inkomend verzoek om een paar te maken"
+
+msgid "Info"
+msgstr "Informatie"
+
+msgid "Information"
+msgstr "Informatie"
+
+msgid "Initiate Pairing?"
+msgstr "Paren initiëren?"
+
+msgid "Integration with Siri Shortcuts"
+msgstr "Integratie met Siri-sneltoetsen"
+
+msgid "Integration with the system share sheet is in development"
+msgstr "Integratie met het systeemdeeloverzicht is in ontwikkeling"
+
+msgid "Internationalization & Localization"
+msgstr "Internationalisatie & lokalisatie"
+
+msgid "Invalid"
+msgstr "Ongeldig"
+
+msgid "Keyboard: Control Remote"
+msgstr "Toetsenbord: op afstand bedienen"
+
+msgid "License"
+msgstr "Licentie"
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Licht"
+
+msgid "Lock Screen: Control Remote"
+msgstr "Scherm vergrendelen: op afstand bedienen"
+
+msgid "Logs"
+msgstr "Logs"
+
+msgid "Logs for %@"
+msgstr "Logs voor %@"
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: bestuur media & respons op afstand"
+
+msgid "Manage received files in the Files app"
+msgstr "Beheer ontvangen bestanden in de toepassing Bestanden"
+
+msgid "May not work with KDE Connect for Windows"
+msgstr "Werkt mogelijk niet met KDE Connect voor Windows"
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Misschien via een URL-schema en integratie met Siri-sneltoetsen"
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Misschien met Apple Notification Center Service (ACNS)"
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Middel"
+
+msgid "Mouse: Control Remote"
+msgstr "Muis: op afstand bedienen"
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"Beweeg een vinger over het scherm om de muiscursor te verplaatsen. Tik met "
+"één vinger voor een linksklik. Tik met twee fingers voor een rechtsklik. "
+"Houd ingedrukt om slepen en loslaten (drag-and-drop) te activeren. Of "
+"gebruik het menu rechtsboven om direct klikken te versturen.\n"
+"\n"
+"Sleep met één vinger over het “schuifwiel” hierboven om zowel verticaal als "
+"horizontaal te schuiven. Tik op het 'schuifwiel' voor een middelste muisklik."
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Multi-platform-toepassing waarmee uw apparaten met elkaar kunnen "
+"communiceren (bijv. uw telefoon en uw computer)"
+
+msgid "Network Packet Composer"
+msgstr "Samensteller van netwerkpakket"
+
+msgid "Nice"
+msgstr "Nice"
+
+msgid "No additional devices are discovered on this network."
+msgstr "Er worden geen extra apparaten op dit netwerk gevonden."
+
+msgid "No battery detected in device"
+msgstr "Geen batterij gedetecteerd in het apparaat"
+
+msgid "No currently connected devices."
+msgstr "Geen nu verbonden apparaten."
+
+msgid "No device discovered in the current network."
+msgstr "Er is geen apparaat gevonden in het huidige netwerk."
+
+msgid "No matching logs yet"
+msgstr "Nog geen overeenkomende logboeken"
+
+msgid "No, Stay Paired"
+msgstr "Nee, gepaard blijven"
+
+msgid "Not yet implemented"
+msgstr "Nog niet geïmplementeerd"
+
+msgid "Notice"
+msgstr "Melding"
+
+msgid "Notification: Receive from Others"
+msgstr "Melding: ontvangen van anderen"
+
+msgid "Notification: Retrieve by Others"
+msgstr "Melding: opgezocht door anderen"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "On-Click Haptic Style"
+msgstr "Bij klikken in stijl Haptic"
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Overig"
+
+msgid "Out-App Notification:"
+msgstr "Melding buiten toepassing:"
+
+msgid "Packet Body"
+msgstr "Pakketinhoud"
+
+msgid "Packet Tag"
+msgstr "Pakkettag"
+
+msgid "Packet Type"
+msgstr "Pakkettype"
+
+msgid "Pair"
+msgstr "Paar"
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"Paarverzoek van '%@'\n"
+"Verificatiesleutel: %@"
+
+msgid "Pairing Complete"
+msgstr "Paren voltooid"
+
+msgid "Pairing Rejected"
+msgstr "Paren afgewezen"
+
+msgid "Pairing Timed Out"
+msgstr "Tijdslimiet overschreden bij paren"
+
+msgid "Pairing with '%@' failed"
+msgstr "Paren met '%@' is mislukt"
+
+msgid "Pairing with '%@' succeeded"
+msgstr "Paren met '%@' is gelukt"
+
+msgid "Peer"
+msgstr "Peer"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Ping received from a connected device."
+msgstr "Ping ontvangen van een verbonden apparaat."
+
+msgid "Ping!"
+msgstr "Ping!"
+
+msgid "Plasma Bigscreen"
+msgstr "Plasma Bigscreen"
+
+msgid "Playground"
+msgstr "Speelveld"
+
+msgid "Plugin Settings"
+msgstr "Plug-in-instellingen"
+
+msgid "Plugins If Reachable"
+msgstr "Plug-ins indien bereikbaar"
+
+msgid "Pointer Sensitivity"
+msgstr "Gevoeligheid van aanwijzer"
+
+msgid "Preparing Media…"
+msgstr "Media voorbereiden…"
+
+msgid "Presenter: Control Remote"
+msgstr "Presentator: afstandsbediening"
+
+msgid "Preview: "
+msgstr "Voorbeeld: "
+
+msgid "Previously connected devices will appear here."
+msgstr "Eerder verbonden apparaten verschijnen hier."
+
+msgid "Push Local Clipboard"
+msgstr "Lokaal klembord pushen"
+
+msgid "Reason: %@"
+msgstr "Reden: %@"
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Ontvangen foto's en video's worden opgeslagen in de toepassing Bestanden, "
+"omdat u ons geen toegang kunt geven tot uw fotobibliotheek."
+
+msgid "Receiving"
+msgstr "Ontvangen"
+
+msgid "Receiving file %lld of %lld"
+msgstr "Bestand %lld worden ontvangen van %lld"
+
+msgid "Refresh Discovery"
+msgstr "Ontdekken vernieuwen"
+
+msgid "Remembered Devices"
+msgstr "Onthouden apparaten"
+
+msgid "Remote Input"
+msgstr "Invoer op afstand"
+
+msgid "Report Bug"
+msgstr "Bug rapporteren"
+
+msgid "Request to pair with '%@'"
+msgstr "Verzoek te paren met '%@'"
+
+msgid "Restart Discovery"
+msgstr "Ontdekken herstarten"
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Rigide"
+
+msgid "Ring Device"
+msgstr "Apparaat laten bellen"
+
+msgid "Ring/Find My Phone"
+msgstr "Bellen/Mijn telefoon zoeken"
+
+msgid "Rounded Rectangle"
+msgstr "Afgeronde rechthoek"
+
+msgid "Run Command"
+msgstr "Commando uitvoeren"
+
+msgid "Run Command: Request"
+msgstr "Opdracht uitvoeren: verzoek"
+
+msgid "Run Command: Respond"
+msgstr "Opdracht uitvoeren: respons"
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: toegang op afstand & initialiseer bestandsserver"
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"De SHA256-vingerafdruk van het certificaat van uw apparaat is:\n"
+"%@\n"
+"\n"
+"De SHA256-vingerafdruk van het certificaat van het externe apparaat is:\n"
+"%@"
+
+msgid "Save photos to the photo library"
+msgstr "Foto's opslaan in de fotobibliotheek"
+
+msgid "Save videos to the photo library"
+msgstr "Video's opslaan in de fotobibliotheek"
+
+msgid "Screensaver: Inhibit Remote"
+msgstr "Schermbeveiliging: op afstand onderbreken"
+
+msgid "Select a device from the Devices list to start."
+msgstr "Selecteer een apparaat uit de lijst met apparaten om te beginnen."
+
+msgid "Send"
+msgstr "Verzenden"
+
+msgid "Send Double Left Click"
+msgstr "Dubbele linker muisklik verzenden"
+
+msgid "Send Files"
+msgstr "Bestanden verzenden"
+
+msgid "Send Left Hold"
+msgstr "Links ingedrukt houden verzenden"
+
+msgid "Send Middle Click"
+msgstr "Verstuur een middelste muisklik"
+
+msgid "Send Photos and Videos"
+msgstr "Foto's en video's verzenden"
+
+msgid "Send Ping"
+msgstr "Ping verzenden"
+
+msgid "Send Right Click"
+msgstr "Verstuur een rechter muisklik"
+
+msgid "Send Single Left Click"
+msgstr "Enkele linker muisklik verzenden"
+
+msgid "Sending"
+msgstr "Verzenden"
+
+msgid "Sending file %lld of %lld"
+msgstr "Bestand %lld van %lld wordt verzonden"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Share/File Transfer"
+msgstr "Delen/bestandsoverdracht"
+
+msgid "Share: Receive File, Text, and URL"
+msgstr "Delen: bestand ontvangen, tekst en URL"
+
+msgid "Share: Send File"
+msgstr "Delen: bestand verzenden"
+
+msgid "Share: Send Text & URL"
+msgstr "Delen: verzend tekst & URL"
+
+msgid "Show Haptics Style Selector"
+msgstr "Selector voor stijl Haptics tonen"
+
+msgid "Show Received Files in Finder"
+msgstr "Ontvangen bestanden in zoeker tonen"
+
+msgid "Show Sensitivity Slider"
+msgstr "Gevoeligheidsschuifregelaar tonen"
+
+msgid "Slideshow Remote"
+msgstr "Diavoorstelling op afstand"
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "Zacht"
+
+msgid "Source Code"
+msgstr "Broncode"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Supported"
+msgstr "Ondersteund"
+
+msgid "System Default"
+msgstr "Systeemstandaard"
+
+msgid "System Volume: Control Remote & Respond"
+msgstr "Systeemvolume: op afstand bedienen & reageren"
+
+msgid "Take Photo: Respond"
+msgstr "Foto nemen: reageren"
+
+msgid "Tap to start pairing"
+msgstr "Tik om paren te beginnen"
+
+msgid "Telephony: SMS/Call Sync"
+msgstr "Telefonie: SMS/oproep synchronisatie"
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "De naam van het apparaat zoals herkend door KDE Connect"
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"De bovenstaande opties zijn onomkeerbaar en vereisen een volledige herstart "
+"van de toepassing om van kracht te worden."
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"Deze zouden automatisch moeten worden afgehandeld, maar u kunt er enkele "
+"handmatig uitvoeren voor het geval dat niet gebeurt."
+
+msgid "These should work with little to no issues"
+msgstr "Deze zouden met weinig tot geen problemen moeten werken"
+
+msgid "Third-Party Libraries"
+msgstr "Bibliotheken van derden"
+
+msgid "This is likely not possible to implement on iOS"
+msgstr "Dit is waarschijnlijk niet mogelijk om op iOS te implementeren"
+
+msgid "Through the system share sheet"
+msgstr "Via het deelvenster van het systeem"
+
+msgid "To %@"
+msgstr "Naar %@"
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"Om verbinding te maken met eerder gekoppelde apparaten, moet u ervoor zorgen "
+"dat deze met hetzelfde netwerk zijn verbonden als dit apparaat."
+
+msgid "Toggle Keyboard"
+msgstr "Toetsenbord omschakelen"
+
+msgid "Troubleshooting"
+msgstr "Probleemoplossing"
+
+msgid "Trusted Networks"
+msgstr "Vertrouwde netwerken"
+
+msgid "Unknown Theme"
+msgstr "Onbekend thema"
+
+msgid "Unpair"
+msgstr "Paar uit elkaar halen"
+
+msgid "Unpair With Device?"
+msgstr "Paarvorming met welk apparaat ongedaan maken?"
+
+msgid "Unpair with %@?"
+msgstr "Paarvorming met %@ ongedaan maken?"
+
+msgid "Valid"
+msgstr "Geldig"
+
+msgid "Verification key: %@"
+msgstr "Verificatiesleutel: %@"
+
+msgid "Version: %@ (%@)"
+msgstr "Versie: %@ (%@)"
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr "Wachten tot de overdracht van %lld andere bestanden begint"
+
+msgid "Waiting for logs..."
+msgstr "Wachten op logboeken..."
+
+msgid "Waiting to send"
+msgstr "Wachten op verzenden"
+
+msgid "Website"
+msgstr "Website"
+
+msgid "Wiki & User Manual"
+msgstr "Wiki & gebruikershandleiding"
+
+msgid "Yes, Unpair"
+msgstr "Ja, paring ongedaan maken"
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"U kunt plug-ins afzonderlijk in- of uitschakelen. Sommige plug-ins hebben "
+"hun eigen specifieke instellingen, die te vinden zijn in de bijbehorende "
+"weergaven."
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "zonder titel"
+
+msgid "© KDE Community & contributors"
+msgstr "© KDE-gemeenschap & medewerkers"
