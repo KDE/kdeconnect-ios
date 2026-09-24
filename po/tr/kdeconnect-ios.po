@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-22 18:50+0300\n"
+"PO-Revision-Date: 2026-09-23 09:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #. Bundle display name
 #. Bundle name
@@ -482,18 +482,15 @@ msgstr "Windows için KDE Bağlan ile çalışmayabilir."
 msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
 msgstr "Belki URL şeması ve Siri Kestirmeleri ile tümleşim ile çalışabilir."
 
-#, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
-msgstr "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Belki Apple Bildirim Merkezi Servisi ile (ACNS)"
 
 #. Medium haptic feedback level
-#, fuzzy
 msgid "Medium"
-msgstr "Medium"
+msgstr "Orta"
 
-#, fuzzy
 msgid "Mouse: Control Remote"
-msgstr "Mouse: Control Remote"
+msgstr "Fare: Kumandayı Denetle"
 
 #, fuzzy
 msgid ""
@@ -513,61 +510,48 @@ msgstr ""
 "Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
 "and horizontally. Tap on the “Scroll Wheel” for middle click."
 
-#, fuzzy
 msgid ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
 "and your computer)"
 msgstr ""
-"Multi-platform app that allows your devices to communicate (e.g., your phone "
-"and your computer)"
+"Aygıtların birbirleriyle iletişim kurmasını sağlayan, çok platformlu bir "
+"uygulama (örneğin, bilgisayarınız ve telefonunuz)"
 
-#, fuzzy
 msgid "Network Packet Composer"
-msgstr "Network Packet Composer"
+msgstr "Ağı Paketi Oluşturucusu"
 
-#, fuzzy
 msgid "Nice"
-msgstr "Nice"
+msgstr "Güzel"
 
-#, fuzzy
 msgid "No additional devices are discovered on this network."
-msgstr "No additional devices are discovered on this network."
+msgstr "Bu ağda başka ek aygıt bulunamadı."
 
-#, fuzzy
 msgid "No battery detected in device"
-msgstr "No battery detected in device"
+msgstr "Aygıtta pil algılanmadı."
 
-#, fuzzy
 msgid "No currently connected devices."
-msgstr "No currently connected devices."
+msgstr "Şu anda bağlı hiçbir aygıt yok."
 
-#, fuzzy
 msgid "No device discovered in the current network."
-msgstr "No device discovered in the current network."
+msgstr "Şu anda bağlı bulunulan ağda keşfedilen aygıt yok."
 
-#, fuzzy
 msgid "No matching logs yet"
-msgstr "No matching logs yet"
+msgstr "Eşleşen bir günlük yok"
 
-#, fuzzy
 msgid "No, Stay Paired"
-msgstr "No, Stay Paired"
+msgstr "Hayır; Eşli Kal"
 
-#, fuzzy
 msgid "Not yet implemented"
-msgstr "Not yet implemented"
+msgstr "Henüz gerçeklenmedi"
 
-#, fuzzy
 msgid "Notice"
-msgstr "Notice"
+msgstr "Bildiri"
 
-#, fuzzy
 msgid "Notification: Receive from Others"
-msgstr "Notification: Receive from Others"
+msgstr "Bildirim: Başkalarından Al"
 
-#, fuzzy
 msgid "Notification: Retrieve by Others"
-msgstr "Notification: Retrieve by Others"
+msgstr "Bildirim: Başkalarıyla Al"
 
 msgid "OK"
 msgstr "Tamam"
@@ -577,85 +561,67 @@ msgid "On-Click Haptic Style"
 msgstr "On-Click Haptic Style"
 
 #. Unknown haptic feedback level
-#, fuzzy
 msgid "Other"
-msgstr "Other"
+msgstr "Diğer"
 
 #, fuzzy
 msgid "Out-App Notification:"
 msgstr "Out-App Notification:"
 
-#, fuzzy
 msgid "Packet Body"
-msgstr "Packet Body"
+msgstr "Paket Gövdesi"
 
-#, fuzzy
 msgid "Packet Tag"
-msgstr "Packet Tag"
+msgstr "Paket Künyesi"
 
-#, fuzzy
 msgid "Packet Type"
-msgstr "Packet Type"
+msgstr "Paket Türü"
 
-#, fuzzy
 msgid "Pair"
-msgstr "Pair"
+msgstr "Eşleştir"
 
-#, fuzzy
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"Pair request from '%@'\n"
-"Verification key: %@"
+"“%@” aygıtından eşleşme isteği\n"
+"Doğrulama anahtarı: %@"
 
-#, fuzzy
 msgid "Pairing Complete"
-msgstr "Pairing Complete"
+msgstr "Eşleştirme Tamamlandı"
 
-#, fuzzy
 msgid "Pairing Rejected"
-msgstr "Pairing Rejected"
+msgstr "Eşleştirme Reddedildi"
 
-#, fuzzy
 msgid "Pairing Timed Out"
-msgstr "Pairing Timed Out"
+msgstr "Eşleştirme Zaman Aşımına Uğradı"
 
-#, fuzzy
 msgid "Pairing with '%@' failed"
-msgstr "Pairing with '%@' failed"
+msgstr "“%@” ile eşleştirme başarısız"
 
-#, fuzzy
 msgid "Pairing with '%@' succeeded"
-msgstr "Pairing with '%@' succeeded"
+msgstr "“%@” ile eşleşme başarılı"
 
-#, fuzzy
 msgid "Peer"
-msgstr "Peer"
+msgstr "Eş"
 
-#, fuzzy
 msgid "Ping"
 msgstr "Ping"
 
-#, fuzzy
 msgid "Ping received from a connected device."
-msgstr "Ping received from a connected device."
+msgstr "Bağlı bir aygıttan bir ping alındı."
 
-#, fuzzy
 msgid "Ping!"
 msgstr "Ping!"
 
-#, fuzzy
 msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
+msgstr "Plasma Büyükekran"
 
-#, fuzzy
 msgid "Playground"
-msgstr "Playground"
+msgstr "Oyun Alanı"
 
-#, fuzzy
 msgid "Plugin Settings"
-msgstr "Plugin Settings"
+msgstr "Eklenti Ayarları"
 
 #, fuzzy
 msgid "Plugins If Reachable"
