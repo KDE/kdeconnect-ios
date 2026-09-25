@@ -1,22 +1,23 @@
-# Translation of kdeconnect-ios._static_.po to Catalan (Valencian)
+# Translation of kdeconnect-ios.po to Catalan (Valencian)
 # Copyright (C) 2026 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2026 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2026 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeconnect-ios static messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-21 13:32+0200\n"
-"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"PO-Revision-Date: 2026-09-24 15:45+0200\n"
+"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Bundle display name
@@ -75,6 +76,7 @@ msgstr "Configuració avançada"
 msgid "All Messages"
 msgstr "Tots els missatges"
 
+# skip-rule: t-sp_tpc
 msgid "Also written by %@"
 msgstr "També els escrits per %@"
 
@@ -119,352 +121,277 @@ msgstr "Activitat del segon pla"
 msgid "Battery Level"
 msgstr "Nivell de la bateria"
 
-#, fuzzy
 msgid "Battery Plugin Disabled"
-msgstr "Battery Plugin Disabled"
+msgstr "S'ha desactivat el connector de la bateria"
 
-#, fuzzy
 msgid "Battery Status"
-msgstr "Battery Status"
+msgstr "Estat de la bateria"
 
-#, fuzzy
 msgid "Can't find your devices here?"
-msgstr "Can't find your devices here?"
+msgstr "No trobeu els vostres dispositius ací?"
 
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Category: %@"
-msgstr "Category: %@"
+msgstr "Categoria: %@"
 
-#, fuzzy
 msgid "Check out the merge requests"
-msgstr "Check out the merge requests"
+msgstr "Extrau les sol·licituds de fusió"
 
-#, fuzzy
 msgid "Choose App Icon"
-msgstr "Choose App Icon"
+msgstr "Trieu una icona d'aplicació"
 
-#, fuzzy
 msgid "Chores"
-msgstr "Chores"
+msgstr "Tasques"
 
-#, fuzzy
 msgid "Classic"
-msgstr "Classic"
+msgstr "Clàssic"
 
-#, fuzzy
 msgid "Clear Cache"
-msgstr "Clear Cache"
+msgstr "Neteja la memòria cau"
 
-#, fuzzy
 msgid "Clipboard Sync"
-msgstr "Clipboard Sync"
+msgstr "Sincronitza el porta-retalls"
 
-#, fuzzy
 msgid "Clipboard: Push & Receive Text"
-msgstr "Clipboard: Push & Receive Text"
+msgstr "Porta-retalls: Envia i rep text"
 
-#, fuzzy
 msgid "Clipboard: Sync"
-msgstr "Clipboard: Sync"
+msgstr "Porta-retalls: Sincronitza"
 
-#, fuzzy
 msgid "Configure Devices By IP"
-msgstr "Configure Devices By IP"
+msgstr "Configura els dispositius per IP"
 
-#, fuzzy
 msgid "Configure Devices by IP:"
-msgstr "Configure Devices by IP:"
+msgstr "Configura els dispositius per IP:"
 
-#, fuzzy
 msgid "Connect"
-msgstr "Connect"
+msgstr "Connecta"
 
-#, fuzzy
 msgid "Connected Devices"
-msgstr "Connected Devices"
+msgstr "Dispositius connectats"
 
-#, fuzzy
 msgid "Connectivity Report"
-msgstr "Connectivity Report"
+msgstr "Informe de connectivitat"
 
-#, fuzzy
 msgid "Contacts"
-msgstr "Contacts"
+msgstr "Contactes"
 
-#, fuzzy
 msgid "Contribute to KDE Connect"
-msgstr "Contribute to KDE Connect"
+msgstr "Col·laboració a KDE Connect"
 
-#, fuzzy
 msgid "Contributors"
-msgstr "Contributors"
+msgstr "Col·laboradors"
 
-#, fuzzy
 msgid "Copy path to the folder containing received files"
-msgstr "Copy path to the folder containing received files"
+msgstr "Copia el camí cap a la carpeta que conté els fitxers rebuts"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Currently maintained by %@"
-msgstr "Currently maintained by %@"
+msgstr "Mantingut actualment per %@"
 
-#, fuzzy
 msgid "Currently, the app must stay in the foreground to work properly"
-msgstr "Currently, the app must stay in the foreground to work properly"
+msgstr ""
+"Actualment, l'aplicació ha de romandre en primer pla per a funcionar "
+"correctament"
 
-#, fuzzy
 msgid "Cursor Sensitivity"
-msgstr "Cursor Sensitivity"
+msgstr "Sensibilitat del cursor"
 
-#, fuzzy
 msgid "DANGEROUS OPTIONS"
-msgstr "DANGEROUS OPTIONS"
+msgstr "OPCIONS PERILLOSES"
 
-#, fuzzy
 msgid "Dark"
-msgstr "Dark"
+msgstr "Fosc"
 
-#, fuzzy
 msgid "Debug"
-msgstr "Debug"
+msgstr "Depuració"
 
-#, fuzzy
 msgid "Debug mode"
-msgstr "Debug mode"
+msgstr "Mode de depuració"
 
-#, fuzzy
 msgid "Debugging device discovery"
-msgstr "Debugging device discovery"
+msgstr "Depuració del descobriment de dispositius"
 
-#, fuzzy
 msgid "Default"
-msgstr "Default"
+msgstr "Predeterminada"
 
-#, fuzzy
 msgid ""
 "Delete all saved settings and devices. Requires the app to be fully "
 "restarted."
 msgstr ""
-"Delete all saved settings and devices. Requires the app to be fully "
-"restarted."
+"Suprimix tota la configuració i els dispositius guardats. Requerix reiniciar "
+"completament l'aplicació."
 
-#, fuzzy
 msgid "Delete host certificate"
-msgstr "Delete host certificate"
+msgstr "Suprimix el certificat de l'amfitrió"
 
-#, fuzzy
 msgid ""
 "Delete the host's certificate and re-generate it upon restart. Requires the "
 "app to be fully restarted. NOTE: this will make the device unable to connect "
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 msgstr ""
-"Delete the host's certificate and re-generate it upon restart. Requires the "
-"app to be fully restarted. NOTE: this will make the device unable to connect "
-"with previously connected devices. You must unpair this device from the "
-"other remote devices and pair them again."
+"Suprimix el certificat de l'amfitrió i torna a generar-lo quan es reinicia. "
+"Requerix que l'aplicació es reinicie completament. NOTA: Açò farà que el "
+"dispositiu no puga connectar-se amb dispositius connectats prèviament. Heu "
+"de desaparellar este dispositiu dels altres dispositius remots i aparellar-"
+"los de nou."
 
-#, fuzzy
 msgid "Developer"
-msgstr "Developer"
+msgstr "Desenvolupador"
 
-#, fuzzy
 msgid "Device"
-msgstr "Device"
+msgstr "Dispositiu"
 
-#, fuzzy
 msgid "Device Discovery"
-msgstr "Device Discovery"
+msgstr "Descobriment de dispositius"
 
-#, fuzzy
 msgid "Device IP"
-msgstr "Device IP"
+msgstr "IP del dispositiu"
 
-#, fuzzy
 msgid "Device Name"
-msgstr "Device Name"
+msgstr "Nom del dispositiu"
 
-#, fuzzy
 msgid "Device Name:"
-msgstr "Device Name:"
+msgstr "Nom del dispositiu:"
 
-#, fuzzy
 msgid "Device Offline"
-msgstr "Device Offline"
+msgstr "Dispositiu fora de línia"
 
-#, fuzzy
 msgid "Device Status"
-msgstr "Device Status"
+msgstr "Estat del dispositiu"
 
-#, fuzzy
 msgid "Device name"
-msgstr "Device name"
+msgstr "Nom del dispositiu"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Devices"
+msgstr "Dispositius"
 
-#, fuzzy
 msgid "Direct Handshake Devices"
-msgstr "Direct Handshake Devices"
+msgstr "Dispositius de negociació directa"
 
-#, fuzzy
 msgid "Disable UDP Broadcast"
-msgstr "Disable UDP Broadcast"
+msgstr "Desactiva la difusió UDP"
 
-#, fuzzy
 msgid "Discovered Devices"
-msgstr "Discovered Devices"
+msgstr "Dispositius descoberts"
 
-#, fuzzy
 msgid "Discovery & Pairing"
-msgstr "Discovery & Pairing"
+msgstr "Descobriment i aparellament"
 
-#, fuzzy
 msgid "Do Not Pair"
-msgstr "Do Not Pair"
+msgstr "No aparelles"
 
-#, fuzzy
 msgid "Donate"
-msgstr "Donate"
+msgstr "Donació"
 
-#, fuzzy
 msgid "Done"
-msgstr "Done"
+msgstr "Fet"
 
-#, fuzzy
 msgid "Double tap to activate debug mode"
-msgstr "Double tap to activate debug mode"
+msgstr "Toc doble per a activar el mode de depuració"
 
-#, fuzzy
 msgid "Double tap to activate debugging device discovery"
-msgstr "Double tap to activate debugging device discovery"
+msgstr "Toc doble per a activar la depuració del descobriment de dispositius"
 
-#, fuzzy
 msgid "Enable/Disable Plugins"
-msgstr "Enable/Disable Plugins"
+msgstr "Activa o desactiva connectors"
 
-#, fuzzy
 msgid "Encryption Info"
-msgstr "Encryption Info"
+msgstr "Informació de l'encriptació"
 
-#, fuzzy
 msgid "Erase saved devices cache"
-msgstr "Erase saved devices cache"
+msgstr "Esborra la memòria cau dels dispositius guardats"
 
-#, fuzzy
 msgid "Error"
 msgstr "S'ha produït un error"
 
-#, fuzzy
 msgid "Error Occured"
-msgstr "Error Occured"
+msgstr "S'ha produït un error"
 
-#, fuzzy
 msgid "Errors and Faults"
-msgstr "Errors and Faults"
+msgstr "Errors i fallades"
 
-#, fuzzy
 msgid "Exit Presentation"
-msgstr "Exit Presentation"
+msgstr "Ix de la presentació"
 
-#, fuzzy
 msgid "Experimental functionalities"
-msgstr "Experimental functionalities"
+msgstr "Funcionalitats experimentals"
 
-#, fuzzy
 msgid "Failed to Change Icon"
-msgstr "Failed to Change Icon"
+msgstr "Ha fallat mentre es canviava la icona"
 
-#, fuzzy
 msgid "Failed to receive %lld files"
-msgstr "Failed to receive %lld files"
+msgstr "Ha fallat mentre es rebia %lld fitxers"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Failed to receive from %@"
-msgstr "Failed to receive from %@"
+msgstr "Ha fallat mentre es rebia des de %@"
 
-#, fuzzy
 msgid "Failed to send %lld files"
-msgstr "Failed to send %lld files"
+msgstr "Ha fallat mentre s'enviava %lld fitxers"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Failed to send to %@"
-msgstr "Failed to send to %@"
+msgstr "Ha fallat mentre s'enviava a %@"
 
-#, fuzzy
 msgid "Fault"
-msgstr "Fault"
+msgstr "Fallada"
 
-#, fuzzy
 msgid "Features"
-msgstr "Features"
+msgstr "Característiques"
 
-#, fuzzy
 msgid "File Transfers"
-msgstr "File Transfers"
+msgstr "Transferències de fitxers"
 
-#, fuzzy
 msgid "Files"
-msgstr "Files"
+msgstr "Fitxers"
 
-#, fuzzy
 msgid "Find My Device"
-msgstr "Find My Device"
+msgstr "Troba el meu dispositiu"
 
-#, fuzzy
 msgid "Find My Phone Mode"
-msgstr "Find My Phone Mode"
+msgstr "Mode de «Troba el meu telèfon»"
 
-#, fuzzy
 msgid "Find My Phone initiated from a remote device"
-msgstr "Find My Phone initiated from a remote device"
+msgstr "S'ha iniciat «Troba el meu telèfon» des d'un dispositiu remot"
 
-#, fuzzy
 msgid "Forget all"
-msgstr "Forget all"
+msgstr "Oblida-ho tot"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "From %@"
-msgstr "From %@"
+msgstr "Des de %@"
 
-#, fuzzy
 msgid "General"
 msgstr "General"
 
-#, fuzzy
 msgid "Go FullScreen"
-msgstr "Go FullScreen"
+msgstr "Entra a pantalla completa"
 
-#, fuzzy
 msgid "Haptics Style"
-msgstr "Haptics Style"
+msgstr "Estil hàptic"
 
 #. Hard haptic feedback level
-#, fuzzy
 msgid "Heavy"
-msgstr "Heavy"
+msgstr "Intens"
 
-#, fuzzy
 msgid "Help"
-msgstr "Help"
+msgstr "Ajuda"
 
-#, fuzzy
 msgid "Hide Haptics Style Selector"
-msgstr "Hide Haptics Style Selector"
+msgstr "Oculta el selector d'estil hàptic"
 
-#, fuzzy
 msgid "Hide Sensitivity Slider"
-msgstr "Hide Sensitivity Slider"
+msgstr "Oculta el control lliscant de sensibilitat"
 
-#, fuzzy
 msgid "I FOUND IT!"
-msgstr "I FOUND IT!"
+msgstr "L'HE TROBAT!"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid ""
 "If KDE Connect is having trouble discovering other devices, you can try a "
 "combination of the following solutions:\n"
@@ -481,130 +408,109 @@ msgid ""
 "4. Check other solutions on the User Manual, such as configuring the "
 "firewalls of the other devices:\n"
 msgstr ""
-"If KDE Connect is having trouble discovering other devices, you can try a "
-"combination of the following solutions:\n"
+"Si KDE Connect té problemes per descobrir altres dispositius, podeu intentar "
+"una combinació de les solucions següents:\n"
 "\n"
-"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
-"list, on this and the other devices.\n"
+"1. «Actualitza el descobriment» mitjançant el menú %@ o premeu per a "
+"actualitzar la llista de dispositius, en este i els altres dispositius.\n"
 "\n"
-"2. Make sure the other devices are also running KDE Connect and are "
-"connected to the same network as this device.\n"
+"2. Assegureu-vos que els altres dispositius també estan executant KDE "
+"Connect i estiguen connectats a la mateixa xarxa que este dispositiu.\n"
 "\n"
-"3. Manually add the other devices through the \"Configure Devices By IP\" "
-"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"3. Afegiu manualment els altres dispositius a través de l'opció «Configura "
+"els dispositius per IP» en el menú %@, i després «Actualitza el "
+"descobriment».\n"
 "\n"
-"4. Check other solutions on the User Manual, such as configuring the "
-"firewalls of the other devices:\n"
+"4. Consulteu altres solucions al Manual d'usuari, com ara configurar els "
+"tallafocs dels altres dispositius:\n"
 
-#, fuzzy
 msgid ""
 "If a remembered device is already online but not shown here, try Refresh "
 "Discovery."
 msgstr ""
-"If a remembered device is already online but not shown here, try Refresh "
-"Discovery."
+"Si un dispositiu recordat ja es troba en línia, però no es mostra ací, "
+"proveu d'Actualitzar el descobriment."
 
-#, fuzzy
 msgid ""
 "If there are phantom devices or something just doesn't behave correctly, "
 "erasing all saved devices data might fix it. Requires the app to be fully "
 "restarted."
 msgstr ""
-"If there are phantom devices or something just doesn't behave correctly, "
-"erasing all saved devices data might fix it. Requires the app to be fully "
-"restarted."
+"Si hi ha dispositius fantasmes o alguna cosa senzillament no es comporta "
+"correctament, podria corregir-ho esborrar totes les dades dels dispositius "
+"guardats. Requerix reiniciar completament l'aplicació."
 
-#, fuzzy
 msgid "In progress"
-msgstr "In progress"
+msgstr "En curs"
 
-#, fuzzy
 msgid "Incoming Pairing Request"
-msgstr "Incoming Pairing Request"
+msgstr "Sol·licitud d'aparellament entrant"
 
-#, fuzzy
 msgid "Info"
-msgstr "Info"
+msgstr "Informació"
 
-#, fuzzy
 msgid "Information"
-msgstr "Information"
+msgstr "Informació"
 
-#, fuzzy
 msgid "Initiate Pairing?"
-msgstr "Initiate Pairing?"
+msgstr "Voleu iniciar l'aparellament?"
 
-#, fuzzy
 msgid "Integration with Siri Shortcuts"
-msgstr "Integration with Siri Shortcuts"
+msgstr "Integració amb les dreceres del Siri"
 
-#, fuzzy
 msgid "Integration with the system share sheet is in development"
-msgstr "Integration with the system share sheet is in development"
+msgstr ""
+"Està en desenvolupament la integració amb el full compartit del sistema"
 
-#, fuzzy
 msgid "Internationalization & Localization"
-msgstr "Internationalization & Localization"
+msgstr "Internacionalització i traducció"
 
-#, fuzzy
 msgid "Invalid"
-msgstr "Invalid"
+msgstr "No vàlid"
 
-#, fuzzy
 msgid "Keyboard: Control Remote"
-msgstr "Keyboard: «Control» Remote"
+msgstr "Teclat: Control remot"
 
-#, fuzzy
 msgid "License"
-msgstr "License"
+msgstr "Llicència"
 
 #. Light haptic feedback level
-#, fuzzy
 msgid "Light"
-msgstr "Light"
+msgstr "Clar"
 
-#, fuzzy
 msgid "Lock Screen: Control Remote"
-msgstr "Lock Screen: «Control» Remote"
+msgstr "Bloqueig de la pantalla: Control remot"
 
-#, fuzzy
 msgid "Logs"
-msgstr "Logs"
+msgstr "Registres"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Logs for %@"
-msgstr "Logs for %@"
+msgstr "Registres de %@"
 
-#, fuzzy
 msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: «Control» Remote Media & Respond"
+msgstr "MPRIS: Control remot multimèdia i resposta"
 
-#, fuzzy
 msgid "Manage received files in the Files app"
-msgstr "Manage received files in the Files app"
+msgstr "Gestiona els fitxers rebuts a l'aplicació Fitxers"
 
-#, fuzzy
 msgid "May not work with KDE Connect for Windows"
-msgstr "May not work with KDE Connect for Windows"
+msgstr "Podria no funcionar a KDE Connect per a Windows"
 
-#, fuzzy
 msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr ""
+"Potser mitjançant l'esquema d'URL i la integració amb les dreceres de Siri"
 
-#, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
-msgstr "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Potser amb el Servei del centre de notificacions d'Apple (ACNS)"
 
 #. Medium haptic feedback level
-#, fuzzy
 msgid "Medium"
-msgstr "Medium"
+msgstr "Mitjà"
 
-#, fuzzy
 msgid "Mouse: Control Remote"
-msgstr "Mouse: «Control» Remote"
+msgstr "Ratolí: Control remot"
 
-#, fuzzy
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
 "for left click. Tap with two fingers for right click. Use a long press to "
@@ -614,265 +520,210 @@ msgid ""
 "Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
 "and horizontally. Tap on the “Scroll Wheel” for middle click."
 msgstr ""
-"Move a finger on the screen to move the mouse cursor. Tap with one finger "
-"for left click. Tap with two fingers for right click. Use a long press to "
-"activate drag'n drop. Or use the menu on the top right to directly send "
-"clicks.\n"
+"Mogueu un dit a la pantalla per a moure el cursor del ratolí. Toqueu amb un "
+"dit per fer un clic esquerre. Toqueu amb dos dits per fer un clic dret. "
+"Utilitzeu una premuda llarga per a activar la funció d'arrossegar i deixar "
+"anar. O utilitzeu el menú de la part superior dreta per enviar clics "
+"directament.\n"
 "\n"
-"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
-"and horizontally. Tap on the “Scroll Wheel” for middle click."
+"Arrossegueu amb un dit des de la «Roda de desplaçament» de dalt per "
+"desplaçar-vos tant verticalment com horitzontalment. Toqueu a la «Roda de "
+"desplaçament» per a fer clic del mig."
 
-#, fuzzy
 msgid ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
 "and your computer)"
 msgstr ""
-"Multi-platform app that allows your devices to communicate (e.g., your phone "
-"and your computer)"
+"Una aplicació multiplataforma que permet que els dispositius es comuniquen "
+"(p. ex., el telèfon i l'ordinador)"
 
-#, fuzzy
 msgid "Network Packet Composer"
-msgstr "Network Packet Composer"
+msgstr "Compositor de paquets de xarxa"
 
-#, fuzzy
 msgid "Nice"
-msgstr "Nice"
+msgstr "Agradable"
 
-#, fuzzy
 msgid "No additional devices are discovered on this network."
-msgstr "No additional devices are discovered on this network."
+msgstr "No s'han descobert dispositius addicionals en esta xarxa."
 
-#, fuzzy
 msgid "No battery detected in device"
-msgstr "No battery detected in device"
+msgstr "No s'ha detectat cap bateria en el dispositiu"
 
-#, fuzzy
 msgid "No currently connected devices."
-msgstr "No currently connected devices."
+msgstr "Actualment no hi ha cap dispositiu connectat."
 
-#, fuzzy
 msgid "No device discovered in the current network."
-msgstr "No device discovered in the current network."
+msgstr "No s'ha descobert cap dispositiu a la xarxa actual."
 
-#, fuzzy
 msgid "No matching logs yet"
-msgstr "No matching logs yet"
+msgstr "Encara no hi ha registres coincidents"
 
-#, fuzzy
 msgid "No, Stay Paired"
-msgstr "No, Stay Paired"
+msgstr "No, continua aparellat"
 
-#, fuzzy
 msgid "Not yet implemented"
-msgstr "Not yet implemented"
+msgstr "Encara no s'ha implementat"
 
-#, fuzzy
 msgid "Notice"
-msgstr "Notice"
+msgstr "Avís"
 
-#, fuzzy
 msgid "Notification: Receive from Others"
-msgstr "Notification: Receive from Others"
+msgstr "Notificació: Rep d'altres"
 
-#, fuzzy
 msgid "Notification: Retrieve by Others"
-msgstr "Notification: Retrieve by Others"
+msgstr "Notificació: Recuperat per altres"
 
-#, fuzzy
 msgid "OK"
-msgstr "OK"
+msgstr "D'acord"
 
-#, fuzzy
 msgid "On-Click Haptic Style"
-msgstr "On-Click Haptic Style"
+msgstr "Estil hàptic al clic"
 
 #. Unknown haptic feedback level
-#, fuzzy
 msgid "Other"
-msgstr "Other"
+msgstr "Altres"
 
-#, fuzzy
 msgid "Out-App Notification:"
-msgstr "Out-App Notification:"
+msgstr "Notificació fora de l'aplicació:"
 
-#, fuzzy
 msgid "Packet Body"
-msgstr "Packet Body"
+msgstr "Cos del paquet"
 
-#, fuzzy
 msgid "Packet Tag"
-msgstr "Packet Tag"
+msgstr "Etiqueta del paquet"
 
-#, fuzzy
 msgid "Packet Type"
-msgstr "Packet Type"
+msgstr "Tipus de paquet"
 
-#, fuzzy
 msgid "Pair"
-msgstr "Pair"
+msgstr "Aparella"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"Pair request from '%@'\n"
-"Verification key: %@"
+"Sol·licitud d'aparellament de «%@»\n"
+"Clau de verificació: %@"
 
-#, fuzzy
 msgid "Pairing Complete"
-msgstr "Pairing Complete"
+msgstr "S'ha completat l'aparellament"
 
-#, fuzzy
 msgid "Pairing Rejected"
-msgstr "Pairing Rejected"
+msgstr "S'ha rebutjat l'aparellament"
 
-#, fuzzy
 msgid "Pairing Timed Out"
-msgstr "Pairing Timed Out"
+msgstr "L'aparellament ha excedit el temps"
 
-#, fuzzy
 msgid "Pairing with '%@' failed"
-msgstr "Pairing with '%@' failed"
+msgstr "No s'ha pogut fer l'aparellament amb «%@»"
 
-#, fuzzy
 msgid "Pairing with '%@' succeeded"
-msgstr "Pairing with '%@' succeeded"
+msgstr "L'aparellament amb «%@» ha sigut correcte"
 
-#, fuzzy
 msgid "Peer"
-msgstr "Peer"
+msgstr "Parell"
 
-#, fuzzy
 msgid "Ping"
 msgstr "Ping"
 
-#, fuzzy
 msgid "Ping received from a connected device."
-msgstr "Ping received from a connected device."
+msgstr "Ping rebut d'un dispositiu connectat."
 
-#, fuzzy
 msgid "Ping!"
 msgstr "Ping!"
 
-#, fuzzy
 msgid "Plasma Bigscreen"
 msgstr "Plasma Bigscreen"
 
-#, fuzzy
 msgid "Playground"
-msgstr "Playground"
+msgstr "Zona de proves"
 
-#, fuzzy
 msgid "Plugin Settings"
-msgstr "Plugin Settings"
+msgstr "Configureu el connector"
 
-#, fuzzy
 msgid "Plugins If Reachable"
-msgstr "Plugins If Reachable"
+msgstr "Connectors si són accessibles"
 
-#, fuzzy
 msgid "Pointer Sensitivity"
-msgstr "Pointer Sensitivity"
+msgstr "Sensibilitat del punter"
 
-#, fuzzy
 msgid "Preparing Media…"
-msgstr "Preparing Media…"
+msgstr "S'està preparant el multimèdia…"
 
-#, fuzzy
 msgid "Presenter: Control Remote"
-msgstr "Presenter: «Control» Remote"
+msgstr "Presentador: Control remot"
 
-#, fuzzy
 msgid "Preview: "
-msgstr "Preview: "
+msgstr "Vista prèvia: "
 
-#, fuzzy
 msgid "Previously connected devices will appear here."
-msgstr "Previously connected devices will appear here."
+msgstr "Els dispositius connectats anteriorment apareixeran ací."
 
-#, fuzzy
 msgid "Push Local Clipboard"
-msgstr "Push Local Clipboard"
+msgstr "Impulsa el porta-retalls local"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Reason: %@"
-msgstr "Reason: %@"
+msgstr "Motiu: %@"
 
-#, fuzzy
 msgid ""
 "Received photos and videos will be saved to the Files app because you can't "
 "grant us access to your photo library."
 msgstr ""
-"Received photos and videos will be saved to the Files app because you can't "
-"grant vos access to your photo library."
+"Les fotos i els vídeos rebuts es guardaran a l'aplicació Fitxers perquè no "
+"podeu atorgar accés a la vostra biblioteca de fotos."
 
-#, fuzzy
 msgid "Receiving"
-msgstr "Receiving"
+msgstr "S'està rebent"
 
-#, fuzzy
 msgid "Receiving file %lld of %lld"
-msgstr "Receiving file %lld of %lld"
+msgstr "S'està rebent el fitxer %lld de %lld"
 
-#, fuzzy
 msgid "Refresh Discovery"
-msgstr "Refresh Discovery"
+msgstr "Actualitza el descobriment"
 
-#, fuzzy
 msgid "Remembered Devices"
-msgstr "Remembered Devices"
+msgstr "Dispositius recordats"
 
-#, fuzzy
 msgid "Remote Input"
-msgstr "Remote Input"
+msgstr "Entrada remota"
 
-#, fuzzy
 msgid "Report Bug"
-msgstr "Report Bug"
+msgstr "Informeu d'un error"
 
-#, fuzzy
 msgid "Request to pair with '%@'"
-msgstr "Request to pair with '%@'"
+msgstr "Sol·licita aparellar amb «%@»"
 
-#, fuzzy
 msgid "Restart Discovery"
-msgstr "Restart Discovery"
+msgstr "Reinicia el descobriment"
 
 #. Rigid haptic feedback level
-#, fuzzy
 msgid "Rigid"
-msgstr "Rigid"
+msgstr "Rígid"
 
-#, fuzzy
 msgid "Ring Device"
-msgstr "Ring Device"
+msgstr "Toca al dispositiu"
 
-#, fuzzy
 msgid "Ring/Find My Phone"
-msgstr "Ring/Find My Phone"
+msgstr "Toca/Troba el meu telèfon"
 
-#, fuzzy
 msgid "Rounded Rectangle"
-msgstr "Rounded Rectangle"
+msgstr "Rectangle arredonit"
 
-#, fuzzy
 msgid "Run Command"
-msgstr "Run Command"
+msgstr "Executa una ordre"
 
-#, fuzzy
 msgid "Run Command: Request"
-msgstr "Run Command: Request"
+msgstr "Executa una ordre: Sol·licitud"
 
-#, fuzzy
 msgid "Run Command: Respond"
-msgstr "Run Command: Respond"
+msgstr "Executa una ordre: Resposta"
 
-#, fuzzy
 msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: Accés al remot i inicia el servidor de fitxers"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -880,270 +731,214 @@ msgid ""
 "SHA256 fingerprint of remote device certificate is: \n"
 "%@"
 msgstr ""
-"SHA256 fingerprint of your device certificate is:\n"
+"L'empremta digital SHA256 del certificat del vostre dispositiu és:\n"
 "%@\n"
 "\n"
-"SHA256 fingerprint of remote device certificate is: \n"
+"L'empremta digital SHA256 del certificat del dispositiu remot és: \n"
 "%@"
 
-#, fuzzy
 msgid "Save photos to the photo library"
-msgstr "Save photos to the photo library"
+msgstr "Guarda les fotos a la biblioteca de fotos"
 
-#, fuzzy
 msgid "Save videos to the photo library"
-msgstr "Save videos to the photo library"
+msgstr "Guarda els vídeos a la biblioteca de fotos"
 
-#, fuzzy
 msgid "Screensaver: Inhibit Remote"
-msgstr "Screensaver: Inhibit Remote"
+msgstr "Salvapantalla: Inhibix el remot"
 
-#, fuzzy
 msgid "Select a device from the Devices list to start."
-msgstr "Select a device from the Devices list to start."
+msgstr "Trieu un dispositiu de la llista de dispositius per a començar."
 
-#, fuzzy
 msgid "Send"
-msgstr "Send"
+msgstr "Envia"
 
-#, fuzzy
 msgid "Send Double Left Click"
-msgstr "Send Double Left Click"
+msgstr "Envia un doble clic esquerre"
 
-#, fuzzy
 msgid "Send Files"
-msgstr "Send Files"
+msgstr "Envia fitxers"
 
-#, fuzzy
 msgid "Send Left Hold"
-msgstr "Send Left Hold"
+msgstr "Envia un clic esquerre i mantindre"
 
-#, fuzzy
 msgid "Send Middle Click"
-msgstr "Send Middle Click"
+msgstr "Envia un clic del mig"
 
-#, fuzzy
 msgid "Send Photos and Videos"
-msgstr "Send Photos and Videos"
+msgstr "Envia fotos i vídeos"
 
-#, fuzzy
 msgid "Send Ping"
-msgstr "Send Ping"
+msgstr "Envia un ping"
 
-#, fuzzy
 msgid "Send Right Click"
-msgstr "Send Right Click"
+msgstr "Envia un clic dret"
 
-#, fuzzy
 msgid "Send Single Left Click"
-msgstr "Send Single Left Click"
+msgstr "Envia un clic dret individual"
 
-#, fuzzy
 msgid "Sending"
-msgstr "Sending"
+msgstr "S'està enviant"
 
-#, fuzzy
 msgid "Sending file %lld of %lld"
-msgstr "Sending file %lld of %lld"
+msgstr "S'està enviant el fitxer %lld de %lld"
 
-#, fuzzy
 msgid "Settings"
-msgstr "Settings"
+msgstr "Configuració"
 
-#, fuzzy
 msgid "Share/File Transfer"
-msgstr "Share/File Transfer"
+msgstr "Compartiu/transferència de fitxers"
 
-#, fuzzy
 msgid "Share: Receive File, Text, and URL"
-msgstr "Share: Receive File, Text, and URL"
+msgstr "Compartiu: Rep un fitxer, text i URL"
 
-#, fuzzy
 msgid "Share: Send File"
-msgstr "Share: Send File"
+msgstr "Compartiu: Envia un fitxer"
 
-#, fuzzy
 msgid "Share: Send Text & URL"
-msgstr "Share: Send Text & URL"
+msgstr "Compartiu: Envia text i URL"
 
-#, fuzzy
 msgid "Show Haptics Style Selector"
-msgstr "Show Haptics Style Selector"
+msgstr "Mostra el selector d'estil hàptic"
 
-#, fuzzy
 msgid "Show Received Files in Finder"
-msgstr "Show Received Files in Finder"
+msgstr "Mostra els fitxers rebuts en Finder"
 
-#, fuzzy
 msgid "Show Sensitivity Slider"
-msgstr "Show Sensitivity Slider"
+msgstr "Mostra el control lliscant de sensibilitat"
 
-#, fuzzy
 msgid "Slideshow Remote"
-msgstr "Slideshow Remote"
+msgstr "Remot de presentació de diapositives"
 
 #. Soft haptic feedback level
-#, fuzzy
 msgid "Soft"
-msgstr "Soft"
+msgstr "Suau"
 
-#, fuzzy
 msgid "Source Code"
-msgstr "Source Code"
+msgstr "Codi font"
 
-#, fuzzy
 msgid "Status"
-msgstr "Status"
+msgstr "Estat"
 
-#, fuzzy
 msgid "Supported"
-msgstr "Supported"
+msgstr "Admés"
 
-#, fuzzy
 msgid "System Default"
-msgstr "System Default"
+msgstr "Predeterminada del sistema"
 
-#, fuzzy
 msgid "System Volume: Control Remote & Respond"
-msgstr "System Volume: «Control» Remote & Respond"
+msgstr "Volum del sistema: Control remot i resposta"
 
-#, fuzzy
 msgid "Take Photo: Respond"
-msgstr "Take Photo: Respond"
+msgstr "Pren una foto: Resposta"
 
-#, fuzzy
 msgid "Tap to start pairing"
-msgstr "Tap to start pairing"
+msgstr "Toqueu per a iniciar l'aparellament"
 
-#, fuzzy
 msgid "Telephony: SMS/Call Sync"
-msgstr "Telephony: SMS/Call Sync"
+msgstr "Telefonia: Sincronització de SMS/tocades"
 
-#, fuzzy
 msgid "The name of the device as recognized by KDE Connect"
-msgstr "The name of the device as recognized by KDE Connect"
+msgstr "El nom del dispositiu reconegut per KDE Connect"
 
-#, fuzzy
 msgid ""
 "The options above are irreversible and require a complete app restart to "
 "take effect."
 msgstr ""
-"The options above are irreversible and require a complete app restart to "
-"take effect."
+"Les opcions anteriors són irreversibles i requerixen un reinici complet de "
+"l'aplicació perquè tinguen efecte."
 
-#, fuzzy
 msgid ""
 "These should be handled automatically, but you may manually perform some in "
 "case if they are not."
 msgstr ""
-"These should be handled automatically, but you may manually perform some in "
-"case if they are not."
+"Estes s'han de gestionar automàticament, però podeu modificar-ne manualment "
+"algunes en cas que no ho siguen."
 
-#, fuzzy
 msgid "These should work with little to no issues"
-msgstr "These should work with little to no issues"
+msgstr "Estes haurien de funcionar amb pocs o sense problemes"
 
-#, fuzzy
 msgid "Third-Party Libraries"
-msgstr "Third-Party Libraries"
+msgstr "Biblioteques de tercers"
 
-#, fuzzy
 msgid "This is likely not possible to implement on iOS"
-msgstr "This is likely not possible to implement on iOS"
+msgstr "És probable que açò no siga possible d'implementar a iOS"
 
-#, fuzzy
 msgid "Through the system share sheet"
-msgstr "Through the system share sheet"
+msgstr "Mitjançant el full de compartició del sistema"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "To %@"
-msgstr "To %@"
+msgstr "A %@"
 
-#, fuzzy
 msgid ""
 "To connect to remembered devices, make sure they are connected to the same "
 "network as this device."
 msgstr ""
-"To connect to remembered devices, make sure they are connected to the same "
-"network as this device."
+"Per a connectar-se a dispositius recordats, assegureu-vos que estan "
+"connectats a la mateixa xarxa que este dispositiu."
 
-#, fuzzy
 msgid "Toggle Keyboard"
-msgstr "Toggle Keyboard"
+msgstr "Canvia el teclat"
 
-#, fuzzy
 msgid "Troubleshooting"
-msgstr "Troubleshooting"
+msgstr "Solució de problemes"
 
-#, fuzzy
 msgid "Trusted Networks"
-msgstr "Trusted Networks"
+msgstr "Xarxes de confiança"
 
-#, fuzzy
 msgid "Unknown Theme"
-msgstr "Unknown Theme"
+msgstr "Tema desconegut"
 
-#, fuzzy
 msgid "Unpair"
-msgstr "Unpair"
+msgstr "Desaparella"
 
-#, fuzzy
 msgid "Unpair With Device?"
-msgstr "Unpair With Device?"
+msgstr "Desaparello el dispositiu?"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Unpair with %@?"
-msgstr "Unpair with %@?"
+msgstr "Desaparella %@?"
 
-#, fuzzy
 msgid "Valid"
-msgstr "Valid"
+msgstr "Vàlid"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Verification key: %@"
-msgstr "Verification key: %@"
+msgstr "Clau de verificació: %@"
 
-#, fuzzy
+# skip-rule: t-sp_tpc
 msgid "Version: %@ (%@)"
-msgstr "Version: %@ (%@)"
+msgstr "Versió: %@ (%@)"
 
-#, fuzzy
 msgid "Waiting for %lld other files to start transferring"
-msgstr "Waiting for %lld other files to start transferring"
+msgstr "S'està esperant que altres %lld fitxers comencen a transferir-se"
 
-#, fuzzy
 msgid "Waiting for logs..."
-msgstr "Waiting for logs…"
+msgstr "S'estan esperant els registres…"
 
-#, fuzzy
 msgid "Waiting to send"
-msgstr "Waiting to send"
+msgstr "S'està esperant a enviar"
 
-#, fuzzy
 msgid "Website"
-msgstr "Website"
+msgstr "Lloc web"
 
-#, fuzzy
 msgid "Wiki & User Manual"
-msgstr "Wiki & User Manual"
+msgstr "Wiki i Manual d'usuari"
 
-#, fuzzy
 msgid "Yes, Unpair"
-msgstr "Yes, Unpair"
+msgstr "Sí, desaparella"
 
-#, fuzzy
 msgid ""
 "You can enable or disable Plugins individually. Some Plugins have their own "
 "specific settings that can be found in their respective Views."
 msgstr ""
-"You can enable or disable Plugins individually. Some Plugins have their own "
-"specific settings that can be found in their respective Views."
+"Podeu activar o desactivar els connectors individualment. Alguns connectors "
+"tenen la seua pròpia configuració específica que es pot trobar a les seues "
+"vistes respectives."
 
 #. Filename to use for an unnamed file
-#, fuzzy
 msgid "untitled"
-msgstr "untitled"
+msgstr "sense títol"
 
-#, fuzzy
 msgid "© KDE Community & contributors"
 msgstr "© La comunitat KDE & contributors"
