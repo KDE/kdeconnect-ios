@@ -1,0 +1,922 @@
+# SPDX-FileCopyrightText: 2026 Vincenzo Reale <smart2128vr@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"PO-Revision-Date: 2026-09-21 16:25+0200\n"
+"Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 26.08.1\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr "Rileva altri dispositivi e connettiti ad essi utilizzando KDE Connect."
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr ""
+"Salva le immagini ricevute nella libreria foto invece che nell'applicazione "
+"File."
+
+msgid "%@ and %lld other files"
+msgstr "%@ e altri %lld file"
+
+msgid "%@ for iOS"
+msgstr "%@ per iOS"
+
+msgid "**KDE Connect** for iOS"
+msgstr "**KDE Connect** per iOS"
+
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "?"
+msgstr "?"
+
+msgid "About"
+msgstr "Informazioni"
+
+msgid "Actions"
+msgstr "Azioni"
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Aggiungi qui gli indirizzi IP locali di altri dispositivi se riscontrano "
+"problemi ad apparire nel rilevamento automatico."
+
+msgid "Advanced"
+msgstr "Avanzate"
+
+msgid "Advanced Settings"
+msgstr "Impostazioni avanzate"
+
+msgid "All Messages"
+msgstr "Tutti i messaggi"
+
+msgid "Also written by %@"
+msgstr "Scritto anche da %@"
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+msgid "App Icon"
+msgstr "Icona dell'applicazione"
+
+msgid "App Icon:"
+msgstr "Icona dell'applicazione:"
+
+msgid "App Theme:"
+msgstr "Tema dell'applicazione:"
+
+msgid "Application"
+msgstr "Applicazione"
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"In quanto progetto open source, riteniamo importante essere trasparenti "
+"riguardo ai nostri piani attuali e futuri per allineare KDE Connect per iOS "
+"a tutte le altre piattaforme."
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Autorizza l'accesso alle foto tramite l'applicazione Impostazioni per "
+"salvare le foto e i video ricevuti nella tua libreria fotografica."
+
+msgid "Available themes"
+msgstr "Temi disponibili"
+
+msgid "Background Activity"
+msgstr "Attività in sottofondo"
+
+msgid "Battery Level"
+msgstr "Livello della batteria"
+
+msgid "Battery Plugin Disabled"
+msgstr "Estensione della batteria disabilitata"
+
+msgid "Battery Status"
+msgstr "Stato della batteria"
+
+msgid "Can't find your devices here?"
+msgstr "Non trovi i tuoi dispositivi qui?"
+
+msgid "Cancel"
+msgstr "Annulla"
+
+msgid "Category: %@"
+msgstr "Categoria: %@"
+
+msgid "Check out the merge requests"
+msgstr "Dai un'occhiata alle richieste di merge"
+
+msgid "Choose App Icon"
+msgstr "Scegli icona dell'applicazione"
+
+msgid "Chores"
+msgstr "Manutenzione"
+
+msgid "Classic"
+msgstr "Classico"
+
+msgid "Clear Cache"
+msgstr "Pulisci cache"
+
+msgid "Clipboard Sync"
+msgstr "Sincronizzazione appunti"
+
+msgid "Clipboard: Push & Receive Text"
+msgstr "Appunti: invia e ricevi testo"
+
+msgid "Clipboard: Sync"
+msgstr "Appunti: sincronizzazione"
+
+msgid "Configure Devices By IP"
+msgstr "Configura dispositivi tramite IP"
+
+msgid "Configure Devices by IP:"
+msgstr "Configura dispositivi tramite IP:"
+
+msgid "Connect"
+msgstr "Connetti"
+
+msgid "Connected Devices"
+msgstr "Dispositivi connessi"
+
+msgid "Connectivity Report"
+msgstr "Report di connettività"
+
+msgid "Contacts"
+msgstr "Contatti"
+
+msgid "Contribute to KDE Connect"
+msgstr "Contribuisci a KDE Connect"
+
+msgid "Contributors"
+msgstr "Hanno contribuito"
+
+msgid "Copy path to the folder containing received files"
+msgstr "Copia il percorso della cartella contenente i file ricevuti"
+
+msgid "Currently maintained by %@"
+msgstr "Attualmente manutenuto da %@"
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr ""
+"Attualmente, l'applicazione deve rimanere in primo piano per funzionare "
+"correttamente."
+
+msgid "Cursor Sensitivity"
+msgstr "Sensibilità del puntatore"
+
+msgid "DANGEROUS OPTIONS"
+msgstr "OPZIONI PERICOLOSE"
+
+msgid "Dark"
+msgstr "Scuro"
+
+msgid "Debug"
+msgstr "Debug"
+
+msgid "Debug mode"
+msgstr "Modalità debug"
+
+msgid "Debugging device discovery"
+msgstr "Debug del rilevamento dei dispositivi"
+
+msgid "Default"
+msgstr "Predefinito"
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Elimina tutte le impostazioni e i dispositivi salvati. Richiede il riavvio "
+"completo dell'applicazione."
+
+msgid "Delete host certificate"
+msgstr "Elimina il certificato dell'host"
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Elimina il certificato dell'host e lo rigenera al riavvio. Richiede il "
+"riavvio completo dell'applicazione. NOTA: questa operazione impedirà al "
+"dispositivo di connettersi a quelli con cui era precedentemente collegato. "
+"Devi rimuovere l'associazione tra questo dispositivo e gli altri dispositivi "
+"remoti ed effettuarla nuovamente."
+
+msgid "Developer"
+msgstr "Sviluppatore"
+
+msgid "Device"
+msgstr "Dispositivo"
+
+msgid "Device Discovery"
+msgstr "Rilevamento dispositivi"
+
+msgid "Device IP"
+msgstr "IP dispositivo"
+
+msgid "Device Name"
+msgstr "Nome dispositivo"
+
+msgid "Device Name:"
+msgstr "Nome del dispositivo:"
+
+msgid "Device Offline"
+msgstr "Dispositivo non in linea"
+
+msgid "Device Status"
+msgstr "Stato dei dispositivi"
+
+msgid "Device name"
+msgstr "Nome dispositivo"
+
+msgid "Devices"
+msgstr "Dispositivi"
+
+msgid "Direct Handshake Devices"
+msgstr "Dispositivi con negoziazione diretta"
+
+msgid "Disable UDP Broadcast"
+msgstr "Disabilita broadcast UDP"
+
+msgid "Discovered Devices"
+msgstr "Dispositivi rilevati"
+
+msgid "Discovery & Pairing"
+msgstr "Rilevazione e associazione"
+
+msgid "Do Not Pair"
+msgstr "Non associare"
+
+msgid "Donate"
+msgstr "Fai una donazione"
+
+msgid "Done"
+msgstr "Completato"
+
+msgid "Double tap to activate debug mode"
+msgstr "Tocca due volte per attivare la modalità di debug"
+
+msgid "Double tap to activate debugging device discovery"
+msgstr ""
+"Tocca due volte per attivare il debug per il rilevamento del dispositivo."
+
+msgid "Enable/Disable Plugins"
+msgstr "Abilita/Disabilita estensioni"
+
+msgid "Encryption Info"
+msgstr "Informazioni di cifratura"
+
+msgid "Erase saved devices cache"
+msgstr "Cancella la cache dei dispositivi salvati"
+
+msgid "Error"
+msgstr "Errore"
+
+msgid "Error Occured"
+msgstr "Si è verificato un errore"
+
+msgid "Errors and Faults"
+msgstr "Errori e guasti"
+
+msgid "Exit Presentation"
+msgstr "Esci dalla presentazione"
+
+msgid "Experimental functionalities"
+msgstr "Funzionalità sperimentali"
+
+msgid "Failed to Change Icon"
+msgstr "Impossibile modificare l'icona"
+
+msgid "Failed to receive %lld files"
+msgstr "Impossibile ricevere %lld file"
+
+msgid "Failed to receive from %@"
+msgstr "Impossibile ricevere da %@"
+
+msgid "Failed to send %lld files"
+msgstr "Impossibile inviare %lld file"
+
+msgid "Failed to send to %@"
+msgstr "Impossibile inviare a %@"
+
+msgid "Fault"
+msgstr "Guasto"
+
+msgid "Features"
+msgstr "Funzionalità"
+
+msgid "File Transfers"
+msgstr "Trasferimenti file"
+
+msgid "Files"
+msgstr "File"
+
+msgid "Find My Device"
+msgstr "Trova il mio dispositivo"
+
+msgid "Find My Phone Mode"
+msgstr "Modalità Trova il mio telefono"
+
+msgid "Find My Phone initiated from a remote device"
+msgstr "Trova il mio telefono avviato da un dispositivo remoto"
+
+msgid "Forget all"
+msgstr "Dimentica tutti"
+
+msgid "From %@"
+msgstr "Da %@"
+
+msgid "General"
+msgstr "Generale"
+
+msgid "Go FullScreen"
+msgstr "Passa a schermo intero"
+
+msgid "Haptics Style"
+msgstr "Stile aptico"
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Spesso"
+
+msgid "Help"
+msgstr "Aiuto"
+
+msgid "Hide Haptics Style Selector"
+msgstr "Nascondi selettore dello stile aptico"
+
+msgid "Hide Sensitivity Slider"
+msgstr "Nascondi cursore della sensibilità"
+
+msgid "I FOUND IT!"
+msgstr "TROVATO!"
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"Se KDE Connect ha difficoltà a rilevare altri dispositivi, puoi provare una "
+"combinazione delle seguenti soluzioni:\n"
+"\n"
+"1. Esegui «Aggiorna rilevamento» tramite il menu %@ oppure trascina l'elenco "
+"dei dispositivi per aggiornarlo, sia su questo dispositivo che sugli altri.\n"
+"\n"
+"2. Assicurati che anche sugli altri dispositivi sia in esecuzione KDE "
+"Connect e che siano collegati alla stessa rete di questo dispositivo.\n"
+"\n"
+"3. Aggiungi manualmente gli altri dispositivi tramite l'opzione «Configura "
+"dispositivi tramite IP» nel menu %@, quindi seleziona «Aggiorna "
+"rilevamento».\n"
+"\n"
+"4. Consulta altre soluzioni nel manuale utente, come la configurazione dei "
+"firewall degli altri dispositivi:\n"
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"Se un dispositivo memorizzato è già in linea ma non viene visualizzato qui, "
+"prova ad aggiornare il rilevamento."
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Se sono presenti dispositivi fantasma o qualcosa non funziona correttamente, "
+"la cancellazione di tutti i dati dei dispositivi salvati potrebbe risolvere "
+"il problema. Richiede il riavvio completo dell'applicazione."
+
+msgid "In progress"
+msgstr "In corso"
+
+msgid "Incoming Pairing Request"
+msgstr "Richiesta di associazione in ingresso"
+
+msgid "Info"
+msgstr "Informazioni"
+
+msgid "Information"
+msgstr "Informazioni"
+
+msgid "Initiate Pairing?"
+msgstr "Vuoi iniziare l'associazione?"
+
+msgid "Integration with Siri Shortcuts"
+msgstr "Integrazione con le scorciatoie di Siri"
+
+msgid "Integration with the system share sheet is in development"
+msgstr ""
+"L'integrazione con il menu di condivisione del sistema è in fase di sviluppo."
+
+msgid "Internationalization & Localization"
+msgstr "Internazionalizzazione e localizzazione"
+
+msgid "Invalid"
+msgstr "Non valido"
+
+msgid "Keyboard: Control Remote"
+msgstr "Tastiera: controllo remoto"
+
+msgid "License"
+msgstr "Licenza"
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Leggero"
+
+msgid "Lock Screen: Control Remote"
+msgstr "Schermata di blocco: controllo remoto"
+
+msgid "Logs"
+msgstr "Registri"
+
+msgid "Logs for %@"
+msgstr "Registri per %@"
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: Controllo dei media remoti e risposta"
+
+msgid "Manage received files in the Files app"
+msgstr "Gestisci i file ricevuti nell'applicazione File"
+
+msgid "May not work with KDE Connect for Windows"
+msgstr "Potrebbe non funzionare con KDE Connect per Windows."
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Magari tramite URL Scheme e l'integrazione con le scorciatoie di Siri."
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Forse con l'Apple Notification Center Service (ANCS)"
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Media"
+
+msgid "Mouse: Control Remote"
+msgstr "Mouse: controllo remoto"
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"Muovi un dito sullo schermo per spostare il puntatore del mouse. Tocca con "
+"un dito per il clic sinistro. Tocca con due dita per il clic destro. Esegui "
+"una pressione prolungata per attivare il trascinamento e rilascio. Oppure "
+"usa il menu in alto a destra per inviare direttamente i clic.\n"
+"\n"
+"Trascina con un dito sulla «rotella di scorrimento» in alto per scorrere sia "
+"verticalmente che orizzontalmente. Tocca la «rotella di scorrimento» per il "
+"clic centrale."
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Applicazione multipiattaforma che consente ai tuoi dispositivi di comunicare "
+"(ad esempio, il telefono e il computer)"
+
+msgid "Network Packet Composer"
+msgstr "Compositore di pacchetti di rete"
+
+msgid "Nice"
+msgstr "Nizza"
+
+msgid "No additional devices are discovered on this network."
+msgstr "Non sono stati rilevati ulteriori dispositivi su questa rete."
+
+msgid "No battery detected in device"
+msgstr "Nessuna batteria rilevata nel dispositivo"
+
+msgid "No currently connected devices."
+msgstr "Nessun dispositivo attualmente connesso."
+
+msgid "No device discovered in the current network."
+msgstr "Nessun dispositivo rilevato nella rete attuale."
+
+msgid "No matching logs yet"
+msgstr "Ancora nessun registro corrispondente"
+
+msgid "No, Stay Paired"
+msgstr "No, mantieni l'associazione"
+
+msgid "Not yet implemented"
+msgstr "Non ancora implementato"
+
+msgid "Notice"
+msgstr "Avviso"
+
+msgid "Notification: Receive from Others"
+msgstr "Notifica: ricevi da altri"
+
+msgid "Notification: Retrieve by Others"
+msgstr "Notifica: recupera da altri"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "On-Click Haptic Style"
+msgstr "Stile aptico al clic"
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Altro"
+
+msgid "Out-App Notification:"
+msgstr "Notifica esterna all'applicazione:"
+
+msgid "Packet Body"
+msgstr "Corpo del pacchetto"
+
+msgid "Packet Tag"
+msgstr "Etichetta del pacchetto"
+
+msgid "Packet Type"
+msgstr "Tipo di pacchetto"
+
+msgid "Pair"
+msgstr "Associa"
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"Richiesta di associazione da '%@'\n"
+"Chiave di verifica: %@"
+
+msgid "Pairing Complete"
+msgstr "Associazione completata"
+
+msgid "Pairing Rejected"
+msgstr "Associazione rifiutata"
+
+msgid "Pairing Timed Out"
+msgstr "Tentativo di associazione scaduto"
+
+msgid "Pairing with '%@' failed"
+msgstr "Associazione con '%@' non riuscita"
+
+msgid "Pairing with '%@' succeeded"
+msgstr "Associazione con '%@' completata"
+
+msgid "Peer"
+msgstr "Nodo"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Ping received from a connected device."
+msgstr "Ping ricevuto da un dispositivo connesso."
+
+msgid "Ping!"
+msgstr "Ping!"
+
+msgid "Plasma Bigscreen"
+msgstr "Plasma Bigscreen"
+
+msgid "Playground"
+msgstr "Area di prova"
+
+msgid "Plugin Settings"
+msgstr "Impostazioni delle estensioni"
+
+msgid "Plugins If Reachable"
+msgstr "Estensioni se raggiungibili"
+
+msgid "Pointer Sensitivity"
+msgstr "Sensibilità del puntatore"
+
+msgid "Preparing Media…"
+msgstr "Preparazione media…"
+
+msgid "Presenter: Control Remote"
+msgstr "Presentatore: controllo remoto"
+
+msgid "Preview: "
+msgstr "Anteprima: "
+
+msgid "Previously connected devices will appear here."
+msgstr "I dispositivi precedentemente connessi saranno visualizzati qui."
+
+msgid "Push Local Clipboard"
+msgstr "Invia appunti locali"
+
+msgid "Reason: %@"
+msgstr "Motivo: %@"
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Le foto e i video ricevuti saranno salvati nell'applicazione File, poiché "
+"non puoi concedere l'accesso alla tua libreria fotografica."
+
+msgid "Receiving"
+msgstr "Ricezione"
+
+msgid "Receiving file %lld of %lld"
+msgstr "Ricezione del file %lld di %lld"
+
+msgid "Refresh Discovery"
+msgstr "Aggiorna rilevamento"
+
+msgid "Remembered Devices"
+msgstr "Dispositivi memorizzati"
+
+msgid "Remote Input"
+msgstr "Impulso remoto"
+
+msgid "Report Bug"
+msgstr "Segnala un bug"
+
+msgid "Request to pair with '%@'"
+msgstr "Richiesta di associazione con '%@'"
+
+msgid "Restart Discovery"
+msgstr "Riavvia rilevamento"
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Rigido"
+
+msgid "Ring Device"
+msgstr "Fai squillare il dispositivo"
+
+msgid "Ring/Find My Phone"
+msgstr "Fai squillare/Trova il mio telefono"
+
+msgid "Rounded Rectangle"
+msgstr "Rettangolo smussato"
+
+msgid "Run Command"
+msgstr "Esegui comando"
+
+msgid "Run Command: Request"
+msgstr "Esegui comando: richiesta"
+
+msgid "Run Command: Respond"
+msgstr "Esegui comando: risposta"
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: Accesso remoto e avvio del file server"
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"L'impronta SHA256 del certificato del tuo dispositivo è:\n"
+"%@\n"
+"\n"
+"L'impronta SHA256 del certificato del dispositivo remoto è:\n"
+"%@"
+
+msgid "Save photos to the photo library"
+msgstr "Salva le foto nella libreria fotografica"
+
+msgid "Save videos to the photo library"
+msgstr "Salva i video nella libreria fotografica"
+
+msgid "Screensaver: Inhibit Remote"
+msgstr "Salvaschermo: inibizione remota"
+
+msgid "Select a device from the Devices list to start."
+msgstr "Seleziona un dispositivo dall'elenco dei dispositivi per iniziare."
+
+msgid "Send"
+msgstr "Invia"
+
+msgid "Send Double Left Click"
+msgstr "Invia doppio clic sinistro"
+
+msgid "Send Files"
+msgstr "Invia file"
+
+msgid "Send Left Hold"
+msgstr "Invia pressione prolungata tasto sinistro"
+
+msgid "Send Middle Click"
+msgstr "Invia clic tasto centrale"
+
+msgid "Send Photos and Videos"
+msgstr "Invia foto e video"
+
+msgid "Send Ping"
+msgstr "Invia ping"
+
+msgid "Send Right Click"
+msgstr "Invia clic tasto destro"
+
+msgid "Send Single Left Click"
+msgstr "Invia clic tasto sinistro"
+
+msgid "Sending"
+msgstr "Invio"
+
+msgid "Sending file %lld of %lld"
+msgstr "Invio del file %lld di %lld"
+
+msgid "Settings"
+msgstr "Impostazioni"
+
+msgid "Share/File Transfer"
+msgstr "Condivisione/Trasferimento file"
+
+msgid "Share: Receive File, Text, and URL"
+msgstr "Condivisione: ricevi file, testo e URL"
+
+msgid "Share: Send File"
+msgstr "Condivisione: invia file"
+
+msgid "Share: Send Text & URL"
+msgstr "Condivisione: invia testo e URL"
+
+msgid "Show Haptics Style Selector"
+msgstr "Mostra selettore dello stile aptico"
+
+msgid "Show Received Files in Finder"
+msgstr "Mostra i file ricevuti in Finder"
+
+msgid "Show Sensitivity Slider"
+msgstr "Mostra cursore della sensibilità"
+
+msgid "Slideshow Remote"
+msgstr "Telecomando per presentazioni"
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "Leggero"
+
+msgid "Source Code"
+msgstr "Codice sorgente"
+
+msgid "Status"
+msgstr "Stato"
+
+msgid "Supported"
+msgstr "Supportato"
+
+msgid "System Default"
+msgstr "Impostazioni predefinite di sistema"
+
+msgid "System Volume: Control Remote & Respond"
+msgstr "Volume di sistema: controllo remoto e risposta"
+
+msgid "Take Photo: Respond"
+msgstr "Scatta foto: rispondi"
+
+msgid "Tap to start pairing"
+msgstr "Tocca per avviare l'associazione"
+
+msgid "Telephony: SMS/Call Sync"
+msgstr "Telefonia: sincronizzazione SMS/chiamate"
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "Il nome del dispositivo riconosciuto da KDE Connect"
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"Le opzioni di cui sopra sono irreversibili e richiedono un riavvio completo "
+"dell'applicazione per diventare effettive."
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"Queste operazioni dovrebbero essere gestite automaticamente, ma è possibile "
+"eseguirne alcune manualmente qualora ciò non avvenisse."
+
+msgid "These should work with little to no issues"
+msgstr "Questi dovrebbero funzionare con pochi o nessun problema."
+
+msgid "Third-Party Libraries"
+msgstr "Librerie di terze parti"
+
+msgid "This is likely not possible to implement on iOS"
+msgstr "È probabile che non sia possibile implementarlo su iOS."
+
+msgid "Through the system share sheet"
+msgstr "Tramite il menu di condivisione del sistema"
+
+msgid "To %@"
+msgstr "A %@"
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"Per connetterti ai dispositivi memorizzati, assicurati che siano collegati "
+"alla stessa rete di questo dispositivo."
+
+msgid "Toggle Keyboard"
+msgstr "Attiva/Disattiva tastiera"
+
+msgid "Troubleshooting"
+msgstr "Risoluzione dei problemi"
+
+msgid "Trusted Networks"
+msgstr "Reti affidabili"
+
+msgid "Unknown Theme"
+msgstr "Tema sconosciuto"
+
+msgid "Unpair"
+msgstr "Disassocia"
+
+msgid "Unpair With Device?"
+msgstr "Vuoi disassociare il dispositivo?"
+
+msgid "Unpair with %@?"
+msgstr "Vuoi disassociare %@?"
+
+msgid "Valid"
+msgstr "Valido"
+
+msgid "Verification key: %@"
+msgstr "Chiave di verifica: %@"
+
+msgid "Version: %@ (%@)"
+msgstr "Versione: %@ (%@)"
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr "In attesa dell'avvio del trasferimento di altri %lld file"
+
+msgid "Waiting for logs..."
+msgstr "In attesa dei registri..."
+
+msgid "Waiting to send"
+msgstr "In attesa di invio"
+
+msgid "Website"
+msgstr "Sito web"
+
+msgid "Wiki & User Manual"
+msgstr "Wiki e manuale utente"
+
+msgid "Yes, Unpair"
+msgstr "Sì, disassocia"
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"È possibile abilitare o disabilitare le estensioni singolarmente. Alcune "
+"estensioni dispongono di impostazioni specifiche, consultabili nelle "
+"rispettive viste."
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "senza titolo"
+
+msgid "© KDE Community & contributors"
+msgstr "© - Comunità KDE e collaboratori"

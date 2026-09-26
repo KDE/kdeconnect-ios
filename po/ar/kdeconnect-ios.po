@@ -1,381 +1,443 @@
-# SPDX-FileCopyrightText: 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-25 19:16+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
-"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
-"Language: tr\n"
+"PO-Revision-Date: 2026-09-25 17:07+0400\n"
+"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
+"Language-Team: ar\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #. Bundle display name
 #. Bundle name
 msgctxt ""
 msgid "KDE Connect"
-msgstr "KDE Bağlan"
+msgstr "جسر كِيدِي"
 
 #. Privacy - Local Network Usage Description
+#, fuzzy
 msgid "Discover and connect to other devices using KDE Connect."
-msgstr "KDE Bağlan’ı kullanarak başka aygıtları keşfedin ve onlara bağlanın."
+msgstr "Discover and connect to other devices using KDE Connect."
 
 #. Privacy - Photo Library Additions Usage Description
+#, fuzzy
 msgid "Save received images to your Photo Library instead of the Files app."
-msgstr ""
-"Alınan görselleri, Dosyalar uygulaması yerine Fotoğraf Arşivi’ne kaydedin."
+msgstr "Save received images to your Photo Library instead of the Files app."
 
+#, fuzzy
 msgid "%@ and %lld other files"
-msgstr "%@ ve %lld başka dosya"
+msgstr "%@ and %lld other files"
 
+#, fuzzy
 msgid "%@ for iOS"
-msgstr "iOS için %@"
+msgstr "%@ for iOS"
 
+#, fuzzy
 msgid "**KDE Connect** for iOS"
-msgstr "iOS için **KDE Bağlan**"
+msgstr "**KDE Connect** for iOS"
 
 msgid "+"
 msgstr "+"
 
 msgid "-"
-msgstr "−"
+msgstr "-"
 
 msgid "?"
-msgstr "?"
+msgstr "؟"
 
 msgid "About"
-msgstr "Hakkında"
+msgstr "عن"
 
 msgid "Actions"
-msgstr "Eylemler"
+msgstr "الإجراءات"
 
+#, fuzzy
 msgid ""
 "Add the local IP addresses of other devices here if they're having trouble "
 "appearing in the automatic discovery."
 msgstr ""
-"Otomatik keşifte aygıtları bulmada sorun yaşıyorsanız diğer aygıtların IP "
-"adreslerini buraya ekleyin."
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
 
 msgid "Advanced"
-msgstr "Gelişmiş"
+msgstr "متقدّم"
 
 msgid "Advanced Settings"
-msgstr "Gelişmiş Ayarlar"
+msgstr "إعدادات متقدّمة"
 
 msgid "All Messages"
-msgstr "Tüm İletiler"
+msgstr "كل الرسائل"
 
+#, fuzzy
 msgid "Also written by %@"
-msgstr "Ayrıca, %@ tarafından yazıldı"
+msgstr "Also written by %@"
 
 #. Please use 朱智语 in languages with these characters.
+#, fuzzy
 msgid "Apollo Zhu"
 msgstr "Apollo Zhu"
 
+#, fuzzy
 msgid "App Icon"
-msgstr "Uygulama Simgesi"
+msgstr "App Icon"
 
+#, fuzzy
 msgid "App Icon:"
-msgstr "Uygulama simgesi:"
+msgstr "App Icon:"
 
+#, fuzzy
 msgid "App Theme:"
-msgstr "Uygulama teması:"
+msgstr "App Theme:"
 
 msgid "Application"
-msgstr "Uygulama"
+msgstr "التطبيق"
 
+#, fuzzy
 msgid ""
 "As an open source project, we believe it is important to be transparent "
 "about our current and future plans to bring KDE Connect iOS into line with "
 "all other platforms."
 msgstr ""
-"Açık kaynaklı bir proje olarak, iOS için KDE Bağlan’ı diğer platformlar ile "
-"aynı düzeye getirmek için olan şu anki ve gelecek planlarımızı aktarma "
-"konusunda elimizden geldiğince saydam olmamız gerektiğini düşünüyoruz."
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
 
+#, fuzzy
 msgid ""
 "Authorize Photos access using the Settings app to save received photos and "
 "videos to your photo library"
 msgstr ""
-"Alınan fotoğrafları ve videoları Fotoğraf Arşivi’ne kaydedebilmek için "
-"Ayarlar uygulamasından Fotoğraflar erişimine izin verin."
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
 
+#, fuzzy
 msgid "Available themes"
-msgstr "Kullanılabilir Temalar"
+msgstr "Available themes"
 
 msgid "Background Activity"
-msgstr "Arka Plan Etkinliği"
+msgstr "نشاط الخلفية"
 
 msgid "Battery Level"
-msgstr "Pil Düzeyi"
+msgstr "مستوى البطارية"
 
+#, fuzzy
 msgid "Battery Plugin Disabled"
-msgstr "Pil Eklentisi Devre Dışı"
+msgstr "Battery Plugin Disabled"
 
+#, fuzzy
 msgid "Battery Status"
-msgstr "Pil Durumu"
+msgstr "Battery Status"
 
+#, fuzzy
 msgid "Can't find your devices here?"
-msgstr "Aygıtınızı burada bulamıyor musunuz?"
+msgstr "Can't find your devices here?"
 
 msgid "Cancel"
-msgstr "Vazgeç"
+msgstr "ألغِ"
 
 msgid "Category: %@"
-msgstr "Kategori: %@"
+msgstr "الفئة: %@"
 
+#, fuzzy
 msgid "Check out the merge requests"
-msgstr "Diğer birleştirme isteklerine bakın"
+msgstr "Check out the merge requests"
 
+#, fuzzy
 msgid "Choose App Icon"
-msgstr "Uygulama Simgesi Seç"
+msgstr "Choose App Icon"
 
 msgid "Chores"
-msgstr "Ödevler"
+msgstr "مهام منزلية"
 
 msgid "Classic"
-msgstr "Klasik"
+msgstr "تقليدي"
 
 msgid "Clear Cache"
-msgstr "Önbelleği Temizle"
+msgstr "امحُ الخبيئة"
 
 msgid "Clipboard Sync"
-msgstr "Pano Eşzamanlaması"
+msgstr "مزامنة الحافظة"
 
+#, fuzzy
 msgid "Clipboard: Push & Receive Text"
-msgstr "Pano: İt ve Metin Al"
+msgstr "Clipboard: Push & Receive Text"
 
 msgid "Clipboard: Sync"
-msgstr "Pano: Eşzamanla"
+msgstr "الحافظة: مزامنة"
 
+#, fuzzy
 msgid "Configure Devices By IP"
-msgstr "IP ile Aygıt Yapılandır"
+msgstr "Configure Devices By IP"
 
+#, fuzzy
 msgid "Configure Devices by IP:"
-msgstr "IP ile aygıt yapılandır:"
+msgstr "Configure Devices by IP:"
 
 msgid "Connect"
-msgstr "Bağlan"
+msgstr "اتّصل"
 
 msgid "Connected Devices"
-msgstr "Bağlı Aygıtlar"
+msgstr "الأجهزة المتصلة"
 
 msgid "Connectivity Report"
-msgstr "Bağlantı Raporu"
+msgstr "تقرير الاتصال"
 
 msgid "Contacts"
-msgstr "Kişiler"
+msgstr "المتراسلون"
 
+#, fuzzy
 msgid "Contribute to KDE Connect"
-msgstr "KDE Bağlan’a Katkıda Bulun"
+msgstr "Contribute to KDE Connect"
 
 msgid "Contributors"
-msgstr "Katkıcılar"
+msgstr "المساهمون"
 
+#, fuzzy
 msgid "Copy path to the folder containing received files"
-msgstr "Alınan dosyaları içeren klasöre olan yolu kopyalayın."
+msgstr "Copy path to the folder containing received files"
 
+#, fuzzy
 msgid "Currently maintained by %@"
-msgstr "Şu anda %@ tarafından bakılıyor"
+msgstr "Currently maintained by %@"
 
+#, fuzzy
 msgid "Currently, the app must stay in the foreground to work properly"
-msgstr ""
-"Şu anda, uygulamanın düzgünce çalışması için ön planda kalması elzemdir."
+msgstr "Currently, the app must stay in the foreground to work properly"
 
+#, fuzzy
 msgid "Cursor Sensitivity"
-msgstr "İmleç Hassaslığı"
+msgstr "Cursor Sensitivity"
 
+#, fuzzy
 msgid "DANGEROUS OPTIONS"
-msgstr "TEHLİKELİ SEÇENEKLER"
+msgstr "DANGEROUS OPTIONS"
 
 msgid "Dark"
-msgstr "Koyu"
+msgstr "مظلمة"
 
 msgid "Debug"
-msgstr "Hata Ayıkla"
+msgstr "نقّح"
 
+#, fuzzy
 msgid "Debug mode"
-msgstr "Hata ayıklama kipi"
+msgstr "Debug mode"
 
+#, fuzzy
 msgid "Debugging device discovery"
-msgstr "Hata ayıklama aygıtı keşfi"
+msgstr "Debugging device discovery"
 
 msgid "Default"
-msgstr "Saptanmış"
+msgstr "المبدئيّ"
 
+#, fuzzy
 msgid ""
 "Delete all saved settings and devices. Requires the app to be fully "
 "restarted."
 msgstr ""
-"Tüm kayıtlı ayarları ve aygıtları silin. Uygulamanın sıfırdan yeniden "
-"başlatılmasını gerektirir."
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
 
+#, fuzzy
 msgid "Delete host certificate"
-msgstr "Makine Sertifikasını Sil"
+msgstr "Delete host certificate"
 
+#, fuzzy
 msgid ""
 "Delete the host's certificate and re-generate it upon restart. Requires the "
 "app to be fully restarted. NOTE: this will make the device unable to connect "
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 msgstr ""
-"Makinenin sertifikasını silin ve uygulama yeniden başlatılınca yeniden "
-"üretin. Uygulamanın tümüyle kapatılıp yeniden açılmasını gerektirir. Not: "
-"Bu, aygıtı, önceden bağlanılmış aygıtlara olan bağlantısını kesecektir. "
-"Aygıtın diğer aygıtlarla olan eşleşmesini kaldırıp yeniden eşleştirmelisiniz."
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
 
 msgid "Developer"
-msgstr "Geliştirici"
+msgstr "مطوّر"
 
 msgid "Device"
-msgstr "Aygıt"
+msgstr "الجهاز"
 
+#, fuzzy
 msgid "Device Discovery"
-msgstr "Aygıt Keşfi"
+msgstr "Device Discovery"
 
+#, fuzzy
 msgid "Device IP"
-msgstr "Aygıt IP’si"
+msgstr "Device IP"
 
 msgid "Device Name"
-msgstr "Aygıt Adı"
+msgstr "اسم الجهاز"
 
 msgid "Device Name:"
-msgstr "Aygıt adı:"
+msgstr "اسم الجهاز:"
 
+#, fuzzy
 msgid "Device Offline"
-msgstr "Aygıt Çevrim Dışı"
+msgstr "Device Offline"
 
 msgid "Device Status"
-msgstr "Aygıt Durumu"
+msgstr "حالة الأجهزة"
 
 msgid "Device name"
-msgstr "Aygıt Adı"
+msgstr "اسم الجهاز"
 
 msgid "Devices"
-msgstr "Aygıtlar"
+msgstr "الأجهزة"
 
+#, fuzzy
 msgid "Direct Handshake Devices"
-msgstr "Doğrudan El Sıkışılan Aygıtlar"
+msgstr "Direct Handshake Devices"
 
+#, fuzzy
 msgid "Disable UDP Broadcast"
-msgstr "UDP Yayınını Devre Dışı Bırak"
+msgstr "Disable UDP Broadcast"
 
+#, fuzzy
 msgid "Discovered Devices"
-msgstr "Keşfedilmiş Aygıtlar"
+msgstr "Discovered Devices"
 
+#, fuzzy
 msgid "Discovery & Pairing"
-msgstr "Keşif ve Eşleştirme"
+msgstr "Discovery & Pairing"
 
+#, fuzzy
 msgid "Do Not Pair"
-msgstr "Eşleştirme"
+msgstr "Do Not Pair"
 
 msgid "Donate"
-msgstr "Bağış Yap"
+msgstr "تبرّع"
 
 msgid "Done"
-msgstr "Bitti"
+msgstr "تمّ"
 
+#, fuzzy
 msgid "Double tap to activate debug mode"
-msgstr "Hata ayıklama kipini etkinleştirmek için iki kez dokunun."
+msgstr "Double tap to activate debug mode"
 
+#, fuzzy
 msgid "Double tap to activate debugging device discovery"
-msgstr "Aygıt keşfinde hata ayıklamak için iki kez dokunun."
+msgstr "Double tap to activate debugging device discovery"
 
+#, fuzzy
 msgid "Enable/Disable Plugins"
-msgstr "Eklentileri Etkinleştir/Devre Dışı Bırak"
+msgstr "Enable/Disable Plugins"
 
 msgid "Encryption Info"
-msgstr "Şifreleme Bilgisi"
+msgstr "معلومات التّعمية"
 
+#, fuzzy
 msgid "Erase saved devices cache"
-msgstr "Kayıtlı aygıtların önbelleğini temizleyin."
+msgstr "Erase saved devices cache"
 
 msgid "Error"
-msgstr "Hata"
+msgstr "خطأ"
 
+#, fuzzy
 msgid "Error Occured"
-msgstr "Hata Oluştu"
+msgstr "Error Occured"
 
+#, fuzzy
 msgid "Errors and Faults"
-msgstr "Hatalar ve Başarısızlıklar"
+msgstr "Errors and Faults"
 
 msgid "Exit Presentation"
-msgstr "Sunudan Çık"
+msgstr "اخرج من العرض التقديمي"
 
+#, fuzzy
 msgid "Experimental functionalities"
-msgstr "Deneysel İşlevsellikler"
+msgstr "Experimental functionalities"
 
+#, fuzzy
 msgid "Failed to Change Icon"
-msgstr "Simge Değiştirilemedi"
+msgstr "Failed to Change Icon"
 
+#, fuzzy
 msgid "Failed to receive %lld files"
-msgstr "%lld dosya alınamadı"
+msgstr "Failed to receive %lld files"
 
+#, fuzzy
 msgid "Failed to receive from %@"
-msgstr "%@ konumundan alınamadı"
+msgstr "Failed to receive from %@"
 
+#, fuzzy
 msgid "Failed to send %lld files"
-msgstr "%lld dosya gönderilemedi"
+msgstr "Failed to send %lld files"
 
+#, fuzzy
 msgid "Failed to send to %@"
-msgstr "%@ konumuna gönderilemedi"
+msgstr "Failed to send to %@"
 
 msgid "Fault"
-msgstr "Başarısızlık"
+msgstr "خطأ"
 
 msgid "Features"
-msgstr "Özellikler"
+msgstr "الميزات"
 
+#, fuzzy
 msgid "File Transfers"
-msgstr "Dosya Aktarımları"
+msgstr "File Transfers"
 
 msgid "Files"
-msgstr "Dosyalar"
+msgstr "الملفات"
 
+#, fuzzy
 msgid "Find My Device"
-msgstr "Aygıtı Bul"
+msgstr "Find My Device"
 
+#, fuzzy
 msgid "Find My Phone Mode"
-msgstr "Telefonu Bul"
+msgstr "Find My Phone Mode"
 
+#, fuzzy
 msgid "Find My Phone initiated from a remote device"
-msgstr "Uzak bir aygıttan Telefonu Bul başlatıldı."
+msgstr "Find My Phone initiated from a remote device"
 
 msgid "Forget all"
-msgstr "Tümünü Unut"
+msgstr "انسَ الكلّ"
 
 msgid "From %@"
-msgstr "%@ konumundan"
+msgstr "من %@"
 
 msgid "General"
-msgstr "Genel"
+msgstr "عامّ"
 
+#, fuzzy
 msgid "Go FullScreen"
-msgstr "Tam Ekrana Gir"
+msgstr "Go FullScreen"
 
+#, fuzzy
 msgid "Haptics Style"
-msgstr "Dokunuşlar Tarzı"
+msgstr "Haptics Style"
 
 #. Hard haptic feedback level
 msgid "Heavy"
-msgstr "Ağır"
+msgstr "ثقيل"
 
 msgid "Help"
-msgstr "Yardım"
+msgstr "مساعدة"
 
+#, fuzzy
 msgid "Hide Haptics Style Selector"
-msgstr "Dokunuşlar Tarzı Seçicisini Gizle"
+msgstr "Hide Haptics Style Selector"
 
+#, fuzzy
 msgid "Hide Sensitivity Slider"
-msgstr "Hassaslık Sürgüsünü Gizle"
+msgstr "Hide Sensitivity Slider"
 
+#, fuzzy
 msgid "I FOUND IT!"
-msgstr "BULDUM!"
+msgstr "I FOUND IT!"
 
+#, fuzzy
 msgid ""
 "If KDE Connect is having trouble discovering other devices, you can try a "
 "combination of the following solutions:\n"
@@ -392,105 +454,120 @@ msgid ""
 "4. Check other solutions on the User Manual, such as configuring the "
 "firewalls of the other devices:\n"
 msgstr ""
-"KDE Bağlan diğer aygıtları algılamakta sorun yaşıyorsa aşağıdaki çözüm "
-"yöntemlerini birlikte deneyebilirsiniz:\n"
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
 "\n"
-"1. Hem bu aygıtta hem de diğer aygıtlarda %@ menüsü üzerinden “Algılamayı "
-"Yenile” seçeneğini kullanın veya Aygıtlar listesini yenilemek için aşağı "
-"doğru çekin.\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
 "\n"
-"2. Diğer aygıtlarda da KDE Bağlan’ın çalıştığından ve bu aygıtla aynı ağa "
-"bağlı olduklarından emin olun.\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
 "\n"
-"3. %@ menüsündeki “Aygıtları IP ile Yapılandır\" seçeneği aracılığıyla diğer "
-"aygıtları elle ekleyin ve ardından “Algılamayı Yenile” işlemini yapın.\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
 "\n"
-"4. Diğer aygıtların güvenlik duvarlarını yapılandırmak gibi, Kullanım "
-"Kılavuzu’ndaki diğer çözüm yollarını inceleyin:\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
 
+#, fuzzy
 msgid ""
 "If a remembered device is already online but not shown here, try Refresh "
 "Discovery."
 msgstr ""
-"Anımsanan bir aygıt hâlihazırda çevrim içi olduğu halde burada görünmüyorsa "
-"“Algılamayı Yenile” işlemini deneyin."
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
 
+#, fuzzy
 msgid ""
 "If there are phantom devices or something just doesn't behave correctly, "
 "erasing all saved devices data might fix it. Requires the app to be fully "
 "restarted."
 msgstr ""
-"Hayalet aygıtlar varsa veya bir şeyler düzgün çalışmıyorsa kayıtlı tüm aygıt "
-"verilerini silmek sorunu çözebilir. Bu işlem, uygulamanın tamamen yeniden "
-"başlatılmasını gerektirir."
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
 
 msgid "In progress"
-msgstr "Sürüyor"
+msgstr "في تقدم"
 
+#, fuzzy
 msgid "Incoming Pairing Request"
-msgstr "Gelen Eşleştirme İsteği"
+msgstr "Incoming Pairing Request"
 
 msgid "Info"
-msgstr "Bilgi"
+msgstr "معلومات"
 
 msgid "Information"
-msgstr "Bilgi"
+msgstr "معلومات"
 
+#, fuzzy
 msgid "Initiate Pairing?"
-msgstr "Eşleştirmeyi Başlat?"
+msgstr "Initiate Pairing?"
 
+#, fuzzy
 msgid "Integration with Siri Shortcuts"
-msgstr "Siri Kestirmeleri ile Tümleşim"
+msgstr "Integration with Siri Shortcuts"
 
+#, fuzzy
 msgid "Integration with the system share sheet is in development"
-msgstr "Sistem paylaşım sayfası ile tümleşim henüz geliştirme aşamasındadır."
+msgstr "Integration with the system share sheet is in development"
 
+#, fuzzy
 msgid "Internationalization & Localization"
-msgstr "Yerelleştirme"
+msgstr "Internationalization & Localization"
 
 msgid "Invalid"
-msgstr "Geçersiz"
+msgstr "غير صالح"
 
+#, fuzzy
 msgid "Keyboard: Control Remote"
-msgstr "Klavye: Kumandayı Denetle"
+msgstr "Keyboard: Control Remote"
 
 msgid "License"
-msgstr "Lisans"
+msgstr "الرخصة"
 
 #. Light haptic feedback level
 msgid "Light"
-msgstr "Açık"
+msgstr "فاتح"
 
+#, fuzzy
 msgid "Lock Screen: Control Remote"
-msgstr "Kilit Ekranı: Kumandayı Denetle"
+msgstr "Lock Screen: Control Remote"
 
 msgid "Logs"
-msgstr "Günlükler"
+msgstr "سجلّات"
 
+#, fuzzy
 msgid "Logs for %@"
-msgstr "%@ günlükleri"
+msgstr "Logs for %@"
 
+#, fuzzy
 msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Uzak Ortamı Denetle ve Yanıtla"
+msgstr "MPRIS: Control Remote Media & Respond"
 
+#, fuzzy
 msgid "Manage received files in the Files app"
-msgstr "Alınan dosyaları yönetmek için Dosyalar uygulamasını kullanın."
+msgstr "Manage received files in the Files app"
 
+#, fuzzy
 msgid "May not work with KDE Connect for Windows"
-msgstr "Windows için KDE Bağlan ile çalışmayabilir."
+msgstr "May not work with KDE Connect for Windows"
 
+#, fuzzy
 msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Belki URL şeması ve Siri Kestirmeleri ile tümleşim ile çalışabilir."
+msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
 
+#, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
-msgstr "Belki Apple Bildirim Merkezi Servisi ile (ACNS)"
+msgstr "Maybe with Apple Notification Center Service (ACNS)"
 
 #. Medium haptic feedback level
 msgid "Medium"
-msgstr "Orta"
+msgstr "متوسط"
 
+#, fuzzy
 msgid "Mouse: Control Remote"
-msgstr "Fare: Kumandayı Denetle"
+msgstr "Mouse: Control Remote"
 
 #, fuzzy
 msgid ""
@@ -510,51 +587,61 @@ msgstr ""
 "Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
 "and horizontally. Tap on the “Scroll Wheel” for middle click."
 
+#, fuzzy
 msgid ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
 "and your computer)"
 msgstr ""
-"Aygıtların birbirleriyle iletişim kurmasını sağlayan, çok platformlu bir "
-"uygulama (örneğin, bilgisayarınız ve telefonunuz)"
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
 
+#, fuzzy
 msgid "Network Packet Composer"
-msgstr "Ağı Paketi Oluşturucusu"
+msgstr "Network Packet Composer"
 
 msgid "Nice"
-msgstr "Güzel"
+msgstr "نيس"
 
+#, fuzzy
 msgid "No additional devices are discovered on this network."
-msgstr "Bu ağda başka ek aygıt bulunamadı."
+msgstr "No additional devices are discovered on this network."
 
+#, fuzzy
 msgid "No battery detected in device"
-msgstr "Aygıtta pil algılanmadı."
+msgstr "No battery detected in device"
 
+#, fuzzy
 msgid "No currently connected devices."
-msgstr "Şu anda bağlı hiçbir aygıt yok."
+msgstr "No currently connected devices."
 
+#, fuzzy
 msgid "No device discovered in the current network."
-msgstr "Şu anda bağlı bulunulan ağda keşfedilen aygıt yok."
+msgstr "No device discovered in the current network."
 
+#, fuzzy
 msgid "No matching logs yet"
-msgstr "Eşleşen bir günlük yok"
+msgstr "No matching logs yet"
 
+#, fuzzy
 msgid "No, Stay Paired"
-msgstr "Hayır; Eşli Kal"
+msgstr "No, Stay Paired"
 
 msgid "Not yet implemented"
-msgstr "Henüz gerçeklenmedi"
+msgstr "لم ينفَّذ بعد"
 
 msgid "Notice"
-msgstr "Bildiri"
+msgstr "إخطار"
 
+#, fuzzy
 msgid "Notification: Receive from Others"
-msgstr "Bildirim: Başkalarından Al"
+msgstr "Notification: Receive from Others"
 
+#, fuzzy
 msgid "Notification: Retrieve by Others"
-msgstr "Bildirim: Başkalarıyla Al"
+msgstr "Notification: Retrieve by Others"
 
 msgid "OK"
-msgstr "Tamam"
+msgstr "حسنًا"
 
 #, fuzzy
 msgid "On-Click Haptic Style"
@@ -562,89 +649,105 @@ msgstr "On-Click Haptic Style"
 
 #. Unknown haptic feedback level
 msgid "Other"
-msgstr "Diğer"
+msgstr "أخرى"
 
+#, fuzzy
 msgid "Out-App Notification:"
-msgstr "Uygulama dışı bildirim:"
+msgstr "Out-App Notification:"
 
+#, fuzzy
 msgid "Packet Body"
-msgstr "Paket Gövdesi"
+msgstr "Packet Body"
 
+#, fuzzy
 msgid "Packet Tag"
-msgstr "Paket Künyesi"
+msgstr "Packet Tag"
 
+#, fuzzy
 msgid "Packet Type"
-msgstr "Paket Türü"
+msgstr "Packet Type"
 
 msgid "Pair"
-msgstr "Eşleştir"
+msgstr "اقرن"
 
+#, fuzzy
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"“%@” aygıtından eşleşme isteği\n"
-"Doğrulama anahtarı: %@"
+"Pair request from '%@'\n"
+"Verification key: %@"
 
+#, fuzzy
 msgid "Pairing Complete"
-msgstr "Eşleştirme Tamamlandı"
+msgstr "Pairing Complete"
 
+#, fuzzy
 msgid "Pairing Rejected"
-msgstr "Eşleştirme Reddedildi"
+msgstr "Pairing Rejected"
 
+#, fuzzy
 msgid "Pairing Timed Out"
-msgstr "Eşleştirme Zaman Aşımına Uğradı"
+msgstr "Pairing Timed Out"
 
+#, fuzzy
 msgid "Pairing with '%@' failed"
-msgstr "“%@” ile eşleştirme başarısız"
+msgstr "Pairing with '%@' failed"
 
+#, fuzzy
 msgid "Pairing with '%@' succeeded"
-msgstr "“%@” ile eşleşme başarılı"
+msgstr "Pairing with '%@' succeeded"
 
 msgid "Peer"
-msgstr "Eş"
+msgstr "نظير"
 
 msgid "Ping"
-msgstr "Ping"
+msgstr "وخزة Ping"
 
+#, fuzzy
 msgid "Ping received from a connected device."
-msgstr "Bağlı bir aygıttan bir ping alındı."
+msgstr "Ping received from a connected device."
 
 msgid "Ping!"
-msgstr "Ping!"
+msgstr "وخزة!"
 
 msgid "Plasma Bigscreen"
-msgstr "Plasma Büyükekran"
+msgstr "بلازما الشاشة الكبيرة"
 
 msgid "Playground"
-msgstr "Oyun Alanı"
+msgstr "ملعب"
 
 msgid "Plugin Settings"
-msgstr "Eklenti Ayarları"
+msgstr "إعدادات الملحق"
 
+#, fuzzy
 msgid "Plugins If Reachable"
-msgstr "Erişilebilirse Eklentiler"
+msgstr "Plugins If Reachable"
 
 msgid "Pointer Sensitivity"
-msgstr "İşaretçi Hassaslığı"
+msgstr "حساسية المؤشر"
 
+#, fuzzy
 msgid "Preparing Media…"
-msgstr "Ortam Hazırlanıyor…"
+msgstr "Preparing Media…"
 
+#, fuzzy
 msgid "Presenter: Control Remote"
-msgstr "Sunucu: Kumandayı Denetle"
+msgstr "Presenter: Control Remote"
 
 msgid "Preview: "
-msgstr "Önizle: "
+msgstr "معاينة: "
 
+#, fuzzy
 msgid "Previously connected devices will appear here."
-msgstr "Daha önceden bağlanılan aygıtlar burada görünür."
+msgstr "Previously connected devices will appear here."
 
+#, fuzzy
 msgid "Push Local Clipboard"
-msgstr "Yerel Panoyu İt"
+msgstr "Push Local Clipboard"
 
 msgid "Reason: %@"
-msgstr "Gerekçe: %@"
+msgstr "السبب: %@"
 
 #, fuzzy
 msgid ""
@@ -655,53 +758,61 @@ msgstr ""
 "grant us access to your photo library."
 
 msgid "Receiving"
-msgstr "Alınıyor"
+msgstr "الاستقبال"
 
+#, fuzzy
 msgid "Receiving file %lld of %lld"
-msgstr "%lld / %lld dosya alındı"
+msgstr "Receiving file %lld of %lld"
 
+#, fuzzy
 msgid "Refresh Discovery"
-msgstr "Algılamayı Yenile"
+msgstr "Refresh Discovery"
 
 msgid "Remembered Devices"
-msgstr "Anımsanan Aygıtlar"
+msgstr "الأجهزة المتذكَّرة"
 
 msgid "Remote Input"
-msgstr "Uzaktan Giriş"
+msgstr "الإدخال البعيد"
 
 msgid "Report Bug"
-msgstr "Hata Bildir"
+msgstr "أبلغ عن علة"
 
+#, fuzzy
 msgid "Request to pair with '%@'"
-msgstr "“%@” ile eşleşme isteği"
+msgstr "Request to pair with '%@'"
 
+#, fuzzy
 msgid "Restart Discovery"
-msgstr "Keşfi Yeniden Başlat"
+msgstr "Restart Discovery"
 
 #. Rigid haptic feedback level
 msgid "Rigid"
-msgstr "Sert"
+msgstr "صلد"
 
 msgid "Ring Device"
-msgstr "Aygıtı Çaldır"
+msgstr "رنّ على الجهاز"
 
+#, fuzzy
 msgid "Ring/Find My Phone"
-msgstr "Telefonumu Çaldır/Bul"
+msgstr "Ring/Find My Phone"
 
 msgid "Rounded Rectangle"
-msgstr "Yuvarlatılmış Dikdörtgen"
+msgstr "مستطيل دائري الزوايا"
 
 msgid "Run Command"
-msgstr "Komut Çalıştır"
+msgstr "شغّل أمرًا"
 
+#, fuzzy
 msgid "Run Command: Request"
-msgstr "Komut Çalıştır: İstek"
+msgstr "Run Command: Request"
 
+#, fuzzy
 msgid "Run Command: Respond"
-msgstr "Komut Çalıştır: Yanıt Ver"
+msgstr "Run Command: Respond"
 
+#, fuzzy
 msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Uzaktan Eriş ve Dosya Sunucusunu Başlat"
+msgstr "SFTP: Access Remote & Initiate File Server"
 
 #, fuzzy
 msgid ""
@@ -717,56 +828,66 @@ msgstr ""
 "SHA256 fingerprint of remote device certificate is: \n"
 "%@"
 
+#, fuzzy
 msgid "Save photos to the photo library"
-msgstr "Fotoğrafları, fotoğraf arşivine kaydedin"
+msgstr "Save photos to the photo library"
 
+#, fuzzy
 msgid "Save videos to the photo library"
-msgstr "Videoları, fotoğraf arşivine kaydedin"
+msgstr "Save videos to the photo library"
 
+#, fuzzy
 msgid "Screensaver: Inhibit Remote"
-msgstr "Ekran Koruyucusu: Kumandayı Engelle"
+msgstr "Screensaver: Inhibit Remote"
 
+#, fuzzy
 msgid "Select a device from the Devices list to start."
-msgstr "Başlamak için Aygıtlar listesinden bir aygıt seçin."
+msgstr "Select a device from the Devices list to start."
 
 msgid "Send"
-msgstr "Gönder"
+msgstr "أرسل"
 
+#, fuzzy
 msgid "Send Double Left Click"
-msgstr "Sol Çift Tık Gönder"
+msgstr "Send Double Left Click"
 
 msgid "Send Files"
-msgstr "Dosyalar Gönder"
+msgstr "أرسل ملفّات"
 
+#, fuzzy
 msgid "Send Left Hold"
-msgstr "Sol Basılı Tutuş Gönder"
+msgstr "Send Left Hold"
 
 msgid "Send Middle Click"
-msgstr "Orta Tık Gönder"
+msgstr "أرسل نقرة بالوسط"
 
+#, fuzzy
 msgid "Send Photos and Videos"
-msgstr "Fotoğraflar ve Videolar Gönder"
+msgstr "Send Photos and Videos"
 
 msgid "Send Ping"
-msgstr "Ping Gönder"
+msgstr "أرسل وخزة"
 
 msgid "Send Right Click"
-msgstr "Sağ Tık Gönder"
+msgstr "أرسل نقرة باليمين"
 
+#, fuzzy
 msgid "Send Single Left Click"
-msgstr "Sol Tek Tık Gönder"
+msgstr "Send Single Left Click"
 
 msgid "Sending"
-msgstr "Gönderiliyor"
+msgstr "الإرسال"
 
+#, fuzzy
 msgid "Sending file %lld of %lld"
-msgstr "%lld / %lld dosya gönderiliyor"
+msgstr "Sending file %lld of %lld"
 
 msgid "Settings"
-msgstr "Ayarlar"
+msgstr "إعدادات"
 
+#, fuzzy
 msgid "Share/File Transfer"
-msgstr "Dosya Aktar/Paylaş"
+msgstr "Share/File Transfer"
 
 #, fuzzy
 msgid "Share: Receive File, Text, and URL"
@@ -797,25 +918,20 @@ msgid "Slideshow Remote"
 msgstr "Slideshow Remote"
 
 #. Soft haptic feedback level
-#, fuzzy
 msgid "Soft"
-msgstr "Soft"
+msgstr "لين"
 
-#, fuzzy
 msgid "Source Code"
-msgstr "Source Code"
+msgstr "الشيفرة المصدرية"
 
-#, fuzzy
 msgid "Status"
-msgstr "Status"
+msgstr "الحالة"
 
-#, fuzzy
 msgid "Supported"
-msgstr "Supported"
+msgstr "مدعوم"
 
-#, fuzzy
 msgid "System Default"
-msgstr "System Default"
+msgstr "مبدئي النظام"
 
 #, fuzzy
 msgid "System Volume: Control Remote & Respond"
@@ -857,9 +973,8 @@ msgstr ""
 msgid "These should work with little to no issues"
 msgstr "These should work with little to no issues"
 
-#, fuzzy
 msgid "Third-Party Libraries"
-msgstr "Third-Party Libraries"
+msgstr "مكتبات الطرف الثالث"
 
 #, fuzzy
 msgid "This is likely not possible to implement on iOS"
@@ -869,9 +984,8 @@ msgstr "This is likely not possible to implement on iOS"
 msgid "Through the system share sheet"
 msgstr "Through the system share sheet"
 
-#, fuzzy
 msgid "To %@"
-msgstr "To %@"
+msgstr "إلى %@"
 
 #, fuzzy
 msgid ""
@@ -885,21 +999,18 @@ msgstr ""
 msgid "Toggle Keyboard"
 msgstr "Toggle Keyboard"
 
-#, fuzzy
 msgid "Troubleshooting"
-msgstr "Troubleshooting"
+msgstr "استكشاف الأخطاء وإصلاحها"
 
-#, fuzzy
 msgid "Trusted Networks"
-msgstr "Trusted Networks"
+msgstr "الشّبكات الموثوقة"
 
 #, fuzzy
 msgid "Unknown Theme"
 msgstr "Unknown Theme"
 
-#, fuzzy
 msgid "Unpair"
-msgstr "Unpair"
+msgstr "أزل الاقتران"
 
 #, fuzzy
 msgid "Unpair With Device?"
@@ -909,17 +1020,15 @@ msgstr "Unpair With Device?"
 msgid "Unpair with %@?"
 msgstr "Unpair with %@?"
 
-#, fuzzy
 msgid "Valid"
-msgstr "Valid"
+msgstr "صالح"
 
 #, fuzzy
 msgid "Verification key: %@"
 msgstr "Verification key: %@"
 
-#, fuzzy
 msgid "Version: %@ (%@)"
-msgstr "Version: %@ (%@)"
+msgstr "الإصدارة: %@ (%@)"
 
 #, fuzzy
 msgid "Waiting for %lld other files to start transferring"
@@ -933,9 +1042,8 @@ msgstr "Waiting for logs..."
 msgid "Waiting to send"
 msgstr "Waiting to send"
 
-#, fuzzy
 msgid "Website"
-msgstr "Website"
+msgstr "موقع الوبّ"
 
 #, fuzzy
 msgid "Wiki & User Manual"
@@ -954,9 +1062,8 @@ msgstr ""
 "specific settings that can be found in their respective Views."
 
 #. Filename to use for an unnamed file
-#, fuzzy
 msgid "untitled"
-msgstr "untitled"
+msgstr "بلا عنوان"
 
 #, fuzzy
 msgid "© KDE Community & contributors"
