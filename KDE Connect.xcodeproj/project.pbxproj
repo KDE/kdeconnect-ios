@@ -787,7 +787,7 @@
 			mainGroup = A0A04423267BF38700CC21DD;
 			packageReferences = (
 				1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */,
-				D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */,
+				D2D0A89A27688B5500CA9B13 /* XCLocalSwiftPackageReference "Packages/SwiftUI-MediaPicker" */,
 				D2FBA1F6277178A000EBA686 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 				D2FAF12527D2E78900658753 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D21A100629B878B800CE02F8 /* XCRemoteSwiftPackageReference "swift-collections" */,
@@ -1323,6 +1323,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		D2D0A89A27688B5500CA9B13 /* XCLocalSwiftPackageReference "Packages/SwiftUI-MediaPicker" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "Packages/SwiftUI-MediaPicker";
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		1491F15826AC8BD6008C1065 /* XCRemoteSwiftPackageReference "OpenSSL" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1346,14 +1353,6 @@
 			requirement = {
 				kind = revision;
 				revision = a780f2e563d7402f078951c2a0fae0a208548196;
-			};
-		};
-		D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/UWAppDev/SwiftUI-MediaPicker.git";
-			requirement = {
-				kind = exactVersion;
-				version = 0.2.0;
 			};
 		};
 		D2D7AB82298C8EA600AB490B /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
@@ -1400,7 +1399,7 @@
 		};
 		D2D0A89B27688B5500CA9B13 /* MediaPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D2D0A89A27688B5500CA9B13 /* XCRemoteSwiftPackageReference "SwiftUI-MediaPicker" */;
+			package = D2D0A89A27688B5500CA9B13 /* XCLocalSwiftPackageReference "Packages/SwiftUI-MediaPicker" */;
 			productName = MediaPicker;
 		};
 		D2FAF12627D2E78900658753 /* Introspect */ = {
