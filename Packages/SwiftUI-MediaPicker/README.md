@@ -6,4 +6,7 @@ the MIT License (see `LICENSE`). The upstream demo app is not included.
 
 ## Local modifications
 
-None yet. Document any change made to the upstream sources here.
+- `Sources/MediaPicker/MediaPicker-PhotosUI.swift`: only the first
+  `didFinishPicking` call per presentation is handled, and the picker stops
+  accepting input after it. Before this change, tapping "Add" again while
+  "Preparing Media…" was shown imported and sent the selection twice.

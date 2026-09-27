@@ -102,6 +102,7 @@ fileprivate struct MediaPicker: UIViewControllerRepresentable {
     
     class Coordinator: PHPickerViewControllerDelegate {
         let coordinated: MediaPicker
+        private var hasFinishedPicking = false
         
         init(for picker: MediaPicker) {
             self.coordinated = picker
@@ -109,10 +110,13 @@ fileprivate struct MediaPicker: UIViewControllerRepresentable {
         
         func picker(_ picker: PHPickerViewController,
                     didFinishPicking results: [PHPickerResult]) {
+            guard !hasFinishedPicking else { return }
             guard !results.isEmpty else {
                 coordinated.isPresented = false
                 return
             }
+            hasFinishedPicking = true
+            picker.view.isUserInteractionEnabled = false
             Task { @MainActor in
                 withAnimation {
                     coordinated.isLoading = true
