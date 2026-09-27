@@ -1,0 +1,234 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** para iOS";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ para iOS";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© La Comunidad KDE y colaboradores";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "Acerca de";
+
+/* No comment provided by engineer. */
+"Actions" = "Acciones";
+
+/* No comment provided by engineer. */
+"Advanced" = "Avanzado";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Preferencias avanzadas";
+
+/* No comment provided by engineer. */
+"All Messages" = "Todos los mensajes";
+
+/* No comment provided by engineer. */
+"Application" = "Aplicación";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Actividad en segundo plano";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancelar";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Categoría: %@";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Borrar caché";
+
+/* No comment provided by engineer. */
+"Connect" = "Conectar";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Dispositivos conectados";
+
+/* No comment provided by engineer. */
+"Contacts" = "Contactos";
+
+/* No comment provided by engineer. */
+"Contributors" = "Colaboradores";
+
+/* No comment provided by engineer. */
+"Dark" = "Oscuro";
+
+/* No comment provided by engineer. */
+"Default" = "Predeterminada";
+
+/* No comment provided by engineer. */
+"Developer" = "Desarrollador";
+
+/* No comment provided by engineer. */
+"Device" = "Dispositivo";
+
+/* No comment provided by engineer. */
+"Device name" = "Nombre del dispositivo";
+
+/* No comment provided by engineer. */
+"Device Name" = "Nombre del dispositivo";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Nombre del dispositivo:";
+
+/* No comment provided by engineer. */
+"Device Status" = "Estado del dispositivo";
+
+/* No comment provided by engineer. */
+"Devices" = "Dispositivos";
+
+/* No comment provided by engineer. */
+"Donate" = "Hacer un donativo";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Información de cifrado";
+
+/* No comment provided by engineer. */
+"Error" = "Error";
+
+/* No comment provided by engineer. */
+"Features" = "Funcionalidades";
+
+/* No comment provided by engineer. */
+"Files" = "Archivos";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Encontrar mi dispositivo";
+
+/* No comment provided by engineer. */
+"Forget all" = "Olvidar todos";
+
+/* No comment provided by engineer. */
+"General" = "General";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Ir a pantalla completa";
+
+/* No comment provided by engineer. */
+"Help" = "Ayuda";
+
+/* No comment provided by engineer. */
+"Information" = "Información";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"License" = "Licencia";
+
+/* Light haptic feedback level */
+"Light" = "Claro";
+
+/* No comment provided by engineer. */
+"Logs" = "Registros";
+
+/* Medium haptic feedback level */
+"Medium" = "Media";
+
+/* No comment provided by engineer. */
+"OK" = "Aceptar";
+
+/* Unknown haptic feedback level */
+"Other" = "Otros";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping!" = "¡Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Preview: " = "Vista previa: ";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Motivo: %@";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Entrada remota";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Informar de fallo";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Hacer sonar el dispositivo";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Rectángulo redondeado";
+
+/* No comment provided by engineer. */
+"Run Command" = "Ejecutar orden";
+
+/* No comment provided by engineer. */
+"Send" = "Enviar";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Enviar doble clic izquierdo";
+
+/* No comment provided by engineer. */
+"Send Files" = "Enviar archivos";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Enviar clic central";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Enviar ping";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Enviar clic derecho";
+
+/* No comment provided by engineer. */
+"Settings" = "Preferencias";
+
+/* No comment provided by engineer. */
+"Source Code" = "Código fuente";
+
+/* No comment provided by engineer. */
+"Status" = "Estado";
+
+/* No comment provided by engineer. */
+"System Default" = "Predeterminado del sistema";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Bibliotecas de terceras partes";
+
+/* No comment provided by engineer. */
+"To %@" = "Para %@";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Resolución de problemas";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Tema desconocido";
+
+/* No comment provided by engineer. */
+"Unpair" = "Desvincular";
+
+/* Filename to use for an unnamed file */
+"untitled" = "sin título";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Clave de verificación: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Versión: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Website" = "Sitio web";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wiki y manual del usuario";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Sí, desvincular";
+

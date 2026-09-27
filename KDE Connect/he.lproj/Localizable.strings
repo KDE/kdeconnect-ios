@@ -1,0 +1,189 @@
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© קהילת KDE ומתנדבים";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "צלצול/Find My Phone";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "מרובע מעוגל";
+
+/* No comment provided by engineer. */
+"Run Command" = "הרצת פקודה";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "הרצת פקודה: בקשה";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "הרצת פקודה: תגובה";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "שומר מסך: מניעת מרוחק";
+
+/* No comment provided by engineer. */
+"Send" = "שליחה";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "שליחת לחיצה שמאלית כפולה";
+
+/* No comment provided by engineer. */
+"Send Files" = "שליחת קבצים";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "שליחת החזקה שמאלית";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "שליחת לחיצה אמצעית (גלגלת)";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "צילום תמונות וסרטונים";
+
+/* No comment provided by engineer. */
+"Send Ping" = "שליחת פינג";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "שליחת לחיצה ימנית";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "שליחת לחיצה שמאלית בודדת";
+
+/* No comment provided by engineer. */
+"Sending" = "נשלח";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "נשלח קובץ %lld מתוך %lld";
+
+/* No comment provided by engineer. */
+"Settings" = "הגדרות";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "שיתוף: קבלת קובץ, טקסט וכתובת";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "שיתוף: שליחת קובץ";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "שיתוף: שליחת טקסט וכתובת";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "שיתוף/העברת קבצים";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "הצגת בורר סגנון רטט תגובה";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "הצגת קבצים שהתקבלו ב־Finder";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "הצגת מחוון רגישות";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "שלט מצגת";
+
+/* Soft haptic feedback level */
+"Soft" = "רך";
+
+/* No comment provided by engineer. */
+"Source Code" = "קוד המקור";
+
+/* No comment provided by engineer. */
+"Status" = "מצב";
+
+/* No comment provided by engineer. */
+"Supported" = "נתמך";
+
+/* No comment provided by engineer. */
+"System Default" = "ברירת המחדל של המערכת";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "עוצמת השמע של המערכת: שליטה מרוחקת ותגובה";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "צילום תמונה: תגובה";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "נגיעה תתחיל הצמדה";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "טלפוניה: סנכרון מסרונים/שיחות";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "האפשרויות שלהלן הן בלתי הפיכות ודורשות את הפעלת היישומון מחדש כדי שיחולו.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "אפשר לטפל בהם אוטומטית אבל אפשר להתערב ידנית בחלק מהמקרים אם הם לא עובדים כראוי.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "אלו אמורות לעבוד עם מעט תקלות או כלל ללא";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "ספריות צד־שלישי";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "זה כנראה בלתי אפשרי למימוש ב־iOS";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "דרך גיליון השיתוף של המערכת";
+
+/* No comment provided by engineer. */
+"To %@" = "אל %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "כדי להתחבר למכשירים זוכרים, נא לוודא שהם מחוברים לאותה הרשת כמו המכשיר הזה.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "הצגת/הסתרת מקלדת";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "פתרון תקלות";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "רשתות מהימנות";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "ערכת עיצוב לא ידועה";
+
+/* No comment provided by engineer. */
+"Unpair" = "הפרדה";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "להיפרד מ־%@?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "להיפרד מהמכשיר?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "ללא שם";
+
+/* No comment provided by engineer. */
+"Valid" = "תקף";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "מפתח אימות: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "גרסה: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "בהתמנה ל־%lld קבצים נוספים שיתחילו לעבור";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "בהמתנה ליומנים…";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "בהמתנה לשליחה";
+
+/* No comment provided by engineer. */
+"Website" = "אתר";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "ויקי מדריך למשתמשים";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "כן, להפריד";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "אפשר להפעיל או לכבות תוספים נקודתית. לחלק מהתוספים יש הגדרות משלהם שאפשר למצוא אותם בתצוגות התואמות שלהם.";
+

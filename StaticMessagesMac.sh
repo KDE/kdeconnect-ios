@@ -14,8 +14,9 @@ SCHEME="KDE Connect"
 function _export_xliff()
 {
     local destination=$1
+    shift
     xcodebuild -project "$PROJECT" -scheme "$SCHEME" \
-        -exportLocalizations -localizationPath "$destination"
+        -exportLocalizations -localizationPath "$destination" "$@"
 }
 
 function translation_tool()
@@ -83,49 +84,83 @@ function export_pot_file # First parameter will be the path of the pot file we h
     return "$status"
 }
 
-function import_po_files # First parameter will be a path that will contain several .po files with the format LANG.po
+function import_po_files # First parameter contains PO files in locale-named directories.
 {
     local podir=$1
-    local workdir xlf po cleanpo language basename found=0 index
+    local workdir xlf po language xcloc relative_path found=0 duplicate existing_language
+    local -a languages=() export_languages=()
     workdir=$(mktemp -d "${TMPDIR:-/tmp}/kdeconnect-ios-l10n.XXXXXX") || return
 
-    # Export a template, used because po2xliff can't recreate Xcode's trans-unit IDs and file metadata.
-    _export_xliff "$workdir/template" || { rm -rf "$workdir"; return 1; }
-    mkdir -p "$workdir/import" || { rm -rf "$workdir"; return 1; }
-
+    # PO files are named after the catalog, so their parent directory identifies
+    # the locale (for example, po/de/kdeconnect-ios.po).
     while IFS= read -r -d '' po; do
-        language=$(basename "$po" .po)
-        index=0
-        cleanpo="$workdir/${language}.po"
-        # XLIFF has no representation for obsolete gettext entries.
-        msgattrib --no-obsolete --output-file="$cleanpo" "$po" || {
-            rm -rf "$workdir"
-            return 1
-        }
-
-        while IFS= read -r -d '' xlf; do
-            basename=$(basename "$xlf")
-            po2xliff --progress=none -t "$xlf" -i "$cleanpo" \
-                -o "$workdir/import/${language}-${index}-${basename}" || {
-                rm -rf "$workdir"
-                return 1
-            }
-            index=$((index + 1))
-            found=1
-        done < <(find "$workdir/template" -type f \( -name '*.xliff' -o -name '*.xlf' \) -print0)
+        language=$(basename "$(dirname "$po")")
+        duplicate=0
+        for existing_language in "${languages[@]}"; do
+            if [ "$existing_language" = "$language" ]; then
+                duplicate=1
+                break
+            fi
+        done
+        if [ "$duplicate" -eq 0 ]; then
+            languages+=("$language")
+            export_languages+=(-exportLanguage "$language")
+        fi
     done < <(find "$podir" -type f -name '*.po' -print0)
 
-    if [ "$found" -eq 0 ]; then
-        echo "No PO files or XLIFF templates found." >&2
+    if [ "${#languages[@]}" -eq 0 ]; then
+        echo "No PO files found in $podir." >&2
         rm -rf "$workdir"
         return 1
     fi
 
-    xcodebuild -project "$PROJECT" -scheme "$SCHEME" \
-        -importLocalizations -localizationPath "$workdir/import"
-    local status=$?
+    # Xcode imports .xcloc bundles, not a directory containing loose XLIFF
+    # files. Export one template per locale to retain the target language and
+    # Xcode-specific metadata.
+    _export_xliff "$workdir/template" "${export_languages[@]}" || {
+        rm -rf "$workdir"
+        return 1
+    }
+    mkdir -p "$workdir/import" || { rm -rf "$workdir"; return 1; }
+
+    while IFS= read -r -d '' po; do
+        language=$(basename "$(dirname "$po")")
+        xcloc="$workdir/template/${language}.xcloc"
+        if [ ! -d "$xcloc" ]; then
+            echo "Xcode did not export a template for locale $language." >&2
+            rm -rf "$workdir"
+            return 1
+        fi
+
+        cp -R "$xcloc" "$workdir/import/${language}.xcloc" || {
+            rm -rf "$workdir"
+            return 1
+        }
+        while IFS= read -r -d '' xlf; do
+            relative_path=${xlf#"$xcloc/Localized Contents/"}
+            python3 "$SCRIPT_DIR/scripts/apply_po_to_xliff.py" "$po" \
+                "$workdir/import/${language}.xcloc/Localized Contents/$relative_path" || {
+                rm -rf "$workdir"
+                return 1
+            }
+            found=1
+        done < <(find "$xcloc/Localized Contents" -type f \( -name '*.xliff' -o -name '*.xlf' \) -print0)
+    done < <(find "$podir" -type f -name '*.po' -print0)
+
+    if [ "$found" -eq 0 ]; then
+        echo "No XLIFF templates were produced by xcodebuild." >&2
+        rm -rf "$workdir"
+        return 1
+    fi
+
+    for xcloc in "$workdir"/import/*.xcloc; do
+        xcodebuild -project "$PROJECT" -scheme "$SCHEME" \
+            -importLocalizations -localizationPath "$xcloc" || {
+            rm -rf "$workdir"
+            return 1
+        }
+    done
     rm -rf "$workdir"
-    return "$status"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

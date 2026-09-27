@@ -1,0 +1,762 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** per a iOS";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ i %lld altres fitxers";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ per a iOS";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© La comunitat KDE & contributors";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "Quant a";
+
+/* No comment provided by engineer. */
+"Actions" = "Accions";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "Afegiu ací les adreces IP locals d'altres dispositius si hi ha problemes en aparéixer al descobriment automàtic.";
+
+/* No comment provided by engineer. */
+"Advanced" = "Avançat";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Configuració avançada";
+
+/* No comment provided by engineer. */
+"All Messages" = "Tots els missatges";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "També els escrits per %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "Icona d'aplicació";
+
+/* No comment provided by engineer. */
+"App Icon:" = "Icona d'aplicació:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "Tema d'aplicació:";
+
+/* No comment provided by engineer. */
+"Application" = "Aplicació";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Com a projecte de codi obert, creiem que és important ser transparents sobre els nostres plans actuals i futurs per a fer que KDE Connect iOS estiga en línia amb totes les altres plataformes.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Autoritzeu l'accés a les fotos mitjançant l'aplicació Configuració per a guardar les fotos i els vídeos rebuts a la vostra biblioteca de fotos";
+
+/* No comment provided by engineer. */
+"Available themes" = "Temes disponibles";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Activitat del segon pla";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Nivell de la bateria";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "S'ha desactivat el connector de la bateria";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Estat de la bateria";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "No trobeu els vostres dispositius ací?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancel·la";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Categoria: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "Extrau les sol·licituds de fusió";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "Trieu una icona d'aplicació";
+
+/* No comment provided by engineer. */
+"Chores" = "Tasques";
+
+/* No comment provided by engineer. */
+"Classic" = "Clàssic";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Neteja la memòria cau";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Sincronitza el porta-retalls";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "Porta-retalls: Envia i rep text";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Porta-retalls: Sincronitza";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "Configura els dispositius per IP";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "Configura els dispositius per IP:";
+
+/* No comment provided by engineer. */
+"Connect" = "Connecta";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Dispositius connectats";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Informe de connectivitat";
+
+/* No comment provided by engineer. */
+"Contacts" = "Contactes";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "Col·laboració a KDE Connect";
+
+/* No comment provided by engineer. */
+"Contributors" = "Col·laboradors";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "Copia el camí cap a la carpeta que conté els fitxers rebuts";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "Mantingut actualment per %@";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "Actualment, l'aplicació ha de romandre en primer pla per a funcionar correctament";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "Sensibilitat del cursor";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "OPCIONS PERILLOSES";
+
+/* No comment provided by engineer. */
+"Dark" = "Fosc";
+
+/* No comment provided by engineer. */
+"Debug" = "Depuració";
+
+/* No comment provided by engineer. */
+"Debug mode" = "Mode de depuració";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "Depuració del descobriment de dispositius";
+
+/* No comment provided by engineer. */
+"Default" = "Predeterminada";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "Suprimix tota la configuració i els dispositius guardats. Requerix reiniciar completament l'aplicació.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "Suprimix el certificat de l'amfitrió";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Suprimix el certificat de l'amfitrió i torna a generar-lo quan es reinicia. Requerix que l'aplicació es reinicie completament. NOTA: Açò farà que el dispositiu no puga connectar-se amb dispositius connectats prèviament. Heu de desaparellar este dispositiu dels altres dispositius remots i aparellar-los de nou.";
+
+/* No comment provided by engineer. */
+"Developer" = "Desenvolupador";
+
+/* No comment provided by engineer. */
+"Device" = "Dispositiu";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "Descobriment de dispositius";
+
+/* No comment provided by engineer. */
+"Device IP" = "IP del dispositiu";
+
+/* No comment provided by engineer. */
+"Device name" = "Nom del dispositiu";
+
+/* No comment provided by engineer. */
+"Device Name" = "Nom del dispositiu";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Nom del dispositiu:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "Dispositiu fora de línia";
+
+/* No comment provided by engineer. */
+"Device Status" = "Estat del dispositiu";
+
+/* No comment provided by engineer. */
+"Devices" = "Dispositius";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "Dispositius de negociació directa";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "Desactiva la difusió UDP";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "Dispositius descoberts";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Descobriment i aparellament";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "No aparelles";
+
+/* No comment provided by engineer. */
+"Donate" = "Donació";
+
+/* No comment provided by engineer. */
+"Done" = "Fet";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Toc doble per a activar el mode de depuració";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "Toc doble per a activar la depuració del descobriment de dispositius";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Activa o desactiva connectors";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Informació de l'encriptació";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Esborra la memòria cau dels dispositius guardats";
+
+/* No comment provided by engineer. */
+"Error" = "S'ha produït un error";
+
+/* No comment provided by engineer. */
+"Error Occured" = "S'ha produït un error";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "Errors i fallades";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Ix de la presentació";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Funcionalitats experimentals";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Ha fallat mentre es canviava la icona";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "Ha fallat mentre es rebia %lld fitxers";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "Ha fallat mentre es rebia des de %@";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "Ha fallat mentre s'enviava %lld fitxers";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "Ha fallat mentre s'enviava a %@";
+
+/* No comment provided by engineer. */
+"Fault" = "Fallada";
+
+/* No comment provided by engineer. */
+"Features" = "Característiques";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Transferències de fitxers";
+
+/* No comment provided by engineer. */
+"Files" = "Fitxers";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Troba el meu dispositiu";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "S'ha iniciat «Troba el meu telèfon» des d'un dispositiu remot";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Mode de «Troba el meu telèfon»";
+
+/* No comment provided by engineer. */
+"Forget all" = "Oblida-ho tot";
+
+/* No comment provided by engineer. */
+"From %@" = "Des de %@";
+
+/* No comment provided by engineer. */
+"General" = "General";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Entra a pantalla completa";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "Estil hàptic";
+
+/* Hard haptic feedback level */
+"Heavy" = "Intens";
+
+/* No comment provided by engineer. */
+"Help" = "Ajuda";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "Oculta el selector d'estil hàptic";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "Oculta el control lliscant de sensibilitat";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "L'HE TROBAT!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "Si un dispositiu recordat ja es troba en línia, però no es mostra ací, proveu d'Actualitzar el descobriment.";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "Si KDE Connect té problemes per descobrir altres dispositius, podeu intentar una combinació de les solucions següents:\n\n1. «Actualitza el descobriment» mitjançant el menú %@ o premeu per a actualitzar la llista de dispositius, en este i els altres dispositius.\n\n2. Assegureu-vos que els altres dispositius també estan executant KDE Connect i estiguen connectats a la mateixa xarxa que este dispositiu.\n\n3. Afegiu manualment els altres dispositius a través de l'opció «Configura els dispositius per IP» en el menú %@, i després «Actualitza el descobriment».\n\n4. Consulteu altres solucions al Manual d'usuari, com ara configurar els tallafocs dels altres dispositius:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Si hi ha dispositius fantasmes o alguna cosa senzillament no es comporta correctament, podria corregir-ho esborrar totes les dades dels dispositius guardats. Requerix reiniciar completament l'aplicació.";
+
+/* No comment provided by engineer. */
+"In progress" = "En curs";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Sol·licitud d'aparellament entrant";
+
+/* No comment provided by engineer. */
+"Info" = "Informació";
+
+/* No comment provided by engineer. */
+"Information" = "Informació";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Voleu iniciar l'aparellament?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Integració amb les dreceres del Siri";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "Està en desenvolupament la integració amb el full compartit del sistema";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Internacionalització i traducció";
+
+/* No comment provided by engineer. */
+"Invalid" = "No vàlid";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Teclat: Control remot";
+
+/* No comment provided by engineer. */
+"License" = "Llicència";
+
+/* Light haptic feedback level */
+"Light" = "Clar";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Bloqueig de la pantalla: Control remot";
+
+/* No comment provided by engineer. */
+"Logs" = "Registres";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "Registres de %@";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Gestiona els fitxers rebuts a l'aplicació Fitxers";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Podria no funcionar a KDE Connect per a Windows";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "Potser mitjançant l'esquema d'URL i la integració amb les dreceres de Siri";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "Potser amb el Servei del centre de notificacions d'Apple (ACNS)";
+
+/* Medium haptic feedback level */
+"Medium" = "Mitjà";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "Ratolí: Control remot";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "Mogueu un dit a la pantalla per a moure el cursor del ratolí. Toqueu amb un dit per fer un clic esquerre. Toqueu amb dos dits per fer un clic dret. Utilitzeu una premuda llarga per a activar la funció d'arrossegar i deixar anar. O utilitzeu el menú de la part superior dreta per enviar clics directament.\n\nArrossegueu amb un dit des de la «Roda de desplaçament» de dalt per desplaçar-vos tant verticalment com horitzontalment. Toqueu a la «Roda de desplaçament» per a fer clic del mig.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: Control remot multimèdia i resposta";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "Una aplicació multiplataforma que permet que els dispositius es comuniquen (p. ex., el telèfon i l'ordinador)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Compositor de paquets de xarxa";
+
+/* No comment provided by engineer. */
+"Nice" = "Agradable";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "No s'han descobert dispositius addicionals en esta xarxa.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "No s'ha detectat cap bateria en el dispositiu";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "Actualment no hi ha cap dispositiu connectat.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "No s'ha descobert cap dispositiu a la xarxa actual.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Encara no hi ha registres coincidents";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "No, continua aparellat";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Encara no s'ha implementat";
+
+/* No comment provided by engineer. */
+"Notice" = "Avís";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Notificació: Rep d'altres";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "Notificació: Recuperat per altres";
+
+/* No comment provided by engineer. */
+"OK" = "D'acord";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "Estil hàptic al clic";
+
+/* Unknown haptic feedback level */
+"Other" = "Altres";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "Notificació fora de l'aplicació:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Cos del paquet";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Etiqueta del paquet";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Tipus de paquet";
+
+/* No comment provided by engineer. */
+"Pair" = "Aparella";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "Sol·licitud d'aparellament de «%@»\nClau de verificació: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "S'ha completat l'aparellament";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "S'ha rebutjat l'aparellament";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "L'aparellament ha excedit el temps";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "No s'ha pogut fer l'aparellament amb «%@»";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "L'aparellament amb «%@» ha sigut correcte";
+
+/* No comment provided by engineer. */
+"Peer" = "Parell";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Ping rebut d'un dispositiu connectat.";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Playground" = "Zona de proves";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Configureu el connector";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "Connectors si són accessibles";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "Sensibilitat del punter";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "S'està preparant el multimèdia…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Presentador: Control remot";
+
+/* No comment provided by engineer. */
+"Preview: " = "Vista prèvia: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Els dispositius connectats anteriorment apareixeran ací.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Impulsa el porta-retalls local";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Motiu: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Les fotos i els vídeos rebuts es guardaran a l'aplicació Fitxers perquè no podeu atorgar accés a la vostra biblioteca de fotos.";
+
+/* No comment provided by engineer. */
+"Receiving" = "S'està rebent";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "S'està rebent el fitxer %lld de %lld";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "Actualitza el descobriment";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Dispositius recordats";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Entrada remota";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Informeu d'un error";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "Sol·licita aparellar amb «%@»";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "Reinicia el descobriment";
+
+/* Rigid haptic feedback level */
+"Rigid" = "Rígid";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Toca al dispositiu";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Toca/Troba el meu telèfon";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Rectangle arredonit";
+
+/* No comment provided by engineer. */
+"Run Command" = "Executa una ordre";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "Executa una ordre: Sol·licitud";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "Executa una ordre: Resposta";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Guarda les fotos a la biblioteca de fotos";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Guarda els vídeos a la biblioteca de fotos";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "Salvapantalla: Inhibix el remot";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Trieu un dispositiu de la llista de dispositius per a començar.";
+
+/* No comment provided by engineer. */
+"Send" = "Envia";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Envia un doble clic esquerre";
+
+/* No comment provided by engineer. */
+"Send Files" = "Envia fitxers";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "Envia un clic esquerre i mantindre";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Envia un clic del mig";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Envia fotos i vídeos";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Envia un ping";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Envia un clic dret";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Envia un clic dret individual";
+
+/* No comment provided by engineer. */
+"Sending" = "S'està enviant";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "S'està enviant el fitxer %lld de %lld";
+
+/* No comment provided by engineer. */
+"Settings" = "Configuració";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: Accés al remot i inicia el servidor de fitxers";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "L'empremta digital SHA256 del certificat del vostre dispositiu és:\n%@\n\nL'empremta digital SHA256 del certificat del dispositiu remot és: \n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Compartiu: Rep un fitxer, text i URL";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Compartiu: Envia un fitxer";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Compartiu: Envia text i URL";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "Compartiu/transferència de fitxers";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "Mostra el selector d'estil hàptic";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Mostra els fitxers rebuts en Finder";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "Mostra el control lliscant de sensibilitat";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "Remot de presentació de diapositives";
+
+/* Soft haptic feedback level */
+"Soft" = "Suau";
+
+/* No comment provided by engineer. */
+"Source Code" = "Codi font";
+
+/* No comment provided by engineer. */
+"Status" = "Estat";
+
+/* No comment provided by engineer. */
+"Supported" = "Admés";
+
+/* No comment provided by engineer. */
+"System Default" = "Predeterminada del sistema";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "Volum del sistema: Control remot i resposta";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "Pren una foto: Resposta";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Toqueu per a iniciar l'aparellament";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "Telefonia: Sincronització de SMS/tocades";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "El nom del dispositiu reconegut per KDE Connect";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "Les opcions anteriors són irreversibles i requerixen un reinici complet de l'aplicació perquè tinguen efecte.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "Estes s'han de gestionar automàticament, però podeu modificar-ne manualment algunes en cas que no ho siguen.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "Estes haurien de funcionar amb pocs o sense problemes";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Biblioteques de tercers";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "És probable que açò no siga possible d'implementar a iOS";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "Mitjançant el full de compartició del sistema";
+
+/* No comment provided by engineer. */
+"To %@" = "A %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "Per a connectar-se a dispositius recordats, assegureu-vos que estan connectats a la mateixa xarxa que este dispositiu.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "Canvia el teclat";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Solució de problemes";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Xarxes de confiança";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Tema desconegut";
+
+/* No comment provided by engineer. */
+"Unpair" = "Desaparella";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "Desaparella %@?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Desaparello el dispositiu?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "sense títol";
+
+/* No comment provided by engineer. */
+"Valid" = "Vàlid";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Clau de verificació: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Versió: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "S'està esperant que altres %lld fitxers comencen a transferir-se";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "S'estan esperant els registres…";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "S'està esperant a enviar";
+
+/* No comment provided by engineer. */
+"Website" = "Lloc web";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wiki i Manual d'usuari";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Sí, desaparella";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "Podeu activar o desactivar els connectors individualment. Alguns connectors tenen la seua pròpia configuració específica que es pot trobar a les seues vistes respectives.";
+

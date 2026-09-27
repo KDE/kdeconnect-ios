@@ -1,0 +1,12 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "KDE Bağlan";
+
+/* Bundle name */
+"CFBundleName" = "KDE Bağlan";
+
+/* Privacy - Local Network Usage Description */
+"NSLocalNetworkUsageDescription" = "KDE Bağlan’ı kullanarak başka aygıtları keşfedin ve onlara bağlanın.";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Alınan görselleri, Dosyalar uygulaması yerine Fotoğraf Arşivi’ne kaydedin.";
+

@@ -1,0 +1,12 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "KDE Connect";
+
+/* Bundle name */
+"CFBundleName" = "KDE Connect";
+
+/* Privacy - Local Network Usage Description */
+"NSLocalNetworkUsageDescription" = "Ontdek andere apparaten en maak er verbinding mee via KDE Connect.";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Sla ontvangen afbeeldingen op in uw fotobibliotheek in plaats van in de Bestanden-toepassing.";
+

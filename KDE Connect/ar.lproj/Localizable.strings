@@ -1,0 +1,297 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "؟";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "عن";
+
+/* No comment provided by engineer. */
+"Actions" = "الإجراءات";
+
+/* No comment provided by engineer. */
+"Advanced" = "متقدّم";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "إعدادات متقدّمة";
+
+/* No comment provided by engineer. */
+"All Messages" = "كل الرسائل";
+
+/* No comment provided by engineer. */
+"Application" = "التطبيق";
+
+/* No comment provided by engineer. */
+"Background Activity" = "نشاط الخلفية";
+
+/* No comment provided by engineer. */
+"Battery Level" = "مستوى البطارية";
+
+/* No comment provided by engineer. */
+"Cancel" = "ألغِ";
+
+/* No comment provided by engineer. */
+"Category: %@" = "الفئة: %@";
+
+/* No comment provided by engineer. */
+"Chores" = "مهام منزلية";
+
+/* No comment provided by engineer. */
+"Classic" = "تقليدي";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "امحُ الخبيئة";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "مزامنة الحافظة";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "الحافظة: مزامنة";
+
+/* No comment provided by engineer. */
+"Connect" = "اتّصل";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "الأجهزة المتصلة";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "تقرير الاتصال";
+
+/* No comment provided by engineer. */
+"Contacts" = "المتراسلون";
+
+/* No comment provided by engineer. */
+"Contributors" = "المساهمون";
+
+/* No comment provided by engineer. */
+"Dark" = "مظلمة";
+
+/* No comment provided by engineer. */
+"Debug" = "نقّح";
+
+/* No comment provided by engineer. */
+"Default" = "المبدئيّ";
+
+/* No comment provided by engineer. */
+"Developer" = "مطوّر";
+
+/* No comment provided by engineer. */
+"Device" = "الجهاز";
+
+/* No comment provided by engineer. */
+"Device name" = "اسم الجهاز";
+
+/* No comment provided by engineer. */
+"Device Name" = "اسم الجهاز";
+
+/* No comment provided by engineer. */
+"Device Name:" = "اسم الجهاز:";
+
+/* No comment provided by engineer. */
+"Device Status" = "حالة الأجهزة";
+
+/* No comment provided by engineer. */
+"Devices" = "الأجهزة";
+
+/* No comment provided by engineer. */
+"Donate" = "تبرّع";
+
+/* No comment provided by engineer. */
+"Done" = "تمّ";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "معلومات التّعمية";
+
+/* No comment provided by engineer. */
+"Error" = "خطأ";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "اخرج من العرض التقديمي";
+
+/* No comment provided by engineer. */
+"Fault" = "خطأ";
+
+/* No comment provided by engineer. */
+"Features" = "الميزات";
+
+/* No comment provided by engineer. */
+"Files" = "الملفات";
+
+/* No comment provided by engineer. */
+"Forget all" = "انسَ الكلّ";
+
+/* No comment provided by engineer. */
+"From %@" = "من %@";
+
+/* No comment provided by engineer. */
+"General" = "عامّ";
+
+/* Hard haptic feedback level */
+"Heavy" = "ثقيل";
+
+/* No comment provided by engineer. */
+"Help" = "مساعدة";
+
+/* No comment provided by engineer. */
+"In progress" = "في تقدم";
+
+/* No comment provided by engineer. */
+"Info" = "معلومات";
+
+/* No comment provided by engineer. */
+"Information" = "معلومات";
+
+/* No comment provided by engineer. */
+"Invalid" = "غير صالح";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "جسر كِيدِي";
+
+/* No comment provided by engineer. */
+"License" = "الرخصة";
+
+/* Light haptic feedback level */
+"Light" = "فاتح";
+
+/* No comment provided by engineer. */
+"Logs" = "سجلّات";
+
+/* Medium haptic feedback level */
+"Medium" = "متوسط";
+
+/* No comment provided by engineer. */
+"Nice" = "نيس";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "لم ينفَّذ بعد";
+
+/* No comment provided by engineer. */
+"Notice" = "إخطار";
+
+/* No comment provided by engineer. */
+"OK" = "حسنًا";
+
+/* Unknown haptic feedback level */
+"Other" = "أخرى";
+
+/* No comment provided by engineer. */
+"Pair" = "اقرن";
+
+/* No comment provided by engineer. */
+"Peer" = "نظير";
+
+/* No comment provided by engineer. */
+"Ping" = "وخزة Ping";
+
+/* No comment provided by engineer. */
+"Ping!" = "وخزة!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "بلازما الشاشة الكبيرة";
+
+/* No comment provided by engineer. */
+"Playground" = "ملعب";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "إعدادات الملحق";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "حساسية المؤشر";
+
+/* No comment provided by engineer. */
+"Preview: " = "معاينة: ";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "السبب: %@";
+
+/* No comment provided by engineer. */
+"Receiving" = "الاستقبال";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "الأجهزة المتذكَّرة";
+
+/* No comment provided by engineer. */
+"Remote Input" = "الإدخال البعيد";
+
+/* No comment provided by engineer. */
+"Report Bug" = "أبلغ عن علة";
+
+/* Rigid haptic feedback level */
+"Rigid" = "صلد";
+
+/* No comment provided by engineer. */
+"Ring Device" = "رنّ على الجهاز";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "مستطيل دائري الزوايا";
+
+/* No comment provided by engineer. */
+"Run Command" = "شغّل أمرًا";
+
+/* No comment provided by engineer. */
+"Send" = "أرسل";
+
+/* No comment provided by engineer. */
+"Send Files" = "أرسل ملفّات";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "أرسل نقرة بالوسط";
+
+/* No comment provided by engineer. */
+"Send Ping" = "أرسل وخزة";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "أرسل نقرة باليمين";
+
+/* No comment provided by engineer. */
+"Sending" = "الإرسال";
+
+/* No comment provided by engineer. */
+"Settings" = "إعدادات";
+
+/* Soft haptic feedback level */
+"Soft" = "لين";
+
+/* No comment provided by engineer. */
+"Source Code" = "الشيفرة المصدرية";
+
+/* No comment provided by engineer. */
+"Status" = "الحالة";
+
+/* No comment provided by engineer. */
+"Supported" = "مدعوم";
+
+/* No comment provided by engineer. */
+"System Default" = "مبدئي النظام";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "مكتبات الطرف الثالث";
+
+/* No comment provided by engineer. */
+"To %@" = "إلى %@";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "استكشاف الأخطاء وإصلاحها";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "الشّبكات الموثوقة";
+
+/* No comment provided by engineer. */
+"Unpair" = "أزل الاقتران";
+
+/* Filename to use for an unnamed file */
+"untitled" = "بلا عنوان";
+
+/* No comment provided by engineer. */
+"Valid" = "صالح";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "الإصدارة: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Website" = "موقع الوبّ";
+

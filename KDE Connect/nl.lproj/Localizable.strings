@@ -1,0 +1,762 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** voor iOS";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ en %lld andere bestanden";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ voor iOS";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© KDE-gemeenschap & medewerkers";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "Info over";
+
+/* No comment provided by engineer. */
+"Actions" = "Acties";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "Voeg hier de lokale IP-adressen van andere apparaten toe als ze niet goed verschijnen bij de automatische detectie.";
+
+/* No comment provided by engineer. */
+"Advanced" = "Geavanceerd";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Geavanceerde instellingen";
+
+/* No comment provided by engineer. */
+"All Messages" = "Alle meldingen";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "Ook geschreven door %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "Toepassingspictogram";
+
+/* No comment provided by engineer. */
+"App Icon:" = "Toepassingspictogram:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "Toepassingsthema:";
+
+/* No comment provided by engineer. */
+"Application" = "Toepassing";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Als open-sourceproject vinden we het belangrijk om transparant te zijn over onze huidige en toekomstige plannen om KDE Connect voor iOS op één lijn te brengen met alle andere platforms.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Geef via de toepassing Instellingen toestemming voor toegang tot Foto's om ontvangen foto's en video's in uw fotobibliotheek op te slaan.";
+
+/* No comment provided by engineer. */
+"Available themes" = "Beschikbare thema's";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Achtergrondactiviteit";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Batterijniveau";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "Batterij-plugin uitgeschakeld";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Batterijstatus";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "Kunt u uw apparaten hier niet vinden?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Annuleren";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Categorie: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "Bekijk de mengverzoeken (merge requests)";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "Toepassingspictogram kiezen";
+
+/* No comment provided by engineer. */
+"Chores" = "Klusjes";
+
+/* No comment provided by engineer. */
+"Classic" = "Klassiek";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Cache wissen";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Klembordsynchronisatie";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "Klembord: tekst verzenden en ontvangen";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Klembord: synchronisatie";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "Apparaten configureren per IP-adres";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "Apparaten configureren per IP-adres:";
+
+/* No comment provided by engineer. */
+"Connect" = "Verbinden";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Verbonden apparaten";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Rapport over connectiviteit";
+
+/* No comment provided by engineer. */
+"Contacts" = "Contactpersonen";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "Draag bij aan KDE Connect";
+
+/* No comment provided by engineer. */
+"Contributors" = "Met dank aan";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "Pad kopiëren naar de map met ontvangen bestanden";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "Momenteel onderhouden door %@";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "Momenteel moet de toepassing op de voorgrond blijven om goed te werken";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "Cursorgevoeligheid";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "GEVAARLIJKE OPTIES";
+
+/* No comment provided by engineer. */
+"Dark" = "Donker";
+
+/* No comment provided by engineer. */
+"Debug" = "Debuggen";
+
+/* No comment provided by engineer. */
+"Debug mode" = "Modus debug";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "Fouten opsporen in apparaat ontdekken";
+
+/* No comment provided by engineer. */
+"Default" = "Standaard";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "Verwijder alle opgeslagen instellingen en apparaten. Hiervoor moet de toepassing volledig opnieuw worden opgestart.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "Host-certificaat verwijderen";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Verwijder het host-certificaat en genereer het opnieuw bij het herstarten. Hiervoor moet de toepassing volledig opnieuw worden opgestart. LET OP: hierdoor kan het apparaat geen verbinding meer maken met apparaten waarmee eerder verbinding was gemaakt. U moet de koppeling tussen dit apparaat en de andere apparaten opheffen en ze opnieuw koppelen.";
+
+/* No comment provided by engineer. */
+"Developer" = "Ontwikkelaar";
+
+/* No comment provided by engineer. */
+"Device" = "Apparaat";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "Apparaat ontdekken";
+
+/* No comment provided by engineer. */
+"Device IP" = "Apparaat-IP-adres";
+
+/* No comment provided by engineer. */
+"Device name" = "Apparaatnaam";
+
+/* No comment provided by engineer. */
+"Device Name" = "Apparaatnaam";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Apparaatnaam:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "Apparaat offline";
+
+/* No comment provided by engineer. */
+"Device Status" = "Apparaatstatus";
+
+/* No comment provided by engineer. */
+"Devices" = "Apparaten";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "Directe handshake apparaten";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "UDP-broadcast uitschakelen";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "Ontdekte apparaten";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Ontdekken & paren";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "Niet paren";
+
+/* No comment provided by engineer. */
+"Donate" = "Doneren";
+
+/* No comment provided by engineer. */
+"Done" = "Gereed";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Dubbel tikken om modus debug te activeren";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "Dubbel tikken om fouten opsporen in apparaat ontdekken te activeren";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Plug-ins in-/uitschakelen";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Versleutelde informatie";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Cache met opgeslagen apparaten wissen";
+
+/* No comment provided by engineer. */
+"Error" = "Fout";
+
+/* No comment provided by engineer. */
+"Error Occured" = "Er is een fout opgetreden";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "Fouten";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Presentatie beëindigen";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Experimentele functionaliteiten";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Pictogram wijzigen is mislukt";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "Ontvangen van %lld bestanden is mislukt";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "Van %@ ontvangen is mislukt";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "Verzenden van %lld bestanden is mislukt";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "Verzenden naar %@ is mislukt";
+
+/* No comment provided by engineer. */
+"Fault" = "Fout";
+
+/* No comment provided by engineer. */
+"Features" = "Mogelijkheden";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Bestandsoverdracht";
+
+/* No comment provided by engineer. */
+"Files" = "Bestanden";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Mijn apparaat zoeken";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "Mijn telefoon zoeken geïnitieerd vanaf een apparaat op afstand";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Modus Mijn telefoon zoeken";
+
+/* No comment provided by engineer. */
+"Forget all" = "Alles vergeten";
+
+/* No comment provided by engineer. */
+"From %@" = "Vanaf %@";
+
+/* No comment provided by engineer. */
+"General" = "Algemeen";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Ga naar volledig scherm";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "Stijl Haptics";
+
+/* Hard haptic feedback level */
+"Heavy" = "Zwaar";
+
+/* No comment provided by engineer. */
+"Help" = "Help";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "Selector voor stijl Haptics verbergen";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "Gevoeligheidsschuifregelaar verbergen";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "IK HEB HET GEVONDEN!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "Als een onthouden apparaat al online is maar hier niet wordt weergegeven, probeer dan Detectie vernieuwen.";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "Als KDE Connect moeite heeft met het vinden van andere apparaten, kunt u een combinatie van de volgende oplossingen proberen:\n1. Kies \"Detectie vernieuwen\" in het %@-menu of trek de apparatenlijst omlaag om deze te vernieuwen; doe dit zowel op dit apparaat als op de andere apparaten.\n2. Zorg ervoor dat op de andere apparaten ook KDE Connect draait en dat ze met hetzelfde netwerk zijn verbonden als dit apparaat.\n3. Voeg de andere apparaten handmatig toe via de optie \"Apparaten configureren op IP-adres\" in het %@-menu en kies vervolgens \"Detectie vernieuwen\".\n4. Bekijk andere oplossingen in de gebruikershandleiding, zoals het configureren van de firewalls van de andere apparaten:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Als er spookapparaten zijn of iets niet naar behoren werkt, kan het wissen van alle opgeslagen apparaatgegevens dit mogelijk oplossen. Hiervoor moet de toepassing volledig opnieuw worden opgestart.";
+
+/* No comment provided by engineer. */
+"In progress" = "In uitvoering";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Inkomend verzoek om een paar te maken";
+
+/* No comment provided by engineer. */
+"Info" = "Informatie";
+
+/* No comment provided by engineer. */
+"Information" = "Informatie";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Paren initiëren?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Integratie met Siri-sneltoetsen";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "Integratie met het systeemdeeloverzicht is in ontwikkeling";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Internationalisatie & lokalisatie";
+
+/* No comment provided by engineer. */
+"Invalid" = "Ongeldig";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Toetsenbord: op afstand bedienen";
+
+/* No comment provided by engineer. */
+"License" = "Licentie";
+
+/* Light haptic feedback level */
+"Light" = "Licht";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Scherm vergrendelen: op afstand bedienen";
+
+/* No comment provided by engineer. */
+"Logs" = "Logs";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "Logs voor %@";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Beheer ontvangen bestanden in de toepassing Bestanden";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Werkt mogelijk niet met KDE Connect voor Windows";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "Misschien via een URL-schema en integratie met Siri-sneltoetsen";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "Misschien met Apple Notification Center Service (ACNS)";
+
+/* Medium haptic feedback level */
+"Medium" = "Middel";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "Muis: op afstand bedienen";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "Beweeg een vinger over het scherm om de muiscursor te verplaatsen. Tik met één vinger voor een linksklik. Tik met twee fingers voor een rechtsklik. Houd ingedrukt om slepen en loslaten (drag-and-drop) te activeren. Of gebruik het menu rechtsboven om direct klikken te versturen.\n\nSleep met één vinger over het “schuifwiel” hierboven om zowel verticaal als horizontaal te schuiven. Tik op het 'schuifwiel' voor een middelste muisklik.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: bestuur media & respons op afstand";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "Multi-platform-toepassing waarmee uw apparaten met elkaar kunnen communiceren (bijv. uw telefoon en uw computer)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Samensteller van netwerkpakket";
+
+/* No comment provided by engineer. */
+"Nice" = "Nice";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "Er worden geen extra apparaten op dit netwerk gevonden.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "Geen batterij gedetecteerd in het apparaat";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "Geen nu verbonden apparaten.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "Er is geen apparaat gevonden in het huidige netwerk.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Nog geen overeenkomende logboeken";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "Nee, gepaard blijven";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Nog niet geïmplementeerd";
+
+/* No comment provided by engineer. */
+"Notice" = "Melding";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Melding: ontvangen van anderen";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "Melding: opgezocht door anderen";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "Bij klikken in stijl Haptic";
+
+/* Unknown haptic feedback level */
+"Other" = "Overig";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "Melding buiten toepassing:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Pakketinhoud";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Pakkettag";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Pakkettype";
+
+/* No comment provided by engineer. */
+"Pair" = "Paar";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "Paarverzoek van '%@'\nVerificatiesleutel: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "Paren voltooid";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "Paren afgewezen";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "Tijdslimiet overschreden bij paren";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "Paren met '%@' is mislukt";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "Paren met '%@' is gelukt";
+
+/* No comment provided by engineer. */
+"Peer" = "Peer";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Ping ontvangen van een verbonden apparaat.";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Playground" = "Speelveld";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Plug-in-instellingen";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "Plug-ins indien bereikbaar";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "Gevoeligheid van aanwijzer";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "Media voorbereiden…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Presentator: afstandsbediening";
+
+/* No comment provided by engineer. */
+"Preview: " = "Voorbeeld: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Eerder verbonden apparaten verschijnen hier.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Lokaal klembord pushen";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Reden: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Ontvangen foto's en video's worden opgeslagen in de toepassing Bestanden, omdat u ons geen toegang kunt geven tot uw fotobibliotheek.";
+
+/* No comment provided by engineer. */
+"Receiving" = "Ontvangen";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "Bestand %lld worden ontvangen van %lld";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "Ontdekken vernieuwen";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Onthouden apparaten";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Invoer op afstand";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Bug rapporteren";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "Verzoek te paren met '%@'";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "Ontdekken herstarten";
+
+/* Rigid haptic feedback level */
+"Rigid" = "Rigide";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Apparaat laten bellen";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Bellen/Mijn telefoon zoeken";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Afgeronde rechthoek";
+
+/* No comment provided by engineer. */
+"Run Command" = "Commando uitvoeren";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "Opdracht uitvoeren: verzoek";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "Opdracht uitvoeren: respons";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Foto's opslaan in de fotobibliotheek";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Video's opslaan in de fotobibliotheek";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "Schermbeveiliging: op afstand onderbreken";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Selecteer een apparaat uit de lijst met apparaten om te beginnen.";
+
+/* No comment provided by engineer. */
+"Send" = "Verzenden";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Dubbele linker muisklik verzenden";
+
+/* No comment provided by engineer. */
+"Send Files" = "Bestanden verzenden";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "Links ingedrukt houden verzenden";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Verstuur een middelste muisklik";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Foto's en video's verzenden";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Ping verzenden";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Verstuur een rechter muisklik";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Enkele linker muisklik verzenden";
+
+/* No comment provided by engineer. */
+"Sending" = "Verzenden";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "Bestand %lld van %lld wordt verzonden";
+
+/* No comment provided by engineer. */
+"Settings" = "Instellingen";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: toegang op afstand & initialiseer bestandsserver";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "De SHA256-vingerafdruk van het certificaat van uw apparaat is:\n%@\n\nDe SHA256-vingerafdruk van het certificaat van het externe apparaat is:\n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Delen: bestand ontvangen, tekst en URL";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Delen: bestand verzenden";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Delen: verzend tekst & URL";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "Delen/bestandsoverdracht";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "Selector voor stijl Haptics tonen";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Ontvangen bestanden in zoeker tonen";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "Gevoeligheidsschuifregelaar tonen";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "Diavoorstelling op afstand";
+
+/* Soft haptic feedback level */
+"Soft" = "Zacht";
+
+/* No comment provided by engineer. */
+"Source Code" = "Broncode";
+
+/* No comment provided by engineer. */
+"Status" = "Status";
+
+/* No comment provided by engineer. */
+"Supported" = "Ondersteund";
+
+/* No comment provided by engineer. */
+"System Default" = "Systeemstandaard";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "Systeemvolume: op afstand bedienen & reageren";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "Foto nemen: reageren";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Tik om paren te beginnen";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "Telefonie: SMS/oproep synchronisatie";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "De naam van het apparaat zoals herkend door KDE Connect";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "De bovenstaande opties zijn onomkeerbaar en vereisen een volledige herstart van de toepassing om van kracht te worden.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "Deze zouden automatisch moeten worden afgehandeld, maar u kunt er enkele handmatig uitvoeren voor het geval dat niet gebeurt.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "Deze zouden met weinig tot geen problemen moeten werken";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Bibliotheken van derden";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "Dit is waarschijnlijk niet mogelijk om op iOS te implementeren";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "Via het deelvenster van het systeem";
+
+/* No comment provided by engineer. */
+"To %@" = "Naar %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "Om verbinding te maken met eerder gekoppelde apparaten, moet u ervoor zorgen dat deze met hetzelfde netwerk zijn verbonden als dit apparaat.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "Toetsenbord omschakelen";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Probleemoplossing";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Vertrouwde netwerken";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Onbekend thema";
+
+/* No comment provided by engineer. */
+"Unpair" = "Paar uit elkaar halen";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "Paarvorming met %@ ongedaan maken?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Paarvorming met welk apparaat ongedaan maken?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "zonder titel";
+
+/* No comment provided by engineer. */
+"Valid" = "Geldig";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Verificatiesleutel: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Versie: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "Wachten tot de overdracht van %lld andere bestanden begint";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "Wachten op logboeken...";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "Wachten op verzenden";
+
+/* No comment provided by engineer. */
+"Website" = "Website";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wiki & gebruikershandleiding";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Ja, paring ongedaan maken";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "U kunt plug-ins afzonderlijk in- of uitschakelen. Sommige plug-ins hebben hun eigen specifieke instellingen, die te vinden zijn in de bijbehorende weergaven.";
+

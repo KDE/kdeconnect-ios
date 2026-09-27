@@ -1,0 +1,618 @@
+/* No comment provided by engineer. */
+"-" = "−";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "iOS için **KDE Bağlan**";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ ve %lld başka dosya";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "iOS için %@";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "Hakkında";
+
+/* No comment provided by engineer. */
+"Actions" = "Eylemler";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "Otomatik keşifte aygıtları bulmada sorun yaşıyorsanız diğer aygıtların IP adreslerini buraya ekleyin.";
+
+/* No comment provided by engineer. */
+"Advanced" = "Gelişmiş";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Gelişmiş Ayarlar";
+
+/* No comment provided by engineer. */
+"All Messages" = "Tüm İletiler";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "Ayrıca, %@ tarafından yazıldı";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "Uygulama Simgesi";
+
+/* No comment provided by engineer. */
+"App Icon:" = "Uygulama simgesi:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "Uygulama teması:";
+
+/* No comment provided by engineer. */
+"Application" = "Uygulama";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Açık kaynaklı bir proje olarak, iOS için KDE Bağlan’ı diğer platformlar ile aynı düzeye getirmek için olan şu anki ve gelecek planlarımızı aktarma konusunda elimizden geldiğince saydam olmamız gerektiğini düşünüyoruz.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Alınan fotoğrafları ve videoları Fotoğraf Arşivi’ne kaydedebilmek için Ayarlar uygulamasından Fotoğraflar erişimine izin verin.";
+
+/* No comment provided by engineer. */
+"Available themes" = "Kullanılabilir Temalar";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Arka Plan Etkinliği";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Pil Düzeyi";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "Pil Eklentisi Devre Dışı";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Pil Durumu";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "Aygıtınızı burada bulamıyor musunuz?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Vazgeç";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Kategori: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "Diğer birleştirme isteklerine bakın";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "Uygulama Simgesi Seç";
+
+/* No comment provided by engineer. */
+"Chores" = "Ödevler";
+
+/* No comment provided by engineer. */
+"Classic" = "Klasik";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Önbelleği Temizle";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Pano Eşzamanlaması";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "Pano: İt ve Metin Al";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Pano: Eşzamanla";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "IP ile Aygıt Yapılandır";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "IP ile aygıt yapılandır:";
+
+/* No comment provided by engineer. */
+"Connect" = "Bağlan";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Bağlı Aygıtlar";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Bağlantı Raporu";
+
+/* No comment provided by engineer. */
+"Contacts" = "Kişiler";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "KDE Bağlan’a Katkıda Bulun";
+
+/* No comment provided by engineer. */
+"Contributors" = "Katkıcılar";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "Alınan dosyaları içeren klasöre olan yolu kopyalayın.";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "Şu anda %@ tarafından bakılıyor";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "Şu anda, uygulamanın düzgünce çalışması için ön planda kalması elzemdir.";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "İmleç Hassaslığı";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "TEHLİKELİ SEÇENEKLER";
+
+/* No comment provided by engineer. */
+"Dark" = "Koyu";
+
+/* No comment provided by engineer. */
+"Debug" = "Hata Ayıkla";
+
+/* No comment provided by engineer. */
+"Debug mode" = "Hata ayıklama kipi";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "Hata ayıklama aygıtı keşfi";
+
+/* No comment provided by engineer. */
+"Default" = "Saptanmış";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "Tüm kayıtlı ayarları ve aygıtları silin. Uygulamanın sıfırdan yeniden başlatılmasını gerektirir.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "Makine Sertifikasını Sil";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Makinenin sertifikasını silin ve uygulama yeniden başlatılınca yeniden üretin. Uygulamanın tümüyle kapatılıp yeniden açılmasını gerektirir. Not: Bu, aygıtı, önceden bağlanılmış aygıtlara olan bağlantısını kesecektir. Aygıtın diğer aygıtlarla olan eşleşmesini kaldırıp yeniden eşleştirmelisiniz.";
+
+/* No comment provided by engineer. */
+"Developer" = "Geliştirici";
+
+/* No comment provided by engineer. */
+"Device" = "Aygıt";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "Aygıt Keşfi";
+
+/* No comment provided by engineer. */
+"Device IP" = "Aygıt IP’si";
+
+/* No comment provided by engineer. */
+"Device name" = "Aygıt Adı";
+
+/* No comment provided by engineer. */
+"Device Name" = "Aygıt Adı";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Aygıt adı:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "Aygıt Çevrim Dışı";
+
+/* No comment provided by engineer. */
+"Device Status" = "Aygıt Durumu";
+
+/* No comment provided by engineer. */
+"Devices" = "Aygıtlar";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "Doğrudan El Sıkışılan Aygıtlar";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "UDP Yayınını Devre Dışı Bırak";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "Keşfedilmiş Aygıtlar";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Keşif ve Eşleştirme";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "Eşleştirme";
+
+/* No comment provided by engineer. */
+"Donate" = "Bağış Yap";
+
+/* No comment provided by engineer. */
+"Done" = "Bitti";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Hata ayıklama kipini etkinleştirmek için iki kez dokunun.";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "Aygıt keşfinde hata ayıklamak için iki kez dokunun.";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Eklentileri Etkinleştir/Devre Dışı Bırak";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Şifreleme Bilgisi";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Kayıtlı aygıtların önbelleğini temizleyin.";
+
+/* No comment provided by engineer. */
+"Error" = "Hata";
+
+/* No comment provided by engineer. */
+"Error Occured" = "Hata Oluştu";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "Hatalar ve Başarısızlıklar";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Sunudan Çık";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Deneysel İşlevsellikler";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Simge Değiştirilemedi";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "%lld dosya alınamadı";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "%@ konumundan alınamadı";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "%lld dosya gönderilemedi";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "%@ konumuna gönderilemedi";
+
+/* No comment provided by engineer. */
+"Fault" = "Başarısızlık";
+
+/* No comment provided by engineer. */
+"Features" = "Özellikler";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Dosya Aktarımları";
+
+/* No comment provided by engineer. */
+"Files" = "Dosyalar";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Aygıtı Bul";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "Uzak bir aygıttan Telefonu Bul başlatıldı.";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Telefonu Bul";
+
+/* No comment provided by engineer. */
+"Forget all" = "Tümünü Unut";
+
+/* No comment provided by engineer. */
+"From %@" = "%@ konumundan";
+
+/* No comment provided by engineer. */
+"General" = "Genel";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Tam Ekrana Gir";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "Dokunuşlar Tarzı";
+
+/* Hard haptic feedback level */
+"Heavy" = "Ağır";
+
+/* No comment provided by engineer. */
+"Help" = "Yardım";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "Dokunuşlar Tarzı Seçicisini Gizle";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "Hassaslık Sürgüsünü Gizle";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "BULDUM!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "Anımsanan bir aygıt hâlihazırda çevrim içi olduğu halde burada görünmüyorsa “Algılamayı Yenile” işlemini deneyin.";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "KDE Bağlan diğer aygıtları algılamakta sorun yaşıyorsa aşağıdaki çözüm yöntemlerini birlikte deneyebilirsiniz:\n\n1. Hem bu aygıtta hem de diğer aygıtlarda %@ menüsü üzerinden “Algılamayı Yenile” seçeneğini kullanın veya Aygıtlar listesini yenilemek için aşağı doğru çekin.\n\n2. Diğer aygıtlarda da KDE Bağlan’ın çalıştığından ve bu aygıtla aynı ağa bağlı olduklarından emin olun.\n\n3. %@ menüsündeki “Aygıtları IP ile Yapılandır\" seçeneği aracılığıyla diğer aygıtları elle ekleyin ve ardından “Algılamayı Yenile” işlemini yapın.\n\n4. Diğer aygıtların güvenlik duvarlarını yapılandırmak gibi, Kullanım Kılavuzu’ndaki diğer çözüm yollarını inceleyin:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Hayalet aygıtlar varsa veya bir şeyler düzgün çalışmıyorsa kayıtlı tüm aygıt verilerini silmek sorunu çözebilir. Bu işlem, uygulamanın tamamen yeniden başlatılmasını gerektirir.";
+
+/* No comment provided by engineer. */
+"In progress" = "Sürüyor";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Gelen Eşleştirme İsteği";
+
+/* No comment provided by engineer. */
+"Info" = "Bilgi";
+
+/* No comment provided by engineer. */
+"Information" = "Bilgi";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Eşleştirmeyi Başlat?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Siri Kestirmeleri ile Tümleşim";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "Sistem paylaşım sayfası ile tümleşim henüz geliştirme aşamasındadır.";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Yerelleştirme";
+
+/* No comment provided by engineer. */
+"Invalid" = "Geçersiz";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Bağlan";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Klavye: Kumandayı Denetle";
+
+/* No comment provided by engineer. */
+"License" = "Lisans";
+
+/* Light haptic feedback level */
+"Light" = "Açık";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Kilit Ekranı: Kumandayı Denetle";
+
+/* No comment provided by engineer. */
+"Logs" = "Günlükler";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "%@ günlükleri";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Alınan dosyaları yönetmek için Dosyalar uygulamasını kullanın.";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Windows için KDE Bağlan ile çalışmayabilir.";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "Belki URL şeması ve Siri Kestirmeleri ile tümleşim ile çalışabilir.";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "Belki Apple Bildirim Merkezi Servisi ile (ACNS)";
+
+/* Medium haptic feedback level */
+"Medium" = "Orta";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "Fare: Kumandayı Denetle";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: Uzak Ortamı Denetle ve Yanıtla";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "Aygıtların birbirleriyle iletişim kurmasını sağlayan, çok platformlu bir uygulama (örneğin, bilgisayarınız ve telefonunuz)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Ağı Paketi Oluşturucusu";
+
+/* No comment provided by engineer. */
+"Nice" = "Güzel";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "Bu ağda başka ek aygıt bulunamadı.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "Aygıtta pil algılanmadı.";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "Şu anda bağlı hiçbir aygıt yok.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "Şu anda bağlı bulunulan ağda keşfedilen aygıt yok.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Eşleşen bir günlük yok";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "Hayır; Eşli Kal";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Henüz gerçeklenmedi";
+
+/* No comment provided by engineer. */
+"Notice" = "Bildiri";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Bildirim: Başkalarından Al";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "Bildirim: Başkalarıyla Al";
+
+/* No comment provided by engineer. */
+"OK" = "Tamam";
+
+/* Unknown haptic feedback level */
+"Other" = "Diğer";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "Uygulama dışı bildirim:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Paket Gövdesi";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Paket Künyesi";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Paket Türü";
+
+/* No comment provided by engineer. */
+"Pair" = "Eşleştir";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "“%@” aygıtından eşleşme isteği\nDoğrulama anahtarı: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "Eşleştirme Tamamlandı";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "Eşleştirme Reddedildi";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "Eşleştirme Zaman Aşımına Uğradı";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "“%@” ile eşleştirme başarısız";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "“%@” ile eşleşme başarılı";
+
+/* No comment provided by engineer. */
+"Peer" = "Eş";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Bağlı bir aygıttan bir ping alındı.";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Büyükekran";
+
+/* No comment provided by engineer. */
+"Playground" = "Oyun Alanı";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Eklenti Ayarları";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "Erişilebilirse Eklentiler";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "İşaretçi Hassaslığı";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "Ortam Hazırlanıyor…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Sunucu: Kumandayı Denetle";
+
+/* No comment provided by engineer. */
+"Preview: " = "Önizle: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Daha önceden bağlanılan aygıtlar burada görünür.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Yerel Panoyu İt";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Gerekçe: %@";
+
+/* No comment provided by engineer. */
+"Receiving" = "Alınıyor";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "%lld / %lld dosya alındı";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "Algılamayı Yenile";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Anımsanan Aygıtlar";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Uzaktan Giriş";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Hata Bildir";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "“%@” ile eşleşme isteği";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "Keşfi Yeniden Başlat";
+
+/* Rigid haptic feedback level */
+"Rigid" = "Sert";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Aygıtı Çaldır";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Telefonumu Çaldır/Bul";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Yuvarlatılmış Dikdörtgen";
+
+/* No comment provided by engineer. */
+"Run Command" = "Komut Çalıştır";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "Komut Çalıştır: İstek";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "Komut Çalıştır: Yanıt Ver";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Fotoğrafları, fotoğraf arşivine kaydedin";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Videoları, fotoğraf arşivine kaydedin";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "Ekran Koruyucusu: Kumandayı Engelle";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Başlamak için Aygıtlar listesinden bir aygıt seçin.";
+
+/* No comment provided by engineer. */
+"Send" = "Gönder";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Sol Çift Tık Gönder";
+
+/* No comment provided by engineer. */
+"Send Files" = "Dosyalar Gönder";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "Sol Basılı Tutuş Gönder";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Orta Tık Gönder";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Fotoğraflar ve Videolar Gönder";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Ping Gönder";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Sağ Tık Gönder";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Sol Tek Tık Gönder";
+
+/* No comment provided by engineer. */
+"Sending" = "Gönderiliyor";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "%lld / %lld dosya gönderiliyor";
+
+/* No comment provided by engineer. */
+"Settings" = "Ayarlar";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: Uzaktan Eriş ve Dosya Sunucusunu Başlat";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "Dosya Aktar/Paylaş";
+

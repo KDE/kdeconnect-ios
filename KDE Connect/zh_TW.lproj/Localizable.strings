@@ -1,0 +1,762 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "iOS 版 **KDE Connect**";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ 和另外 %lld 個檔案";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "iOS 版 %@";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© KDE 社群與貢獻者";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "關於";
+
+/* No comment provided by engineer. */
+"Actions" = "動作";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "在此指定其他裝置的本地 IP 位址，以便在它一直不出現在自動探索中的時候迴避這個問題。";
+
+/* No comment provided by engineer. */
+"Advanced" = "進階";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "進階設定";
+
+/* No comment provided by engineer. */
+"All Messages" = "所有訊息";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "也由 %@ 撰寫";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "朱智语";
+
+/* No comment provided by engineer. */
+"App Icon" = "應用程式圖示";
+
+/* No comment provided by engineer. */
+"App Icon:" = "應用程式圖示：";
+
+/* No comment provided by engineer. */
+"App Theme:" = "應用程式主題：";
+
+/* No comment provided by engineer. */
+"Application" = "應用程式";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "作為開源專案，我們相信要以公開透明的方式處理將 KDE Connect iOS 品質提升到與其他平台同樣標準的目前與未來的規劃。";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "透過設定應用程式來允許存取照片，以便將接收到的相片與影片存入照片圖庫";
+
+/* No comment provided by engineer. */
+"Available themes" = "可用主題";
+
+/* No comment provided by engineer. */
+"Background Activity" = "背景活動";
+
+/* No comment provided by engineer. */
+"Battery Level" = "電量";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "電池外掛程式已停用";
+
+/* No comment provided by engineer. */
+"Battery Status" = "電池狀態";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "在這裡找不到您的裝置嗎？";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Category: %@" = "分類：%@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "查看合併請求";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "選擇應用程式圖示";
+
+/* No comment provided by engineer. */
+"Chores" = "維護";
+
+/* No comment provided by engineer. */
+"Classic" = "經典";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "清除快取";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "剪貼簿同步";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "剪貼簿：推送並接收文字";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "剪貼簿：同步";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "依 IP 位址設定裝置";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "依 IP 位址設定裝置：";
+
+/* No comment provided by engineer. */
+"Connect" = "連線";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "連線裝置";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "連通性報告";
+
+/* No comment provided by engineer. */
+"Contacts" = "聯絡人";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "為 KDE Connect 貢獻";
+
+/* No comment provided by engineer. */
+"Contributors" = "貢獻者";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "複製包含已接收檔案的資料夾的路徑";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "目前由 %@ 維護";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "目前此應用程式必須待在前景才能正常運作";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "游標靈敏度";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "高風險選項";
+
+/* No comment provided by engineer. */
+"Dark" = "深色";
+
+/* No comment provided by engineer. */
+"Debug" = "除錯";
+
+/* No comment provided by engineer. */
+"Debug mode" = "除錯模式";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "除錯裝置探索";
+
+/* No comment provided by engineer. */
+"Default" = "預設";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "刪除所有已儲存設定值與裝置。需要完全重啟應用程式。";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "刪除主機憑證";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "刪除主機的憑證然後在重新開啟時讓它重新產生。需要完全重啟應用程式。請注意：這會使目前裝置無法與先前配對過的裝置連線。直到您從那些遠端裝置解除與這台裝置的配對並再重新配對。";
+
+/* No comment provided by engineer. */
+"Developer" = "開發者";
+
+/* No comment provided by engineer. */
+"Device" = "裝置";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "裝置探索";
+
+/* No comment provided by engineer. */
+"Device IP" = "裝置 IP 位址";
+
+/* No comment provided by engineer. */
+"Device name" = "裝置名稱";
+
+/* No comment provided by engineer. */
+"Device Name" = "裝置名稱";
+
+/* No comment provided by engineer. */
+"Device Name:" = "裝置名稱：";
+
+/* No comment provided by engineer. */
+"Device Offline" = "裝置離線";
+
+/* No comment provided by engineer. */
+"Device Status" = "裝置狀態";
+
+/* No comment provided by engineer. */
+"Devices" = "裝置";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "直接交握裝置";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "停用 UDP 廣播";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "探索到的裝置";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "探索與配對";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "不要配對";
+
+/* No comment provided by engineer. */
+"Donate" = "贊助";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "連點兩下來啟用除錯模式";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "連點兩下來啟用除錯裝置探索";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "啟用/停用外掛程式";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "加密資訊";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "抹除已儲存裝置快取";
+
+/* No comment provided by engineer. */
+"Error" = "錯誤";
+
+/* No comment provided by engineer. */
+"Error Occured" = "發生錯誤";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "錯誤與嚴重錯誤";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "離開簡報模式";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "實驗性功能";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "變更圖示失敗";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "接收 %lld 個檔案失敗";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "從 %@ 接收失敗";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "傳送 %lld 個檔案失敗";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "傳送給 %@ 失敗";
+
+/* No comment provided by engineer. */
+"Fault" = "嚴重錯誤";
+
+/* No comment provided by engineer. */
+"Features" = "功能";
+
+/* No comment provided by engineer. */
+"File Transfers" = "檔案傳輸";
+
+/* No comment provided by engineer. */
+"Files" = "檔案";
+
+/* No comment provided by engineer. */
+"Find My Device" = "尋找我的裝置";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "由遠端裝置觸發了尋找手機模式";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "尋找手機模式";
+
+/* No comment provided by engineer. */
+"Forget all" = "忘記全部";
+
+/* No comment provided by engineer. */
+"From %@" = "來自 %@";
+
+/* No comment provided by engineer. */
+"General" = "一般";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "進入全螢幕";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "振動風格";
+
+/* Hard haptic feedback level */
+"Heavy" = "強烈";
+
+/* No comment provided by engineer. */
+"Help" = "說明";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "隱藏振動風格選擇器";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "隱藏靈敏度滑動條";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "找到了！";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "如果有已記住的裝置明明已上線但未顯示於此，請試著使用「重新整理探索」。";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "如果 KDE Connect 沒辦法探索到其他裝置，有一些解決方案可以試試看：\n\n1. 從「%@」選單選取「重新整理探索」，或是在本地或遠端的裝置列表下拉重新整理。\n\n2. 確保其他裝置也有在執行 KDE Connect，且已與目前裝置連線到相同網路。\n\n3. 透過「%@」選單裡的「依 IP 位址設定裝置」來手動新增該裝置，然後使用「重新整理探索」。\n\n4. 參考使用者手冊裡的其他解決方案，像是調整其他裝置的防火牆設定：\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "如果應用程式出現多餘裝置或是有東西不正常運作，抹除所有關於已儲存裝置的資料可能能夠修正它。需要完全重啟應用程式。";
+
+/* No comment provided by engineer. */
+"In progress" = "進行中";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "傳入配對請求";
+
+/* No comment provided by engineer. */
+"Info" = "資訊";
+
+/* No comment provided by engineer. */
+"Information" = "資訊";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "開始配對？";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "與 Siri 捷徑的整合";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "與系統分享介面的整合功能尚在開發中";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "國際化與本地化";
+
+/* No comment provided by engineer. */
+"Invalid" = "無效";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "鍵盤：控制遠端";
+
+/* No comment provided by engineer. */
+"License" = "授權條款";
+
+/* Light haptic feedback level */
+"Light" = "淺色";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "鎖定螢幕：控制遠端";
+
+/* No comment provided by engineer. */
+"Logs" = "紀錄";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "%@ 的紀錄";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "在《檔案》應用程式裡管理接收到的檔案";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "可能與 Windows 版 KDE Connect 不相容";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "或許透過 URL 機制與 Siri 捷徑整合";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "或許利用 Apple 通知中心服務 (ACNS)";
+
+/* Medium haptic feedback level */
+"Medium" = "中等";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "滑鼠：控制遠端";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "在螢幕上移動手指來移動滑鼠游標。用單指輕點來點擊左鍵。用兩根手指同時輕點來點擊右鍵。長按來觸發拖放。或用右上角的選單裡的選項來直接傳送各種不同的點擊。\n\n從上方「滾輪」區域拖曳一根手指來捲動（水平或垂直都支援）。輕點「滾輪」區域來點擊中鍵。";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS：控制遠端媒體與回應";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "允許您的裝置間溝通（如手機與電腦間）的跨平台應用程式";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "網路封包撰寫器";
+
+/* No comment provided by engineer. */
+"Nice" = "Nice";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "此網路中沒有探索到其他額外裝置。";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "裝置裡沒有偵測到電池";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "沒有目前已連線的裝置。";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "目前網路沒有探索到裝置。";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "還沒有相符的紀錄";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "否，維持配對";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "尚未實作";
+
+/* No comment provided by engineer. */
+"Notice" = "注意";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "通知：從其他的接收";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "通知：由其他的取得";
+
+/* No comment provided by engineer. */
+"OK" = "確定";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "點擊時振動風格";
+
+/* Unknown haptic feedback level */
+"Other" = "其他";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "應用程式外的通知：";
+
+/* No comment provided by engineer. */
+"Packet Body" = "封包本文";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "封包標籤";
+
+/* No comment provided by engineer. */
+"Packet Type" = "封包類型";
+
+/* No comment provided by engineer. */
+"Pair" = "配對";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "來自 '%@' 的配對請求\n配對金鑰：%@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "配對完成";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "配對已拒絕";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "配對已逾時";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "與 '%@' 配對失敗了";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "與 '%@' 配對成功了";
+
+/* No comment provided by engineer. */
+"Peer" = "端點";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping 測試";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "從連線裝置接收到了 ping 封包。";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma 大螢幕";
+
+/* No comment provided by engineer. */
+"Playground" = "遊樂場";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "外掛程式設定";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "可連線時的外掛程式";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "游標靈敏度";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "正在準備媒體…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "簡報工具：控制遠端";
+
+/* No comment provided by engineer. */
+"Preview: " = "預覽：";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "先前連線過的裝置會出現於此。";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "推送本地剪貼簿";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "原因：%@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "接收到的相片與影片會儲存到《檔案》應用程式當中，因為您無法提供照片圖庫的存取。";
+
+/* No comment provided by engineer. */
+"Receiving" = "接收中";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "正在接收檔案 %lld/%lld";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "重新整理探索";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "已記住的裝置";
+
+/* No comment provided by engineer. */
+"Remote Input" = "遠端輸入";
+
+/* No comment provided by engineer. */
+"Report Bug" = "回報問題";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "請求與 '%@' 配對";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "重新開始探索";
+
+/* Rigid haptic feedback level */
+"Rigid" = "剛硬";
+
+/* No comment provided by engineer. */
+"Ring Device" = "讓裝置響鈴";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "響鈴/尋找我的手機";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "圓角矩形";
+
+/* No comment provided by engineer. */
+"Run Command" = "執行指令";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "執行指令：請求";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "執行指令：回應";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "將相片儲存到照片圖庫";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "將影片儲存到照片圖庫";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "螢幕保護程式：阻擋遠端";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "要開始使用，請從裝置清單中選擇裝置。";
+
+/* No comment provided by engineer. */
+"Send" = "傳送";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "傳送左鍵點兩下";
+
+/* No comment provided by engineer. */
+"Send Files" = "傳送檔案";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "傳送左鍵按住";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "傳送中鍵點擊";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "傳送相片與影片";
+
+/* No comment provided by engineer. */
+"Send Ping" = "傳送 Ping";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "傳送右鍵點擊";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "傳送單次左鍵點擊";
+
+/* No comment provided by engineer. */
+"Sending" = "傳送中";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "正在傳送檔案 %lld/%lld";
+
+/* No comment provided by engineer. */
+"Settings" = "設定";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP：存取遠端與開始檔案伺服器";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "您的裝置憑證的 SHA256 指紋值是：\n%@\n\n遠端裝置憑證的 SHA256 指紋值是：\n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "分享：接收檔案、文字與網址";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "分享：傳送檔案";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "分享：傳送文字與網址";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "分享/檔案傳輸";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "顯示振動風格選擇器";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "在 Finder 裡顯示已接收到的檔案";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "顯示靈敏度滑動條";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "投影片遙控器";
+
+/* Soft haptic feedback level */
+"Soft" = "柔和";
+
+/* No comment provided by engineer. */
+"Source Code" = "原始碼";
+
+/* No comment provided by engineer. */
+"Status" = "狀態";
+
+/* No comment provided by engineer. */
+"Supported" = "已支援";
+
+/* No comment provided by engineer. */
+"System Default" = "系統預設";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "系統音量：控制遠端與回應";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "拍照：回應";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "輕點以開始配對";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "電話：簡訊/通話同步";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "KDE Connect 所辨識到的裝置名稱";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "上方的選項是不可逆的，並且需要應用程式完全重啟才會生效。";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "這些應該會自動處理，但如果沒有的話您可能會需要自己手動進行。";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "這些應該能正常運作而幾乎完全沒問題";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "第三方函式庫";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "這在 iOS 上應該是不可能實現的";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "透過系統分享介面";
+
+/* No comment provided by engineer. */
+"To %@" = "到 %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "要連線到已記住的裝置，請確定他們與目前裝置連線到了同一個網路。";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "切換鍵盤";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "問題排除";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "可信任網路";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "未知主題";
+
+/* No comment provided by engineer. */
+"Unpair" = "解除配對";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "要與 %@ 解除配對嗎？";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "要與裝置解除配對嗎？";
+
+/* Filename to use for an unnamed file */
+"untitled" = "未命名";
+
+/* No comment provided by engineer. */
+"Valid" = "有效";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "驗證金鑰：%@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "版本：%@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "正在等待 %lld 個其他檔案來開始傳輸";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "正在等待紀錄…";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "正在等待傳送";
+
+/* No comment provided by engineer. */
+"Website" = "網站";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wiki 與使用者手冊";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "是，解除配對";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "您可以個別啟用或停用外掛程式。某些外掛程式有它們自己的設定，可以從它們專屬的畫面找到。";
+
