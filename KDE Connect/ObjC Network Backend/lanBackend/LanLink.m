@@ -157,6 +157,8 @@
                     os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                                      "Error binding payload port: %{public}@",
                                      error);
+                    [handle closeAndReturnError:nil];
+                    [np.payloadPath stopAccessingSecurityScopedResource];
                     [self cancelOutgoingPayloadsAsync];
                     [self.linkDelegate onPacket:np
                               sendWithPacketTag:PACKET_TAG_PAYLOAD
