@@ -54,6 +54,9 @@
 // Lock using _socketsForOutgoingPayload
 @property(nonatomic) NSMutableArray<GCDAsyncSocket *> *socketsForOutgoingPayload;
 @property(nonatomic) NSMutableArray<KDEFileTransferItem *> *pendingOutgoingItems;
+// Only one payload is sent at a time; sockets that finish TLS meanwhile wait here, in order.
+@property(nonatomic) GCDAsyncSocket *activeOutgoingPayloadSocket;
+@property(nonatomic) NSMutableArray<GCDAsyncSocket *> *waitingOutgoingPayloadSockets;
 
 @property(nonatomic) SecIdentityRef _identity;
 @property(nonatomic) GCDAsyncSocket* _fileServerSocket;
@@ -79,6 +82,7 @@
         
         _socketsForOutgoingPayload = [NSMutableArray arrayWithCapacity:1];
         _pendingOutgoingItems = [NSMutableArray arrayWithCapacity:1];
+        _waitingOutgoingPayloadSockets = [NSMutableArray arrayWithCapacity:1];
         
         _socketsForIncomingPayload = [NSMutableArray arrayWithCapacity:1];
         
@@ -136,6 +140,7 @@
                              [np objectForKey:@"filename"],
                              error);
             [np.payloadPath stopAccessingSecurityScopedResource];
+            [self cancelOutgoingPayloadsAsync];
             [self.linkDelegate onPacket:np
                       sendWithPacketTag:PACKET_TAG_PAYLOAD
                          failedWithError:error];
@@ -152,6 +157,7 @@
                     os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                                      "Error binding payload port: %{public}@",
                                      error);
+                    [self cancelOutgoingPayloadsAsync];
                     [self.linkDelegate onPacket:np
                               sendWithPacketTag:PACKET_TAG_PAYLOAD
                                  failedWithError:error];
@@ -229,12 +235,20 @@
          (__bridge CFArrayRef) myCerts, (id)kCFStreamSSLCertificates,
     nil];
 
-    [newSocket startTLS: tlsSettings];
     @synchronized (_socketsForOutgoingPayload) {
-        newSocket.userData = _pendingOutgoingItems.firstObject;
+        KDEFileTransferItem *item = _pendingOutgoingItems.firstObject;
+        if (item == nil) {
+            // E.g. a late connection for a payload that was cancelled
+            os_log_with_type(logger, OS_LOG_TYPE_ERROR,
+                             "Payload connection received but no payload is pending, closing it");
+            [newSocket disconnect];
+            return;
+        }
+        newSocket.userData = item;
         [_pendingOutgoingItems removeObjectAtIndex:0];
         [_socketsForOutgoingPayload insertObject:newSocket atIndex:0];
     }
+    [newSocket startTLS: tlsSettings];
     os_log_with_type(logger, self.debugLogLevel, "Start Server TLS to send file");
 }
 
@@ -409,11 +423,19 @@
 {
     os_log_with_type(logger, self.debugLogLevel, "Connection is secure");
     
+    BOOL isOutgoingPayload = NO;
     @synchronized(_socketsForOutgoingPayload){
         if ([_socketsForOutgoingPayload containsObject:sock]) {
-            // I'm the server
-            [self sendPayloadWithSocket: sock];
+            // I'm the server. Send one payload at a time: the next file may be announced
+            // (and connected) while the previous one is still being sent, but because receivers
+            // set up the connection before they are ready to read from it, sending right away
+            // would buffer the whole file in memory.
+            [_waitingOutgoingPayloadSockets addObject:sock];
+            isOutgoingPayload = YES;
         }
+    }
+    if (isOutgoingPayload) {
+        [self startNextOutgoingPayload];
     }
 
     @synchronized (_socketsForIncomingPayload) {
@@ -479,18 +501,83 @@
                                      error:(nullable NSError *)error {
     @synchronized (_socketsForOutgoingPayload) {
         [_socketsForOutgoingPayload removeObject:sock];
+        [_waitingOutgoingPayloadSockets removeObject:sock];
+        if (_activeOutgoingPayloadSocket == sock) {
+            _activeOutgoingPayloadSocket = nil;
+        }
     }
     KDEFileTransferItem *item = (KDEFileTransferItem *)sock.userData;
     NetworkPacket *np = item.networkPacket;
-    [item.fileHandle closeAndReturnError:nil];
-    [np.payloadPath stopAccessingSecurityScopedResource];
+    [self closeOutgoingItem:item];
     if (error) {
+        [self cancelOutgoingPayloads];
         [self.linkDelegate onPacket:np
                   sendWithPacketTag:PACKET_TAG_PAYLOAD
                      failedWithError:error];
     } else {
         [self.linkDelegate onPacket:np sentWithPacketTag:PACKET_TAG_PAYLOAD];
+        [self startNextOutgoingPayload];
     }
+}
+
+/// Starts sending the next secured payload socket, unless a payload is already being sent.
+/// Must be called on _socketQueue.
+- (void)startNextOutgoingPayload {
+    GCDAsyncSocket *nextSocket = nil;
+    @synchronized (_socketsForOutgoingPayload) {
+        if (_activeOutgoingPayloadSocket == nil && _waitingOutgoingPayloadSockets.count > 0) {
+            nextSocket = _waitingOutgoingPayloadSockets.firstObject;
+            [_waitingOutgoingPayloadSockets removeObjectAtIndex:0];
+            _activeOutgoingPayloadSocket = nextSocket;
+        }
+    }
+    if (nextSocket) {
+        [self sendPayloadWithSocket:nextSocket];
+    }
+}
+
+- (void)closeOutgoingItem:(KDEFileTransferItem *)item {
+    [item.fileHandle closeAndReturnError:nil];
+    [item.networkPacket.payloadPath stopAccessingSecurityScopedResource];
+}
+
+/// Aborts all the outgoing payloads, without notifying the delegate about them.
+///
+/// Called when one outgoing payload fails, because the share plugin gives up on the whole
+/// batch in that case. Otherwise, the files already announced to the remote would keep
+/// being sent, or stay queued and get paired with the connection for the next batch.
+///
+/// Must be called on _socketQueue, where payloads are sent, so we don't close a file mid-read.
+- (void)cancelOutgoingPayloads {
+    NSArray<GCDAsyncSocket *> *sockets;
+    NSArray<KDEFileTransferItem *> *pendingItems;
+    @synchronized (_socketsForOutgoingPayload) {
+        sockets = [_socketsForOutgoingPayload copy];
+        pendingItems = [_pendingOutgoingItems copy];
+        [_socketsForOutgoingPayload removeAllObjects];
+        [_pendingOutgoingItems removeAllObjects];
+        [_waitingOutgoingPayloadSockets removeAllObjects];
+        _activeOutgoingPayloadSocket = nil;
+    }
+    for (GCDAsyncSocket *sock in sockets) {
+        sock.delegate = nil;
+        [sock disconnect];
+        [self closeOutgoingItem:(KDEFileTransferItem *)sock.userData];
+    }
+    for (KDEFileTransferItem *item in pendingItems) {
+        [self closeOutgoingItem:item];
+    }
+    if (sockets.count > 0 || pendingItems.count > 0) {
+        os_log_with_type(logger, OS_LOG_TYPE_INFO,
+                         "Cancelled %lu outgoing payloads",
+                         (unsigned long)(sockets.count + pendingItems.count));
+    }
+}
+
+- (void)cancelOutgoingPayloadsAsync {
+    dispatch_async(_socketQueue, ^{
+        [self cancelOutgoingPayloads];
+    });
 }
 
 #pragma mark - Receiving Payloads for Share Plugin
