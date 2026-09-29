@@ -335,17 +335,19 @@ extension Notification.Name {
         DispatchQueue.main.async { [weak self, logger] in
             guard let self else { return }
             
-            if let file = self.currentFilesSending.removeValue(forKey: path) {
-                let remaining = self.totalNumOfFilesToSend - self.numFilesSuccessfullySent - 1
-                self.filesFailedToSend.append(FailedFileTransferItemInfo(
-                    path: file.path,
-                    name: file.name,
-                    error: error,
-                    countOtherFailedFilesInTheSameTransfer: remaining
-                ))
-            } else {
+            guard let file = self.currentFilesSending.removeValue(forKey: path) else {
+                // Not part of the current batch (e.g. a stray callback for a file of an earlier,
+                // already aborted batch), don't reset whatever is being sent now.
                 logger.fault("Cannot find info for \(np) after failed to send with \(error)")
+                return
             }
+            let remaining = self.totalNumOfFilesToSend - self.numFilesSuccessfullySent - 1
+            self.filesFailedToSend.append(FailedFileTransferItemInfo(
+                path: file.path,
+                name: file.name,
+                error: error,
+                countOtherFailedFilesInTheSameTransfer: remaining
+            ))
 #if !os(macOS)
             notificationHapticsGenerator.notificationOccurred(.error)
 #endif
