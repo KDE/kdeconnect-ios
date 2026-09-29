@@ -288,9 +288,9 @@ extension Notification.Name {
     }
     
     func onSendingPayload(_ payload: FileTransferItem) {
+        let info = payload.info
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            let info = payload.info
             // Don't resurrect a file that has already finished or was reset after a failure.
             guard let previous = self.currentFilesSending[info.path] else { return }
             self.currentFilesSending[info.path] = info
