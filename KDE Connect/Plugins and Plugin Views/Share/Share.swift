@@ -289,7 +289,17 @@ extension Notification.Name {
     
     func onSendingPayload(_ payload: FileTransferItem) {
         DispatchQueue.main.async { [weak self] in
-            self?.currentFilesSending[payload.info.path] = payload.info
+            guard let self else { return }
+            let info = payload.info
+            // Don't resurrect a file that has already finished or was reset after a failure.
+            guard let previous = self.currentFilesSending[info.path] else { return }
+            self.currentFilesSending[info.path] = info
+            if previous.totalBytesCompleted == 0 && info.totalBytesCompleted > 0 {
+                // The remote has connected to this file's payload socket and data
+                // is flowing: announce the next file now so its connection setup
+                // overlaps with this transfer instead of happening after it.
+                self.sendSinglePayload()
+            }
         }
     }
     
@@ -343,10 +353,24 @@ extension Notification.Name {
         }
     }
     
+    /// Maximum number of files announced to the remote device at once.
+    private static let maxFilesInFlight = 2
+    
+    /// Whether another file can be announced right now.
+    ///
+    /// Only one file may be waiting for its payload connection at a time,
+    /// because `LanLink` pairs incoming payload connections with pending files
+    /// in the order the files were announced.
+    private var canAnnounceAnotherFile: Bool {
+        currentFilesSending.count < Self.maxFilesInFlight
+        && currentFilesSending.values.allSatisfy { $0.totalBytesCompleted > 0 }
+    }
+    
     @objc func sendSinglePayload() {
         if totalPayloadSize > 0,
            !filesToSend.isEmpty,
            numFilesSuccessfullySent < totalNumOfFilesToSend {
+            guard canAnnounceAnotherFile else { return }
             let currentFile = filesToSend.removeFirst()
             currentFilesSending[currentFile.path] = currentFile
             
