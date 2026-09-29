@@ -157,6 +157,7 @@
                     os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                                      "Error binding payload port: %{public}@",
                                      error);
+                    _fileServerSocket = nil;
                     [handle closeAndReturnError:nil];
                     [np.payloadPath stopAccessingSecurityScopedResource];
                     [self cancelOutgoingPayloadsAsync];
