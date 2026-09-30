@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-25 19:16+0300\n"
+"PO-Revision-Date: 2026-09-29 19:33+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -492,7 +492,6 @@ msgstr "Orta"
 msgid "Mouse: Control Remote"
 msgstr "Fare: Kumandayı Denetle"
 
-#, fuzzy
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
 "for left click. Tap with two fingers for right click. Use a long press to "
@@ -502,13 +501,13 @@ msgid ""
 "Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
 "and horizontally. Tap on the “Scroll Wheel” for middle click."
 msgstr ""
-"Move a finger on the screen to move the mouse cursor. Tap with one finger "
-"for left click. Tap with two fingers for right click. Use a long press to "
-"activate drag'n drop. Or use the menu on the top right to directly send "
-"clicks.\n"
+"Fare imlecini hareket ettirmek için ekranda bir parmağınızı hareket ettirin. "
+"Sol tık için bir parmağınızla dokunun. Sağ tık için iki parmağınızla "
+"dokunun. Sürükle–bırak’ı etkinleştirmek için uzunca basın. Doğrudan tıklar "
+"göndermek için sağ üst köşedeki menüyü kullanın.\n"
 "\n"
-"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
-"and horizontally. Tap on the “Scroll Wheel” for middle click."
+"Hem yatay hem de dikey olarak sarmak için yukarıdaki “Sarma Tekerleği”nden "
+"bir parmağınızla sürükleyin. Orta tık için “Sarma Tekerleği”ne dokunun."
 
 msgid ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
@@ -556,9 +555,8 @@ msgstr "Bildirim: Başkalarıyla Al"
 msgid "OK"
 msgstr "Tamam"
 
-#, fuzzy
 msgid "On-Click Haptic Style"
-msgstr "On-Click Haptic Style"
+msgstr "Tıklama Dokunuş Stili"
 
 #. Unknown haptic feedback level
 msgid "Other"
@@ -646,13 +644,12 @@ msgstr "Yerel Panoyu İt"
 msgid "Reason: %@"
 msgstr "Gerekçe: %@"
 
-#, fuzzy
 msgid ""
 "Received photos and videos will be saved to the Files app because you can't "
 "grant us access to your photo library."
 msgstr ""
-"Received photos and videos will be saved to the Files app because you can't "
-"grant us access to your photo library."
+"Alınan fotoğraflar ve videolar Dosyalar uygulamasına kaydedilecek; çünkü "
+"fotoğraf arşivinize erişim izni veremiyorsunuz."
 
 msgid "Receiving"
 msgstr "Alınıyor"
@@ -703,7 +700,6 @@ msgstr "Komut Çalıştır: Yanıt Ver"
 msgid "SFTP: Access Remote & Initiate File Server"
 msgstr "SFTP: Uzaktan Eriş ve Dosya Sunucusunu Başlat"
 
-#, fuzzy
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -711,10 +707,10 @@ msgid ""
 "SHA256 fingerprint of remote device certificate is: \n"
 "%@"
 msgstr ""
-"SHA256 fingerprint of your device certificate is:\n"
+"Aygıt sertifikanızın SHA256 parmak izi:\n"
 "%@\n"
 "\n"
-"SHA256 fingerprint of remote device certificate is: \n"
+"Uzak aygıt sertifikasının SHA256 parmak izi:\n"
 "%@"
 
 msgid "Save photos to the photo library"
@@ -768,82 +764,64 @@ msgstr "Ayarlar"
 msgid "Share/File Transfer"
 msgstr "Dosya Aktar/Paylaş"
 
-#, fuzzy
 msgid "Share: Receive File, Text, and URL"
-msgstr "Share: Receive File, Text, and URL"
+msgstr "Paylaş: Dosya, Metin ve URL Al"
 
-#, fuzzy
 msgid "Share: Send File"
-msgstr "Share: Send File"
+msgstr "Paylaş: Dosya Gönder"
 
-#, fuzzy
 msgid "Share: Send Text & URL"
-msgstr "Share: Send Text & URL"
+msgstr "Paylaş: Metin ve URL Gönder"
 
-#, fuzzy
 msgid "Show Haptics Style Selector"
-msgstr "Show Haptics Style Selector"
+msgstr "Dokunuş Stili Seçicisini Göster"
 
-#, fuzzy
 msgid "Show Received Files in Finder"
-msgstr "Show Received Files in Finder"
+msgstr "Alınan Dosyaları Finder’da Göster"
 
-#, fuzzy
 msgid "Show Sensitivity Slider"
-msgstr "Show Sensitivity Slider"
+msgstr "Hassaslık Sürgüsünü Göster"
 
-#, fuzzy
 msgid "Slideshow Remote"
-msgstr "Slideshow Remote"
+msgstr "Slayt Gösterisi Kumandası"
 
 #. Soft haptic feedback level
-#, fuzzy
 msgid "Soft"
-msgstr "Soft"
+msgstr "Yumuşak"
 
-#, fuzzy
 msgid "Source Code"
-msgstr "Source Code"
+msgstr "Kaynak Kodu"
 
-#, fuzzy
 msgid "Status"
-msgstr "Status"
+msgstr "Durum"
 
-#, fuzzy
 msgid "Supported"
-msgstr "Supported"
+msgstr "Desteklenen"
 
-#, fuzzy
 msgid "System Default"
-msgstr "System Default"
+msgstr "Sistem Saptanmışı"
 
-#, fuzzy
 msgid "System Volume: Control Remote & Respond"
-msgstr "System Volume: Control Remote & Respond"
+msgstr "Sistem Ses Düzeyi: Kumandayı Denetle ve Tepki Ver"
 
-#, fuzzy
 msgid "Take Photo: Respond"
-msgstr "Take Photo: Respond"
+msgstr "Fotoğraf Çek: Tepki Ver"
 
-#, fuzzy
 msgid "Tap to start pairing"
-msgstr "Tap to start pairing"
+msgstr "Eşleştirmeyi başlatmak için dokunun"
 
-#, fuzzy
 msgid "Telephony: SMS/Call Sync"
-msgstr "Telephony: SMS/Call Sync"
+msgstr "Telefon: SMS/Arama Eşzamanlama"
 
-#, fuzzy
 msgid "The name of the device as recognized by KDE Connect"
-msgstr "The name of the device as recognized by KDE Connect"
+msgstr "KDE Bağlan tarafından tanındığı şekliyle aygıtın adı"
 
-#, fuzzy
 msgid ""
 "The options above are irreversible and require a complete app restart to "
 "take effect."
 msgstr ""
-"The options above are irreversible and require a complete app restart to "
-"take effect."
+"Yukarıdaki seçenekler geriye çevrilemez ve etkili olmaları için uygulamanın "
+"tümüyle yeniden başlatılması gerekir."
 
 #, fuzzy
 msgid ""

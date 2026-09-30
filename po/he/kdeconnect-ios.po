@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-22 00:10+0300\n"
+"PO-Revision-Date: 2026-09-29 09:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -21,468 +21,356 @@ msgid "KDE Connect"
 msgstr "KDE Connect"
 
 #. Privacy - Local Network Usage Description
-#, fuzzy
 msgid "Discover and connect to other devices using KDE Connect."
-msgstr "Discover and connect to other devices using KDE Connect."
+msgstr "אפשר לגלות ולהתחבר למכשירים אחרים באמצעות KDE Connect."
 
 #. Privacy - Photo Library Additions Usage Description
-#, fuzzy
 msgid "Save received images to your Photo Library instead of the Files app."
-msgstr "Save received images to your Photo Library instead of the Files app."
+msgstr "לשמור תמונות שהתקבלו לספריית התמונות שלך במקום ליישומון הקבצים"
 
-#, fuzzy
 msgid "%@ and %lld other files"
-msgstr "%@ and %lld other files"
+msgstr "%@ ו־%lld קבצים נוספים"
 
-#, fuzzy
 msgid "%@ for iOS"
-msgstr "%@ for iOS"
+msgstr "%@ ל־iOS"
 
-#, fuzzy
 msgid "**KDE Connect** for iOS"
-msgstr "**KDE Connect** for iOS"
+msgstr "**KDE Connect** ל־iOS"
 
-#, fuzzy
 msgid "+"
 msgstr "+"
 
-#, fuzzy
 msgid "-"
 msgstr "-"
 
-#, fuzzy
 msgid "?"
 msgstr "?"
 
-#, fuzzy
 msgid "About"
-msgstr "About"
+msgstr "על אודות"
 
-#, fuzzy
 msgid "Actions"
-msgstr "Actions"
+msgstr "פעולות"
 
-#, fuzzy
 msgid ""
 "Add the local IP addresses of other devices here if they're having trouble "
 "appearing in the automatic discovery."
 msgstr ""
-"Add the local IP addresses of other devices here if they're having trouble "
-"appearing in the automatic discovery."
+"אפשר להוסיף את כתובות ה־IP של המכשירים האחרים כאן אם מתגלה קושי בהצגתם "
+"בגילוי האוטומטי."
 
-#, fuzzy
 msgid "Advanced"
-msgstr "Advanced"
+msgstr "מתקדם"
 
-#, fuzzy
 msgid "Advanced Settings"
-msgstr "Advanced Settings"
+msgstr "הגדרות מתקדמות"
 
-#, fuzzy
 msgid "All Messages"
-msgstr "All Messages"
+msgstr "כל ההודעות"
 
-#, fuzzy
 msgid "Also written by %@"
-msgstr "Also written by %@"
+msgstr "נוצר גם על ידי %@"
 
 #. Please use 朱智语 in languages with these characters.
-#, fuzzy
 msgid "Apollo Zhu"
-msgstr "Apollo Zhu"
+msgstr "אפולו צ׳ו"
 
-#, fuzzy
 msgid "App Icon"
-msgstr "App Icon"
+msgstr "סמל היישומון"
 
-#, fuzzy
 msgid "App Icon:"
-msgstr "App Icon:"
+msgstr "סמל היישומון:"
 
-#, fuzzy
 msgid "App Theme:"
-msgstr "App Theme:"
+msgstr "ערכת עיצוב היישומון:"
 
-#, fuzzy
 msgid "Application"
-msgstr "Application"
+msgstr "יישומון"
 
-#, fuzzy
 msgid ""
 "As an open source project, we believe it is important to be transparent "
 "about our current and future plans to bring KDE Connect iOS into line with "
 "all other platforms."
 msgstr ""
-"As an open source project, we believe it is important to be transparent "
-"about our current and future plans to bring KDE Connect iOS into line with "
-"all other platforms."
+"כמיזם קוד פתוח, אנו מאמינים ששקיפות בנוגע לתוכניות הנוכחיות והעתידיות שלנו "
+"יסיעו לקדם את KDE Connect ל־iOS לקדמת הבמה כמו שאר הפלטפורמות."
 
-#, fuzzy
 msgid ""
 "Authorize Photos access using the Settings app to save received photos and "
 "videos to your photo library"
 msgstr ""
-"Authorize Photos access using the Settings app to save received photos and "
-"videos to your photo library"
+"יש לאשר גישה לתמונות באמצעות יישומון ההגדרות כדי לשמור את התמונות והסרטונים "
+"שמתקבלים לספריית התמונות שלך"
 
-#, fuzzy
 msgid "Available themes"
-msgstr "Available themes"
+msgstr "ערכות עיצוב זמינות"
 
-#, fuzzy
 msgid "Background Activity"
-msgstr "Background Activity"
+msgstr "פעילות רקע"
 
-#, fuzzy
 msgid "Battery Level"
-msgstr "Battery Level"
+msgstr "רמת הסוללה"
 
-#, fuzzy
 msgid "Battery Plugin Disabled"
-msgstr "Battery Plugin Disabled"
+msgstr "תוסף הסוללה מושבת"
 
-#, fuzzy
 msgid "Battery Status"
-msgstr "Battery Status"
+msgstr "מצב הסוללה"
 
-#, fuzzy
 msgid "Can't find your devices here?"
-msgstr "Can't find your devices here?"
+msgstr "ההתקן שלך לא מופיע פה?"
 
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "ביטול"
 
-#, fuzzy
 msgid "Category: %@"
-msgstr "Category: %@"
+msgstr "קטגוריה: %@"
 
-#, fuzzy
 msgid "Check out the merge requests"
-msgstr "Check out the merge requests"
+msgstr "כדאי לעיין בבקשות המיזוג"
 
-#, fuzzy
 msgid "Choose App Icon"
-msgstr "Choose App Icon"
+msgstr "בחירת סמל יישומון"
 
-#, fuzzy
 msgid "Chores"
-msgstr "Chores"
+msgstr "מטלות"
 
-#, fuzzy
 msgid "Classic"
-msgstr "Classic"
+msgstr "קלסי"
 
-#, fuzzy
 msgid "Clear Cache"
-msgstr "Clear Cache"
+msgstr "איפוס מטמון"
 
-#, fuzzy
 msgid "Clipboard Sync"
-msgstr "Clipboard Sync"
+msgstr "סנכרון לוח הגזירים"
 
-#, fuzzy
 msgid "Clipboard: Push & Receive Text"
-msgstr "Clipboard: Push & Receive Text"
+msgstr "לוח גזירים: דחיפה וקבלת טקסט"
 
-#, fuzzy
 msgid "Clipboard: Sync"
-msgstr "Clipboard: Sync"
+msgstr "לוח גזירים: סנכרון"
 
-#, fuzzy
 msgid "Configure Devices By IP"
-msgstr "Configure Devices By IP"
+msgstr "הגדרת התקנים לפי IP"
 
-#, fuzzy
 msgid "Configure Devices by IP:"
-msgstr "Configure Devices by IP:"
+msgstr "הגדרת התקנים לפי IP:"
 
-#, fuzzy
 msgid "Connect"
-msgstr "Connect"
+msgstr "התחברות"
 
-#, fuzzy
 msgid "Connected Devices"
-msgstr "Connected Devices"
+msgstr "מכשירים מחוברים"
 
-#, fuzzy
 msgid "Connectivity Report"
-msgstr "Connectivity Report"
+msgstr "דוח קישוריות"
 
-#, fuzzy
 msgid "Contacts"
-msgstr "Contacts"
+msgstr "אנשי קשר"
 
-#, fuzzy
 msgid "Contribute to KDE Connect"
-msgstr "Contribute to KDE Connect"
+msgstr "התנדבות ל־KDE Connect"
 
-#, fuzzy
 msgid "Contributors"
-msgstr "Contributors"
+msgstr "מתנדבים"
 
-#, fuzzy
 msgid "Copy path to the folder containing received files"
-msgstr "Copy path to the folder containing received files"
+msgstr "העתקת הנתיב לתיקייה שמכילה את הקבצים שהתקבלו"
 
-#, fuzzy
 msgid "Currently maintained by %@"
-msgstr "Currently maintained by %@"
+msgstr "מתוחזק כרגע על ידי %@"
 
-#, fuzzy
 msgid "Currently, the app must stay in the foreground to work properly"
-msgstr "Currently, the app must stay in the foreground to work properly"
+msgstr "נכון לעכשיו, היישומון חייב להישאר בחזית כדי שיעבוד כראוי"
 
-#, fuzzy
 msgid "Cursor Sensitivity"
-msgstr "Cursor Sensitivity"
+msgstr "רגישות סמן"
 
-#, fuzzy
 msgid "DANGEROUS OPTIONS"
-msgstr "DANGEROUS OPTIONS"
+msgstr "*אפשרויות מסוכנות*"
 
-#, fuzzy
 msgid "Dark"
-msgstr "Dark"
+msgstr "כהה"
 
-#, fuzzy
 msgid "Debug"
-msgstr "Debug"
+msgstr "ניפוי שגיאות"
 
-#, fuzzy
 msgid "Debug mode"
-msgstr "Debug mode"
+msgstr "מצב ניפוי שגיאות"
 
-#, fuzzy
 msgid "Debugging device discovery"
-msgstr "Debugging device discovery"
+msgstr "ניפוי שגיאות בגילוי מכשירים"
 
-#, fuzzy
 msgid "Default"
-msgstr "Default"
+msgstr "ברירת מחדל"
 
-#, fuzzy
 msgid ""
 "Delete all saved settings and devices. Requires the app to be fully "
 "restarted."
-msgstr ""
-"Delete all saved settings and devices. Requires the app to be fully "
-"restarted."
+msgstr "למחוק את כל ההגדרות והמכשירים השמורים. דורש את הפעלת היישומון מחדש."
 
-#, fuzzy
 msgid "Delete host certificate"
-msgstr "Delete host certificate"
+msgstr "מחיקת אישור מארח"
 
-#, fuzzy
 msgid ""
 "Delete the host's certificate and re-generate it upon restart. Requires the "
 "app to be fully restarted. NOTE: this will make the device unable to connect "
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 msgstr ""
-"Delete the host's certificate and re-generate it upon restart. Requires the "
-"app to be fully restarted. NOTE: this will make the device unable to connect "
-"with previously connected devices. You must unpair this device from the "
-"other remote devices and pair them again."
+"למחוק את אישור המארח ולייצר אותו מחדש בעת הפעלה מחדש. דורש שהיישום יופעל "
+"מחדש לחלוטין. לתשומת ליבך: זה יקשה על המכשיר להתחבר למכשירים שחוברו אליו "
+"בעבר. חובה לנתק את הצימוד את המכשיר הזה מהמכשירים המרוחקים האחרים ולצמד אותם "
+"שוב."
 
-#, fuzzy
 msgid "Developer"
-msgstr "Developer"
+msgstr "מפתח"
 
-#, fuzzy
 msgid "Device"
-msgstr "Device"
+msgstr "מכשיר"
 
-#, fuzzy
 msgid "Device Discovery"
-msgstr "Device Discovery"
+msgstr "גילוי מכשירים"
 
-#, fuzzy
 msgid "Device IP"
-msgstr "Device IP"
+msgstr "IP של מכשיר"
 
-#, fuzzy
 msgid "Device Name"
-msgstr "Device Name"
+msgstr "שם מכשיר"
 
-#, fuzzy
 msgid "Device Name:"
-msgstr "Device Name:"
+msgstr "שם המכשיר:"
 
-#, fuzzy
 msgid "Device Offline"
-msgstr "Device Offline"
+msgstr "המכשיר מנותק"
 
-#, fuzzy
 msgid "Device Status"
-msgstr "Device Status"
+msgstr "מצב המכשיר"
 
-#, fuzzy
 msgid "Device name"
-msgstr "Device name"
+msgstr "שם המכשיר"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Devices"
+msgstr "מכשירים"
 
-#, fuzzy
 msgid "Direct Handshake Devices"
-msgstr "Direct Handshake Devices"
+msgstr "מכשירי לחיצת יד ישירה"
 
-#, fuzzy
 msgid "Disable UDP Broadcast"
-msgstr "Disable UDP Broadcast"
+msgstr "כיבוי שידור UDP"
 
-#, fuzzy
 msgid "Discovered Devices"
-msgstr "Discovered Devices"
+msgstr "מכשירים שהתגלו"
 
-#, fuzzy
 msgid "Discovery & Pairing"
-msgstr "Discovery & Pairing"
+msgstr "גילוי וצימוד"
 
-#, fuzzy
 msgid "Do Not Pair"
-msgstr "Do Not Pair"
+msgstr "לא לצמד"
 
-#, fuzzy
 msgid "Donate"
-msgstr "Donate"
+msgstr "תרומה"
 
-#, fuzzy
 msgid "Done"
-msgstr "Done"
+msgstr "בוצע"
 
-#, fuzzy
 msgid "Double tap to activate debug mode"
-msgstr "Double tap to activate debug mode"
+msgstr "נגיעה כפולה תפעיל מצב ניפוי שגיאות"
 
-#, fuzzy
 msgid "Double tap to activate debugging device discovery"
-msgstr "Double tap to activate debugging device discovery"
+msgstr "נגיעה כפולה תפעיל ניפוי שגיאות לגילוי מכשירים"
 
-#, fuzzy
 msgid "Enable/Disable Plugins"
-msgstr "Enable/Disable Plugins"
+msgstr "הפעלת/השבתת תוספים"
 
-#, fuzzy
 msgid "Encryption Info"
-msgstr "Encryption Info"
+msgstr "פרטי הצפנה"
 
-#, fuzzy
 msgid "Erase saved devices cache"
-msgstr "Erase saved devices cache"
+msgstr "מחיקת מטמון המכשירים השמורים"
 
-#, fuzzy
 msgid "Error"
-msgstr "Error"
+msgstr "שגיאה"
 
-#, fuzzy
 msgid "Error Occured"
-msgstr "Error Occured"
+msgstr "אירעה שגיאה"
 
-#, fuzzy
 msgid "Errors and Faults"
-msgstr "Errors and Faults"
+msgstr "שגיאות וכשלונות"
 
-#, fuzzy
 msgid "Exit Presentation"
-msgstr "Exit Presentation"
+msgstr "יציאה ממצגת"
 
-#, fuzzy
 msgid "Experimental functionalities"
-msgstr "Experimental functionalities"
+msgstr "יכולות ניסיוניות"
 
-#, fuzzy
 msgid "Failed to Change Icon"
-msgstr "Failed to Change Icon"
+msgstr "החלפת סמל נכשלה"
 
-#, fuzzy
 msgid "Failed to receive %lld files"
-msgstr "Failed to receive %lld files"
+msgstr "קבלת %lld קבצים נכשלה"
 
-#, fuzzy
 msgid "Failed to receive from %@"
-msgstr "Failed to receive from %@"
+msgstr "קבלה מ־%@ נכשלה"
 
-#, fuzzy
 msgid "Failed to send %lld files"
-msgstr "Failed to send %lld files"
+msgstr "שליחת %lld קבצים נכשלה"
 
-#, fuzzy
 msgid "Failed to send to %@"
-msgstr "Failed to send to %@"
+msgstr "השליחה אל %@ נכשלה"
 
-#, fuzzy
 msgid "Fault"
-msgstr "Fault"
+msgstr "כשלון"
 
-#, fuzzy
 msgid "Features"
-msgstr "Features"
+msgstr "יכולות"
 
-#, fuzzy
 msgid "File Transfers"
-msgstr "File Transfers"
+msgstr "העברות קבצים"
 
-#, fuzzy
 msgid "Files"
-msgstr "Files"
+msgstr "קבצים"
 
-#, fuzzy
 msgid "Find My Device"
-msgstr "Find My Device"
+msgstr "איתור המכשיר שלי"
 
-#, fuzzy
 msgid "Find My Phone Mode"
-msgstr "Find My Phone Mode"
+msgstr "מצב איתור הטלפון שלי"
 
-#, fuzzy
 msgid "Find My Phone initiated from a remote device"
-msgstr "Find My Phone initiated from a remote device"
+msgstr "איתור הטלפון שלי התבקש ממכשיר מרוחק"
 
-#, fuzzy
 msgid "Forget all"
-msgstr "Forget all"
+msgstr "לשכוח מהכול"
 
-#, fuzzy
 msgid "From %@"
-msgstr "From %@"
+msgstr "מ־%@"
 
-#, fuzzy
 msgid "General"
-msgstr "General"
+msgstr "כללי"
 
-#, fuzzy
 msgid "Go FullScreen"
-msgstr "Go FullScreen"
+msgstr "מעבר למסך מלא"
 
-#, fuzzy
 msgid "Haptics Style"
-msgstr "Haptics Style"
+msgstr "סגנון רטט משוב"
 
 #. Hard haptic feedback level
-#, fuzzy
 msgid "Heavy"
-msgstr "Heavy"
+msgstr "כבדה"
 
-#, fuzzy
 msgid "Help"
-msgstr "Help"
+msgstr "עזרה"
 
-#, fuzzy
 msgid "Hide Haptics Style Selector"
-msgstr "Hide Haptics Style Selector"
+msgstr "הסתרת בורר סגנון רטט משוב"
 
-#, fuzzy
 msgid "Hide Sensitivity Slider"
-msgstr "Hide Sensitivity Slider"
+msgstr "הסתרת מחוון רגישות"
 
-#, fuzzy
 msgid "I FOUND IT!"
-msgstr "I FOUND IT!"
+msgstr "מצאתי את זה!"
 
-#, fuzzy
 msgid ""
 "If KDE Connect is having trouble discovering other devices, you can try a "
 "combination of the following solutions:\n"
@@ -499,130 +387,87 @@ msgid ""
 "4. Check other solutions on the User Manual, such as configuring the "
 "firewalls of the other devices:\n"
 msgstr ""
-"If KDE Connect is having trouble discovering other devices, you can try a "
-"combination of the following solutions:\n"
-"\n"
-"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
-"list, on this and the other devices.\n"
-"\n"
-"2. Make sure the other devices are also running KDE Connect and are "
-"connected to the same network as this device.\n"
-"\n"
-"3. Manually add the other devices through the \"Configure Devices By IP\" "
-"option in the %@ menu, and then \"Refresh Discovery.\"\n"
-"\n"
-"4. Check other solutions on the User Manual, such as configuring the "
-"firewalls of the other devices:\n"
 
-#, fuzzy
 msgid ""
 "If a remembered device is already online but not shown here, try Refresh "
 "Discovery."
 msgstr ""
-"If a remembered device is already online but not shown here, try Refresh "
-"Discovery."
+"אם מכשיר שמור כבר מקוון אבל אינו מופיע כאן, כדאי לנסות לרענן את הגילוי."
 
-#, fuzzy
 msgid ""
 "If there are phantom devices or something just doesn't behave correctly, "
 "erasing all saved devices data might fix it. Requires the app to be fully "
 "restarted."
 msgstr ""
-"If there are phantom devices or something just doesn't behave correctly, "
-"erasing all saved devices data might fix it. Requires the app to be fully "
-"restarted."
 
-#, fuzzy
 msgid "In progress"
-msgstr "In progress"
+msgstr "בתהליכים"
 
-#, fuzzy
 msgid "Incoming Pairing Request"
-msgstr "Incoming Pairing Request"
+msgstr "בקשת צימוד נכנסת"
 
-#, fuzzy
 msgid "Info"
-msgstr "Info"
+msgstr "פרטים"
 
-#, fuzzy
 msgid "Information"
-msgstr "Information"
+msgstr "פרטים"
 
-#, fuzzy
 msgid "Initiate Pairing?"
-msgstr "Initiate Pairing?"
+msgstr "ליזום צימוד?"
 
-#, fuzzy
 msgid "Integration with Siri Shortcuts"
-msgstr "Integration with Siri Shortcuts"
+msgstr "שילוב מול קיצורי סירי"
 
-#, fuzzy
 msgid "Integration with the system share sheet is in development"
-msgstr "Integration with the system share sheet is in development"
+msgstr "השיתוף עם גיליון שיתוף המערכת נמצא בפיתוח"
 
-#, fuzzy
 msgid "Internationalization & Localization"
-msgstr "Internationalization & Localization"
+msgstr "בינאום ותרגום"
 
-#, fuzzy
 msgid "Invalid"
-msgstr "Invalid"
+msgstr "שגוי"
 
-#, fuzzy
 msgid "Keyboard: Control Remote"
-msgstr "Keyboard: Control Remote"
+msgstr "מקלדת: שליטה מרחוק"
 
-#, fuzzy
 msgid "License"
-msgstr "License"
+msgstr "רישיון"
 
 #. Light haptic feedback level
-#, fuzzy
 msgid "Light"
-msgstr "Light"
+msgstr "קלה"
 
-#, fuzzy
 msgid "Lock Screen: Control Remote"
-msgstr "Lock Screen: Control Remote"
+msgstr "מסד נעילה: שליטה מרחוק"
 
-#, fuzzy
 msgid "Logs"
-msgstr "Logs"
+msgstr "יומנים"
 
-#, fuzzy
 msgid "Logs for %@"
-msgstr "Logs for %@"
+msgstr "יומנים עבור %@"
 
-#, fuzzy
 msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: שליטה ותגובה למדיה מרחוק"
 
-#, fuzzy
 msgid "Manage received files in the Files app"
-msgstr "Manage received files in the Files app"
+msgstr "ניהול קבצים שהתקבלו ביישומון הקבצים"
 
-#, fuzzy
 msgid "May not work with KDE Connect for Windows"
-msgstr "May not work with KDE Connect for Windows"
+msgstr "אולי לא יעבוד מול KDE Connect ל־Windows"
 
-#, fuzzy
 msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "אולי באמצעות תבנית כתובות ושילוב עם קיצורי סירי"
 
-#, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
-msgstr "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "אולי עם שירות מרכז ההתראות של Apple‏ (ACNS)"
 
 #. Medium haptic feedback level
-#, fuzzy
 msgid "Medium"
-msgstr "Medium"
+msgstr "בינונית"
 
-#, fuzzy
 msgid "Mouse: Control Remote"
-msgstr "Mouse: Control Remote"
+msgstr "עכבר: שליטה מרחוק"
 
-#, fuzzy
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
 "for left click. Tap with two fingers for right click. Use a long press to "
@@ -632,239 +477,184 @@ msgid ""
 "Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
 "and horizontally. Tap on the “Scroll Wheel” for middle click."
 msgstr ""
-"Move a finger on the screen to move the mouse cursor. Tap with one finger "
-"for left click. Tap with two fingers for right click. Use a long press to "
-"activate drag'n drop. Or use the menu on the top right to directly send "
-"clicks.\n"
+"יש להזיז את האצבע על המסך כדי להזיז את סמן העכבר. נגיעה עם אצבע אחת מייצרת "
+"לחיצה שמאלית. נגיעה בשתי אצבעות לחיצה ימנית. לחיצה ארוכה מפעילה גרירה. או "
+"שאפשר להשתמש בתפריט מצד שמאל למעלה כדי לשלוח לחיצות ישירות.\n"
 "\n"
-"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
-"and horizontally. Tap on the “Scroll Wheel” for middle click."
+"גרירה עם אצבע אחת ב„גלגלת גלילה” תגלול אנכית ואופקית. נגיעה ב„גלגלת גלילה” "
+"תייצר לחיצה אמצעית."
 
-#, fuzzy
 msgid ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
 "and your computer)"
 msgstr ""
-"Multi-platform app that allows your devices to communicate (e.g., your phone "
-"and your computer)"
+"יישום למגוון פלטפורמות שמאפשר למכשירים שלך לתקשר (למשל: הטלפון והמחשב שלך)"
 
-#, fuzzy
 msgid "Network Packet Composer"
-msgstr "Network Packet Composer"
+msgstr "יוצר מנות נתוני רשת"
 
-#, fuzzy
 msgid "Nice"
-msgstr "Nice"
+msgstr ""
 
-#, fuzzy
 msgid "No additional devices are discovered on this network."
-msgstr "No additional devices are discovered on this network."
+msgstr "לא התגלו מכשירים נוספים ברשת הזאת."
 
-#, fuzzy
 msgid "No battery detected in device"
-msgstr "No battery detected in device"
+msgstr "לא זוהתה סוללה במכשיר"
 
-#, fuzzy
 msgid "No currently connected devices."
-msgstr "No currently connected devices."
+msgstr "אין מכשירים מחוברים כרגע."
 
-#, fuzzy
 msgid "No device discovered in the current network."
-msgstr "No device discovered in the current network."
+msgstr "לא התגלו מכשירים ברשת המקומית."
 
-#, fuzzy
 msgid "No matching logs yet"
-msgstr "No matching logs yet"
+msgstr "אין רשומות יומן תואמות עדיין"
 
-#, fuzzy
 msgid "No, Stay Paired"
-msgstr "No, Stay Paired"
+msgstr "לא, להשאיר מצומדים"
 
-#, fuzzy
 msgid "Not yet implemented"
-msgstr "Not yet implemented"
+msgstr "לא מומש עדיין"
 
-#, fuzzy
 msgid "Notice"
-msgstr "Notice"
+msgstr "הודעה"
 
-#, fuzzy
 msgid "Notification: Receive from Others"
-msgstr "Notification: Receive from Others"
+msgstr "התראה: קבלה מאחרים"
 
-#, fuzzy
 msgid "Notification: Retrieve by Others"
-msgstr "Notification: Retrieve by Others"
+msgstr "התראה: קבלה על ידי אחרים"
 
-#, fuzzy
 msgid "OK"
-msgstr "OK"
+msgstr "אישור"
 
-#, fuzzy
 msgid "On-Click Haptic Style"
-msgstr "On-Click Haptic Style"
+msgstr "סגנון רטט משוב בלחיצה"
 
 #. Unknown haptic feedback level
-#, fuzzy
 msgid "Other"
-msgstr "Other"
+msgstr "אחרת"
 
-#, fuzzy
 msgid "Out-App Notification:"
-msgstr "Out-App Notification:"
+msgstr "הודעה מחוץ ליישומון:"
 
-#, fuzzy
 msgid "Packet Body"
-msgstr "Packet Body"
+msgstr "תוכן מנת הנתונים"
 
-#, fuzzy
 msgid "Packet Tag"
-msgstr "Packet Tag"
+msgstr "תגית מנת הנתונים"
 
-#, fuzzy
 msgid "Packet Type"
-msgstr "Packet Type"
+msgstr "סוג מנת הנתונים"
 
-#, fuzzy
 msgid "Pair"
-msgstr "Pair"
+msgstr "צימוד"
 
-#, fuzzy
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"Pair request from '%@'\n"
-"Verification key: %@"
+"בקשת צימוד מאת ‚%@’\n"
+"מפתח אימות: %@"
 
-#, fuzzy
 msgid "Pairing Complete"
-msgstr "Pairing Complete"
+msgstr "הצימוד הושלם"
 
-#, fuzzy
 msgid "Pairing Rejected"
-msgstr "Pairing Rejected"
+msgstr "הצימוד נדחה"
 
-#, fuzzy
 msgid "Pairing Timed Out"
-msgstr "Pairing Timed Out"
+msgstr "הזמן שהוקצב לצימוד תם"
 
-#, fuzzy
 msgid "Pairing with '%@' failed"
-msgstr "Pairing with '%@' failed"
+msgstr "הצימוד מול ‚%@’ נכשל"
 
-#, fuzzy
 msgid "Pairing with '%@' succeeded"
-msgstr "Pairing with '%@' succeeded"
+msgstr "הצימוד מול ‚%@’ הצליח"
 
-#, fuzzy
 msgid "Peer"
-msgstr "Peer"
+msgstr "עמית"
 
-#, fuzzy
 msgid "Ping"
-msgstr "Ping"
+msgstr "פינג"
 
-#, fuzzy
 msgid "Ping received from a connected device."
-msgstr "Ping received from a connected device."
+msgstr "התקבל פינג ממכשיר מחובר."
 
-#, fuzzy
 msgid "Ping!"
-msgstr "Ping!"
+msgstr "פינג!"
 
-#, fuzzy
 msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
+msgstr "פלזמה למסכים גדולים"
 
-#, fuzzy
 msgid "Playground"
-msgstr "Playground"
+msgstr "מגרש משחקים"
 
-#, fuzzy
 msgid "Plugin Settings"
-msgstr "Plugin Settings"
+msgstr "הגדרות תוסף"
 
-#, fuzzy
 msgid "Plugins If Reachable"
-msgstr "Plugins If Reachable"
+msgstr "תוספים אם נגישים"
 
-#, fuzzy
 msgid "Pointer Sensitivity"
-msgstr "Pointer Sensitivity"
+msgstr "רגישות סמן"
 
-#, fuzzy
 msgid "Preparing Media…"
-msgstr "Preparing Media…"
+msgstr "המדיה מתכוננת…"
 
-#, fuzzy
 msgid "Presenter: Control Remote"
-msgstr "Presenter: Control Remote"
+msgstr "מציג: שליטה מרחוק"
 
-#, fuzzy
 msgid "Preview: "
-msgstr "Preview: "
+msgstr "תצוגה מקדימה: "
 
-#, fuzzy
 msgid "Previously connected devices will appear here."
-msgstr "Previously connected devices will appear here."
+msgstr "מכשירים שהתבצע מולם חיבור בעבר יופיעו כאן."
 
-#, fuzzy
 msgid "Push Local Clipboard"
-msgstr "Push Local Clipboard"
+msgstr "דחיפת לוח הגזירים המקומי"
 
-#, fuzzy
 msgid "Reason: %@"
-msgstr "Reason: %@"
+msgstr "סיבה: %@"
 
-#, fuzzy
 msgid ""
 "Received photos and videos will be saved to the Files app because you can't "
 "grant us access to your photo library."
 msgstr ""
-"Received photos and videos will be saved to the Files app because you can't "
-"grant us access to your photo library."
+"תמונות וסרטונים שיתקבלו יישמרו ליישומון הקבצים כיוון שלא ניתן להעניק לנו "
+"גישה לספריית התמונות שלך."
 
-#, fuzzy
 msgid "Receiving"
-msgstr "Receiving"
+msgstr "מתקבל"
 
-#, fuzzy
 msgid "Receiving file %lld of %lld"
-msgstr "Receiving file %lld of %lld"
+msgstr "מתקבל קובץ %lld מתוך %lld"
 
-#, fuzzy
 msgid "Refresh Discovery"
-msgstr "Refresh Discovery"
+msgstr "ריענון גילוי"
 
-#, fuzzy
 msgid "Remembered Devices"
-msgstr "Remembered Devices"
+msgstr "מכשירים שמורים"
 
-#, fuzzy
 msgid "Remote Input"
-msgstr "Remote Input"
+msgstr "קלט מרחוק"
 
-#, fuzzy
 msgid "Report Bug"
-msgstr "Report Bug"
+msgstr "דיווח על תקלה"
 
-#, fuzzy
 msgid "Request to pair with '%@'"
-msgstr "Request to pair with '%@'"
+msgstr "בקשה לצימוד מול ‚%@’"
 
-#, fuzzy
 msgid "Restart Discovery"
-msgstr "Restart Discovery"
+msgstr "הפעלת הגילוי מחדש"
 
 #. Rigid haptic feedback level
-#, fuzzy
 msgid "Rigid"
-msgstr "Rigid"
+msgstr "קשיחה"
 
-#, fuzzy
 msgid "Ring Device"
-msgstr "Ring Device"
+msgstr "צלצול במכשיר"
 
 msgid "Ring/Find My Phone"
 msgstr "צלצול/Find My Phone"
@@ -881,11 +671,9 @@ msgstr "הרצת פקודה: בקשה"
 msgid "Run Command: Respond"
 msgstr "הרצת פקודה: תגובה"
 
-#, fuzzy
 msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: גישה מרחוק והקמת שרת קבצים"
 
-#, fuzzy
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -893,26 +681,23 @@ msgid ""
 "SHA256 fingerprint of remote device certificate is: \n"
 "%@"
 msgstr ""
-"SHA256 fingerprint of your device certificate is:\n"
+"טביעת האצבע מסוג SHA256 לאישור של המכשיר שלך היא:\n"
 "%@\n"
 "\n"
-"SHA256 fingerprint of remote device certificate is: \n"
+"טביעת האצבע מסוג SHA256 לאישור של המכשיר המרוחק היא: \n"
 "%@"
 
-#, fuzzy
 msgid "Save photos to the photo library"
-msgstr "Save photos to the photo library"
+msgstr "שמירת תמונות לספריית התמונות"
 
-#, fuzzy
 msgid "Save videos to the photo library"
-msgstr "Save videos to the photo library"
+msgstr "שמירת סרטונים לספריית התמונות"
 
 msgid "Screensaver: Inhibit Remote"
 msgstr "שומר מסך: מניעת מרוחק"
 
-#, fuzzy
 msgid "Select a device from the Devices list to start."
-msgstr "Select a device from the Devices list to start."
+msgstr "יש לבחור מכשיר מרשימת המכשירים כדי להתחיל."
 
 msgid "Send"
 msgstr "שליחה"
@@ -963,7 +748,7 @@ msgid "Share: Send Text & URL"
 msgstr "שיתוף: שליחת טקסט וכתובת"
 
 msgid "Show Haptics Style Selector"
-msgstr "הצגת בורר סגנון רטט תגובה"
+msgstr "הצגת בורר סגנון רטט משוב"
 
 msgid "Show Received Files in Finder"
 msgstr "הצגת קבצים שהתקבלו ב־Finder"
@@ -1002,9 +787,8 @@ msgstr "נגיעה תתחיל הצמדה"
 msgid "Telephony: SMS/Call Sync"
 msgstr "טלפוניה: סנכרון מסרונים/שיחות"
 
-#, fuzzy
 msgid "The name of the device as recognized by KDE Connect"
-msgstr "The name of the device as recognized by KDE Connect"
+msgstr "שם המכשיר כפי שמזוהה על ידי KDE Connect"
 
 msgid ""
 "The options above are irreversible and require a complete app restart to "
