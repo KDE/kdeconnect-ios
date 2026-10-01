@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-29 19:33+0300\n"
+"PO-Revision-Date: 2026-09-30 10:42+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -823,119 +823,94 @@ msgstr ""
 "Yukarıdaki seçenekler geriye çevrilemez ve etkili olmaları için uygulamanın "
 "tümüyle yeniden başlatılması gerekir."
 
-#, fuzzy
 msgid ""
 "These should be handled automatically, but you may manually perform some in "
 "case if they are not."
 msgstr ""
-"These should be handled automatically, but you may manually perform some in "
-"case if they are not."
+"Bunlar otomatik olarak işlenir; ancak olamadığı bazı durumlarda elle "
+"gerçekleştirmeniz gerekebilir."
 
-#, fuzzy
 msgid "These should work with little to no issues"
-msgstr "These should work with little to no issues"
+msgstr "Bunlar pek az sorunla veya sorunsuz olarak çalışmalıdır."
 
-#, fuzzy
 msgid "Third-Party Libraries"
-msgstr "Third-Party Libraries"
+msgstr "Üçüncü Taraf Kitaplıklar"
 
-#, fuzzy
 msgid "This is likely not possible to implement on iOS"
-msgstr "This is likely not possible to implement on iOS"
+msgstr "Bu, büyük olasılıkla iOS üzerinde çalışamayacaktır."
 
-#, fuzzy
 msgid "Through the system share sheet"
-msgstr "Through the system share sheet"
+msgstr "Sistem paylaşım sayfası ile"
 
-#, fuzzy
 msgid "To %@"
-msgstr "To %@"
+msgstr "Şuna: %@"
 
-#, fuzzy
 msgid ""
 "To connect to remembered devices, make sure they are connected to the same "
 "network as this device."
 msgstr ""
-"To connect to remembered devices, make sure they are connected to the same "
-"network as this device."
+"Anımsanan aygıtlara bağlanmak için bu aygıtla aynı ağa bağlı olduklarından "
+"emin olun."
 
-#, fuzzy
 msgid "Toggle Keyboard"
-msgstr "Toggle Keyboard"
+msgstr "Klavyeyi Aç/Kapat"
 
-#, fuzzy
 msgid "Troubleshooting"
-msgstr "Troubleshooting"
+msgstr "Hata Tanılama"
 
-#, fuzzy
 msgid "Trusted Networks"
-msgstr "Trusted Networks"
+msgstr "Güvenilen Ağlar"
 
-#, fuzzy
 msgid "Unknown Theme"
-msgstr "Unknown Theme"
+msgstr "Bilinmeyen Tema"
 
-#, fuzzy
 msgid "Unpair"
-msgstr "Unpair"
+msgstr "Eşleşmeyi Kaldır"
 
-#, fuzzy
 msgid "Unpair With Device?"
-msgstr "Unpair With Device?"
+msgstr "Aygıt Eşleşmesini Kaldır?"
 
-#, fuzzy
 msgid "Unpair with %@?"
-msgstr "Unpair with %@?"
+msgstr "%@ ile olan eşleşme kaldırılsın mı?"
 
-#, fuzzy
 msgid "Valid"
-msgstr "Valid"
+msgstr "Geçerli"
 
-#, fuzzy
 msgid "Verification key: %@"
-msgstr "Verification key: %@"
+msgstr "Doğrulama anahtarı: %@"
 
-#, fuzzy
 msgid "Version: %@ (%@)"
-msgstr "Version: %@ (%@)"
+msgstr "Sürüm: %@ (%@)"
 
-#, fuzzy
 msgid "Waiting for %lld other files to start transferring"
-msgstr "Waiting for %lld other files to start transferring"
+msgstr "Aktarımın başlatılması için %lld diğer dosya bekleniyor."
 
-#, fuzzy
 msgid "Waiting for logs..."
-msgstr "Waiting for logs..."
+msgstr "Günlükler bekleniyor…"
 
-#, fuzzy
 msgid "Waiting to send"
-msgstr "Waiting to send"
+msgstr "Gönderme bekleniyor…"
 
-#, fuzzy
 msgid "Website"
-msgstr "Website"
+msgstr "Web Sitesi"
 
-#, fuzzy
 msgid "Wiki & User Manual"
-msgstr "Wiki & User Manual"
+msgstr "Viki ve Kullanıcı Kılavuzu"
 
-#, fuzzy
 msgid "Yes, Unpair"
-msgstr "Yes, Unpair"
+msgstr "Evet, Eşleşmeyi Kaldır"
 
-#, fuzzy
 msgid ""
 "You can enable or disable Plugins individually. Some Plugins have their own "
 "specific settings that can be found in their respective Views."
 msgstr ""
-"You can enable or disable Plugins individually. Some Plugins have their own "
-"specific settings that can be found in their respective Views."
+"Belirli eklentileri tekil olarak etkinleştirebilir veya devre dışı "
+"bırakabilirsiniz. Kimi eklentilerin, kendi sayfalarında bulunan özel "
+"ayarları vardır."
 
 #. Filename to use for an unnamed file
-#, fuzzy
 msgid "untitled"
-msgstr "untitled"
+msgstr "adsız"
 
-#, fuzzy
 msgid "© KDE Community & contributors"
-msgstr "© KDE Community & contributors"
+msgstr "© KDE topluluğu ve katkıcılar"
