@@ -354,7 +354,7 @@ msgid "Find My Device"
 msgstr "Troba el meu dispositiu"
 
 msgid "Find My Phone Mode"
-msgstr "Mode de «Troba el meu telèfon»"
+msgstr "Mode «Troba el meu telèfon»"
 
 msgid "Find My Phone initiated from a remote device"
 msgstr "S'ha iniciat «Troba el meu telèfon» des d'un dispositiu remot"
