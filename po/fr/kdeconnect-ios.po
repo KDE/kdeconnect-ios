@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kdeconnect-ios._static_\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-28 19:05+0200\n"
+"PO-Revision-Date: 2026-10-01 15:28+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -38,9 +38,8 @@ msgstr "%@ and %lld other files"
 msgid "%@ for iOS"
 msgstr "%@ pour iOS"
 
-#, fuzzy
 msgid "**KDE Connect** for iOS"
-msgstr "**KDE Connect** for iOS"
+msgstr "**KDEConnect** pour iOS"
 
 msgid "+"
 msgstr "+"
@@ -350,9 +349,8 @@ msgstr "Failed to receive from %@"
 msgid "Failed to send %lld files"
 msgstr "Failed to send %lld files"
 
-#, fuzzy
 msgid "Failed to send to %@"
-msgstr "Failed to send to %@"
+msgstr "Échec de l'envoi à %@"
 
 msgid "Fault"
 msgstr "Faute"
@@ -588,9 +586,8 @@ msgstr "No currently connected devices."
 msgid "No device discovered in the current network."
 msgstr "No device discovered in the current network."
 
-#, fuzzy
 msgid "No matching logs yet"
-msgstr "No matching logs yet"
+msgstr "Aucun journal correspondant pour l'instant"
 
 msgid "No, Stay Paired"
 msgstr "Non. Maintenir l'association"
@@ -683,9 +680,8 @@ msgstr "Terrain de jeu"
 msgid "Plugin Settings"
 msgstr "Configuration des modules externes"
 
-#, fuzzy
 msgid "Plugins If Reachable"
-msgstr "Plugins If Reachable"
+msgstr "Modules externes si joignables"
 
 msgid "Pointer Sensitivity"
 msgstr "Sensibilité du pointeur"
@@ -704,9 +700,8 @@ msgstr "Aperçu :"
 msgid "Previously connected devices will appear here."
 msgstr "Previously connected devices will appear here."
 
-#, fuzzy
 msgid "Push Local Clipboard"
-msgstr "Push Local Clipboard"
+msgstr "Envoyer le presse-papier local"
 
 msgid "Reason: %@"
 msgstr "Raison : %@"
@@ -961,9 +956,8 @@ msgstr "Thème inconnu"
 msgid "Unpair"
 msgstr "Dissocier"
 
-#, fuzzy
 msgid "Unpair With Device?"
-msgstr "Unpair With Device?"
+msgstr "Dissocier l'appareil ?"
 
 msgid "Unpair with %@?"
 msgstr "Dissocier %@ ?"
@@ -982,9 +976,8 @@ msgstr "Version : %@ (%@)"
 msgid "Waiting for %lld other files to start transferring"
 msgstr "Waiting for %lld other files to start transferring"
 
-#, fuzzy
 msgid "Waiting for logs..."
-msgstr "Waiting for logs..."
+msgstr "En attente des journaux..."
 
 msgid "Waiting to send"
 msgstr "En attente d'envoi"
