@@ -4,15 +4,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-21 15:39+0200\n"
-"Last-Translator: Shinjo Park <peremen@gmail.com>\n"
-"Language-Team: Korean\n"
+"PO-Revision-Date: 2026-10-03 23:38+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #. Bundle display name
 #. Bundle name
@@ -25,86 +25,67 @@ msgid "Discover and connect to other devices using KDE Connect."
 msgstr "KDE Connect를 사용하여 다른 장치를 탐색하고 연결합니다."
 
 #. Privacy - Photo Library Additions Usage Description
-#, fuzzy
 msgid "Save received images to your Photo Library instead of the Files app."
-msgstr "Save received images to your Photo Library instead of the Files app."
+msgstr "받은 그림을 파일 앱 대신 포토 라이브러리에 추가합니다."
 
-#, fuzzy
 msgid "%@ and %lld other files"
-msgstr "%@ and %lld other files"
+msgstr "%@ 및 다른 파일 %lld개"
 
-#, fuzzy
 msgid "%@ for iOS"
-msgstr "%@ for iOS"
+msgstr "iOS용 %@"
 
-#, fuzzy
 msgid "**KDE Connect** for iOS"
-msgstr "**KDE Connect** for iOS"
+msgstr "iOS용 **KDE Connect**"
 
-#, fuzzy
 msgid "+"
 msgstr "+"
 
-#, fuzzy
 msgid "-"
 msgstr "-"
 
-#, fuzzy
 msgid "?"
 msgstr "?"
 
-#, fuzzy
 msgid "About"
-msgstr "About"
+msgstr "정보"
 
-#, fuzzy
 msgid "Actions"
-msgstr "Actions"
+msgstr "동작"
 
-#, fuzzy
 msgid ""
 "Add the local IP addresses of other devices here if they're having trouble "
 "appearing in the automatic discovery."
 msgstr ""
-"Add the local IP addresses of other devices here if they're having trouble "
-"appearing in the automatic discovery."
+"자동 발견에서 장치가 나타나지 않으면 다른 장치의 로컬 IP 주소를 추가할 수 있"
+"습니다."
 
-#, fuzzy
 msgid "Advanced"
-msgstr "Advanced"
+msgstr "고급"
 
-#, fuzzy
 msgid "Advanced Settings"
-msgstr "Advanced Settings"
+msgstr "고급 설정"
 
-#, fuzzy
 msgid "All Messages"
-msgstr "All Messages"
+msgstr "모든 메시지"
 
-#, fuzzy
 msgid "Also written by %@"
-msgstr "Also written by %@"
+msgstr "이외에도 %@이(가) 작성함"
 
 #. Please use 朱智语 in languages with these characters.
-#, fuzzy
 msgid "Apollo Zhu"
 msgstr "Apollo Zhu"
 
-#, fuzzy
 msgid "App Icon"
-msgstr "App Icon"
+msgstr "앱 아이콘"
 
-#, fuzzy
 msgid "App Icon:"
-msgstr "App Icon:"
+msgstr "앱 아이콘:"
 
-#, fuzzy
 msgid "App Theme:"
-msgstr "App Theme:"
+msgstr "앱 테마:"
 
-#, fuzzy
 msgid "Application"
-msgstr "Application"
+msgstr "앱"
 
 #, fuzzy
 msgid ""
@@ -116,109 +97,85 @@ msgstr ""
 "about our current and future plans to bring KDE Connect iOS into line with "
 "all other platforms."
 
-#, fuzzy
 msgid ""
 "Authorize Photos access using the Settings app to save received photos and "
 "videos to your photo library"
 msgstr ""
-"Authorize Photos access using the Settings app to save received photos and "
-"videos to your photo library"
+"사진 라이브러리 받은 사진과 동영상을 저장하려면 설정 앱에서 사진 접근을 허용"
+"해야 합니다"
 
-#, fuzzy
 msgid "Available themes"
-msgstr "Available themes"
+msgstr "사용 가능한 테마"
 
-#, fuzzy
 msgid "Background Activity"
-msgstr "Background Activity"
+msgstr "백그라운드 활동"
 
-#, fuzzy
 msgid "Battery Level"
-msgstr "Battery Level"
+msgstr "배터리 잔량"
 
-#, fuzzy
 msgid "Battery Plugin Disabled"
-msgstr "Battery Plugin Disabled"
+msgstr "배터리 플러그인 비활성화됨"
 
-#, fuzzy
 msgid "Battery Status"
-msgstr "Battery Status"
+msgstr "배터리 상태"
 
-#, fuzzy
 msgid "Can't find your devices here?"
-msgstr "Can't find your devices here?"
+msgstr "장치를 찾을 수 없나요?"
 
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "취소"
 
-#, fuzzy
 msgid "Category: %@"
-msgstr "Category: %@"
+msgstr "분류: %@"
 
-#, fuzzy
 msgid "Check out the merge requests"
-msgstr "Check out the merge requests"
+msgstr "병합 요청 확인하기"
 
-#, fuzzy
 msgid "Choose App Icon"
-msgstr "Choose App Icon"
+msgstr "앱 아이콘 선택"
 
 #, fuzzy
 msgid "Chores"
 msgstr "Chores"
 
-#, fuzzy
 msgid "Classic"
-msgstr "Classic"
+msgstr "고전"
 
-#, fuzzy
 msgid "Clear Cache"
-msgstr "Clear Cache"
+msgstr "캐시 지우기"
 
-#, fuzzy
 msgid "Clipboard Sync"
-msgstr "Clipboard Sync"
+msgstr "클립보드 동기화"
 
-#, fuzzy
 msgid "Clipboard: Push & Receive Text"
-msgstr "Clipboard: Push & Receive Text"
+msgstr "클립보드: 텍스트 보내고 받기"
 
-#, fuzzy
 msgid "Clipboard: Sync"
-msgstr "Clipboard: Sync"
+msgstr "클립보드: 동기화"
 
-#, fuzzy
 msgid "Configure Devices By IP"
-msgstr "Configure Devices By IP"
+msgstr "IP로 장치 설정"
 
-#, fuzzy
 msgid "Configure Devices by IP:"
-msgstr "Configure Devices by IP:"
+msgstr "IP로 장치 설정:"
 
-#, fuzzy
 msgid "Connect"
-msgstr "Connect"
+msgstr "연결"
 
-#, fuzzy
 msgid "Connected Devices"
-msgstr "Connected Devices"
+msgstr "연결된 장치"
 
-#, fuzzy
 msgid "Connectivity Report"
-msgstr "Connectivity Report"
+msgstr "연결 상태 보고"
 
-#, fuzzy
 msgid "Contacts"
-msgstr "Contacts"
+msgstr "연락처"
 
-#, fuzzy
 msgid "Contribute to KDE Connect"
-msgstr "Contribute to KDE Connect"
+msgstr "KDE Connect에 기여하기"
 
-#, fuzzy
 msgid "Contributors"
-msgstr "Contributors"
+msgstr "기여자"
 
 #, fuzzy
 msgid "Copy path to the folder containing received files"
@@ -240,13 +197,11 @@ msgstr "Cursor Sensitivity"
 msgid "DANGEROUS OPTIONS"
 msgstr "DANGEROUS OPTIONS"
 
-#, fuzzy
 msgid "Dark"
-msgstr "Dark"
+msgstr "어두움"
 
-#, fuzzy
 msgid "Debug"
-msgstr "Debug"
+msgstr "디버그"
 
 #, fuzzy
 msgid "Debug mode"
@@ -256,9 +211,8 @@ msgstr "Debug mode"
 msgid "Debugging device discovery"
 msgstr "Debugging device discovery"
 
-#, fuzzy
 msgid "Default"
-msgstr "Default"
+msgstr "기본값"
 
 #, fuzzy
 msgid ""
@@ -284,13 +238,11 @@ msgstr ""
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 
-#, fuzzy
 msgid "Developer"
-msgstr "Developer"
+msgstr "개발자"
 
-#, fuzzy
 msgid "Device"
-msgstr "Device"
+msgstr "장치"
 
 #, fuzzy
 msgid "Device Discovery"
@@ -300,29 +252,24 @@ msgstr "Device Discovery"
 msgid "Device IP"
 msgstr "Device IP"
 
-#, fuzzy
 msgid "Device Name"
-msgstr "Device Name"
+msgstr "장치 이름"
 
-#, fuzzy
 msgid "Device Name:"
-msgstr "Device Name:"
+msgstr "장치 이름:"
 
 #, fuzzy
 msgid "Device Offline"
 msgstr "Device Offline"
 
-#, fuzzy
 msgid "Device Status"
-msgstr "Device Status"
+msgstr "장치 상태"
 
-#, fuzzy
 msgid "Device name"
-msgstr "Device name"
+msgstr "장치 이름"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Devices"
+msgstr "장치"
 
 #, fuzzy
 msgid "Direct Handshake Devices"
@@ -344,13 +291,11 @@ msgstr "Discovery & Pairing"
 msgid "Do Not Pair"
 msgstr "Do Not Pair"
 
-#, fuzzy
 msgid "Donate"
-msgstr "Donate"
+msgstr "기부하기"
 
-#, fuzzy
 msgid "Done"
-msgstr "Done"
+msgstr "완료"
 
 #, fuzzy
 msgid "Double tap to activate debug mode"
@@ -364,17 +309,15 @@ msgstr "Double tap to activate debugging device discovery"
 msgid "Enable/Disable Plugins"
 msgstr "Enable/Disable Plugins"
 
-#, fuzzy
 msgid "Encryption Info"
-msgstr "Encryption Info"
+msgstr "암호화 정보"
 
 #, fuzzy
 msgid "Erase saved devices cache"
 msgstr "Erase saved devices cache"
 
-#, fuzzy
 msgid "Error"
-msgstr "Error"
+msgstr "오류"
 
 #, fuzzy
 msgid "Error Occured"
@@ -384,9 +327,8 @@ msgstr "Error Occured"
 msgid "Errors and Faults"
 msgstr "Errors and Faults"
 
-#, fuzzy
 msgid "Exit Presentation"
-msgstr "Exit Presentation"
+msgstr "프레젠테이션 끝내기"
 
 #, fuzzy
 msgid "Experimental functionalities"
@@ -416,21 +358,17 @@ msgstr "Failed to send to %@"
 msgid "Fault"
 msgstr "Fault"
 
-#, fuzzy
 msgid "Features"
-msgstr "Features"
+msgstr "기능"
 
-#, fuzzy
 msgid "File Transfers"
-msgstr "File Transfers"
+msgstr "파일 전송"
 
-#, fuzzy
 msgid "Files"
-msgstr "Files"
+msgstr "파일"
 
-#, fuzzy
 msgid "Find My Device"
-msgstr "Find My Device"
+msgstr "내 장치 찾기"
 
 #, fuzzy
 msgid "Find My Phone Mode"
@@ -440,17 +378,15 @@ msgstr "Find My Phone Mode"
 msgid "Find My Phone initiated from a remote device"
 msgstr "Find My Phone initiated from a remote device"
 
-#, fuzzy
 msgid "Forget all"
-msgstr "Forget all"
+msgstr "모두 잊기"
 
 #, fuzzy
 msgid "From %@"
 msgstr "From %@"
 
-#, fuzzy
 msgid "General"
-msgstr "General"
+msgstr "일반"
 
 #, fuzzy
 msgid "Go FullScreen"
@@ -461,21 +397,17 @@ msgid "Haptics Style"
 msgstr "Haptics Style"
 
 #. Hard haptic feedback level
-#, fuzzy
 msgid "Heavy"
-msgstr "Heavy"
+msgstr "두꺼움"
 
-#, fuzzy
 msgid "Help"
-msgstr "Help"
+msgstr "도움말"
 
-#, fuzzy
 msgid "Hide Haptics Style Selector"
-msgstr "Hide Haptics Style Selector"
+msgstr "햅틱 스타일 선택기 숨기기"
 
-#, fuzzy
 msgid "Hide Sensitivity Slider"
-msgstr "Hide Sensitivity Slider"
+msgstr "민감도 슬라이더 숨기기"
 
 #, fuzzy
 msgid "I FOUND IT!"
@@ -531,21 +463,17 @@ msgstr ""
 "erasing all saved devices data might fix it. Requires the app to be fully "
 "restarted."
 
-#, fuzzy
 msgid "In progress"
-msgstr "In progress"
+msgstr "진행 중"
 
-#, fuzzy
 msgid "Incoming Pairing Request"
-msgstr "Incoming Pairing Request"
+msgstr "들어오는 페어링 요청"
 
-#, fuzzy
 msgid "Info"
-msgstr "Info"
+msgstr "정보"
 
-#, fuzzy
 msgid "Information"
-msgstr "Information"
+msgstr "정보"
 
 #, fuzzy
 msgid "Initiate Pairing?"
@@ -563,38 +491,30 @@ msgstr "Integration with the system share sheet is in development"
 msgid "Internationalization & Localization"
 msgstr "Internationalization & Localization"
 
-#, fuzzy
 msgid "Invalid"
-msgstr "Invalid"
+msgstr "잘못됨"
 
-#, fuzzy
 msgid "Keyboard: Control Remote"
-msgstr "Keyboard: Control Remote"
+msgstr "키보드: 원격 제어"
 
-#, fuzzy
 msgid "License"
-msgstr "License"
+msgstr "라이선스"
 
 #. Light haptic feedback level
-#, fuzzy
 msgid "Light"
-msgstr "Light"
+msgstr "밝음"
 
-#, fuzzy
 msgid "Lock Screen: Control Remote"
-msgstr "Lock Screen: Control Remote"
+msgstr "잠금 화면: 원격 제어"
 
-#, fuzzy
 msgid "Logs"
-msgstr "Logs"
+msgstr "로그"
 
-#, fuzzy
 msgid "Logs for %@"
-msgstr "Logs for %@"
+msgstr "%@의 로그"
 
-#, fuzzy
 msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: 원격 미디어 제어 및 응답"
 
 #, fuzzy
 msgid "Manage received files in the Files app"
@@ -613,9 +533,8 @@ msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Maybe with Apple Notification Center Service (ACNS)"
 
 #. Medium haptic feedback level
-#, fuzzy
 msgid "Medium"
-msgstr "Medium"
+msgstr "중간"
 
 #, fuzzy
 msgid "Mouse: Control Remote"
@@ -679,13 +598,11 @@ msgstr "No matching logs yet"
 msgid "No, Stay Paired"
 msgstr "No, Stay Paired"
 
-#, fuzzy
 msgid "Not yet implemented"
-msgstr "Not yet implemented"
+msgstr "구현되지 않음"
 
-#, fuzzy
 msgid "Notice"
-msgstr "Notice"
+msgstr "공지"
 
 #, fuzzy
 msgid "Notification: Receive from Others"
@@ -695,46 +612,39 @@ msgstr "Notification: Receive from Others"
 msgid "Notification: Retrieve by Others"
 msgstr "Notification: Retrieve by Others"
 
-#, fuzzy
 msgid "OK"
-msgstr "OK"
+msgstr "확인"
 
 #, fuzzy
 msgid "On-Click Haptic Style"
 msgstr "On-Click Haptic Style"
 
 #. Unknown haptic feedback level
-#, fuzzy
 msgid "Other"
-msgstr "Other"
+msgstr "기타"
 
 #, fuzzy
 msgid "Out-App Notification:"
 msgstr "Out-App Notification:"
 
-#, fuzzy
 msgid "Packet Body"
-msgstr "Packet Body"
+msgstr "패킷 본문"
 
-#, fuzzy
 msgid "Packet Tag"
-msgstr "Packet Tag"
+msgstr "패킷 태그"
 
-#, fuzzy
 msgid "Packet Type"
-msgstr "Packet Type"
+msgstr "패킷 형식"
 
-#, fuzzy
 msgid "Pair"
-msgstr "Pair"
+msgstr "페어링"
 
-#, fuzzy
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"Pair request from '%@'\n"
-"Verification key: %@"
+"'%@'에서의 페어링 요청\n"
+"확인 키: %@"
 
 #, fuzzy
 msgid "Pairing Complete"
@@ -756,41 +666,34 @@ msgstr "Pairing with '%@' failed"
 msgid "Pairing with '%@' succeeded"
 msgstr "Pairing with '%@' succeeded"
 
-#, fuzzy
 msgid "Peer"
-msgstr "Peer"
+msgstr "피어"
 
-#, fuzzy
 msgid "Ping"
-msgstr "Ping"
+msgstr "핑"
 
 #, fuzzy
 msgid "Ping received from a connected device."
 msgstr "Ping received from a connected device."
 
-#, fuzzy
 msgid "Ping!"
-msgstr "Ping!"
+msgstr "핑!"
 
-#, fuzzy
 msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
+msgstr "Plasma 큰 화면"
 
-#, fuzzy
 msgid "Playground"
-msgstr "Playground"
+msgstr "놀이터"
 
-#, fuzzy
 msgid "Plugin Settings"
-msgstr "Plugin Settings"
+msgstr "플러그인 설정"
 
 #, fuzzy
 msgid "Plugins If Reachable"
 msgstr "Plugins If Reachable"
 
-#, fuzzy
 msgid "Pointer Sensitivity"
-msgstr "Pointer Sensitivity"
+msgstr "포인터 감도"
 
 #, fuzzy
 msgid "Preparing Media…"
@@ -800,9 +703,8 @@ msgstr "Preparing Media…"
 msgid "Presenter: Control Remote"
 msgstr "Presenter: Control Remote"
 
-#, fuzzy
 msgid "Preview: "
-msgstr "Preview: "
+msgstr "미리 보기: "
 
 #, fuzzy
 msgid "Previously connected devices will appear here."
@@ -812,9 +714,8 @@ msgstr "Previously connected devices will appear here."
 msgid "Push Local Clipboard"
 msgstr "Push Local Clipboard"
 
-#, fuzzy
 msgid "Reason: %@"
-msgstr "Reason: %@"
+msgstr "이유: %@"
 
 #, fuzzy
 msgid ""
@@ -824,9 +725,8 @@ msgstr ""
 "Received photos and videos will be saved to the Files app because you can't "
 "grant us access to your photo library."
 
-#, fuzzy
 msgid "Receiving"
-msgstr "Receiving"
+msgstr "수신"
 
 #, fuzzy
 msgid "Receiving file %lld of %lld"
@@ -836,17 +736,14 @@ msgstr "Receiving file %lld of %lld"
 msgid "Refresh Discovery"
 msgstr "Refresh Discovery"
 
-#, fuzzy
 msgid "Remembered Devices"
-msgstr "Remembered Devices"
+msgstr "기억하는 장치"
 
-#, fuzzy
 msgid "Remote Input"
-msgstr "Remote Input"
+msgstr "원격 입력"
 
-#, fuzzy
 msgid "Report Bug"
-msgstr "Report Bug"
+msgstr "버그 보고"
 
 #, fuzzy
 msgid "Request to pair with '%@'"
@@ -861,21 +758,18 @@ msgstr "Restart Discovery"
 msgid "Rigid"
 msgstr "Rigid"
 
-#, fuzzy
 msgid "Ring Device"
-msgstr "Ring Device"
+msgstr "장치 울리기"
 
 #, fuzzy
 msgid "Ring/Find My Phone"
 msgstr "Ring/Find My Phone"
 
-#, fuzzy
 msgid "Rounded Rectangle"
-msgstr "Rounded Rectangle"
+msgstr "둥근 사각형"
 
-#, fuzzy
 msgid "Run Command"
-msgstr "Run Command"
+msgstr "명령 실행"
 
 #, fuzzy
 msgid "Run Command: Request"
@@ -919,53 +813,46 @@ msgstr "Screensaver: Inhibit Remote"
 msgid "Select a device from the Devices list to start."
 msgstr "Select a device from the Devices list to start."
 
-#, fuzzy
 msgid "Send"
-msgstr "Send"
+msgstr "보내기"
 
 #, fuzzy
 msgid "Send Double Left Click"
 msgstr "Send Double Left Click"
 
-#, fuzzy
 msgid "Send Files"
-msgstr "Send Files"
+msgstr "파일 보내기"
 
 #, fuzzy
 msgid "Send Left Hold"
 msgstr "Send Left Hold"
 
-#, fuzzy
 msgid "Send Middle Click"
-msgstr "Send Middle Click"
+msgstr "가운데 단추 클릭 신호 보내기"
 
 #, fuzzy
 msgid "Send Photos and Videos"
 msgstr "Send Photos and Videos"
 
-#, fuzzy
 msgid "Send Ping"
-msgstr "Send Ping"
+msgstr "핑 보내기"
 
-#, fuzzy
 msgid "Send Right Click"
-msgstr "Send Right Click"
+msgstr "오른쪽 단추 클릭 신호 보내기"
 
 #, fuzzy
 msgid "Send Single Left Click"
 msgstr "Send Single Left Click"
 
-#, fuzzy
 msgid "Sending"
-msgstr "Sending"
+msgstr "발신"
 
 #, fuzzy
 msgid "Sending file %lld of %lld"
 msgstr "Sending file %lld of %lld"
 
-#, fuzzy
 msgid "Settings"
-msgstr "Settings"
+msgstr "설정"
 
 #, fuzzy
 msgid "Share/File Transfer"
@@ -995,30 +882,25 @@ msgstr "Show Received Files in Finder"
 msgid "Show Sensitivity Slider"
 msgstr "Show Sensitivity Slider"
 
-#, fuzzy
 msgid "Slideshow Remote"
-msgstr "Slideshow Remote"
+msgstr "슬라이드 쇼 리모콘"
 
 #. Soft haptic feedback level
-#, fuzzy
 msgid "Soft"
-msgstr "Soft"
+msgstr "부드러움"
 
-#, fuzzy
 msgid "Source Code"
-msgstr "Source Code"
+msgstr "소스 코드"
 
-#, fuzzy
 msgid "Status"
-msgstr "Status"
+msgstr "상태"
 
 #, fuzzy
 msgid "Supported"
 msgstr "Supported"
 
-#, fuzzy
 msgid "System Default"
-msgstr "System Default"
+msgstr "시스템 기본값"
 
 #, fuzzy
 msgid "System Volume: Control Remote & Respond"
@@ -1060,9 +942,8 @@ msgstr ""
 msgid "These should work with little to no issues"
 msgstr "These should work with little to no issues"
 
-#, fuzzy
 msgid "Third-Party Libraries"
-msgstr "Third-Party Libraries"
+msgstr "제3자 라이브러리"
 
 #, fuzzy
 msgid "This is likely not possible to implement on iOS"
@@ -1084,69 +965,54 @@ msgstr ""
 "To connect to remembered devices, make sure they are connected to the same "
 "network as this device."
 
-#, fuzzy
 msgid "Toggle Keyboard"
-msgstr "Toggle Keyboard"
+msgstr "키보드 전환"
 
-#, fuzzy
 msgid "Troubleshooting"
-msgstr "Troubleshooting"
+msgstr "문제 해결"
 
-#, fuzzy
 msgid "Trusted Networks"
-msgstr "Trusted Networks"
+msgstr "신뢰할 수 있는 네트워크"
 
-#, fuzzy
 msgid "Unknown Theme"
-msgstr "Unknown Theme"
+msgstr "알 수 없는 테마"
 
-#, fuzzy
 msgid "Unpair"
-msgstr "Unpair"
+msgstr "페어링 해제"
 
-#, fuzzy
 msgid "Unpair With Device?"
-msgstr "Unpair With Device?"
+msgstr "장치와 페어링을 해제하시겠습니까?"
 
-#, fuzzy
 msgid "Unpair with %@?"
-msgstr "Unpair with %@?"
+msgstr "%@와(과) 페어링을 해제하시겠습니까?"
 
-#, fuzzy
 msgid "Valid"
-msgstr "Valid"
+msgstr "유효함"
 
-#, fuzzy
 msgid "Verification key: %@"
-msgstr "Verification key: %@"
+msgstr "확인 키: %@"
 
-#, fuzzy
 msgid "Version: %@ (%@)"
-msgstr "Version: %@ (%@)"
+msgstr "버전: %@ (%@)"
 
 #, fuzzy
 msgid "Waiting for %lld other files to start transferring"
 msgstr "Waiting for %lld other files to start transferring"
 
-#, fuzzy
 msgid "Waiting for logs..."
-msgstr "Waiting for logs..."
+msgstr "로그 대기 중..."
 
-#, fuzzy
 msgid "Waiting to send"
-msgstr "Waiting to send"
+msgstr "전송 대기 중"
 
-#, fuzzy
 msgid "Website"
-msgstr "Website"
+msgstr "웹사이트"
 
-#, fuzzy
 msgid "Wiki & User Manual"
-msgstr "Wiki & User Manual"
+msgstr "위키와 사용자 설명서"
 
-#, fuzzy
 msgid "Yes, Unpair"
-msgstr "Yes, Unpair"
+msgstr "예, 페어링을 해제합니다"
 
 #, fuzzy
 msgid ""
@@ -1157,10 +1023,8 @@ msgstr ""
 "specific settings that can be found in their respective Views."
 
 #. Filename to use for an unnamed file
-#, fuzzy
 msgid "untitled"
-msgstr "untitled"
+msgstr "제목 없음"
 
-#, fuzzy
 msgid "© KDE Community & contributors"
 msgstr "© KDE Community & contributors"
