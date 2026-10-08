@@ -257,10 +257,16 @@
             [_pendingNPs removeAllObjects];
         }
 
-        for (BaseLink *link in [self.connectedLinks allValues]) {
+        // connectedLinks is also mutated from the socket queues (e.g. onLinkDestroyed when a
+        // socket disconnects), so take a snapshot that keeps the links alive while we disconnect them.
+        NSArray<BaseLink *> *links;
+        @synchronized (self.connectedLinks) {
+            links = [self.connectedLinks allValues];
+            [self.connectedLinks removeAllObjects];
+        }
+        for (BaseLink *link in links) {
             [link disconnect];
         }
-        [self.connectedLinks removeAllObjects];
 
         _udpSocket = nil;
         _tcpSocket = nil;
@@ -293,8 +299,11 @@
 - (void) onLinkDestroyed:(BaseLink*)link
 {
     os_log_with_type(logger, self.debugLogLevel, "lp on linkdestroyed");
-    if (link == self.connectedLinks[[link _deviceInfo].id]) {
-        [self.connectedLinks removeObjectForKey:[link _deviceInfo].id];
+    NSString *deviceId = [link _deviceInfo].id;
+    @synchronized (self.connectedLinks) {
+        if (link == self.connectedLinks[deviceId]) {
+            [self.connectedLinks removeObjectForKey:deviceId];
+        }
     }
 }
 
@@ -442,7 +451,10 @@
     NetworkPacket* np=[_pendingNPs objectAtIndex:index];
 #if !TARGET_OS_OSX
     NSString* deviceId=[np objectForKey:@"deviceId"];
-    BaseLink *link = self.connectedLinks[deviceId];
+    BaseLink *link;
+    @synchronized (self.connectedLinks) {
+        link = self.connectedLinks[deviceId];
+    }
     
     if (link) {
         // Last timing to enableBackgroundingOnSocket before stream opens
@@ -638,16 +650,23 @@
     DeviceInfo* deviceInfo = [DeviceInfo fromNetworkPacket:np cert:cert];
 
     // if existing LanLink exists, DON'T create a new one
-    LanLink *link = (LanLink *)self.connectedLinks[deviceId];
-    if (link) {
+    LanLink *link;
+    BOOL isNewLink = NO;
+    @synchronized (self.connectedLinks) {
+        link = (LanLink *)self.connectedLinks[deviceId];
+        if (!link) {
+            link = [[LanLink alloc] init:sock deviceInfo:deviceInfo];
+            self.connectedLinks[deviceId] = link;
+            isNewLink = YES;
+        }
+    }
+    if (!isNewLink) {
         [link setSocket:sock];
         // reuse existing link once socket secures
         [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:deviceInfo];
         return;
     } else {
-        // create LanLink and inform the background
-        link = [[LanLink alloc] init:sock deviceInfo:deviceInfo];
-        self.connectedLinks[deviceId] = link;
+        // inform the background about the new LanLink
         if ([self _linkProviderDelegate]) {
             [[self _linkProviderDelegate] onConnectionReceived:link];
         }
