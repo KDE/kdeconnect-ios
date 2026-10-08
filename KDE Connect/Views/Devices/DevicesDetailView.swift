@@ -35,29 +35,29 @@ struct DevicesDetailView: View {
     }
     
     var body: some View {
-        if isStillConnected {
+        if isStillConnected, let device = backgroundService._devices[detailsDeviceId] {
             VStack {
-                deviceActionsList
+                deviceActionsList(device: device)
                 
                 NavigationLink(destination: DeviceDetailPluginSettingsView(detailsDeviceId: self.detailsDeviceId), isActive: $showingPluginSettingsView) {
                     EmptyView()
                 }
             }
-            .navigationTitle(backgroundService._devices[detailsDeviceId]!._deviceInfo.name)
+            .navigationTitle(device._deviceInfo.name)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.ping] as! Bool) {
+                        if device._pluginsEnableStatus[.ping] as? Bool == true {
                             Button {
-                                (backgroundService._devices[detailsDeviceId]!._plugins[.ping] as! Ping).sendPing()
+                                (device._plugins[.ping] as? Ping)?.sendPing()
                             } label: {
                                 Label("Send Ping", systemImage: "megaphone")
                             }
                         }
                         
-                        if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] as! Bool) {
+                        if device._pluginsEnableStatus[.findMyPhoneRequest] as? Bool == true {
                             Button {
-                                (backgroundService._devices[detailsDeviceId]!._plugins[.findMyPhoneRequest] as! FindMyPhone).sendFindMyPhoneRequest()
+                                (device._plugins[.findMyPhoneRequest] as? FindMyPhone)?.sendFindMyPhoneRequest()
                             } label: {
                                 Label("Ring Device", systemImage: "bell")
                             }
@@ -78,8 +78,9 @@ struct DevicesDetailView: View {
                         }
                         
                         Button {
+                            let deviceName = device._deviceInfo.name
                             alertManager.queueAlert(prioritize: true, title: "Unpair With Device?") {
-                                Text("Unpair with \(backgroundService._devices[detailsDeviceId]!._deviceInfo.name)?")
+                                Text("Unpair with \(deviceName)?")
                             } buttons: {
                                 Button("No, Stay Paired", role: .cancel) {}
                                 Button("Yes, Unpair", role: .destructive) {
@@ -101,7 +102,7 @@ struct DevicesDetailView: View {
                         logger.info("Media Picker picked nothing")
                     } else {
                         DispatchQueue.main.async {
-                            (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share)
+                            (device._plugins[.share] as? Share)?
                                 .prepAndInitFileSend(fileURLs: chosenMediaURLs)
                         }
                     }
@@ -122,15 +123,14 @@ struct DevicesDetailView: View {
                     if chosenFileURLs.isEmpty {
                         logger.info("Document Picker picked nothing")
                     } else {
-                        (backgroundService._devices[detailsDeviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
+                        (device._plugins[.share] as? Share)?.prepAndInitFileSend(fileURLs: chosenFileURLs)
                     }
                 case .failure(let error):
                     logger.error("Document Picker Error: \(error.localizedDescription, privacy: .public)")
                 }
             }
             .onAppear {
-                if let device = backgroundService._devices[detailsDeviceId],
-                   device._pluginsEnableStatus[.runCommand] as? Bool == true,
+                if device._pluginsEnableStatus[.runCommand] as? Bool == true,
                    let runCommand = device._plugins[.runCommand] as? RunCommand {
                     runCommand.requestCommandList()
                 }
@@ -147,19 +147,19 @@ struct DevicesDetailView: View {
         }
     }
     
-    var deviceActionsList: some View {
+    func deviceActionsList(device: Device) -> some View {
         List {
             Section(header: Text("Actions")) {
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.clipboard] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.clipboard] as! Bool) {
+                if device._pluginsEnableStatus[.clipboard] as? Bool == true {
                     Button {
-                        (backgroundService._devices[detailsDeviceId]!._plugins[.clipboard] as! Clipboard).sendClipboardContentOut()
+                        (device._plugins[.clipboard] as? Clipboard)?.sendClipboardContentOut()
                     } label: {
                         Label("Push Local Clipboard", systemImage: "arrow.up.doc.on.clipboard")
                     }
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.share] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.share] as! Bool) {
+                if device._pluginsEnableStatus[.share] as? Bool == true {
                     Button {
                         showingPhotosPicker = true
                     } label: {
@@ -175,22 +175,22 @@ struct DevicesDetailView: View {
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.presenter] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.presenter] as! Bool) {
+                if device._pluginsEnableStatus[.presenter] as? Bool == true {
                     NavigationLink(destination: PresenterView(detailsDeviceId: detailsDeviceId)) {
                         Label("Slideshow Remote", systemImage: "slider.horizontal.below.rectangle")
                     }
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool),
-                   let runCommandPlugin = backgroundService._devices[detailsDeviceId]!._plugins[.runCommand] as? RunCommand {
+                if device._pluginsEnableStatus[.runCommand] as? Bool == true,
+                   let runCommandPlugin = device._plugins[.runCommand] as? RunCommand {
                     NavigationLink(destination: RunCommandView(runCommandPlugin: runCommandPlugin)) {
                         Label("Run Command", systemImage: "terminal")
                     }
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.mousePadRequest] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.mousePadRequest] as! Bool) {
+                if device._pluginsEnableStatus[.mousePadRequest] as? Bool == true {
                     NavigationLink(destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId)) {
                         Label("Remote Input", systemImage: "hand.tap")
                     }
@@ -199,7 +199,7 @@ struct DevicesDetailView: View {
             }
             
             Section(header: Text("Device Status")) {
-                BatteryStatus(device: backgroundService._devices[detailsDeviceId]!) { battery in
+                BatteryStatus(device: device) { battery in
                     HStack {
                         Label {
                             Text("Battery Level")
@@ -213,8 +213,7 @@ struct DevicesDetailView: View {
                 }
             }
             
-            if let device = backgroundService._devices[detailsDeviceId],
-               device._pluginsEnableStatus[.share] as? Bool == true,
+            if device._pluginsEnableStatus[.share] as? Bool == true,
                let share = device._plugins[.share] as? Share {
                 FileTransferStatusSection(share: share)
             }
