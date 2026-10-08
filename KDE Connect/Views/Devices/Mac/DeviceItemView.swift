@@ -92,7 +92,7 @@ struct DeviceItemView: View {
                             .font(.system(.footnote, design: .rounded).weight(.light))
                             .foregroundColor(.black)
                     }.onAppear {
-                        (backgroundService._devices[self.deviceId]!._plugins[.batteryRequest] as! Battery)
+                        (backgroundService._devices[self.deviceId]?._plugins[.batteryRequest] as? Battery)?
                             .sendBatteryStatusOut()
                     }
                 } else if self.mockBatteryLevel != nil {

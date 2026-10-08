@@ -129,9 +129,10 @@ struct DevicesDetailView: View {
                 }
             }
             .onAppear {
-                // TODO: use if let as
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool) {
-                    (backgroundService._devices[detailsDeviceId]!._plugins[.runCommand] as! RunCommand).requestCommandList()
+                if let device = backgroundService._devices[detailsDeviceId],
+                   device._pluginsEnableStatus[.runCommand] as? Bool == true,
+                   let runCommand = device._plugins[.runCommand] as? RunCommand {
+                    runCommand.requestCommandList()
                 }
             }
         } else {
