@@ -213,8 +213,9 @@ struct DevicesDetailView: View {
             }
             
             if let device = backgroundService._devices[detailsDeviceId],
-               device._pluginsEnableStatus[.share] as? Bool == true {
-                FileTransferStatusSection(share: device._plugins[.share] as! Share)
+               device._pluginsEnableStatus[.share] as? Bool == true,
+               let share = device._plugins[.share] as? Share {
+                FileTransferStatusSection(share: share)
             }
         }
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???

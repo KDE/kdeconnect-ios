@@ -160,9 +160,10 @@ struct ObservingForEachShare<Content: View>: View {
     var body: some View {
         ForEach(deviceIDs, id: \.self) { deviceID in
             if let device = backgroundService._devices[deviceID],
-               device._pluginsEnableStatus[.share] as? Bool == true {
+               device._pluginsEnableStatus[.share] as? Bool == true,
+               let share = device._plugins[.share] as? Share {
                 Observing(deviceID: deviceID,
-                          share: device._plugins[.share] as! Share,
+                          share: share,
                           content: content)
             }
         }
