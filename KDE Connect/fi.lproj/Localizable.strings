@@ -1,0 +1,276 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** iOSille";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ ja %lld muuta tiedostoa";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ iOSille";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© KDE-yhteisö ja avustajat";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "Tietoa";
+
+/* No comment provided by engineer. */
+"Actions" = "Toiminnot";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "Lisää muiden laitteiden paikalliset IP-osoitteet tähän, jos niitä on vaikea saada näkymään automaattihaussa.";
+
+/* No comment provided by engineer. */
+"Advanced" = "Lisäasetukset";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Lisäasetukset";
+
+/* No comment provided by engineer. */
+"All Messages" = "Kaikki viestit";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "Kirjoittanut myös %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "Sovelluskuvake";
+
+/* No comment provided by engineer. */
+"App Icon:" = "Sovelluskuvake:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "Sovelluksen teema:";
+
+/* No comment provided by engineer. */
+"Application" = "Sovellus";
+
+/* No comment provided by engineer. */
+"Contacts" = "Yhteystiedot";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "Avusta KDE Connectia";
+
+/* No comment provided by engineer. */
+"Contributors" = "Avustajat";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "VAARALLISET VALINNAT";
+
+/* No comment provided by engineer. */
+"Dark" = "Tumma";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "Älä parita";
+
+/* No comment provided by engineer. */
+"Donate" = "Lahjoita";
+
+/* No comment provided by engineer. */
+"Done" = "Valmis";
+
+/* No comment provided by engineer. */
+"Features" = "Ominaisuuksia";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Tiedostosiirrot";
+
+/* No comment provided by engineer. */
+"Files" = "Tiedostot";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Etsi laite";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Preview: " = "Esikatselu: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Tähän ilmestyvät aiemmin kytketyt laitteet.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Lähetä paikallinen leikepöytä";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Syy: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Vastaanotetut kuvat ja videot tallennetaan Files-sovellukseen, koska et antanut käyttöoikeutta kuvakirjastoon.";
+
+/* No comment provided by engineer. */
+"Receiving" = "Vastaanotetaan";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "Vastaanotetaan tiedostoa %lld/%lld";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Muistetut laitteet";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Etäsyöte";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Ilmoita viasta";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "Pyydä paritusta laitteen ”%@” kanssa";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Soita laitteelle";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Soita ja etsi puhelin";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Pyöristetty nelikulmio";
+
+/* No comment provided by engineer. */
+"Run Command" = "Suorita komento";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "Suorita komento: pyyntö";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "Suorita komento: vastaa";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Tallenna kuvat kuvakirjastoon";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Tallenna videot kuvakirjastoon";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Aloita valitsemalla laite luettelosta.";
+
+/* No comment provided by engineer. */
+"Send" = "Lähetä";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Lähetä vasemman painikkeen napsautus";
+
+/* No comment provided by engineer. */
+"Send Files" = "Lähetä tiedostoja";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Lähetä keskipainikkeen napsautus";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Lähetä kuvia ja videoita";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Lähetä ping";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Lähetä oikean painikkeen napsautus";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Lähetä vasemman painikkeen napsautus";
+
+/* No comment provided by engineer. */
+"Sending" = "Lähetetään";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "Lähetetään tiedostoa %lld/%lld";
+
+/* No comment provided by engineer. */
+"Settings" = "Asetukset";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: käytä etätiedostopalvelinta";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "Laitevarmenteen SHA256-sormenjälki on:\n%@\n\nEtälaitevarmenteen SHA256-sormenjälki on:\n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Jako: vastaanota tiedosto, teksti ja verkko-osoite";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Jako: lähetä tiedosto";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Jako: lähetä teksti ja verkko-osoite";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "Jako/tiedostonsiirto";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Näytä vastaanotetut tiedostot Finderissa";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "Etädiaesitys";
+
+/* Soft haptic feedback level */
+"Soft" = "Pehmeä";
+
+/* No comment provided by engineer. */
+"Source Code" = "Lähdekoodi";
+
+/* No comment provided by engineer. */
+"Status" = "Tila";
+
+/* No comment provided by engineer. */
+"Supported" = "Tuettu";
+
+/* No comment provided by engineer. */
+"System Default" = "Järjestelmän oletus";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "Järjestelmän äänenvoimakkuus: säädä etänä ja reagoi";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "Ota kuva: reagoi";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Aloita parittaminen napauttamalla";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "Puhelut: tekstiviesti/puhelutahdistus";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "Laitteen nimi siten kuin KDE Connect sen tunnistaa";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "Yllä olevia asetuksia ei voi kumota, ja ne vaativat sovelluksen uudelleenkäynnistyksen tullakseen voimaan.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "Nämä pitäisi käsitellä automaattisesti, mutta jollei näin tapahdu, voit tehdä ne itse.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "Näiden tulisi toimia lähes ongelmitta";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Kolmannen osapuolen kirjastot";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "Tätä ei luultavasti ole mahdollista toteuttaa iOSiin";
+
+/* Filename to use for an unnamed file */
+"untitled" = "nimetön";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "Odotetaan lokeja…";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "Odotetaan lähetystä";
+
+/* No comment provided by engineer. */
+"Website" = "Sivusto";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wiki ja käyttöopas";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Kyllä, pura paritus";
+

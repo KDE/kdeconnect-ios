@@ -5,13 +5,16 @@
 "?" = "?";
 
 /* No comment provided by engineer. */
-"**KDE Connect** for iOS" = "iOS için **KDE Bağlan**";
+"**KDE Connect** for iOS" = "iOS için **KDE Connect**";
 
 /* No comment provided by engineer. */
 "%@ and %lld other files" = "%@ ve %lld başka dosya";
 
 /* No comment provided by engineer. */
 "%@ for iOS" = "iOS için %@";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© KDE topluluğu ve katkıcılar";
 
 /* No comment provided by engineer. */
 "+" = "+";
@@ -53,7 +56,7 @@
 "Application" = "Uygulama";
 
 /* No comment provided by engineer. */
-"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Açık kaynaklı bir proje olarak, iOS için KDE Bağlan’ı diğer platformlar ile aynı düzeye getirmek için olan şu anki ve gelecek planlarımızı aktarma konusunda elimizden geldiğince saydam olmamız gerektiğini düşünüyoruz.";
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Açık kaynaklı bir proje olarak, iOS için KDE Connect’i diğer platformlar ile aynı düzeye getirmek için olan şu anki ve gelecek planlarımızı aktarma konusunda elimizden geldiğince saydam olmamız gerektiğini düşünüyoruz.";
 
 /* No comment provided by engineer. */
 "Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Alınan fotoğrafları ve videoları Fotoğraf Arşivi’ne kaydedebilmek için Ayarlar uygulamasından Fotoğraflar erişimine izin verin.";
@@ -125,7 +128,7 @@
 "Contacts" = "Kişiler";
 
 /* No comment provided by engineer. */
-"Contribute to KDE Connect" = "KDE Bağlan’a Katkıda Bulun";
+"Contribute to KDE Connect" = "KDE Connect’e Katkıda Bulun";
 
 /* No comment provided by engineer. */
 "Contributors" = "Katkıcılar";
@@ -320,7 +323,7 @@
 "If a remembered device is already online but not shown here, try Refresh Discovery." = "Anımsanan bir aygıt hâlihazırda çevrim içi olduğu halde burada görünmüyorsa “Algılamayı Yenile” işlemini deneyin.";
 
 /* Please keep the newline at the end for the app layout things correctly. */
-"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "KDE Bağlan diğer aygıtları algılamakta sorun yaşıyorsa aşağıdaki çözüm yöntemlerini birlikte deneyebilirsiniz:\n\n1. Hem bu aygıtta hem de diğer aygıtlarda %@ menüsü üzerinden “Algılamayı Yenile” seçeneğini kullanın veya Aygıtlar listesini yenilemek için aşağı doğru çekin.\n\n2. Diğer aygıtlarda da KDE Bağlan’ın çalıştığından ve bu aygıtla aynı ağa bağlı olduklarından emin olun.\n\n3. %@ menüsündeki “Aygıtları IP ile Yapılandır\" seçeneği aracılığıyla diğer aygıtları elle ekleyin ve ardından “Algılamayı Yenile” işlemini yapın.\n\n4. Diğer aygıtların güvenlik duvarlarını yapılandırmak gibi, Kullanım Kılavuzu’ndaki diğer çözüm yollarını inceleyin:\n";
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "KDE Connect diğer aygıtları algılamakta sorun yaşıyorsa aşağıdaki çözüm yöntemlerini birlikte deneyebilirsiniz:\n\n1. Hem bu aygıtta hem de diğer aygıtlarda %@ menüsü üzerinden “Algılamayı Yenile” seçeneğini kullanın veya Aygıtlar listesini yenilemek için aşağı doğru çekin.\n\n2. Diğer aygıtlarda da KDE Connect’in çalıştığından ve bu aygıtla aynı ağa bağlı olduklarından emin olun.\n\n3. %@ menüsündeki “Aygıtları IP ile Yapılandır\" seçeneği aracılığıyla diğer aygıtları elle ekleyin ve ardından “Algılamayı Yenile” işlemini yapın.\n\n4. Diğer aygıtların güvenlik duvarlarını yapılandırmak gibi, Kullanım Kılavuzu’ndaki diğer çözüm yollarını inceleyin:\n";
 
 /* No comment provided by engineer. */
 "If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Hayalet aygıtlar varsa veya bir şeyler düzgün çalışmıyorsa kayıtlı tüm aygıt verilerini silmek sorunu çözebilir. Bu işlem, uygulamanın tamamen yeniden başlatılmasını gerektirir.";
@@ -353,7 +356,7 @@
 "Invalid" = "Geçersiz";
 
 /* No comment provided by engineer. */
-"KDE Connect" = "KDE Bağlan";
+"KDE Connect" = "KDE Connect";
 
 /* No comment provided by engineer. */
 "Keyboard: Control Remote" = "Klavye: Kumandayı Denetle";
@@ -377,7 +380,7 @@
 "Manage received files in the Files app" = "Alınan dosyaları yönetmek için Dosyalar uygulamasını kullanın.";
 
 /* No comment provided by engineer. */
-"May not work with KDE Connect for Windows" = "Windows için KDE Bağlan ile çalışmayabilir.";
+"May not work with KDE Connect for Windows" = "Windows için KDE Connect ile çalışmayabilir.";
 
 /* No comment provided by engineer. */
 "Maybe through URL Scheme and integration with Siri Shortcuts" = "Belki URL şeması ve Siri Kestirmeleri ile tümleşim ile çalışabilir.";
@@ -390,6 +393,9 @@
 
 /* No comment provided by engineer. */
 "Mouse: Control Remote" = "Fare: Kumandayı Denetle";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "Fare imlecini hareket ettirmek için ekranda bir parmağınızı hareket ettirin. Sol tık için bir parmağınızla dokunun. Sağ tık için iki parmağınızla dokunun. Sürükle–bırak’ı etkinleştirmek için uzunca basın. Doğrudan tıklar göndermek için sağ üst köşedeki menüyü kullanın.\n\nHem yatay hem de dikey olarak sarmak için yukarıdaki “Sarma Tekerleği”nden bir parmağınızla sürükleyin. Orta tık için “Sarma Tekerleği”ne dokunun.";
 
 /* No comment provided by engineer. */
 "MPRIS: Control Remote Media & Respond" = "MPRIS: Uzak Ortamı Denetle ve Yanıtla";
@@ -435,6 +441,9 @@
 
 /* No comment provided by engineer. */
 "OK" = "Tamam";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "Tıklama Dokunuş Stili";
 
 /* Unknown haptic feedback level */
 "Other" = "Diğer";
@@ -516,6 +525,9 @@
 
 /* No comment provided by engineer. */
 "Reason: %@" = "Gerekçe: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Alınan fotoğraflar ve videolar Dosyalar uygulamasına kaydedilecek; çünkü fotoğraf arşivinize erişim izni veremiyorsunuz.";
 
 /* No comment provided by engineer. */
 "Receiving" = "Alınıyor";
@@ -614,5 +626,137 @@
 "SFTP: Access Remote & Initiate File Server" = "SFTP: Uzaktan Eriş ve Dosya Sunucusunu Başlat";
 
 /* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "Aygıt sertifikanızın SHA256 parmak izi:\n%@\n\nUzak aygıt sertifikasının SHA256 parmak izi:\n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Paylaş: Dosya, Metin ve URL Al";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Paylaş: Dosya Gönder";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Paylaş: Metin ve URL Gönder";
+
+/* No comment provided by engineer. */
 "Share/File Transfer" = "Dosya Aktar/Paylaş";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "Dokunuş Stili Seçicisini Göster";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Alınan Dosyaları Finder’da Göster";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "Hassaslık Sürgüsünü Göster";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "Slayt Gösterisi Kumandası";
+
+/* Soft haptic feedback level */
+"Soft" = "Yumuşak";
+
+/* No comment provided by engineer. */
+"Source Code" = "Kaynak Kodu";
+
+/* No comment provided by engineer. */
+"Status" = "Durum";
+
+/* No comment provided by engineer. */
+"Supported" = "Desteklenen";
+
+/* No comment provided by engineer. */
+"System Default" = "Sistem Saptanmışı";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "Sistem Ses Düzeyi: Kumandayı Denetle ve Tepki Ver";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "Fotoğraf Çek: Tepki Ver";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Eşleştirmeyi başlatmak için dokunun";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "Telefon: SMS/Arama Eşzamanlama";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "KDE Connect tarafından tanındığı şekliyle aygıtın adı";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "Yukarıdaki seçenekler geriye çevrilemez ve etkili olmaları için uygulamanın tümüyle yeniden başlatılması gerekir.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "Bunlar otomatik olarak işlenir; ancak olamadığı bazı durumlarda elle gerçekleştirmeniz gerekebilir.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "Bunlar pek az sorunla veya sorunsuz olarak çalışmalıdır.";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Üçüncü Taraf Kitaplıklar";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "Bu, büyük olasılıkla iOS üzerinde çalışamayacaktır.";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "Sistem paylaşım sayfası ile";
+
+/* No comment provided by engineer. */
+"To %@" = "Şuna: %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "Anımsanan aygıtlara bağlanmak için bu aygıtla aynı ağa bağlı olduklarından emin olun.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "Klavyeyi Aç/Kapat";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Hata Tanılama";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Güvenilen Ağlar";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Bilinmeyen Tema";
+
+/* No comment provided by engineer. */
+"Unpair" = "Eşleşmeyi Kaldır";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "%@ ile olan eşleşme kaldırılsın mı?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Aygıt Eşleşmesini Kaldır?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "adsız";
+
+/* No comment provided by engineer. */
+"Valid" = "Geçerli";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Doğrulama anahtarı: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Sürüm: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "Aktarımın başlatılması için %lld diğer dosya bekleniyor.";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "Günlükler bekleniyor…";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "Gönderme bekleniyor…";
+
+/* No comment provided by engineer. */
+"Website" = "Web Sitesi";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Viki ve Kullanıcı Kılavuzu";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Evet, Eşleşmeyi Kaldır";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "Belirli eklentileri tekil olarak etkinleştirebilir veya devre dışı bırakabilirsiniz. Kimi eklentilerin, kendi sayfalarında bulunan özel ayarları vardır.";
 

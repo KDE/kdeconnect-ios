@@ -5,6 +5,18 @@
 "?" = "؟";
 
 /* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**جسر كيدي** لنظام آي أو إس";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ و %lld ملفات أخرى";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ لنظام آي أو إس";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© مجتمع كيدي والمساهمون";
+
+/* No comment provided by engineer. */
 "+" = "+";
 
 /* No comment provided by engineer. */
@@ -12,6 +24,9 @@
 
 /* No comment provided by engineer. */
 "Actions" = "الإجراءات";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "أضف عناوين IP المحلية للأجهزة الأخرى هنا إذا كانت تواجه مشكلة في الظهور في الاكتشاف الآلي.";
 
 /* No comment provided by engineer. */
 "Advanced" = "متقدّم";
@@ -23,7 +38,31 @@
 "All Messages" = "كل الرسائل";
 
 /* No comment provided by engineer. */
+"Also written by %@" = "كتبه أيضًا %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "أبولو تشو";
+
+/* No comment provided by engineer. */
+"App Icon" = "أيقونة التطبيق";
+
+/* No comment provided by engineer. */
+"App Icon:" = "أيقونة التطبيق:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "سمة التطبيق:";
+
+/* No comment provided by engineer. */
 "Application" = "التطبيق";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "بما أنه مشروع مفتوح المصدر، نؤمن بأهمية الشفافية بشأن خططنا الحالية والمستقبلية لجعل جسر كيدي على آي أو إس يتوافق مع جميع المنصات الأخرى.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "اسمح بالوصول إلى الصور باستخدام تطبيق الإعدادات لحفظ الصور والمقاطع المستلمة في مكتبة الصور";
+
+/* No comment provided by engineer. */
+"Available themes" = "السمات المتاحة";
 
 /* No comment provided by engineer. */
 "Background Activity" = "نشاط الخلفية";
@@ -32,10 +71,25 @@
 "Battery Level" = "مستوى البطارية";
 
 /* No comment provided by engineer. */
+"Battery Plugin Disabled" = "ملحق البطارية معطّل";
+
+/* No comment provided by engineer. */
+"Battery Status" = "حالة البطارية";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "تعذّر العثور على أجهزتك هنا؟";
+
+/* No comment provided by engineer. */
 "Cancel" = "ألغِ";
 
 /* No comment provided by engineer. */
 "Category: %@" = "الفئة: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "تحقق من طلبات الدمج";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "اختر أيقونة التطبيق";
 
 /* No comment provided by engineer. */
 "Chores" = "مهام منزلية";
@@ -50,7 +104,16 @@
 "Clipboard Sync" = "مزامنة الحافظة";
 
 /* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "الحافظة: دفع واستلام النصوص";
+
+/* No comment provided by engineer. */
 "Clipboard: Sync" = "الحافظة: مزامنة";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "اضبط الأجهزة بـ IP";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "اضبط الأجهزة بـ IP:";
 
 /* No comment provided by engineer. */
 "Connect" = "اتّصل";
@@ -65,7 +128,25 @@
 "Contacts" = "المتراسلون";
 
 /* No comment provided by engineer. */
+"Contribute to KDE Connect" = "ساهِم في جسر كيدي";
+
+/* No comment provided by engineer. */
 "Contributors" = "المساهمون";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "انسخ المسار إلى المجلد الذي يحتوي على الملفات المستلمة";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "صيانته الحالية بواسطة %@";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "حالياً، يجب أن يظل التطبيق في الواجهة ليعمل بشكل صحيح";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "حساسية المؤشر";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "خيارات خطيرة";
 
 /* No comment provided by engineer. */
 "Dark" = "مظلمة";
@@ -74,13 +155,34 @@
 "Debug" = "نقّح";
 
 /* No comment provided by engineer. */
+"Debug mode" = "وضع التنقيح";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "تنقيح اكتشاف الأجهزة";
+
+/* No comment provided by engineer. */
 "Default" = "المبدئيّ";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "احذف جميع الإعدادات والأجهزة المحفوظة. يتطلب إعادة تشغيل التطبيق بالكامل.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "احذف شهادة المضيف";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "احذف شهادة المضيف وأعد إنشاءها عند إعادة التشغيل. يتطلب إعادة تشغيل التطبيق بالكامل. ملاحظة: سيجعل هذا الجهاز غير قادر على الاتصال بالأجهزة المتصلة سابقاً. يجب عليك إلغاء اقتران هذا الجهاز من الأجهزة البعيدة الأخرى واقترانها مجدداً.";
 
 /* No comment provided by engineer. */
 "Developer" = "مطوّر";
 
 /* No comment provided by engineer. */
 "Device" = "الجهاز";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "اكتشاف الأجهزة";
+
+/* No comment provided by engineer. */
+"Device IP" = "عنوان IP للجهاز";
 
 /* No comment provided by engineer. */
 "Device name" = "اسم الجهاز";
@@ -92,10 +194,28 @@
 "Device Name:" = "اسم الجهاز:";
 
 /* No comment provided by engineer. */
+"Device Offline" = "الجهاز غير متصل";
+
+/* No comment provided by engineer. */
 "Device Status" = "حالة الأجهزة";
 
 /* No comment provided by engineer. */
 "Devices" = "الأجهزة";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "أجهزة المصافحة المباشرة";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "عطّل بث UDP";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "الأجهزة المكتشفة";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "الاكتشاف والاقتران";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "لا تقرن";
 
 /* No comment provided by engineer. */
 "Donate" = "تبرّع";
@@ -104,13 +224,49 @@
 "Done" = "تمّ";
 
 /* No comment provided by engineer. */
+"Double tap to activate debug mode" = "انقر مرتين لتفعيل وضع التنقيح";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "انقر مرتين لتفعيل تنقيح اكتشاف الأجهزة";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "فعّل/عطّل الملحقات";
+
+/* No comment provided by engineer. */
 "Encryption Info" = "معلومات التّعمية";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "امحُ خبيئة الأجهزة المحفوظة";
 
 /* No comment provided by engineer. */
 "Error" = "خطأ";
 
 /* No comment provided by engineer. */
+"Error Occured" = "حدث خطأ";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "الأخطاء والأعطال";
+
+/* No comment provided by engineer. */
 "Exit Presentation" = "اخرج من العرض التقديمي";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "وظائف تجريبية";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "فشل تغيير الأيقونة";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "فشل استلام %lld ملفات";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "فشل الاستلام من %@";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "فشل إرسال %lld ملفات";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "فشل الإرسال إلى %@";
 
 /* No comment provided by engineer. */
 "Fault" = "خطأ";
@@ -119,7 +275,19 @@
 "Features" = "الميزات";
 
 /* No comment provided by engineer. */
+"File Transfers" = "نقل الملفات";
+
+/* No comment provided by engineer. */
 "Files" = "الملفات";
+
+/* No comment provided by engineer. */
+"Find My Device" = "اعثر على جهازك";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "بُدئ وضع العثور على هاتفِي من جهاز بعيد";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "وضع العثور على هاتفِي";
 
 /* No comment provided by engineer. */
 "Forget all" = "انسَ الكلّ";
@@ -130,6 +298,12 @@
 /* No comment provided by engineer. */
 "General" = "عامّ";
 
+/* No comment provided by engineer. */
+"Go FullScreen" = "انتقل إلى وضع الشاشة الكاملة";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "نمط الاستجابة اللمسية";
+
 /* Hard haptic feedback level */
 "Heavy" = "ثقيل";
 
@@ -137,7 +311,28 @@
 "Help" = "مساعدة";
 
 /* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "أخفِ محدد نمط الاستجابة اللمسية";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "أخفِ شريط تمرير الحساسية";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "عثرتُ عليه!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "إذا كان الجهاز المتذكَّر متصلاً بالفعل بالشبكة ولكنه لا يظهر هنا، جرب إنعاش الاكتشاف.";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "إذا كان جسر كيدي يواجه مشكلة في اكتشاف الأجهزة الأخرى، يمكنك تجربة مزيج من الحلول التالية:\n\n1. \"أنعش الاكتشاف\" من خلال قائمة %@ أو اسحب لتحديث قائمة الأجهزة، على هذا الجهاز والأجهزة الأخرى.\n\n2. تأكد من أن الأجهزة الأخرى تشغّل جسر كيدي أيضاً ومجهزة بالاتصال بنفس الشبكة مثل هذا الجهاز.\n\n3. أضف الأجهزة الأخرى يدوياً من خلال خيار \"اضبط الأجهزة بـ IP\" في قائمة %@، ثم \"أنعش الاكتشاف.\"\n\n4. تحقق من الحلول الأخرى في دليل المستخدم، مثل ضبط جدران الحماية للأجهزة الأخرى:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "إذا كانت هناك أجهزة وهمية أو إذا كان هناك شيء لا يعمل بشكل صحيح، فإن مسح جميع بيانات الأجهزة المحفوظة قد يحل المشكلة. يتطلب إعادة تشغيل التطبيق بالكامل.";
+
+/* No comment provided by engineer. */
 "In progress" = "في تقدم";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "طلب اقتران وارد";
 
 /* No comment provided by engineer. */
 "Info" = "معلومات";
@@ -146,10 +341,25 @@
 "Information" = "معلومات";
 
 /* No comment provided by engineer. */
+"Initiate Pairing?" = "أتبدأ الاقتران؟";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "التكامل مع اختصارات Siri";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "التكامل مع ورقة المشاركة للنظام قيد التطوير";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "التدويل والتوطين";
+
+/* No comment provided by engineer. */
 "Invalid" = "غير صالح";
 
 /* No comment provided by engineer. */
 "KDE Connect" = "جسر كِيدِي";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "لوحة المفاتيح: التحكم البعيد";
 
 /* No comment provided by engineer. */
 "License" = "الرخصة";
@@ -158,13 +368,64 @@
 "Light" = "فاتح";
 
 /* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "شاشة القفل: التحكم البعيد";
+
+/* No comment provided by engineer. */
 "Logs" = "سجلّات";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "سجلات %@";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "أدر الملفات المستلمة في تطبيق الملفات";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "قد لا يعمل مع جسر كيدي لنظام ويندوز";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "ربما من خلال مخطّط URL والتكامل مع اختصارات Siri";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "ربما باستخدام خدمة مركز إشعارات أبل (ACNS)";
 
 /* Medium haptic feedback level */
 "Medium" = "متوسط";
 
 /* No comment provided by engineer. */
+"Mouse: Control Remote" = "الفأرة: التحكم البعيد";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "حرّك إصبعاً على الشاشة لتحريك مؤشر الفأرة. انقر بإصبع واحد للنقر باليسار. انقر بإصبعين للنقر باليمين. استخدم الضغط الطويل لتفعيل السحب والإفلات. أو استخدم القائمة في الأعلى على اليمين لإرسال النقرات مباشرة.\n\nاسحب بإصبع واحد من ”عجلة التمرير“ أعلاه للتمرير عمودياً وأفقياً. انقر على ”عجلة التمرير“ للنقر بالوسط.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: التحكم بالوسائط البعيدة والاستجابة";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "تطبيق متعدد المنصات يتيح لأجهزتك التواصل (مثل هاتفك وحاسوبك)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "مؤلف حزم الشبكة";
+
+/* No comment provided by engineer. */
 "Nice" = "نيس";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "لم تُكتشف أي أجهزة إضافية على هذه الشبكة.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "لم تُكتشف أي بطارية في الجهاز";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "لا توجد أجهزة متصلة حالياً.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "لم يُكتشف أي جهاز في الشبكة الحالية.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "لا توجد سجلات مطابقة بعد";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "لا، ابقَ مقترناً";
 
 /* No comment provided by engineer. */
 "Not yet implemented" = "لم ينفَّذ بعد";
@@ -173,19 +434,61 @@
 "Notice" = "إخطار";
 
 /* No comment provided by engineer. */
+"Notification: Receive from Others" = "الإشعار: الاستلام من الآخرين";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "الإشعار: الاسترداد بواسطة الآخرين";
+
+/* No comment provided by engineer. */
 "OK" = "حسنًا";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "نمط الاستجابة اللمسية عند النقر";
 
 /* Unknown haptic feedback level */
 "Other" = "أخرى";
 
 /* No comment provided by engineer. */
+"Out-App Notification:" = "إشعار خارج التطبيق:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "متن الحزمة";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "وسم الحزمة";
+
+/* No comment provided by engineer. */
+"Packet Type" = "نوع الحزمة";
+
+/* No comment provided by engineer. */
 "Pair" = "اقرن";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "طلب اقتران من '%@'\nمفتاح التحقق: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "اكتمل الاقتران";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "رُفض الاقتران";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "انتهت مهلة الاقتران";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "فشل الاقتران بـ '%@'";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "نجح الاقتران بـ '%@'";
 
 /* No comment provided by engineer. */
 "Peer" = "نظير";
 
 /* No comment provided by engineer. */
 "Ping" = "وخزة Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "استُلِمَت وخزة من جهاز متصل.";
 
 /* No comment provided by engineer. */
 "Ping!" = "وخزة!";
@@ -200,16 +503,40 @@
 "Plugin Settings" = "إعدادات الملحق";
 
 /* No comment provided by engineer. */
+"Plugins If Reachable" = "الملحقات عند إمكانية الوصول";
+
+/* No comment provided by engineer. */
 "Pointer Sensitivity" = "حساسية المؤشر";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "يُعد الوسائط…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "عارض العروض التقديمية: التحكم البعيد";
 
 /* No comment provided by engineer. */
 "Preview: " = "معاينة: ";
 
 /* No comment provided by engineer. */
+"Previously connected devices will appear here." = "ستظهر الأجهزة المتصلة سابقاً هنا.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "ادفع الحافظة المحلية";
+
+/* No comment provided by engineer. */
 "Reason: %@" = "السبب: %@";
 
 /* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "ستُحفظ الصور والمقاطع المستلمة في تطبيق الملفات لأنك لا تستطيع منحنا الإذن للوصول إلى مكتبة الصور الخاصة بك.";
+
+/* No comment provided by engineer. */
 "Receiving" = "الاستقبال";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "يستلم الملف %lld من %lld";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "حدّث الاكتشاف";
 
 /* No comment provided by engineer. */
 "Remembered Devices" = "الأجهزة المتذكَّرة";
@@ -220,11 +547,20 @@
 /* No comment provided by engineer. */
 "Report Bug" = "أبلغ عن علة";
 
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "طلب اقتران بـ '%@'";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "أعد بدء الاكتشاف";
+
 /* Rigid haptic feedback level */
 "Rigid" = "صلد";
 
 /* No comment provided by engineer. */
 "Ring Device" = "رنّ على الجهاز";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "رنّ/اعثر على هاتفِي";
 
 /* No comment provided by engineer. */
 "Rounded Rectangle" = "مستطيل دائري الزوايا";
@@ -233,13 +569,40 @@
 "Run Command" = "شغّل أمرًا";
 
 /* No comment provided by engineer. */
+"Run Command: Request" = "تشغيل أمر: طلب";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "تشغيل أمر: استجابة";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "احفظ الصور في مكتبة الصور";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "احفظ المقاطع في مكتبة الصور";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "حافظة الشاشة: منع التحكم البعيد";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "اختر جهازاً من قائمة الأجهزة للبدء.";
+
+/* No comment provided by engineer. */
 "Send" = "أرسل";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "أرسل نقرة مزدوجة باليسار";
 
 /* No comment provided by engineer. */
 "Send Files" = "أرسل ملفّات";
 
 /* No comment provided by engineer. */
+"Send Left Hold" = "أرسل ضغطاً مستمراً باليسار";
+
+/* No comment provided by engineer. */
 "Send Middle Click" = "أرسل نقرة بالوسط";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "أرسل صوراً ومقاطع";
 
 /* No comment provided by engineer. */
 "Send Ping" = "أرسل وخزة";
@@ -248,10 +611,46 @@
 "Send Right Click" = "أرسل نقرة باليمين";
 
 /* No comment provided by engineer. */
+"Send Single Left Click" = "أرسل نقرة واحدة باليسار";
+
+/* No comment provided by engineer. */
 "Sending" = "الإرسال";
 
 /* No comment provided by engineer. */
+"Sending file %lld of %lld" = "يرسل الملف %lld من %lld";
+
+/* No comment provided by engineer. */
 "Settings" = "إعدادات";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: الوصول البعيد وبدء خادوم الملفات";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "بصمة SHA256 لشهادة جهازك هي:\n%@\n\nبصمة SHA256 لشهادة الجهاز البعيد هي:\n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "المشاركة: استلام ملف ونصف ورابط";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "المشاركة: إرسال ملف";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "المشاركة: إرسال نص ورابط";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "المشاركة/نقل الملفات";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "أظهر محدد نمط الاستجابة اللمسية";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "أظهر الملفات المستلمة في Finder";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "أظهر شريط تمرير الحساسية";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "التحكم البعيد بعرض الشرائح";
 
 /* Soft haptic feedback level */
 "Soft" = "لين";
@@ -269,10 +668,46 @@
 "System Default" = "مبدئي النظام";
 
 /* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "مستوى صوت النظام: التحكم البعيد والاستجابة";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "التقاط صورة: استجابة";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "انقر لبدء الاقتران";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "الهاتفية: مزامنة الرسائل القصيرة/المكالمات";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "اسم الجهاز كما يتعرف عليه جسر كيدي";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "الخيارات أعلاه لا يمكن التراجع عنها وتتطلب إعادة تشغيل كاملة للتطبيق لتطبيقا.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "ينبغي التعامل مع هذه آلياً، ولكن يمكنك إجراء بعضها يدوياً إذا لم تُعالج.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "ينبغي أن تعمل هذه مع مشاكل قليلة أو بدون مشاكل";
+
+/* No comment provided by engineer. */
 "Third-Party Libraries" = "مكتبات الطرف الثالث";
 
 /* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "من المرجح أن تنفيذ هذا غير ممكن على آي أو إس";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "من خلال ورقة المشاركة للنظام";
+
+/* No comment provided by engineer. */
 "To %@" = "إلى %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "للاتصال بالأجهزة المتذكَّرة، تأكد من اتصالها بنفس الشبكة التي يتصل بها هذا الجهاز.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "بدّل لوحة المفاتيح";
 
 /* No comment provided by engineer. */
 "Troubleshooting" = "استكشاف الأخطاء وإصلاحها";
@@ -281,7 +716,16 @@
 "Trusted Networks" = "الشّبكات الموثوقة";
 
 /* No comment provided by engineer. */
+"Unknown Theme" = "سمة مجهولة";
+
+/* No comment provided by engineer. */
 "Unpair" = "أزل الاقتران";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "أتريد إزالة الاقتران بـ %@؟";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "أتريد إزالة الاقتران بالجهاز؟";
 
 /* Filename to use for an unnamed file */
 "untitled" = "بلا عنوان";
@@ -290,8 +734,29 @@
 "Valid" = "صالح";
 
 /* No comment provided by engineer. */
+"Verification key: %@" = "مفتاح التحقق: %@";
+
+/* No comment provided by engineer. */
 "Version: %@ (%@)" = "الإصدارة: %@ (%@)";
 
 /* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "بانتظار %lld ملفات أخرى لبدء النقل";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "بانتظار السجلات...";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "بانتظار الإرسال";
+
+/* No comment provided by engineer. */
 "Website" = "موقع الوبّ";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "الويكي ودليل المستخدم";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "نعم، أزل الاقتران";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "يمكنك تفعيل الملحقات أو تعطيلها بشكل فردي. تحتوي بعض الملحقات على إعداداتها الخاصة التي يمكن العثور عليها في العروض الخاصة بها.";
 

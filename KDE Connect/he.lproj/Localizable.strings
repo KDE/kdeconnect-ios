@@ -1,8 +1,554 @@
 /* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** ל־iOS";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ ו־%lld קבצים נוספים";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ ל־iOS";
+
+/* No comment provided by engineer. */
 "© KDE Community & contributors" = "© קהילת KDE ומתנדבים";
 
 /* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "על אודות";
+
+/* No comment provided by engineer. */
+"Actions" = "פעולות";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "אפשר להוסיף את כתובות ה־IP של המכשירים האחרים כאן אם מתגלה קושי בהצגתם בגילוי האוטומטי.";
+
+/* No comment provided by engineer. */
+"Advanced" = "מתקדם";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "הגדרות מתקדמות";
+
+/* No comment provided by engineer. */
+"All Messages" = "כל ההודעות";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "נוצר גם על ידי %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "אפולו צ׳ו";
+
+/* No comment provided by engineer. */
+"App Icon" = "סמל היישומון";
+
+/* No comment provided by engineer. */
+"App Icon:" = "סמל היישומון:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "ערכת עיצוב היישומון:";
+
+/* No comment provided by engineer. */
+"Application" = "יישומון";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "כמיזם קוד פתוח, אנו מאמינים ששקיפות בנוגע לתוכניות הנוכחיות והעתידיות שלנו יסיעו לקדם את KDE Connect ל־iOS לקדמת הבמה כמו שאר הפלטפורמות.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "יש לאשר גישה לתמונות באמצעות יישומון ההגדרות כדי לשמור את התמונות והסרטונים שמתקבלים לספריית התמונות שלך";
+
+/* No comment provided by engineer. */
+"Available themes" = "ערכות עיצוב זמינות";
+
+/* No comment provided by engineer. */
+"Background Activity" = "פעילות רקע";
+
+/* No comment provided by engineer. */
+"Battery Level" = "רמת הסוללה";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "תוסף הסוללה מושבת";
+
+/* No comment provided by engineer. */
+"Battery Status" = "מצב הסוללה";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "ההתקן שלך לא מופיע פה?";
+
+/* No comment provided by engineer. */
+"Cancel" = "ביטול";
+
+/* No comment provided by engineer. */
+"Category: %@" = "קטגוריה: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "כדאי לעיין בבקשות המיזוג";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "בחירת סמל יישומון";
+
+/* No comment provided by engineer. */
+"Chores" = "מטלות";
+
+/* No comment provided by engineer. */
+"Classic" = "קלסי";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "איפוס מטמון";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "סנכרון לוח הגזירים";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "לוח גזירים: דחיפה וקבלת טקסט";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "לוח גזירים: סנכרון";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "הגדרת התקנים לפי IP";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "הגדרת התקנים לפי IP:";
+
+/* No comment provided by engineer. */
+"Connect" = "התחברות";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "מכשירים מחוברים";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "דוח קישוריות";
+
+/* No comment provided by engineer. */
+"Contacts" = "אנשי קשר";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "התנדבות ל־KDE Connect";
+
+/* No comment provided by engineer. */
+"Contributors" = "מתנדבים";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "העתקת הנתיב לתיקייה שמכילה את הקבצים שהתקבלו";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "מתוחזק כרגע על ידי %@";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "נכון לעכשיו, היישומון חייב להישאר בחזית כדי שיעבוד כראוי";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "רגישות סמן";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "*אפשרויות מסוכנות*";
+
+/* No comment provided by engineer. */
+"Dark" = "כהה";
+
+/* No comment provided by engineer. */
+"Debug" = "ניפוי שגיאות";
+
+/* No comment provided by engineer. */
+"Debug mode" = "מצב ניפוי שגיאות";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "ניפוי שגיאות בגילוי מכשירים";
+
+/* No comment provided by engineer. */
+"Default" = "ברירת מחדל";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "למחוק את כל ההגדרות והמכשירים השמורים. דורש את הפעלת היישומון מחדש.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "מחיקת אישור מארח";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "למחוק את אישור המארח ולייצר אותו מחדש בעת הפעלה מחדש. דורש שהיישום יופעל מחדש לחלוטין. לתשומת ליבך: זה יקשה על המכשיר להתחבר למכשירים שחוברו אליו בעבר. חובה לנתק את הצימוד את המכשיר הזה מהמכשירים המרוחקים האחרים ולצמד אותם שוב.";
+
+/* No comment provided by engineer. */
+"Developer" = "מפתח";
+
+/* No comment provided by engineer. */
+"Device" = "מכשיר";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "גילוי מכשירים";
+
+/* No comment provided by engineer. */
+"Device IP" = "IP של מכשיר";
+
+/* No comment provided by engineer. */
+"Device name" = "שם המכשיר";
+
+/* No comment provided by engineer. */
+"Device Name" = "שם מכשיר";
+
+/* No comment provided by engineer. */
+"Device Name:" = "שם המכשיר:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "המכשיר מנותק";
+
+/* No comment provided by engineer. */
+"Device Status" = "מצב המכשיר";
+
+/* No comment provided by engineer. */
+"Devices" = "מכשירים";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "מכשירי לחיצת יד ישירה";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "כיבוי שידור UDP";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "מכשירים שהתגלו";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "גילוי וצימוד";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "לא לצמד";
+
+/* No comment provided by engineer. */
+"Donate" = "תרומה";
+
+/* No comment provided by engineer. */
+"Done" = "בוצע";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "נגיעה כפולה תפעיל מצב ניפוי שגיאות";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "נגיעה כפולה תפעיל ניפוי שגיאות לגילוי מכשירים";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "הפעלת/השבתת תוספים";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "פרטי הצפנה";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "מחיקת מטמון המכשירים השמורים";
+
+/* No comment provided by engineer. */
+"Error" = "שגיאה";
+
+/* No comment provided by engineer. */
+"Error Occured" = "אירעה שגיאה";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "שגיאות וכשלונות";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "יציאה ממצגת";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "יכולות ניסיוניות";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "החלפת סמל נכשלה";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "קבלת %lld קבצים נכשלה";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "קבלה מ־%@ נכשלה";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "שליחת %lld קבצים נכשלה";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "השליחה אל %@ נכשלה";
+
+/* No comment provided by engineer. */
+"Fault" = "כשלון";
+
+/* No comment provided by engineer. */
+"Features" = "יכולות";
+
+/* No comment provided by engineer. */
+"File Transfers" = "העברות קבצים";
+
+/* No comment provided by engineer. */
+"Files" = "קבצים";
+
+/* No comment provided by engineer. */
+"Find My Device" = "איתור המכשיר שלי";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "איתור הטלפון שלי התבקש ממכשיר מרוחק";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "מצב איתור הטלפון שלי";
+
+/* No comment provided by engineer. */
+"Forget all" = "לשכוח מהכול";
+
+/* No comment provided by engineer. */
+"From %@" = "מ־%@";
+
+/* No comment provided by engineer. */
+"General" = "כללי";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "מעבר למסך מלא";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "סגנון רטט משוב";
+
+/* Hard haptic feedback level */
+"Heavy" = "כבדה";
+
+/* No comment provided by engineer. */
+"Help" = "עזרה";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "הסתרת בורר סגנון רטט משוב";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "הסתרת מחוון רגישות";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "מצאתי את זה!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "אם מכשיר שמור כבר מקוון אבל אינו מופיע כאן, כדאי לנסות לרענן את הגילוי.";
+
+/* No comment provided by engineer. */
+"In progress" = "בתהליכים";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "בקשת צימוד נכנסת";
+
+/* No comment provided by engineer. */
+"Info" = "פרטים";
+
+/* No comment provided by engineer. */
+"Information" = "פרטים";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "ליזום צימוד?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "שילוב מול קיצורי סירי";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "השיתוף עם גיליון שיתוף המערכת נמצא בפיתוח";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "בינאום ותרגום";
+
+/* No comment provided by engineer. */
+"Invalid" = "שגוי";
+
+/* No comment provided by engineer. */
 "KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "מקלדת: שליטה מרחוק";
+
+/* No comment provided by engineer. */
+"License" = "רישיון";
+
+/* Light haptic feedback level */
+"Light" = "קלה";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "מסד נעילה: שליטה מרחוק";
+
+/* No comment provided by engineer. */
+"Logs" = "יומנים";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "יומנים עבור %@";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "ניהול קבצים שהתקבלו ביישומון הקבצים";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "אולי לא יעבוד מול KDE Connect ל־Windows";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "אולי באמצעות תבנית כתובות ושילוב עם קיצורי סירי";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "אולי עם שירות מרכז ההתראות של Apple‏ (ACNS)";
+
+/* Medium haptic feedback level */
+"Medium" = "בינונית";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "עכבר: שליטה מרחוק";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "יש להזיז את האצבע על המסך כדי להזיז את סמן העכבר. נגיעה עם אצבע אחת מייצרת לחיצה שמאלית. נגיעה בשתי אצבעות לחיצה ימנית. לחיצה ארוכה מפעילה גרירה. או שאפשר להשתמש בתפריט מצד שמאל למעלה כדי לשלוח לחיצות ישירות.\n\nגרירה עם אצבע אחת ב„גלגלת גלילה” תגלול אנכית ואופקית. נגיעה ב„גלגלת גלילה” תייצר לחיצה אמצעית.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: שליטה ותגובה למדיה מרחוק";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "יישום למגוון פלטפורמות שמאפשר למכשירים שלך לתקשר (למשל: הטלפון והמחשב שלך)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "יוצר מנות נתוני רשת";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "לא התגלו מכשירים נוספים ברשת הזאת.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "לא זוהתה סוללה במכשיר";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "אין מכשירים מחוברים כרגע.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "לא התגלו מכשירים ברשת המקומית.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "אין רשומות יומן תואמות עדיין";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "לא, להשאיר מצומדים";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "לא מומש עדיין";
+
+/* No comment provided by engineer. */
+"Notice" = "הודעה";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "התראה: קבלה מאחרים";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "התראה: קבלה על ידי אחרים";
+
+/* No comment provided by engineer. */
+"OK" = "אישור";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "סגנון רטט משוב בלחיצה";
+
+/* Unknown haptic feedback level */
+"Other" = "אחרת";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "הודעה מחוץ ליישומון:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "תוכן מנת הנתונים";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "תגית מנת הנתונים";
+
+/* No comment provided by engineer. */
+"Packet Type" = "סוג מנת הנתונים";
+
+/* No comment provided by engineer. */
+"Pair" = "צימוד";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "בקשת צימוד מאת ‚%@’\nמפתח אימות: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "הצימוד הושלם";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "הצימוד נדחה";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "הזמן שהוקצב לצימוד תם";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "הצימוד מול ‚%@’ נכשל";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "הצימוד מול ‚%@’ הצליח";
+
+/* No comment provided by engineer. */
+"Peer" = "עמית";
+
+/* No comment provided by engineer. */
+"Ping" = "פינג";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "התקבל פינג ממכשיר מחובר.";
+
+/* No comment provided by engineer. */
+"Ping!" = "פינג!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "פלזמה למסכים גדולים";
+
+/* No comment provided by engineer. */
+"Playground" = "מגרש משחקים";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "הגדרות תוסף";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "תוספים אם נגישים";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "רגישות סמן";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "המדיה מתכוננת…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "מציג: שליטה מרחוק";
+
+/* No comment provided by engineer. */
+"Preview: " = "תצוגה מקדימה: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "מכשירים שהתבצע מולם חיבור בעבר יופיעו כאן.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "דחיפת לוח הגזירים המקומי";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "סיבה: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "תמונות וסרטונים שיתקבלו יישמרו ליישומון הקבצים כיוון שלא ניתן להעניק לנו גישה לספריית התמונות שלך.";
+
+/* No comment provided by engineer. */
+"Receiving" = "מתקבל";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "מתקבל קובץ %lld מתוך %lld";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "ריענון גילוי";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "מכשירים שמורים";
+
+/* No comment provided by engineer. */
+"Remote Input" = "קלט מרחוק";
+
+/* No comment provided by engineer. */
+"Report Bug" = "דיווח על תקלה";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "בקשה לצימוד מול ‚%@’";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "הפעלת הגילוי מחדש";
+
+/* Rigid haptic feedback level */
+"Rigid" = "קשיחה";
+
+/* No comment provided by engineer. */
+"Ring Device" = "צלצול במכשיר";
 
 /* No comment provided by engineer. */
 "Ring/Find My Phone" = "צלצול/Find My Phone";
@@ -20,7 +566,16 @@
 "Run Command: Respond" = "הרצת פקודה: תגובה";
 
 /* No comment provided by engineer. */
+"Save photos to the photo library" = "שמירת תמונות לספריית התמונות";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "שמירת סרטונים לספריית התמונות";
+
+/* No comment provided by engineer. */
 "Screensaver: Inhibit Remote" = "שומר מסך: מניעת מרוחק";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "יש לבחור מכשיר מרשימת המכשירים כדי להתחיל.";
 
 /* No comment provided by engineer. */
 "Send" = "שליחה";
@@ -59,6 +614,12 @@
 "Settings" = "הגדרות";
 
 /* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: גישה מרחוק והקמת שרת קבצים";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "טביעת האצבע מסוג SHA256 לאישור של המכשיר שלך היא:\n%@\n\nטביעת האצבע מסוג SHA256 לאישור של המכשיר המרוחק היא: \n%@";
+
+/* No comment provided by engineer. */
 "Share: Receive File, Text, and URL" = "שיתוף: קבלת קובץ, טקסט וכתובת";
 
 /* No comment provided by engineer. */
@@ -71,7 +632,7 @@
 "Share/File Transfer" = "שיתוף/העברת קבצים";
 
 /* No comment provided by engineer. */
-"Show Haptics Style Selector" = "הצגת בורר סגנון רטט תגובה";
+"Show Haptics Style Selector" = "הצגת בורר סגנון רטט משוב";
 
 /* No comment provided by engineer. */
 "Show Received Files in Finder" = "הצגת קבצים שהתקבלו ב־Finder";
@@ -108,6 +669,9 @@
 
 /* No comment provided by engineer. */
 "Telephony: SMS/Call Sync" = "טלפוניה: סנכרון מסרונים/שיחות";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "שם המכשיר כפי שמזוהה על ידי KDE Connect";
 
 /* No comment provided by engineer. */
 "The options above are irreversible and require a complete app restart to take effect." = "האפשרויות שלהלן הן בלתי הפיכות ודורשות את הפעלת היישומון מחדש כדי שיחולו.";

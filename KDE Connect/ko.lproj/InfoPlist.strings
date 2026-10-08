@@ -7,3 +7,6 @@
 /* Privacy - Local Network Usage Description */
 "NSLocalNetworkUsageDescription" = "KDE Connect를 사용하여 다른 장치를 탐색하고 연결합니다.";
 
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "받은 그림을 파일 앱 대신 포토 라이브러리에 추가합니다.";
+

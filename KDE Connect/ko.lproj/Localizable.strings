@@ -1,3 +1,408 @@
 /* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "iOS용 **KDE Connect**";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ 및 다른 파일 %lld개";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "iOS용 %@";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© KDE Community & contributors";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "정보";
+
+/* No comment provided by engineer. */
+"Actions" = "동작";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "자동 발견에서 장치가 나타나지 않으면 다른 장치의 로컬 IP 주소를 추가할 수 있습니다.";
+
+/* No comment provided by engineer. */
+"Advanced" = "고급";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "고급 설정";
+
+/* No comment provided by engineer. */
+"All Messages" = "모든 메시지";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "이외에도 %@이(가) 작성함";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "앱 아이콘";
+
+/* No comment provided by engineer. */
+"App Icon:" = "앱 아이콘:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "앱 테마:";
+
+/* No comment provided by engineer. */
+"Application" = "앱";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "사진 라이브러리 받은 사진과 동영상을 저장하려면 설정 앱에서 사진 접근을 허용해야 합니다";
+
+/* No comment provided by engineer. */
+"Available themes" = "사용 가능한 테마";
+
+/* No comment provided by engineer. */
+"Background Activity" = "백그라운드 활동";
+
+/* No comment provided by engineer. */
+"Battery Level" = "배터리 잔량";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "배터리 플러그인 비활성화됨";
+
+/* No comment provided by engineer. */
+"Battery Status" = "배터리 상태";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "장치를 찾을 수 없나요?";
+
+/* No comment provided by engineer. */
+"Cancel" = "취소";
+
+/* No comment provided by engineer. */
+"Category: %@" = "분류: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "병합 요청 확인하기";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "앱 아이콘 선택";
+
+/* No comment provided by engineer. */
+"Classic" = "고전";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "캐시 지우기";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "클립보드 동기화";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "클립보드: 텍스트 보내고 받기";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "클립보드: 동기화";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "IP로 장치 설정";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "IP로 장치 설정:";
+
+/* No comment provided by engineer. */
+"Connect" = "연결";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "연결된 장치";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "연결 상태 보고";
+
+/* No comment provided by engineer. */
+"Contacts" = "연락처";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "KDE Connect에 기여하기";
+
+/* No comment provided by engineer. */
+"Contributors" = "기여자";
+
+/* No comment provided by engineer. */
+"Dark" = "어두움";
+
+/* No comment provided by engineer. */
+"Debug" = "디버그";
+
+/* No comment provided by engineer. */
+"Default" = "기본값";
+
+/* No comment provided by engineer. */
+"Developer" = "개발자";
+
+/* No comment provided by engineer. */
+"Device" = "장치";
+
+/* No comment provided by engineer. */
+"Device name" = "장치 이름";
+
+/* No comment provided by engineer. */
+"Device Name" = "장치 이름";
+
+/* No comment provided by engineer. */
+"Device Name:" = "장치 이름:";
+
+/* No comment provided by engineer. */
+"Device Status" = "장치 상태";
+
+/* No comment provided by engineer. */
+"Devices" = "장치";
+
+/* No comment provided by engineer. */
+"Donate" = "기부하기";
+
+/* No comment provided by engineer. */
+"Done" = "완료";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "암호화 정보";
+
+/* No comment provided by engineer. */
+"Error" = "오류";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "프레젠테이션 끝내기";
+
+/* No comment provided by engineer. */
+"Features" = "기능";
+
+/* No comment provided by engineer. */
+"File Transfers" = "파일 전송";
+
+/* No comment provided by engineer. */
+"Files" = "파일";
+
+/* No comment provided by engineer. */
+"Find My Device" = "내 장치 찾기";
+
+/* No comment provided by engineer. */
+"Forget all" = "모두 잊기";
+
+/* No comment provided by engineer. */
+"General" = "일반";
+
+/* Hard haptic feedback level */
+"Heavy" = "두꺼움";
+
+/* No comment provided by engineer. */
+"Help" = "도움말";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "햅틱 스타일 선택기 숨기기";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "민감도 슬라이더 숨기기";
+
+/* No comment provided by engineer. */
+"In progress" = "진행 중";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "들어오는 페어링 요청";
+
+/* No comment provided by engineer. */
+"Info" = "정보";
+
+/* No comment provided by engineer. */
+"Information" = "정보";
+
+/* No comment provided by engineer. */
+"Invalid" = "잘못됨";
+
+/* No comment provided by engineer. */
 "KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "키보드: 원격 제어";
+
+/* No comment provided by engineer. */
+"License" = "라이선스";
+
+/* Light haptic feedback level */
+"Light" = "밝음";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "잠금 화면: 원격 제어";
+
+/* No comment provided by engineer. */
+"Logs" = "로그";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "%@의 로그";
+
+/* Medium haptic feedback level */
+"Medium" = "중간";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: 원격 미디어 제어 및 응답";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "구현되지 않음";
+
+/* No comment provided by engineer. */
+"Notice" = "공지";
+
+/* No comment provided by engineer. */
+"OK" = "확인";
+
+/* Unknown haptic feedback level */
+"Other" = "기타";
+
+/* No comment provided by engineer. */
+"Packet Body" = "패킷 본문";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "패킷 태그";
+
+/* No comment provided by engineer. */
+"Packet Type" = "패킷 형식";
+
+/* No comment provided by engineer. */
+"Pair" = "페어링";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "'%@'에서의 페어링 요청\n확인 키: %@";
+
+/* No comment provided by engineer. */
+"Peer" = "피어";
+
+/* No comment provided by engineer. */
+"Ping" = "핑";
+
+/* No comment provided by engineer. */
+"Ping!" = "핑!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma 큰 화면";
+
+/* No comment provided by engineer. */
+"Playground" = "놀이터";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "플러그인 설정";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "포인터 감도";
+
+/* No comment provided by engineer. */
+"Preview: " = "미리 보기: ";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "이유: %@";
+
+/* No comment provided by engineer. */
+"Receiving" = "수신";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "기억하는 장치";
+
+/* No comment provided by engineer. */
+"Remote Input" = "원격 입력";
+
+/* No comment provided by engineer. */
+"Report Bug" = "버그 보고";
+
+/* No comment provided by engineer. */
+"Ring Device" = "장치 울리기";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "둥근 사각형";
+
+/* No comment provided by engineer. */
+"Run Command" = "명령 실행";
+
+/* No comment provided by engineer. */
+"Send" = "보내기";
+
+/* No comment provided by engineer. */
+"Send Files" = "파일 보내기";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "가운데 단추 클릭 신호 보내기";
+
+/* No comment provided by engineer. */
+"Send Ping" = "핑 보내기";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "오른쪽 단추 클릭 신호 보내기";
+
+/* No comment provided by engineer. */
+"Sending" = "발신";
+
+/* No comment provided by engineer. */
+"Settings" = "설정";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "슬라이드 쇼 리모콘";
+
+/* Soft haptic feedback level */
+"Soft" = "부드러움";
+
+/* No comment provided by engineer. */
+"Source Code" = "소스 코드";
+
+/* No comment provided by engineer. */
+"Status" = "상태";
+
+/* No comment provided by engineer. */
+"System Default" = "시스템 기본값";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "제3자 라이브러리";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "키보드 전환";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "문제 해결";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "신뢰할 수 있는 네트워크";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "알 수 없는 테마";
+
+/* No comment provided by engineer. */
+"Unpair" = "페어링 해제";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "%@와(과) 페어링을 해제하시겠습니까?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "장치와 페어링을 해제하시겠습니까?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "제목 없음";
+
+/* No comment provided by engineer. */
+"Valid" = "유효함";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "확인 키: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "버전: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "로그 대기 중...";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "전송 대기 중";
+
+/* No comment provided by engineer. */
+"Website" = "웹사이트";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "위키와 사용자 설명서";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "예, 페어링을 해제합니다";
 

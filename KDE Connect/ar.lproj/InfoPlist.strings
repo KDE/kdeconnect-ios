@@ -4,3 +4,9 @@
 /* Bundle name */
 "CFBundleName" = "جسر كِيدِي";
 
+/* Privacy - Local Network Usage Description */
+"NSLocalNetworkUsageDescription" = "اكتشف الأجهزة الأخرى واكتشف الاتصال بها باستخدام جسر كيدي.";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "احفظ الصور المستلمة في مكتبة الصور بدلاً من تطبيق الملفات.";
+
