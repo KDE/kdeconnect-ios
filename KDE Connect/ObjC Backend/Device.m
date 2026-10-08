@@ -31,12 +31,14 @@
 //#import "BackgroundService.h"
 #import "KDE_Connect-Swift.h"
 @import os.log;
+#import <os/lock.h>
 static const NSTimeInterval kPairingTimeout = 30.0;
 static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 @implementation Device {
-    NSMutableDictionary<NetworkPacketType, id<Plugin>> *_plugins;
-    NSMutableDictionary<NetworkPacketType, NSNumber *> *_pluginsEnableStatus;
+    NSDictionary<NetworkPacketType, id<Plugin>> *_plugins;
+    NSDictionary<NetworkPacketType, NSNumber *> *_pluginsEnableStatus;
+    os_unfair_lock _pluginsLock;
     os_log_t logger;
 }
 
@@ -47,16 +49,38 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 @synthesize _links;
 
 
-- (void)setPlugins:(NSDictionary<NetworkPacketType, NSNumber *> *)plugins
+- (NSDictionary<NetworkPacketType, id<Plugin>> *)plugins
 {
-    _plugins = [[NSMutableDictionary alloc] initWithDictionary:plugins];
+    os_unfair_lock_lock(&_pluginsLock);
+    NSDictionary<NetworkPacketType, id<Plugin>> *plugins = _plugins;
+    os_unfair_lock_unlock(&_pluginsLock);
+    return plugins;
+}
+
+- (void)setPlugins:(NSDictionary<NetworkPacketType, id<Plugin>> *)plugins
+{
+    NSDictionary<NetworkPacketType, id<Plugin>> *copy = [plugins copy];
+    os_unfair_lock_lock(&_pluginsLock);
+    _plugins = copy;
+    os_unfair_lock_unlock(&_pluginsLock);
 }
 @synthesize _failedPlugins;
 //@synthesize _testDevice;
 
+- (NSDictionary<NetworkPacketType, NSNumber *> *)pluginsEnableStatus
+{
+    os_unfair_lock_lock(&_pluginsLock);
+    NSDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = _pluginsEnableStatus;
+    os_unfair_lock_unlock(&_pluginsLock);
+    return pluginsEnableStatus;
+}
+
 - (void)setPluginsEnableStatus:(NSDictionary<NetworkPacketType, NSNumber *> *)pluginsEnableStatus
 {
-    _pluginsEnableStatus = [[NSMutableDictionary alloc] initWithDictionary:pluginsEnableStatus];
+    NSDictionary<NetworkPacketType, NSNumber *> *copy = [pluginsEnableStatus copy];
+    os_unfair_lock_lock(&_pluginsLock);
+    _pluginsEnableStatus = copy;
+    os_unfair_lock_unlock(&_pluginsLock);
 }
 
 // TODO: plugins should be saving their own preferences
@@ -75,9 +99,10 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
         _pairStatus = NotPaired;
         _deviceInfo = [link _deviceInfo];
         _links = [NSMutableArray arrayWithCapacity:1];
-        _plugins = [NSMutableDictionary dictionaryWithCapacity:1];
+        _pluginsLock = OS_UNFAIR_LOCK_INIT;
+        _plugins = @{};
         _failedPlugins = [NSMutableArray arrayWithCapacity:1];
-        _pluginsEnableStatus = [NSMutableDictionary dictionary];
+        _pluginsEnableStatus = @{};
         self.deviceDelegate = deviceDelegate;
         _cursorSensitivity = 3.0;
 #if !TARGET_OS_OSX
@@ -170,7 +195,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
         }
     } else if (tag == PACKET_TAG_PAYLOAD){
         os_log_with_type(logger, self.debugLogLevel, "Last payload sent successfully, sending next one");
-        for (id<Plugin> plugin in [_plugins allValues]) {
+        for (id<Plugin> plugin in [self.plugins allValues]) {
             if ([plugin respondsToSelector:@selector(onPacket:sentWithPacketTag:)]) {
                 [plugin onPacket:np sentWithPacketTag:tag];
             }
@@ -182,7 +207,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
   failedWithError:(NSError *)error {
     switch (tag) {
         case PACKET_TAG_PAYLOAD:
-            for (id<Plugin> plugin in [_plugins allValues]) {
+            for (id<Plugin> plugin in [self.plugins allValues]) {
                 if ([plugin respondsToSelector:@selector(onPacket:sendWithPacketTag:failedWithError:)]) {
                     [plugin onPacket:np sendWithPacketTag:tag
                       failedWithError:error];
@@ -195,7 +220,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 }
 
 - (void)onSendingPayload:(KDEFileTransferItem *)payload {
-    for (id<Plugin> plugin in [_plugins allValues]) {
+    for (id<Plugin> plugin in [self.plugins allValues]) {
         if ([plugin respondsToSelector:@selector(onSendingPayload:)]) {
             [plugin onSendingPayload:payload];
         }
@@ -204,7 +229,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 - (void)willReceivePayload:(KDEFileTransferItem *)payload
   totalNumOfFilesToReceive:(long)numberOfFiles {
-    for (id<Plugin> plugin in [_plugins allValues]) {
+    for (id<Plugin> plugin in [self.plugins allValues]) {
         if ([plugin respondsToSelector:@selector(willReceivePayload:totalNumOfFilesToReceive:)]) {
             [plugin willReceivePayload:payload totalNumOfFilesToReceive:numberOfFiles];
         }
@@ -212,7 +237,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 }
 
 - (void)onReceivingPayload:(KDEFileTransferItem *)payload {
-    for (id<Plugin> plugin in [_plugins allValues]) {
+    for (id<Plugin> plugin in [self.plugins allValues]) {
         if ([plugin respondsToSelector:@selector(onReceivingPayload:)]) {
             [plugin onReceivingPayload:payload];
         }
@@ -221,7 +246,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 - (void)onReceivingPayload:(KDEFileTransferItem *)payload
            failedWithError:(NSError *)error {
-    for (id<Plugin> plugin in [_plugins allValues]) {
+    for (id<Plugin> plugin in [self.plugins allValues]) {
         if ([plugin respondsToSelector:@selector(onReceivingPayload:failedWithError:)]) {
             [plugin onReceivingPayload:payload failedWithError:error];
         }
@@ -301,7 +326,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     } else if ([self isPaired]) {
         // TODO: Instead of looping through all the Obj-C plugins here, calls Plugin handling function elsewhere in Swift
         os_log_with_type(logger, OS_LOG_TYPE_INFO, "received a plugin packet: %{public}@", np.type);
-        for (id<Plugin> plugin in [_plugins allValues]) {
+        for (id<Plugin> plugin in [self.plugins allValues]) {
             [plugin onDevicePacketReceivedWithNp:np];
         }
         //[PluginsService goThroughHostPluginsForReceivingWithNp:np];
@@ -410,9 +435,10 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 #pragma mark Plugins-related Functions
 
 - (void)updateBatteryStatus {
-    if ((_pluginsEnableStatus[NetworkPacketTypeBatteryRequest] != nil)
-        && (_pluginsEnableStatus[NetworkPacketTypeBatteryRequest])) {
-        id<Plugin> plugin = [_plugins objectForKey:NetworkPacketTypeBatteryRequest];
+    NSDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = self.pluginsEnableStatus;
+    if ((pluginsEnableStatus[NetworkPacketTypeBatteryRequest] != nil)
+        && (pluginsEnableStatus[NetworkPacketTypeBatteryRequest])) {
+        id<Plugin> plugin = [self.plugins objectForKey:NetworkPacketTypeBatteryRequest];
         if ([plugin respondsToSelector:@selector(sendBatteryStatusRequest)]) {
             [plugin performSelector:@selector(sendBatteryStatusRequest)];
         }
@@ -430,49 +456,56 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 //    }
     
     os_log_with_type(logger, self.debugLogLevel, "device reload plugins");
-    [_plugins removeAllObjects];
+    // Build the new dictionaries separately and swap them in at once, so concurrent
+    // readers never see a plugin enabled in pluginsEnableStatus but missing from plugins
+    NSMutableDictionary<NetworkPacketType, id<Plugin>> *plugins = [NSMutableDictionary dictionary];
+    NSMutableDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = [NSMutableDictionary dictionary];
     [_failedPlugins removeAllObjects];
-    [_pluginsEnableStatus removeAllObjects];
     
     for (NSString* pluginID in _deviceInfo.incomingCapabilities) {
         if ([pluginID isEqualToString:NetworkPacketTypePing]) {
-            [_plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:NetworkPacketTypePing];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePing];
+            [plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:NetworkPacketTypePing];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePing];
             
         } else if ([pluginID isEqualToString:NetworkPacketTypeShare]) {
-            [_plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:NetworkPacketTypeShare];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeShare];
+            [plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:NetworkPacketTypeShare];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeShare];
             
         } else if ([pluginID isEqualToString:NetworkPacketTypeFindMyPhoneRequest]) {
-            [_plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:NetworkPacketTypeFindMyPhoneRequest];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeFindMyPhoneRequest];
+            [plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:NetworkPacketTypeFindMyPhoneRequest];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeFindMyPhoneRequest];
             
         } else if ([pluginID isEqualToString:NetworkPacketTypeBatteryRequest]) {
-            [_plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:NetworkPacketTypeBatteryRequest];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeBatteryRequest];
+            [plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:NetworkPacketTypeBatteryRequest];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeBatteryRequest];
             
         } else if ([pluginID isEqualToString:NetworkPacketTypeClipboard]) {
-            [_plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:NetworkPacketTypeClipboard];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeClipboard];
+            [plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:NetworkPacketTypeClipboard];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeClipboard];
             
         } else if ([pluginID isEqualToString:NetworkPacketTypeMousePadRequest]) {
-            [_plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:NetworkPacketTypeMousePadRequest];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeMousePadRequest];
+            [plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:NetworkPacketTypeMousePadRequest];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeMousePadRequest];
             
         } else if ([pluginID isEqualToString:NetworkPacketTypePresenter]) {
-            [_plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:NetworkPacketTypePresenter];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePresenter];
+            [plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:NetworkPacketTypePresenter];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePresenter];
         }
     }
     
     // for the capabilities that are ONLY in the outgoing section of KDE Connect iOS
     for (NSString* pluginID in _deviceInfo.outgoingCapabilities) {
         if ([pluginID isEqualToString:NetworkPacketTypeRunCommand]) {
-            [_plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:NetworkPacketTypeRunCommand];
-            [_pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeRunCommand];
+            [plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:NetworkPacketTypeRunCommand];
+            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeRunCommand];
             
         }
     }
+    
+    os_unfair_lock_lock(&_pluginsLock);
+    _plugins = [plugins copy];
+    _pluginsEnableStatus = [pluginsEnableStatus copy];
+    os_unfair_lock_unlock(&_pluginsLock);
     
     
 //    //NSLog(@"device reload plugins");
@@ -519,7 +552,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     [coder encodeObject:_deviceInfo.incomingCapabilities forKey:@"_incomingCapabilities"];
     [coder encodeObject:_deviceInfo.outgoingCapabilities forKey:@"_outgoingCapabilities"];
     [coder encodeInteger:_pairStatus forKey:@"_pairStatus"];
-    [coder encodeObject:_pluginsEnableStatus forKey:@"_pluginsEnableStatus"];
+    [coder encodeObject:self.pluginsEnableStatus forKey:@"_pluginsEnableStatus"];
     [coder encodeFloat:_cursorSensitivity forKey:@"_cursorSensitivity"];
 #if !TARGET_OS_OSX
     [coder encodeInteger:_hapticStyle forKey:@"_hapticStyle"];
@@ -545,7 +578,8 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
                                 outgoingCapabilities:outgoingCapabilities
         ];
         _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
-        _pluginsEnableStatus = (NSMutableDictionary*)[(NSDictionary*)[coder decodeDictionaryWithKeysOfClass:[NSString class] objectsOfClass:[NSNumber class] forKey:@"_pluginsEnableStatus"] mutableCopy];
+        _pluginsLock = OS_UNFAIR_LOCK_INIT;
+        _pluginsEnableStatus = [[coder decodeDictionaryWithKeysOfClass:[NSString class] objectsOfClass:[NSNumber class] forKey:@"_pluginsEnableStatus"] copy];
         _cursorSensitivity = [coder decodeFloatForKey:@"_cursorSensitivity"];
 #if !TARGET_OS_OSX
         _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];
@@ -556,7 +590,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
         deviceDelegate = nil;
         
         // To be populated later
-        _plugins = [NSMutableDictionary dictionary];
+        _plugins = @{};
         _failedPlugins = [NSMutableArray array];
         _links = [NSMutableArray array];
         [self reloadPlugins];
