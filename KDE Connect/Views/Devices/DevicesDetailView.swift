@@ -181,8 +181,9 @@ struct DevicesDetailView: View {
                     .accentColor(.primary)
                 }
                 
-                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool) {
-                    NavigationLink(destination: RunCommandView(detailsDeviceId: self.detailsDeviceId)) {
+                if ((backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] != nil) && backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] as! Bool),
+                   let runCommandPlugin = backgroundService._devices[detailsDeviceId]!._plugins[.runCommand] as? RunCommand {
+                    NavigationLink(destination: RunCommandView(runCommandPlugin: runCommandPlugin)) {
                         Label("Run Command", systemImage: "terminal")
                     }
                     .accentColor(.primary)

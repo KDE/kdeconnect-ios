@@ -14,13 +14,7 @@
 
 import SwiftUI
 struct RunCommandView: View {
-    let detailsDeviceId: String
     @ObservedObject var runCommandPlugin: RunCommand
-    
-    init(detailsDeviceId: String) {
-        self.detailsDeviceId = detailsDeviceId
-        self.runCommandPlugin = backgroundService.devices[detailsDeviceId]!._plugins[.runCommand] as! RunCommand
-    }
     
     var body: some View {
         List {
