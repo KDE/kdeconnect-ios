@@ -1,0 +1,919 @@
+# Translation of kdeconnect-ios into Russian.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeconnect-ios\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"PO-Revision-Date: 2026-10-10 12:43+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Translate Toolkit 3.19.17\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr ""
+"Обнаружение других устройств и подключение к ним с помощью KDE Connect."
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr ""
+"Сохранять полученные изображения в медиатеку вместо приложения «Файлы»."
+
+msgid "%@ and %lld other files"
+msgstr "%@ и ещё %lld файлов"
+
+msgid "%@ for iOS"
+msgstr "%@ для iOS"
+
+msgid "**KDE Connect** for iOS"
+msgstr "**KDE Connect** для iOS"
+
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "?"
+msgstr "?"
+
+msgid "About"
+msgstr "О программе"
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Добавьте здесь локальные IP-адреса других устройств, если они не "
+"обнаруживаются автоматически."
+
+msgid "Advanced"
+msgstr "Дополнительно"
+
+msgid "Advanced Settings"
+msgstr "Дополнительные параметры"
+
+msgid "All Messages"
+msgstr "Все сообщения"
+
+msgid "Also written by %@"
+msgstr "Также написали: %@"
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+msgid "App Icon"
+msgstr "Значок приложения"
+
+msgid "App Icon:"
+msgstr "Значок приложения:"
+
+msgid "App Theme:"
+msgstr "Оформление приложения:"
+
+msgid "Application"
+msgstr "Приложение"
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"Поскольку KDE Connect iOS — проект с открытым исходным кодом, важно открыто "
+"рассказывать о текущих и будущих планах по приведению его в соответствие с "
+"другими платформами."
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Разрешить доступ к «Фотографиям» в приложении «Параметры», чтобы сохранять "
+"полученные фото и видео в медиатеку."
+
+msgid "Available themes"
+msgstr "Доступные оформления"
+
+msgid "Background Activity"
+msgstr "Фоновая активность"
+
+msgid "Battery Level"
+msgstr "Уровень заряда батареи"
+
+msgid "Battery Plugin Disabled"
+msgstr "Модуль батареи отключён"
+
+msgid "Battery Status"
+msgstr "Состояние батареи"
+
+msgid "Can't find your devices here?"
+msgstr "Не удаётся найти устройства?"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Category: %@"
+msgstr "Категория: %@"
+
+msgid "Check out the merge requests"
+msgstr "Ознакомьтесь с запросами на слияние"
+
+msgid "Choose App Icon"
+msgstr "Выбрать значок приложения"
+
+msgid "Chores"
+msgstr "Рутинные задачи"
+
+msgid "Classic"
+msgstr "Классическая"
+
+msgid "Clear Cache"
+msgstr "Очистить кэш"
+
+msgid "Clipboard Sync"
+msgstr "Синхронизация буфера обмена"
+
+msgid "Clipboard: Push & Receive Text"
+msgstr "Буфер обмена: отправка и получение текста"
+
+msgid "Clipboard: Sync"
+msgstr "Буфер обмена: синхронизация"
+
+msgid "Configure Devices By IP"
+msgstr "Настройка устройств по IP-адресу"
+
+msgid "Configure Devices by IP:"
+msgstr "Настройка устройств по IP-адресу:"
+
+msgid "Connect"
+msgstr "Подключиться"
+
+msgid "Connected Devices"
+msgstr "Подключённые устройства"
+
+msgid "Connectivity Report"
+msgstr "Отчёт о подключении"
+
+msgid "Contacts"
+msgstr "Контакты"
+
+msgid "Contribute to KDE Connect"
+msgstr "Помочь проекту KDE Connect"
+
+msgid "Contributors"
+msgstr "Участники"
+
+msgid "Copy path to the folder containing received files"
+msgstr "Копировать путь к папке с полученными файлами"
+
+msgid "Currently maintained by %@"
+msgstr "Сопровождающий: %@"
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr ""
+"Сейчас для правильной работы приложение должно оставаться на переднем плане"
+
+msgid "Cursor Sensitivity"
+msgstr "Чувствительность указателя"
+
+msgid "DANGEROUS OPTIONS"
+msgstr "Опасные параметры"
+
+msgid "Dark"
+msgstr "Тёмное"
+
+msgid "Debug"
+msgstr "Отладка"
+
+msgid "Debug mode"
+msgstr "Режим отладки"
+
+msgid "Debugging device discovery"
+msgstr "Отладка обнаружения устройств"
+
+msgid "Default"
+msgstr "По умолчанию"
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Удаление всех сохранённых параметров и устройств. Требуется полный "
+"перезапуск приложения."
+
+msgid "Delete host certificate"
+msgstr "Удалить сертификат узла"
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Удалить сертификат узла и создать его заново при перезапуске. Требуется "
+"полный перезапуск приложения. ПРИМЕЧАНИЕ. После этого устройство не сможет "
+"подключаться к ранее подключённым устройствам. Необходимо отменить "
+"сопряжение этого устройства с другими удалёнными устройствами и выполнить "
+"сопряжение заново."
+
+msgid "Developer"
+msgstr "Разработчик"
+
+msgid "Device"
+msgstr "Устройство"
+
+msgid "Device Discovery"
+msgstr "Обнаружение устройств"
+
+msgid "Device IP"
+msgstr "IP-адрес устройства"
+
+msgid "Device Name"
+msgstr "Имя устройства"
+
+msgid "Device Name:"
+msgstr "Имя устройства:"
+
+msgid "Device Offline"
+msgstr "Устройство не в сети"
+
+msgid "Device Status"
+msgstr "Состояние устройства"
+
+msgid "Device name"
+msgstr "Имя устройства"
+
+msgid "Devices"
+msgstr "Устройства"
+
+msgid "Direct Handshake Devices"
+msgstr "Устройства с прямым рукопожатием"
+
+msgid "Disable UDP Broadcast"
+msgstr "Отключить широковещательную передачу UDP"
+
+msgid "Discovered Devices"
+msgstr "Обнаруженные устройства"
+
+msgid "Discovery & Pairing"
+msgstr "Обнаружение и сопряжение"
+
+msgid "Do Not Pair"
+msgstr "Не сопрягать"
+
+msgid "Donate"
+msgstr "Поддержать"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Double tap to activate debug mode"
+msgstr "Чтобы включить режим отладки, коснитесь дважды"
+
+msgid "Double tap to activate debugging device discovery"
+msgstr "Двойное касание для включения отладки обнаружения устройств"
+
+msgid "Enable/Disable Plugins"
+msgstr "Включение и отключение модулей"
+
+msgid "Encryption Info"
+msgstr "Информация о шифровании"
+
+msgid "Erase saved devices cache"
+msgstr "Очистить кэш сохранённых устройств"
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Error Occured"
+msgstr "Произошла ошибка"
+
+msgid "Errors and Faults"
+msgstr "Ошибки и неисправности"
+
+msgid "Exit Presentation"
+msgstr "Выйти из режима презентации"
+
+msgid "Experimental functionalities"
+msgstr "Экспериментальные возможности"
+
+msgid "Failed to Change Icon"
+msgstr "Не удалось изменить значок"
+
+msgid "Failed to receive %lld files"
+msgstr "Не удалось получить %lld файлов"
+
+msgid "Failed to receive from %@"
+msgstr "Не удалось получить данные от %@"
+
+msgid "Failed to send %lld files"
+msgstr "Не удалось отправить %lld файлов"
+
+msgid "Failed to send to %@"
+msgstr "Не удалось отправить на %@"
+
+msgid "Fault"
+msgstr "Сбой"
+
+msgid "Features"
+msgstr "Возможности"
+
+msgid "File Transfers"
+msgstr "Передача файлов"
+
+msgid "Files"
+msgstr "Файлы"
+
+msgid "Find My Device"
+msgstr "Найти моё устройство"
+
+msgid "Find My Phone Mode"
+msgstr "Режим поиска телефона"
+
+msgid "Find My Phone initiated from a remote device"
+msgstr "Поиск телефона запущен с удалённого устройства"
+
+msgid "Forget all"
+msgstr "Забыть все"
+
+msgid "From %@"
+msgstr "От: %@"
+
+msgid "General"
+msgstr "Общие"
+
+msgid "Go FullScreen"
+msgstr "Перейти в полноэкранный режим"
+
+msgid "Haptics Style"
+msgstr "Стиль тактильной отдачи"
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Сильная"
+
+msgid "Help"
+msgstr "Справка"
+
+msgid "Hide Haptics Style Selector"
+msgstr "Скрывать выбор стиля тактильной отдачи"
+
+msgid "Hide Sensitivity Slider"
+msgstr "Скрывать ползунок чувствительности"
+
+msgid "I FOUND IT!"
+msgstr "Нашлось"
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"Если KDE Connect не удаётся обнаружить другие устройства, можно попробовать "
+"несколько из следующих решений:\n"
+"\n"
+"1. На этом и на других устройствах выберите «Обновить обнаружение» в меню %@ "
+"или потяните список устройств вниз для обновления.\n"
+"\n"
+"2. Убедитесь, что на других устройствах также запущен KDE Connect и они "
+"подключены к той же сети, что и это устройство.\n"
+"\n"
+"3. Добавьте другие устройства вручную с помощью параметра «Настройка "
+"устройств по IP-адресу» в меню %@, а затем выберите «Обновить обнаружение».\n"
+"\n"
+"4. Ознакомьтесь с другими решениями в руководстве пользователя, например по "
+"настройке брандмауэров других устройств:\n"
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"Если запомненное устройство уже в сети, но не показывается здесь, нажмите "
+"«Обновить обнаружение»."
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Если появляются фантомные устройства или что-то работает неправильно, "
+"удаление всех сохранённых данных устройств может исправить ситуацию. "
+"Требуется полный перезапуск приложения."
+
+msgid "In progress"
+msgstr "Выполняется"
+
+msgid "Incoming Pairing Request"
+msgstr "Входящий запрос на сопряжение"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid "Information"
+msgstr "Сведения"
+
+msgid "Initiate Pairing?"
+msgstr "Начать сопряжение?"
+
+msgid "Integration with Siri Shortcuts"
+msgstr "Интеграция с Siri Shortcuts"
+
+msgid "Integration with the system share sheet is in development"
+msgstr "Интеграция с системным меню общего доступа в разработке"
+
+msgid "Internationalization & Localization"
+msgstr "Интернационализация и локализация"
+
+msgid "Invalid"
+msgstr "Неверный"
+
+msgid "Keyboard: Control Remote"
+msgstr "Клавиатура: управление удалённым устройством"
+
+msgid "License"
+msgstr "Лицензия"
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Слабая"
+
+msgid "Lock Screen: Control Remote"
+msgstr "Блокировка экрана: управление удалённым устройством"
+
+msgid "Logs"
+msgstr "Журналы"
+
+msgid "Logs for %@"
+msgstr "Журналы для %@"
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: управление удалёнными медиапроигрывателями и ответ"
+
+msgid "Manage received files in the Files app"
+msgstr "Управление полученными файлами в приложении «Файлы»"
+
+msgid "May not work with KDE Connect for Windows"
+msgstr "Может не работать с KDE Connect для Windows"
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Возможно, с помощью схемы URL и интеграции с Siri Shortcuts"
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Возможно, с помощью Apple Notification Center Service (ACNS)"
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Средняя"
+
+msgid "Mouse: Control Remote"
+msgstr "Мышь: управление удалённым устройством"
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"Перемещайте палец по экрану, чтобы перемещать указатель мыши. Коснитесь "
+"одним пальцем для щелчка левой кнопкой. Коснитесь двумя пальцами для щелчка "
+"правой кнопкой. Длительное нажатие включает перетаскивание. Чтобы отправлять "
+"щелчки напрямую, воспользуйтесь меню в правом верхнем углу.\n"
+"\n"
+"Проведите одним пальцем от расположенного выше «Колеса прокрутки», чтобы "
+"прокручивать по вертикали и горизонтали. Коснитесь «Колеса прокрутки» для "
+"щелчка средней кнопкой."
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Кроссплатформенное приложение, позволяющее устройствам обмениваться данными "
+"(например, телефону и компьютеру)"
+
+msgid "Network Packet Composer"
+msgstr "Составление сетевых пакетов"
+
+msgid "Nice"
+msgstr "Отлично"
+
+msgid "No additional devices are discovered on this network."
+msgstr "В этой сети дополнительные устройства не обнаружены."
+
+msgid "No battery detected in device"
+msgstr "В устройстве не обнаружена батарея"
+
+msgid "No currently connected devices."
+msgstr "Нет подключённых устройств."
+
+msgid "No device discovered in the current network."
+msgstr "В текущей сети устройства не обнаружены."
+
+msgid "No matching logs yet"
+msgstr "Подходящих журналов пока нет"
+
+msgid "No, Stay Paired"
+msgstr "Нет, оставить сопряжение"
+
+msgid "Not yet implemented"
+msgstr "Ещё не реализовано"
+
+msgid "Notice"
+msgstr "Уведомление"
+
+msgid "Notification: Receive from Others"
+msgstr "Уведомления: получение от других устройств"
+
+msgid "Notification: Retrieve by Others"
+msgstr "Уведомления: получение другими устройствами"
+
+msgid "OK"
+msgstr "ОК"
+
+msgid "On-Click Haptic Style"
+msgstr "Стиль тактильной отдачи при нажатии"
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Другое"
+
+msgid "Out-App Notification:"
+msgstr "Уведомление вне приложения:"
+
+msgid "Packet Body"
+msgstr "Тело пакета"
+
+msgid "Packet Tag"
+msgstr "Метка пакета"
+
+msgid "Packet Type"
+msgstr "Тип пакета"
+
+msgid "Pair"
+msgstr "Выполнить сопряжение"
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"Запрос на сопряжение от «%@»\n"
+"Ключ проверки: %@"
+
+msgid "Pairing Complete"
+msgstr "Сопряжение завершено"
+
+msgid "Pairing Rejected"
+msgstr "Сопряжение отклонено"
+
+msgid "Pairing Timed Out"
+msgstr "Истекло время ожидания сопряжения"
+
+msgid "Pairing with '%@' failed"
+msgstr "Не удалось выполнить сопряжение с «%@»"
+
+msgid "Pairing with '%@' succeeded"
+msgstr "Сопряжение с «%@» выполнено"
+
+msgid "Peer"
+msgstr "Устройство"
+
+msgid "Ping"
+msgstr "Проверка связи"
+
+msgid "Ping received from a connected device."
+msgstr "Получен запрос ping от подключённого устройства."
+
+msgid "Ping!"
+msgstr "Проверка связи"
+
+msgid "Plasma Bigscreen"
+msgstr "Plasma Bigscreen"
+
+msgid "Playground"
+msgstr "Песочница"
+
+msgid "Plugin Settings"
+msgstr "Параметры модулей"
+
+msgid "Plugins If Reachable"
+msgstr "Модули при доступности"
+
+msgid "Pointer Sensitivity"
+msgstr "Чувствительность указателя"
+
+msgid "Preparing Media…"
+msgstr "Подготовка медиаданных…"
+
+msgid "Presenter: Control Remote"
+msgstr "Презентация: управление удалённым устройством"
+
+msgid "Preview: "
+msgstr "Предварительный просмотр: "
+
+msgid "Previously connected devices will appear here."
+msgstr "Здесь появятся ранее подключённые устройства."
+
+msgid "Push Local Clipboard"
+msgstr "Отправить локальный буфер обмена"
+
+msgid "Reason: %@"
+msgstr "Причина: %@"
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Полученные фото и видео будут сохраняться в приложении «Файлы», так как "
+"предоставить доступ к медиатеке невозможно."
+
+msgid "Receiving"
+msgstr "Получение"
+
+msgid "Receiving file %lld of %lld"
+msgstr "Получение файла %lld из %lld"
+
+msgid "Refresh Discovery"
+msgstr "Обновить обнаружение"
+
+msgid "Remembered Devices"
+msgstr "Запомненные устройства"
+
+msgid "Remote Input"
+msgstr "Удалённый ввод"
+
+msgid "Report Bug"
+msgstr "Сообщить об ошибке"
+
+msgid "Request to pair with '%@'"
+msgstr "Запрос на сопряжение с «%@»"
+
+msgid "Restart Discovery"
+msgstr "Перезапустить обнаружение"
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Жёсткая"
+
+msgid "Ring Device"
+msgstr "Подать сигнал на устройстве"
+
+msgid "Ring/Find My Phone"
+msgstr "Звонок/Поиск телефона"
+
+msgid "Rounded Rectangle"
+msgstr "Скруглённый прямоугольник"
+
+msgid "Run Command"
+msgstr "Выполнить команду"
+
+msgid "Run Command: Request"
+msgstr "Выполнение команды: запрос"
+
+msgid "Run Command: Respond"
+msgstr "Выполнение команды: ответ"
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: доступ к удалённому устройству и запуск файлового сервера"
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"Отпечаток SHA256 сертификата вашего устройства:\n"
+"%@\n"
+"\n"
+"Отпечаток SHA256 сертификата удалённого устройства: \n"
+"%@"
+
+msgid "Save photos to the photo library"
+msgstr "Сохранять фотографии в медиатеку"
+
+msgid "Save videos to the photo library"
+msgstr "Сохранять видео в медиатеку"
+
+msgid "Screensaver: Inhibit Remote"
+msgstr "Хранитель экрана: блокировка на удалённом устройстве"
+
+msgid "Select a device from the Devices list to start."
+msgstr "Чтобы начать, выберите устройство из списка «Устройства»."
+
+msgid "Send"
+msgstr "Отправить"
+
+msgid "Send Double Left Click"
+msgstr "Отправить двойной щелчок левой кнопкой"
+
+msgid "Send Files"
+msgstr "Отправить файлы"
+
+msgid "Send Left Hold"
+msgstr "Отправить удержание левой кнопки"
+
+msgid "Send Middle Click"
+msgstr "Отправить щелчок средней кнопкой"
+
+msgid "Send Photos and Videos"
+msgstr "Отправить фотографии и видео"
+
+msgid "Send Ping"
+msgstr "Отправить проверку связи"
+
+msgid "Send Right Click"
+msgstr "Отправить щелчок правой кнопкой"
+
+msgid "Send Single Left Click"
+msgstr "Отправить одиночный щелчок левой кнопкой"
+
+msgid "Sending"
+msgstr "Отправка"
+
+msgid "Sending file %lld of %lld"
+msgstr "Отправка файла %lld из %lld"
+
+msgid "Settings"
+msgstr "Параметры"
+
+msgid "Share/File Transfer"
+msgstr "Общий доступ/Передача файлов"
+
+msgid "Share: Receive File, Text, and URL"
+msgstr "Общий доступ: получение файлов, текста и URL-адресов"
+
+msgid "Share: Send File"
+msgstr "Общий доступ: отправка файла"
+
+msgid "Share: Send Text & URL"
+msgstr "Общий доступ: отправка текста и URL-адресов"
+
+msgid "Show Haptics Style Selector"
+msgstr "Показывать выбор стиля тактильной отдачи"
+
+msgid "Show Received Files in Finder"
+msgstr "Показывать полученные файлы в Finder"
+
+msgid "Show Sensitivity Slider"
+msgstr "Показывать ползунок чувствительности"
+
+msgid "Slideshow Remote"
+msgstr "Пульт слайд-шоу"
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "Мягкая"
+
+msgid "Source Code"
+msgstr "Исходный код"
+
+msgid "Status"
+msgstr "Состояние"
+
+msgid "Supported"
+msgstr "Поддерживается"
+
+msgid "System Default"
+msgstr "Системное"
+
+msgid "System Volume: Control Remote & Respond"
+msgstr "Системная громкость: управление удалённым устройством и ответ"
+
+msgid "Take Photo: Respond"
+msgstr "Съёмка фото: ответ"
+
+msgid "Tap to start pairing"
+msgstr "Коснитесь, чтобы начать сопряжение"
+
+msgid "Telephony: SMS/Call Sync"
+msgstr "Телефония: синхронизация SMS и вызовов"
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "Имя устройства, распознаваемое KDE Connect"
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"Указанные выше параметры необратимы. Для их применения требуется полный "
+"перезапуск приложения."
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"Обычно они выполняются автоматически, но если нет, некоторые из них можно "
+"выполнить вручную."
+
+msgid "These should work with little to no issues"
+msgstr "Должны работать практически без проблем"
+
+msgid "Third-Party Libraries"
+msgstr "Сторонние библиотеки"
+
+msgid "This is likely not possible to implement on iOS"
+msgstr "Скорее всего, реализовать это в iOS невозможно"
+
+msgid "Through the system share sheet"
+msgstr "Через системное меню общего доступа"
+
+msgid "To %@"
+msgstr "Кому: %@"
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"Чтобы подключиться к запомненным устройствам, они должны быть подключены к "
+"той же сети, что и это устройство."
+
+msgid "Toggle Keyboard"
+msgstr "Переключить клавиатуру"
+
+msgid "Troubleshooting"
+msgstr "Устранение неполадок"
+
+msgid "Trusted Networks"
+msgstr "Доверенные сети"
+
+msgid "Unknown Theme"
+msgstr "Неизвестное оформление"
+
+msgid "Unpair"
+msgstr "Разорвать сопряжение"
+
+msgid "Unpair With Device?"
+msgstr "Разорвать сопряжение с устройством?"
+
+msgid "Unpair with %@?"
+msgstr "Разорвать сопряжение с «%@»?"
+
+msgid "Valid"
+msgstr "Верный"
+
+msgid "Verification key: %@"
+msgstr "Ключ проверки: %@"
+
+msgid "Version: %@ (%@)"
+msgstr "Версия: %@ (%@)"
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr "Ожидание начала передачи остальных файлов (%lld)"
+
+msgid "Waiting for logs..."
+msgstr "Ожидание журналов…"
+
+msgid "Waiting to send"
+msgstr "Ожидание отправки"
+
+msgid "Website"
+msgstr "Веб-сайт"
+
+msgid "Wiki & User Manual"
+msgstr "Вики и руководство пользователя"
+
+msgid "Yes, Unpair"
+msgstr "Да, разорвать сопряжение"
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"Модули можно включать и отключать по отдельности. Некоторые модули имеют "
+"собственные параметры, которые находятся в соответствующих разделах."
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "без названия"
+
+msgid "© KDE Community & contributors"
+msgstr "© Сообщество KDE и участники"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kdeconnect-ios\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-10-04 23:46+0100\n"
+"PO-Revision-Date: 2026-10-10 15:20+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -224,17 +224,17 @@ msgstr ""
 msgid "Delete host certificate"
 msgstr "Borrar certificado del servidor"
 
-#, fuzzy
 msgid ""
 "Delete the host's certificate and re-generate it upon restart. Requires the "
 "app to be fully restarted. NOTE: this will make the device unable to connect "
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 msgstr ""
-"Delete the host's certificate and re-generate it upon restart. Requires the "
-"app to be fully restarted. NOTE: this will make the device unable to connect "
-"with previously connected devices. You must unpair this device from the "
-"other remote devices and pair them again."
+"Borra el certificado del servidor y lo regenera al reiniciar. Requiere un "
+"reinicio completo de la aplicación. Nota: esta opción impedirá que el "
+"dispositivo se conecte con los dispositivos a los que ya estaba conectado. "
+"Debe desvincular este dispositivo desde los otros dispositivos remotos y "
+"vincularlo de nuevo."
 
 msgid "Developer"
 msgstr "Desarrollador"
@@ -287,74 +287,60 @@ msgstr "Hacer un donativo"
 msgid "Done"
 msgstr "Hecho"
 
-#, fuzzy
 msgid "Double tap to activate debug mode"
-msgstr "Double tap to activate debug mode"
+msgstr "Doble pulsación para activar el modo depuración"
 
-#, fuzzy
 msgid "Double tap to activate debugging device discovery"
-msgstr "Double tap to activate debugging device discovery"
+msgstr ""
+"Doble pulsación para activar la depuración del descubrimiento de dispositivos"
 
-#, fuzzy
 msgid "Enable/Disable Plugins"
-msgstr "Enable/Disable Plugins"
+msgstr "Activar/desactivar complementos"
 
 msgid "Encryption Info"
 msgstr "Información de cifrado"
 
-#, fuzzy
 msgid "Erase saved devices cache"
-msgstr "Erase saved devices cache"
+msgstr "Borrar la caché de dispositivos guardados"
 
 msgid "Error"
 msgstr "Error"
 
-#, fuzzy
 msgid "Error Occured"
-msgstr "Error Occured"
+msgstr "Ocurrió un error"
 
-#, fuzzy
 msgid "Errors and Faults"
-msgstr "Errors and Faults"
+msgstr "Errores y fallos"
 
-#, fuzzy
 msgid "Exit Presentation"
-msgstr "Exit Presentation"
+msgstr "Salir de la presentación"
 
-#, fuzzy
 msgid "Experimental functionalities"
-msgstr "Experimental functionalities"
+msgstr "Funcionalidades experimentales"
 
-#, fuzzy
 msgid "Failed to Change Icon"
-msgstr "Failed to Change Icon"
+msgstr "Fallo al cambiar el icono"
 
-#, fuzzy
 msgid "Failed to receive %lld files"
-msgstr "Failed to receive %lld files"
+msgstr "Fallo al recibir %lld archivos"
 
-#, fuzzy
 msgid "Failed to receive from %@"
-msgstr "Failed to receive from %@"
+msgstr "Fallo al recibir desde %@"
 
-#, fuzzy
 msgid "Failed to send %lld files"
-msgstr "Failed to send %lld files"
+msgstr "Fallo al enviar %lld archivos"
 
-#, fuzzy
 msgid "Failed to send to %@"
-msgstr "Failed to send to %@"
+msgstr "Fallo al enviar a %@"
 
-#, fuzzy
 msgid "Fault"
-msgstr "Fault"
+msgstr "Fallo"
 
 msgid "Features"
 msgstr "Funcionalidades"
 
-#, fuzzy
 msgid "File Transfers"
-msgstr "File Transfers"
+msgstr "Transferencias de archivos"
 
 msgid "Files"
 msgstr "Archivos"
@@ -362,20 +348,17 @@ msgstr "Archivos"
 msgid "Find My Device"
 msgstr "Encontrar mi dispositivo"
 
-#, fuzzy
 msgid "Find My Phone Mode"
-msgstr "Find My Phone Mode"
+msgstr "Modo encontrar mi teléfono"
 
-#, fuzzy
 msgid "Find My Phone initiated from a remote device"
-msgstr "Find My Phone initiated from a remote device"
+msgstr "Encontrar mi teléfono iniciado desde un dispositivo remoto"
 
 msgid "Forget all"
 msgstr "Olvidar todos"
 
-#, fuzzy
 msgid "From %@"
-msgstr "From %@"
+msgstr "Desde %@"
 
 msgid "General"
 msgstr "General"
@@ -383,31 +366,25 @@ msgstr "General"
 msgid "Go FullScreen"
 msgstr "Ir a pantalla completa"
 
-#, fuzzy
 msgid "Haptics Style"
-msgstr "Haptics Style"
+msgstr "Estilo háptico"
 
 #. Hard haptic feedback level
-#, fuzzy
 msgid "Heavy"
-msgstr "Heavy"
+msgstr "Pesado"
 
 msgid "Help"
 msgstr "Ayuda"
 
-#, fuzzy
 msgid "Hide Haptics Style Selector"
-msgstr "Hide Haptics Style Selector"
+msgstr "Ocultar el selector del estilo háptico"
 
-#, fuzzy
 msgid "Hide Sensitivity Slider"
-msgstr "Hide Sensitivity Slider"
+msgstr "Ocultar control deslizante de sensibilidad"
 
-#, fuzzy
 msgid "I FOUND IT!"
-msgstr "I FOUND IT!"
+msgstr "¡Lo he encontrado!"
 
-#, fuzzy
 msgid ""
 "If KDE Connect is having trouble discovering other devices, you can try a "
 "combination of the following solutions:\n"
@@ -424,61 +401,55 @@ msgid ""
 "4. Check other solutions on the User Manual, such as configuring the "
 "firewalls of the other devices:\n"
 msgstr ""
-"If KDE Connect is having trouble discovering other devices, you can try a "
-"combination of the following solutions:\n"
+"Si KDE Connect tiene problemas al descubrir otros dispositivos, puede "
+"intentar una combinación de las siguientes soluciones:\n"
 "\n"
-"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
-"list, on this and the other devices.\n"
+"1. \"Refrescar descubrimiento\" a través el menú %@ o pulse el botón "
+"refrescar en la lista de dispositivos, en este y otros dispositivos\n"
 "\n"
-"2. Make sure the other devices are also running KDE Connect and are "
-"connected to the same network as this device.\n"
+"2. Asegúrese que el resto de dispositivos también ejecutan KDE Connect y "
+"están conectados a la misma red que este dispositivo.\n"
 "\n"
-"3. Manually add the other devices through the \"Configure Devices By IP\" "
-"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"3. Añada manualmente los otros dispositivos a través de la opción "
+"«Configurar dispositivos por IP» en el menú %@, y luego «Refrescar "
+"descubrimiento»\n"
 "\n"
-"4. Check other solutions on the User Manual, such as configuring the "
-"firewalls of the other devices:\n"
+"4. Compruebe otras soluciones en el manual de usuario, como configurar los "
+"cortafuegos de los otros dispositivos:\n"
 
-#, fuzzy
 msgid ""
 "If a remembered device is already online but not shown here, try Refresh "
 "Discovery."
 msgstr ""
-"If a remembered device is already online but not shown here, try Refresh "
-"Discovery."
+"Si un dispositivo guardado ya está en línea pero no se muestra aquí, pruebe "
+"a Refrescar descubrimiento."
 
-#, fuzzy
 msgid ""
 "If there are phantom devices or something just doesn't behave correctly, "
 "erasing all saved devices data might fix it. Requires the app to be fully "
 "restarted."
 msgstr ""
-"If there are phantom devices or something just doesn't behave correctly, "
-"erasing all saved devices data might fix it. Requires the app to be fully "
-"restarted."
+"Si hay dispositivos fantasma o algo no se comporta correctamente, borrar "
+"todos los dispositivos quizás lo resuelva. Requiere un reinicio completo de "
+"la aplicación."
 
-#, fuzzy
 msgid "In progress"
-msgstr "In progress"
+msgstr "En progreso"
 
-#, fuzzy
 msgid "Incoming Pairing Request"
-msgstr "Incoming Pairing Request"
+msgstr "Petición de vinculación entrante"
 
-#, fuzzy
 msgid "Info"
-msgstr "Info"
+msgstr "Información"
 
 msgid "Information"
 msgstr "Información"
 
-#, fuzzy
 msgid "Initiate Pairing?"
-msgstr "Initiate Pairing?"
+msgstr "¿Iniciar vinculación?"
 
-#, fuzzy
 msgid "Integration with Siri Shortcuts"
-msgstr "Integration with Siri Shortcuts"
+msgstr "Accesos rápidos de integración con Siri"
 
 #, fuzzy
 msgid "Integration with the system share sheet is in development"
@@ -737,9 +708,8 @@ msgstr "Recibiendo"
 msgid "Receiving file %lld of %lld"
 msgstr "Recibiendo archivo %lld de %lld"
 
-#, fuzzy
 msgid "Refresh Discovery"
-msgstr "Refresh Discovery"
+msgstr "Refrescar descubrimiento"
 
 #, fuzzy
 msgid "Remembered Devices"

@@ -1,0 +1,932 @@
+# Translation for kdeconnect-ios.po to Euskara/Basque (eu).
+# Copyright (C) 2026 This file is copyright:
+# This file is distributed under the same license as kdeconnect-ios package.
+# SPDX-FileCopyrightText: 2026 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+#
+# Translators:
+# SPDX-FileCopyrightText: Iñigo Salvador Azurmendi <xalba@ni.eus>, 2026.
+#
+# Egoera:
+# Proiektu osoaren berrikuspen integrala: 2026-10-11.
+# Azken berrikuspena: 2026-10-11 — egoera ondua mantendu da.
+# Terminologia, estiloa, ortotipografia, kohesioa eta koherentzia berrikusi dira.
+# Erreferentzia-gida: sortzeko dago
+# Ikus, halaber: KDE-eu-berrikuspen-integralen-erregistroa.md
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"PO-Revision-Date: 2026-10-11 03:25+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 26.08.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr ""
+"KDE Connect erabiliz beste gailu batzuk aurkitu eta haietara konektatu."
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr ""
+"Jasotako irudiak, Fitxategiak aplikazioan gorde ordez, zure argazki-"
+"liburutegian gorde."
+
+msgid "%@ and %lld other files"
+msgstr "%@ eta beste %lld fitxategi"
+
+msgid "%@ for iOS"
+msgstr "iOSerako %@"
+
+msgid "**KDE Connect** for iOS"
+msgstr "iOSerako **KDE Connect**"
+
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "?"
+msgstr "?"
+
+msgid "About"
+msgstr "Honi buruz"
+
+msgid "Actions"
+msgstr "Ekintzak"
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Beste gailu batzuk automatikoki aurkitzen ez badira, haien IP helbide "
+"lokalak hemen gehitu."
+
+msgid "Advanced"
+msgstr "Aurreratua"
+
+msgid "Advanced Settings"
+msgstr "Ezarpen aurreratuak"
+
+msgid "All Messages"
+msgstr "Mezu guztiak"
+
+msgid "Also written by %@"
+msgstr "%@(e)k ere idatzia"
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+msgid "App Icon"
+msgstr "Aplikazioaren ikonoa"
+
+msgid "App Icon:"
+msgstr "Aplikazioaren ikonoa:"
+
+msgid "App Theme:"
+msgstr "Aplikazioaren gaia:"
+
+msgid "Application"
+msgstr "Aplikazioa"
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"Sorburu irekiko proiektua izanik, KDE Connecten iOSerako bertsioa beste "
+"plataforma guztietako bertsioen pare jartzeko ditugun oraingo eta "
+"etorkizuneko planak gardentasunez azaltzea garrantzitsua iruditzen zaigu."
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Jasotako argazkiak eta bideoak zure argazki-liburutegian gordetzeko, "
+"Ezarpenak aplikazioan Argazkiak aplikaziorako sarbidea baimendu"
+
+msgid "Available themes"
+msgstr "Gai erabilgarriak"
+
+msgid "Background Activity"
+msgstr "Atzeko planoko jarduera"
+
+msgid "Battery Level"
+msgstr "Bateria-maila"
+
+msgid "Battery Plugin Disabled"
+msgstr "Bateriaren plugina desgaituta dago"
+
+msgid "Battery Status"
+msgstr "Bateriaren egoera"
+
+msgid "Can't find your devices here?"
+msgstr "Ez dituzu zure gailuak hemen aurkitzen?"
+
+msgid "Cancel"
+msgstr "Utzi"
+
+msgid "Category: %@"
+msgstr "Kategoria: %@"
+
+msgid "Check out the merge requests"
+msgstr "Bateratze-eskaerak ikusi"
+
+msgid "Choose App Icon"
+msgstr "Aplikazioaren ikonoa hautatu"
+
+msgid "Chores"
+msgstr "Mantentze-lanak"
+
+msgid "Classic"
+msgstr "Klasikoa"
+
+msgid "Clear Cache"
+msgstr "Cachea garbitu"
+
+msgid "Clipboard Sync"
+msgstr "Arbelaren sinkronizazioa"
+
+msgid "Clipboard: Push & Receive Text"
+msgstr "Arbela: testua bidali eta jaso"
+
+msgid "Clipboard: Sync"
+msgstr "Arbela: sinkronizatu"
+
+msgid "Configure Devices By IP"
+msgstr "Gailuak IP bidez konfiguratu"
+
+msgid "Configure Devices by IP:"
+msgstr "Gailuak IP bidez konfiguratu:"
+
+msgid "Connect"
+msgstr "Konektatu"
+
+msgid "Connected Devices"
+msgstr "Konektatutako gailuak"
+
+msgid "Connectivity Report"
+msgstr "Konektagarritasun-txostena"
+
+msgid "Contacts"
+msgstr "Kontaktuak"
+
+msgid "Contribute to KDE Connect"
+msgstr "KDE Connecten lagundu"
+
+msgid "Contributors"
+msgstr "Kolaboratzaileak"
+
+msgid "Copy path to the folder containing received files"
+msgstr "Jasotako fitxategiak dituen karpetaren bide-izena kopiatu"
+
+msgid "Currently maintained by %@"
+msgstr "Egun %@(e)k mantentzen du"
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr ""
+"Oraingoz, behar bezala ibiltzeko, aplikazioak aurreko planoan egon behar du"
+
+msgid "Cursor Sensitivity"
+msgstr "Kurtsorearen sentikortasuna"
+
+msgid "DANGEROUS OPTIONS"
+msgstr "AUKERA ARRISKUTSUAK"
+
+msgid "Dark"
+msgstr "Iluna"
+
+msgid "Debug"
+msgstr "Arazketa"
+
+msgid "Debug mode"
+msgstr "Arazketa-modua"
+
+msgid "Debugging device discovery"
+msgstr "Gailuak aurkitzeko prozesua araztea"
+
+msgid "Default"
+msgstr "Lehenetsia"
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Gordetako ezarpen eta gailu guztiak ezabatu. Aplikazioa erabat berrabiarazi "
+"behar da."
+
+msgid "Delete host certificate"
+msgstr "Ostalariaren ziurtagiria ezabatu"
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Ostalariaren ziurtagiria ezabatu eta berrabiaraztean berriro sortu. "
+"Aplikazioa erabat berrabiarazi behar da. OHARRA: horren ondorioz, gailua "
+"ezingo da lehen konektatutako gailuekin konektatu. Urruneko beste gailuetan "
+"gailu honen parekatzea desegin behar duzu, eta ondoren berriro parekatu."
+
+msgid "Developer"
+msgstr "Garatzailea"
+
+msgid "Device"
+msgstr "Gailua"
+
+msgid "Device Discovery"
+msgstr "Gailuak aurkitzea"
+
+msgid "Device IP"
+msgstr "Gailuaren IPa"
+
+msgid "Device Name"
+msgstr "Gailuaren izena"
+
+msgid "Device Name:"
+msgstr "Gailuaren izena:"
+
+msgid "Device Offline"
+msgstr "Gailua lerroz kanpo dago"
+
+msgid "Device Status"
+msgstr "Gailuaren egoera"
+
+msgid "Device name"
+msgstr "Gailuaren izena"
+
+msgid "Devices"
+msgstr "Gailuak"
+
+msgid "Direct Handshake Devices"
+msgstr "Esku-emate zuzeneko gailuak"
+
+msgid "Disable UDP Broadcast"
+msgstr "UDP bidezko difusioa desgaitu"
+
+msgid "Discovered Devices"
+msgstr "Aurkitutako gailuak"
+
+msgid "Discovery & Pairing"
+msgstr "Gailuak aurkitzea eta parekatzea"
+
+msgid "Do Not Pair"
+msgstr "Ez parekatu"
+
+msgid "Donate"
+msgstr "Dohaintza egin"
+
+msgid "Done"
+msgstr "Eginda"
+
+msgid "Double tap to activate debug mode"
+msgstr "Arazketa-modua aktibatzeko, tak bikoitza egin"
+
+msgid "Double tap to activate debugging device discovery"
+msgstr "Gailuak aurkitzeko prozesuaren arazketa aktibatzeko, tak bikoitza egin"
+
+msgid "Enable/Disable Plugins"
+msgstr "Pluginak gaitu/ezgaitu"
+
+msgid "Encryption Info"
+msgstr "Zifratze-informazioa"
+
+msgid "Erase saved devices cache"
+msgstr "Gordetako gailuen cachea ezabatu"
+
+msgid "Error"
+msgstr "Errorea"
+
+msgid "Error Occured"
+msgstr "Errorea gertatu da"
+
+msgid "Errors and Faults"
+msgstr "Erroreak eta akatsak"
+
+msgid "Exit Presentation"
+msgstr "Aurkezpenetik irten"
+
+msgid "Experimental functionalities"
+msgstr "Eginbide esperimentalak"
+
+msgid "Failed to Change Icon"
+msgstr "Ikonoa aldatzeak huts egin du"
+
+msgid "Failed to receive %lld files"
+msgstr "%lld fitxategi jasotzeak huts egin du"
+
+msgid "Failed to receive from %@"
+msgstr "%@(e)tik jasotzeak huts egin du"
+
+msgid "Failed to send %lld files"
+msgstr "%lld fitxategi bidaltzeak huts egin du"
+
+msgid "Failed to send to %@"
+msgstr "%@(e)ri bidaltzeak huts egin du"
+
+msgid "Fault"
+msgstr "Akatsa"
+
+msgid "Features"
+msgstr "Eginbideak"
+
+msgid "File Transfers"
+msgstr "Fitxategi-transferentziak"
+
+msgid "Files"
+msgstr "Fitxategiak"
+
+msgid "Find My Device"
+msgstr "Nire gailua bilatu"
+
+msgid "Find My Phone Mode"
+msgstr "Nire telefonoa bilatzeko modua"
+
+msgid "Find My Phone initiated from a remote device"
+msgstr "Urruneko gailu batetik nire telefonoa bilatzeko funtzioa abiarazi da"
+
+msgid "Forget all"
+msgstr "Dena ahaztu"
+
+msgid "From %@"
+msgstr "%@(e)tik"
+
+msgid "General"
+msgstr "Orokorra"
+
+msgid "Go FullScreen"
+msgstr "Pantaila osora aldatu"
+
+msgid "Haptics Style"
+msgstr "Erantzun haptikoaren estiloa"
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Indartsua"
+
+msgid "Help"
+msgstr "Laguntza"
+
+msgid "Hide Haptics Style Selector"
+msgstr "Erantzun haptikoaren estilo-hautatzailea ezkutatu"
+
+msgid "Hide Sensitivity Slider"
+msgstr "Sentikortasun-graduatzailea ezkutatu"
+
+msgid "I FOUND IT!"
+msgstr "AURKITU DUT!"
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"KDE Connectek beste gailuak aurkitzeko arazoak baditu, ondoko "
+"konponbideetako batzuk batera proba ditzakezu:\n"
+"\n"
+"1. Gailu honetan eta besteetan, %@ menuan «Gailuen bilaketa freskatu» "
+"hautatu, edo Gailuak zerrendatik behera tira egin hura freskatzeko.\n"
+"\n"
+"2. Beste gailuetan ere KDE Connect martxan dagoela eta gailu honen sare "
+"berera konektatuta daudela ziurtatu.\n"
+"\n"
+"3. %@ menuko «Gailuak IP bidez konfiguratu» aukeraren bidez beste gailuak "
+"eskuz gehitu, eta ondoren «Gailuen bilaketa freskatu» hautatu.\n"
+"\n"
+"4. Erabiltzailearen eskuliburuan beste konponbide batzuk kontsultatu, hala "
+"nola beste gailuetako suhesiak konfiguratzea:\n"
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"Gordetako gailu bat dagoeneko lerroan badago baina hemen agertzen ez bada, "
+"«Gailuen bilaketa freskatu» aukera probatu."
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Mamu-gailuak badaude edo zerbait behar bezala ez badabil, gordetako gailuen "
+"datu guztiak ezabatzeak arazoa konpon lezake. Aplikazioa erabat berrabiarazi "
+"behar da."
+
+msgid "In progress"
+msgstr "Abian"
+
+msgid "Incoming Pairing Request"
+msgstr "Sarrerako parekatze-eskaera"
+
+msgid "Info"
+msgstr "Informazioa"
+
+msgid "Information"
+msgstr "Informazioa"
+
+msgid "Initiate Pairing?"
+msgstr "Parekatzea hasi?"
+
+msgid "Integration with Siri Shortcuts"
+msgstr "Siriren lasterbideekin integratzea"
+
+msgid "Integration with the system share sheet is in development"
+msgstr "Sistemaren partekatze-panelarekin integratzea garatzen ari dira"
+
+msgid "Internationalization & Localization"
+msgstr "Nazioartekotzea eta lokalizazioa"
+
+msgid "Invalid"
+msgstr "Baliogabea"
+
+msgid "Keyboard: Control Remote"
+msgstr "Teklatua: urruneko gailua kontrolatu"
+
+msgid "License"
+msgstr "Lizentzia"
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Arina"
+
+msgid "Lock Screen: Control Remote"
+msgstr "Giltzatze-pantaila: urruneko gailua kontrolatu"
+
+msgid "Logs"
+msgstr "Egunkariak"
+
+msgid "Logs for %@"
+msgstr "%@(e)n egunkariak"
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: urruneko media kontrolatu eta erantzun"
+
+msgid "Manage received files in the Files app"
+msgstr "Jasotako fitxategiak Fitxategiak aplikazioan kudeatu"
+
+msgid "May not work with KDE Connect for Windows"
+msgstr "Baliteke Windowserako KDE Connectekin ez ibiltzea"
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Agian URL eskema erabiliz eta Siriren lasterbideekin integratuz"
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Agian Apple Notification Center Service (ANCS) erabiliz"
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Ertaina"
+
+msgid "Mouse: Control Remote"
+msgstr "Sagua: urruneko gailua kontrolatu"
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"Saguaren kurtsorea mugitzeko, hatz bat pantailan mugitu. Ezkerreko klik "
+"egiteko, hatz batekin tak egin. Eskuineko klik egiteko, bi hatzekin tak "
+"egin. Arrastatu eta jaregitea aktibatzeko, luze sakatu. Edo, klikak zuzenean "
+"bidaltzeko, goiko eskuineko menua erabili.\n"
+"\n"
+"Bertikalki zein horizontalki kiribiltzeko, goiko «Kiribiltze-gurpila» "
+"elementutik abiatuta hatz batekin arrastatu. Erdiko klik egiteko, "
+"«Kiribiltze-gurpila» elementuan tak egin."
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Zure gailuak (telefonoa eta ordenagailua adibidez) elkarrekin komunikatzea "
+"ahalbidetzen duen plataforma anitzeko aplikazioa"
+
+msgid "Network Packet Composer"
+msgstr "Sare-paketeen konposatzailea"
+
+msgid "Nice"
+msgstr "Ederki"
+
+msgid "No additional devices are discovered on this network."
+msgstr "Sare honetan ez da beste gailurik aurkitu."
+
+msgid "No battery detected in device"
+msgstr "Gailuan ez da bateriarik antzeman"
+
+msgid "No currently connected devices."
+msgstr "Une honetan ez dago konektatutako gailurik."
+
+msgid "No device discovered in the current network."
+msgstr "Uneko sarean ez da gailurik aurkitu."
+
+msgid "No matching logs yet"
+msgstr "Oraindik ez dago bat datorren egunkaririk"
+
+msgid "No, Stay Paired"
+msgstr "Ez, parekatuta jarraitu"
+
+msgid "Not yet implemented"
+msgstr "Oraindik ez da inplementatu"
+
+msgid "Notice"
+msgstr "Oharpena"
+
+msgid "Notification: Receive from Others"
+msgstr "Jakinarazpena: besteengandik jaso"
+
+msgid "Notification: Retrieve by Others"
+msgstr "Jakinarazpena: besteek berreskuratu"
+
+msgid "OK"
+msgstr "Ados"
+
+msgid "On-Click Haptic Style"
+msgstr "Klik egitean emandako erantzun haptikoaren estiloa"
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Bestelakoa"
+
+msgid "Out-App Notification:"
+msgstr "Aplikaziotik kanpoko jakinarazpena:"
+
+msgid "Packet Body"
+msgstr "Paketearen edukia"
+
+msgid "Packet Tag"
+msgstr "Paketearen etiketa"
+
+msgid "Packet Type"
+msgstr "Pakete-mota"
+
+msgid "Pair"
+msgstr "Parekatu"
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"«%@»(e)tik jasotako parekatze-eskaera\n"
+"Egiaztapen-gakoa: %@"
+
+msgid "Pairing Complete"
+msgstr "Parekatzea osatu da"
+
+msgid "Pairing Rejected"
+msgstr "Parekatzea errefusatu da"
+
+msgid "Pairing Timed Out"
+msgstr "Parekatzeko denbora-muga gainditu da"
+
+msgid "Pairing with '%@' failed"
+msgstr "«%@»(e)kin parekatzeak huts egin du"
+
+msgid "Pairing with '%@' succeeded"
+msgstr "«%@»(e)kin ondo parekatu da"
+
+msgid "Peer"
+msgstr "Parekoa"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Ping received from a connected device."
+msgstr "Konektatutako gailu batetik ping bat jaso da."
+
+msgid "Ping!"
+msgstr "Ping!"
+
+msgid "Plasma Bigscreen"
+msgstr "Plasma Bigscreen"
+
+msgid "Playground"
+msgstr "Probalekua"
+
+msgid "Plugin Settings"
+msgstr "Pluginen ezarpenak"
+
+msgid "Plugins If Reachable"
+msgstr "Pluginak, gailua atzigarri badago"
+
+msgid "Pointer Sensitivity"
+msgstr "Erakuslearen sentikortasuna"
+
+msgid "Preparing Media…"
+msgstr "Media prestatzen…"
+
+msgid "Presenter: Control Remote"
+msgstr "Aurkezlea: urruneko gailua kontrolatu"
+
+msgid "Preview: "
+msgstr "Aurreikuspegia: "
+
+msgid "Previously connected devices will appear here."
+msgstr "Aurrez konektatutako gailuak hemen agertuko dira."
+
+msgid "Push Local Clipboard"
+msgstr "Tokiko arbelaren edukia bidali"
+
+msgid "Reason: %@"
+msgstr "Arrazoia: %@"
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Zure argazki-liburutegirako sarbidea eman ezin diguzunez, jasotako argazkiak "
+"eta bideoak Fitxategiak aplikazioan gordeko dira."
+
+msgid "Receiving"
+msgstr "Jasotzen"
+
+msgid "Receiving file %lld of %lld"
+msgstr "%lld / %lld fitxategia jasotzen"
+
+msgid "Refresh Discovery"
+msgstr "Gailuen bilaketa freskatu"
+
+msgid "Remembered Devices"
+msgstr "Gordetako gailuak"
+
+msgid "Remote Input"
+msgstr "Urruneko sarrera"
+
+msgid "Report Bug"
+msgstr "Akats baten berri eman"
+
+msgid "Request to pair with '%@'"
+msgstr "«%@»(e)kin parekatzeko eskaera"
+
+msgid "Restart Discovery"
+msgstr "Gailuen bilaketa berrabiarazi"
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Zurruna"
+
+msgid "Ring Device"
+msgstr "Gailuaren txirrina jo"
+
+msgid "Ring/Find My Phone"
+msgstr "Txirrina jo/Nire telefonoa bilatu"
+
+msgid "Rounded Rectangle"
+msgstr "Izkin biribileko laukizuzena"
+
+msgid "Run Command"
+msgstr "Komandoa exekutatu"
+
+msgid "Run Command: Request"
+msgstr "Komandoa exekutatu: eskatu"
+
+msgid "Run Command: Respond"
+msgstr "Komandoa exekutatu: erantzun"
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr ""
+"SFTP: urruneko gailuaren fitxategi-sistema atzitu eta fitxategi-zerbitzaria "
+"abiarazi"
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"Zure gailuaren ziurtagiriaren SHA256 hatz-marka:\n"
+"%@\n"
+"\n"
+"Urruneko gailuaren ziurtagiriaren SHA256 hatz-marka: \n"
+"%@"
+
+msgid "Save photos to the photo library"
+msgstr "Argazkiak argazki-liburutegian gorde"
+
+msgid "Save videos to the photo library"
+msgstr "Bideoak argazki-liburutegian gorde"
+
+msgid "Screensaver: Inhibit Remote"
+msgstr "Pantaila-babeslea: urruneko gailuan aktibatzea eragotzi"
+
+msgid "Select a device from the Devices list to start."
+msgstr "Hasteko, «Gailuak» zerrendako gailu bat hautatu."
+
+msgid "Send"
+msgstr "Bidali"
+
+msgid "Send Double Left Click"
+msgstr "Ezkerreko klik bikoitza bidali"
+
+msgid "Send Files"
+msgstr "Fitxategiak bidali"
+
+msgid "Send Left Hold"
+msgstr "Ezkerreko botoia sakatuta mantentzeko agindua bidali"
+
+msgid "Send Middle Click"
+msgstr "Erdiko klik bidali"
+
+msgid "Send Photos and Videos"
+msgstr "Argazkiak eta bideoak bidali"
+
+msgid "Send Ping"
+msgstr "Ping bidali"
+
+msgid "Send Right Click"
+msgstr "Eskuineko klik bidali"
+
+msgid "Send Single Left Click"
+msgstr "Ezkerreko klik bakarra bidali"
+
+msgid "Sending"
+msgstr "Bidaltzen"
+
+msgid "Sending file %lld of %lld"
+msgstr "%lld / %lld fitxategia bidaltzen"
+
+msgid "Settings"
+msgstr "Ezarpenak"
+
+msgid "Share/File Transfer"
+msgstr "Partekatu/Fitxategi-transferentzia"
+
+msgid "Share: Receive File, Text, and URL"
+msgstr "Partekatu: fitxategia, testua eta URLa jaso"
+
+msgid "Share: Send File"
+msgstr "Partekatu: fitxategia bidali"
+
+msgid "Share: Send Text & URL"
+msgstr "Partekatu: testua eta URLa bidali"
+
+msgid "Show Haptics Style Selector"
+msgstr "Erantzun haptikoaren estilo-hautatzailea erakutsi"
+
+msgid "Show Received Files in Finder"
+msgstr "Jasotako fitxategiak Finder-en erakutsi"
+
+msgid "Show Sensitivity Slider"
+msgstr "Sentikortasun-graduatzailea erakutsi"
+
+msgid "Slideshow Remote"
+msgstr "Diapositiba-emanaldietarako urruneko agintea"
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "Leuna"
+
+msgid "Source Code"
+msgstr "Sorburu-kodea"
+
+msgid "Status"
+msgstr "Egoera"
+
+msgid "Supported"
+msgstr "Onartuta"
+
+msgid "System Default"
+msgstr "Sistemako lehenetsia"
+
+msgid "System Volume: Control Remote & Respond"
+msgstr "Sistemaren bolumena: urruneko gailuarena kontrolatu eta erantzun"
+
+msgid "Take Photo: Respond"
+msgstr "Argazkia atera: erantzun"
+
+msgid "Tap to start pairing"
+msgstr "Parekatzen hasteko, tak egin"
+
+msgid "Telephony: SMS/Call Sync"
+msgstr "Telefonia: SMSen eta deien sinkronizazioa"
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "KDE Connectek ezagutzen duen gailuaren izena"
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"Goiko aukerak itzulezinak dira, eta indarrean sartzeko aplikazioa erabat "
+"berrabiarazi behar da."
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"Horiek automatikoki egin beharko lirateke, baina hala ez bada, batzuk eskuz "
+"egin ditzakezu."
+
+msgid "These should work with little to no issues"
+msgstr "Hauek arazo gutxirekin edo batere arazorik gabe ibili beharko lukete"
+
+msgid "Third-Party Libraries"
+msgstr "Hirugarrenen liburutegiak"
+
+msgid "This is likely not possible to implement on iOS"
+msgstr "Ziurrenik hau ezin da iOSen inplementatu"
+
+msgid "Through the system share sheet"
+msgstr "Sistemaren partekatze-panelaren bidez"
+
+msgid "To %@"
+msgstr "%@(e)ri"
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"Gordetako gailuetara konektatzeko, gailu honen sare berera konektatuta "
+"daudela ziurtatu."
+
+msgid "Toggle Keyboard"
+msgstr "Teklatua erakutsi/ezkutatu"
+
+msgid "Troubleshooting"
+msgstr "Arazoak konpontzea"
+
+msgid "Trusted Networks"
+msgstr "Konfiantzazko sareak"
+
+msgid "Unknown Theme"
+msgstr "Gai ezezaguna"
+
+msgid "Unpair"
+msgstr "Parekatzea desegin"
+
+msgid "Unpair With Device?"
+msgstr "Gailuarekiko parekatzea desegin?"
+
+msgid "Unpair with %@?"
+msgstr "%@(e)kiko parekatzea desegin?"
+
+msgid "Valid"
+msgstr "Balioduna"
+
+msgid "Verification key: %@"
+msgstr "Egiaztapen-gakoa: %@"
+
+msgid "Version: %@ (%@)"
+msgstr "Bertsioa: %@ (%@)"
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr "Beste %lld fitxategiren transferentzia hasteko zain"
+
+msgid "Waiting for logs..."
+msgstr "Egunkarien zain…"
+
+msgid "Waiting to send"
+msgstr "Bidaltzeko zain"
+
+msgid "Website"
+msgstr "Webgunea"
+
+msgid "Wiki & User Manual"
+msgstr "Wikia eta erabiltzailearen eskuliburua"
+
+msgid "Yes, Unpair"
+msgstr "Bai, parekatzea desegin"
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"Pluginak banaka gaitu edo desgaitu ditzakezu. Plugin batzuek ezarpen "
+"bereziak dituzte; bakoitzari dagokion ikuspegian aurki ditzakezu."
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "izengabea"
+
+msgid "© KDE Community & contributors"
+msgstr "© KDE komunitatea eta kolaboratzaileak"
