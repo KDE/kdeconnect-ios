@@ -27,189 +27,191 @@ msgstr "KDE Connect"
 
 #. Privacy - Local Network Usage Description
 msgid "Discover and connect to other devices using KDE Connect."
-msgstr ""
+msgstr "使用 KDE Connect 发现并连接到其他设备。"
 
 #. Privacy - Photo Library Additions Usage Description
 msgid "Save received images to your Photo Library instead of the Files app."
-msgstr ""
+msgstr "将收到的图片保存到照片库，而不是“文件”应用。"
 
 msgid "%@ and %lld other files"
-msgstr ""
+msgstr "%@ 和 %lld 个其他文件"
 
 msgid "%@ for iOS"
-msgstr ""
+msgstr "%@ iOS 版"
 
 msgid "**KDE Connect** for iOS"
-msgstr ""
+msgstr "**KDE Connect** iOS 版"
 
 msgid "+"
-msgstr ""
+msgstr "+"
 
 msgid "-"
-msgstr ""
+msgstr "-"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "About"
-msgstr ""
+msgstr "关于"
 
 msgid "Actions"
-msgstr ""
+msgstr "操作"
 
 msgid ""
 "Add the local IP addresses of other devices here if they're having trouble "
 "appearing in the automatic discovery."
-msgstr ""
+msgstr "如果其他设备在自动发现时不显示，请在此处添加它们的本地 IP 地址。"
 
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
 msgid "Advanced Settings"
-msgstr ""
+msgstr "高级设置"
 
 msgid "All Messages"
-msgstr ""
+msgstr "所有消息"
 
 msgid "Also written by %@"
-msgstr ""
+msgstr "同时由 %@ 编写"
 
 #. Please use 朱智语 in languages with these characters.
 msgid "Apollo Zhu"
-msgstr ""
+msgstr "Apollo Zhu"
 
 msgid "App Icon"
-msgstr ""
+msgstr "应用图标"
 
 msgid "App Icon:"
-msgstr ""
+msgstr "应用图标："
 
 msgid "App Theme:"
-msgstr ""
+msgstr "应用主题："
 
 msgid "Application"
-msgstr ""
+msgstr "应用程序"
 
 msgid ""
 "As an open source project, we believe it is important to be transparent "
 "about our current and future plans to bring KDE Connect iOS into line with "
 "all other platforms."
 msgstr ""
+"作为一个开源项目，我们认为有必要公开说明我们当前和未来的计划，以使 KDE "
+"Connect iOS 版与其他所有平台的版本保持一致。"
 
 msgid ""
 "Authorize Photos access using the Settings app to save received photos and "
 "videos to your photo library"
-msgstr ""
+msgstr "通过设置应用授权照片访问权限，以便将收到的照片和视频保存到您的照片库中"
 
 msgid "Available themes"
-msgstr ""
+msgstr "可用主题"
 
 msgid "Background Activity"
-msgstr ""
+msgstr "后台活动"
 
 msgid "Battery Level"
-msgstr ""
+msgstr "电池电量"
 
 msgid "Battery Plugin Disabled"
-msgstr ""
+msgstr "电池插件已禁用"
 
 msgid "Battery Status"
-msgstr ""
+msgstr "电池状态"
 
 msgid "Can't find your devices here?"
-msgstr ""
+msgstr "这里没有显示您的设备吗？"
 
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 msgid "Category: %@"
-msgstr ""
+msgstr "类别：%@"
 
 msgid "Check out the merge requests"
-msgstr ""
+msgstr "查看合并请求"
 
 msgid "Choose App Icon"
-msgstr ""
+msgstr "选择应用图标"
 
 msgid "Chores"
-msgstr ""
+msgstr "杂务"
 
 msgid "Classic"
-msgstr ""
+msgstr "经典"
 
 msgid "Clear Cache"
-msgstr ""
+msgstr "清除缓存"
 
 msgid "Clipboard Sync"
-msgstr ""
+msgstr "剪贴板同步"
 
 msgid "Clipboard: Push & Receive Text"
-msgstr ""
+msgstr "剪贴板：推送和接收文本"
 
 msgid "Clipboard: Sync"
-msgstr ""
+msgstr "剪贴板：同步"
 
 msgid "Configure Devices By IP"
-msgstr ""
+msgstr "按 IP 配置设备"
 
 msgid "Configure Devices by IP:"
-msgstr ""
+msgstr "按 IP 配置设备："
 
 msgid "Connect"
-msgstr ""
+msgstr "连接"
 
 msgid "Connected Devices"
-msgstr ""
+msgstr "已连接的设备"
 
 msgid "Connectivity Report"
-msgstr ""
+msgstr "连接报告"
 
 msgid "Contacts"
-msgstr ""
+msgstr "联系人"
 
 msgid "Contribute to KDE Connect"
-msgstr ""
+msgstr "为 KDE Connect 贡献力量"
 
 msgid "Contributors"
-msgstr ""
+msgstr "贡献者"
 
 msgid "Copy path to the folder containing received files"
-msgstr ""
+msgstr "复制包含已接收文件的文件夹路径"
 
 msgid "Currently maintained by %@"
-msgstr ""
+msgstr "目前由 %@ 维护"
 
 msgid "Currently, the app must stay in the foreground to work properly"
-msgstr ""
+msgstr "目前，此应用必须保持在前台才能正常工作"
 
 msgid "Cursor Sensitivity"
-msgstr ""
+msgstr "光标灵敏度"
 
 msgid "DANGEROUS OPTIONS"
-msgstr ""
+msgstr "危险选项"
 
 msgid "Dark"
-msgstr ""
+msgstr "深色"
 
 msgid "Debug"
-msgstr ""
+msgstr "调试"
 
 msgid "Debug mode"
-msgstr ""
+msgstr "调试模式"
 
 msgid "Debugging device discovery"
-msgstr ""
+msgstr "调试设备发现"
 
 msgid "Default"
-msgstr ""
+msgstr "默认"
 
 msgid ""
 "Delete all saved settings and devices. Requires the app to be fully "
 "restarted."
-msgstr ""
+msgstr "删除所有已保存的设置和设备。需要完全重启应用。"
 
 msgid "Delete host certificate"
-msgstr ""
+msgstr "删除主机证书"
 
 msgid ""
 "Delete the host's certificate and re-generate it upon restart. Requires the "
@@ -217,154 +219,157 @@ msgid ""
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 msgstr ""
+"删除主机证书并在应用重启时重新生成。此操作需要完全重启应用。注意：这将导致设"
+"备无法与之前连接的设备通信，您必须先取消与其他远程设备的配对，然后重新进行配"
+"对。"
 
 msgid "Developer"
-msgstr ""
+msgstr "开发者"
 
 msgid "Device"
-msgstr ""
+msgstr "设备"
 
 msgid "Device Discovery"
-msgstr ""
+msgstr "设备发现"
 
 msgid "Device IP"
-msgstr ""
+msgstr "设备 IP"
 
 msgid "Device Name"
-msgstr ""
+msgstr "设备名称"
 
 msgid "Device Name:"
-msgstr ""
+msgstr "设备名称："
 
 msgid "Device Offline"
-msgstr ""
+msgstr "设备脱机"
 
 msgid "Device Status"
-msgstr ""
+msgstr "设备状态"
 
 msgid "Device name"
-msgstr ""
+msgstr "设备名称"
 
 msgid "Devices"
-msgstr ""
+msgstr "设备"
 
 msgid "Direct Handshake Devices"
-msgstr ""
+msgstr "直接握手设备"
 
 msgid "Disable UDP Broadcast"
-msgstr ""
+msgstr "禁用 UDP 广播"
 
 msgid "Discovered Devices"
-msgstr ""
+msgstr "发现的设备"
 
 msgid "Discovery & Pairing"
-msgstr ""
+msgstr "发现与配对"
 
 msgid "Do Not Pair"
-msgstr ""
+msgstr "不配对"
 
 msgid "Donate"
-msgstr ""
+msgstr "捐款"
 
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 msgid "Double tap to activate debug mode"
-msgstr ""
+msgstr "双击激活调试模式"
 
 msgid "Double tap to activate debugging device discovery"
-msgstr ""
+msgstr "双击激活调试设备发现"
 
 msgid "Enable/Disable Plugins"
-msgstr ""
+msgstr "启用/禁用插件"
 
 msgid "Encryption Info"
-msgstr ""
+msgstr "加密信息"
 
 msgid "Erase saved devices cache"
-msgstr ""
+msgstr "清除已保存的设备缓存"
 
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 msgid "Error Occured"
-msgstr ""
+msgstr "发生错误"
 
 msgid "Errors and Faults"
-msgstr ""
+msgstr "错误和故障"
 
 msgid "Exit Presentation"
-msgstr ""
+msgstr "退出演示"
 
 msgid "Experimental functionalities"
-msgstr ""
+msgstr "实验功能"
 
 msgid "Failed to Change Icon"
-msgstr ""
+msgstr "更改图标失败"
 
 msgid "Failed to receive %lld files"
-msgstr ""
+msgstr "接收 %lld 个文件失败"
 
 msgid "Failed to receive from %@"
-msgstr ""
+msgstr "从 %@ 接收失败"
 
 msgid "Failed to send %lld files"
-msgstr ""
+msgstr "发送 %lld 个文件失败"
 
 msgid "Failed to send to %@"
-msgstr ""
+msgstr "向 %@ 发送失败"
 
 msgid "Fault"
-msgstr ""
+msgstr "故障"
 
 msgid "Features"
-msgstr ""
+msgstr "功能"
 
 msgid "File Transfers"
-msgstr ""
+msgstr "文件传输"
 
 msgid "Files"
-msgstr ""
+msgstr "文件"
 
 msgid "Find My Device"
-msgstr ""
+msgstr "查找我的设备"
 
 msgid "Find My Phone Mode"
-msgstr ""
+msgstr "查找我的手机模式"
 
 msgid "Find My Phone initiated from a remote device"
-msgstr ""
+msgstr "远程设备已发起“查找我的手机”"
 
 msgid "Forget all"
-msgstr ""
+msgstr "忘记所有"
 
 msgid "From %@"
-msgstr ""
+msgstr "来自 %@"
 
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 msgid "Go FullScreen"
-msgstr ""
+msgstr "全屏显示"
 
 msgid "Haptics Style"
-msgstr ""
+msgstr "触觉样式"
 
 #. Hard haptic feedback level
 msgid "Heavy"
-msgstr ""
+msgstr "重"
 
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 msgid "Hide Haptics Style Selector"
-msgstr ""
+msgstr "隐藏触觉样式选择器"
 
 msgid "Hide Sensitivity Slider"
-msgstr ""
+msgstr "隐藏灵敏度滑动条"
 
 msgid "I FOUND IT!"
-msgstr ""
+msgstr "我发现它了！"
 
 msgid ""
 "If KDE Connect is having trouble discovering other devices, you can try a "
@@ -382,85 +387,96 @@ msgid ""
 "4. Check other solutions on the User Manual, such as configuring the "
 "firewalls of the other devices:\n"
 msgstr ""
+"如果 KDE Connect 无法发现其他设备，可以尝试以下几种解决方案的组合：\n"
+"\n"
+"1. 通过 %@ 菜单或下拉刷新此设备及其他设备上的“发现”列表。\n"
+"\n"
+"2. 请确保其他设备也正在运行 KDE Connect，并且与本设备连接到了同一个网络中。\n"
+"\n"
+"3. 通过%@菜单中的“按 IP 配置设备”选项手动添加其他设备，然后点击“刷新发现”。\n"
+"\n"
+"4. 查看用户手册中的其他解决方案，例如配置其他设备的防火墙：\n"
 
 msgid ""
 "If a remembered device is already online but not shown here, try Refresh "
 "Discovery."
-msgstr ""
+msgstr "如果已记住的设备已联机但未在此显示，请尝试点击“刷新发现”。"
 
 msgid ""
 "If there are phantom devices or something just doesn't behave correctly, "
 "erasing all saved devices data might fix it. Requires the app to be fully "
 "restarted."
 msgstr ""
+"如果出现幽灵设备或某些设备行为异常，清除所有已保存的设备数据可能会解决问题。"
+"此操作需要完全重启应用。"
 
 msgid "In progress"
-msgstr ""
+msgstr "进行中"
 
 msgid "Incoming Pairing Request"
-msgstr ""
+msgstr "传入的配对请求"
 
 msgid "Info"
-msgstr ""
+msgstr "信息"
 
 msgid "Information"
-msgstr ""
+msgstr "信息"
 
 msgid "Initiate Pairing?"
-msgstr ""
+msgstr "发起配对？"
 
 msgid "Integration with Siri Shortcuts"
-msgstr ""
+msgstr "与 Siri 快捷指令集成"
 
 msgid "Integration with the system share sheet is in development"
-msgstr ""
+msgstr "与系统分享面板的集成正在开发中"
 
 msgid "Internationalization & Localization"
-msgstr ""
+msgstr "国际化和本地化"
 
 msgid "Invalid"
-msgstr ""
+msgstr "无效"
 
 msgid "Keyboard: Control Remote"
-msgstr ""
+msgstr "键盘：控制远程"
 
 msgid "License"
-msgstr ""
+msgstr "许可证"
 
 #. Light haptic feedback level
 msgid "Light"
-msgstr ""
+msgstr "轻"
 
 msgid "Lock Screen: Control Remote"
-msgstr ""
+msgstr "锁屏：控制远程"
 
 msgid "Logs"
-msgstr ""
+msgstr "日志"
 
 msgid "Logs for %@"
-msgstr ""
+msgstr "%@ 的日志"
 
 msgid "MPRIS: Control Remote Media & Respond"
-msgstr ""
+msgstr "MPRIS：控制远程媒体和响应"
 
 msgid "Manage received files in the Files app"
-msgstr ""
+msgstr "管理文件应用中收到的文件"
 
 msgid "May not work with KDE Connect for Windows"
-msgstr ""
+msgstr "可能无法兼容 KDE Connect Windows 版"
 
 msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr ""
+msgstr "也许可以通过 URL 方案以及与 Siri 快捷指令的集成进行"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
-msgstr ""
+msgstr "也许可以使用苹果通知中心服务 (ACNS)"
 
 #. Medium haptic feedback level
 msgid "Medium"
-msgstr ""
+msgstr "中"
 
 msgid "Mouse: Control Remote"
-msgstr ""
+msgstr "鼠标：控制远程"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -471,191 +487,199 @@ msgid ""
 "Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
 "and horizontally. Tap on the “Scroll Wheel” for middle click."
 msgstr ""
+"在屏幕上移动手指以移动鼠标光标。单指点击进行左键单击，双指点击进行右键单击。"
+"长按进行拖放，或使用右上角的菜单直接发送点击操作。\n"
+"\n"
+"单指拖动上方的“滚轮”进行垂直和水平滚动。单指点击“滚轮”进行中键单击。"
 
 msgid ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
 "and your computer)"
-msgstr ""
+msgstr "用于在不同设备之间通信的多平台应用 (例如手机和电脑)"
 
 msgid "Network Packet Composer"
-msgstr ""
+msgstr "网络数据包构建器"
 
 msgid "Nice"
-msgstr ""
+msgstr "好"
 
 msgid "No additional devices are discovered on this network."
-msgstr ""
+msgstr "此网络上未发现其他设备。"
 
 msgid "No battery detected in device"
-msgstr ""
+msgstr "设备中没有检测到电池"
 
 msgid "No currently connected devices."
-msgstr ""
+msgstr "当前没有连接的设备。"
 
 msgid "No device discovered in the current network."
-msgstr ""
+msgstr "当前网络中没有发现设备。"
 
 msgid "No matching logs yet"
-msgstr ""
+msgstr "没有匹配的日志"
 
 msgid "No, Stay Paired"
-msgstr ""
+msgstr "否，保持配对"
 
 msgid "Not yet implemented"
-msgstr ""
+msgstr "尚未实现"
 
 msgid "Notice"
-msgstr ""
+msgstr "提示"
 
 msgid "Notification: Receive from Others"
-msgstr ""
+msgstr "通知：从其他人接收"
 
 msgid "Notification: Retrieve by Others"
-msgstr ""
+msgstr "通知：由其他人获取"
 
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
 msgid "On-Click Haptic Style"
-msgstr ""
+msgstr "点击触觉样式"
 
 #. Unknown haptic feedback level
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 msgid "Out-App Notification:"
-msgstr ""
+msgstr "应用外通知："
 
 msgid "Packet Body"
-msgstr ""
+msgstr "数据包正文"
 
 msgid "Packet Tag"
-msgstr ""
+msgstr "数据包标签"
 
 msgid "Packet Type"
-msgstr ""
+msgstr "数据包类型"
 
 msgid "Pair"
-msgstr ""
+msgstr "配对"
 
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
+"来自“%@”的配对请求\n"
+"验证密钥：%@"
 
 msgid "Pairing Complete"
-msgstr ""
+msgstr "配对完成"
 
 msgid "Pairing Rejected"
-msgstr ""
+msgstr "配对被拒绝"
 
 msgid "Pairing Timed Out"
-msgstr ""
+msgstr "配对超时"
 
 msgid "Pairing with '%@' failed"
-msgstr ""
+msgstr "与“%@”配对失败"
 
 msgid "Pairing with '%@' succeeded"
-msgstr ""
+msgstr "与“%@”配对成功"
 
 msgid "Peer"
-msgstr ""
+msgstr "对等点"
 
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
 msgid "Ping received from a connected device."
-msgstr ""
+msgstr "从已连接的设备收到 Ping。"
 
 msgid "Ping!"
-msgstr ""
+msgstr "Ping！"
 
 msgid "Plasma Bigscreen"
-msgstr ""
+msgstr "Plasma 大屏幕"
 
 msgid "Playground"
-msgstr ""
+msgstr "测试"
 
 msgid "Plugin Settings"
-msgstr ""
+msgstr "插件设置"
 
 msgid "Plugins If Reachable"
-msgstr ""
+msgstr "可以访问时的插件"
 
 msgid "Pointer Sensitivity"
-msgstr ""
+msgstr "指针灵敏度"
 
 msgid "Preparing Media…"
-msgstr ""
+msgstr "正在准备媒体…"
 
 msgid "Presenter: Control Remote"
-msgstr ""
+msgstr "演示器：控制远程"
 
 msgid "Preview: "
-msgstr ""
+msgstr "预览："
 
 msgid "Previously connected devices will appear here."
-msgstr ""
+msgstr "之前连接的设备将显示在此处。"
 
 msgid "Push Local Clipboard"
-msgstr ""
+msgstr "推送本地剪贴板"
 
 msgid "Reason: %@"
-msgstr ""
+msgstr "原因：%@"
 
 msgid ""
 "Received photos and videos will be saved to the Files app because you can't "
 "grant us access to your photo library."
 msgstr ""
+"收到的照片和视频将保存到“文件”应用中，因为您无法授予我们访问您的照片库的权"
+"限。"
 
 msgid "Receiving"
-msgstr ""
+msgstr "正在接收"
 
 msgid "Receiving file %lld of %lld"
-msgstr ""
+msgstr "正在接收文件 %lld 个，共 %lld 个"
 
 msgid "Refresh Discovery"
-msgstr ""
+msgstr "刷新发现"
 
 msgid "Remembered Devices"
-msgstr ""
+msgstr "记住的设备"
 
 msgid "Remote Input"
-msgstr ""
+msgstr "远程输入"
 
 msgid "Report Bug"
-msgstr ""
+msgstr "报告程序缺陷"
 
 msgid "Request to pair with '%@'"
-msgstr ""
+msgstr "请求与“%@”配对"
 
 msgid "Restart Discovery"
-msgstr ""
+msgstr "重新启动发现"
 
 #. Rigid haptic feedback level
 msgid "Rigid"
-msgstr ""
+msgstr "硬"
 
 msgid "Ring Device"
-msgstr ""
+msgstr "使设备发出铃声"
 
 msgid "Ring/Find My Phone"
-msgstr ""
+msgstr "使设备发出铃声/查找我的手机"
 
 msgid "Rounded Rectangle"
-msgstr ""
+msgstr "圆角矩形"
 
 msgid "Run Command"
-msgstr ""
+msgstr "运行命令"
 
 msgid "Run Command: Request"
-msgstr ""
+msgstr "运行命令：请求"
 
 msgid "Run Command: Respond"
-msgstr ""
+msgstr "运行命令：响应"
 
 msgid "SFTP: Access Remote & Initiate File Server"
-msgstr ""
+msgstr "SFTP：访问远程端并发起文件服务器"
 
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
@@ -664,196 +688,203 @@ msgid ""
 "SHA256 fingerprint of remote device certificate is: \n"
 "%@"
 msgstr ""
+"本机设备证书的 SHA256 指纹为：\n"
+"%@\n"
+"\n"
+"远程设备证书的 SHA256 指纹为：\n"
+"%@"
 
 msgid "Save photos to the photo library"
-msgstr ""
+msgstr "保存照片到照片库"
 
 msgid "Save videos to the photo library"
-msgstr ""
+msgstr "保存视频到照片库"
 
 msgid "Screensaver: Inhibit Remote"
-msgstr ""
+msgstr "屏保：抑制远程"
 
 msgid "Select a device from the Devices list to start."
-msgstr ""
+msgstr "从设备列表中选择一个设备以开始。"
 
 msgid "Send"
-msgstr ""
+msgstr "发送"
 
 msgid "Send Double Left Click"
-msgstr ""
+msgstr "发送左键双击"
 
 msgid "Send Files"
-msgstr ""
+msgstr "发送文件"
 
 msgid "Send Left Hold"
-msgstr ""
+msgstr "发送左键按住"
 
 msgid "Send Middle Click"
-msgstr ""
+msgstr "发送中键点击"
 
 msgid "Send Photos and Videos"
-msgstr ""
+msgstr "发送照片和视频"
 
 msgid "Send Ping"
-msgstr ""
+msgstr "发送 Ping"
 
 msgid "Send Right Click"
-msgstr ""
+msgstr "发送右键点击"
 
 msgid "Send Single Left Click"
-msgstr ""
+msgstr "发送左键单击"
 
 msgid "Sending"
-msgstr ""
+msgstr "发送中"
 
 msgid "Sending file %lld of %lld"
-msgstr ""
+msgstr "正在发送文件 %lld 个，共 %lld 个"
 
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 msgid "Share/File Transfer"
-msgstr ""
+msgstr "分享/文件传输"
 
 msgid "Share: Receive File, Text, and URL"
-msgstr ""
+msgstr "分享：接收文件、 文本和 URL"
 
 msgid "Share: Send File"
-msgstr ""
+msgstr "分享：发送文件"
 
 msgid "Share: Send Text & URL"
-msgstr ""
+msgstr "分享：发送文本和 URL"
 
 msgid "Show Haptics Style Selector"
-msgstr ""
+msgstr "显示触觉样式选择器"
 
 msgid "Show Received Files in Finder"
-msgstr ""
+msgstr "用访达中显示收到的文件"
 
 msgid "Show Sensitivity Slider"
-msgstr ""
+msgstr "显示灵敏度滑动条"
 
 msgid "Slideshow Remote"
-msgstr ""
+msgstr "幻灯片遥控器"
 
 #. Soft haptic feedback level
 msgid "Soft"
-msgstr ""
+msgstr "软"
 
 msgid "Source Code"
-msgstr ""
+msgstr "源代码"
 
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 msgid "Supported"
-msgstr ""
+msgstr "支持"
 
 msgid "System Default"
-msgstr ""
+msgstr "系统默认"
 
 msgid "System Volume: Control Remote & Respond"
-msgstr ""
+msgstr "系统音量：控制远程和响应"
 
 msgid "Take Photo: Respond"
-msgstr ""
+msgstr "拍照：响应"
 
 msgid "Tap to start pairing"
-msgstr ""
+msgstr "点击开始配对"
 
 msgid "Telephony: SMS/Call Sync"
-msgstr ""
+msgstr "电话功能：短信/通话同步"
 
 msgid "The name of the device as recognized by KDE Connect"
-msgstr ""
+msgstr "KDE Connect 识别的设备名称"
 
 msgid ""
 "The options above are irreversible and require a complete app restart to "
 "take effect."
-msgstr ""
+msgstr "上述选项无法撤销，且需完全重启应用才能生效。"
 
 msgid ""
 "These should be handled automatically, but you may manually perform some in "
 "case if they are not."
-msgstr ""
+msgstr "这些操作本应自动处理，但如果没有自动完成，您也可以手动执行部分操作。"
 
 msgid "These should work with little to no issues"
-msgstr ""
+msgstr "这些操作应该可以顺利使用，几乎不会有问题。"
 
 msgid "Third-Party Libraries"
-msgstr ""
+msgstr "第三方程序库"
 
 msgid "This is likely not possible to implement on iOS"
-msgstr ""
+msgstr "此功能可能无法在 iOS 上实现"
 
 msgid "Through the system share sheet"
-msgstr ""
+msgstr "通过系统分享面板"
 
 msgid "To %@"
-msgstr ""
+msgstr "发往 %@"
 
 msgid ""
 "To connect to remembered devices, make sure they are connected to the same "
 "network as this device."
-msgstr ""
+msgstr "要连接已保存的设备，请确保它们与本设备连接到同一网络。"
 
 msgid "Toggle Keyboard"
-msgstr ""
+msgstr "切换键盘"
 
 msgid "Troubleshooting"
-msgstr ""
+msgstr "故障排查"
 
 msgid "Trusted Networks"
-msgstr ""
+msgstr "信任的网络"
 
 msgid "Unknown Theme"
-msgstr ""
+msgstr "未知主题"
 
 msgid "Unpair"
-msgstr ""
+msgstr "取消配对"
 
 msgid "Unpair With Device?"
-msgstr ""
+msgstr "取消设备配对？"
 
 msgid "Unpair with %@?"
-msgstr ""
+msgstr "取消与 %@ 配对？"
 
 msgid "Valid"
-msgstr ""
+msgstr "有效"
 
 msgid "Verification key: %@"
-msgstr ""
+msgstr "验证密钥：%@"
 
 msgid "Version: %@ (%@)"
-msgstr ""
+msgstr "版本：%@ (%@)"
 
 msgid "Waiting for %lld other files to start transferring"
-msgstr ""
+msgstr "正在等待 %lld 个其他文件开始传输"
 
 msgid "Waiting for logs..."
-msgstr ""
+msgstr "正在等待日志..."
 
 msgid "Waiting to send"
-msgstr ""
+msgstr "正在等待发送"
 
 msgid "Website"
-msgstr ""
+msgstr "网站"
 
 msgid "Wiki & User Manual"
-msgstr ""
+msgstr "百科和使用手册"
 
 msgid "Yes, Unpair"
-msgstr ""
+msgstr "是，取消配对"
 
 msgid ""
 "You can enable or disable Plugins individually. Some Plugins have their own "
 "specific settings that can be found in their respective Views."
 msgstr ""
+"您可以单独启用或禁用插件。某些插件拥有各自的特定设置，可在其对应的视图中找"
+"到。"
 
 #. Filename to use for an unnamed file
 msgid "untitled"
-msgstr ""
+msgstr "未命名"
 
 msgid "© KDE Community & contributors"
-msgstr ""
+msgstr "© KDE Community & contributors"
