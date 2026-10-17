@@ -127,20 +127,39 @@
     NSMutableDictionary<NSString *, Device *> *savedDevices = [NSMutableDictionary dictionary];
    
     NSDictionary* tempDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"savedDevices"];
+    if (tempDic != nil && [[CertificateService shared] hostIdentityWasRegenerated]) {
+        // Paired devices know us by our old certificate and will refuse to connect, so forget them
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "Host certificate was regenerated, removing all remembered devices");
+        for (NSString* deviceId in [tempDic allKeys]) {
+            [[CertificateService shared] deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
+        }
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDevices"];
+        tempDic = nil;
+    }
     if (tempDic != nil) {
+        BOOL removedInvalidDevices = NO;
         for (NSString* deviceId in [tempDic allKeys]) {
             NSData* deviceData = tempDic[deviceId];
             [_settings setObject:deviceData forKey:deviceId]; // do this here since Settings holds exclusively encoded Data, NOT Device objects, otherwise will throw "non-property list" error upon trying to save to UserDefaults
             NSError* error;
             Device* device = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[Device class], [NSString class], [NSArray class], nil] fromData:deviceData error:&error];
             os_log_with_type(logger, OS_LOG_TYPE_DEFAULT, "device with pair status %lu is decoded from UserDefaults as: %{public}@. Errors: %{public}@", [device _pairStatus], device, error);
-            if ([device _pairStatus] == Paired) {
+            SecCertificateRef cert = device._deviceInfo.cert;
+            if (cert == nil || ![CertificateService isCertificateValid:cert]) {
+                os_log_with_type(logger, OS_LOG_TYPE_INFO, "Removing remembered device %{mask.hash}@ because its certificate is missing, expired or not valid yet", deviceId);
+                [_settings removeObjectForKey:deviceId];
+                [[CertificateService shared] deleteRemoteDeviceSavedCertWithDeviceId:deviceId];
+                removedInvalidDevices = YES;
+            } else if ([device _pairStatus] == Paired) {
                 device.deviceDelegate = self;
                 //[device reloadPlugins];
                 [savedDevices setObject:device forKey:deviceId];
             } else {
                 os_log_with_type(logger, self.debugLogLevel, "Not loading device above since it's previous status is NOT paired.");
             }
+        }
+        if (removedInvalidDevices) {
+            [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"savedDevices"];
         }
     }
     

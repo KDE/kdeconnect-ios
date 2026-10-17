@@ -285,3 +285,21 @@ NSString* extractSecCertificateDigest(SecCertificateRef certificate) {
     return digest;
 }
 #endif
+
+// Returns NO if the certificate can't be parsed, is expired or is not valid yet
+BOOL isCertificateCurrentlyValid(SecCertificateRef certificate) {
+    CFDataRef certificateData = SecCertificateCopyData(certificate);
+    const unsigned char *p = CFDataGetBytePtr(certificateData);
+    X509 *x509 = d2i_X509(NULL, &p, CFDataGetLength(certificateData));
+    CFRelease(certificateData);
+
+    if (x509 == NULL) {
+        return NO;
+    }
+
+    // X509_cmp_current_time returns 0 on error, <0 if before now and >0 if after now
+    BOOL isValid = X509_cmp_current_time(X509_get0_notBefore(x509)) < 0
+                && X509_cmp_current_time(X509_get0_notAfter(x509)) > 0;
+    X509_free(x509);
+    return isValid;
+}

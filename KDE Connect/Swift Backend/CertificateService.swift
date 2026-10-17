@@ -13,14 +13,17 @@ import CryptoKit
     @objc static let shared: CertificateService = CertificateService()
     
     @objc let hostIdentity: SecIdentity
+    // True if a new host certificate had to be generated on this launch, which means
+    // previously paired devices won't recognize us anymore
+    @objc let hostIdentityWasRegenerated: Bool
     private let logger = Logger()
     
     override init() {
-        hostIdentity = Self.loadIdentityFromKeychain()
+        (hostIdentity, hostIdentityWasRegenerated) = Self.loadIdentityFromKeychain()
         super.init()
     }
     
-    static func loadIdentityFromKeychain() -> SecIdentity {
+    static func loadIdentityFromKeychain() -> (SecIdentity, Bool) {
         // ref: https://developer.apple.com/documentation/network/creating_an_identity_for_local_network_tls
 #if !os(macOS)
         let keychainItemQuery: CFDictionary = [
@@ -57,7 +60,19 @@ import CryptoKit
         }
         macFetchIdentity()
 #endif
+        if let identity = identityApp {
+            var cert: SecCertificate? = nil
+            SecIdentityCopyCertificate(identity as! SecIdentity, &cert)
+            if cert == nil || !isCertificateCurrentlyValid(cert!) {
+                // Other devices refuse to connect to us if our certificate is expired or not valid yet
+                // The old identity gets removed from the keychain before generating the new one below
+                Logger().error("Host certificate is expired or not valid yet, generating a new one")
+                identityApp = nil
+            }
+        }
+        var wasRegenerated = false
         if (identityApp == nil) {
+            wasRegenerated = true
             Logger().info("generateSecIdentity")
 #if !os(macOS)
             if generateSecIdentityForUUID(KdeConnectSettings.getUUID()) == noErr {
@@ -73,7 +88,11 @@ import CryptoKit
             }
 #endif
         }
-        return (identityApp as! SecIdentity)
+        return (identityApp as! SecIdentity, wasRegenerated)
+    }
+    
+    @objc static func isCertificateValid(_ cert: SecCertificate) -> Bool {
+        return isCertificateCurrentlyValid(cert)
     }
     
     func getHostCertificate() -> SecCertificate {
