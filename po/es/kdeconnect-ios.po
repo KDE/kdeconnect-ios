@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kdeconnect-ios\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-10-10 15:20+0100\n"
+"PO-Revision-Date: 2026-10-17 23:54+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -451,21 +451,17 @@ msgstr "¿Iniciar vinculación?"
 msgid "Integration with Siri Shortcuts"
 msgstr "Accesos rápidos de integración con Siri"
 
-#, fuzzy
 msgid "Integration with the system share sheet is in development"
-msgstr "Integration with the system share sheet is in development"
+msgstr "La integración con la hoja compartida del sistema está en desarrollo"
 
-#, fuzzy
 msgid "Internationalization & Localization"
-msgstr "Internationalization & Localization"
+msgstr "Internacionalización y localización"
 
-#, fuzzy
 msgid "Invalid"
-msgstr "Invalid"
+msgstr "Inválido"
 
-#, fuzzy
 msgid "Keyboard: Control Remote"
-msgstr "Keyboard: Control Remote"
+msgstr "Teclado: Control remoto"
 
 msgid "License"
 msgstr "Licencia"
@@ -474,46 +470,38 @@ msgstr "Licencia"
 msgid "Light"
 msgstr "Claro"
 
-#, fuzzy
 msgid "Lock Screen: Control Remote"
-msgstr "Lock Screen: Control Remote"
+msgstr "Bloqueo de pantalla: Control remoto"
 
 msgid "Logs"
 msgstr "Registros"
 
-#, fuzzy
 msgid "Logs for %@"
-msgstr "Logs for %@"
+msgstr "Registros para %@"
 
-#, fuzzy
 msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: Control remoto de medios y respuesta"
 
-#, fuzzy
 msgid "Manage received files in the Files app"
-msgstr "Manage received files in the Files app"
+msgstr "Administrar archivos recibidos en la aplicación Archivos"
 
-#, fuzzy
 msgid "May not work with KDE Connect for Windows"
-msgstr "May not work with KDE Connect for Windows"
+msgstr "Puede que no funcione con KDE Connect para Windows"
 
-#, fuzzy
 msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr ""
+"Quizás a través del esquema URL e integración con accesos rápidos de Siri"
 
-#, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
-msgstr "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Quizás con el centro de servicios de notificaciones de Apple (ACNS)"
 
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Media"
 
-#, fuzzy
 msgid "Mouse: Control Remote"
-msgstr "Mouse: Control Remote"
+msgstr "Ratón: Control remoto"
 
-#, fuzzy
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
 "for left click. Tap with two fingers for right click. Use a long press to "
@@ -523,107 +511,89 @@ msgid ""
 "Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
 "and horizontally. Tap on the “Scroll Wheel” for middle click."
 msgstr ""
-"Move a finger on the screen to move the mouse cursor. Tap with one finger "
-"for left click. Tap with two fingers for right click. Use a long press to "
-"activate drag'n drop. Or use the menu on the top right to directly send "
-"clicks.\n"
+"Desplace un dedo por la pantalla para mover el cursor del ratón. Pulse con "
+"un dedo para pulsación izquierda. Pulse con dos dedos para pulsación "
+"derecha. Use una pulsación larga para activar el arrastrar y dejar. O use el "
+"el menú en la esquina superior derecha para enviar pulsaciones\n"
 "\n"
-"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
-"and horizontally. Tap on the “Scroll Wheel” for middle click."
+"Arrastre con un dedo desde la «rueda de desplazamiento» más arriba para "
+"desplazarte horizontal o verticalmente. Pulse en «rueda de desplazamiento» "
+"para pulsación media."
 
-#, fuzzy
 msgid ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
 "and your computer)"
 msgstr ""
-"Multi-platform app that allows your devices to communicate (e.g., your phone "
-"and your computer)"
+"Aplicación multi-plataforma que permite a sus dispositivos comunicarse. (por "
+"ejemplo, su teléfono y su equipo)"
 
-#, fuzzy
 msgid "Network Packet Composer"
-msgstr "Network Packet Composer"
+msgstr "Compositor de paquetes de red"
 
-#, fuzzy
 msgid "Nice"
-msgstr "Nice"
+msgstr "Agradable"
 
-#, fuzzy
 msgid "No additional devices are discovered on this network."
-msgstr "No additional devices are discovered on this network."
+msgstr "No se han encontrado dispositivos adicionales en esta red."
 
-#, fuzzy
 msgid "No battery detected in device"
-msgstr "No battery detected in device"
+msgstr "No se ha detectado batería en el dispositivo."
 
-#, fuzzy
 msgid "No currently connected devices."
-msgstr "No currently connected devices."
+msgstr "No hay dispositivos conectados actualmente."
 
-#, fuzzy
 msgid "No device discovered in the current network."
-msgstr "No device discovered in the current network."
+msgstr "No se ha descubierto ningún dispositivo en la red actual."
 
-#, fuzzy
 msgid "No matching logs yet"
-msgstr "No matching logs yet"
+msgstr "Todavía no hay registros de emparejamiento."
 
-#, fuzzy
 msgid "No, Stay Paired"
-msgstr "No, Stay Paired"
+msgstr "No, mantenerse vinculado"
 
-#, fuzzy
 msgid "Not yet implemented"
-msgstr "Not yet implemented"
+msgstr "Todavía no está implementado"
 
-#, fuzzy
 msgid "Notice"
-msgstr "Notice"
+msgstr "Aviso"
 
-#, fuzzy
 msgid "Notification: Receive from Others"
-msgstr "Notification: Receive from Others"
+msgstr "Notificación: Recibir desde otros"
 
-#, fuzzy
 msgid "Notification: Retrieve by Others"
-msgstr "Notification: Retrieve by Others"
+msgstr "Notificación: Recuperar desde otros"
 
 msgid "OK"
 msgstr "Aceptar"
 
-#, fuzzy
 msgid "On-Click Haptic Style"
-msgstr "On-Click Haptic Style"
+msgstr "Estilo háptico al pulsar"
 
 #. Unknown haptic feedback level
 msgid "Other"
 msgstr "Otros"
 
-#, fuzzy
 msgid "Out-App Notification:"
-msgstr "Out-App Notification:"
+msgstr "Notificación fuera de la aplicación:"
 
-#, fuzzy
 msgid "Packet Body"
-msgstr "Packet Body"
+msgstr "Cuerpo del paquete"
 
-#, fuzzy
 msgid "Packet Tag"
-msgstr "Packet Tag"
+msgstr "Etiqueta del paquete"
 
-#, fuzzy
 msgid "Packet Type"
-msgstr "Packet Type"
+msgstr "Tipo del paquete"
 
 msgid "Pair"
 msgstr "Vincular"
 
-#, fuzzy
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"Pair request from '%@'\n"
-"Verification key: %@"
+"Petición de vinculación desde '%@'\n"
+"Clave de verificación: %@"
 
 msgid "Pairing Complete"
 msgstr "Vinculación completa"
@@ -634,24 +604,20 @@ msgstr "Vinculación rechazada"
 msgid "Pairing Timed Out"
 msgstr "Vinculación expirada"
 
-#, fuzzy
 msgid "Pairing with '%@' failed"
-msgstr "Pairing with '%@' failed"
+msgstr "La vinculación con '%@' falló"
 
-#, fuzzy
 msgid "Pairing with '%@' succeeded"
-msgstr "Pairing with '%@' succeeded"
+msgstr "La vinculación con '%@' tuvo éxito"
 
-#, fuzzy
 msgid "Peer"
-msgstr "Peer"
+msgstr "Vincular"
 
 msgid "Ping"
 msgstr "Ping"
 
-#, fuzzy
 msgid "Ping received from a connected device."
-msgstr "Ping received from a connected device."
+msgstr "Ping recibido desde un dispositivo conectado."
 
 msgid "Ping!"
 msgstr "¡Ping!"
@@ -659,9 +625,8 @@ msgstr "¡Ping!"
 msgid "Plasma Bigscreen"
 msgstr "Plasma Bigscreen"
 
-#, fuzzy
 msgid "Playground"
-msgstr "Playground"
+msgstr "Patio de juegos"
 
 msgid "Plugin Settings"
 msgstr "Preferencias del complemento"
@@ -672,35 +637,30 @@ msgstr "Complementos si disponible"
 msgid "Pointer Sensitivity"
 msgstr "Sensibilidad del puntero"
 
-#, fuzzy
 msgid "Preparing Media…"
-msgstr "Preparing Media…"
+msgstr "Preparando medios…"
 
-#, fuzzy
 msgid "Presenter: Control Remote"
-msgstr "Presenter: Control Remote"
+msgstr "Presentación: Control remoto"
 
 msgid "Preview: "
 msgstr "Vista previa: "
 
-#, fuzzy
 msgid "Previously connected devices will appear here."
-msgstr "Previously connected devices will appear here."
+msgstr "Los dispositivos previamente conectados aparecerán aquí."
 
-#, fuzzy
 msgid "Push Local Clipboard"
-msgstr "Push Local Clipboard"
+msgstr "Enviar portapapeles local"
 
 msgid "Reason: %@"
 msgstr "Motivo: %@"
 
-#, fuzzy
 msgid ""
 "Received photos and videos will be saved to the Files app because you can't "
 "grant us access to your photo library."
 msgstr ""
-"Received photos and videos will be saved to the Files app because you can't "
-"grant us access to your photo library."
+"Las fotos y vídeos recibidos se guardarán el la aplicación Archivos porque "
+"no puede darnos acceso al su librería de fotografías."
 
 msgid "Receiving"
 msgstr "Recibiendo"
@@ -711,9 +671,8 @@ msgstr "Recibiendo archivo %lld de %lld"
 msgid "Refresh Discovery"
 msgstr "Refrescar descubrimiento"
 
-#, fuzzy
 msgid "Remembered Devices"
-msgstr "Remembered Devices"
+msgstr "Dispositivos recordados"
 
 msgid "Remote Input"
 msgstr "Entrada remota"
@@ -721,9 +680,8 @@ msgstr "Entrada remota"
 msgid "Report Bug"
 msgstr "Informar de fallo"
 
-#, fuzzy
 msgid "Request to pair with '%@'"
-msgstr "Request to pair with '%@'"
+msgstr "Petición para vincular con '%@'"
 
 msgid "Restart Discovery"
 msgstr "Reiniciar descubrimiento"
@@ -750,11 +708,9 @@ msgstr "Ejecutar orden: Petición"
 msgid "Run Command: Respond"
 msgstr "Ejecutar orden: Respuesta"
 
-#, fuzzy
 msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: Acceso remoto y el arranque del servidor de archivos"
 
-#, fuzzy
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -762,27 +718,23 @@ msgid ""
 "SHA256 fingerprint of remote device certificate is: \n"
 "%@"
 msgstr ""
-"SHA256 fingerprint of your device certificate is:\n"
+"La huella SHA256 del certificado de su dispositivo es:\n"
 "%@\n"
 "\n"
-"SHA256 fingerprint of remote device certificate is: \n"
+"La huella SHA256 del certificado del dispositivo remoto es: \n"
 "%@"
 
-#, fuzzy
 msgid "Save photos to the photo library"
-msgstr "Save photos to the photo library"
+msgstr "Guardar fotos a la librería de fotografías"
 
-#, fuzzy
 msgid "Save videos to the photo library"
-msgstr "Save videos to the photo library"
+msgstr "Guardar vídeos a la librería de fotografías"
 
-#, fuzzy
 msgid "Screensaver: Inhibit Remote"
-msgstr "Screensaver: Inhibit Remote"
+msgstr "Salvapantallas: Inhibir remotamente"
 
-#, fuzzy
 msgid "Select a device from the Devices list to start."
-msgstr "Select a device from the Devices list to start."
+msgstr "Seleccione un dispositivo de la lista de dispositivos para empezar."
 
 msgid "Send"
 msgstr "Enviar"
