@@ -1,20 +1,21 @@
+# SPDX-FileCopyrightText: 2026 Alois Spitzbart <spitz234@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeconnect-ios._static_\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-20 21:48+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-10-18 23:26+0200\n"
+"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 26.11.70\n"
 
 #. Bundle display name
 #. Bundle name
-#, fuzzy
 msgctxt ""
 msgid "KDE Connect"
 msgstr "KDE Connect"
@@ -33,33 +34,26 @@ msgstr "Save received images to your Photo Library instead of the Files app."
 msgid "%@ and %lld other files"
 msgstr "%@ and %lld other files"
 
-#, fuzzy
 msgid "%@ for iOS"
-msgstr "%@ for iOS"
+msgstr "%@ für iOS"
 
-#, fuzzy
 msgid "**KDE Connect** for iOS"
-msgstr "**KDE Connect** for iOS"
+msgstr "**KDE Connect** für iOS"
 
-#, fuzzy
 msgid "+"
 msgstr "+"
 
-#, fuzzy
 msgid "-"
-msgstr "-"
+msgstr "−"
 
-#, fuzzy
 msgid "?"
 msgstr "?"
 
-#, fuzzy
 msgid "About"
-msgstr "About"
+msgstr "Über"
 
-#, fuzzy
 msgid "Actions"
-msgstr "Actions"
+msgstr "Aktionen"
 
 #, fuzzy
 msgid ""
@@ -69,24 +63,19 @@ msgstr ""
 "Add the local IP addresses of other devices here if they're having trouble "
 "appearing in the automatic discovery."
 
-#, fuzzy
 msgid "Advanced"
-msgstr "Advanced"
+msgstr "Erweitert"
 
-#, fuzzy
 msgid "Advanced Settings"
-msgstr "Advanced Settings"
+msgstr "Erweiterte Einstellungen"
 
-#, fuzzy
 msgid "All Messages"
-msgstr "All Messages"
+msgstr "Alle Nachrichten"
 
-#, fuzzy
 msgid "Also written by %@"
-msgstr "Also written by %@"
+msgstr "Auch geschrieben von %@"
 
 #. Please use 朱智语 in languages with these characters.
-#, fuzzy
 msgid "Apollo Zhu"
 msgstr "Apollo Zhu"
 
@@ -102,9 +91,8 @@ msgstr "App Icon:"
 msgid "App Theme:"
 msgstr "App Theme:"
 
-#, fuzzy
 msgid "Application"
-msgstr "Application"
+msgstr "Anwendung"
 
 #, fuzzy
 msgid ""
@@ -124,37 +112,30 @@ msgstr ""
 "Authorize Photos access using the Settings app to save received photos and "
 "videos to your photo library"
 
-#, fuzzy
 msgid "Available themes"
-msgstr "Available themes"
+msgstr "Verfügbare Designs"
 
-#, fuzzy
 msgid "Background Activity"
-msgstr "Background Activity"
+msgstr "Hintergrundaktivität"
 
-#, fuzzy
 msgid "Battery Level"
-msgstr "Battery Level"
+msgstr "Akku-Ladestand"
 
-#, fuzzy
 msgid "Battery Plugin Disabled"
-msgstr "Battery Plugin Disabled"
+msgstr "Akkumodul deaktiviert"
 
-#, fuzzy
 msgid "Battery Status"
-msgstr "Battery Status"
+msgstr "Akku-Zustand"
 
 #, fuzzy
 msgid "Can't find your devices here?"
 msgstr "Can't find your devices here?"
 
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Abbrechen"
 
-#, fuzzy
 msgid "Category: %@"
-msgstr "Category: %@"
+msgstr "Kategorie: %@"
 
 #, fuzzy
 msgid "Check out the merge requests"
@@ -168,25 +149,21 @@ msgstr "Choose App Icon"
 msgid "Chores"
 msgstr "Chores"
 
-#, fuzzy
 msgid "Classic"
-msgstr "Classic"
+msgstr "Klassisch"
 
-#, fuzzy
 msgid "Clear Cache"
-msgstr "Clear Cache"
+msgstr "Zwischenspeicher leeren"
 
-#, fuzzy
 msgid "Clipboard Sync"
-msgstr "Clipboard Sync"
+msgstr "Synchronisierung der Zwischenablage"
 
 #, fuzzy
 msgid "Clipboard: Push & Receive Text"
 msgstr "Clipboard: Push & Receive Text"
 
-#, fuzzy
 msgid "Clipboard: Sync"
-msgstr "Clipboard: Sync"
+msgstr "Zwischenablage: Synchronisieren"
 
 #, fuzzy
 msgid "Configure Devices By IP"
@@ -196,29 +173,23 @@ msgstr "Configure Devices By IP"
 msgid "Configure Devices by IP:"
 msgstr "Configure Devices by IP:"
 
-#, fuzzy
 msgid "Connect"
-msgstr "Connect"
+msgstr "Verbinden"
 
-#, fuzzy
 msgid "Connected Devices"
-msgstr "Connected Devices"
+msgstr "Verbundene Geräte"
 
-#, fuzzy
 msgid "Connectivity Report"
-msgstr "Connectivity Report"
+msgstr "Verbindungsbericht"
 
-#, fuzzy
 msgid "Contacts"
-msgstr "Contacts"
+msgstr "Kontakte"
 
-#, fuzzy
 msgid "Contribute to KDE Connect"
-msgstr "Contribute to KDE Connect"
+msgstr "Zu KDE Connect beitragen"
 
-#, fuzzy
 msgid "Contributors"
-msgstr "Contributors"
+msgstr "Mitwirkende"
 
 #, fuzzy
 msgid "Copy path to the folder containing received files"
@@ -240,11 +211,9 @@ msgstr "Cursor Sensitivity"
 msgid "DANGEROUS OPTIONS"
 msgstr "DANGEROUS OPTIONS"
 
-#, fuzzy
 msgid "Dark"
-msgstr "Dark"
+msgstr "Dunkel"
 
-#, fuzzy
 msgid "Debug"
 msgstr "Debug"
 
@@ -256,9 +225,8 @@ msgstr "Debug mode"
 msgid "Debugging device discovery"
 msgstr "Debugging device discovery"
 
-#, fuzzy
 msgid "Default"
-msgstr "Default"
+msgstr "Standard"
 
 #, fuzzy
 msgid ""
@@ -284,13 +252,11 @@ msgstr ""
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 
-#, fuzzy
 msgid "Developer"
-msgstr "Developer"
+msgstr "Entwickler"
 
-#, fuzzy
 msgid "Device"
-msgstr "Device"
+msgstr "Gerät"
 
 #, fuzzy
 msgid "Device Discovery"
@@ -300,29 +266,24 @@ msgstr "Device Discovery"
 msgid "Device IP"
 msgstr "Device IP"
 
-#, fuzzy
 msgid "Device Name"
-msgstr "Device Name"
+msgstr "Gerätename"
 
-#, fuzzy
 msgid "Device Name:"
-msgstr "Device Name:"
+msgstr "Gerätename:"
 
 #, fuzzy
 msgid "Device Offline"
 msgstr "Device Offline"
 
-#, fuzzy
 msgid "Device Status"
-msgstr "Device Status"
+msgstr "Gerätestatus"
 
-#, fuzzy
 msgid "Device name"
-msgstr "Device name"
+msgstr "Gerätename"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Devices"
+msgstr "Geräte"
 
 #, fuzzy
 msgid "Direct Handshake Devices"
@@ -336,25 +297,20 @@ msgstr "Disable UDP Broadcast"
 msgid "Discovered Devices"
 msgstr "Discovered Devices"
 
-#, fuzzy
 msgid "Discovery & Pairing"
-msgstr "Discovery & Pairing"
+msgstr "Erkennung & Kopplung"
 
-#, fuzzy
 msgid "Do Not Pair"
-msgstr "Do Not Pair"
+msgstr "Nicht koppeln"
 
-#, fuzzy
 msgid "Donate"
-msgstr "Donate"
+msgstr "Spenden"
 
-#, fuzzy
 msgid "Done"
-msgstr "Done"
+msgstr "Fertig"
 
-#, fuzzy
 msgid "Double tap to activate debug mode"
-msgstr "Double tap to activate debug mode"
+msgstr "Doppelt tippen, um den Fehlersuchmodus zu aktivieren"
 
 #, fuzzy
 msgid "Double tap to activate debugging device discovery"
@@ -364,29 +320,25 @@ msgstr "Double tap to activate debugging device discovery"
 msgid "Enable/Disable Plugins"
 msgstr "Enable/Disable Plugins"
 
-#, fuzzy
 msgid "Encryption Info"
-msgstr "Encryption Info"
+msgstr "Verschlüsselungsinformationen"
 
 #, fuzzy
 msgid "Erase saved devices cache"
 msgstr "Erase saved devices cache"
 
-#, fuzzy
 msgid "Error"
-msgstr "Error"
+msgstr "Fehler"
 
-#, fuzzy
 msgid "Error Occured"
-msgstr "Error Occured"
+msgstr "Fehler aufgetreten"
 
 #, fuzzy
 msgid "Errors and Faults"
 msgstr "Errors and Faults"
 
-#, fuzzy
 msgid "Exit Presentation"
-msgstr "Exit Presentation"
+msgstr "Präsentation beenden"
 
 #, fuzzy
 msgid "Experimental functionalities"
@@ -416,21 +368,17 @@ msgstr "Failed to send to %@"
 msgid "Fault"
 msgstr "Fault"
 
-#, fuzzy
 msgid "Features"
-msgstr "Features"
+msgstr "Funktionen"
 
-#, fuzzy
 msgid "File Transfers"
-msgstr "File Transfers"
+msgstr "Dateiübertragungen"
 
-#, fuzzy
 msgid "Files"
-msgstr "Files"
+msgstr "Dateien"
 
-#, fuzzy
 msgid "Find My Device"
-msgstr "Find My Device"
+msgstr "Mein Gerät suchen"
 
 #, fuzzy
 msgid "Find My Phone Mode"
@@ -440,17 +388,14 @@ msgstr "Find My Phone Mode"
 msgid "Find My Phone initiated from a remote device"
 msgstr "Find My Phone initiated from a remote device"
 
-#, fuzzy
 msgid "Forget all"
-msgstr "Forget all"
+msgstr "Alles vergessen"
 
-#, fuzzy
 msgid "From %@"
-msgstr "From %@"
+msgstr "Von %@"
 
-#, fuzzy
 msgid "General"
-msgstr "General"
+msgstr "Allgemein"
 
 #, fuzzy
 msgid "Go FullScreen"
@@ -461,13 +406,11 @@ msgid "Haptics Style"
 msgstr "Haptics Style"
 
 #. Hard haptic feedback level
-#, fuzzy
 msgid "Heavy"
-msgstr "Heavy"
+msgstr "Stark"
 
-#, fuzzy
 msgid "Help"
-msgstr "Help"
+msgstr "Hilfe"
 
 #, fuzzy
 msgid "Hide Haptics Style Selector"
@@ -535,21 +478,17 @@ msgstr ""
 msgid "In progress"
 msgstr "In progress"
 
-#, fuzzy
 msgid "Incoming Pairing Request"
-msgstr "Incoming Pairing Request"
+msgstr "Eingehende Kopplungsanfrage"
 
-#, fuzzy
 msgid "Info"
-msgstr "Info"
+msgstr "Information"
 
-#, fuzzy
 msgid "Information"
 msgstr "Information"
 
-#, fuzzy
 msgid "Initiate Pairing?"
-msgstr "Initiate Pairing?"
+msgstr "Kopplung einleiten?"
 
 #, fuzzy
 msgid "Integration with Siri Shortcuts"
@@ -563,30 +502,26 @@ msgstr "Integration with the system share sheet is in development"
 msgid "Internationalization & Localization"
 msgstr "Internationalization & Localization"
 
-#, fuzzy
 msgid "Invalid"
-msgstr "Invalid"
+msgstr "Ungültig"
 
 #, fuzzy
 msgid "Keyboard: Control Remote"
 msgstr "Keyboard: Control Remote"
 
-#, fuzzy
 msgid "License"
-msgstr "License"
+msgstr "Lizenz"
 
 #. Light haptic feedback level
-#, fuzzy
 msgid "Light"
-msgstr "Light"
+msgstr "Leicht"
 
 #, fuzzy
 msgid "Lock Screen: Control Remote"
 msgstr "Lock Screen: Control Remote"
 
-#, fuzzy
 msgid "Logs"
-msgstr "Logs"
+msgstr "Protokolle"
 
 #, fuzzy
 msgid "Logs for %@"
@@ -613,9 +548,8 @@ msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Maybe with Apple Notification Center Service (ACNS)"
 
 #. Medium haptic feedback level
-#, fuzzy
 msgid "Medium"
-msgstr "Medium"
+msgstr "Mittel"
 
 #, fuzzy
 msgid "Mouse: Control Remote"
@@ -675,17 +609,14 @@ msgstr "No device discovered in the current network."
 msgid "No matching logs yet"
 msgstr "No matching logs yet"
 
-#, fuzzy
 msgid "No, Stay Paired"
-msgstr "No, Stay Paired"
+msgstr "Nein, gekoppelt bleiben"
 
-#, fuzzy
 msgid "Not yet implemented"
-msgstr "Not yet implemented"
+msgstr "Noch nicht verfügbar"
 
-#, fuzzy
 msgid "Notice"
-msgstr "Notice"
+msgstr "Hinweis"
 
 #, fuzzy
 msgid "Notification: Receive from Others"
@@ -695,7 +626,6 @@ msgstr "Notification: Receive from Others"
 msgid "Notification: Retrieve by Others"
 msgstr "Notification: Retrieve by Others"
 
-#, fuzzy
 msgid "OK"
 msgstr "OK"
 
@@ -704,9 +634,8 @@ msgid "On-Click Haptic Style"
 msgstr "On-Click Haptic Style"
 
 #. Unknown haptic feedback level
-#, fuzzy
 msgid "Other"
-msgstr "Other"
+msgstr "Andere"
 
 #, fuzzy
 msgid "Out-App Notification:"
@@ -724,43 +653,35 @@ msgstr "Packet Tag"
 msgid "Packet Type"
 msgstr "Packet Type"
 
-#, fuzzy
 msgid "Pair"
-msgstr "Pair"
+msgstr "Koppeln"
 
-#, fuzzy
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"Pair request from '%@'\n"
-"Verification key: %@"
+"Kopplungsanforderung von „%@“\n"
+"Verifizierungsschlüssel: %@"
 
-#, fuzzy
 msgid "Pairing Complete"
-msgstr "Pairing Complete"
+msgstr "Kopplung abgeschlossen"
 
-#, fuzzy
 msgid "Pairing Rejected"
-msgstr "Pairing Rejected"
+msgstr "Kopplung abgelehnt"
 
-#, fuzzy
 msgid "Pairing Timed Out"
-msgstr "Pairing Timed Out"
+msgstr "Zeitüberschreitung beim Koppeln"
 
-#, fuzzy
 msgid "Pairing with '%@' failed"
-msgstr "Pairing with '%@' failed"
+msgstr "Kopplung mit „%@“ fehlgeschlagen"
 
-#, fuzzy
 msgid "Pairing with '%@' succeeded"
-msgstr "Pairing with '%@' succeeded"
+msgstr "Kopplung mit „%@“ erfolgreich"
 
 #, fuzzy
 msgid "Peer"
 msgstr "Peer"
 
-#, fuzzy
 msgid "Ping"
 msgstr "Ping"
 
@@ -768,11 +689,9 @@ msgstr "Ping"
 msgid "Ping received from a connected device."
 msgstr "Ping received from a connected device."
 
-#, fuzzy
 msgid "Ping!"
 msgstr "Ping!"
 
-#, fuzzy
 msgid "Plasma Bigscreen"
 msgstr "Plasma Bigscreen"
 
@@ -780,29 +699,25 @@ msgstr "Plasma Bigscreen"
 msgid "Playground"
 msgstr "Playground"
 
-#, fuzzy
 msgid "Plugin Settings"
-msgstr "Plugin Settings"
+msgstr "Moduleinstellungen"
 
 #, fuzzy
 msgid "Plugins If Reachable"
 msgstr "Plugins If Reachable"
 
-#, fuzzy
 msgid "Pointer Sensitivity"
-msgstr "Pointer Sensitivity"
+msgstr "Zeigerempfindlichkeit"
 
-#, fuzzy
 msgid "Preparing Media…"
-msgstr "Preparing Media…"
+msgstr "Medien werden vorbereitet …"
 
 #, fuzzy
 msgid "Presenter: Control Remote"
 msgstr "Presenter: Control Remote"
 
-#, fuzzy
 msgid "Preview: "
-msgstr "Preview: "
+msgstr "Vorschau: "
 
 #, fuzzy
 msgid "Previously connected devices will appear here."
@@ -812,9 +727,8 @@ msgstr "Previously connected devices will appear here."
 msgid "Push Local Clipboard"
 msgstr "Push Local Clipboard"
 
-#, fuzzy
 msgid "Reason: %@"
-msgstr "Reason: %@"
+msgstr "Grund: %@"
 
 #, fuzzy
 msgid ""
@@ -824,9 +738,8 @@ msgstr ""
 "Received photos and videos will be saved to the Files app because you can't "
 "grant us access to your photo library."
 
-#, fuzzy
 msgid "Receiving"
-msgstr "Receiving"
+msgstr "Wird empfangen"
 
 #, fuzzy
 msgid "Receiving file %lld of %lld"
@@ -836,21 +749,17 @@ msgstr "Receiving file %lld of %lld"
 msgid "Refresh Discovery"
 msgstr "Refresh Discovery"
 
-#, fuzzy
 msgid "Remembered Devices"
-msgstr "Remembered Devices"
+msgstr "Gemerkte Geräte"
 
-#, fuzzy
 msgid "Remote Input"
-msgstr "Remote Input"
+msgstr "Ferneingabe"
 
-#, fuzzy
 msgid "Report Bug"
-msgstr "Report Bug"
+msgstr "Problem melden"
 
-#, fuzzy
 msgid "Request to pair with '%@'"
-msgstr "Request to pair with '%@'"
+msgstr "Kopplung mit „%@“ anfordern"
 
 #, fuzzy
 msgid "Restart Discovery"
@@ -861,21 +770,17 @@ msgstr "Restart Discovery"
 msgid "Rigid"
 msgstr "Rigid"
 
-#, fuzzy
 msgid "Ring Device"
-msgstr "Ring Device"
+msgstr "Gerät anklingeln"
 
-#, fuzzy
 msgid "Ring/Find My Phone"
-msgstr "Ring/Find My Phone"
+msgstr "Mein Telefon anklingeln/suchen"
 
-#, fuzzy
 msgid "Rounded Rectangle"
-msgstr "Rounded Rectangle"
+msgstr "Abgerundetes Rechteck"
 
-#, fuzzy
 msgid "Run Command"
-msgstr "Run Command"
+msgstr "Befehl ausführen"
 
 #, fuzzy
 msgid "Run Command: Request"
@@ -919,77 +824,63 @@ msgstr "Screensaver: Inhibit Remote"
 msgid "Select a device from the Devices list to start."
 msgstr "Select a device from the Devices list to start."
 
-#, fuzzy
 msgid "Send"
-msgstr "Send"
+msgstr "Senden"
 
-#, fuzzy
 msgid "Send Double Left Click"
-msgstr "Send Double Left Click"
+msgstr "Linken Doppelklick senden"
 
-#, fuzzy
 msgid "Send Files"
-msgstr "Send Files"
+msgstr "Dateien senden"
 
 #, fuzzy
 msgid "Send Left Hold"
 msgstr "Send Left Hold"
 
-#, fuzzy
 msgid "Send Middle Click"
-msgstr "Send Middle Click"
+msgstr "Mittelklick senden"
 
-#, fuzzy
 msgid "Send Photos and Videos"
-msgstr "Send Photos and Videos"
+msgstr "Fotos und Videos senden"
 
-#, fuzzy
 msgid "Send Ping"
-msgstr "Send Ping"
+msgstr "Ping senden"
 
-#, fuzzy
 msgid "Send Right Click"
-msgstr "Send Right Click"
+msgstr "Rechtsklick senden"
 
-#, fuzzy
 msgid "Send Single Left Click"
-msgstr "Send Single Left Click"
+msgstr "Einzelnen Linksklick senden"
 
-#, fuzzy
 msgid "Sending"
-msgstr "Sending"
+msgstr "Wird gesendet"
 
 #, fuzzy
 msgid "Sending file %lld of %lld"
 msgstr "Sending file %lld of %lld"
 
-#, fuzzy
 msgid "Settings"
-msgstr "Settings"
+msgstr "Einstellungen"
 
 #, fuzzy
 msgid "Share/File Transfer"
 msgstr "Share/File Transfer"
 
-#, fuzzy
 msgid "Share: Receive File, Text, and URL"
-msgstr "Share: Receive File, Text, and URL"
+msgstr "Teilen: Datei, Text und Adresse (URL) empfangen"
 
-#, fuzzy
 msgid "Share: Send File"
-msgstr "Share: Send File"
+msgstr "Teilen: Datei senden"
 
-#, fuzzy
 msgid "Share: Send Text & URL"
-msgstr "Share: Send Text & URL"
+msgstr "Teilen: Text und Adresse (URL) senden"
 
 #, fuzzy
 msgid "Show Haptics Style Selector"
 msgstr "Show Haptics Style Selector"
 
-#, fuzzy
 msgid "Show Received Files in Finder"
-msgstr "Show Received Files in Finder"
+msgstr "Empfangene Dateien in Finder anzeigen"
 
 #, fuzzy
 msgid "Show Sensitivity Slider"
@@ -1004,21 +895,17 @@ msgstr "Slideshow Remote"
 msgid "Soft"
 msgstr "Soft"
 
-#, fuzzy
 msgid "Source Code"
-msgstr "Source Code"
+msgstr "Quelltext"
 
-#, fuzzy
 msgid "Status"
 msgstr "Status"
 
-#, fuzzy
 msgid "Supported"
-msgstr "Supported"
+msgstr "Unterstützt"
 
-#, fuzzy
 msgid "System Default"
-msgstr "System Default"
+msgstr "Systemvoreinstellung"
 
 #, fuzzy
 msgid "System Volume: Control Remote & Respond"
@@ -1028,9 +915,8 @@ msgstr "System Volume: Control Remote & Respond"
 msgid "Take Photo: Respond"
 msgstr "Take Photo: Respond"
 
-#, fuzzy
 msgid "Tap to start pairing"
-msgstr "Tap to start pairing"
+msgstr "Tippen, um Kopplung zu beginnen"
 
 #, fuzzy
 msgid "Telephony: SMS/Call Sync"
@@ -1072,9 +958,8 @@ msgstr "This is likely not possible to implement on iOS"
 msgid "Through the system share sheet"
 msgstr "Through the system share sheet"
 
-#, fuzzy
 msgid "To %@"
-msgstr "To %@"
+msgstr "An &@"
 
 #, fuzzy
 msgid ""
@@ -1084,43 +969,34 @@ msgstr ""
 "To connect to remembered devices, make sure they are connected to the same "
 "network as this device."
 
-#, fuzzy
 msgid "Toggle Keyboard"
-msgstr "Toggle Keyboard"
+msgstr "Tastatur umschalten"
 
-#, fuzzy
 msgid "Troubleshooting"
-msgstr "Troubleshooting"
+msgstr "Problembeseitigung"
 
-#, fuzzy
 msgid "Trusted Networks"
-msgstr "Trusted Networks"
+msgstr "Vertrauenswürdige Netzwerke"
 
 #, fuzzy
 msgid "Unknown Theme"
 msgstr "Unknown Theme"
 
-#, fuzzy
 msgid "Unpair"
-msgstr "Unpair"
+msgstr "Entkoppeln"
 
-#, fuzzy
 msgid "Unpair With Device?"
-msgstr "Unpair With Device?"
+msgstr "Von Gerät entkoppeln?"
 
-#, fuzzy
 msgid "Unpair with %@?"
-msgstr "Unpair with %@?"
+msgstr "%@ entkoppeln?"
 
-#, fuzzy
 msgid "Valid"
-msgstr "Valid"
+msgstr "Gültig"
 
-#, fuzzy
 msgid "Verification key: %@"
-msgstr "Verification key: %@"
+msgstr "Verifizierungsschlüssel: %@"
 
-#, fuzzy
 msgid "Version: %@ (%@)"
 msgstr "Version: %@ (%@)"
 
@@ -1136,17 +1012,14 @@ msgstr "Waiting for logs..."
 msgid "Waiting to send"
 msgstr "Waiting to send"
 
-#, fuzzy
 msgid "Website"
-msgstr "Website"
+msgstr "Webseite"
 
-#, fuzzy
 msgid "Wiki & User Manual"
-msgstr "Wiki & User Manual"
+msgstr "Wiki & Benutzerhandbuch"
 
-#, fuzzy
 msgid "Yes, Unpair"
-msgstr "Yes, Unpair"
+msgstr "Ja, entkoppeln"
 
 #, fuzzy
 msgid ""
@@ -1157,10 +1030,8 @@ msgstr ""
 "specific settings that can be found in their respective Views."
 
 #. Filename to use for an unnamed file
-#, fuzzy
 msgid "untitled"
-msgstr "untitled"
+msgstr "unbenannt"
 
-#, fuzzy
 msgid "© KDE Community & contributors"
-msgstr "© KDE Community & contributors"
+msgstr "© KDE-Gemeinschaft & Mitwirkende"
