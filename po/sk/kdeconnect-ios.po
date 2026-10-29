@@ -1,0 +1,911 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kde-l 10n\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"PO-Revision-Date: 2026-10-28 10:57+0100\n"
+"Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
+"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.19.17\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. Bundle display name
+#. Bundle name
+msgctxt ""
+msgid "KDE Connect"
+msgstr "KDE Connect"
+
+#. Privacy - Local Network Usage Description
+msgid "Discover and connect to other devices using KDE Connect."
+msgstr "Objavujte iné zariadenia a pripájajte sa k nim pomocou KDE Connect."
+
+#. Privacy - Photo Library Additions Usage Description
+msgid "Save received images to your Photo Library instead of the Files app."
+msgstr "Ukladať prijaté obrázky do knižnice fotiek namiesto aplikácie Súbory."
+
+msgid "%@ and %lld other files"
+msgstr "%@ a ďalšie súbory (%lld)"
+
+msgid "%@ for iOS"
+msgstr "%@ pre iOS"
+
+msgid "**KDE Connect** for iOS"
+msgstr "**KDE Connect** pre iOS"
+
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "?"
+msgstr "?"
+
+msgid "About"
+msgstr "O aplikácii"
+
+msgid "Actions"
+msgstr "Akcie"
+
+msgid ""
+"Add the local IP addresses of other devices here if they're having trouble "
+"appearing in the automatic discovery."
+msgstr ""
+"Ak sa iné zariadenia nezobrazujú pri automatickom objavovaní, pridajte sem "
+"ich miestne IP adresy."
+
+msgid "Advanced"
+msgstr "Pokročilé"
+
+msgid "Advanced Settings"
+msgstr "Pokročilé nastavenia"
+
+msgid "All Messages"
+msgstr "Všetky správy"
+
+msgid "Also written by %@"
+msgstr "Napísal aj %@"
+
+#. Please use 朱智语 in languages with these characters.
+msgid "Apollo Zhu"
+msgstr "Apollo Zhu"
+
+msgid "App Icon"
+msgstr "Ikona aplikácie"
+
+msgid "App Icon:"
+msgstr "Ikona aplikácie:"
+
+msgid "App Theme:"
+msgstr "Téma aplikácie:"
+
+msgid "Application"
+msgstr "Aplikácia"
+
+msgid ""
+"As an open source project, we believe it is important to be transparent "
+"about our current and future plans to bring KDE Connect iOS into line with "
+"all other platforms."
+msgstr ""
+"Ako open source projekt považujeme za dôležité byť otvorení o našich "
+"súčasných aj budúcich plánoch, ako zosúladiť KDE Connect pre iOS so všetkými "
+"ostatnými platformami."
+
+msgid ""
+"Authorize Photos access using the Settings app to save received photos and "
+"videos to your photo library"
+msgstr ""
+"Ak chcete ukladať prijaté fotky a videá do knižnice fotiek, povoľte prístup "
+"k Fotkám v aplikácii Nastavenia"
+
+msgid "Available themes"
+msgstr "Dostupné témy"
+
+msgid "Background Activity"
+msgstr "Činnosť na pozadí"
+
+msgid "Battery Level"
+msgstr "Úroveň batérie"
+
+msgid "Battery Plugin Disabled"
+msgstr "Modul batérie vypnutý"
+
+msgid "Battery Status"
+msgstr "Stav batérie"
+
+msgid "Can't find your devices here?"
+msgstr "Nenachádzate tu svoje zariadenia?"
+
+msgid "Cancel"
+msgstr "Zrušiť"
+
+msgid "Category: %@"
+msgstr "Kategória: %@"
+
+msgid "Check out the merge requests"
+msgstr "Pozrite si požiadavky na zlúčenie"
+
+msgid "Choose App Icon"
+msgstr "Vybrať ikonu aplikácie"
+
+msgid "Chores"
+msgstr "Údržba"
+
+msgid "Classic"
+msgstr "Klasická"
+
+msgid "Clear Cache"
+msgstr "Vyčistiť vyrovnávaciu pamäť"
+
+msgid "Clipboard Sync"
+msgstr "Synchronizácia schránky"
+
+msgid "Clipboard: Push & Receive Text"
+msgstr "Schránka: odosielanie a prijímanie textu"
+
+msgid "Clipboard: Sync"
+msgstr "Schránka: synchronizácia"
+
+msgid "Configure Devices By IP"
+msgstr "Nastaviť zariadenia podľa IP"
+
+msgid "Configure Devices by IP:"
+msgstr "Nastaviť zariadenia podľa IP:"
+
+msgid "Connect"
+msgstr "Pripojiť"
+
+msgid "Connected Devices"
+msgstr "Pripojené zariadenia"
+
+msgid "Connectivity Report"
+msgstr "Správa o pripojení"
+
+msgid "Contacts"
+msgstr "Kontakty"
+
+msgid "Contribute to KDE Connect"
+msgstr "Prispieť do KDE Connect"
+
+msgid "Contributors"
+msgstr "Prispievatelia"
+
+msgid "Copy path to the folder containing received files"
+msgstr "Kopírovať cestu k priečinku s prijatými súbormi"
+
+msgid "Currently maintained by %@"
+msgstr "Momentálne udržiava %@"
+
+msgid "Currently, the app must stay in the foreground to work properly"
+msgstr "Momentálne musí byť aplikácia v popredí, aby fungovala správne"
+
+msgid "Cursor Sensitivity"
+msgstr "Citlivosť kurzora"
+
+msgid "DANGEROUS OPTIONS"
+msgstr "NEBEZPEČNÉ VOĽBY"
+
+msgid "Dark"
+msgstr "Tmavá"
+
+msgid "Debug"
+msgstr "Ladenie"
+
+msgid "Debug mode"
+msgstr "Režim ladenia"
+
+msgid "Debugging device discovery"
+msgstr "Ladenie objavovania zariadení"
+
+msgid "Default"
+msgstr "Predvolené"
+
+msgid ""
+"Delete all saved settings and devices. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Odstrániť všetky uložené nastavenia a zariadenia. Vyžaduje úplný reštart "
+"aplikácie."
+
+msgid "Delete host certificate"
+msgstr "Odstrániť certifikát hostiteľa"
+
+msgid ""
+"Delete the host's certificate and re-generate it upon restart. Requires the "
+"app to be fully restarted. NOTE: this will make the device unable to connect "
+"with previously connected devices. You must unpair this device from the "
+"other remote devices and pair them again."
+msgstr ""
+"Odstrániť certifikát hostiteľa a pri reštarte ho znova vygenerovať. Vyžaduje "
+"úplný reštart aplikácie. POZNÁMKA: zariadenie sa potom nebude môcť pripojiť "
+"k predtým pripojeným zariadeniam. Musíte ho zrušiť v spárovaní na ostatných "
+"vzdialených zariadeniach a spárovať ich znova."
+
+msgid "Developer"
+msgstr "Vývojár"
+
+msgid "Device"
+msgstr "Zariadenie"
+
+msgid "Device Discovery"
+msgstr "Objavovanie zariadení"
+
+msgid "Device IP"
+msgstr "IP zariadenia"
+
+msgid "Device Name"
+msgstr "Názov zariadenia"
+
+msgid "Device Name:"
+msgstr "Názov zariadenia:"
+
+msgid "Device Offline"
+msgstr "Zariadenie je offline"
+
+msgid "Device Status"
+msgstr "Stav zariadenia"
+
+msgid "Device name"
+msgstr "Názov zariadenia"
+
+msgid "Devices"
+msgstr "Zariadenia"
+
+msgid "Direct Handshake Devices"
+msgstr "Zariadenia s priamym nadviazaním spojenia"
+
+msgid "Disable UDP Broadcast"
+msgstr "Vypnúť vysielanie UDP"
+
+msgid "Discovered Devices"
+msgstr "Objavené zariadenia"
+
+msgid "Discovery & Pairing"
+msgstr "Objavovanie a párovanie"
+
+msgid "Do Not Pair"
+msgstr "Nepárovať"
+
+msgid "Donate"
+msgstr "Prispieť"
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgid "Double tap to activate debug mode"
+msgstr "Dvojitým ťuknutím zapnete režim ladenia"
+
+msgid "Double tap to activate debugging device discovery"
+msgstr "Dvojitým ťuknutím zapnete ladenie objavovania zariadení"
+
+msgid "Enable/Disable Plugins"
+msgstr "Zapnúť/vypnúť moduly"
+
+msgid "Encryption Info"
+msgstr "Informácie o šifrovaní"
+
+msgid "Erase saved devices cache"
+msgstr "Vymazať vyrovnávaciu pamäť uložených zariadení"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "Error Occured"
+msgstr "Vyskytla sa chyba"
+
+msgid "Errors and Faults"
+msgstr "Chyby a poruchy"
+
+msgid "Exit Presentation"
+msgstr "Ukončiť prezentáciu"
+
+msgid "Experimental functionalities"
+msgstr "Experimentálne funkcie"
+
+msgid "Failed to Change Icon"
+msgstr "Ikonu sa nepodarilo zmeniť"
+
+msgid "Failed to receive %lld files"
+msgstr "Nepodarilo sa prijať súbory (%lld)"
+
+msgid "Failed to receive from %@"
+msgstr "Nepodarilo sa prijať od %@"
+
+msgid "Failed to send %lld files"
+msgstr "Nepodarilo sa odoslať súbory (%lld)"
+
+msgid "Failed to send to %@"
+msgstr "Nepodarilo sa odoslať do %@"
+
+msgid "Fault"
+msgstr "Porucha"
+
+msgid "Features"
+msgstr "Funkcie"
+
+msgid "File Transfers"
+msgstr "Prenosy súborov"
+
+msgid "Files"
+msgstr "Súbory"
+
+msgid "Find My Device"
+msgstr "Nájsť moje zariadenie"
+
+msgid "Find My Phone Mode"
+msgstr "Režim Nájsť môj telefón"
+
+msgid "Find My Phone initiated from a remote device"
+msgstr "Nájsť môj telefón spustené zo vzdialeného zariadenia"
+
+msgid "Forget all"
+msgstr "Zabudnúť všetky"
+
+msgid "From %@"
+msgstr "Od %@"
+
+msgid "General"
+msgstr "Všeobecné"
+
+msgid "Go FullScreen"
+msgstr "Na celú obrazovku"
+
+msgid "Haptics Style"
+msgstr "Štýl haptickej odozvy"
+
+#. Hard haptic feedback level
+msgid "Heavy"
+msgstr "Silná"
+
+msgid "Help"
+msgstr "Pomocník"
+
+msgid "Hide Haptics Style Selector"
+msgstr "Skryť výber štýlu haptickej odozvy"
+
+msgid "Hide Sensitivity Slider"
+msgstr "Skryť posuvník citlivosti"
+
+msgid "I FOUND IT!"
+msgstr "NAŠIEL SOM HO!"
+
+msgid ""
+"If KDE Connect is having trouble discovering other devices, you can try a "
+"combination of the following solutions:\n"
+"\n"
+"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
+"list, on this and the other devices.\n"
+"\n"
+"2. Make sure the other devices are also running KDE Connect and are "
+"connected to the same network as this device.\n"
+"\n"
+"3. Manually add the other devices through the \"Configure Devices By IP\" "
+"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"\n"
+"4. Check other solutions on the User Manual, such as configuring the "
+"firewalls of the other devices:\n"
+msgstr ""
+"Ak má KDE Connect problémy s objavovaním iných zariadení, môžete skúsiť "
+"kombináciu týchto riešení:\n"
+"\n"
+"1. „Obnoviť objavovanie“ cez ponuku %@ alebo potiahnutím obnovte zoznam "
+"Zariadenia, na tomto aj na ostatných zariadeniach.\n"
+"\n"
+"2. Uistite sa, že aj na ostatných zariadeniach beží KDE Connect a sú "
+"pripojené k tej istej sieti ako toto zariadenie.\n"
+"\n"
+"3. Pridajte ostatné zariadenia ručne cez voľbu „Nastaviť zariadenia podľa "
+"IP“ v ponuke %@ a potom „Obnoviť objavovanie“.\n"
+"\n"
+"4. Pozrite si ďalšie riešenia v používateľskej príručke, napríklad "
+"nastavenie firewallov ostatných zariadení:\n"
+
+msgid ""
+"If a remembered device is already online but not shown here, try Refresh "
+"Discovery."
+msgstr ""
+"Ak je zapamätané zariadenie už online, ale nezobrazuje sa tu, skúste Obnoviť "
+"objavovanie."
+
+msgid ""
+"If there are phantom devices or something just doesn't behave correctly, "
+"erasing all saved devices data might fix it. Requires the app to be fully "
+"restarted."
+msgstr ""
+"Ak sa zobrazujú fantómové zariadenia alebo niečo jednoducho nefunguje "
+"správne, môže pomôcť vymazanie všetkých údajov o uložených zariadeniach. "
+"Vyžaduje úplný reštart aplikácie."
+
+msgid "In progress"
+msgstr "Prebieha"
+
+msgid "Incoming Pairing Request"
+msgstr "Prichádzajúca žiadosť o spárovanie"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Information"
+msgstr "Informácie"
+
+msgid "Initiate Pairing?"
+msgstr "Spustiť párovanie?"
+
+msgid "Integration with Siri Shortcuts"
+msgstr "Integrácia so skratkami Siri"
+
+msgid "Integration with the system share sheet is in development"
+msgstr "Integrácia so systémovým panelom zdieľania je vo vývoji"
+
+msgid "Internationalization & Localization"
+msgstr "Internacionalizácia a lokalizácia"
+
+msgid "Invalid"
+msgstr "Neplatný"
+
+msgid "Keyboard: Control Remote"
+msgstr "Klávesnica: ovládanie vzdialeného zariadenia"
+
+msgid "License"
+msgstr "Licencia"
+
+#. Light haptic feedback level
+msgid "Light"
+msgstr "Svetlá"
+
+msgid "Lock Screen: Control Remote"
+msgstr "Uzamknutá obrazovka: ovládanie vzdialeného zariadenia"
+
+msgid "Logs"
+msgstr "Záznamy"
+
+msgid "Logs for %@"
+msgstr "Záznamy pre %@"
+
+msgid "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: ovládanie vzdialených médií a odpovedanie"
+
+msgid "Manage received files in the Files app"
+msgstr "Spravovať prijaté súbory v aplikácii Súbory"
+
+msgid "May not work with KDE Connect for Windows"
+msgstr "Nemusí fungovať s KDE Connect pre Windows"
+
+msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+msgstr "Možno cez schému URL a integráciu so skratkami Siri"
+
+msgid "Maybe with Apple Notification Center Service (ACNS)"
+msgstr "Možno cez Apple Notification Center Service (ACNS)"
+
+#. Medium haptic feedback level
+msgid "Medium"
+msgstr "Stredná"
+
+msgid "Mouse: Control Remote"
+msgstr "Myš: ovládanie vzdialeného zariadenia"
+
+msgid ""
+"Move a finger on the screen to move the mouse cursor. Tap with one finger "
+"for left click. Tap with two fingers for right click. Use a long press to "
+"activate drag'n drop. Or use the menu on the top right to directly send "
+"clicks.\n"
+"\n"
+"Drag with one finger from the “Scroll Wheel” above to scroll both vertically "
+"and horizontally. Tap on the “Scroll Wheel” for middle click."
+msgstr ""
+"Pohybom prsta po obrazovke pohybujete kurzorom myši. Ťuknutím jedným prstom "
+"kliknete ľavým tlačidlom. Ťuknutím dvoma prstami kliknete pravým tlačidlom. "
+"Dlhým stlačením zapnete ťahanie a pustenie. Alebo kliknutia pošlite priamo "
+"cez ponuku vpravo hore.\n"
+"\n"
+"Potiahnutím jedným prstom od „Posúvacieho kolieska“ vyššie posúvate zvislo "
+"aj vodorovne. Ťuknutím na „Posúvacie koliesko“ kliknete stredným tlačidlom."
+
+msgid ""
+"Multi-platform app that allows your devices to communicate (e.g., your phone "
+"and your computer)"
+msgstr ""
+"Multiplatformová aplikácia, ktorá umožňuje vašim zariadeniam komunikovať "
+"(napr. telefónu a počítaču)"
+
+msgid "Network Packet Composer"
+msgstr "Skladač sieťových paketov"
+
+msgid "Nice"
+msgstr "Pekné"
+
+msgid "No additional devices are discovered on this network."
+msgstr "V tejto sieti sa nenašli žiadne ďalšie zariadenia."
+
+msgid "No battery detected in device"
+msgstr "V zariadení sa nenašla žiadna batéria"
+
+msgid "No currently connected devices."
+msgstr "Žiadne momentálne pripojené zariadenia."
+
+msgid "No device discovered in the current network."
+msgstr "V aktuálnej sieti sa nenašlo žiadne zariadenie."
+
+msgid "No matching logs yet"
+msgstr "Zatiaľ žiadne zodpovedajúce záznamy"
+
+msgid "No, Stay Paired"
+msgstr "Nie, ponechať spárované"
+
+msgid "Not yet implemented"
+msgstr "Zatiaľ neimplementované"
+
+msgid "Notice"
+msgstr "Oznámenie"
+
+msgid "Notification: Receive from Others"
+msgstr "Upozornenie: prijímanie od ostatných"
+
+msgid "Notification: Retrieve by Others"
+msgstr "Upozornenie: získavanie ostatnými"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "On-Click Haptic Style"
+msgstr "Štýl haptickej odozvy pri kliknutí"
+
+#. Unknown haptic feedback level
+msgid "Other"
+msgstr "Iné"
+
+msgid "Out-App Notification:"
+msgstr "Upozornenie mimo aplikácie:"
+
+msgid "Packet Body"
+msgstr "Telo paketu"
+
+msgid "Packet Tag"
+msgstr "Značka paketu"
+
+msgid "Packet Type"
+msgstr "Typ paketu"
+
+msgid "Pair"
+msgstr "Spárovať"
+
+msgid ""
+"Pair request from '%@'\n"
+"Verification key: %@"
+msgstr ""
+"Žiadosť o spárovanie od '%@'\n"
+"Overovací kľúč: %@"
+
+msgid "Pairing Complete"
+msgstr "Párovanie dokončené"
+
+msgid "Pairing Rejected"
+msgstr "Párovanie odmietnuté"
+
+msgid "Pairing Timed Out"
+msgstr "Vypršal čas párovania"
+
+msgid "Pairing with '%@' failed"
+msgstr "Párovanie s '%@' zlyhalo"
+
+msgid "Pairing with '%@' succeeded"
+msgstr "Párovanie s '%@' bolo úspešné"
+
+msgid "Peer"
+msgstr "Partner"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Ping received from a connected device."
+msgstr "Prijatý ping z pripojeného zariadenia."
+
+msgid "Ping!"
+msgstr "Ping!"
+
+msgid "Plasma Bigscreen"
+msgstr "Plasma Bigscreen"
+
+msgid "Playground"
+msgstr "Pieskovisko"
+
+msgid "Plugin Settings"
+msgstr "Nastavenia modulov"
+
+msgid "Plugins If Reachable"
+msgstr "Moduly, ak je dostupné"
+
+msgid "Pointer Sensitivity"
+msgstr "Citlivosť ukazovateľa"
+
+msgid "Preparing Media…"
+msgstr "Pripravujú sa médiá…"
+
+msgid "Presenter: Control Remote"
+msgstr "Prezentácia: ovládanie vzdialeného zariadenia"
+
+msgid "Preview: "
+msgstr "Náhľad: "
+
+msgid "Previously connected devices will appear here."
+msgstr "Tu sa zobrazia predtým pripojené zariadenia."
+
+msgid "Push Local Clipboard"
+msgstr "Odoslať miestnu schránku"
+
+msgid "Reason: %@"
+msgstr "Dôvod: %@"
+
+msgid ""
+"Received photos and videos will be saved to the Files app because you can't "
+"grant us access to your photo library."
+msgstr ""
+"Prijaté fotky a videá sa uložia do aplikácie Súbory, pretože nám nemôžete "
+"udeliť prístup ku knižnici fotiek."
+
+msgid "Receiving"
+msgstr "Prijíma sa"
+
+msgid "Receiving file %lld of %lld"
+msgstr "Prijíma sa súbor %lld z %lld"
+
+msgid "Refresh Discovery"
+msgstr "Obnoviť objavovanie"
+
+msgid "Remembered Devices"
+msgstr "Zapamätané zariadenia"
+
+msgid "Remote Input"
+msgstr "Vzdialený vstup"
+
+msgid "Report Bug"
+msgstr "Nahlásiť chybu"
+
+msgid "Request to pair with '%@'"
+msgstr "Žiadosť o spárovanie s '%@'"
+
+msgid "Restart Discovery"
+msgstr "Reštartovať objavovanie"
+
+#. Rigid haptic feedback level
+msgid "Rigid"
+msgstr "Pevná"
+
+msgid "Ring Device"
+msgstr "Prezvoniť zariadenie"
+
+msgid "Ring/Find My Phone"
+msgstr "Prezvoniť/Nájsť môj telefón"
+
+msgid "Rounded Rectangle"
+msgstr "Zaoblený obdĺžnik"
+
+msgid "Run Command"
+msgstr "Spustiť príkaz"
+
+msgid "Run Command: Request"
+msgstr "Spustiť príkaz: žiadosť"
+
+msgid "Run Command: Respond"
+msgstr "Spustiť príkaz: odpoveď"
+
+msgid "SFTP: Access Remote & Initiate File Server"
+msgstr "SFTP: prístup k vzdialenému zariadeniu a spustenie súborového servera"
+
+msgid ""
+"SHA256 fingerprint of your device certificate is:\n"
+"%@\n"
+"\n"
+"SHA256 fingerprint of remote device certificate is: \n"
+"%@"
+msgstr ""
+"Odtlačok SHA256 certifikátu vášho zariadenia je:\n"
+"%@\n"
+"\n"
+"Odtlačok SHA256 certifikátu vzdialeného zariadenia je: \n"
+"%@"
+
+msgid "Save photos to the photo library"
+msgstr "Ukladať fotky do knižnice fotiek"
+
+msgid "Save videos to the photo library"
+msgstr "Ukladať videá do knižnice fotiek"
+
+msgid "Screensaver: Inhibit Remote"
+msgstr "Šetrič obrazovky: blokovanie na vzdialenom zariadení"
+
+msgid "Select a device from the Devices list to start."
+msgstr "Začnite výberom zariadenia zo zoznamu Zariadenia."
+
+msgid "Send"
+msgstr "Odoslať"
+
+msgid "Send Double Left Click"
+msgstr "Poslať dvojklik ľavým"
+
+msgid "Send Files"
+msgstr "Odoslať súbory"
+
+msgid "Send Left Hold"
+msgstr "Poslať podržanie ľavého"
+
+msgid "Send Middle Click"
+msgstr "Poslať kliknutie stredným"
+
+msgid "Send Photos and Videos"
+msgstr "Odoslať fotky a videá"
+
+msgid "Send Ping"
+msgstr "Poslať ping"
+
+msgid "Send Right Click"
+msgstr "Poslať kliknutie pravým"
+
+msgid "Send Single Left Click"
+msgstr "Poslať jednoduché kliknutie ľavým"
+
+msgid "Sending"
+msgstr "Odosiela sa"
+
+msgid "Sending file %lld of %lld"
+msgstr "Odosiela sa súbor %lld z %lld"
+
+msgid "Settings"
+msgstr "Nastavenia"
+
+msgid "Share/File Transfer"
+msgstr "Zdieľanie/Prenos súborov"
+
+msgid "Share: Receive File, Text, and URL"
+msgstr "Zdieľanie: prijímanie súborov, textu a URL"
+
+msgid "Share: Send File"
+msgstr "Zdieľanie: odoslanie súboru"
+
+msgid "Share: Send Text & URL"
+msgstr "Zdieľanie: odoslanie textu a URL"
+
+msgid "Show Haptics Style Selector"
+msgstr "Zobraziť výber štýlu haptickej odozvy"
+
+msgid "Show Received Files in Finder"
+msgstr "Zobraziť prijaté súbory vo Finderi"
+
+msgid "Show Sensitivity Slider"
+msgstr "Zobraziť posuvník citlivosti"
+
+msgid "Slideshow Remote"
+msgstr "Diaľkové ovládanie prezentácie"
+
+#. Soft haptic feedback level
+msgid "Soft"
+msgstr "Jemná"
+
+msgid "Source Code"
+msgstr "Zdrojový kód"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Supported"
+msgstr "Podporované"
+
+msgid "System Default"
+msgstr "Predvolené systémom"
+
+msgid "System Volume: Control Remote & Respond"
+msgstr "Hlasitosť systému: ovládanie vzdialeného zariadenia a odpovedanie"
+
+msgid "Take Photo: Respond"
+msgstr "Odfotiť: odpoveď"
+
+msgid "Tap to start pairing"
+msgstr "Ťuknutím začnete párovanie"
+
+msgid "Telephony: SMS/Call Sync"
+msgstr "Telefonovanie: synchronizácia SMS a hovorov"
+
+msgid "The name of the device as recognized by KDE Connect"
+msgstr "Názov zariadenia, ako ho rozpoznáva KDE Connect"
+
+msgid ""
+"The options above are irreversible and require a complete app restart to "
+"take effect."
+msgstr ""
+"Voľby vyššie sú nevratné a vyžadujú úplný reštart aplikácie, aby sa "
+"prejavili."
+
+msgid ""
+"These should be handled automatically, but you may manually perform some in "
+"case if they are not."
+msgstr ""
+"Tieto by sa mali vykonať automaticky, ale ak sa tak nestane, niektoré môžete "
+"vykonať ručne."
+
+msgid "These should work with little to no issues"
+msgstr "Tieto by mali fungovať s minimom problémov alebo bez nich"
+
+msgid "Third-Party Libraries"
+msgstr "Knižnice tretích strán"
+
+msgid "This is likely not possible to implement on iOS"
+msgstr "Toto pravdepodobne nie je možné na iOS implementovať"
+
+msgid "Through the system share sheet"
+msgstr "Cez systémový panel zdieľania"
+
+msgid "To %@"
+msgstr "Pre %@"
+
+msgid ""
+"To connect to remembered devices, make sure they are connected to the same "
+"network as this device."
+msgstr ""
+"Ak sa chcete pripojiť k zapamätaným zariadeniam, uistite sa, že sú pripojené "
+"k tej istej sieti ako toto zariadenie."
+
+msgid "Toggle Keyboard"
+msgstr "Prepnúť klávesnicu"
+
+msgid "Troubleshooting"
+msgstr "Riešenie problémov"
+
+msgid "Trusted Networks"
+msgstr "Dôveryhodné siete"
+
+msgid "Unknown Theme"
+msgstr "Neznáma téma"
+
+msgid "Unpair"
+msgstr "Zrušiť spárovanie"
+
+msgid "Unpair With Device?"
+msgstr "Zrušiť spárovanie so zariadením?"
+
+msgid "Unpair with %@?"
+msgstr "Zrušiť spárovanie s %@?"
+
+msgid "Valid"
+msgstr "Platný"
+
+msgid "Verification key: %@"
+msgstr "Overovací kľúč: %@"
+
+msgid "Version: %@ (%@)"
+msgstr "Verzia: %@ (%@)"
+
+msgid "Waiting for %lld other files to start transferring"
+msgstr "Čaká sa na začatie prenosu ďalších súborov (%lld)"
+
+msgid "Waiting for logs..."
+msgstr "Čaká sa na záznamy..."
+
+msgid "Waiting to send"
+msgstr "Čaká sa na odoslanie"
+
+msgid "Website"
+msgstr "Webová stránka"
+
+msgid "Wiki & User Manual"
+msgstr "Wiki a používateľská príručka"
+
+msgid "Yes, Unpair"
+msgstr "Áno, zrušiť spárovanie"
+
+msgid ""
+"You can enable or disable Plugins individually. Some Plugins have their own "
+"specific settings that can be found in their respective Views."
+msgstr ""
+"Moduly môžete zapnúť alebo vypnúť jednotlivo. Niektoré moduly majú vlastné "
+"nastavenia, ktoré nájdete v ich príslušných zobrazeniach."
+
+#. Filename to use for an unnamed file
+msgid "untitled"
+msgstr "bez názvu"
+
+msgid "© KDE Community & contributors"
+msgstr "© komunita KDE a prispievatelia"
