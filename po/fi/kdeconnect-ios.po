@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 10:15+0200\n"
-"PO-Revision-Date: 2026-09-27 11:00+0300\n"
+"PO-Revision-Date: 2026-10-09 11:09+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -87,107 +87,84 @@ msgstr "Sovelluksen teema:"
 msgid "Application"
 msgstr "Sovellus"
 
-#, fuzzy
 msgid ""
 "As an open source project, we believe it is important to be transparent "
 "about our current and future plans to bring KDE Connect iOS into line with "
 "all other platforms."
 msgstr ""
-"As an open source project, we believe it is important to be transparent "
-"about our current and future plans to bring KDE Connect iOS into line with "
-"all other platforms."
+"Avoimen lähdekoodin projektina uskomme, että on tärkeää olla avoin "
+"nykyisistä ja tulevista suunnitelmistamme saattaa iOSin KDE Connect samalle "
+"viivalle muiden alustojen kanssa."
 
-#, fuzzy
 msgid ""
 "Authorize Photos access using the Settings app to save received photos and "
 "videos to your photo library"
 msgstr ""
-"Authorize Photos access using the Settings app to save received photos and "
-"videos to your photo library"
+"Salli valokuvien käyttö asetussovelluksesta, jotta vastaanotetut kuvat ja "
+"videot voi tallentaa kuvakirjastoon"
 
-#, fuzzy
 msgid "Available themes"
-msgstr "Available themes"
+msgstr "Käytettävissä olevat teemat"
 
-#, fuzzy
 msgid "Background Activity"
-msgstr "Background Activity"
+msgstr "Taustatoiminta"
 
-#, fuzzy
 msgid "Battery Level"
-msgstr "Battery Level"
+msgstr "Akun taso"
 
-#, fuzzy
 msgid "Battery Plugin Disabled"
-msgstr "Battery Plugin Disabled"
+msgstr "Akkuliitännäinen poistettu käytöstä"
 
-#, fuzzy
 msgid "Battery Status"
-msgstr "Battery Status"
+msgstr "Akun tila"
 
-#, fuzzy
 msgid "Can't find your devices here?"
-msgstr "Can't find your devices here?"
+msgstr "Eikö laitetta löydy?"
 
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Peru"
 
-#, fuzzy
 msgid "Category: %@"
-msgstr "Category: %@"
+msgstr "Luokka: %@"
 
-#, fuzzy
 msgid "Check out the merge requests"
-msgstr "Check out the merge requests"
+msgstr "Tarkista yhdistämispyynnöt"
 
-#, fuzzy
 msgid "Choose App Icon"
-msgstr "Choose App Icon"
+msgstr "Valitse sovelluskuvake"
 
-#, fuzzy
 msgid "Chores"
-msgstr "Chores"
+msgstr "Tehtävät"
 
-#, fuzzy
 msgid "Classic"
-msgstr "Classic"
+msgstr "Perinteinen"
 
-#, fuzzy
 msgid "Clear Cache"
-msgstr "Clear Cache"
+msgstr "Tyhjennä välimuisti"
 
-#, fuzzy
 msgid "Clipboard Sync"
-msgstr "Clipboard Sync"
+msgstr "Tahdista leikepöytä"
 
-#, fuzzy
 msgid "Clipboard: Push & Receive Text"
-msgstr "Clipboard: Push & Receive Text"
+msgstr "Leikepöytä: Lähetä ja vastaanota tekstiä"
 
-#, fuzzy
 msgid "Clipboard: Sync"
-msgstr "Clipboard: Sync"
+msgstr "Leikepöytä: tahdistus"
 
-#, fuzzy
 msgid "Configure Devices By IP"
-msgstr "Configure Devices By IP"
+msgstr "Laitteiden asetus IP:llä"
 
-#, fuzzy
 msgid "Configure Devices by IP:"
-msgstr "Configure Devices by IP:"
+msgstr "Laitteiden asetus IP:llä:"
 
-#, fuzzy
 msgid "Connect"
-msgstr "Connect"
+msgstr "Yhdistä"
 
-#, fuzzy
 msgid "Connected Devices"
-msgstr "Connected Devices"
+msgstr "Yhdistetyt laitteet"
 
-#, fuzzy
 msgid "Connectivity Report"
-msgstr "Connectivity Report"
+msgstr "Yhteysraportti"
 
 msgid "Contacts"
 msgstr "Yhteystiedot"
@@ -198,21 +175,17 @@ msgstr "Avusta KDE Connectia"
 msgid "Contributors"
 msgstr "Avustajat"
 
-#, fuzzy
 msgid "Copy path to the folder containing received files"
-msgstr "Copy path to the folder containing received files"
+msgstr "Kopioi vastaanotetut tiedostot sisältävän kansion sijainti"
 
-#, fuzzy
 msgid "Currently maintained by %@"
-msgstr "Currently maintained by %@"
+msgstr "Nykyään ylläpitää %@"
 
-#, fuzzy
 msgid "Currently, the app must stay in the foreground to work properly"
-msgstr "Currently, the app must stay in the foreground to work properly"
+msgstr "Toistaiseksi sovelluksen on oikein toimiakseen pysyttävä etualalla"
 
-#, fuzzy
 msgid "Cursor Sensitivity"
-msgstr "Cursor Sensitivity"
+msgstr "Osoittimen herkkyys"
 
 msgid "DANGEROUS OPTIONS"
 msgstr "VAARALLISET VALINNAT"
@@ -220,101 +193,80 @@ msgstr "VAARALLISET VALINNAT"
 msgid "Dark"
 msgstr "Tumma"
 
-#, fuzzy
 msgid "Debug"
-msgstr "Debug"
+msgstr "Virheenpaikannus"
 
-#, fuzzy
 msgid "Debug mode"
-msgstr "Debug mode"
+msgstr "Virheenpaikannustila"
 
-#, fuzzy
 msgid "Debugging device discovery"
-msgstr "Debugging device discovery"
+msgstr "Laitehaun virheenpaikannus"
 
-#, fuzzy
 msgid "Default"
-msgstr "Default"
+msgstr "Oletus"
 
-#, fuzzy
 msgid ""
 "Delete all saved settings and devices. Requires the app to be fully "
 "restarted."
 msgstr ""
-"Delete all saved settings and devices. Requires the app to be fully "
-"restarted."
+"Poista kaikki tallennetut asetukset ja laitteet. Sovellus täytyy käynnistää "
+"kokonaan uudelleen."
 
-#, fuzzy
 msgid "Delete host certificate"
-msgstr "Delete host certificate"
+msgstr "Poista koneen varmenne"
 
-#, fuzzy
 msgid ""
 "Delete the host's certificate and re-generate it upon restart. Requires the "
 "app to be fully restarted. NOTE: this will make the device unable to connect "
 "with previously connected devices. You must unpair this device from the "
 "other remote devices and pair them again."
 msgstr ""
-"Delete the host's certificate and re-generate it upon restart. Requires the "
-"app to be fully restarted. NOTE: this will make the device unable to connect "
-"with previously connected devices. You must unpair this device from the "
-"other remote devices and pair them again."
+"Poistaa konevarmenteen ja luo sen uudelleen, kun sovellus on käynnistetty "
+"uudelleen. HUOM! Laite ei tällöin pysty yhdistämään aiemmin yhdistettyihin "
+"laitteisiin. Laitteen paritus on purettava etälaitteilta ja paritettava "
+"uudelleen."
 
-#, fuzzy
 msgid "Developer"
-msgstr "Developer"
+msgstr "Kehittäjä"
 
-#, fuzzy
 msgid "Device"
-msgstr "Device"
+msgstr "Laite"
 
-#, fuzzy
 msgid "Device Discovery"
-msgstr "Device Discovery"
+msgstr "Laitteen löytäminen"
 
-#, fuzzy
 msgid "Device IP"
-msgstr "Device IP"
+msgstr "Laitteen IP"
 
-#, fuzzy
 msgid "Device Name"
-msgstr "Device Name"
+msgstr "Laitteen nimi"
 
-#, fuzzy
 msgid "Device Name:"
-msgstr "Device Name:"
+msgstr "Laitteen nimi:"
 
-#, fuzzy
 msgid "Device Offline"
-msgstr "Device Offline"
+msgstr "Laite ei verkossa"
 
-#, fuzzy
 msgid "Device Status"
-msgstr "Device Status"
+msgstr "Laitteen tila"
 
-#, fuzzy
 msgid "Device name"
-msgstr "Device name"
+msgstr "Laitenimi"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Devices"
+msgstr "Laitteet"
 
-#, fuzzy
 msgid "Direct Handshake Devices"
-msgstr "Direct Handshake Devices"
+msgstr "Suorakättelylaitteet"
 
-#, fuzzy
 msgid "Disable UDP Broadcast"
-msgstr "Disable UDP Broadcast"
+msgstr "Poista UDP-yleislähetys käytöstä"
 
-#, fuzzy
 msgid "Discovered Devices"
-msgstr "Discovered Devices"
+msgstr "Löydetyt laitteet"
 
-#, fuzzy
 msgid "Discovery & Pairing"
-msgstr "Discovery & Pairing"
+msgstr "Löytäminen ja paritus"
 
 msgid "Do Not Pair"
 msgstr "Älä parita"
@@ -325,61 +277,50 @@ msgstr "Lahjoita"
 msgid "Done"
 msgstr "Valmis"
 
-#, fuzzy
 msgid "Double tap to activate debug mode"
-msgstr "Double tap to activate debug mode"
+msgstr "Aktivoi virheenpaikannustila kaksoisnapauttamalla"
 
 #, fuzzy
 msgid "Double tap to activate debugging device discovery"
 msgstr "Double tap to activate debugging device discovery"
 
-#, fuzzy
 msgid "Enable/Disable Plugins"
-msgstr "Enable/Disable Plugins"
+msgstr "Ota käyttöön tai poista käytöstä liitännäisiä"
 
-#, fuzzy
 msgid "Encryption Info"
-msgstr "Encryption Info"
+msgstr "Salaustietoa"
 
-#, fuzzy
 msgid "Erase saved devices cache"
-msgstr "Erase saved devices cache"
+msgstr "Tyhjennä tallennettujen laitteiden välimuisti"
 
-#, fuzzy
 msgid "Error"
-msgstr "Error"
+msgstr "Virhe"
 
-#, fuzzy
 msgid "Error Occured"
-msgstr "Error Occured"
+msgstr "Tapahtui virhe"
 
 #, fuzzy
 msgid "Errors and Faults"
 msgstr "Errors and Faults"
 
-#, fuzzy
 msgid "Exit Presentation"
-msgstr "Exit Presentation"
+msgstr "Poistu esityksestä"
 
-#, fuzzy
 msgid "Experimental functionalities"
-msgstr "Experimental functionalities"
+msgstr "Kokeelliset toiminnot"
 
-#, fuzzy
 msgid "Failed to Change Icon"
-msgstr "Failed to Change Icon"
+msgstr "Kuvakkeen vaihtaminen epäonnistui"
 
-#, fuzzy
 msgid "Failed to receive %lld files"
-msgstr "Failed to receive %lld files"
+msgstr "%lld tiedoston vastaanottaminen epäonnistui"
 
 #, fuzzy
 msgid "Failed to receive from %@"
 msgstr "Failed to receive from %@"
 
-#, fuzzy
 msgid "Failed to send %lld files"
-msgstr "Failed to send %lld files"
+msgstr "%lld tiedoston lähettäminen epäonnistui"
 
 #, fuzzy
 msgid "Failed to send to %@"
@@ -401,42 +342,35 @@ msgstr "Tiedostot"
 msgid "Find My Device"
 msgstr "Etsi laite"
 
-#, fuzzy
 msgid "Find My Phone Mode"
-msgstr "Find My Phone Mode"
+msgstr "Löydä puhelimeni -tila"
 
-#, fuzzy
 msgid "Find My Phone initiated from a remote device"
-msgstr "Find My Phone initiated from a remote device"
+msgstr "”Löydä puhelimeni” aloitettiin etälaitteesta"
 
-#, fuzzy
 msgid "Forget all"
-msgstr "Forget all"
+msgstr "Unohda kaikki"
 
-#, fuzzy
+# *** TARKISTA: Taas pitää arvata, laitteelta/käyttäjältä/…!
 msgid "From %@"
-msgstr "From %@"
+msgstr "Laitteelta %@"
 
-#, fuzzy
 msgid "General"
-msgstr "General"
+msgstr "Perusasetukset"
 
-#, fuzzy
 msgid "Go FullScreen"
-msgstr "Go FullScreen"
+msgstr "Siirry koko näytölle"
 
 #, fuzzy
 msgid "Haptics Style"
 msgstr "Haptics Style"
 
 #. Hard haptic feedback level
-#, fuzzy
 msgid "Heavy"
-msgstr "Heavy"
+msgstr "Raskas"
 
-#, fuzzy
 msgid "Help"
-msgstr "Help"
+msgstr "Ohje"
 
 #, fuzzy
 msgid "Hide Haptics Style Selector"
@@ -446,11 +380,9 @@ msgstr "Hide Haptics Style Selector"
 msgid "Hide Sensitivity Slider"
 msgstr "Hide Sensitivity Slider"
 
-#, fuzzy
 msgid "I FOUND IT!"
-msgstr "I FOUND IT!"
+msgstr "LÖYTYI!"
 
-#, fuzzy
 msgid ""
 "If KDE Connect is having trouble discovering other devices, you can try a "
 "combination of the following solutions:\n"
@@ -467,20 +399,20 @@ msgid ""
 "4. Check other solutions on the User Manual, such as configuring the "
 "firewalls of the other devices:\n"
 msgstr ""
-"If KDE Connect is having trouble discovering other devices, you can try a "
-"combination of the following solutions:\n"
+"Jos KDE Connectilla on vaikeuksia muiden laitteiden löytämisessä, voi "
+"yrittää yhdistellä seuraavia ratkaisuja:\n"
 "\n"
-"1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices "
-"list, on this and the other devices.\n"
+"1. ”Virkistä haku” %@-valikosta tai veto laiteluettelon virkistämiseksi "
+"tällä ja muilla laitteilla.\n"
 "\n"
-"2. Make sure the other devices are also running KDE Connect and are "
-"connected to the same network as this device.\n"
+"2. Varmista, että muutkin laitteet ajavat KDE Connectia ja on yhdistetty "
+"samaan verkkoon kuin tämä laite.\n"
 "\n"
-"3. Manually add the other devices through the \"Configure Devices By IP\" "
-"option in the %@ menu, and then \"Refresh Discovery.\"\n"
+"3. Lisää muut laitteet käsin %@-valikon valinnalla ”Laitteiden asetus IP:"
+"llä”, minkä jälkeen valitse ”Virkistä haku”.\n"
 "\n"
-"4. Check other solutions on the User Manual, such as configuring the "
-"firewalls of the other devices:\n"
+"4. Kokeile käyttöoppaan muita ratkaisuja, esim. toisten laitteiden "
+"palomuurien asettamista:\n"
 
 #, fuzzy
 msgid ""
@@ -490,88 +422,69 @@ msgstr ""
 "If a remembered device is already online but not shown here, try Refresh "
 "Discovery."
 
-#, fuzzy
 msgid ""
 "If there are phantom devices or something just doesn't behave correctly, "
 "erasing all saved devices data might fix it. Requires the app to be fully "
 "restarted."
 msgstr ""
-"If there are phantom devices or something just doesn't behave correctly, "
-"erasing all saved devices data might fix it. Requires the app to be fully "
-"restarted."
+"Jos näkyy haamulaitteita tai kaikki ei toimi oikein, kaikkien tallennettujen "
+"laitteiden tyhjentäminen voi korjata sen. Vaatii käynnistämään sovelluksen "
+"kokonaan uudelleen."
 
-#, fuzzy
 msgid "In progress"
-msgstr "In progress"
+msgstr "Meneillään"
 
-#, fuzzy
 msgid "Incoming Pairing Request"
-msgstr "Incoming Pairing Request"
+msgstr "Saapuva parituspyyntö"
 
-#, fuzzy
 msgid "Info"
-msgstr "Info"
+msgstr "Tietoa"
 
-#, fuzzy
 msgid "Information"
-msgstr "Information"
+msgstr "Tietoa"
 
-#, fuzzy
 msgid "Initiate Pairing?"
-msgstr "Initiate Pairing?"
+msgstr "Aloitetaanko paritus?"
 
-#, fuzzy
 msgid "Integration with Siri Shortcuts"
-msgstr "Integration with Siri Shortcuts"
+msgstr "Eheytys Sirin pikanäppäimiin"
 
-#, fuzzy
 msgid "Integration with the system share sheet is in development"
-msgstr "Integration with the system share sheet is in development"
+msgstr "Eheytys järjestelmän tyylisivuun on työn alla"
 
-#, fuzzy
 msgid "Internationalization & Localization"
-msgstr "Internationalization & Localization"
+msgstr "Kansainvälistäminen ja kotoistaminen"
 
-#, fuzzy
 msgid "Invalid"
-msgstr "Invalid"
+msgstr "Virheellinen"
 
-#, fuzzy
 msgid "Keyboard: Control Remote"
-msgstr "Keyboard: Control Remote"
+msgstr "Näppäimistö: etähallinta"
 
-#, fuzzy
 msgid "License"
-msgstr "License"
+msgstr "Lisenssi"
 
 #. Light haptic feedback level
-#, fuzzy
 msgid "Light"
-msgstr "Light"
+msgstr "Kevyt"
 
-#, fuzzy
 msgid "Lock Screen: Control Remote"
-msgstr "Lock Screen: Control Remote"
+msgstr "Lukitusnäyttö: etähallinta"
 
-#, fuzzy
 msgid "Logs"
-msgstr "Logs"
+msgstr "Lokit"
 
-#, fuzzy
 msgid "Logs for %@"
-msgstr "Logs for %@"
+msgstr "%@ – lokit"
 
-#, fuzzy
 msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Control Remote Media & Respond"
+msgstr "MPRIS: etähallitse mediaa ja reagoi"
 
-#, fuzzy
 msgid "Manage received files in the Files app"
-msgstr "Manage received files in the Files app"
+msgstr "Tiedostot-sovelluksessa on ehkä vastaanotettuja tiedostoja"
 
-#, fuzzy
 msgid "May not work with KDE Connect for Windows"
-msgstr "May not work with KDE Connect for Windows"
+msgstr "Ei ehkä toimi Windowsin KDE Connectin kanssa"
 
 #, fuzzy
 msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
@@ -582,13 +495,11 @@ msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Maybe with Apple Notification Center Service (ACNS)"
 
 #. Medium haptic feedback level
-#, fuzzy
 msgid "Medium"
-msgstr "Medium"
+msgstr "Keskitasoinen"
 
-#, fuzzy
 msgid "Mouse: Control Remote"
-msgstr "Mouse: Control Remote"
+msgstr "Hiiri: etähallinta"
 
 #, fuzzy
 msgid ""
@@ -616,55 +527,44 @@ msgstr ""
 "Multi-platform app that allows your devices to communicate (e.g., your phone "
 "and your computer)"
 
-#, fuzzy
 msgid "Network Packet Composer"
-msgstr "Network Packet Composer"
+msgstr "Verkkopaketin luonti"
 
 #, fuzzy
 msgid "Nice"
 msgstr "Nice"
 
-#, fuzzy
 msgid "No additional devices are discovered on this network."
-msgstr "No additional devices are discovered on this network."
+msgstr "Tästä verkosta ei löytynyt lisää laitteita."
 
-#, fuzzy
 msgid "No battery detected in device"
-msgstr "No battery detected in device"
+msgstr "Laitteesta ei havaittua akkua."
 
-#, fuzzy
 msgid "No currently connected devices."
-msgstr "No currently connected devices."
+msgstr "Ei yhdistettyjä laitteita."
 
-#, fuzzy
 msgid "No device discovered in the current network."
-msgstr "No device discovered in the current network."
+msgstr "Nykyisestä verkosta ei löytynyt laitteita."
 
-#, fuzzy
 msgid "No matching logs yet"
-msgstr "No matching logs yet"
+msgstr "Ei vielä sopivia lokeja"
 
-#, fuzzy
 msgid "No, Stay Paired"
-msgstr "No, Stay Paired"
+msgstr "Ei, pysy paritettuna"
 
-#, fuzzy
 msgid "Not yet implemented"
-msgstr "Not yet implemented"
+msgstr "Ei vielä toteutettu"
 
-#, fuzzy
 msgid "Notice"
-msgstr "Notice"
+msgstr "Ilmoitus"
 
-#, fuzzy
 msgid "Notification: Receive from Others"
-msgstr "Notification: Receive from Others"
+msgstr "Ilmoitus: vastaanota muilta"
 
 #, fuzzy
 msgid "Notification: Retrieve by Others"
 msgstr "Notification: Retrieve by Others"
 
-#, fuzzy
 msgid "OK"
 msgstr "OK"
 
@@ -677,97 +577,77 @@ msgstr "On-Click Haptic Style"
 msgid "Other"
 msgstr "Other"
 
-#, fuzzy
 msgid "Out-App Notification:"
-msgstr "Out-App Notification:"
+msgstr "Ilmoitus sovelluksen ulkopuolelta:"
 
-#, fuzzy
 msgid "Packet Body"
-msgstr "Packet Body"
+msgstr "Paketin runko"
 
-#, fuzzy
 msgid "Packet Tag"
-msgstr "Packet Tag"
+msgstr "Paketin tunniste"
 
-#, fuzzy
 msgid "Packet Type"
-msgstr "Packet Type"
+msgstr "Paketin tyyppi"
 
-#, fuzzy
 msgid "Pair"
-msgstr "Pair"
+msgstr "Parita"
 
-#, fuzzy
 msgid ""
 "Pair request from '%@'\n"
 "Verification key: %@"
 msgstr ""
-"Pair request from '%@'\n"
-"Verification key: %@"
+"Parituspyyntö laitteelta ”%@”\n"
+"Todennusavain: %@"
 
-#, fuzzy
 msgid "Pairing Complete"
-msgstr "Pairing Complete"
+msgstr "Paritus on valmis"
 
-#, fuzzy
 msgid "Pairing Rejected"
-msgstr "Pairing Rejected"
+msgstr "Paritus torjuttu"
 
-#, fuzzy
 msgid "Pairing Timed Out"
-msgstr "Pairing Timed Out"
+msgstr "Parituksen aikakatkaisu"
 
-#, fuzzy
 msgid "Pairing with '%@' failed"
-msgstr "Pairing with '%@' failed"
+msgstr "Paritus laitteen ”%@” kanssa epäonnistui"
 
-#, fuzzy
 msgid "Pairing with '%@' succeeded"
-msgstr "Pairing with '%@' succeeded"
+msgstr "Paritus laitteen ”%@” kanssa onnistui"
 
 #, fuzzy
 msgid "Peer"
 msgstr "Peer"
 
-#, fuzzy
 msgid "Ping"
 msgstr "Ping"
 
-#, fuzzy
 msgid "Ping received from a connected device."
-msgstr "Ping received from a connected device."
+msgstr "Yhdistetyltä laitteelta vastaanotettiin tiedustelupaketti."
 
-#, fuzzy
 msgid "Ping!"
 msgstr "Ping!"
 
-#, fuzzy
 msgid "Plasma Bigscreen"
 msgstr "Plasma Bigscreen"
 
-#, fuzzy
 msgid "Playground"
-msgstr "Playground"
+msgstr "Leikkikenttä"
 
-#, fuzzy
 msgid "Plugin Settings"
-msgstr "Plugin Settings"
+msgstr "Liitännäisten asetukset"
 
 #, fuzzy
 msgid "Plugins If Reachable"
 msgstr "Plugins If Reachable"
 
-#, fuzzy
 msgid "Pointer Sensitivity"
-msgstr "Pointer Sensitivity"
+msgstr "Osoitinherkkyys"
 
-#, fuzzy
 msgid "Preparing Media…"
-msgstr "Preparing Media…"
+msgstr "Valmistellaan mediaa…"
 
-#, fuzzy
 msgid "Presenter: Control Remote"
-msgstr "Presenter: Control Remote"
+msgstr "Esitys: hallitse kaukosäädintä"
 
 msgid "Preview: "
 msgstr "Esikatselu: "
@@ -794,9 +674,8 @@ msgstr "Vastaanotetaan"
 msgid "Receiving file %lld of %lld"
 msgstr "Vastaanotetaan tiedostoa %lld/%lld"
 
-#, fuzzy
 msgid "Refresh Discovery"
-msgstr "Refresh Discovery"
+msgstr "Virkistä haku"
 
 msgid "Remembered Devices"
 msgstr "Muistetut laitteet"
@@ -810,14 +689,12 @@ msgstr "Ilmoita viasta"
 msgid "Request to pair with '%@'"
 msgstr "Pyydä paritusta laitteen ”%@” kanssa"
 
-#, fuzzy
 msgid "Restart Discovery"
-msgstr "Restart Discovery"
+msgstr "Käynnistä haku uudelleen"
 
 #. Rigid haptic feedback level
-#, fuzzy
 msgid "Rigid"
-msgstr "Rigid"
+msgstr "Jäykkä"
 
 msgid "Ring Device"
 msgstr "Soita laitteelle"
@@ -1003,45 +880,35 @@ msgstr ""
 msgid "Toggle Keyboard"
 msgstr "Toggle Keyboard"
 
-#, fuzzy
 msgid "Troubleshooting"
-msgstr "Troubleshooting"
+msgstr "Vian etsintä"
 
-#, fuzzy
 msgid "Trusted Networks"
-msgstr "Trusted Networks"
+msgstr "Luotetut verkot"
 
-#, fuzzy
 msgid "Unknown Theme"
-msgstr "Unknown Theme"
+msgstr "Tuntematon teema"
 
-#, fuzzy
 msgid "Unpair"
-msgstr "Unpair"
+msgstr "Pura paritus"
 
-#, fuzzy
 msgid "Unpair With Device?"
-msgstr "Unpair With Device?"
+msgstr "Puretaanko laiteparitus?"
 
-#, fuzzy
 msgid "Unpair with %@?"
-msgstr "Unpair with %@?"
+msgstr "Puretaanko paritus laitteeseen %@?"
 
-#, fuzzy
 msgid "Valid"
-msgstr "Valid"
+msgstr "Kelvollinen"
 
-#, fuzzy
 msgid "Verification key: %@"
-msgstr "Verification key: %@"
+msgstr "Todennusavain: %@"
 
-#, fuzzy
 msgid "Version: %@ (%@)"
-msgstr "Version: %@ (%@)"
+msgstr "Versio: %@ (%@)"
 
-#, fuzzy
 msgid "Waiting for %lld other files to start transferring"
-msgstr "Waiting for %lld other files to start transferring"
+msgstr "Odotetaan %lld muun tiedoston alkavan siirron"
 
 msgid "Waiting for logs..."
 msgstr "Odotetaan lokeja…"
@@ -1058,13 +925,12 @@ msgstr "Wiki ja käyttöopas"
 msgid "Yes, Unpair"
 msgstr "Kyllä, pura paritus"
 
-#, fuzzy
 msgid ""
 "You can enable or disable Plugins individually. Some Plugins have their own "
 "specific settings that can be found in their respective Views."
 msgstr ""
-"You can enable or disable Plugins individually. Some Plugins have their own "
-"specific settings that can be found in their respective Views."
+"Liitännäisiä voi ottaa käyttöön tai poistaa käytöstä yksitellen. Joillakin "
+"liitännäisillä on omat asetuksensa, jotka löytää niiden näkymistä."
 
 #. Filename to use for an unnamed file
 msgid "untitled"
