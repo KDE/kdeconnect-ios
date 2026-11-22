@@ -314,8 +314,7 @@
     if ([_devices valueForKey:deviceId]) {
         os_log_with_type(logger, self.debugLogLevel, "known device");
         Device* device=[_devices objectForKey:deviceId];
-        [device addLink:link];
-        [device updateInfo:[link _deviceInfo]];
+        [device addLink:link]; // Also updates the device info
         [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
     }
     else{
@@ -384,6 +383,17 @@
     if (_backgroundServiceDelegate) {
         [_backgroundServiceDelegate onPairSuccess:device._deviceInfo.id];
     }
+    [self saveDevice:device];
+}
+
+- (void) onDeviceInfoChanged:(Device*)device
+{
+    os_log_with_type(logger, self.debugLogLevel, "bg on device info changed");
+    [self saveDevice:device];
+}
+
+- (void) saveDevice:(Device*)device
+{
     NSError* error;
     NSData* deviceData = [NSKeyedArchiver archivedDataWithRootObject:device requiringSecureCoding:YES error:&error];
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "device object with pair status %lu encoded into UserDefaults as: %{public}@ with error: %{public}@", [device _pairStatus], deviceData, error);

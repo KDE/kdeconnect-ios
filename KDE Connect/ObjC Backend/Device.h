@@ -119,6 +119,8 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 - (void)onDevicePairSuccess:(Device *)device;
 - (void)onDevicePairRejected:(Device *)device;
 - (void)onDeviceUnpaired:(Device *)device;
+// Called when the name, type, protocol version or capabilities of a paired device change
+- (void)onDeviceInfoChanged:(Device *)device;
 - (void)onDevicePluginChanged:(Device *)device;
 - (void)onLinkDestroyed:(BaseLink *)link;
 @end
