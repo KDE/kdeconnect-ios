@@ -142,7 +142,7 @@ struct DeviceItemView: View {
                 while droppedFileURLs.count != providers.count {
                     continue // block thread until all providers are proceeded
                 }
-                (backgroundService._devices[self.deviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: droppedFileURLs)
+                (backgroundService._devices[self.deviceId]?._plugins[.share] as? Share)?.prepAndInitFileSend(fileURLs: droppedFileURLs)
                 return true
             } else {
                 self.backgroundColor = .red
@@ -197,7 +197,7 @@ struct DeviceItemView: View {
         }
         .mediaImporter(isPresented: $showingPhotosPicker, allowedMediaTypes: .all, allowsMultipleSelection: true) { result in
             if case .success(let chosenMediaURLs) = result, !chosenMediaURLs.isEmpty {
-                (backgroundService._devices[self.deviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenMediaURLs)
+                (backgroundService._devices[self.deviceId]?._plugins[.share] as? Share)?.prepAndInitFileSend(fileURLs: chosenMediaURLs)
             } else {
                 print("Media Picker Result: \(result)")
             }
@@ -209,7 +209,7 @@ struct DeviceItemView: View {
                 print("Document Picker Error")
             }
             if (!chosenFileURLs.isEmpty) {
-                (backgroundService._devices[self.deviceId]!._plugins[.share] as! Share).prepAndInitFileSend(fileURLs: chosenFileURLs)
+                (backgroundService._devices[self.deviceId]?._plugins[.share] as? Share)?.prepAndInitFileSend(fileURLs: chosenFileURLs)
             }
         }
     }

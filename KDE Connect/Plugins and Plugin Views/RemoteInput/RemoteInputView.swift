@@ -54,7 +54,7 @@ struct RemoteInputView: View {
                         let dxDrag: Float = Float(gesture.translation.width) - previousHorizontalDragOffset
                         let dyDrag: Float = Float(gesture.translation.height) - previousVerticalDragOffset
                         // if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendMouseDelta(dx: dxDrag * cursorSensitivityFromSlider, dy: dyDrag * cursorSensitivityFromSlider)
+                        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as? RemoteInput)?.sendMouseDelta(dx: dxDrag * cursorSensitivityFromSlider, dy: dyDrag * cursorSensitivityFromSlider)
                         logger.debug("Moved by \(dxDrag) horizontally")
                         logger.debug("Moved by \(dyDrag) vertically")
                         // }
@@ -83,7 +83,7 @@ struct RemoteInputView: View {
                                     let dxScroll: Float = Float(gesture.translation.width) - previousScrollHorizontalDragOffset
                                     let dyScroll: Float = Float(gesture.translation.height) - previousScrollVerticalDragOffset
                                     // if (Dx > 0.3 || Dy > 0.3) { // Do we want this check here?
-                                    (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendScroll(dx: dxScroll * cursorSensitivityFromSlider, dy: dyScroll * cursorSensitivityFromSlider)
+                                    (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as? RemoteInput)?.sendScroll(dx: dxScroll * cursorSensitivityFromSlider, dy: dyScroll * cursorSensitivityFromSlider)
                                     logger.debug("Scrolled by \(dxScroll) horizontally")
                                     logger.debug("Scrolled by \(dyScroll) vertically")
                                     // }
@@ -234,25 +234,25 @@ struct RemoteInputView: View {
         }
 
         UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 0.7
-        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleClick()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as? RemoteInput)?.sendSingleClick()
         logger.debug("single clicked")
     }
     
     func sendDoubleTap() {
         notificationHapticsGenerator.notificationOccurred(.success)
-        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendDoubleClick()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as? RemoteInput)?.sendDoubleClick()
         logger.debug("double clicked")
     }
     
     func sendKeyPress(_ keys: String, _ modifiers: [RemoteInput.KeyModifier]) {
-        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as!
-            RemoteInput).sendKeyPress(keys, modifiers)
+        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as?
+            RemoteInput)?.sendKeyPress(keys, modifiers)
         logger.debug("key press sent: \(keys) with modifiers \(modifiers)")
     }
     
     func sendSpecialKeyPress(_ key: RemoteInput.SpecialKey) {
-        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as!
-         RemoteInput).sendSpecialKeyPress(key)
+        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as?
+         RemoteInput)?.sendSpecialKeyPress(key)
         logger.debug("special key press sent: \(String(reflecting: key))")
     }
     
@@ -262,19 +262,19 @@ struct RemoteInputView: View {
     
     func sendRightClick() {
         UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 1.0
-        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendRightClick()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as? RemoteInput)?.sendRightClick()
         logger.debug("2 finger tap")
     }
     
     func sendSingleHold() {
         UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 0.5
-        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendSingleHold()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as? RemoteInput)?.sendSingleHold()
         logger.debug("Long press")
     }
     
     func sendMiddleClick() {
         UIImpactFeedbackGenerator(style: hapticSettings).impactOccurred() // intensity: 0.3
-        (backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] as! RemoteInput).sendMiddleClick()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.mousePadRequest] as? RemoteInput)?.sendMiddleClick()
         logger.debug("Middle Click")
     }
 }

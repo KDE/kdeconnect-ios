@@ -217,34 +217,34 @@ struct PresenterView: View {
                     break
                 }
                 if dxToSend != 0.0 || dyToSend != 0.0 {
-                    (backgroundService.devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendPointerPosition(dx: dxToSend, dy: dyToSend)
+                    (backgroundService.devices[detailsDeviceId]?._plugins[.presenter] as? Presenter)?.sendPointerPosition(dx: dxToSend, dy: dyToSend)
                 }
             }
         }
     
     func stopGyroAndPointer() {
-        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendStopPointer()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.presenter] as? Presenter)?.sendStopPointer()
         motionManager.stopGyroUpdates()
     }
     
     func sendGoFullscreenAction() {
         notificationHapticsGenerator.notificationOccurred(.success)
-        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendFullscreen()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.presenter] as? Presenter)?.sendFullscreen()
     }
     
     func sendEscapeKey() {
         notificationHapticsGenerator.notificationOccurred(.warning)
-        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendEsc()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.presenter] as? Presenter)?.sendEsc()
     }
     
     func sendGoPreviousSlideAction() {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendPrevious()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.presenter] as? Presenter)?.sendPrevious()
     }
     
     func sendGoNextSlideAction() {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        (backgroundService._devices[detailsDeviceId]!._plugins[.presenter] as! Presenter).sendNext()
+        (backgroundService._devices[detailsDeviceId]?._plugins[.presenter] as? Presenter)?.sendNext()
     }
 }
 
