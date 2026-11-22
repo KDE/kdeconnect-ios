@@ -91,7 +91,8 @@ typedef NS_ENUM(NSUInteger, PairStatus)
                               delegate:(id<DeviceDelegate>)deviceDelegate;
 
 #pragma mark Link-related Functions
-- (bool)updateInfo:(DeviceInfo *)newDeviceInfo;
+// Returns whether something changed. Doesn't reload the plugins.
+- (BOOL)updateDeviceInfo:(DeviceInfo *)newDeviceInfo;
 - (void)addLink:(BaseLink *)link;
 - (void)onPacketReceived:(NetworkPacket *)np;
 - (void)onLinkDestroyed:(BaseLink *)link;

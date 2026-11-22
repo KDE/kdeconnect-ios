@@ -341,8 +341,12 @@
                      deviceId);
     Device *device = [_devices objectForKey:deviceId];
     if (device) {
-        [device updateInfo:deviceInfo];
-        [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
+        BOOL hasChanges = [device updateDeviceInfo:deviceInfo];
+        if (hasChanges) {
+            // Android doesn't reload here, but we want new capabilities to take effect right away
+            [device reloadPlugins];
+            [_backgroundServiceDelegate onDevicesListUpdatedWithDevicesListsMap:[self getDevicesLists]];
+        }
     } else {
         os_log_with_type(logger, OS_LOG_TYPE_FAULT,
                          "missing device %{mask.hash}@ to update for",

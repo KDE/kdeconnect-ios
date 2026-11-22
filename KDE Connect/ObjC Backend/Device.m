@@ -123,76 +123,21 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 #pragma mark Link-related Functions
 
-// Replaces the device info if something changed. Returns whether something changed, and
-// sets capabilitiesChanged if the plugins have to be reloaded.
-- (BOOL)replaceDeviceInfo:(DeviceInfo *)newDeviceInfo capabilitiesChanged:(BOOL *)capabilitiesChanged
-{
-    DeviceInfo *oldDeviceInfo = _deviceInfo;
-    NSArray<NSString *> *incomingCapabilities = newDeviceInfo.incomingCapabilities;
-    NSArray<NSString *> *outgoingCapabilities = newDeviceInfo.outgoingCapabilities;
-
-    *capabilitiesChanged = incomingCapabilities.count > 0 && outgoingCapabilities.count > 0
-        && (![[NSSet setWithArray:incomingCapabilities] isEqualToSet:[NSSet setWithArray:oldDeviceInfo.incomingCapabilities]]
-            || ![[NSSet setWithArray:outgoingCapabilities] isEqualToSet:[NSSet setWithArray:oldDeviceInfo.outgoingCapabilities]]);
-    BOOL otherInfoChanged = ![newDeviceInfo.name isEqualToString:oldDeviceInfo.name]
-        || newDeviceInfo.type != oldDeviceInfo.type
-        || newDeviceInfo.protocolVersion != oldDeviceInfo.protocolVersion;
-    if (!*capabilitiesChanged && !otherInfoChanged) {
-        return NO;
-    }
-    if (!*capabilitiesChanged) {
-        // Keep the capabilities we know if the new info doesn't contain them
-        incomingCapabilities = oldDeviceInfo.incomingCapabilities;
-        outgoingCapabilities = oldDeviceInfo.outgoingCapabilities;
-    } else {
-        os_log_with_type(logger, OS_LOG_TYPE_INFO, "capabilities of %{mask.hash}@ changed", oldDeviceInfo.id);
-    }
-    _deviceInfo = [[DeviceInfo alloc] initWithId:oldDeviceInfo.id
-                                            name:newDeviceInfo.name
-                                            type:newDeviceInfo.type
-                                            cert:newDeviceInfo.cert
-                                 protocolVersion:newDeviceInfo.protocolVersion
-                            incomingCapabilities:incomingCapabilities
-                            outgoingCapabilities:outgoingCapabilities];
-    return YES;
-}
-
-- (void)onDeviceInfoReplaced
-{
-    if (_pairStatus == Paired && deviceDelegate
-        && [deviceDelegate respondsToSelector:@selector(onDeviceInfoChanged:)]) {
-        [deviceDelegate onDeviceInfoChanged:self];
-    }
-}
-
-- (bool)updateInfo:(DeviceInfo*)newDeviceInfo {
-    BOOL capabilitiesChanged;
-    BOOL hasChanges = [self replaceDeviceInfo:newDeviceInfo capabilitiesChanged:&capabilitiesChanged];
-    if (capabilitiesChanged) {
-        [self reloadPlugins];
-    }
-    if (hasChanges) {
-        [self onDeviceInfoReplaced];
-    }
-    return hasChanges;
-}
-
 - (void)addLink:(BaseLink*)link {
     os_log_with_type(logger, OS_LOG_TYPE_INFO, "add link to %{mask.hash}@",_deviceInfo.id);
-    BOOL capabilitiesChanged;
-    BOOL hasChanges = [self replaceDeviceInfo:[link _deviceInfo] capabilitiesChanged:&capabilitiesChanged];
     NSUInteger count;
     @synchronized (_links) {
         [_links addObject:link];
         [link setLinkDelegate:self];
         count = [_links count];
     }
-    if (count == 1 || capabilitiesChanged) {
+    
+    BOOL hasChanges = [self updateDeviceInfo:[link _deviceInfo]];
+    
+    if (hasChanges || count == 1) {
         [self reloadPlugins];
     }
-    if (hasChanges) {
-        [self onDeviceInfoReplaced];
-    }
+    
     if (count == 1) {
         os_log_with_type(logger, self.debugLogLevel, "one link available");
         if (deviceDelegate) {
@@ -203,6 +148,52 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
             [self updateBatteryStatus];
         }
     }
+}
+
+- (BOOL)updateDeviceInfo:(DeviceInfo *)newDeviceInfo {
+    BOOL hasChanges = NO;
+    NSString *name = _deviceInfo.name;
+    DeviceType type = _deviceInfo.type;
+    NSInteger protocolVersion = _deviceInfo.protocolVersion;
+    if (![name isEqualToString:newDeviceInfo.name] || type != newDeviceInfo.type || protocolVersion != newDeviceInfo.protocolVersion) {
+        hasChanges = YES;
+        name = newDeviceInfo.name;
+        type = newDeviceInfo.type;
+        protocolVersion = newDeviceInfo.protocolVersion;
+    }
+    
+    NSArray<NSString *> *incomingCapabilities = _deviceInfo.incomingCapabilities;
+    NSArray<NSString *> *outgoingCapabilities = _deviceInfo.outgoingCapabilities;
+    NSArray<NSString *> *newIncomingCapabilities = newDeviceInfo.incomingCapabilities;
+    NSArray<NSString *> *newOutgoingCapabilities = newDeviceInfo.outgoingCapabilities;
+    if (newIncomingCapabilities.count > 0 &&
+        newOutgoingCapabilities.count > 0 &&
+        (
+         ![[NSSet setWithArray:incomingCapabilities] isEqualToSet:[NSSet setWithArray:newIncomingCapabilities]] ||
+         ![[NSSet setWithArray:outgoingCapabilities] isEqualToSet:[NSSet setWithArray:newOutgoingCapabilities]]
+        )
+    ) {
+        hasChanges = YES;
+        os_log_with_type(logger, OS_LOG_TYPE_INFO, "Updating supported plugins according to new capabilities");
+        incomingCapabilities = newIncomingCapabilities;
+        outgoingCapabilities = newOutgoingCapabilities;
+    }
+    
+    if (hasChanges) {
+        _deviceInfo = [[DeviceInfo alloc] initWithId:_deviceInfo.id
+                                                name:name
+                                                type:type
+                                                cert:_deviceInfo.cert
+                                     protocolVersion:protocolVersion
+                                incomingCapabilities:incomingCapabilities
+                                outgoingCapabilities:outgoingCapabilities];
+        // Unlike Android, we also store the capabilities, so we save on any change
+        if ([self isPaired] && [deviceDelegate respondsToSelector:@selector(onDeviceInfoChanged:)]) {
+            [deviceDelegate onDeviceInfoChanged:self];
+        }
+    }
+    
+    return hasChanges;
 }
 
 // FIXME: This doesn't get called when connection is cut (e.g wifi off) from the remote device
