@@ -71,24 +71,30 @@ import CryptoKit
             }
         }
         var wasRegenerated = false
+        var generationStatus: OSStatus = noErr
         if (identityApp == nil) {
             wasRegenerated = true
             Logger().info("generateSecIdentity")
 #if !os(macOS)
-            if generateSecIdentityForUUID(KdeConnectSettings.getUUID()) == noErr {
+            generationStatus = generateSecIdentityForUUID(KdeConnectSettings.getUUID())
+            if generationStatus == noErr {
                 SecItemCopyMatching(keychainItemQuery, &identityApp)
             }
 #else
             // remove old identity on macOS
             // normally will print error -25300 at the first launch as there is no identity
             deleteHostCertificateFromKeychain()
-            if (generateSecIdentityForUUID(KdeConnectSettings.getUUID()) == noErr) {
+            generationStatus = generateSecIdentityForUUID(KdeConnectSettings.getUUID())
+            if (generationStatus == noErr) {
                 // Refetch
                 macFetchIdentity()
             }
 #endif
         }
-        return (identityApp as! SecIdentity, wasRegenerated)
+        guard let identity = identityApp else {
+            fatalError("Could not load or generate the host identity (generation status: \(generationStatus))")
+        }
+        return (identity as! SecIdentity, wasRegenerated)
     }
     
     @objc static func isCertificateValid(_ cert: SecCertificate) -> Bool {

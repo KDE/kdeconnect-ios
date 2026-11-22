@@ -205,25 +205,28 @@ OSStatus generateSecIdentityForUUID(NSString *uuid)
     OSStatus securityError = SecPKCS12Import((CFDataRef) p12Data,
                                              (CFDictionaryRef)options, &items);
 #if !TARGET_OS_OSX
-    SecIdentityRef identityApp;
-    if (securityError == noErr && CFArrayGetCount(items) > 0) {
-        CFDictionaryRef identityDict = CFArrayGetValueAtIndex(items, 0);
+    if (securityError != noErr || CFArrayGetCount(items) == 0) {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "SecPKCS12Import failed with %d", (int)securityError);
+        [[NSFileManager defaultManager] removeItemAtPath:p12FilePath error:nil];
+        return securityError != noErr ? securityError : errSecItemNotFound;
+    }
 
-        identityApp = (SecIdentityRef)CFDictionaryGetValue(identityDict,
-                                                           kSecImportItemIdentity);
+    CFDictionaryRef identityDict = CFArrayGetValueAtIndex(items, 0);
 
-        NSDictionary* addQuery = @{
-            (id)kSecValueRef:   (__bridge id)identityApp,
-            // Do not use the sec class when adding, adding an identity will add key, cert and the identity
-            // (id)kSecClass:      (id)kSecClassIdentity,
-            (id)kSecAttrLabel:  (id)uuid,
-        };
-        OSStatus status = SecItemAdd((__bridge CFDictionaryRef)addQuery, NULL);
-        if (status != errSecSuccess) {
-            // Handle the error
-            os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error %d", status);
-            return 1;
-        }
+    SecIdentityRef identityApp = (SecIdentityRef)CFDictionaryGetValue(identityDict,
+                                                                      kSecImportItemIdentity);
+
+    NSDictionary* addQuery = @{
+        (id)kSecValueRef:   (__bridge id)identityApp,
+        // Do not use the sec class when adding, adding an identity will add key, cert and the identity
+        // (id)kSecClass:      (id)kSecClassIdentity,
+        (id)kSecAttrLabel:  (id)uuid,
+    };
+    OSStatus status = SecItemAdd((__bridge CFDictionaryRef)addQuery, NULL);
+    if (status != errSecSuccess) {
+        // Handle the error
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "Error %d", status);
+        return status;
     }
 #endif
 
