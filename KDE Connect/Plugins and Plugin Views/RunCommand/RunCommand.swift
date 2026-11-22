@@ -19,6 +19,8 @@ import SwiftUI
     @objc weak var controlDevice: Device!
     @Published
     var commandEntries: [CommandEntry] = []
+    @Published
+    var canAddCommand: Bool = false
     private let logger = Logger()
     
     @objc init(controlDevice: Device) {
@@ -43,8 +45,10 @@ import SwiftUI
                     commandsDict = [:]
                 }
                 let newCommandEntries = processCommandsDict(commandsDict)
+                let newCanAddCommand = np.bool(forKey: "canAddCommand")
                 DispatchQueue.main.async { [weak self] in
                     self?.commandEntries = newCommandEntries
+                    self?.canAddCommand = newCanAddCommand
                 }
             } else {
                 logger.info("RunCommand packet received with no commandList, ignoring")

@@ -36,13 +36,26 @@ struct RunCommandView: View {
                 }
             }
         }
+        .overlay {
+            if runCommandPlugin.commandEntries.isEmpty {
+                VStack(spacing: 8) {
+                    Text("There are no commands registered")
+                    if !runCommandPlugin.canAddCommand {
+                        Text("You can add new commands in the KDE Connect System Settings")
+                    }
+                }
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding()
+            }
+        }
         .environment(\.defaultMinListRowHeight, 50) // TODO: make this dynamic with GeometryReader???
         .navigationTitle("Run Command")
 #if !os(macOS)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: runCommandPlugin.sendSetupPacket) {
-                    Image(systemName: "command") // is there a better choice for this? This is a nice reference though I think
+                    Image(systemName: "plus")
                 }
             }
         }
