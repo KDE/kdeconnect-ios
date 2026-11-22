@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.19.17\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
 
 #, fuzzy
 #. Bundle display name
@@ -157,6 +157,10 @@ msgid "Category: %@"
 msgstr "Category: %@"
 
 #, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
+#, fuzzy
 msgid "Check out the merge requests"
 msgstr "Check out the merge requests"
 
@@ -183,10 +187,6 @@ msgstr "Clipboard Sync"
 #, fuzzy
 msgid "Clipboard: Push & Receive Text"
 msgstr "Clipboard: Push & Receive Text"
-
-#, fuzzy
-msgid "Clipboard: Sync"
-msgstr "Clipboard: Sync"
 
 #, fuzzy
 msgid "Configure Devices By IP"
@@ -219,6 +219,10 @@ msgstr "Contribute to KDE Connect"
 #, fuzzy
 msgid "Contributors"
 msgstr "Contributors"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 #, fuzzy
 msgid "Copy path to the folder containing received files"
@@ -337,10 +341,6 @@ msgid "Discovered Devices"
 msgstr "Discovered Devices"
 
 #, fuzzy
-msgid "Discovery & Pairing"
-msgstr "Discovery & Pairing"
-
-#, fuzzy
 msgid "Do Not Pair"
 msgstr "Do Not Pair"
 
@@ -427,10 +427,6 @@ msgstr "File Transfers"
 #, fuzzy
 msgid "Files"
 msgstr "Files"
-
-#, fuzzy
-msgid "Find My Device"
-msgstr "Find My Device"
 
 #, fuzzy
 msgid "Find My Phone Mode"
@@ -552,24 +548,8 @@ msgid "Initiate Pairing?"
 msgstr "Initiate Pairing?"
 
 #, fuzzy
-msgid "Integration with Siri Shortcuts"
-msgstr "Integration with Siri Shortcuts"
-
-#, fuzzy
-msgid "Integration with the system share sheet is in development"
-msgstr "Integration with the system share sheet is in development"
-
-#, fuzzy
-msgid "Internationalization & Localization"
-msgstr "Internationalization & Localization"
-
-#, fuzzy
 msgid "Invalid"
 msgstr "Invalid"
-
-#, fuzzy
-msgid "Keyboard: Control Remote"
-msgstr "Keyboard: Control Remote"
 
 #, fuzzy
 msgid "License"
@@ -581,10 +561,6 @@ msgid "Light"
 msgstr "Light"
 
 #, fuzzy
-msgid "Lock Screen: Control Remote"
-msgstr "Lock Screen: Control Remote"
-
-#, fuzzy
 msgid "Logs"
 msgstr "Logs"
 
@@ -593,20 +569,8 @@ msgid "Logs for %@"
 msgstr "Logs for %@"
 
 #, fuzzy
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Control Remote Media & Respond"
-
-#, fuzzy
 msgid "Manage received files in the Files app"
 msgstr "Manage received files in the Files app"
-
-#, fuzzy
-msgid "May not work with KDE Connect for Windows"
-msgstr "May not work with KDE Connect for Windows"
-
-#, fuzzy
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
 
 #, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
@@ -616,10 +580,6 @@ msgstr "Maybe with Apple Notification Center Service (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Medium"
-
-#, fuzzy
-msgid "Mouse: Control Remote"
-msgstr "Mouse: Control Remote"
 
 #, fuzzy
 msgid ""
@@ -688,12 +648,8 @@ msgid "Notice"
 msgstr "Notice"
 
 #, fuzzy
-msgid "Notification: Receive from Others"
-msgstr "Notification: Receive from Others"
-
-#, fuzzy
-msgid "Notification: Retrieve by Others"
-msgstr "Notification: Retrieve by Others"
+msgid "Notifications sync"
+msgstr "Notifications sync"
 
 #, fuzzy
 msgid "OK"
@@ -773,10 +729,6 @@ msgid "Ping!"
 msgstr "Ping!"
 
 #, fuzzy
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
-#, fuzzy
 msgid "Playground"
 msgstr "Playground"
 
@@ -797,8 +749,8 @@ msgid "Preparing Media…"
 msgstr "Preparing Media…"
 
 #, fuzzy
-msgid "Presenter: Control Remote"
-msgstr "Presenter: Control Remote"
+msgid "Presentation remote"
+msgstr "Presentation remote"
 
 #, fuzzy
 msgid "Preview: "
@@ -841,8 +793,16 @@ msgid "Remembered Devices"
 msgstr "Remembered Devices"
 
 #, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
+#, fuzzy
 msgid "Remote Input"
 msgstr "Remote Input"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 #, fuzzy
 msgid "Report Bug"
@@ -878,18 +838,6 @@ msgid "Run Command"
 msgstr "Run Command"
 
 #, fuzzy
-msgid "Run Command: Request"
-msgstr "Run Command: Request"
-
-#, fuzzy
-msgid "Run Command: Respond"
-msgstr "Run Command: Respond"
-
-#, fuzzy
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Access Remote & Initiate File Server"
-
-#, fuzzy
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -910,10 +858,6 @@ msgstr "Save photos to the photo library"
 #, fuzzy
 msgid "Save videos to the photo library"
 msgstr "Save videos to the photo library"
-
-#, fuzzy
-msgid "Screensaver: Inhibit Remote"
-msgstr "Screensaver: Inhibit Remote"
 
 #, fuzzy
 msgid "Select a device from the Devices list to start."
@@ -1021,14 +965,6 @@ msgid "System Default"
 msgstr "System Default"
 
 #, fuzzy
-msgid "System Volume: Control Remote & Respond"
-msgstr "System Volume: Control Remote & Respond"
-
-#, fuzzy
-msgid "Take Photo: Respond"
-msgstr "Take Photo: Respond"
-
-#, fuzzy
 msgid "Tap to start pairing"
 msgstr "Tap to start pairing"
 
@@ -1091,10 +1027,6 @@ msgstr "Toggle Keyboard"
 #, fuzzy
 msgid "Troubleshooting"
 msgstr "Troubleshooting"
-
-#, fuzzy
-msgid "Trusted Networks"
-msgstr "Trusted Networks"
 
 #, fuzzy
 msgid "Unknown Theme"

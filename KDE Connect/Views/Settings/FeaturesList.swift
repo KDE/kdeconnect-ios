@@ -17,25 +17,15 @@ import SwiftUI
 
 struct FeaturesList: View {
     private let supportedFeatures: [Feature] = [
-        Feature(Text("Discovery & Pairing"),
-                details: Text("May not work with KDE Connect for Windows")),
-        Feature(Text("Ping")),
-        Feature(Text("Find My Device")),
-        Feature(Text("Battery Status")),
         Feature(Text("Clipboard: Push & Receive Text")),
-        Feature(Text("Share: Send File"),
-                details: Text("Integration with the system share sheet is in development")),
+        Feature(Text("Share: Send File")),
         Feature(Text("Share: Receive File, Text, and URL")),
-        Feature(Text("Presenter: Control Remote")),
-        Feature(Text("Mouse: Control Remote")),
-        Feature(Text("Keyboard: Control Remote")),
-        Feature(Text("Run Command: Request")),
+        Feature(Text("Presentation remote")),
+        Feature(Text("Remote Mouse and Keyboard Control")),
+        Feature(Text("Run Command")),
+        Feature(Text("Battery Status")),
     ]
     private let inProgressFeatures: [Feature] = [
-        Feature(Text("Share: Send Text & URL"),
-                details: Text("Through the system share sheet")),
-        Feature(Text("Trusted Networks")),
-        Feature(Text("Internationalization & Localization")),
     ]
     private let unsupportedFeatures: [Feature] = [
         Feature(Text("Background Activity"),
@@ -44,23 +34,14 @@ struct FeaturesList: View {
                             .italic()
                             .underline()
                             .foregroundColor(.red)),
-        Feature(Text("Clipboard: Sync"),
-                details: Text("Maybe through URL Scheme and integration with Siri Shortcuts")),
+        Feature(Text("Share: Send Text & URL"),
+                details: Text("Through the system share sheet")),
         Feature(Text("Contacts")),
         Feature(Text("Connectivity Report")),
-        Feature(Text("SFTP: Access Remote & Initiate File Server")),
-        Feature(Text("Lock Screen: Control Remote")),
-        Feature(Text("Screensaver: Inhibit Remote")),
-        Feature(Text("Take Photo: Respond")),
-        Feature(Text("Plasma Bigscreen")),
-        Feature(Text("MPRIS: Control Remote Media & Respond")),
-        Feature(Text("System Volume: Control Remote & Respond")),
-        Feature(Text("Run Command: Respond"),
-                // https://developer.apple.com/documentation/sirikit/offering_actions_in_the_shortcuts_app
-                // https://support.apple.com/guide/shortcuts/run-a-shortcut-from-a-url-apd624386f42/ios
-                details: Text("Integration with Siri Shortcuts")),
-        Feature(Text("Notification: Receive from Others")),
-        Feature(Text("Notification: Retrieve by Others"),
+        Feature(Text("Remote Browse Files")),
+        Feature(Text("Control Multimedia Players")),
+        Feature(Text("Change System Volume")),
+        Feature(Text("Notifications sync"),
                 details: Text("Maybe with Apple Notification Center Service (ACNS)")),
         Feature(Text("Telephony: SMS/Call Sync"),
                 details: Text("This is likely not possible to implement on iOS")),
