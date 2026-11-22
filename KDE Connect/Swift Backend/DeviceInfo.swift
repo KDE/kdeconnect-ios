@@ -55,7 +55,7 @@ class DeviceInfo: NSObject {
             type: strToDeviceType(str: networkPacket.string(forKey: "deviceType")),
             cert: cert,
             protocolVersion: networkPacket.integer(forKey: "protocolVersion"),
-            incomingCapabilities: networkPacket.object(forKey: "outgoingCapabilities") as! [NetworkPacket.`Type`],
+            incomingCapabilities: networkPacket.object(forKey: "incomingCapabilities") as! [NetworkPacket.`Type`],
             outgoingCapabilities: networkPacket.object(forKey: "outgoingCapabilities") as! [NetworkPacket.`Type`]
         )
     }
