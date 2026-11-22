@@ -173,7 +173,6 @@ struct MainView: View {
         withAnimation {
             backgroundService.refreshDiscovery()
             broadcastBatteryStatusAllDevices()
-            requestBatteryStatusAllDevices()
         }
     }
 }

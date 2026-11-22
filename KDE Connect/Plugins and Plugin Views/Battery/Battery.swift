@@ -37,7 +37,6 @@ import AppKit
     @objc init(controlDevice: Device) {
         self.controlDevice = controlDevice
         super.init()
-        // self.sendBatteryStatusRequest() // no need here, asking in Device() when first link is added
         self.startBatteryMonitoring()
         self.sendBatteryStatusOut()
     }
@@ -57,10 +56,7 @@ import AppKit
     }
     
     @objc func onDevicePacketReceived(np: NetworkPacket) {
-        if (np.type == .batteryRequest) {
-            logger.debug("Battery plugin received a force update request")
-            sendBatteryStatusOut()
-        } else if (np.type == .battery) { // received battery info from other device
+        if (np.type == .battery) { // received battery info from other device
             logger.debug("Battery plugin received battery status from remote device")
             DispatchQueue.main.async { [weak self] in
                 withAnimation {
@@ -117,16 +113,6 @@ import AppKit
             return
         }
         controlDevice.send(np, tag: Int(PACKET_TAG_BATTERY))
-    }
-    
-    @objc func sendBatteryStatusRequest() {
-        let np: NetworkPacket = NetworkPacket(type: .batteryRequest)
-        np.setBool(true, forKey: "request")
-        guard let controlDevice = controlDevice else {
-            logger.fault("Requesting battery status with leaked instance, \(CFGetRetainCount(self)) references remaining")
-            return
-        }
-        controlDevice.send(np, tag: Int(PACKET_TAG_NORMAL))
     }
     
     var statusSFSymbolName: String {
@@ -199,16 +185,6 @@ func broadcastBatteryStatusAllDevices() {
            device._pluginsEnableStatus[.batteryRequest] as? Bool == true,
            let battery = device._plugins[.batteryRequest] as? Battery {
             battery.sendBatteryStatusOut()
-        }
-    }
-}
-
-func requestBatteryStatusAllDevices() {
-    for device in backgroundService._devices.values {
-        if device.isPaired(),
-           device._pluginsEnableStatus[.batteryRequest] as? Bool == true,
-           let battery = device._plugins[.batteryRequest] as? Battery {
-            battery.sendBatteryStatusRequest()
         }
     }
 }

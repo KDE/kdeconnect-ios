@@ -60,9 +60,10 @@ typealias ObservablePlugin = Plugin & ObservableObject
             outgoingPacketTypes: [.findMyPhoneRequest],
             create: { FindMyPhone(controlDevice: $0) }
         ),
+        // The kdeconnect.battery.request packet is no longer used, but it is still the ID of this plugin
         .batteryRequest: PluginInfo(
-            supportedPacketTypes: [.battery, .batteryRequest],
-            outgoingPacketTypes: [.battery, .batteryRequest],
+            supportedPacketTypes: [.battery],
+            outgoingPacketTypes: [.battery],
             create: { Battery(controlDevice: $0) }
         ),
         .clipboard: PluginInfo(

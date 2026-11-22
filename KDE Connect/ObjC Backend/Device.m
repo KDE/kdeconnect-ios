@@ -147,10 +147,6 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
         if (deviceDelegate) {
             [deviceDelegate onDeviceReachableStatusChanged:self];
         }
-        // FIXME: Move this to the battery plugin itself
-        if (_pairStatus == Paired) {
-            [self updateBatteryStatus];
-        }
     }
 }
 
@@ -416,11 +412,11 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 {
     _pairStatus=Paired;
     //NSLog(@"paired with %@",_name);
-    // Request and update battery status for a newly paired device
     if (deviceDelegate) {
         [deviceDelegate onDevicePairSuccess:self];
     }
-    [self updateBatteryStatus];
+    // The plugins were created before pairing, so their initial packets were ignored by the peer
+    [self sendBatteryStatus];
 }
 
 - (void) requestPairing
@@ -489,15 +485,9 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 #pragma mark Plugins-related Functions
 
-- (void)updateBatteryStatus {
-    NSDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = self.pluginsEnableStatus;
-    if ((pluginsEnableStatus[NetworkPacketTypeBatteryRequest] != nil)
-        && (pluginsEnableStatus[NetworkPacketTypeBatteryRequest])) {
+- (void)sendBatteryStatus {
+    if ([self.pluginsEnableStatus[NetworkPacketTypeBatteryRequest] boolValue]) {
         id<Plugin> plugin = [self.plugins objectForKey:NetworkPacketTypeBatteryRequest];
-        if ([plugin respondsToSelector:@selector(sendBatteryStatusRequest)]) {
-            [plugin performSelector:@selector(sendBatteryStatusRequest)];
-        }
-        // For backward compatibility reasons, we should update the other device
         if ([plugin respondsToSelector:@selector(sendBatteryStatusOut)]) {
             [plugin performSelector:@selector(sendBatteryStatusOut)];
         }

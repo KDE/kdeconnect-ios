@@ -21,7 +21,6 @@ extension NetworkPacket {
         .battery,
         .calendar,
         .contact,
-        .batteryRequest,
         .findMyPhoneRequest,
         .mousePadRequest,
         .mousePadKeyboardState,

@@ -68,12 +68,7 @@ import SwiftUI
                     UIApplication.shared.isIdleTimerDisabled = true
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                    // In case the app's been chilling suspended for a long time,
-                    // upon returning ask for updates to all devices's battery statuses
-                    // broadcastBatteryStatusAllDevices()
-                    // requestBatteryStatusAllDevices()
-
-                    // However, non of the links are kept alive in background
+                    // None of the links are kept alive in background
                     backgroundService.refreshDiscovery()
                 }
                 .onReceive(NotificationCenter.default
@@ -102,7 +97,6 @@ import SwiftUI
                     NSApplication.shared.applicationIconImage = NSImage(named: (kdeConnectSettingsForTopLevel.appIcon.rawValue ?? "AppIcon"))
                     requestNotification()
                     backgroundService.startDiscovery()
-                    requestBatteryStatusAllDevices()
                 }
                 .environmentObject(notificationManager)
                 .environmentObject(inAppNotificationManager)
