@@ -183,6 +183,11 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
         outgoingCapabilities = newOutgoingCapabilities;
     }
     
+    // The certificate of a device must never change: we always keep the one we already have
+    if (![(__bridge id)_deviceInfo.cert isEqual:(__bridge id)newDeviceInfo.cert]) {
+        os_log_with_type(logger, OS_LOG_TYPE_FAULT, "certificate of %{mask.hash}@ changed, ignoring the new one", _deviceInfo.id);
+    }
+    
     if (hasChanges) {
         _deviceInfo = [[DeviceInfo alloc] initWithId:_deviceInfo.id
                                                 name:name

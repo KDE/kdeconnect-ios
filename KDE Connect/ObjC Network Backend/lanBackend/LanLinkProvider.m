@@ -661,6 +661,11 @@
         }
     }
     if (!isNewLink) {
+        if (![(__bridge id)link._deviceInfo.cert isEqual:(__bridge id)cert]) {
+            os_log_with_type(logger, OS_LOG_TYPE_ERROR, "LanLink was asked to replace a socket but the certificate doesn't match, aborting");
+            [sock disconnect];
+            return;
+        }
         [link setSocket:sock];
         // reuse existing link once socket secures
         [[self _linkProviderDelegate] onDeviceIdentityUpdatePacketReceived:deviceInfo];
