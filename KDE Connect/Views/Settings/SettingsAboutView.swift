@@ -45,35 +45,14 @@ struct SettingsAboutView: View {
             Section {
                 VStack {
                     HStack {
-                        Spacer(minLength: 0.0)
                         Image(.kdeConnectLogo)
                             .resizable()
                             .frame(width: 60, height: 60)
                             .accessibilityHidden(true)
                         Spacer(minLength: 8.0)
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text("**KDE Connect** for iOS")
-                            Label {
-                                Text("Version: \(version) (\(build))")
-                            } icon: {
-                                if kdeConnectSettings.isDebugging {
-                                    Image(systemName: "hammer.fill")
-                                        .foregroundColor(.primary)
-                                }
-                            }
-                            .accessibilityValue(kdeConnectSettings.isDebugging ? Text("Debug mode") : Text(""))
-                            .onTapGesture(count: 10) {
-                                withAnimation {
-                                    kdeConnectSettings.isDebugging = true
-                                }
-                            }
-                            .accessibilityAddTraits(kdeConnectSettings.isDebugging ? [] : .isButton)
-                            .accessibilityHint(kdeConnectSettings.isDebugging ? Text("") : Text("Double tap to activate debug mode"))
-                            .accessibilityAction {
-                                withAnimation {
-                                    kdeConnectSettings.isDebugging = true
-                                }
-                            }
+                            Text("Version: \(version) (\(build))")
                             Text("© KDE Community & contributors")
                                 .fixedSize(horizontal: true, vertical: false)
                         }
