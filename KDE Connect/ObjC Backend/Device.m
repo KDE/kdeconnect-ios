@@ -526,39 +526,19 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     NSMutableDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = [NSMutableDictionary dictionary];
     [_failedPlugins removeAllObjects];
     
-    void (^loadPlugin)(NetworkPacketType, id<Plugin> (^)(void)) = ^(NetworkPacketType pluginID, id<Plugin> (^createPlugin)(void)) {
+    NSArray<NetworkPacketType> *supportedPlugins = [PluginFactory pluginsForIncomingCapabilities:_deviceInfo.incomingCapabilities
+                                                                         outgoingCapabilities:_deviceInfo.outgoingCapabilities];
+    for (NetworkPacketType pluginID in supportedPlugins) {
         id<Plugin> plugin = oldPlugins[pluginID];
         if (plugin == nil) {
-            os_log_with_type(self->logger, self.debugLogLevel, "creating plugin %{public}@", pluginID);
-            plugin = createPlugin();
+            os_log_with_type(logger, self.debugLogLevel, "creating plugin %{public}@", pluginID);
+            plugin = [PluginFactory createPlugin:pluginID controlDevice:self];
+            if (plugin == nil) {
+                continue;
+            }
         }
         plugins[pluginID] = plugin;
         pluginsEnableStatus[pluginID] = oldPluginsEnableStatus[pluginID] ?: @TRUE;
-    };
-    
-    for (NSString* pluginID in _deviceInfo.incomingCapabilities) {
-        if ([pluginID isEqualToString:NetworkPacketTypePing]) {
-            loadPlugin(NetworkPacketTypePing, ^{ return [[Ping alloc] initWithControlDevice:self]; });
-        } else if ([pluginID isEqualToString:NetworkPacketTypeShare]) {
-            loadPlugin(NetworkPacketTypeShare, ^{ return [[Share alloc] initWithControlDevice:self]; });
-        } else if ([pluginID isEqualToString:NetworkPacketTypeFindMyPhoneRequest]) {
-            loadPlugin(NetworkPacketTypeFindMyPhoneRequest, ^{ return [[FindMyPhone alloc] initWithControlDevice:self]; });
-        } else if ([pluginID isEqualToString:NetworkPacketTypeBatteryRequest]) {
-            loadPlugin(NetworkPacketTypeBatteryRequest, ^{ return [[Battery alloc] initWithControlDevice:self]; });
-        } else if ([pluginID isEqualToString:NetworkPacketTypeClipboard]) {
-            loadPlugin(NetworkPacketTypeClipboard, ^{ return [[Clipboard alloc] initWithControlDevice:self]; });
-        } else if ([pluginID isEqualToString:NetworkPacketTypeMousePadRequest]) {
-            loadPlugin(NetworkPacketTypeMousePadRequest, ^{ return [[RemoteInput alloc] initWithControlDevice:self]; });
-        } else if ([pluginID isEqualToString:NetworkPacketTypePresenter]) {
-            loadPlugin(NetworkPacketTypePresenter, ^{ return [[Presenter alloc] initWithControlDevice:self]; });
-        }
-    }
-    
-    // for the capabilities that are ONLY in the outgoing section of KDE Connect iOS
-    for (NSString* pluginID in _deviceInfo.outgoingCapabilities) {
-        if ([pluginID isEqualToString:NetworkPacketTypeRunCommand]) {
-            loadPlugin(NetworkPacketTypeRunCommand, ^{ return [[RunCommand alloc] initWithControlDevice:self]; });
-        }
     }
     
     os_unfair_lock_lock(&_pluginsLock);

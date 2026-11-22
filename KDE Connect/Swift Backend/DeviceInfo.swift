@@ -42,7 +42,6 @@ class DeviceInfo: NSObject {
             type: DeviceType.current,
             cert: CertificateService.shared.getHostCertificate(),
             protocolVersion: KdeConnectSettings.CurrentProtocolVersion,
-            // FIXME: actually read what plugins are available
             incomingCapabilities: KdeConnectSettings.IncomingCapabilities,
             outgoingCapabilities: KdeConnectSettings.OutgoingCapabilities
         )

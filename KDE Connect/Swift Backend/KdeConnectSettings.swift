@@ -24,31 +24,12 @@ class KdeConnectSettings: NSObject, ObservableObject {
     @objc
     static let CurrentProtocolVersion = 8
     
-    // FIXME: actually read what plugins are available
-    static let IncomingCapabilities: [NetworkPacket.`Type`] = [
-        .ping,
-        .share,
-        .shareRequestUpdate,
-        .findMyPhoneRequest,
-        .batteryRequest,
-        .battery,
-        .clipboard,
-        .clipboardConnect,
-        .runCommand,
-    ]
-    static let OutgoingCapabilities: [NetworkPacket.`Type`] = [
-        .ping,
-        .share,
-        .shareRequestUpdate,
-        .findMyPhoneRequest,
-        .batteryRequest,
-        .battery,
-        .clipboard,
-        .clipboardConnect,
-        .mousePadRequest,
-        .presenter,
-        .runCommandRequest,
-    ]
+    static var IncomingCapabilities: [NetworkPacket.`Type`] {
+        PluginFactory.incomingCapabilities
+    }
+    static var OutgoingCapabilities: [NetworkPacket.`Type`] {
+        PluginFactory.outgoingCapabilities
+    }
     
     private static var cachedUuid: String?
 
