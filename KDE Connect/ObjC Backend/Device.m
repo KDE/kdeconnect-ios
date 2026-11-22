@@ -134,7 +134,11 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     
     BOOL hasChanges = [self updateDeviceInfo:[link _deviceInfo]];
     
-    if (hasChanges || count == 1) {
+    if (count == 1) {
+        // Like Android (which destroys the plugins while the device is unreachable), start with
+        // new plugins on reconnection, so no state from the previous connection is kept
+        [self reloadPluginsKeepingLoaded:NO];
+    } else if (hasChanges) {
         [self reloadPlugins];
     }
     
@@ -497,6 +501,11 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 - (void) reloadPlugins
 {
+    [self reloadPluginsKeepingLoaded:YES];
+}
+
+- (void) reloadPluginsKeepingLoaded:(BOOL)keepLoaded
+{
 //    if (![self isReachable]) {
 //        return;
 //    }
@@ -504,7 +513,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     os_log_with_type(logger, self.debugLogLevel, "device reload plugins");
     // Keep the plugins that are already loaded (and their state and enable status), only create
     // the ones that are missing. Plugins no longer supported by the capabilities are dropped.
-    NSDictionary<NetworkPacketType, id<Plugin>> *oldPlugins = self.plugins;
+    NSDictionary<NetworkPacketType, id<Plugin>> *oldPlugins = keepLoaded ? self.plugins : @{};
     NSDictionary<NetworkPacketType, NSNumber *> *oldPluginsEnableStatus = self.pluginsEnableStatus;
     // Build the new dictionaries separately and swap them in at once, so concurrent
     // readers never see a plugin enabled in pluginsEnableStatus but missing from plugins
