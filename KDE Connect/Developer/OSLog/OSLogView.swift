@@ -8,7 +8,6 @@
 import SwiftUI
 import OSLog
 
-@available(iOS 15.0, *)
 struct OSLogView: View {
     @ObservedObject var osLog: OSLogManager = OSLogManager()
     @State var query: String = ""
@@ -100,7 +99,6 @@ struct OSLogView: View {
     }
 }
 
-@available(iOS 15.0, *)
 struct OSLogView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

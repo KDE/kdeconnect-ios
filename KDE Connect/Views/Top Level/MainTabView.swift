@@ -61,20 +61,17 @@ struct MainTabView: View {
         }
         .introspectTabBarController { tabBarController in
             // Ref: https://www.reddit.com/r/SwiftUI/comments/p8obef/comment/h9t8trs/
-            if #available(iOS 15.0, *) {
-                // No scroll and TabView conflict in previous iOS versions
-                if horizontalSizeClass == .regular {
-                    // Conflict only when there is SplitView (i.e., regular horizontalSizeClass)
-                    // Ref: https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-different-layouts-using-size-classes
-                    let opaqueBar = UITabBarAppearance()
-                    opaqueBar.configureWithOpaqueBackground()
-                    tabBarController.tabBar.standardAppearance = opaqueBar
-                    tabBarController.tabBar.scrollEdgeAppearance = opaqueBar
-                } else {
-                    let newTabBar = UITabBar()
-                    tabBarController.tabBar.standardAppearance = newTabBar.standardAppearance
-                    tabBarController.tabBar.scrollEdgeAppearance = newTabBar.scrollEdgeAppearance
-                }
+            if horizontalSizeClass == .regular {
+                // Conflict only when there is SplitView (i.e., regular horizontalSizeClass)
+                // Ref: https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-different-layouts-using-size-classes
+                let opaqueBar = UITabBarAppearance()
+                opaqueBar.configureWithOpaqueBackground()
+                tabBarController.tabBar.standardAppearance = opaqueBar
+                tabBarController.tabBar.scrollEdgeAppearance = opaqueBar
+            } else {
+                let newTabBar = UITabBar()
+                tabBarController.tabBar.standardAppearance = newTabBar.standardAppearance
+                tabBarController.tabBar.scrollEdgeAppearance = newTabBar.scrollEdgeAppearance
             }
         }
     }

@@ -229,20 +229,11 @@ import CryptoKit
             logger.error("Number of cert received \(numOfCerts) != 1, something is wrong about the remote device")
             return nil
         }
-        if #available(iOS 15.0, *) {
-            let certificateChain: [SecCertificate]? = SecTrustCopyCertificateChain(trust) as? [SecCertificate]
-            if (certificateChain != nil) {
-                return certificateChain!.first
-            } else {
-                logger.fault("Unable to get certificate chain")
-                return nil
-            }
-        } else {
-            // Fallback on earlier versions
-            let certificateChain = SecTrustGetCertificateAtIndex(trust, 0)
-            // FIXME: Certificate list can be not large enough
-            return certificateChain
+        guard let certificateChain = SecTrustCopyCertificateChain(trust) as? [SecCertificate] else {
+            logger.fault("Unable to get certificate chain")
+            return nil
         }
+        return certificateChain.first
     }
     
     @objc func extractSavedCertOfRemoteDevice(deviceId: String) -> SecCertificate? {

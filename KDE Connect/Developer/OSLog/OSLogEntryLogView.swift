@@ -8,7 +8,6 @@
 import SwiftUI
 import OSLog
 
-@available(iOS 15.0, *)
 struct OSLogEntryLogView: View {
     let logEntry: OSLogEntryLog
     
@@ -66,7 +65,6 @@ struct OSLogEntryLogView: View {
     }
 }
 
-@available(iOS 15.0, *)
 struct OSLogEntryLogView_Previews: PreviewProvider {
     static var previews: some View {
         OSLogEntryLogView(logEntry: OSLogEntryLog())

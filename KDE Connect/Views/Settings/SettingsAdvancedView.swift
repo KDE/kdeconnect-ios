@@ -107,16 +107,10 @@ struct SettingsAdvancedView: View {
         
             if kdeConnectSettings.isDebugging {
                 Section {
-                    if #available(iOS 15.0, *) {
-                        NavigationLink {
-                            OSLogView()
-                        } label: {
-                            Label("Logs", systemImage: "list.bullet.rectangle")
-                        }
-                    } else {
-                        Link(destination: URL(string: "https://developer.apple.com/documentation/os/logging/viewing_log_messages")!) {
-                            Label("Logs", systemImage: "link")
-                        }
+                    NavigationLink {
+                        OSLogView()
+                    } label: {
+                        Label("Logs", systemImage: "list.bullet.rectangle")
                     }
                     NavigationLink {
                         NetworkPacketComposer()

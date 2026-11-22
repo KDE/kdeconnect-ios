@@ -73,11 +73,7 @@ struct SettingsView: View {
                     Label {
                         Text("Features")
                     } icon: {
-                        if #available(iOS 15, *) {
-                            Image(systemName: "checklist")
-                        } else {
-                            Image(systemName: "scroll")
-                        }
+                        Image(systemName: "checklist")
                     }
                     .labelStyle(.accessibilityTitleOnly)
                     .accentColor(.primary)

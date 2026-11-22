@@ -8,7 +8,6 @@
 import OSLog
 import Combine
 
-@available(iOS 15.0, *)
 class OSLogManager: ObservableObject {
     private let store: OSLogStore?
     @Published

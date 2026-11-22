@@ -17,18 +17,6 @@ import SwiftUI
 
 extension LocalizedStringKey.StringInterpolation {
     mutating func appendInterpolation(percent: Int) {
-        if #available(iOS 15, *) {
-            appendInterpolation(Double(percent) / 100, format: .percent)
-        } else {
-            appendInterpolation(Double(percent) / 100 as NSNumber, formatter: NumberFormatter.percentage)
-        }
+        appendInterpolation(Double(percent) / 100, format: .percent)
     }
-}
-
-fileprivate extension NumberFormatter {
-    static let percentage: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .percent
-        return formatter
-    }()
 }

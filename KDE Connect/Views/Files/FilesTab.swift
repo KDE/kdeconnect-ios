@@ -48,13 +48,10 @@ struct FilesTab: View {
             
             List {
                 overviews
-                
-                if #available(iOS 15, *) {
-                    // To keep the background color consistent
-                    // when there are no transfers going on...
-                    Spacer()
-                        .listRowBackground(Color.clear)
-                }
+                // To keep the background color consistent
+                // when there are no transfers going on...
+                Spacer()
+                    .listRowBackground(Color.clear)
             }
             .navigationTitle("Status")
         }

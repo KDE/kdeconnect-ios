@@ -51,18 +51,12 @@ struct FeaturesList: View {
         List {
             Text("As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms.")
             
-            if #available(iOS 15, *) {
-                supportedFeaturesSection
-                    .headerProminence(.increased)
-                inProgressFeaturesSection
-                    .headerProminence(.increased)
-                unsupportedFeaturesSection
-                    .headerProminence(.increased)
-            } else {
-                supportedFeaturesSection
-                inProgressFeaturesSection
-                unsupportedFeaturesSection
-            }
+            supportedFeaturesSection
+                .headerProminence(.increased)
+            inProgressFeaturesSection
+                .headerProminence(.increased)
+            unsupportedFeaturesSection
+                .headerProminence(.increased)
         }
         .navigationTitle("Features")
     }
@@ -77,14 +71,9 @@ struct FeaturesList: View {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.green)
                     } else {
-                        if #available(iOS 15, *) {
-                            Image(systemName: "checkmark.circle.trianglebadge.exclamationmark")
-                                .renderingMode(.original)
-                                .foregroundColor(.green)
-                        } else {
-                            Image(systemName: "checkmark.circle")
-                                .foregroundColor(.orange)
-                        }
+                        Image(systemName: "checkmark.circle.trianglebadge.exclamationmark")
+                            .renderingMode(.original)
+                            .foregroundColor(.green)
                     }
                 }
             }
@@ -101,25 +90,15 @@ struct FeaturesList: View {
                 Label {
                     Feature.DefaultView(feature: feature)
                 } icon: {
-                    if #available(iOS 15, *) {
-                        Image(systemName: "hammer.circle.fill")
-                            .foregroundColor(.blue)
-                    } else {
-                        Image(systemName: "hammer.fill")
-                            .foregroundColor(.blue)
-                    }
+                    Image(systemName: "hammer.circle.fill")
+                        .foregroundColor(.blue)
                 }
             }
         } header: {
             Text("In progress")
         } footer: {
             Link(destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios/-/merge_requests")!) {
-                if #available(iOS 15, *) {
-                    Text("Check out the merge requests")
-                } else {
-                    Text("Check out the merge requests")
-                        .foregroundColor(.accentColor)
-                }
+                Text("Check out the merge requests")
             }
         }
     }
@@ -138,12 +117,7 @@ struct FeaturesList: View {
             Text("Not yet implemented")
         } footer: {
             Link(destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios")!) {
-                if #available(iOS 15, *) {
-                    Text("Contribute to KDE Connect")
-                } else {
-                    Text("Contribute to KDE Connect")
-                        .foregroundColor(.accentColor)
-                }
+                Text("Contribute to KDE Connect")
             }
         }
     }

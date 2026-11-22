@@ -50,11 +50,7 @@ struct SettingsAboutView: View {
                             .accessibilityHidden(true)
                         Spacer(minLength: 8.0)
                         VStack {
-                            if #available(iOS 15, *) {
-                                Text("**KDE Connect** for iOS")
-                            } else {
-                                Text("\(Text(verbatim: "KDE Connect").bold()) for iOS")
-                            }
+                            Text("**KDE Connect** for iOS")
                             Label {
                                 Text("Version: \(version) (\(build))")
                             } icon: {
@@ -95,11 +91,7 @@ struct SettingsAboutView: View {
                     Label("Donate", systemImage: "dollarsign.square")
                 }
                 Link(destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios")!) {
-                    if #available(iOS 15, *) {
-                        Label("Source Code", systemImage: "chevron.left.forwardslash.chevron.right")
-                    } else {
-                        Label("Source Code", systemImage: "chevron.left.slash.chevron.right")
-                    }
+                    Label("Source Code", systemImage: "chevron.left.forwardslash.chevron.right")
                 }
                 Link(destination: URL(string: "https://invent.kde.org/network/kdeconnect-ios/-/blob/master/License.md")!) {
                     Label("License", systemImage: "doc.plaintext")
