@@ -32,12 +32,21 @@
 #import "KDE_Connect-Swift.h"
 @import os.log;
 #import <os/lock.h>
+
+PluginID const PluginIDPing        = @"Ping";
+PluginID const PluginIDShare       = @"Share";
+PluginID const PluginIDFindMyPhone = @"FindMyPhone";
+PluginID const PluginIDBattery     = @"Battery";
+PluginID const PluginIDClipboard   = @"Clipboard";
+PluginID const PluginIDRemoteInput = @"RemoteInput";
+PluginID const PluginIDPresenter   = @"Presenter";
+PluginID const PluginIDRunCommand  = @"RunCommand";
 static const NSTimeInterval kPairingTimeout = 30.0;
 static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 @implementation Device {
-    NSDictionary<NetworkPacketType, id<Plugin>> *_plugins;
-    NSDictionary<NetworkPacketType, NSNumber *> *_pluginsEnableStatus;
+    NSDictionary<PluginID, id<Plugin>> *_plugins;
+    NSDictionary<PluginID, NSNumber *> *_pluginsEnableStatus;
     os_unfair_lock _pluginsLock;
     os_log_t logger;
 }
@@ -49,17 +58,17 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 @synthesize _links;
 
 
-- (NSDictionary<NetworkPacketType, id<Plugin>> *)plugins
+- (NSDictionary<PluginID, id<Plugin>> *)plugins
 {
     os_unfair_lock_lock(&_pluginsLock);
-    NSDictionary<NetworkPacketType, id<Plugin>> *plugins = _plugins;
+    NSDictionary<PluginID, id<Plugin>> *plugins = _plugins;
     os_unfair_lock_unlock(&_pluginsLock);
     return plugins;
 }
 
-- (void)setPlugins:(NSDictionary<NetworkPacketType, id<Plugin>> *)plugins
+- (void)setPlugins:(NSDictionary<PluginID, id<Plugin>> *)plugins
 {
-    NSDictionary<NetworkPacketType, id<Plugin>> *copy = [plugins copy];
+    NSDictionary<PluginID, id<Plugin>> *copy = [plugins copy];
     os_unfair_lock_lock(&_pluginsLock);
     _plugins = copy;
     os_unfair_lock_unlock(&_pluginsLock);
@@ -67,17 +76,17 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 @synthesize _failedPlugins;
 //@synthesize _testDevice;
 
-- (NSDictionary<NetworkPacketType, NSNumber *> *)pluginsEnableStatus
+- (NSDictionary<PluginID, NSNumber *> *)pluginsEnableStatus
 {
     os_unfair_lock_lock(&_pluginsLock);
-    NSDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = _pluginsEnableStatus;
+    NSDictionary<PluginID, NSNumber *> *pluginsEnableStatus = _pluginsEnableStatus;
     os_unfair_lock_unlock(&_pluginsLock);
     return pluginsEnableStatus;
 }
 
-- (void)setPluginsEnableStatus:(NSDictionary<NetworkPacketType, NSNumber *> *)pluginsEnableStatus
+- (void)setPluginsEnableStatus:(NSDictionary<PluginID, NSNumber *> *)pluginsEnableStatus
 {
-    NSDictionary<NetworkPacketType, NSNumber *> *copy = [pluginsEnableStatus copy];
+    NSDictionary<PluginID, NSNumber *> *copy = [pluginsEnableStatus copy];
     os_unfair_lock_lock(&_pluginsLock);
     _pluginsEnableStatus = copy;
     os_unfair_lock_unlock(&_pluginsLock);
@@ -486,8 +495,8 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 #pragma mark Plugins-related Functions
 
 - (void)sendBatteryStatus {
-    if ([self.pluginsEnableStatus[NetworkPacketTypeBatteryRequest] boolValue]) {
-        id<Plugin> plugin = [self.plugins objectForKey:NetworkPacketTypeBatteryRequest];
+    if ([self.pluginsEnableStatus[PluginIDBattery] boolValue]) {
+        id<Plugin> plugin = [self.plugins objectForKey:PluginIDBattery];
         if ([plugin respondsToSelector:@selector(sendBatteryStatusOut)]) {
             [plugin performSelector:@selector(sendBatteryStatusOut)];
         }
@@ -508,17 +517,17 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     os_log_with_type(logger, self.debugLogLevel, "device reload plugins");
     // Keep the plugins that are already loaded (and their state and enable status), only create
     // the ones that are missing. Plugins no longer supported by the capabilities are dropped.
-    NSDictionary<NetworkPacketType, id<Plugin>> *oldPlugins = keepLoaded ? self.plugins : @{};
-    NSDictionary<NetworkPacketType, NSNumber *> *oldPluginsEnableStatus = self.pluginsEnableStatus;
+    NSDictionary<PluginID, id<Plugin>> *oldPlugins = keepLoaded ? self.plugins : @{};
+    NSDictionary<PluginID, NSNumber *> *oldPluginsEnableStatus = self.pluginsEnableStatus;
     // Build the new dictionaries separately and swap them in at once, so concurrent
     // readers never see a plugin enabled in pluginsEnableStatus but missing from plugins
-    NSMutableDictionary<NetworkPacketType, id<Plugin>> *plugins = [NSMutableDictionary dictionary];
-    NSMutableDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = [NSMutableDictionary dictionary];
+    NSMutableDictionary<PluginID, id<Plugin>> *plugins = [NSMutableDictionary dictionary];
+    NSMutableDictionary<PluginID, NSNumber *> *pluginsEnableStatus = [NSMutableDictionary dictionary];
     [_failedPlugins removeAllObjects];
     
-    NSArray<NetworkPacketType> *supportedPlugins = [PluginFactory pluginsForIncomingCapabilities:_deviceInfo.incomingCapabilities
+    NSArray<PluginID> *supportedPlugins = [PluginFactory pluginsForIncomingCapabilities:_deviceInfo.incomingCapabilities
                                                                          outgoingCapabilities:_deviceInfo.outgoingCapabilities];
-    for (NetworkPacketType pluginID in supportedPlugins) {
+    for (PluginID pluginID in supportedPlugins) {
         id<Plugin> plugin = oldPlugins[pluginID];
         if (plugin == nil) {
             os_log_with_type(logger, self.debugLogLevel, "creating plugin %{public}@", pluginID);
@@ -608,7 +617,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
         ];
         _pairStatus = [coder decodeIntegerForKey:@"_pairStatus"];
         _pluginsLock = OS_UNFAIR_LOCK_INIT;
-        _pluginsEnableStatus = [[coder decodeDictionaryWithKeysOfClass:[NSString class] objectsOfClass:[NSNumber class] forKey:@"_pluginsEnableStatus"] copy];
+        _pluginsEnableStatus = [Device migratePluginsEnableStatus:[coder decodeDictionaryWithKeysOfClass:[NSString class] objectsOfClass:[NSNumber class] forKey:@"_pluginsEnableStatus"]];
         _cursorSensitivity = [coder decodeFloatForKey:@"_cursorSensitivity"];
 #if !TARGET_OS_OSX
         _hapticStyle = [coder decodeIntegerForKey:@"_hapticStyle"];
@@ -625,6 +634,25 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
         [self reloadPlugins];
     }
     return self;
+}
+
+// The plugins used to be identified by packet types, so the saved enable status can use those
++ (NSDictionary<PluginID, NSNumber *> *)migratePluginsEnableStatus:(NSDictionary<NSString *, NSNumber *> *)saved {
+    NSDictionary<NSString *, PluginID> *oldIDs = @{
+        @"kdeconnect.ping": PluginIDPing,
+        @"kdeconnect.share.request": PluginIDShare,
+        @"kdeconnect.findmyphone.request": PluginIDFindMyPhone,
+        @"kdeconnect.battery.request": PluginIDBattery,
+        @"kdeconnect.clipboard": PluginIDClipboard,
+        @"kdeconnect.mousepad.request": PluginIDRemoteInput,
+        @"kdeconnect.presenter": PluginIDPresenter,
+        @"kdeconnect.runcommand": PluginIDRunCommand,
+    };
+    NSMutableDictionary<PluginID, NSNumber *> *migrated = [NSMutableDictionary dictionary];
+    [saved enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSNumber *enabled, BOOL *stop) {
+        migrated[oldIDs[key] ?: key] = enabled;
+    }];
+    return [migrated copy];
 }
 
 + (BOOL)supportsSecureCoding {

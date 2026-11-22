@@ -172,8 +172,8 @@ import AppKit
 func startBatteryMonitoringAllDevices() {
     for device in backgroundService._devices.values {
         if device.isPaired(),
-           device._pluginsEnableStatus[.batteryRequest] as? Bool == true,
-           let battery = device._plugins[.batteryRequest] as? Battery {
+           device._pluginsEnableStatus[.battery] as? Bool == true,
+           let battery = device._plugins[.battery] as? Battery {
             battery.startBatteryMonitoring()
         }
     }
@@ -182,8 +182,8 @@ func startBatteryMonitoringAllDevices() {
 func broadcastBatteryStatusAllDevices() {
     for device in backgroundService._devices.values {
         if device.isPaired(),
-           device._pluginsEnableStatus[.batteryRequest] as? Bool == true,
-           let battery = device._plugins[.batteryRequest] as? Battery {
+           device._pluginsEnableStatus[.battery] as? Bool == true,
+           let battery = device._plugins[.battery] as? Battery {
             battery.sendBatteryStatusOut()
         }
     }

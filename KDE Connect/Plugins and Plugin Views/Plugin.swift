@@ -43,8 +43,7 @@ typealias ObservablePlugin = Plugin & ObservableObject
         let create: (Device) -> Plugin
     }
 
-    // The keys are the plugin IDs used in Device.plugins and Device.pluginsEnableStatus
-    private static let pluginInfo: [NetworkPacket.`Type`: PluginInfo] = [
+    private static let pluginInfo: [PluginID: PluginInfo] = [
         .ping: PluginInfo(
             supportedPacketTypes: [.ping],
             outgoingPacketTypes: [.ping],
@@ -55,13 +54,12 @@ typealias ObservablePlugin = Plugin & ObservableObject
             outgoingPacketTypes: [.share, .shareRequestUpdate],
             create: { Share(controlDevice: $0) }
         ),
-        .findMyPhoneRequest: PluginInfo(
+        .findMyPhone: PluginInfo(
             supportedPacketTypes: [.findMyPhoneRequest],
             outgoingPacketTypes: [.findMyPhoneRequest],
             create: { FindMyPhone(controlDevice: $0) }
         ),
-        // The kdeconnect.battery.request packet is no longer used, but it is still the ID of this plugin
-        .batteryRequest: PluginInfo(
+        .battery: PluginInfo(
             supportedPacketTypes: [.battery],
             outgoingPacketTypes: [.battery],
             create: { Battery(controlDevice: $0) }
@@ -71,7 +69,7 @@ typealias ObservablePlugin = Plugin & ObservableObject
             outgoingPacketTypes: [.clipboard, .clipboardConnect],
             create: { Clipboard(controlDevice: $0) }
         ),
-        .mousePadRequest: PluginInfo(
+        .remoteInput: PluginInfo(
             supportedPacketTypes: [],
             outgoingPacketTypes: [.mousePadRequest],
             create: { RemoteInput(controlDevice: $0) }
@@ -98,13 +96,13 @@ typealias ObservablePlugin = Plugin & ObservableObject
 
     /// The IDs of the plugins that can talk to a device with the given capabilities
     @objc static func plugins(forIncomingCapabilities incoming: [NetworkPacket.`Type`],
-                              outgoingCapabilities outgoing: [NetworkPacket.`Type`]) -> [NetworkPacket.`Type`] {
+                              outgoingCapabilities outgoing: [NetworkPacket.`Type`]) -> [PluginID] {
         return pluginInfo.filter { _, info in
             !info.supportedPacketTypes.isDisjoint(with: outgoing) || !info.outgoingPacketTypes.isDisjoint(with: incoming)
         }.keys.sorted { $0.rawValue < $1.rawValue }
     }
 
-    @objc static func createPlugin(_ pluginID: NetworkPacket.`Type`, controlDevice: Device) -> Plugin? {
+    @objc static func createPlugin(_ pluginID: PluginID, controlDevice: Device) -> Plugin? {
         return pluginInfo[pluginID]?.create(controlDevice)
     }
 }

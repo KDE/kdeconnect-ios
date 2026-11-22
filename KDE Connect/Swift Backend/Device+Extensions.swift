@@ -26,12 +26,12 @@ extension Device {
     // after uncommenting lines containing `@available`
     
     // @available(*, deprecated, renamed: "plugins")
-    var _plugins: [NetworkPacket.`Type`: Plugin] {
+    var _plugins: [PluginID: Plugin] {
         plugins
     }
 
     // @available(*, deprecated, renamed: "pluginsEnableStatus")
-    var _pluginsEnableStatus: [NetworkPacket.`Type`: NSNumber] {
+    var _pluginsEnableStatus: [PluginID: NSNumber] {
         get {
             pluginsEnableStatus
         }

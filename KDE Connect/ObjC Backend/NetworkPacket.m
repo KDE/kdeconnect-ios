@@ -233,7 +233,6 @@ NetworkPacketType const NetworkPacketTypeCalendar                 = @"kdeconnect
 // NetworkPacketType const NetworkPacketTypeReminder                 = @"kdeconnect.reminder";
 NetworkPacketType const NetworkPacketTypeContact                  = @"kdeconnect.contact";
 
-NetworkPacketType const NetworkPacketTypeBatteryRequest           = @"kdeconnect.battery.request";
 NetworkPacketType const NetworkPacketTypeFindMyPhoneRequest       = @"kdeconnect.findmyphone.request";
 
 NetworkPacketType const NetworkPacketTypeMousePadRequest          = @"kdeconnect.mousepad.request";

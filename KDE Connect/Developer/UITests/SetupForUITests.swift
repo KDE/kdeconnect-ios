@@ -30,7 +30,7 @@ enum UIPreview {
             name: NSLocalizedString("McIntosh",
                                     comment: "Name of a kind of apple, used as App Store screenshot device name of a MacBook")
         )
-        let macBookBattery = macBook.plugins[.batteryRequest] as! Battery
+        let macBookBattery = macBook.plugins[.battery] as! Battery
         macBookBattery.remoteChargeLevel = 100
         let macBookRunCommand = macBook.plugins[.runCommand] as! RunCommand
         macBookRunCommand.commandEntries = [

@@ -55,9 +55,9 @@ struct DevicesDetailView: View {
                             }
                         }
                         
-                        if device._pluginsEnableStatus[.findMyPhoneRequest] as? Bool == true {
+                        if device._pluginsEnableStatus[.findMyPhone] as? Bool == true {
                             Button {
-                                (device._plugins[.findMyPhoneRequest] as? FindMyPhone)?.sendFindMyPhoneRequest()
+                                (device._plugins[.findMyPhone] as? FindMyPhone)?.sendFindMyPhoneRequest()
                             } label: {
                                 Label("Ring Device", systemImage: "bell")
                             }
@@ -190,7 +190,7 @@ struct DevicesDetailView: View {
                     .accentColor(.primary)
                 }
                 
-                if device._pluginsEnableStatus[.mousePadRequest] as? Bool == true {
+                if device._pluginsEnableStatus[.remoteInput] as? Bool == true {
                     NavigationLink(destination: RemoteInputView(detailsDeviceId: self.detailsDeviceId)) {
                         Label("Remote Input", systemImage: "hand.tap")
                     }

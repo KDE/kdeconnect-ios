@@ -45,6 +45,18 @@
 //@class Battery;
 //@interface PluginInterface;
 
+// Identifies a plugin in Device.plugins and Device.pluginsEnableStatus.
+// It is internal to the app, so it is not related to the packet types of the protocol.
+typedef NSString *PluginID NS_TYPED_ENUM;
+FOUNDATION_EXPORT PluginID const PluginIDPing;
+FOUNDATION_EXPORT PluginID const PluginIDShare;
+FOUNDATION_EXPORT PluginID const PluginIDFindMyPhone;
+FOUNDATION_EXPORT PluginID const PluginIDBattery;
+FOUNDATION_EXPORT PluginID const PluginIDClipboard;
+FOUNDATION_EXPORT PluginID const PluginIDRemoteInput;
+FOUNDATION_EXPORT PluginID const PluginIDPresenter;
+FOUNDATION_EXPORT PluginID const PluginIDRunCommand;
+
 typedef NS_ENUM(NSUInteger, PairStatus)
 {
     NotPaired=0,
@@ -63,7 +75,7 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 @property(readonly, nonatomic) long _pairingTimestamp;
 
 @property(nonatomic) NSMutableArray* _links;
-@property(nonatomic, setter=setPlugins:) NSDictionary<NetworkPacketType, id<Plugin>> *plugins;
+@property(nonatomic, setter=setPlugins:) NSDictionary<PluginID, id<Plugin>> *plugins;
 @property(nonatomic) NSMutableArray* _failedPlugins;
 
 @property(nonatomic) id<DeviceDelegate> deviceDelegate;
@@ -71,7 +83,7 @@ typedef NS_ENUM(NSUInteger, PairStatus)
 //@property(readonly,nonatomic) BOOL _testDevice;
 
 // Plugin enable status
-@property(nonatomic, setter=setPluginsEnableStatus:) NSDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus;
+@property(nonatomic, setter=setPluginsEnableStatus:) NSDictionary<PluginID, NSNumber *> *pluginsEnableStatus;
 
 // Plugin-specific persistent data are stored in the Device object. Plugin objects contain runtime
 // data only and are therefore NOT stored persistently

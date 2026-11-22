@@ -80,7 +80,6 @@ FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeCalendar;
 // FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeReminder;
 FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeContact;
 
-FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeBatteryRequest;
 FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeFindMyPhoneRequest;
 
 FOUNDATION_EXPORT NetworkPacketType const NetworkPacketTypeMousePadRequest;

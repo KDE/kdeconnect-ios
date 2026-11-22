@@ -25,7 +25,7 @@ struct BatteryStatus<ValidBatteryStatusContent: View>: View {
     init(device: Device,
          @ViewBuilder validBatteryContent: @escaping (Battery) -> ValidBatteryStatusContent) {
         self.device = device
-        self.battery = device._plugins[.batteryRequest] as? Battery
+        self.battery = device._plugins[.battery] as? Battery
         self.validBatteryContent = validBatteryContent
     }
     
@@ -33,7 +33,7 @@ struct BatteryStatus<ValidBatteryStatusContent: View>: View {
         if let battery = battery {
             BatteryObserving(
                 battery: battery,
-                isEnabled: device._pluginsEnableStatus[.batteryRequest] as? Bool,
+                isEnabled: device._pluginsEnableStatus[.battery] as? Bool,
                 validBatteryContent: validBatteryContent
             )
         } else {

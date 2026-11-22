@@ -52,7 +52,7 @@ struct DeviceItemView: View {
         }
     }
 
-    func isPluginAvailable(_ plugin: NetworkPacket.`Type`) -> Bool {
+    func isPluginAvailable(_ plugin: PluginID) -> Bool {
         if let pluginsEnableStatus = backgroundService.devices[deviceId]?.pluginsEnableStatus {
             if pluginsEnableStatus[plugin] != nil {
                 return (backgroundService.devices[deviceId]?.isPaired() ?? false) && (backgroundService.devices[deviceId]?.isReachable() ?? false)
@@ -79,7 +79,7 @@ struct DeviceItemView: View {
             ZStack {
                 Circle()
                     .fill(parent?.clickedDeviceId == self.deviceId ? Color.accentColor : self.backgroundColor)
-                if self.connState == .connected && self.isPluginAvailable(.batteryRequest) {
+                if self.connState == .connected && self.isPluginAvailable(.battery) {
                     BatteryStatus(device: backgroundService._devices[self.deviceId]!) { battery in
                         Circle()
                             .trim(from: 0, to: CGFloat(battery.remoteChargeLevel) / 100)
@@ -92,7 +92,7 @@ struct DeviceItemView: View {
                             .font(.system(.footnote, design: .rounded).weight(.light))
                             .foregroundColor(.black)
                     }.onAppear {
-                        (backgroundService._devices[self.deviceId]?._plugins[.batteryRequest] as? Battery)?
+                        (backgroundService._devices[self.deviceId]?._plugins[.battery] as? Battery)?
                             .sendBatteryStatusOut()
                     }
                 } else if self.mockBatteryLevel != nil {

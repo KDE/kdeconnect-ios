@@ -35,16 +35,16 @@ struct DeviceDetailPluginSettingsView: View {
                 if backgroundService._devices[detailsDeviceId]!._plugins[.share] != nil {
                     Toggle("Share/File Transfer", isOn: $isShareEnabled)
                 }
-                if backgroundService._devices[detailsDeviceId]!._plugins[.findMyPhoneRequest] != nil {
+                if backgroundService._devices[detailsDeviceId]!._plugins[.findMyPhone] != nil {
                     Toggle("Ring/Find My Phone", isOn: $isFindMyPhoneEnabled)
                 }
-                if backgroundService._devices[detailsDeviceId]!._plugins[.batteryRequest] != nil {
+                if backgroundService._devices[detailsDeviceId]!._plugins[.battery] != nil {
                     Toggle("Battery Status", isOn: $isBatteryEnabled)
                 }
                 if backgroundService._devices[detailsDeviceId]!._plugins[.clipboard] != nil {
                     Toggle("Clipboard Sync", isOn: $isClipboardEnabled)
                 }
-                if backgroundService._devices[detailsDeviceId]!._plugins[.mousePadRequest] != nil {
+                if backgroundService._devices[detailsDeviceId]!._plugins[.remoteInput] != nil {
                     Toggle("Remote Input", isOn: $isRemoteInputEnabled)
                 }
                 if backgroundService._devices[detailsDeviceId]!._plugins[.runCommand] != nil {
@@ -63,16 +63,16 @@ struct DeviceDetailPluginSettingsView: View {
             backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.share] = value as NSNumber
         }
         .onChange(of: isFindMyPhoneEnabled) { value in
-            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhoneRequest] = value as NSNumber
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.findMyPhone] = value as NSNumber
         }
         .onChange(of: isBatteryEnabled) { value in
-            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.batteryRequest] = value as NSNumber
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.battery] = value as NSNumber
         }
         .onChange(of: isClipboardEnabled) { value in
             backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.clipboard] = value as NSNumber
         }
         .onChange(of: isRemoteInputEnabled) { value in
-            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.mousePadRequest] = value as NSNumber
+            backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.remoteInput] = value as NSNumber
         }
         .onChange(of: isRunCommandEnabled) { value in
             backgroundService._devices[detailsDeviceId]!._pluginsEnableStatus[.runCommand] = value as NSNumber
@@ -97,14 +97,14 @@ struct DeviceDetailPluginSettingsView: View {
         // Swift & Objective-C inter-op issue:
         // Objective-C can't have BOOL in Dictionary
         // swiftlint:disable:next force_cast
-        let fetchedDictionary = backgroundService.devices[detailsDeviceId]!._pluginsEnableStatus as! [NetworkPacket.`Type`: Bool]
+        let fetchedDictionary = backgroundService.devices[detailsDeviceId]!._pluginsEnableStatus as! [PluginID: Bool]
         withAnimation {
             isPingEnabled = fetchedDictionary[.ping] ?? true
             isShareEnabled = fetchedDictionary[.share] ?? true
-            isFindMyPhoneEnabled = fetchedDictionary[.findMyPhoneRequest] ?? true
-            isBatteryEnabled = fetchedDictionary[.batteryRequest] ?? true
+            isFindMyPhoneEnabled = fetchedDictionary[.findMyPhone] ?? true
+            isBatteryEnabled = fetchedDictionary[.battery] ?? true
             isClipboardEnabled = fetchedDictionary[.clipboard] ?? true
-            isRemoteInputEnabled = fetchedDictionary[.mousePadRequest] ?? true
+            isRemoteInputEnabled = fetchedDictionary[.remoteInput] ?? true
             isRunCommandEnabled = fetchedDictionary[.runCommand] ?? true
             isPresenterEnabled = fetchedDictionary[.presenter] ?? true
         }
