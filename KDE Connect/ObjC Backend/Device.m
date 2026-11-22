@@ -511,49 +511,48 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 //    }
     
     os_log_with_type(logger, self.debugLogLevel, "device reload plugins");
+    // Keep the plugins that are already loaded (and their state and enable status), only create
+    // the ones that are missing. Plugins no longer supported by the capabilities are dropped.
+    NSDictionary<NetworkPacketType, id<Plugin>> *oldPlugins = self.plugins;
+    NSDictionary<NetworkPacketType, NSNumber *> *oldPluginsEnableStatus = self.pluginsEnableStatus;
     // Build the new dictionaries separately and swap them in at once, so concurrent
     // readers never see a plugin enabled in pluginsEnableStatus but missing from plugins
     NSMutableDictionary<NetworkPacketType, id<Plugin>> *plugins = [NSMutableDictionary dictionary];
     NSMutableDictionary<NetworkPacketType, NSNumber *> *pluginsEnableStatus = [NSMutableDictionary dictionary];
     [_failedPlugins removeAllObjects];
     
+    void (^loadPlugin)(NetworkPacketType, id<Plugin> (^)(void)) = ^(NetworkPacketType pluginID, id<Plugin> (^createPlugin)(void)) {
+        id<Plugin> plugin = oldPlugins[pluginID];
+        if (plugin == nil) {
+            os_log_with_type(self->logger, self.debugLogLevel, "creating plugin %{public}@", pluginID);
+            plugin = createPlugin();
+        }
+        plugins[pluginID] = plugin;
+        pluginsEnableStatus[pluginID] = oldPluginsEnableStatus[pluginID] ?: @TRUE;
+    };
+    
     for (NSString* pluginID in _deviceInfo.incomingCapabilities) {
         if ([pluginID isEqualToString:NetworkPacketTypePing]) {
-            [plugins setObject:[[Ping alloc] initWithControlDevice:self] forKey:NetworkPacketTypePing];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePing];
-            
+            loadPlugin(NetworkPacketTypePing, ^{ return [[Ping alloc] initWithControlDevice:self]; });
         } else if ([pluginID isEqualToString:NetworkPacketTypeShare]) {
-            [plugins setObject:[[Share alloc] initWithControlDevice:self] forKey:NetworkPacketTypeShare];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeShare];
-            
+            loadPlugin(NetworkPacketTypeShare, ^{ return [[Share alloc] initWithControlDevice:self]; });
         } else if ([pluginID isEqualToString:NetworkPacketTypeFindMyPhoneRequest]) {
-            [plugins setObject:[[FindMyPhone alloc] initWithControlDevice:self] forKey:NetworkPacketTypeFindMyPhoneRequest];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeFindMyPhoneRequest];
-            
+            loadPlugin(NetworkPacketTypeFindMyPhoneRequest, ^{ return [[FindMyPhone alloc] initWithControlDevice:self]; });
         } else if ([pluginID isEqualToString:NetworkPacketTypeBatteryRequest]) {
-            [plugins setObject:[[Battery alloc] initWithControlDevice:self] forKey:NetworkPacketTypeBatteryRequest];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeBatteryRequest];
-            
+            loadPlugin(NetworkPacketTypeBatteryRequest, ^{ return [[Battery alloc] initWithControlDevice:self]; });
         } else if ([pluginID isEqualToString:NetworkPacketTypeClipboard]) {
-            [plugins setObject:[[Clipboard alloc] initWithControlDevice:self] forKey:NetworkPacketTypeClipboard];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeClipboard];
-            
+            loadPlugin(NetworkPacketTypeClipboard, ^{ return [[Clipboard alloc] initWithControlDevice:self]; });
         } else if ([pluginID isEqualToString:NetworkPacketTypeMousePadRequest]) {
-            [plugins setObject:[[RemoteInput alloc] initWithControlDevice:self] forKey:NetworkPacketTypeMousePadRequest];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeMousePadRequest];
-            
+            loadPlugin(NetworkPacketTypeMousePadRequest, ^{ return [[RemoteInput alloc] initWithControlDevice:self]; });
         } else if ([pluginID isEqualToString:NetworkPacketTypePresenter]) {
-            [plugins setObject:[[Presenter alloc] initWithControlDevice:self] forKey:NetworkPacketTypePresenter];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypePresenter];
+            loadPlugin(NetworkPacketTypePresenter, ^{ return [[Presenter alloc] initWithControlDevice:self]; });
         }
     }
     
     // for the capabilities that are ONLY in the outgoing section of KDE Connect iOS
     for (NSString* pluginID in _deviceInfo.outgoingCapabilities) {
         if ([pluginID isEqualToString:NetworkPacketTypeRunCommand]) {
-            [plugins setObject:[[RunCommand alloc] initWithControlDevice:self] forKey:NetworkPacketTypeRunCommand];
-            [pluginsEnableStatus setValue:@TRUE forKey:NetworkPacketTypeRunCommand];
-            
+            loadPlugin(NetworkPacketTypeRunCommand, ^{ return [[RunCommand alloc] initWithControlDevice:self]; });
         }
     }
     
