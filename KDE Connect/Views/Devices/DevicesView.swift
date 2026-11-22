@@ -33,6 +33,11 @@ struct DevicesView: View {
     }
     
     @State private var showingConfigureDevicesByIPView: Bool = false
+    // The selected device is kept outside of the list rows, so that the details view
+    // stays open when the device disconnects temporarily (e.g. when the app goes to the
+    // background, which closes all the links) and its row disappears from the list.
+    @State private var selectedDeviceId: String?
+    @State private var showingDeviceDetailView: Bool = false
     @State private var isDeviceDiscoveryHelpPresented = false
         
     @ObservedObject var viewModel: ConnectedDevicesViewModel = connectedDevicesViewModel
@@ -55,6 +60,21 @@ struct DevicesView: View {
             NavigationLink(destination: ConfigureDeviceByIPView(), isActive: $showingConfigureDevicesByIPView) {
                 EmptyView()
             }
+
+            NavigationLink(isActive: $showingDeviceDetailView) {
+                if let selectedDeviceId {
+                    DevicesDetailView(detailsDeviceId: selectedDeviceId)
+                        .id(selectedDeviceId)
+                }
+            } label: {
+                EmptyView()
+            }
+        }
+        .onChange(of: viewModel.connectedDevices) { _ in
+            closeDeviceDetailViewIfDeviceIsGone()
+        }
+        .onChange(of: viewModel.savedDevices) { _ in
+            closeDeviceDetailViewIfDeviceIsGone()
         }
         .navigationTitle("Devices")
         .toolbar {
@@ -130,12 +150,10 @@ struct DevicesView: View {
                     .padding(.vertical, 8)
             } else {
                 ForEach(connectedDevicesIds, id: \.self) { key in
-                    NavigationLink(
-                        // How do we know what to pass to the details view?
-                        // Use the "key" from ForEach aka device ID to get it from
-                        // backgroundService's _devices dictionary for the value (Device class objects)
-                        destination: DevicesDetailView(detailsDeviceId: key)
-                    ) {
+                    Button {
+                        selectedDeviceId = key
+                        showingDeviceDetailView = true
+                    } label: {
                         HStack {
                             Image(systemName: "wifi")
                                 .foregroundColor(.green)
@@ -165,8 +183,15 @@ struct DevicesView: View {
                                 // id:desc dictionary?
                                 // Text(key)
                             }
+                            Spacer()
+                            Image(systemName: "chevron.forward")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundColor(Color(UIColor.tertiaryLabel))
                         }
+                        .foregroundColor(.primary)
+                        .contentShape(Rectangle())
                     }
+                    .listRowBackground(isShowingDetails(ofDeviceWithId: key) ? Color(UIColor.systemFill) : nil)
                 }
             }
         } header: {
@@ -297,6 +322,21 @@ struct DevicesView: View {
         }
     }
     
+    private func isShowingDetails(ofDeviceWithId deviceId: String) -> Bool {
+        // In compact width the details view covers the list, so only highlight in split view
+        horizontalSizeClass == .regular && showingDeviceDetailView && selectedDeviceId == deviceId
+    }
+
+    /// Keeps the details view open while the selected device is temporarily disconnected
+    /// (it moves to the remembered devices), but closes it if the device was unpaired.
+    private func closeDeviceDetailViewIfDeviceIsGone() {
+        guard showingDeviceDetailView, let selectedDeviceId else { return }
+        if viewModel.connectedDevices[selectedDeviceId] == nil
+            && viewModel.savedDevices[selectedDeviceId] == nil {
+            showingDeviceDetailView = false
+        }
+    }
+
     func currentPairingDeviceName(id: String) -> String? {
         backgroundService._devices[id]?._deviceInfo.name
     }
