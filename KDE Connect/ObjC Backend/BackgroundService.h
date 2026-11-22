@@ -51,7 +51,6 @@
 - (void) unpairDevice:(NSString*)deviceId;
 //- (NSArray*) getDevicePluginViews:(NSString*)deviceId viewController:(UIViewController*)vc;
 - (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *) getDevicesLists;
-- (void) reloadAllPlugins;
 
 - (void) onNetworkChange;
 @end

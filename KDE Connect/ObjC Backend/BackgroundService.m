@@ -427,12 +427,5 @@
     }
 }
 
-- (void) reloadAllPlugins
-{
-    for (Device* device in _devices) { //_visibleDevices
-        [device reloadPlugins];
-    }
-}
-
 @end
 
