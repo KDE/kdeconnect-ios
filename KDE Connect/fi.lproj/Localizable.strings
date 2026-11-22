@@ -56,6 +56,75 @@
 "Application" = "Sovellus";
 
 /* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Avoimen lähdekoodin projektina uskomme, että on tärkeää olla avoin nykyisistä ja tulevista suunnitelmistamme saattaa iOSin KDE Connect samalle viivalle muiden alustojen kanssa.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Salli valokuvien käyttö asetussovelluksesta, jotta vastaanotetut kuvat ja videot voi tallentaa kuvakirjastoon";
+
+/* No comment provided by engineer. */
+"Available themes" = "Käytettävissä olevat teemat";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Taustatoiminta";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Akun taso";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "Akkuliitännäinen poistettu käytöstä";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Akun tila";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "Eikö laitetta löydy?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Peru";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Luokka: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "Tarkista yhdistämispyynnöt";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "Valitse sovelluskuvake";
+
+/* No comment provided by engineer. */
+"Chores" = "Tehtävät";
+
+/* No comment provided by engineer. */
+"Classic" = "Perinteinen";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Tyhjennä välimuisti";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Tahdista leikepöytä";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "Leikepöytä: Lähetä ja vastaanota tekstiä";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Leikepöytä: tahdistus";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "Laitteiden asetus IP:llä";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "Laitteiden asetus IP:llä:";
+
+/* No comment provided by engineer. */
+"Connect" = "Yhdistä";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Yhdistetyt laitteet";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Yhteysraportti";
+
+/* No comment provided by engineer. */
 "Contacts" = "Yhteystiedot";
 
 /* No comment provided by engineer. */
@@ -65,10 +134,85 @@
 "Contributors" = "Avustajat";
 
 /* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "Kopioi vastaanotetut tiedostot sisältävän kansion sijainti";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "Nykyään ylläpitää %@";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "Toistaiseksi sovelluksen on oikein toimiakseen pysyttävä etualalla";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "Osoittimen herkkyys";
+
+/* No comment provided by engineer. */
 "DANGEROUS OPTIONS" = "VAARALLISET VALINNAT";
 
 /* No comment provided by engineer. */
 "Dark" = "Tumma";
+
+/* No comment provided by engineer. */
+"Debug" = "Virheenpaikannus";
+
+/* No comment provided by engineer. */
+"Debug mode" = "Virheenpaikannustila";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "Laitehaun virheenpaikannus";
+
+/* No comment provided by engineer. */
+"Default" = "Oletus";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "Poista kaikki tallennetut asetukset ja laitteet. Sovellus täytyy käynnistää kokonaan uudelleen.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "Poista koneen varmenne";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Poistaa konevarmenteen ja luo sen uudelleen, kun sovellus on käynnistetty uudelleen. HUOM! Laite ei tällöin pysty yhdistämään aiemmin yhdistettyihin laitteisiin. Laitteen paritus on purettava etälaitteilta ja paritettava uudelleen.";
+
+/* No comment provided by engineer. */
+"Developer" = "Kehittäjä";
+
+/* No comment provided by engineer. */
+"Device" = "Laite";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "Laitteen löytäminen";
+
+/* No comment provided by engineer. */
+"Device IP" = "Laitteen IP";
+
+/* No comment provided by engineer. */
+"Device name" = "Laitenimi";
+
+/* No comment provided by engineer. */
+"Device Name" = "Laitteen nimi";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Laitteen nimi:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "Laite ei verkossa";
+
+/* No comment provided by engineer. */
+"Device Status" = "Laitteen tila";
+
+/* No comment provided by engineer. */
+"Devices" = "Laitteet";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "Suorakättelylaitteet";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "Poista UDP-yleislähetys käytöstä";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "Löydetyt laitteet";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Löytäminen ja paritus";
 
 /* No comment provided by engineer. */
 "Do Not Pair" = "Älä parita";
@@ -78,6 +222,39 @@
 
 /* No comment provided by engineer. */
 "Done" = "Valmis";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Aktivoi virheenpaikannustila kaksoisnapauttamalla";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Ota käyttöön tai poista käytöstä liitännäisiä";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Salaustietoa";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Tyhjennä tallennettujen laitteiden välimuisti";
+
+/* No comment provided by engineer. */
+"Error" = "Virhe";
+
+/* No comment provided by engineer. */
+"Error Occured" = "Tapahtui virhe";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Poistu esityksestä";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Kokeelliset toiminnot";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Kuvakkeen vaihtaminen epäonnistui";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "%lld tiedoston vastaanottaminen epäonnistui";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "%lld tiedoston lähettäminen epäonnistui";
 
 /* No comment provided by engineer. */
 "Features" = "Ominaisuuksia";
@@ -92,7 +269,193 @@
 "Find My Device" = "Etsi laite";
 
 /* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "”Löydä puhelimeni” aloitettiin etälaitteesta";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Löydä puhelimeni -tila";
+
+/* No comment provided by engineer. */
+"Forget all" = "Unohda kaikki";
+
+/* No comment provided by engineer. */
+"From %@" = "Laitteelta %@";
+
+/* No comment provided by engineer. */
+"General" = "Perusasetukset";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Siirry koko näytölle";
+
+/* Hard haptic feedback level */
+"Heavy" = "Raskas";
+
+/* No comment provided by engineer. */
+"Help" = "Ohje";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "LÖYTYI!";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "Jos KDE Connectilla on vaikeuksia muiden laitteiden löytämisessä, voi yrittää yhdistellä seuraavia ratkaisuja:\n\n1. ”Virkistä haku” %@-valikosta tai veto laiteluettelon virkistämiseksi tällä ja muilla laitteilla.\n\n2. Varmista, että muutkin laitteet ajavat KDE Connectia ja on yhdistetty samaan verkkoon kuin tämä laite.\n\n3. Lisää muut laitteet käsin %@-valikon valinnalla ”Laitteiden asetus IP:llä”, minkä jälkeen valitse ”Virkistä haku”.\n\n4. Kokeile käyttöoppaan muita ratkaisuja, esim. toisten laitteiden palomuurien asettamista:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Jos näkyy haamulaitteita tai kaikki ei toimi oikein, kaikkien tallennettujen laitteiden tyhjentäminen voi korjata sen. Vaatii käynnistämään sovelluksen kokonaan uudelleen.";
+
+/* No comment provided by engineer. */
+"In progress" = "Meneillään";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Saapuva parituspyyntö";
+
+/* No comment provided by engineer. */
+"Info" = "Tietoa";
+
+/* No comment provided by engineer. */
+"Information" = "Tietoa";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Aloitetaanko paritus?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Eheytys Sirin pikanäppäimiin";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "Eheytys järjestelmän tyylisivuun on työn alla";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Kansainvälistäminen ja kotoistaminen";
+
+/* No comment provided by engineer. */
+"Invalid" = "Virheellinen";
+
+/* No comment provided by engineer. */
 "KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Näppäimistö: etähallinta";
+
+/* No comment provided by engineer. */
+"License" = "Lisenssi";
+
+/* Light haptic feedback level */
+"Light" = "Kevyt";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Lukitusnäyttö: etähallinta";
+
+/* No comment provided by engineer. */
+"Logs" = "Lokit";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "%@ – lokit";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Tiedostot-sovelluksessa on ehkä vastaanotettuja tiedostoja";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Ei ehkä toimi Windowsin KDE Connectin kanssa";
+
+/* Medium haptic feedback level */
+"Medium" = "Keskitasoinen";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "Hiiri: etähallinta";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: etähallitse mediaa ja reagoi";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Verkkopaketin luonti";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "Tästä verkosta ei löytynyt lisää laitteita.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "Laitteesta ei havaittua akkua.";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "Ei yhdistettyjä laitteita.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "Nykyisestä verkosta ei löytynyt laitteita.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Ei vielä sopivia lokeja";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "Ei, pysy paritettuna";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Ei vielä toteutettu";
+
+/* No comment provided by engineer. */
+"Notice" = "Ilmoitus";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Ilmoitus: vastaanota muilta";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "Ilmoitus sovelluksen ulkopuolelta:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Paketin runko";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Paketin tunniste";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Paketin tyyppi";
+
+/* No comment provided by engineer. */
+"Pair" = "Parita";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "Parituspyyntö laitteelta ”%@”\nTodennusavain: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "Paritus on valmis";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "Paritus torjuttu";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "Parituksen aikakatkaisu";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "Paritus laitteen ”%@” kanssa epäonnistui";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "Paritus laitteen ”%@” kanssa onnistui";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Yhdistetyltä laitteelta vastaanotettiin tiedustelupaketti.";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Playground" = "Leikkikenttä";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Liitännäisten asetukset";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "Osoitinherkkyys";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "Valmistellaan mediaa…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Esitys: hallitse kaukosäädintä";
 
 /* No comment provided by engineer. */
 "Preview: " = "Esikatselu: ";
@@ -116,6 +479,9 @@
 "Receiving file %lld of %lld" = "Vastaanotetaan tiedostoa %lld/%lld";
 
 /* No comment provided by engineer. */
+"Refresh Discovery" = "Virkistä haku";
+
+/* No comment provided by engineer. */
 "Remembered Devices" = "Muistetut laitteet";
 
 /* No comment provided by engineer. */
@@ -126,6 +492,12 @@
 
 /* No comment provided by engineer. */
 "Request to pair with '%@'" = "Pyydä paritusta laitteen ”%@” kanssa";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "Käynnistä haku uudelleen";
+
+/* Rigid haptic feedback level */
+"Rigid" = "Jäykkä";
 
 /* No comment provided by engineer. */
 "Ring Device" = "Soita laitteelle";
@@ -256,8 +628,38 @@
 /* No comment provided by engineer. */
 "This is likely not possible to implement on iOS" = "Tätä ei luultavasti ole mahdollista toteuttaa iOSiin";
 
+/* No comment provided by engineer. */
+"Troubleshooting" = "Vian etsintä";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Luotetut verkot";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Tuntematon teema";
+
+/* No comment provided by engineer. */
+"Unpair" = "Pura paritus";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "Puretaanko paritus laitteeseen %@?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Puretaanko laiteparitus?";
+
 /* Filename to use for an unnamed file */
 "untitled" = "nimetön";
+
+/* No comment provided by engineer. */
+"Valid" = "Kelvollinen";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Todennusavain: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Versio: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "Odotetaan %lld muun tiedoston alkavan siirron";
 
 /* No comment provided by engineer. */
 "Waiting for logs..." = "Odotetaan lokeja…";
@@ -273,4 +675,7 @@
 
 /* No comment provided by engineer. */
 "Yes, Unpair" = "Kyllä, pura paritus";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "Liitännäisiä voi ottaa käyttöön tai poistaa käytöstä yksitellen. Joillakin liitännäisillä on omat asetuksensa, jotka löytää niiden näkymistä.";
 

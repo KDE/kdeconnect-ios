@@ -1,0 +1,762 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** для iOS";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ и ещё %lld файлов";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ для iOS";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© Сообщество KDE и участники";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "О программе";
+
+/* No comment provided by engineer. */
+"Actions" = "Действия";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "Добавьте здесь локальные IP-адреса других устройств, если они не обнаруживаются автоматически.";
+
+/* No comment provided by engineer. */
+"Advanced" = "Дополнительно";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Дополнительные параметры";
+
+/* No comment provided by engineer. */
+"All Messages" = "Все сообщения";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "Также написали: %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "Значок приложения";
+
+/* No comment provided by engineer. */
+"App Icon:" = "Значок приложения:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "Оформление приложения:";
+
+/* No comment provided by engineer. */
+"Application" = "Приложение";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Поскольку KDE Connect iOS — проект с открытым исходным кодом, важно открыто рассказывать о текущих и будущих планах по приведению его в соответствие с другими платформами.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Разрешить доступ к «Фотографиям» в приложении «Параметры», чтобы сохранять полученные фото и видео в медиатеку.";
+
+/* No comment provided by engineer. */
+"Available themes" = "Доступные оформления";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Фоновая активность";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Уровень заряда батареи";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "Модуль батареи отключён";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Состояние батареи";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "Не удаётся найти устройства?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Отмена";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Категория: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "Ознакомьтесь с запросами на слияние";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "Выбрать значок приложения";
+
+/* No comment provided by engineer. */
+"Chores" = "Рутинные задачи";
+
+/* No comment provided by engineer. */
+"Classic" = "Классическая";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Очистить кэш";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Синхронизация буфера обмена";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "Буфер обмена: отправка и получение текста";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Буфер обмена: синхронизация";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "Настройка устройств по IP-адресу";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "Настройка устройств по IP-адресу:";
+
+/* No comment provided by engineer. */
+"Connect" = "Подключиться";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Подключённые устройства";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Отчёт о подключении";
+
+/* No comment provided by engineer. */
+"Contacts" = "Контакты";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "Помочь проекту KDE Connect";
+
+/* No comment provided by engineer. */
+"Contributors" = "Участники";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "Копировать путь к папке с полученными файлами";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "Сопровождающий: %@";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "Сейчас для правильной работы приложение должно оставаться на переднем плане";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "Чувствительность указателя";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "Опасные параметры";
+
+/* No comment provided by engineer. */
+"Dark" = "Тёмное";
+
+/* No comment provided by engineer. */
+"Debug" = "Отладка";
+
+/* No comment provided by engineer. */
+"Debug mode" = "Режим отладки";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "Отладка обнаружения устройств";
+
+/* No comment provided by engineer. */
+"Default" = "По умолчанию";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "Удаление всех сохранённых параметров и устройств. Требуется полный перезапуск приложения.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "Удалить сертификат узла";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Удалить сертификат узла и создать его заново при перезапуске. Требуется полный перезапуск приложения. ПРИМЕЧАНИЕ. После этого устройство не сможет подключаться к ранее подключённым устройствам. Необходимо отменить сопряжение этого устройства с другими удалёнными устройствами и выполнить сопряжение заново.";
+
+/* No comment provided by engineer. */
+"Developer" = "Разработчик";
+
+/* No comment provided by engineer. */
+"Device" = "Устройство";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "Обнаружение устройств";
+
+/* No comment provided by engineer. */
+"Device IP" = "IP-адрес устройства";
+
+/* No comment provided by engineer. */
+"Device name" = "Имя устройства";
+
+/* No comment provided by engineer. */
+"Device Name" = "Имя устройства";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Имя устройства:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "Устройство не в сети";
+
+/* No comment provided by engineer. */
+"Device Status" = "Состояние устройства";
+
+/* No comment provided by engineer. */
+"Devices" = "Устройства";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "Устройства с прямым рукопожатием";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "Отключить широковещательную передачу UDP";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "Обнаруженные устройства";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Обнаружение и сопряжение";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "Не сопрягать";
+
+/* No comment provided by engineer. */
+"Donate" = "Поддержать";
+
+/* No comment provided by engineer. */
+"Done" = "Готово";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Чтобы включить режим отладки, коснитесь дважды";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "Двойное касание для включения отладки обнаружения устройств";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Включение и отключение модулей";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Информация о шифровании";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Очистить кэш сохранённых устройств";
+
+/* No comment provided by engineer. */
+"Error" = "Ошибка";
+
+/* No comment provided by engineer. */
+"Error Occured" = "Произошла ошибка";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "Ошибки и неисправности";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Выйти из режима презентации";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Экспериментальные возможности";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Не удалось изменить значок";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "Не удалось получить %lld файлов";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "Не удалось получить данные от %@";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "Не удалось отправить %lld файлов";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "Не удалось отправить на %@";
+
+/* No comment provided by engineer. */
+"Fault" = "Сбой";
+
+/* No comment provided by engineer. */
+"Features" = "Возможности";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Передача файлов";
+
+/* No comment provided by engineer. */
+"Files" = "Файлы";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Найти моё устройство";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "Поиск телефона запущен с удалённого устройства";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Режим поиска телефона";
+
+/* No comment provided by engineer. */
+"Forget all" = "Забыть все";
+
+/* No comment provided by engineer. */
+"From %@" = "От: %@";
+
+/* No comment provided by engineer. */
+"General" = "Общие";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Перейти в полноэкранный режим";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "Стиль тактильной отдачи";
+
+/* Hard haptic feedback level */
+"Heavy" = "Сильная";
+
+/* No comment provided by engineer. */
+"Help" = "Справка";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "Скрывать выбор стиля тактильной отдачи";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "Скрывать ползунок чувствительности";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "Нашлось";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "Если запомненное устройство уже в сети, но не показывается здесь, нажмите «Обновить обнаружение».";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "Если KDE Connect не удаётся обнаружить другие устройства, можно попробовать несколько из следующих решений:\n\n1. На этом и на других устройствах выберите «Обновить обнаружение» в меню %@ или потяните список устройств вниз для обновления.\n\n2. Убедитесь, что на других устройствах также запущен KDE Connect и они подключены к той же сети, что и это устройство.\n\n3. Добавьте другие устройства вручную с помощью параметра «Настройка устройств по IP-адресу» в меню %@, а затем выберите «Обновить обнаружение».\n\n4. Ознакомьтесь с другими решениями в руководстве пользователя, например по настройке брандмауэров других устройств:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Если появляются фантомные устройства или что-то работает неправильно, удаление всех сохранённых данных устройств может исправить ситуацию. Требуется полный перезапуск приложения.";
+
+/* No comment provided by engineer. */
+"In progress" = "Выполняется";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Входящий запрос на сопряжение";
+
+/* No comment provided by engineer. */
+"Info" = "Информация";
+
+/* No comment provided by engineer. */
+"Information" = "Сведения";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Начать сопряжение?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Интеграция с Siri Shortcuts";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "Интеграция с системным меню общего доступа в разработке";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Интернационализация и локализация";
+
+/* No comment provided by engineer. */
+"Invalid" = "Неверный";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Клавиатура: управление удалённым устройством";
+
+/* No comment provided by engineer. */
+"License" = "Лицензия";
+
+/* Light haptic feedback level */
+"Light" = "Слабая";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Блокировка экрана: управление удалённым устройством";
+
+/* No comment provided by engineer. */
+"Logs" = "Журналы";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "Журналы для %@";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Управление полученными файлами в приложении «Файлы»";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Может не работать с KDE Connect для Windows";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "Возможно, с помощью схемы URL и интеграции с Siri Shortcuts";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "Возможно, с помощью Apple Notification Center Service (ACNS)";
+
+/* Medium haptic feedback level */
+"Medium" = "Средняя";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "Мышь: управление удалённым устройством";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "Перемещайте палец по экрану, чтобы перемещать указатель мыши. Коснитесь одним пальцем для щелчка левой кнопкой. Коснитесь двумя пальцами для щелчка правой кнопкой. Длительное нажатие включает перетаскивание. Чтобы отправлять щелчки напрямую, воспользуйтесь меню в правом верхнем углу.\n\nПроведите одним пальцем от расположенного выше «Колеса прокрутки», чтобы прокручивать по вертикали и горизонтали. Коснитесь «Колеса прокрутки» для щелчка средней кнопкой.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: управление удалёнными медиапроигрывателями и ответ";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "Кроссплатформенное приложение, позволяющее устройствам обмениваться данными (например, телефону и компьютеру)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Составление сетевых пакетов";
+
+/* No comment provided by engineer. */
+"Nice" = "Отлично";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "В этой сети дополнительные устройства не обнаружены.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "В устройстве не обнаружена батарея";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "Нет подключённых устройств.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "В текущей сети устройства не обнаружены.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Подходящих журналов пока нет";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "Нет, оставить сопряжение";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Ещё не реализовано";
+
+/* No comment provided by engineer. */
+"Notice" = "Уведомление";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Уведомления: получение от других устройств";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "Уведомления: получение другими устройствами";
+
+/* No comment provided by engineer. */
+"OK" = "ОК";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "Стиль тактильной отдачи при нажатии";
+
+/* Unknown haptic feedback level */
+"Other" = "Другое";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "Уведомление вне приложения:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Тело пакета";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Метка пакета";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Тип пакета";
+
+/* No comment provided by engineer. */
+"Pair" = "Выполнить сопряжение";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "Запрос на сопряжение от «%@»\nКлюч проверки: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "Сопряжение завершено";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "Сопряжение отклонено";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "Истекло время ожидания сопряжения";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "Не удалось выполнить сопряжение с «%@»";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "Сопряжение с «%@» выполнено";
+
+/* No comment provided by engineer. */
+"Peer" = "Устройство";
+
+/* No comment provided by engineer. */
+"Ping" = "Проверка связи";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Получен запрос ping от подключённого устройства.";
+
+/* No comment provided by engineer. */
+"Ping!" = "Проверка связи";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Playground" = "Песочница";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Параметры модулей";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "Модули при доступности";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "Чувствительность указателя";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "Подготовка медиаданных…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Презентация: управление удалённым устройством";
+
+/* No comment provided by engineer. */
+"Preview: " = "Предварительный просмотр: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Здесь появятся ранее подключённые устройства.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Отправить локальный буфер обмена";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Причина: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Полученные фото и видео будут сохраняться в приложении «Файлы», так как предоставить доступ к медиатеке невозможно.";
+
+/* No comment provided by engineer. */
+"Receiving" = "Получение";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "Получение файла %lld из %lld";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "Обновить обнаружение";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Запомненные устройства";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Удалённый ввод";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Сообщить об ошибке";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "Запрос на сопряжение с «%@»";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "Перезапустить обнаружение";
+
+/* Rigid haptic feedback level */
+"Rigid" = "Жёсткая";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Подать сигнал на устройстве";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Звонок/Поиск телефона";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Скруглённый прямоугольник";
+
+/* No comment provided by engineer. */
+"Run Command" = "Выполнить команду";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "Выполнение команды: запрос";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "Выполнение команды: ответ";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Сохранять фотографии в медиатеку";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Сохранять видео в медиатеку";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "Хранитель экрана: блокировка на удалённом устройстве";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Чтобы начать, выберите устройство из списка «Устройства».";
+
+/* No comment provided by engineer. */
+"Send" = "Отправить";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Отправить двойной щелчок левой кнопкой";
+
+/* No comment provided by engineer. */
+"Send Files" = "Отправить файлы";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "Отправить удержание левой кнопки";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Отправить щелчок средней кнопкой";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Отправить фотографии и видео";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Отправить проверку связи";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Отправить щелчок правой кнопкой";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Отправить одиночный щелчок левой кнопкой";
+
+/* No comment provided by engineer. */
+"Sending" = "Отправка";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "Отправка файла %lld из %lld";
+
+/* No comment provided by engineer. */
+"Settings" = "Параметры";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: доступ к удалённому устройству и запуск файлового сервера";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "Отпечаток SHA256 сертификата вашего устройства:\n%@\n\nОтпечаток SHA256 сертификата удалённого устройства: \n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Общий доступ: получение файлов, текста и URL-адресов";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Общий доступ: отправка файла";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Общий доступ: отправка текста и URL-адресов";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "Общий доступ/Передача файлов";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "Показывать выбор стиля тактильной отдачи";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Показывать полученные файлы в Finder";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "Показывать ползунок чувствительности";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "Пульт слайд-шоу";
+
+/* Soft haptic feedback level */
+"Soft" = "Мягкая";
+
+/* No comment provided by engineer. */
+"Source Code" = "Исходный код";
+
+/* No comment provided by engineer. */
+"Status" = "Состояние";
+
+/* No comment provided by engineer. */
+"Supported" = "Поддерживается";
+
+/* No comment provided by engineer. */
+"System Default" = "Системное";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "Системная громкость: управление удалённым устройством и ответ";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "Съёмка фото: ответ";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Коснитесь, чтобы начать сопряжение";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "Телефония: синхронизация SMS и вызовов";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "Имя устройства, распознаваемое KDE Connect";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "Указанные выше параметры необратимы. Для их применения требуется полный перезапуск приложения.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "Обычно они выполняются автоматически, но если нет, некоторые из них можно выполнить вручную.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "Должны работать практически без проблем";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Сторонние библиотеки";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "Скорее всего, реализовать это в iOS невозможно";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "Через системное меню общего доступа";
+
+/* No comment provided by engineer. */
+"To %@" = "Кому: %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "Чтобы подключиться к запомненным устройствам, они должны быть подключены к той же сети, что и это устройство.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "Переключить клавиатуру";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Устранение неполадок";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Доверенные сети";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Неизвестное оформление";
+
+/* No comment provided by engineer. */
+"Unpair" = "Разорвать сопряжение";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "Разорвать сопряжение с «%@»?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Разорвать сопряжение с устройством?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "без названия";
+
+/* No comment provided by engineer. */
+"Valid" = "Верный";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Ключ проверки: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Версия: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "Ожидание начала передачи остальных файлов (%lld)";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "Ожидание журналов…";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "Ожидание отправки";
+
+/* No comment provided by engineer. */
+"Website" = "Веб-сайт";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Вики и руководство пользователя";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Да, разорвать сопряжение";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "Модули можно включать и отключать по отдельности. Некоторые модули имеют собственные параметры, которые находятся в соответствующих разделах.";
+

@@ -170,6 +170,9 @@
 "Delete host certificate" = "Borrar certificado del servidor";
 
 /* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Borra el certificado del servidor y lo regenera al reiniciar. Requiere un reinicio completo de la aplicación. Nota: esta opción impedirá que el dispositivo se conecte con los dispositivos a los que ya estaba conectado. Debe desvincular este dispositivo desde los otros dispositivos remotos y vincularlo de nuevo.";
+
+/* No comment provided by engineer. */
 "Developer" = "Desarrollador";
 
 /* No comment provided by engineer. */
@@ -221,13 +224,58 @@
 "Done" = "Hecho";
 
 /* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Doble pulsación para activar el modo depuración";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "Doble pulsación para activar la depuración del descubrimiento de dispositivos";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Activar/desactivar complementos";
+
+/* No comment provided by engineer. */
 "Encryption Info" = "Información de cifrado";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Borrar la caché de dispositivos guardados";
 
 /* No comment provided by engineer. */
 "Error" = "Error";
 
 /* No comment provided by engineer. */
+"Error Occured" = "Ocurrió un error";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "Errores y fallos";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Salir de la presentación";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Funcionalidades experimentales";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Fallo al cambiar el icono";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "Fallo al recibir %lld archivos";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "Fallo al recibir desde %@";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "Fallo al enviar %lld archivos";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "Fallo al enviar a %@";
+
+/* No comment provided by engineer. */
+"Fault" = "Fallo";
+
+/* No comment provided by engineer. */
 "Features" = "Funcionalidades";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Transferencias de archivos";
 
 /* No comment provided by engineer. */
 "Files" = "Archivos";
@@ -236,7 +284,16 @@
 "Find My Device" = "Encontrar mi dispositivo";
 
 /* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "Encontrar mi teléfono iniciado desde un dispositivo remoto";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Modo encontrar mi teléfono";
+
+/* No comment provided by engineer. */
 "Forget all" = "Olvidar todos";
+
+/* No comment provided by engineer. */
+"From %@" = "Desde %@";
 
 /* No comment provided by engineer. */
 "General" = "General";
@@ -245,13 +302,64 @@
 "Go FullScreen" = "Ir a pantalla completa";
 
 /* No comment provided by engineer. */
+"Haptics Style" = "Estilo háptico";
+
+/* Hard haptic feedback level */
+"Heavy" = "Pesado";
+
+/* No comment provided by engineer. */
 "Help" = "Ayuda";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "Ocultar el selector del estilo háptico";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "Ocultar control deslizante de sensibilidad";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "¡Lo he encontrado!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "Si un dispositivo guardado ya está en línea pero no se muestra aquí, pruebe a Refrescar descubrimiento.";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "Si KDE Connect tiene problemas al descubrir otros dispositivos, puede intentar una combinación de las siguientes soluciones:\n\n1. \"Refrescar descubrimiento\" a través el menú %@ o pulse el botón refrescar en la lista de dispositivos, en este y otros dispositivos\n\n2. Asegúrese que el resto de dispositivos también ejecutan KDE Connect y están conectados a la misma red que este dispositivo.\n\n3. Añada manualmente los otros dispositivos a través de la opción «Configurar dispositivos por IP» en el menú %@, y luego «Refrescar descubrimiento»\n\n4. Compruebe otras soluciones en el manual de usuario, como configurar los cortafuegos de los otros dispositivos:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Si hay dispositivos fantasma o algo no se comporta correctamente, borrar todos los dispositivos quizás lo resuelva. Requiere un reinicio completo de la aplicación.";
+
+/* No comment provided by engineer. */
+"In progress" = "En progreso";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Petición de vinculación entrante";
+
+/* No comment provided by engineer. */
+"Info" = "Información";
 
 /* No comment provided by engineer. */
 "Information" = "Información";
 
 /* No comment provided by engineer. */
+"Initiate Pairing?" = "¿Iniciar vinculación?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Accesos rápidos de integración con Siri";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "La integración con la hoja compartida del sistema está en desarrollo";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Internacionalización y localización";
+
+/* No comment provided by engineer. */
+"Invalid" = "Inválido";
+
+/* No comment provided by engineer. */
 "KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Teclado: Control remoto";
 
 /* No comment provided by engineer. */
 "License" = "Licencia";
@@ -260,19 +368,103 @@
 "Light" = "Claro";
 
 /* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Bloqueo de pantalla: Control remoto";
+
+/* No comment provided by engineer. */
 "Logs" = "Registros";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "Registros para %@";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Administrar archivos recibidos en la aplicación Archivos";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Puede que no funcione con KDE Connect para Windows";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "Quizás a través del esquema URL e integración con accesos rápidos de Siri";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "Quizás con el centro de servicios de notificaciones de Apple (ACNS)";
 
 /* Medium haptic feedback level */
 "Medium" = "Media";
 
 /* No comment provided by engineer. */
+"Mouse: Control Remote" = "Ratón: Control remoto";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "Desplace un dedo por la pantalla para mover el cursor del ratón. Pulse con un dedo para pulsación izquierda. Pulse con dos dedos para pulsación derecha. Use una pulsación larga para activar el arrastrar y dejar. O use el el menú en la esquina superior derecha para enviar pulsaciones\n\nArrastre con un dedo desde la «rueda de desplazamiento» más arriba para desplazarte horizontal o verticalmente. Pulse en «rueda de desplazamiento» para pulsación media.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: Control remoto de medios y respuesta";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "Aplicación multi-plataforma que permite a sus dispositivos comunicarse. (por ejemplo, su teléfono y su equipo)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Compositor de paquetes de red";
+
+/* No comment provided by engineer. */
+"Nice" = "Agradable";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "No se han encontrado dispositivos adicionales en esta red.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "No se ha detectado batería en el dispositivo.";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "No hay dispositivos conectados actualmente.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "No se ha descubierto ningún dispositivo en la red actual.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Todavía no hay registros de emparejamiento.";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "No, mantenerse vinculado";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Todavía no está implementado";
+
+/* No comment provided by engineer. */
+"Notice" = "Aviso";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Notificación: Recibir desde otros";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "Notificación: Recuperar desde otros";
+
+/* No comment provided by engineer. */
 "OK" = "Aceptar";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "Estilo háptico al pulsar";
 
 /* Unknown haptic feedback level */
 "Other" = "Otros";
 
 /* No comment provided by engineer. */
+"Out-App Notification:" = "Notificación fuera de la aplicación:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Cuerpo del paquete";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Etiqueta del paquete";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Tipo del paquete";
+
+/* No comment provided by engineer. */
 "Pair" = "Vincular";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "Petición de vinculación desde '%@'\nClave de verificación: %@";
 
 /* No comment provided by engineer. */
 "Pairing Complete" = "Vinculación completa";
@@ -284,13 +476,28 @@
 "Pairing Timed Out" = "Vinculación expirada";
 
 /* No comment provided by engineer. */
+"Pairing with '%@' failed" = "La vinculación con '%@' falló";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "La vinculación con '%@' tuvo éxito";
+
+/* No comment provided by engineer. */
+"Peer" = "Vincular";
+
+/* No comment provided by engineer. */
 "Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Ping recibido desde un dispositivo conectado.";
 
 /* No comment provided by engineer. */
 "Ping!" = "¡Ping!";
 
 /* No comment provided by engineer. */
 "Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Playground" = "Patio de juegos";
 
 /* No comment provided by engineer. */
 "Plugin Settings" = "Preferencias del complemento";
@@ -302,10 +509,25 @@
 "Pointer Sensitivity" = "Sensibilidad del puntero";
 
 /* No comment provided by engineer. */
+"Preparing Media…" = "Preparando medios…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Presentación: Control remoto";
+
+/* No comment provided by engineer. */
 "Preview: " = "Vista previa: ";
 
 /* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Los dispositivos previamente conectados aparecerán aquí.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Enviar portapapeles local";
+
+/* No comment provided by engineer. */
 "Reason: %@" = "Motivo: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Las fotos y vídeos recibidos se guardarán el la aplicación Archivos porque no puede darnos acceso al su librería de fotografías.";
 
 /* No comment provided by engineer. */
 "Receiving" = "Recibiendo";
@@ -314,10 +536,19 @@
 "Receiving file %lld of %lld" = "Recibiendo archivo %lld de %lld";
 
 /* No comment provided by engineer. */
+"Refresh Discovery" = "Refrescar descubrimiento";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Dispositivos recordados";
+
+/* No comment provided by engineer. */
 "Remote Input" = "Entrada remota";
 
 /* No comment provided by engineer. */
 "Report Bug" = "Informar de fallo";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "Petición para vincular con '%@'";
 
 /* No comment provided by engineer. */
 "Restart Discovery" = "Reiniciar descubrimiento";
@@ -342,6 +573,18 @@
 
 /* No comment provided by engineer. */
 "Run Command: Respond" = "Ejecutar orden: Respuesta";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Guardar fotos a la librería de fotografías";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Guardar vídeos a la librería de fotografías";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "Salvapantallas: Inhibir remotamente";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Seleccione un dispositivo de la lista de dispositivos para empezar.";
 
 /* No comment provided by engineer. */
 "Send" = "Enviar";
@@ -378,6 +621,12 @@
 
 /* No comment provided by engineer. */
 "Settings" = "Preferencias";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: Acceso remoto y el arranque del servidor de archivos";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "La huella SHA256 del certificado de su dispositivo es:\n%@\n\nLa huella SHA256 del certificado del dispositivo remoto es: \n%@";
 
 /* No comment provided by engineer. */
 "Share: Receive File, Text, and URL" = "Compartir: Recibir archivo, texto y URL";

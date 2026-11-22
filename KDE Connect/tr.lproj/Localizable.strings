@@ -98,7 +98,7 @@
 "Classic" = "Klasik";
 
 /* No comment provided by engineer. */
-"Clear Cache" = "Önbelleği Temizle";
+"Clear Cache" = "Ön Belleği Temizle";
 
 /* No comment provided by engineer. */
 "Clipboard Sync" = "Pano Eşzamanlaması";
@@ -236,7 +236,7 @@
 "Encryption Info" = "Şifreleme Bilgisi";
 
 /* No comment provided by engineer. */
-"Erase saved devices cache" = "Kayıtlı aygıtların önbelleğini temizleyin.";
+"Erase saved devices cache" = "Kayıtlı aygıtların ön belleğini temizleyin.";
 
 /* No comment provided by engineer. */
 "Error" = "Hata";
@@ -515,7 +515,7 @@
 "Presenter: Control Remote" = "Sunucu: Kumandayı Denetle";
 
 /* No comment provided by engineer. */
-"Preview: " = "Önizle: ";
+"Preview: " = "Ön izle: ";
 
 /* No comment provided by engineer. */
 "Previously connected devices will appear here." = "Daha önceden bağlanılan aygıtlar burada görünür.";

@@ -323,6 +323,9 @@
 "If a remembered device is already online but not shown here, try Refresh Discovery." = "אם מכשיר שמור כבר מקוון אבל אינו מופיע כאן, כדאי לנסות לרענן את הגילוי.";
 
 /* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "אם יש מכשיר שנותק בפתאומיות או שמשהו אחר לא מתנהג כראוי, מחיקת כל נתוני המכשירים השמורים עשויה לתקן את זה. דורש את הפעלת היישום מחדש לגמרי.";
+
+/* No comment provided by engineer. */
 "In progress" = "בתהליכים";
 
 /* No comment provided by engineer. */

@@ -1,0 +1,393 @@
+/* No comment provided by engineer. */
+"-" = "−";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** für iOS";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ für iOS";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© KDE-Gemeinschaft & Mitwirkende";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "Über";
+
+/* No comment provided by engineer. */
+"Actions" = "Aktionen";
+
+/* No comment provided by engineer. */
+"Advanced" = "Erweitert";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Erweiterte Einstellungen";
+
+/* No comment provided by engineer. */
+"All Messages" = "Alle Nachrichten";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "Auch geschrieben von %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"Application" = "Anwendung";
+
+/* No comment provided by engineer. */
+"Available themes" = "Verfügbare Designs";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Hintergrundaktivität";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Akku-Ladestand";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "Akkumodul deaktiviert";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Akku-Zustand";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Kategorie: %@";
+
+/* No comment provided by engineer. */
+"Classic" = "Klassisch";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Zwischenspeicher leeren";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Synchronisierung der Zwischenablage";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Zwischenablage: Synchronisieren";
+
+/* No comment provided by engineer. */
+"Connect" = "Verbinden";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Verbundene Geräte";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Verbindungsbericht";
+
+/* No comment provided by engineer. */
+"Contacts" = "Kontakte";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "Zu KDE Connect beitragen";
+
+/* No comment provided by engineer. */
+"Contributors" = "Mitwirkende";
+
+/* No comment provided by engineer. */
+"Dark" = "Dunkel";
+
+/* No comment provided by engineer. */
+"Debug" = "Debug";
+
+/* No comment provided by engineer. */
+"Default" = "Standard";
+
+/* No comment provided by engineer. */
+"Developer" = "Entwickler";
+
+/* No comment provided by engineer. */
+"Device" = "Gerät";
+
+/* No comment provided by engineer. */
+"Device name" = "Gerätename";
+
+/* No comment provided by engineer. */
+"Device Name" = "Gerätename";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Gerätename:";
+
+/* No comment provided by engineer. */
+"Device Status" = "Gerätestatus";
+
+/* No comment provided by engineer. */
+"Devices" = "Geräte";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Erkennung & Kopplung";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "Nicht koppeln";
+
+/* No comment provided by engineer. */
+"Donate" = "Spenden";
+
+/* No comment provided by engineer. */
+"Done" = "Fertig";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Doppelt tippen, um den Fehlersuchmodus zu aktivieren";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Verschlüsselungsinformationen";
+
+/* No comment provided by engineer. */
+"Error" = "Fehler";
+
+/* No comment provided by engineer. */
+"Error Occured" = "Fehler aufgetreten";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Präsentation beenden";
+
+/* No comment provided by engineer. */
+"Features" = "Funktionen";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Dateiübertragungen";
+
+/* No comment provided by engineer. */
+"Files" = "Dateien";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Mein Gerät suchen";
+
+/* No comment provided by engineer. */
+"Forget all" = "Alles vergessen";
+
+/* No comment provided by engineer. */
+"From %@" = "Von %@";
+
+/* No comment provided by engineer. */
+"General" = "Allgemein";
+
+/* Hard haptic feedback level */
+"Heavy" = "Stark";
+
+/* No comment provided by engineer. */
+"Help" = "Hilfe";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Eingehende Kopplungsanfrage";
+
+/* No comment provided by engineer. */
+"Info" = "Information";
+
+/* No comment provided by engineer. */
+"Information" = "Information";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Kopplung einleiten?";
+
+/* No comment provided by engineer. */
+"Invalid" = "Ungültig";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"License" = "Lizenz";
+
+/* Light haptic feedback level */
+"Light" = "Leicht";
+
+/* No comment provided by engineer. */
+"Logs" = "Protokolle";
+
+/* Medium haptic feedback level */
+"Medium" = "Mittel";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "Nein, gekoppelt bleiben";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Noch nicht verfügbar";
+
+/* No comment provided by engineer. */
+"Notice" = "Hinweis";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* Unknown haptic feedback level */
+"Other" = "Andere";
+
+/* No comment provided by engineer. */
+"Pair" = "Koppeln";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "Kopplungsanforderung von „%@“\nVerifizierungsschlüssel: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "Kopplung abgeschlossen";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "Kopplung abgelehnt";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "Zeitüberschreitung beim Koppeln";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "Kopplung mit „%@“ fehlgeschlagen";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "Kopplung mit „%@“ erfolgreich";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Moduleinstellungen";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "Zeigerempfindlichkeit";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "Medien werden vorbereitet …";
+
+/* No comment provided by engineer. */
+"Preview: " = "Vorschau: ";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Grund: %@";
+
+/* No comment provided by engineer. */
+"Receiving" = "Wird empfangen";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Gemerkte Geräte";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Ferneingabe";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Problem melden";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "Kopplung mit „%@“ anfordern";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Gerät anklingeln";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Mein Telefon anklingeln/suchen";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Abgerundetes Rechteck";
+
+/* No comment provided by engineer. */
+"Run Command" = "Befehl ausführen";
+
+/* No comment provided by engineer. */
+"Send" = "Senden";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Linken Doppelklick senden";
+
+/* No comment provided by engineer. */
+"Send Files" = "Dateien senden";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Mittelklick senden";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Fotos und Videos senden";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Ping senden";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Rechtsklick senden";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Einzelnen Linksklick senden";
+
+/* No comment provided by engineer. */
+"Sending" = "Wird gesendet";
+
+/* No comment provided by engineer. */
+"Settings" = "Einstellungen";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Teilen: Datei, Text und Adresse (URL) empfangen";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Teilen: Datei senden";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Teilen: Text und Adresse (URL) senden";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Empfangene Dateien in Finder anzeigen";
+
+/* No comment provided by engineer. */
+"Source Code" = "Quelltext";
+
+/* No comment provided by engineer. */
+"Status" = "Status";
+
+/* No comment provided by engineer. */
+"Supported" = "Unterstützt";
+
+/* No comment provided by engineer. */
+"System Default" = "Systemvoreinstellung";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Tippen, um Kopplung zu beginnen";
+
+/* No comment provided by engineer. */
+"To %@" = "An &@";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "Tastatur umschalten";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Problembeseitigung";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Vertrauenswürdige Netzwerke";
+
+/* No comment provided by engineer. */
+"Unpair" = "Entkoppeln";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "%@ entkoppeln?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Von Gerät entkoppeln?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "unbenannt";
+
+/* No comment provided by engineer. */
+"Valid" = "Gültig";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Verifizierungsschlüssel: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Version: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Website" = "Webseite";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wiki & Benutzerhandbuch";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Ja, entkoppeln";
+

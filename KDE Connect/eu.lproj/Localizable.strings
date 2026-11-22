@@ -1,0 +1,762 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "iOSerako **KDE Connect**";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ eta beste %lld fitxategi";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "iOSerako %@";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© KDE komunitatea eta kolaboratzaileak";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "Honi buruz";
+
+/* No comment provided by engineer. */
+"Actions" = "Ekintzak";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "Beste gailu batzuk automatikoki aurkitzen ez badira, haien IP helbide lokalak hemen gehitu.";
+
+/* No comment provided by engineer. */
+"Advanced" = "Aurreratua";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Ezarpen aurreratuak";
+
+/* No comment provided by engineer. */
+"All Messages" = "Mezu guztiak";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "%@(e)k ere idatzia";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "Aplikazioaren ikonoa";
+
+/* No comment provided by engineer. */
+"App Icon:" = "Aplikazioaren ikonoa:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "Aplikazioaren gaia:";
+
+/* No comment provided by engineer. */
+"Application" = "Aplikazioa";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Sorburu irekiko proiektua izanik, KDE Connecten iOSerako bertsioa beste plataforma guztietako bertsioen pare jartzeko ditugun oraingo eta etorkizuneko planak gardentasunez azaltzea garrantzitsua iruditzen zaigu.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Jasotako argazkiak eta bideoak zure argazki-liburutegian gordetzeko, Ezarpenak aplikazioan Argazkiak aplikaziorako sarbidea baimendu";
+
+/* No comment provided by engineer. */
+"Available themes" = "Gai erabilgarriak";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Atzeko planoko jarduera";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Bateria-maila";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "Bateriaren plugina desgaituta dago";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Bateriaren egoera";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "Ez dituzu zure gailuak hemen aurkitzen?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Utzi";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Kategoria: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "Bateratze-eskaerak ikusi";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "Aplikazioaren ikonoa hautatu";
+
+/* No comment provided by engineer. */
+"Chores" = "Mantentze-lanak";
+
+/* No comment provided by engineer. */
+"Classic" = "Klasikoa";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Cachea garbitu";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Arbelaren sinkronizazioa";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "Arbela: testua bidali eta jaso";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Arbela: sinkronizatu";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "Gailuak IP bidez konfiguratu";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "Gailuak IP bidez konfiguratu:";
+
+/* No comment provided by engineer. */
+"Connect" = "Konektatu";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Konektatutako gailuak";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Konektagarritasun-txostena";
+
+/* No comment provided by engineer. */
+"Contacts" = "Kontaktuak";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "KDE Connecten lagundu";
+
+/* No comment provided by engineer. */
+"Contributors" = "Kolaboratzaileak";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "Jasotako fitxategiak dituen karpetaren bide-izena kopiatu";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "Egun %@(e)k mantentzen du";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "Oraingoz, behar bezala ibiltzeko, aplikazioak aurreko planoan egon behar du";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "Kurtsorearen sentikortasuna";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "AUKERA ARRISKUTSUAK";
+
+/* No comment provided by engineer. */
+"Dark" = "Iluna";
+
+/* No comment provided by engineer. */
+"Debug" = "Arazketa";
+
+/* No comment provided by engineer. */
+"Debug mode" = "Arazketa-modua";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "Gailuak aurkitzeko prozesua araztea";
+
+/* No comment provided by engineer. */
+"Default" = "Lehenetsia";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "Gordetako ezarpen eta gailu guztiak ezabatu. Aplikazioa erabat berrabiarazi behar da.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "Ostalariaren ziurtagiria ezabatu";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Ostalariaren ziurtagiria ezabatu eta berrabiaraztean berriro sortu. Aplikazioa erabat berrabiarazi behar da. OHARRA: horren ondorioz, gailua ezingo da lehen konektatutako gailuekin konektatu. Urruneko beste gailuetan gailu honen parekatzea desegin behar duzu, eta ondoren berriro parekatu.";
+
+/* No comment provided by engineer. */
+"Developer" = "Garatzailea";
+
+/* No comment provided by engineer. */
+"Device" = "Gailua";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "Gailuak aurkitzea";
+
+/* No comment provided by engineer. */
+"Device IP" = "Gailuaren IPa";
+
+/* No comment provided by engineer. */
+"Device name" = "Gailuaren izena";
+
+/* No comment provided by engineer. */
+"Device Name" = "Gailuaren izena";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Gailuaren izena:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "Gailua lerroz kanpo dago";
+
+/* No comment provided by engineer. */
+"Device Status" = "Gailuaren egoera";
+
+/* No comment provided by engineer. */
+"Devices" = "Gailuak";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "Esku-emate zuzeneko gailuak";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "UDP bidezko difusioa desgaitu";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "Aurkitutako gailuak";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Gailuak aurkitzea eta parekatzea";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "Ez parekatu";
+
+/* No comment provided by engineer. */
+"Donate" = "Dohaintza egin";
+
+/* No comment provided by engineer. */
+"Done" = "Eginda";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Arazketa-modua aktibatzeko, tak bikoitza egin";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "Gailuak aurkitzeko prozesuaren arazketa aktibatzeko, tak bikoitza egin";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Pluginak gaitu/ezgaitu";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Zifratze-informazioa";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Gordetako gailuen cachea ezabatu";
+
+/* No comment provided by engineer. */
+"Error" = "Errorea";
+
+/* No comment provided by engineer. */
+"Error Occured" = "Errorea gertatu da";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "Erroreak eta akatsak";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Aurkezpenetik irten";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Eginbide esperimentalak";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Ikonoa aldatzeak huts egin du";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "%lld fitxategi jasotzeak huts egin du";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "%@(e)tik jasotzeak huts egin du";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "%lld fitxategi bidaltzeak huts egin du";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "%@(e)ri bidaltzeak huts egin du";
+
+/* No comment provided by engineer. */
+"Fault" = "Akatsa";
+
+/* No comment provided by engineer. */
+"Features" = "Eginbideak";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Fitxategi-transferentziak";
+
+/* No comment provided by engineer. */
+"Files" = "Fitxategiak";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Nire gailua bilatu";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "Urruneko gailu batetik nire telefonoa bilatzeko funtzioa abiarazi da";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Nire telefonoa bilatzeko modua";
+
+/* No comment provided by engineer. */
+"Forget all" = "Dena ahaztu";
+
+/* No comment provided by engineer. */
+"From %@" = "%@(e)tik";
+
+/* No comment provided by engineer. */
+"General" = "Orokorra";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Pantaila osora aldatu";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "Erantzun haptikoaren estiloa";
+
+/* Hard haptic feedback level */
+"Heavy" = "Indartsua";
+
+/* No comment provided by engineer. */
+"Help" = "Laguntza";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "Erantzun haptikoaren estilo-hautatzailea ezkutatu";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "Sentikortasun-graduatzailea ezkutatu";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "AURKITU DUT!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "Gordetako gailu bat dagoeneko lerroan badago baina hemen agertzen ez bada, «Gailuen bilaketa freskatu» aukera probatu.";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "KDE Connectek beste gailuak aurkitzeko arazoak baditu, ondoko konponbideetako batzuk batera proba ditzakezu:\n\n1. Gailu honetan eta besteetan, %@ menuan «Gailuen bilaketa freskatu» hautatu, edo Gailuak zerrendatik behera tira egin hura freskatzeko.\n\n2. Beste gailuetan ere KDE Connect martxan dagoela eta gailu honen sare berera konektatuta daudela ziurtatu.\n\n3. %@ menuko «Gailuak IP bidez konfiguratu» aukeraren bidez beste gailuak eskuz gehitu, eta ondoren «Gailuen bilaketa freskatu» hautatu.\n\n4. Erabiltzailearen eskuliburuan beste konponbide batzuk kontsultatu, hala nola beste gailuetako suhesiak konfiguratzea:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Mamu-gailuak badaude edo zerbait behar bezala ez badabil, gordetako gailuen datu guztiak ezabatzeak arazoa konpon lezake. Aplikazioa erabat berrabiarazi behar da.";
+
+/* No comment provided by engineer. */
+"In progress" = "Abian";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Sarrerako parekatze-eskaera";
+
+/* No comment provided by engineer. */
+"Info" = "Informazioa";
+
+/* No comment provided by engineer. */
+"Information" = "Informazioa";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Parekatzea hasi?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Siriren lasterbideekin integratzea";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "Sistemaren partekatze-panelarekin integratzea garatzen ari dira";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Nazioartekotzea eta lokalizazioa";
+
+/* No comment provided by engineer. */
+"Invalid" = "Baliogabea";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Teklatua: urruneko gailua kontrolatu";
+
+/* No comment provided by engineer. */
+"License" = "Lizentzia";
+
+/* Light haptic feedback level */
+"Light" = "Arina";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Giltzatze-pantaila: urruneko gailua kontrolatu";
+
+/* No comment provided by engineer. */
+"Logs" = "Egunkariak";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "%@(e)n egunkariak";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Jasotako fitxategiak Fitxategiak aplikazioan kudeatu";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Baliteke Windowserako KDE Connectekin ez ibiltzea";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "Agian URL eskema erabiliz eta Siriren lasterbideekin integratuz";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "Agian Apple Notification Center Service (ANCS) erabiliz";
+
+/* Medium haptic feedback level */
+"Medium" = "Ertaina";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "Sagua: urruneko gailua kontrolatu";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "Saguaren kurtsorea mugitzeko, hatz bat pantailan mugitu. Ezkerreko klik egiteko, hatz batekin tak egin. Eskuineko klik egiteko, bi hatzekin tak egin. Arrastatu eta jaregitea aktibatzeko, luze sakatu. Edo, klikak zuzenean bidaltzeko, goiko eskuineko menua erabili.\n\nBertikalki zein horizontalki kiribiltzeko, goiko «Kiribiltze-gurpila» elementutik abiatuta hatz batekin arrastatu. Erdiko klik egiteko, «Kiribiltze-gurpila» elementuan tak egin.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: urruneko media kontrolatu eta erantzun";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "Zure gailuak (telefonoa eta ordenagailua adibidez) elkarrekin komunikatzea ahalbidetzen duen plataforma anitzeko aplikazioa";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Sare-paketeen konposatzailea";
+
+/* No comment provided by engineer. */
+"Nice" = "Ederki";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "Sare honetan ez da beste gailurik aurkitu.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "Gailuan ez da bateriarik antzeman";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "Une honetan ez dago konektatutako gailurik.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "Uneko sarean ez da gailurik aurkitu.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Oraindik ez dago bat datorren egunkaririk";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "Ez, parekatuta jarraitu";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Oraindik ez da inplementatu";
+
+/* No comment provided by engineer. */
+"Notice" = "Oharpena";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Jakinarazpena: besteengandik jaso";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "Jakinarazpena: besteek berreskuratu";
+
+/* No comment provided by engineer. */
+"OK" = "Ados";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "Klik egitean emandako erantzun haptikoaren estiloa";
+
+/* Unknown haptic feedback level */
+"Other" = "Bestelakoa";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "Aplikaziotik kanpoko jakinarazpena:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Paketearen edukia";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Paketearen etiketa";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Pakete-mota";
+
+/* No comment provided by engineer. */
+"Pair" = "Parekatu";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "«%@»(e)tik jasotako parekatze-eskaera\nEgiaztapen-gakoa: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "Parekatzea osatu da";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "Parekatzea errefusatu da";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "Parekatzeko denbora-muga gainditu da";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "«%@»(e)kin parekatzeak huts egin du";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "«%@»(e)kin ondo parekatu da";
+
+/* No comment provided by engineer. */
+"Peer" = "Parekoa";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Konektatutako gailu batetik ping bat jaso da.";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Playground" = "Probalekua";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Pluginen ezarpenak";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "Pluginak, gailua atzigarri badago";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "Erakuslearen sentikortasuna";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "Media prestatzen…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Aurkezlea: urruneko gailua kontrolatu";
+
+/* No comment provided by engineer. */
+"Preview: " = "Aurreikuspegia: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Aurrez konektatutako gailuak hemen agertuko dira.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Tokiko arbelaren edukia bidali";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Arrazoia: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Zure argazki-liburutegirako sarbidea eman ezin diguzunez, jasotako argazkiak eta bideoak Fitxategiak aplikazioan gordeko dira.";
+
+/* No comment provided by engineer. */
+"Receiving" = "Jasotzen";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "%lld / %lld fitxategia jasotzen";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "Gailuen bilaketa freskatu";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Gordetako gailuak";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Urruneko sarrera";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Akats baten berri eman";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "«%@»(e)kin parekatzeko eskaera";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "Gailuen bilaketa berrabiarazi";
+
+/* Rigid haptic feedback level */
+"Rigid" = "Zurruna";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Gailuaren txirrina jo";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Txirrina jo/Nire telefonoa bilatu";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Izkin biribileko laukizuzena";
+
+/* No comment provided by engineer. */
+"Run Command" = "Komandoa exekutatu";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "Komandoa exekutatu: eskatu";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "Komandoa exekutatu: erantzun";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Argazkiak argazki-liburutegian gorde";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Bideoak argazki-liburutegian gorde";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "Pantaila-babeslea: urruneko gailuan aktibatzea eragotzi";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Hasteko, «Gailuak» zerrendako gailu bat hautatu.";
+
+/* No comment provided by engineer. */
+"Send" = "Bidali";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Ezkerreko klik bikoitza bidali";
+
+/* No comment provided by engineer. */
+"Send Files" = "Fitxategiak bidali";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "Ezkerreko botoia sakatuta mantentzeko agindua bidali";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Erdiko klik bidali";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Argazkiak eta bideoak bidali";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Ping bidali";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Eskuineko klik bidali";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Ezkerreko klik bakarra bidali";
+
+/* No comment provided by engineer. */
+"Sending" = "Bidaltzen";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "%lld / %lld fitxategia bidaltzen";
+
+/* No comment provided by engineer. */
+"Settings" = "Ezarpenak";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: urruneko gailuaren fitxategi-sistema atzitu eta fitxategi-zerbitzaria abiarazi";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "Zure gailuaren ziurtagiriaren SHA256 hatz-marka:\n%@\n\nUrruneko gailuaren ziurtagiriaren SHA256 hatz-marka: \n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Partekatu: fitxategia, testua eta URLa jaso";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Partekatu: fitxategia bidali";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Partekatu: testua eta URLa bidali";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "Partekatu/Fitxategi-transferentzia";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "Erantzun haptikoaren estilo-hautatzailea erakutsi";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Jasotako fitxategiak Finder-en erakutsi";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "Sentikortasun-graduatzailea erakutsi";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "Diapositiba-emanaldietarako urruneko agintea";
+
+/* Soft haptic feedback level */
+"Soft" = "Leuna";
+
+/* No comment provided by engineer. */
+"Source Code" = "Sorburu-kodea";
+
+/* No comment provided by engineer. */
+"Status" = "Egoera";
+
+/* No comment provided by engineer. */
+"Supported" = "Onartuta";
+
+/* No comment provided by engineer. */
+"System Default" = "Sistemako lehenetsia";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "Sistemaren bolumena: urruneko gailuarena kontrolatu eta erantzun";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "Argazkia atera: erantzun";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Parekatzen hasteko, tak egin";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "Telefonia: SMSen eta deien sinkronizazioa";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "KDE Connectek ezagutzen duen gailuaren izena";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "Goiko aukerak itzulezinak dira, eta indarrean sartzeko aplikazioa erabat berrabiarazi behar da.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "Horiek automatikoki egin beharko lirateke, baina hala ez bada, batzuk eskuz egin ditzakezu.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "Hauek arazo gutxirekin edo batere arazorik gabe ibili beharko lukete";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Hirugarrenen liburutegiak";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "Ziurrenik hau ezin da iOSen inplementatu";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "Sistemaren partekatze-panelaren bidez";
+
+/* No comment provided by engineer. */
+"To %@" = "%@(e)ri";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "Gordetako gailuetara konektatzeko, gailu honen sare berera konektatuta daudela ziurtatu.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "Teklatua erakutsi/ezkutatu";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Arazoak konpontzea";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Konfiantzazko sareak";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Gai ezezaguna";
+
+/* No comment provided by engineer. */
+"Unpair" = "Parekatzea desegin";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "%@(e)kiko parekatzea desegin?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Gailuarekiko parekatzea desegin?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "izengabea";
+
+/* No comment provided by engineer. */
+"Valid" = "Balioduna";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Egiaztapen-gakoa: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Bertsioa: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "Beste %lld fitxategiren transferentzia hasteko zain";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "Egunkarien zain…";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "Bidaltzeko zain";
+
+/* No comment provided by engineer. */
+"Website" = "Webgunea";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wikia eta erabiltzailearen eskuliburua";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Bai, parekatzea desegin";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "Pluginak banaka gaitu edo desgaitu ditzakezu. Plugin batzuek ezarpen bereziak dituzte; bakoitzari dagokion ikuspegian aurki ditzakezu.";
+

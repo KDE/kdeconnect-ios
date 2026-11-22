@@ -1,0 +1,762 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"?" = "?";
+
+/* No comment provided by engineer. */
+"**KDE Connect** for iOS" = "**KDE Connect** pre iOS";
+
+/* No comment provided by engineer. */
+"%@ and %lld other files" = "%@ a ďalšie súbory (%lld)";
+
+/* No comment provided by engineer. */
+"%@ for iOS" = "%@ pre iOS";
+
+/* No comment provided by engineer. */
+"© KDE Community & contributors" = "© komunita KDE a prispievatelia";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"About" = "O aplikácii";
+
+/* No comment provided by engineer. */
+"Actions" = "Akcie";
+
+/* No comment provided by engineer. */
+"Add the local IP addresses of other devices here if they're having trouble appearing in the automatic discovery." = "Ak sa iné zariadenia nezobrazujú pri automatickom objavovaní, pridajte sem ich miestne IP adresy.";
+
+/* No comment provided by engineer. */
+"Advanced" = "Pokročilé";
+
+/* No comment provided by engineer. */
+"Advanced Settings" = "Pokročilé nastavenia";
+
+/* No comment provided by engineer. */
+"All Messages" = "Všetky správy";
+
+/* No comment provided by engineer. */
+"Also written by %@" = "Napísal aj %@";
+
+/* Please use 朱智语 in languages with these characters. */
+"Apollo Zhu" = "Apollo Zhu";
+
+/* No comment provided by engineer. */
+"App Icon" = "Ikona aplikácie";
+
+/* No comment provided by engineer. */
+"App Icon:" = "Ikona aplikácie:";
+
+/* No comment provided by engineer. */
+"App Theme:" = "Téma aplikácie:";
+
+/* No comment provided by engineer. */
+"Application" = "Aplikácia";
+
+/* No comment provided by engineer. */
+"As an open source project, we believe it is important to be transparent about our current and future plans to bring KDE Connect iOS into line with all other platforms." = "Ako open source projekt považujeme za dôležité byť otvorení o našich súčasných aj budúcich plánoch, ako zosúladiť KDE Connect pre iOS so všetkými ostatnými platformami.";
+
+/* No comment provided by engineer. */
+"Authorize Photos access using the Settings app to save received photos and videos to your photo library" = "Ak chcete ukladať prijaté fotky a videá do knižnice fotiek, povoľte prístup k Fotkám v aplikácii Nastavenia";
+
+/* No comment provided by engineer. */
+"Available themes" = "Dostupné témy";
+
+/* No comment provided by engineer. */
+"Background Activity" = "Činnosť na pozadí";
+
+/* No comment provided by engineer. */
+"Battery Level" = "Úroveň batérie";
+
+/* No comment provided by engineer. */
+"Battery Plugin Disabled" = "Modul batérie vypnutý";
+
+/* No comment provided by engineer. */
+"Battery Status" = "Stav batérie";
+
+/* No comment provided by engineer. */
+"Can't find your devices here?" = "Nenachádzate tu svoje zariadenia?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Zrušiť";
+
+/* No comment provided by engineer. */
+"Category: %@" = "Kategória: %@";
+
+/* No comment provided by engineer. */
+"Check out the merge requests" = "Pozrite si požiadavky na zlúčenie";
+
+/* No comment provided by engineer. */
+"Choose App Icon" = "Vybrať ikonu aplikácie";
+
+/* No comment provided by engineer. */
+"Chores" = "Údržba";
+
+/* No comment provided by engineer. */
+"Classic" = "Klasická";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Vyčistiť vyrovnávaciu pamäť";
+
+/* No comment provided by engineer. */
+"Clipboard Sync" = "Synchronizácia schránky";
+
+/* No comment provided by engineer. */
+"Clipboard: Push & Receive Text" = "Schránka: odosielanie a prijímanie textu";
+
+/* No comment provided by engineer. */
+"Clipboard: Sync" = "Schránka: synchronizácia";
+
+/* No comment provided by engineer. */
+"Configure Devices By IP" = "Nastaviť zariadenia podľa IP";
+
+/* No comment provided by engineer. */
+"Configure Devices by IP:" = "Nastaviť zariadenia podľa IP:";
+
+/* No comment provided by engineer. */
+"Connect" = "Pripojiť";
+
+/* No comment provided by engineer. */
+"Connected Devices" = "Pripojené zariadenia";
+
+/* No comment provided by engineer. */
+"Connectivity Report" = "Správa o pripojení";
+
+/* No comment provided by engineer. */
+"Contacts" = "Kontakty";
+
+/* No comment provided by engineer. */
+"Contribute to KDE Connect" = "Prispieť do KDE Connect";
+
+/* No comment provided by engineer. */
+"Contributors" = "Prispievatelia";
+
+/* No comment provided by engineer. */
+"Copy path to the folder containing received files" = "Kopírovať cestu k priečinku s prijatými súbormi";
+
+/* No comment provided by engineer. */
+"Currently maintained by %@" = "Momentálne udržiava %@";
+
+/* No comment provided by engineer. */
+"Currently, the app must stay in the foreground to work properly" = "Momentálne musí byť aplikácia v popredí, aby fungovala správne";
+
+/* No comment provided by engineer. */
+"Cursor Sensitivity" = "Citlivosť kurzora";
+
+/* No comment provided by engineer. */
+"DANGEROUS OPTIONS" = "NEBEZPEČNÉ VOĽBY";
+
+/* No comment provided by engineer. */
+"Dark" = "Tmavá";
+
+/* No comment provided by engineer. */
+"Debug" = "Ladenie";
+
+/* No comment provided by engineer. */
+"Debug mode" = "Režim ladenia";
+
+/* No comment provided by engineer. */
+"Debugging device discovery" = "Ladenie objavovania zariadení";
+
+/* No comment provided by engineer. */
+"Default" = "Predvolené";
+
+/* No comment provided by engineer. */
+"Delete all saved settings and devices. Requires the app to be fully restarted." = "Odstrániť všetky uložené nastavenia a zariadenia. Vyžaduje úplný reštart aplikácie.";
+
+/* No comment provided by engineer. */
+"Delete host certificate" = "Odstrániť certifikát hostiteľa";
+
+/* No comment provided by engineer. */
+"Delete the host's certificate and re-generate it upon restart. Requires the app to be fully restarted. NOTE: this will make the device unable to connect with previously connected devices. You must unpair this device from the other remote devices and pair them again." = "Odstrániť certifikát hostiteľa a pri reštarte ho znova vygenerovať. Vyžaduje úplný reštart aplikácie. POZNÁMKA: zariadenie sa potom nebude môcť pripojiť k predtým pripojeným zariadeniam. Musíte ho zrušiť v spárovaní na ostatných vzdialených zariadeniach a spárovať ich znova.";
+
+/* No comment provided by engineer. */
+"Developer" = "Vývojár";
+
+/* No comment provided by engineer. */
+"Device" = "Zariadenie";
+
+/* No comment provided by engineer. */
+"Device Discovery" = "Objavovanie zariadení";
+
+/* No comment provided by engineer. */
+"Device IP" = "IP zariadenia";
+
+/* No comment provided by engineer. */
+"Device name" = "Názov zariadenia";
+
+/* No comment provided by engineer. */
+"Device Name" = "Názov zariadenia";
+
+/* No comment provided by engineer. */
+"Device Name:" = "Názov zariadenia:";
+
+/* No comment provided by engineer. */
+"Device Offline" = "Zariadenie je offline";
+
+/* No comment provided by engineer. */
+"Device Status" = "Stav zariadenia";
+
+/* No comment provided by engineer. */
+"Devices" = "Zariadenia";
+
+/* No comment provided by engineer. */
+"Direct Handshake Devices" = "Zariadenia s priamym nadviazaním spojenia";
+
+/* No comment provided by engineer. */
+"Disable UDP Broadcast" = "Vypnúť vysielanie UDP";
+
+/* No comment provided by engineer. */
+"Discovered Devices" = "Objavené zariadenia";
+
+/* No comment provided by engineer. */
+"Discovery & Pairing" = "Objavovanie a párovanie";
+
+/* No comment provided by engineer. */
+"Do Not Pair" = "Nepárovať";
+
+/* No comment provided by engineer. */
+"Donate" = "Prispieť";
+
+/* No comment provided by engineer. */
+"Done" = "Hotovo";
+
+/* No comment provided by engineer. */
+"Double tap to activate debug mode" = "Dvojitým ťuknutím zapnete režim ladenia";
+
+/* No comment provided by engineer. */
+"Double tap to activate debugging device discovery" = "Dvojitým ťuknutím zapnete ladenie objavovania zariadení";
+
+/* No comment provided by engineer. */
+"Enable/Disable Plugins" = "Zapnúť/vypnúť moduly";
+
+/* No comment provided by engineer. */
+"Encryption Info" = "Informácie o šifrovaní";
+
+/* No comment provided by engineer. */
+"Erase saved devices cache" = "Vymazať vyrovnávaciu pamäť uložených zariadení";
+
+/* No comment provided by engineer. */
+"Error" = "Chyba";
+
+/* No comment provided by engineer. */
+"Error Occured" = "Vyskytla sa chyba";
+
+/* No comment provided by engineer. */
+"Errors and Faults" = "Chyby a poruchy";
+
+/* No comment provided by engineer. */
+"Exit Presentation" = "Ukončiť prezentáciu";
+
+/* No comment provided by engineer. */
+"Experimental functionalities" = "Experimentálne funkcie";
+
+/* No comment provided by engineer. */
+"Failed to Change Icon" = "Ikonu sa nepodarilo zmeniť";
+
+/* No comment provided by engineer. */
+"Failed to receive %lld files" = "Nepodarilo sa prijať súbory (%lld)";
+
+/* No comment provided by engineer. */
+"Failed to receive from %@" = "Nepodarilo sa prijať od %@";
+
+/* No comment provided by engineer. */
+"Failed to send %lld files" = "Nepodarilo sa odoslať súbory (%lld)";
+
+/* No comment provided by engineer. */
+"Failed to send to %@" = "Nepodarilo sa odoslať do %@";
+
+/* No comment provided by engineer. */
+"Fault" = "Porucha";
+
+/* No comment provided by engineer. */
+"Features" = "Funkcie";
+
+/* No comment provided by engineer. */
+"File Transfers" = "Prenosy súborov";
+
+/* No comment provided by engineer. */
+"Files" = "Súbory";
+
+/* No comment provided by engineer. */
+"Find My Device" = "Nájsť moje zariadenie";
+
+/* No comment provided by engineer. */
+"Find My Phone initiated from a remote device" = "Nájsť môj telefón spustené zo vzdialeného zariadenia";
+
+/* No comment provided by engineer. */
+"Find My Phone Mode" = "Režim Nájsť môj telefón";
+
+/* No comment provided by engineer. */
+"Forget all" = "Zabudnúť všetky";
+
+/* No comment provided by engineer. */
+"From %@" = "Od %@";
+
+/* No comment provided by engineer. */
+"General" = "Všeobecné";
+
+/* No comment provided by engineer. */
+"Go FullScreen" = "Na celú obrazovku";
+
+/* No comment provided by engineer. */
+"Haptics Style" = "Štýl haptickej odozvy";
+
+/* Hard haptic feedback level */
+"Heavy" = "Silná";
+
+/* No comment provided by engineer. */
+"Help" = "Pomocník";
+
+/* No comment provided by engineer. */
+"Hide Haptics Style Selector" = "Skryť výber štýlu haptickej odozvy";
+
+/* No comment provided by engineer. */
+"Hide Sensitivity Slider" = "Skryť posuvník citlivosti";
+
+/* No comment provided by engineer. */
+"I FOUND IT!" = "NAŠIEL SOM HO!";
+
+/* No comment provided by engineer. */
+"If a remembered device is already online but not shown here, try Refresh Discovery." = "Ak je zapamätané zariadenie už online, ale nezobrazuje sa tu, skúste Obnoviť objavovanie.";
+
+/* Please keep the newline at the end for the app layout things correctly. */
+"If KDE Connect is having trouble discovering other devices, you can try a combination of the following solutions:\n\n1. \"Refresh Discovery\" through the %@ menu or pull to refresh the Devices list, on this and the other devices.\n\n2. Make sure the other devices are also running KDE Connect and are connected to the same network as this device.\n\n3. Manually add the other devices through the \"Configure Devices By IP\" option in the %@ menu, and then \"Refresh Discovery.\"\n\n4. Check other solutions on the User Manual, such as configuring the firewalls of the other devices:\n" = "Ak má KDE Connect problémy s objavovaním iných zariadení, môžete skúsiť kombináciu týchto riešení:\n\n1. „Obnoviť objavovanie“ cez ponuku %@ alebo potiahnutím obnovte zoznam Zariadenia, na tomto aj na ostatných zariadeniach.\n\n2. Uistite sa, že aj na ostatných zariadeniach beží KDE Connect a sú pripojené k tej istej sieti ako toto zariadenie.\n\n3. Pridajte ostatné zariadenia ručne cez voľbu „Nastaviť zariadenia podľa IP“ v ponuke %@ a potom „Obnoviť objavovanie“.\n\n4. Pozrite si ďalšie riešenia v používateľskej príručke, napríklad nastavenie firewallov ostatných zariadení:\n";
+
+/* No comment provided by engineer. */
+"If there are phantom devices or something just doesn't behave correctly, erasing all saved devices data might fix it. Requires the app to be fully restarted." = "Ak sa zobrazujú fantómové zariadenia alebo niečo jednoducho nefunguje správne, môže pomôcť vymazanie všetkých údajov o uložených zariadeniach. Vyžaduje úplný reštart aplikácie.";
+
+/* No comment provided by engineer. */
+"In progress" = "Prebieha";
+
+/* No comment provided by engineer. */
+"Incoming Pairing Request" = "Prichádzajúca žiadosť o spárovanie";
+
+/* No comment provided by engineer. */
+"Info" = "Info";
+
+/* No comment provided by engineer. */
+"Information" = "Informácie";
+
+/* No comment provided by engineer. */
+"Initiate Pairing?" = "Spustiť párovanie?";
+
+/* No comment provided by engineer. */
+"Integration with Siri Shortcuts" = "Integrácia so skratkami Siri";
+
+/* No comment provided by engineer. */
+"Integration with the system share sheet is in development" = "Integrácia so systémovým panelom zdieľania je vo vývoji";
+
+/* No comment provided by engineer. */
+"Internationalization & Localization" = "Internacionalizácia a lokalizácia";
+
+/* No comment provided by engineer. */
+"Invalid" = "Neplatný";
+
+/* No comment provided by engineer. */
+"KDE Connect" = "KDE Connect";
+
+/* No comment provided by engineer. */
+"Keyboard: Control Remote" = "Klávesnica: ovládanie vzdialeného zariadenia";
+
+/* No comment provided by engineer. */
+"License" = "Licencia";
+
+/* Light haptic feedback level */
+"Light" = "Svetlá";
+
+/* No comment provided by engineer. */
+"Lock Screen: Control Remote" = "Uzamknutá obrazovka: ovládanie vzdialeného zariadenia";
+
+/* No comment provided by engineer. */
+"Logs" = "Záznamy";
+
+/* No comment provided by engineer. */
+"Logs for %@" = "Záznamy pre %@";
+
+/* No comment provided by engineer. */
+"Manage received files in the Files app" = "Spravovať prijaté súbory v aplikácii Súbory";
+
+/* No comment provided by engineer. */
+"May not work with KDE Connect for Windows" = "Nemusí fungovať s KDE Connect pre Windows";
+
+/* No comment provided by engineer. */
+"Maybe through URL Scheme and integration with Siri Shortcuts" = "Možno cez schému URL a integráciu so skratkami Siri";
+
+/* No comment provided by engineer. */
+"Maybe with Apple Notification Center Service (ACNS)" = "Možno cez Apple Notification Center Service (ACNS)";
+
+/* Medium haptic feedback level */
+"Medium" = "Stredná";
+
+/* No comment provided by engineer. */
+"Mouse: Control Remote" = "Myš: ovládanie vzdialeného zariadenia";
+
+/* No comment provided by engineer. */
+"Move a finger on the screen to move the mouse cursor. Tap with one finger for left click. Tap with two fingers for right click. Use a long press to activate drag'n drop. Or use the menu on the top right to directly send clicks.\n\nDrag with one finger from the “Scroll Wheel” above to scroll both vertically and horizontally. Tap on the “Scroll Wheel” for middle click." = "Pohybom prsta po obrazovke pohybujete kurzorom myši. Ťuknutím jedným prstom kliknete ľavým tlačidlom. Ťuknutím dvoma prstami kliknete pravým tlačidlom. Dlhým stlačením zapnete ťahanie a pustenie. Alebo kliknutia pošlite priamo cez ponuku vpravo hore.\n\nPotiahnutím jedným prstom od „Posúvacieho kolieska“ vyššie posúvate zvislo aj vodorovne. Ťuknutím na „Posúvacie koliesko“ kliknete stredným tlačidlom.";
+
+/* No comment provided by engineer. */
+"MPRIS: Control Remote Media & Respond" = "MPRIS: ovládanie vzdialených médií a odpovedanie";
+
+/* No comment provided by engineer. */
+"Multi-platform app that allows your devices to communicate (e.g., your phone and your computer)" = "Multiplatformová aplikácia, ktorá umožňuje vašim zariadeniam komunikovať (napr. telefónu a počítaču)";
+
+/* No comment provided by engineer. */
+"Network Packet Composer" = "Skladač sieťových paketov";
+
+/* No comment provided by engineer. */
+"Nice" = "Pekné";
+
+/* No comment provided by engineer. */
+"No additional devices are discovered on this network." = "V tejto sieti sa nenašli žiadne ďalšie zariadenia.";
+
+/* No comment provided by engineer. */
+"No battery detected in device" = "V zariadení sa nenašla žiadna batéria";
+
+/* No comment provided by engineer. */
+"No currently connected devices." = "Žiadne momentálne pripojené zariadenia.";
+
+/* No comment provided by engineer. */
+"No device discovered in the current network." = "V aktuálnej sieti sa nenašlo žiadne zariadenie.";
+
+/* No comment provided by engineer. */
+"No matching logs yet" = "Zatiaľ žiadne zodpovedajúce záznamy";
+
+/* No comment provided by engineer. */
+"No, Stay Paired" = "Nie, ponechať spárované";
+
+/* No comment provided by engineer. */
+"Not yet implemented" = "Zatiaľ neimplementované";
+
+/* No comment provided by engineer. */
+"Notice" = "Oznámenie";
+
+/* No comment provided by engineer. */
+"Notification: Receive from Others" = "Upozornenie: prijímanie od ostatných";
+
+/* No comment provided by engineer. */
+"Notification: Retrieve by Others" = "Upozornenie: získavanie ostatnými";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"On-Click Haptic Style" = "Štýl haptickej odozvy pri kliknutí";
+
+/* Unknown haptic feedback level */
+"Other" = "Iné";
+
+/* No comment provided by engineer. */
+"Out-App Notification:" = "Upozornenie mimo aplikácie:";
+
+/* No comment provided by engineer. */
+"Packet Body" = "Telo paketu";
+
+/* No comment provided by engineer. */
+"Packet Tag" = "Značka paketu";
+
+/* No comment provided by engineer. */
+"Packet Type" = "Typ paketu";
+
+/* No comment provided by engineer. */
+"Pair" = "Spárovať";
+
+/* No comment provided by engineer. */
+"Pair request from '%@'\nVerification key: %@" = "Žiadosť o spárovanie od '%@'\nOverovací kľúč: %@";
+
+/* No comment provided by engineer. */
+"Pairing Complete" = "Párovanie dokončené";
+
+/* No comment provided by engineer. */
+"Pairing Rejected" = "Párovanie odmietnuté";
+
+/* No comment provided by engineer. */
+"Pairing Timed Out" = "Vypršal čas párovania";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' failed" = "Párovanie s '%@' zlyhalo";
+
+/* No comment provided by engineer. */
+"Pairing with '%@' succeeded" = "Párovanie s '%@' bolo úspešné";
+
+/* No comment provided by engineer. */
+"Peer" = "Partner";
+
+/* No comment provided by engineer. */
+"Ping" = "Ping";
+
+/* No comment provided by engineer. */
+"Ping received from a connected device." = "Prijatý ping z pripojeného zariadenia.";
+
+/* No comment provided by engineer. */
+"Ping!" = "Ping!";
+
+/* No comment provided by engineer. */
+"Plasma Bigscreen" = "Plasma Bigscreen";
+
+/* No comment provided by engineer. */
+"Playground" = "Pieskovisko";
+
+/* No comment provided by engineer. */
+"Plugin Settings" = "Nastavenia modulov";
+
+/* No comment provided by engineer. */
+"Plugins If Reachable" = "Moduly, ak je dostupné";
+
+/* No comment provided by engineer. */
+"Pointer Sensitivity" = "Citlivosť ukazovateľa";
+
+/* No comment provided by engineer. */
+"Preparing Media…" = "Pripravujú sa médiá…";
+
+/* No comment provided by engineer. */
+"Presenter: Control Remote" = "Prezentácia: ovládanie vzdialeného zariadenia";
+
+/* No comment provided by engineer. */
+"Preview: " = "Náhľad: ";
+
+/* No comment provided by engineer. */
+"Previously connected devices will appear here." = "Tu sa zobrazia predtým pripojené zariadenia.";
+
+/* No comment provided by engineer. */
+"Push Local Clipboard" = "Odoslať miestnu schránku";
+
+/* No comment provided by engineer. */
+"Reason: %@" = "Dôvod: %@";
+
+/* No comment provided by engineer. */
+"Received photos and videos will be saved to the Files app because you can't grant us access to your photo library." = "Prijaté fotky a videá sa uložia do aplikácie Súbory, pretože nám nemôžete udeliť prístup ku knižnici fotiek.";
+
+/* No comment provided by engineer. */
+"Receiving" = "Prijíma sa";
+
+/* No comment provided by engineer. */
+"Receiving file %lld of %lld" = "Prijíma sa súbor %lld z %lld";
+
+/* No comment provided by engineer. */
+"Refresh Discovery" = "Obnoviť objavovanie";
+
+/* No comment provided by engineer. */
+"Remembered Devices" = "Zapamätané zariadenia";
+
+/* No comment provided by engineer. */
+"Remote Input" = "Vzdialený vstup";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Nahlásiť chybu";
+
+/* No comment provided by engineer. */
+"Request to pair with '%@'" = "Žiadosť o spárovanie s '%@'";
+
+/* No comment provided by engineer. */
+"Restart Discovery" = "Reštartovať objavovanie";
+
+/* Rigid haptic feedback level */
+"Rigid" = "Pevná";
+
+/* No comment provided by engineer. */
+"Ring Device" = "Prezvoniť zariadenie";
+
+/* No comment provided by engineer. */
+"Ring/Find My Phone" = "Prezvoniť/Nájsť môj telefón";
+
+/* No comment provided by engineer. */
+"Rounded Rectangle" = "Zaoblený obdĺžnik";
+
+/* No comment provided by engineer. */
+"Run Command" = "Spustiť príkaz";
+
+/* No comment provided by engineer. */
+"Run Command: Request" = "Spustiť príkaz: žiadosť";
+
+/* No comment provided by engineer. */
+"Run Command: Respond" = "Spustiť príkaz: odpoveď";
+
+/* No comment provided by engineer. */
+"Save photos to the photo library" = "Ukladať fotky do knižnice fotiek";
+
+/* No comment provided by engineer. */
+"Save videos to the photo library" = "Ukladať videá do knižnice fotiek";
+
+/* No comment provided by engineer. */
+"Screensaver: Inhibit Remote" = "Šetrič obrazovky: blokovanie na vzdialenom zariadení";
+
+/* No comment provided by engineer. */
+"Select a device from the Devices list to start." = "Začnite výberom zariadenia zo zoznamu Zariadenia.";
+
+/* No comment provided by engineer. */
+"Send" = "Odoslať";
+
+/* No comment provided by engineer. */
+"Send Double Left Click" = "Poslať dvojklik ľavým";
+
+/* No comment provided by engineer. */
+"Send Files" = "Odoslať súbory";
+
+/* No comment provided by engineer. */
+"Send Left Hold" = "Poslať podržanie ľavého";
+
+/* No comment provided by engineer. */
+"Send Middle Click" = "Poslať kliknutie stredným";
+
+/* No comment provided by engineer. */
+"Send Photos and Videos" = "Odoslať fotky a videá";
+
+/* No comment provided by engineer. */
+"Send Ping" = "Poslať ping";
+
+/* No comment provided by engineer. */
+"Send Right Click" = "Poslať kliknutie pravým";
+
+/* No comment provided by engineer. */
+"Send Single Left Click" = "Poslať jednoduché kliknutie ľavým";
+
+/* No comment provided by engineer. */
+"Sending" = "Odosiela sa";
+
+/* No comment provided by engineer. */
+"Sending file %lld of %lld" = "Odosiela sa súbor %lld z %lld";
+
+/* No comment provided by engineer. */
+"Settings" = "Nastavenia";
+
+/* No comment provided by engineer. */
+"SFTP: Access Remote & Initiate File Server" = "SFTP: prístup k vzdialenému zariadeniu a spustenie súborového servera";
+
+/* No comment provided by engineer. */
+"SHA256 fingerprint of your device certificate is:\n%@\n\nSHA256 fingerprint of remote device certificate is: \n%@" = "Odtlačok SHA256 certifikátu vášho zariadenia je:\n%@\n\nOdtlačok SHA256 certifikátu vzdialeného zariadenia je: \n%@";
+
+/* No comment provided by engineer. */
+"Share: Receive File, Text, and URL" = "Zdieľanie: prijímanie súborov, textu a URL";
+
+/* No comment provided by engineer. */
+"Share: Send File" = "Zdieľanie: odoslanie súboru";
+
+/* No comment provided by engineer. */
+"Share: Send Text & URL" = "Zdieľanie: odoslanie textu a URL";
+
+/* No comment provided by engineer. */
+"Share/File Transfer" = "Zdieľanie/Prenos súborov";
+
+/* No comment provided by engineer. */
+"Show Haptics Style Selector" = "Zobraziť výber štýlu haptickej odozvy";
+
+/* No comment provided by engineer. */
+"Show Received Files in Finder" = "Zobraziť prijaté súbory vo Finderi";
+
+/* No comment provided by engineer. */
+"Show Sensitivity Slider" = "Zobraziť posuvník citlivosti";
+
+/* No comment provided by engineer. */
+"Slideshow Remote" = "Diaľkové ovládanie prezentácie";
+
+/* Soft haptic feedback level */
+"Soft" = "Jemná";
+
+/* No comment provided by engineer. */
+"Source Code" = "Zdrojový kód";
+
+/* No comment provided by engineer. */
+"Status" = "Stav";
+
+/* No comment provided by engineer. */
+"Supported" = "Podporované";
+
+/* No comment provided by engineer. */
+"System Default" = "Predvolené systémom";
+
+/* No comment provided by engineer. */
+"System Volume: Control Remote & Respond" = "Hlasitosť systému: ovládanie vzdialeného zariadenia a odpovedanie";
+
+/* No comment provided by engineer. */
+"Take Photo: Respond" = "Odfotiť: odpoveď";
+
+/* No comment provided by engineer. */
+"Tap to start pairing" = "Ťuknutím začnete párovanie";
+
+/* No comment provided by engineer. */
+"Telephony: SMS/Call Sync" = "Telefonovanie: synchronizácia SMS a hovorov";
+
+/* No comment provided by engineer. */
+"The name of the device as recognized by KDE Connect" = "Názov zariadenia, ako ho rozpoznáva KDE Connect";
+
+/* No comment provided by engineer. */
+"The options above are irreversible and require a complete app restart to take effect." = "Voľby vyššie sú nevratné a vyžadujú úplný reštart aplikácie, aby sa prejavili.";
+
+/* No comment provided by engineer. */
+"These should be handled automatically, but you may manually perform some in case if they are not." = "Tieto by sa mali vykonať automaticky, ale ak sa tak nestane, niektoré môžete vykonať ručne.";
+
+/* No comment provided by engineer. */
+"These should work with little to no issues" = "Tieto by mali fungovať s minimom problémov alebo bez nich";
+
+/* No comment provided by engineer. */
+"Third-Party Libraries" = "Knižnice tretích strán";
+
+/* No comment provided by engineer. */
+"This is likely not possible to implement on iOS" = "Toto pravdepodobne nie je možné na iOS implementovať";
+
+/* No comment provided by engineer. */
+"Through the system share sheet" = "Cez systémový panel zdieľania";
+
+/* No comment provided by engineer. */
+"To %@" = "Pre %@";
+
+/* No comment provided by engineer. */
+"To connect to remembered devices, make sure they are connected to the same network as this device." = "Ak sa chcete pripojiť k zapamätaným zariadeniam, uistite sa, že sú pripojené k tej istej sieti ako toto zariadenie.";
+
+/* No comment provided by engineer. */
+"Toggle Keyboard" = "Prepnúť klávesnicu";
+
+/* No comment provided by engineer. */
+"Troubleshooting" = "Riešenie problémov";
+
+/* No comment provided by engineer. */
+"Trusted Networks" = "Dôveryhodné siete";
+
+/* No comment provided by engineer. */
+"Unknown Theme" = "Neznáma téma";
+
+/* No comment provided by engineer. */
+"Unpair" = "Zrušiť spárovanie";
+
+/* No comment provided by engineer. */
+"Unpair with %@?" = "Zrušiť spárovanie s %@?";
+
+/* No comment provided by engineer. */
+"Unpair With Device?" = "Zrušiť spárovanie so zariadením?";
+
+/* Filename to use for an unnamed file */
+"untitled" = "bez názvu";
+
+/* No comment provided by engineer. */
+"Valid" = "Platný";
+
+/* No comment provided by engineer. */
+"Verification key: %@" = "Overovací kľúč: %@";
+
+/* No comment provided by engineer. */
+"Version: %@ (%@)" = "Verzia: %@ (%@)";
+
+/* No comment provided by engineer. */
+"Waiting for %lld other files to start transferring" = "Čaká sa na začatie prenosu ďalších súborov (%lld)";
+
+/* No comment provided by engineer. */
+"Waiting for logs..." = "Čaká sa na záznamy...";
+
+/* No comment provided by engineer. */
+"Waiting to send" = "Čaká sa na odoslanie";
+
+/* No comment provided by engineer. */
+"Website" = "Webová stránka";
+
+/* No comment provided by engineer. */
+"Wiki & User Manual" = "Wiki a používateľská príručka";
+
+/* No comment provided by engineer. */
+"Yes, Unpair" = "Áno, zrušiť spárovanie";
+
+/* No comment provided by engineer. */
+"You can enable or disable Plugins individually. Some Plugins have their own specific settings that can be found in their respective Views." = "Moduly môžete zapnúť alebo vypnúť jednotlivo. Niektoré moduly majú vlastné nastavenia, ktoré nájdete v ich príslušných zobrazeniach.";
+
