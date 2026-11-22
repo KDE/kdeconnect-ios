@@ -122,100 +122,74 @@ struct PresenterView: View {
         }
     }
     
+    private var hasPointer: Bool {
+        let type = backgroundService._devices[detailsDeviceId]!._deviceInfo.type
+        return type == .desktop || type == .laptop
+    }
+
     var portraitPresenterView: some View {
-        Group {
-            if backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop || backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .laptop {
-                Image(systemName: "wand.and.rays")
-                    .resizable()
-                    .frame(width: 110, height: 110)
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 130, leading: 130, bottom: 130, trailing: 130))
-                    .background(Color.orange)
-                    .clipShape(Rectangle())
-                    .cornerRadius(50)
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { _ in
-                                startGyroAndPointer()
-                            }
-                            .onEnded { _ in
-                                stopGyroAndPointer()
-                            }
-                    )
+        VStack(spacing: 10) {
+            if hasPointer {
+                pointerTile
             }
-            
-            HStack {
-                Button(action: sendGoPreviousSlideAction) {
-                    Image(systemName: "backward.end")
-                        .resizable()
-                        .frame(width: 40, height: 50)
-                        .foregroundColor(.white)
-                    // TODO: reduce duplication
-                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 30 : 200, trailing: 70))
-                        .background(Color.orange)
-                        .clipShape(Rectangle())
-                        .cornerRadius(20)
-                }
-                
-                Button(action: sendGoNextSlideAction) {
-                    Image(systemName: "forward.end")
-                        .resizable()
-                        .frame(width: 40, height: 50)
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 30 : 200, leading: 70, bottom: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 30 : 200, trailing: 70))
-                        .background(Color.orange)
-                        .clipShape(Rectangle())
-                        .cornerRadius(20)
-                }
+            HStack(spacing: 10) {
+                previousSlideButton
+                nextSlideButton
             }
+        }
+        .padding()
+    }
+
+    var landscapePresenterView: some View {
+        HStack(spacing: 10) {
+            previousSlideButton
+            if hasPointer {
+                pointerTile
+            }
+            nextSlideButton
+        }
+        .padding()
+    }
+
+    private var pointerTile: some View {
+        tile(systemName: "wand.and.rays", iconSize: CGSize(width: 110, height: 110), cornerRadius: 50)
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { _ in
+                        startGyroAndPointer()
+                    }
+                    .onEnded { _ in
+                        stopGyroAndPointer()
+                    }
+            )
+    }
+
+    private var previousSlideButton: some View {
+        Button(action: sendGoPreviousSlideAction) {
+            tile(systemName: "backward.end", iconSize: CGSize(width: 40, height: 50), cornerRadius: 20)
         }
     }
-    
-    var landscapePresenterView: some View {
-        HStack {
-            Button(action: sendGoPreviousSlideAction) {
-                Image(systemName: "backward.end")
-                    .resizable()
-                    .frame(width: 40, height: 50)
-                    .foregroundColor(.white)
-                // TODO: reduce duplication
-                    .padding(EdgeInsets(top: 80, leading: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 50 : 200, bottom: 80, trailing: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 50 : 200))
-                    .background(Color.orange)
-                    .clipShape(Rectangle())
-                    .cornerRadius(20)
-            }
-            
-            if backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop {
-                Image(systemName: "wand.and.rays")
-                    .resizable()
-                    .frame(width: 110, height: 110)
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 100, leading: 130, bottom: 100, trailing: 130))
-                    .background(Color.orange)
-                    .clipShape(Rectangle())
-                    .cornerRadius(50)
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { _ in
-                                startGyroAndPointer()
-                            }
-                            .onEnded { _ in
-                                stopGyroAndPointer()
-                            }
-                    )
-            }
-            
-            Button(action: sendGoNextSlideAction) {
-                Image(systemName: "forward.end")
-                    .resizable()
-                    .frame(width: 40, height: 50)
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 80, leading: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 50 : 200, bottom: 80, trailing: (backgroundService._devices[detailsDeviceId]!._deviceInfo.type == .desktop) ? 50 : 200))
-                    .background(Color.orange)
-                    .clipShape(Rectangle())
-                    .cornerRadius(20)
-            }
+
+    private var nextSlideButton: some View {
+        Button(action: sendGoNextSlideAction) {
+            tile(systemName: "forward.end", iconSize: CGSize(width: 40, height: 50), cornerRadius: 20)
         }
+    }
+
+    /// An orange tile that fills all the available space, with an icon centered in it.
+    private func tile(systemName: String, iconSize: CGSize, cornerRadius: CGFloat) -> some View {
+        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            .fill(Color.orange)
+            .overlay {
+                Image(systemName: systemName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: iconSize.width, maxHeight: iconSize.height)
+                    .foregroundColor(.white)
+                    .padding()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
     }
     
     func startGyroAndPointer() {
