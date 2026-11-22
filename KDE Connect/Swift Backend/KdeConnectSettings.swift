@@ -86,7 +86,7 @@ class KdeConnectSettings: NSObject, ObservableObject {
     
     @Published var chosenTheme: ColorScheme? {
         didSet {
-            UserDefaults.standard.set(chosenTheme?.rawValue, forKey: "chosenTheme")
+            UserDefaults.standard.set(chosenTheme.storedValue, forKey: "chosenTheme")
         }
     }
     
@@ -141,7 +141,7 @@ class KdeConnectSettings: NSObject, ObservableObject {
         let fallbackName = Host.current().localizedName ?? "Unknown Hostname"
 #endif
         self.deviceName = UserDefaults.standard.string(forKey: "deviceName") ?? fallbackName
-        self.chosenTheme = UserDefaults.standard.string(forKey: "chosenTheme").flatMap(ColorScheme.init)
+        self.chosenTheme = ColorScheme?.fromStoredValue(UserDefaults.standard.string(forKey: "chosenTheme"))
         self.directIPs = UserDefaults.standard.stringArray(forKey: "directIPs") ?? []
         self.disableUdpBroadcastDiscovery = UserDefaults.standard.bool(forKey: "disableUdpBroadcastDiscovery")
         self.appIcon = AppIcon(rawValue: UserDefaults.standard.string(forKey: "appIcon")) ?? .default
@@ -161,44 +161,32 @@ class KdeConnectSettings: NSObject, ObservableObject {
     }
 }
 
-extension ColorScheme: RawRepresentable {
-    public typealias RawValue = String
-    
-    public init?(rawValue: String) {
-        switch rawValue {
-        case "Light": self = .light
-        case "Dark": self = .dark
+// Persistence helpers for the chosen theme. These are plain functions on purpose: retroactive
+// conformances (RawRepresentable on ColorScheme, CaseIterable on Optional) crash the Swift
+// runtime when it resolves their associated types on some OS versions.
+extension Optional where Wrapped == ColorScheme {
+    static func fromStoredValue(_ value: String?) -> ColorScheme? {
+        switch value {
+        case "Light": return .light
+        case "Dark": return .dark
         default: return nil
         }
     }
     
-    public var rawValue: String {
+    var storedValue: String? {
         switch self {
         case .light: return "Light"
         case .dark: return "Dark"
-        @unknown default: return "Unknown"
+        default: return nil
         }
     }
-}
-
-extension Optional where Wrapped == ColorScheme {
+    
     var text: Text {
         switch self {
-        case .none:
-            return Text("System Default")
-        case .some(let scheme):
-            switch scheme {
-            case .light: return Text("Light")
-            case .dark: return Text("Dark")
-            @unknown default: return Text("Unknown Theme")
-            }
+        case .light: return Text("Light")
+        case .dark: return Text("Dark")
+        default: return Text("System Default")
         }
-    }
-}
-
-extension Optional: CaseIterable where Wrapped: CaseIterable {
-    public static var allCases: [Optional<Wrapped>] {
-        return [nil] + Wrapped.allCases.map(Self.init)
     }
 }
 

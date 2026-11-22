@@ -11,10 +11,11 @@ import SwiftUI
 
 struct SettingsChosenThemeView: View {
     @Binding var chosenTheme: ColorScheme?
+    private let themes: [ColorScheme?] = [nil, .light, .dark]
     
     var body: some View {
         Picker(selection: $chosenTheme) {
-            ForEach(ColorScheme?.allCases, id: \.self) {
+            ForEach(themes, id: \.self) {
                 $0.text
             }
         } label: {
