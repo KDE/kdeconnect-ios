@@ -55,15 +55,6 @@ enum AppIcon: RawRepresentable, CaseIterable {
             return Text("Rounded Rectangle")
         }
     }
-    
-    var image60x60: some View {
-        // https://stackoverflow.com/a/22808666
-        // Missing the AppIcon is a serious programmer error
-        // swiftlint:disable:next force_unwrapping
-        Image(uiImage: UIImage(named: "\(rawValue ?? "AppIcon")60x60")!)
-            .background(Color.black)
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-    }
 }
 
 struct AppIconPicker: View {
@@ -84,7 +75,6 @@ struct AppIconPicker: View {
                     }
                 } label: {
                     AccessibleHStack(spacing: 16) {
-                        icon.image60x60
                         icon.name
                             .foregroundColor(.primary)
                         Spacer()

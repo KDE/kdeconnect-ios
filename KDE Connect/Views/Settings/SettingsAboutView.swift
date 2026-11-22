@@ -46,7 +46,9 @@ struct SettingsAboutView: View {
                 VStack {
                     HStack {
                         Spacer(minLength: 0.0)
-                        kdeConnectSettings.appIcon.image60x60
+                        Image(.kdeConnectLogo)
+                            .resizable()
+                            .frame(width: 60, height: 60)
                             .accessibilityHidden(true)
                         Spacer(minLength: 8.0)
                         VStack {
