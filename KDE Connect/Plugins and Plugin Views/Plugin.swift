@@ -17,6 +17,9 @@ import Foundation
 
 @objc protocol Plugin: NSObjectProtocol {
     @objc func onDevicePacketReceived(np: NetworkPacket)
+    /// Called when the plugins are (re)loaded while the device is paired and reachable,
+    /// e.g. on connection or after pairing. Send the initial packets here, not on creation.
+    @objc optional func connected()
     @objc optional func onPacket(_ np: NetworkPacket,
                                  sentWithPacketTag packetTag: Int)
     @objc optional func onPacket(_ np: NetworkPacket,

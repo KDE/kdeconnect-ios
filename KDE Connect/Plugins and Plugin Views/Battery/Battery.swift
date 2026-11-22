@@ -38,7 +38,10 @@ import AppKit
         self.controlDevice = controlDevice
         super.init()
         self.startBatteryMonitoring()
-        self.sendBatteryStatusOut()
+    }
+    
+    @objc func connected() {
+        sendBatteryStatusOut()
     }
     
     @objc func startBatteryMonitoring() {

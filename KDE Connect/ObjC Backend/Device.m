@@ -424,8 +424,7 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     if (deviceDelegate) {
         [deviceDelegate onDevicePairSuccess:self];
     }
-    // The plugins were created before pairing, so their initial packets were ignored by the peer
-    [self sendBatteryStatus];
+    [self reloadPlugins];
 }
 
 - (void) requestPairing
@@ -494,15 +493,6 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
 
 #pragma mark Plugins-related Functions
 
-- (void)sendBatteryStatus {
-    if ([self.pluginsEnableStatus[PluginIDBattery] boolValue]) {
-        id<Plugin> plugin = [self.plugins objectForKey:PluginIDBattery];
-        if ([plugin respondsToSelector:@selector(sendBatteryStatusOut)]) {
-            [plugin performSelector:@selector(sendBatteryStatusOut)];
-        }
-    }
-}
-
 - (void) reloadPlugins
 {
     [self reloadPluginsKeepingLoaded:YES];
@@ -544,6 +534,16 @@ static const NSInteger allowedTimestampDifferenceSeconds = 1800; // 30 minutes
     _plugins = [plugins copy];
     _pluginsEnableStatus = [pluginsEnableStatus copy];
     os_unfair_lock_unlock(&_pluginsLock);
+    
+    // Like the desktop, notify the plugins every time they are loaded for a paired and reachable device
+    if ([self isPaired] && [self isReachable]) {
+        for (PluginID pluginID in plugins) {
+            id<Plugin> plugin = plugins[pluginID];
+            if ([pluginsEnableStatus[pluginID] boolValue] && [plugin respondsToSelector:@selector(connected)]) {
+                [plugin connected];
+            }
+        }
+    }
     
     
 //    //NSLog(@"device reload plugins");
