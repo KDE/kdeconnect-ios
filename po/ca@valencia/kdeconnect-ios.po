@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeconnect-ios static messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-09-24 15:45+0200\n"
 "Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -137,6 +137,10 @@ msgstr "Cancel·la"
 msgid "Category: %@"
 msgstr "Categoria: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Extrau les sol·licituds de fusió"
 
@@ -157,9 +161,6 @@ msgstr "Sincronitza el porta-retalls"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Porta-retalls: Envia i rep text"
-
-msgid "Clipboard: Sync"
-msgstr "Porta-retalls: Sincronitza"
 
 msgid "Configure Devices By IP"
 msgstr "Configura els dispositius per IP"
@@ -184,6 +185,10 @@ msgstr "Col·laboració a KDE Connect"
 
 msgid "Contributors"
 msgstr "Col·laboradors"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Copia el camí cap a la carpeta que conté els fitxers rebuts"
@@ -279,9 +284,6 @@ msgstr "Desactiva la difusió UDP"
 msgid "Discovered Devices"
 msgstr "Dispositius descoberts"
 
-msgid "Discovery & Pairing"
-msgstr "Descobriment i aparellament"
-
 msgid "Do Not Pair"
 msgstr "No aparelles"
 
@@ -349,9 +351,6 @@ msgstr "Transferències de fitxers"
 
 msgid "Files"
 msgstr "Fitxers"
-
-msgid "Find My Device"
-msgstr "Troba el meu dispositiu"
 
 msgid "Find My Phone Mode"
 msgstr "Mode «Troba el meu telèfon»"
@@ -455,21 +454,8 @@ msgstr "Informació"
 msgid "Initiate Pairing?"
 msgstr "Voleu iniciar l'aparellament?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Integració amb les dreceres del Siri"
-
-msgid "Integration with the system share sheet is in development"
-msgstr ""
-"Està en desenvolupament la integració amb el full compartit del sistema"
-
-msgid "Internationalization & Localization"
-msgstr "Internacionalització i traducció"
-
 msgid "Invalid"
 msgstr "No vàlid"
-
-msgid "Keyboard: Control Remote"
-msgstr "Teclat: Control remot"
 
 msgid "License"
 msgstr "Llicència"
@@ -478,9 +464,6 @@ msgstr "Llicència"
 msgid "Light"
 msgstr "Clar"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Bloqueig de la pantalla: Control remot"
-
 msgid "Logs"
 msgstr "Registres"
 
@@ -488,18 +471,8 @@ msgstr "Registres"
 msgid "Logs for %@"
 msgstr "Registres de %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Control remot multimèdia i resposta"
-
 msgid "Manage received files in the Files app"
 msgstr "Gestiona els fitxers rebuts a l'aplicació Fitxers"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Podria no funcionar a KDE Connect per a Windows"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr ""
-"Potser mitjançant l'esquema d'URL i la integració amb les dreceres de Siri"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Potser amb el Servei del centre de notificacions d'Apple (ACNS)"
@@ -507,9 +480,6 @@ msgstr "Potser amb el Servei del centre de notificacions d'Apple (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Mitjà"
-
-msgid "Mouse: Control Remote"
-msgstr "Ratolí: Control remot"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -567,11 +537,10 @@ msgstr "Encara no s'ha implementat"
 msgid "Notice"
 msgstr "Avís"
 
-msgid "Notification: Receive from Others"
-msgstr "Notificació: Rep d'altres"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Notificació: Recuperat per altres"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Notificació fora de l'aplicació:"
 
 msgid "OK"
 msgstr "D'acord"
@@ -633,9 +602,6 @@ msgstr "Ping rebut d'un dispositiu connectat."
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
 msgid "Playground"
 msgstr "Zona de proves"
 
@@ -651,7 +617,9 @@ msgstr "Sensibilitat del punter"
 msgid "Preparing Media…"
 msgstr "S'està preparant el multimèdia…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Presentador: Control remot"
 
 msgid "Preview: "
@@ -686,8 +654,16 @@ msgstr "Actualitza el descobriment"
 msgid "Remembered Devices"
 msgstr "Dispositius recordats"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Entrada remota"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Informeu d'un error"
@@ -714,15 +690,6 @@ msgstr "Rectangle arredonit"
 msgid "Run Command"
 msgstr "Executa una ordre"
 
-msgid "Run Command: Request"
-msgstr "Executa una ordre: Sol·licitud"
-
-msgid "Run Command: Respond"
-msgstr "Executa una ordre: Resposta"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Accés al remot i inicia el servidor de fitxers"
-
 # skip-rule: t-sp_tpc
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
@@ -742,9 +709,6 @@ msgstr "Guarda les fotos a la biblioteca de fotos"
 
 msgid "Save videos to the photo library"
 msgstr "Guarda els vídeos a la biblioteca de fotos"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Salvapantalla: Inhibix el remot"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Trieu un dispositiu de la llista de dispositius per a començar."
@@ -825,12 +789,6 @@ msgstr "Admés"
 msgid "System Default"
 msgstr "Predeterminada del sistema"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Volum del sistema: Control remot i resposta"
-
-msgid "Take Photo: Respond"
-msgstr "Pren una foto: Resposta"
-
 msgid "Tap to start pairing"
 msgstr "Toqueu per a iniciar l'aparellament"
 
@@ -882,9 +840,6 @@ msgstr "Canvia el teclat"
 
 msgid "Troubleshooting"
 msgstr "Solució de problemes"
-
-msgid "Trusted Networks"
-msgstr "Xarxes de confiança"
 
 msgid "Unknown Theme"
 msgstr "Tema desconegut"
@@ -942,3 +897,71 @@ msgstr "sense títol"
 
 msgid "© KDE Community & contributors"
 msgstr "© La comunitat KDE & contributors"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Porta-retalls: Sincronitza"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Descobriment i aparellament"
+
+#~ msgid "Find My Device"
+#~ msgstr "Troba el meu dispositiu"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Integració amb les dreceres del Siri"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr ""
+#~ "Està en desenvolupament la integració amb el full compartit del sistema"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Internacionalització i traducció"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Teclat: Control remot"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Bloqueig de la pantalla: Control remot"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: Control remot multimèdia i resposta"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Podria no funcionar a KDE Connect per a Windows"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr ""
+#~ "Potser mitjançant l'esquema d'URL i la integració amb les dreceres de Siri"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Ratolí: Control remot"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Notificació: Rep d'altres"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Notificació: Recuperat per altres"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Bigscreen"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Executa una ordre: Sol·licitud"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Executa una ordre: Resposta"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: Accés al remot i inicia el servidor de fitxers"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Salvapantalla: Inhibix el remot"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Volum del sistema: Control remot i resposta"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Pren una foto: Resposta"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Xarxes de confiança"

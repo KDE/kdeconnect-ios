@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeconnect-ios\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-10-10 12:43+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -131,6 +131,10 @@ msgstr "Отмена"
 msgid "Category: %@"
 msgstr "Категория: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Ознакомьтесь с запросами на слияние"
 
@@ -151,9 +155,6 @@ msgstr "Синхронизация буфера обмена"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Буфер обмена: отправка и получение текста"
-
-msgid "Clipboard: Sync"
-msgstr "Буфер обмена: синхронизация"
 
 msgid "Configure Devices By IP"
 msgstr "Настройка устройств по IP-адресу"
@@ -178,6 +179,10 @@ msgstr "Помочь проекту KDE Connect"
 
 msgid "Contributors"
 msgstr "Участники"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Копировать путь к папке с полученными файлами"
@@ -271,9 +276,6 @@ msgstr "Отключить широковещательную передачу U
 msgid "Discovered Devices"
 msgstr "Обнаруженные устройства"
 
-msgid "Discovery & Pairing"
-msgstr "Обнаружение и сопряжение"
-
 msgid "Do Not Pair"
 msgstr "Не сопрягать"
 
@@ -339,9 +341,6 @@ msgstr "Передача файлов"
 
 msgid "Files"
 msgstr "Файлы"
-
-msgid "Find My Device"
-msgstr "Найти моё устройство"
 
 msgid "Find My Phone Mode"
 msgstr "Режим поиска телефона"
@@ -442,20 +441,8 @@ msgstr "Сведения"
 msgid "Initiate Pairing?"
 msgstr "Начать сопряжение?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Интеграция с Siri Shortcuts"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "Интеграция с системным меню общего доступа в разработке"
-
-msgid "Internationalization & Localization"
-msgstr "Интернационализация и локализация"
-
 msgid "Invalid"
 msgstr "Неверный"
-
-msgid "Keyboard: Control Remote"
-msgstr "Клавиатура: управление удалённым устройством"
 
 msgid "License"
 msgstr "Лицензия"
@@ -464,26 +451,14 @@ msgstr "Лицензия"
 msgid "Light"
 msgstr "Слабая"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Блокировка экрана: управление удалённым устройством"
-
 msgid "Logs"
 msgstr "Журналы"
 
 msgid "Logs for %@"
 msgstr "Журналы для %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: управление удалёнными медиапроигрывателями и ответ"
-
 msgid "Manage received files in the Files app"
 msgstr "Управление полученными файлами в приложении «Файлы»"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Может не работать с KDE Connect для Windows"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Возможно, с помощью схемы URL и интеграции с Siri Shortcuts"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Возможно, с помощью Apple Notification Center Service (ACNS)"
@@ -491,9 +466,6 @@ msgstr "Возможно, с помощью Apple Notification Center Service (A
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Средняя"
-
-msgid "Mouse: Control Remote"
-msgstr "Мышь: управление удалённым устройством"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -550,11 +522,10 @@ msgstr "Ещё не реализовано"
 msgid "Notice"
 msgstr "Уведомление"
 
-msgid "Notification: Receive from Others"
-msgstr "Уведомления: получение от других устройств"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Уведомления: получение другими устройствами"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Уведомление вне приложения:"
 
 msgid "OK"
 msgstr "ОК"
@@ -615,9 +586,6 @@ msgstr "Получен запрос ping от подключённого уст�
 msgid "Ping!"
 msgstr "Проверка связи"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
 msgid "Playground"
 msgstr "Песочница"
 
@@ -633,7 +601,9 @@ msgstr "Чувствительность указателя"
 msgid "Preparing Media…"
 msgstr "Подготовка медиаданных…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Презентация: управление удалённым устройством"
 
 msgid "Preview: "
@@ -667,8 +637,16 @@ msgstr "Обновить обнаружение"
 msgid "Remembered Devices"
 msgstr "Запомненные устройства"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Удалённый ввод"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Сообщить об ошибке"
@@ -695,15 +673,6 @@ msgstr "Скруглённый прямоугольник"
 msgid "Run Command"
 msgstr "Выполнить команду"
 
-msgid "Run Command: Request"
-msgstr "Выполнение команды: запрос"
-
-msgid "Run Command: Respond"
-msgstr "Выполнение команды: ответ"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: доступ к удалённому устройству и запуск файлового сервера"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -722,9 +691,6 @@ msgstr "Сохранять фотографии в медиатеку"
 
 msgid "Save videos to the photo library"
 msgstr "Сохранять видео в медиатеку"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Хранитель экрана: блокировка на удалённом устройстве"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Чтобы начать, выберите устройство из списка «Устройства»."
@@ -805,12 +771,6 @@ msgstr "Поддерживается"
 msgid "System Default"
 msgstr "Системное"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Системная громкость: управление удалённым устройством и ответ"
-
-msgid "Take Photo: Respond"
-msgstr "Съёмка фото: ответ"
-
 msgid "Tap to start pairing"
 msgstr "Коснитесь, чтобы начать сопряжение"
 
@@ -861,9 +821,6 @@ msgstr "Переключить клавиатуру"
 
 msgid "Troubleshooting"
 msgstr "Устранение неполадок"
-
-msgid "Trusted Networks"
-msgstr "Доверенные сети"
 
 msgid "Unknown Theme"
 msgstr "Неизвестное оформление"
@@ -917,3 +874,69 @@ msgstr "без названия"
 
 msgid "© KDE Community & contributors"
 msgstr "© Сообщество KDE и участники"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Буфер обмена: синхронизация"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Обнаружение и сопряжение"
+
+#~ msgid "Find My Device"
+#~ msgstr "Найти моё устройство"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Интеграция с Siri Shortcuts"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "Интеграция с системным меню общего доступа в разработке"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Интернационализация и локализация"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Клавиатура: управление удалённым устройством"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Блокировка экрана: управление удалённым устройством"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: управление удалёнными медиапроигрывателями и ответ"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Может не работать с KDE Connect для Windows"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Возможно, с помощью схемы URL и интеграции с Siri Shortcuts"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Мышь: управление удалённым устройством"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Уведомления: получение от других устройств"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Уведомления: получение другими устройствами"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Bigscreen"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Выполнение команды: запрос"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Выполнение команды: ответ"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: доступ к удалённому устройству и запуск файлового сервера"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Хранитель экрана: блокировка на удалённом устройстве"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Системная громкость: управление удалённым устройством и ответ"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Съёмка фото: ответ"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Доверенные сети"

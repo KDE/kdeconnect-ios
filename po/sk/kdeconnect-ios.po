@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde-l 10n\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-10-28 10:57+0100\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -126,6 +126,10 @@ msgstr "Zrušiť"
 msgid "Category: %@"
 msgstr "Kategória: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Pozrite si požiadavky na zlúčenie"
 
@@ -146,9 +150,6 @@ msgstr "Synchronizácia schránky"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Schránka: odosielanie a prijímanie textu"
-
-msgid "Clipboard: Sync"
-msgstr "Schránka: synchronizácia"
 
 msgid "Configure Devices By IP"
 msgstr "Nastaviť zariadenia podľa IP"
@@ -173,6 +174,10 @@ msgstr "Prispieť do KDE Connect"
 
 msgid "Contributors"
 msgstr "Prispievatelia"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Kopírovať cestu k priečinku s prijatými súbormi"
@@ -264,9 +269,6 @@ msgstr "Vypnúť vysielanie UDP"
 msgid "Discovered Devices"
 msgstr "Objavené zariadenia"
 
-msgid "Discovery & Pairing"
-msgstr "Objavovanie a párovanie"
-
 msgid "Do Not Pair"
 msgstr "Nepárovať"
 
@@ -332,9 +334,6 @@ msgstr "Prenosy súborov"
 
 msgid "Files"
 msgstr "Súbory"
-
-msgid "Find My Device"
-msgstr "Nájsť moje zariadenie"
 
 msgid "Find My Phone Mode"
 msgstr "Režim Nájsť môj telefón"
@@ -435,20 +434,8 @@ msgstr "Informácie"
 msgid "Initiate Pairing?"
 msgstr "Spustiť párovanie?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Integrácia so skratkami Siri"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "Integrácia so systémovým panelom zdieľania je vo vývoji"
-
-msgid "Internationalization & Localization"
-msgstr "Internacionalizácia a lokalizácia"
-
 msgid "Invalid"
 msgstr "Neplatný"
-
-msgid "Keyboard: Control Remote"
-msgstr "Klávesnica: ovládanie vzdialeného zariadenia"
 
 msgid "License"
 msgstr "Licencia"
@@ -457,26 +444,14 @@ msgstr "Licencia"
 msgid "Light"
 msgstr "Svetlá"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Uzamknutá obrazovka: ovládanie vzdialeného zariadenia"
-
 msgid "Logs"
 msgstr "Záznamy"
 
 msgid "Logs for %@"
 msgstr "Záznamy pre %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: ovládanie vzdialených médií a odpovedanie"
-
 msgid "Manage received files in the Files app"
 msgstr "Spravovať prijaté súbory v aplikácii Súbory"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Nemusí fungovať s KDE Connect pre Windows"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Možno cez schému URL a integráciu so skratkami Siri"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Možno cez Apple Notification Center Service (ACNS)"
@@ -484,9 +459,6 @@ msgstr "Možno cez Apple Notification Center Service (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Stredná"
-
-msgid "Mouse: Control Remote"
-msgstr "Myš: ovládanie vzdialeného zariadenia"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -542,11 +514,10 @@ msgstr "Zatiaľ neimplementované"
 msgid "Notice"
 msgstr "Oznámenie"
 
-msgid "Notification: Receive from Others"
-msgstr "Upozornenie: prijímanie od ostatných"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Upozornenie: získavanie ostatnými"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Upozornenie mimo aplikácie:"
 
 msgid "OK"
 msgstr "OK"
@@ -607,9 +578,6 @@ msgstr "Prijatý ping z pripojeného zariadenia."
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
 msgid "Playground"
 msgstr "Pieskovisko"
 
@@ -625,7 +593,9 @@ msgstr "Citlivosť ukazovateľa"
 msgid "Preparing Media…"
 msgstr "Pripravujú sa médiá…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Prezentácia: ovládanie vzdialeného zariadenia"
 
 msgid "Preview: "
@@ -659,8 +629,16 @@ msgstr "Obnoviť objavovanie"
 msgid "Remembered Devices"
 msgstr "Zapamätané zariadenia"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Vzdialený vstup"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Nahlásiť chybu"
@@ -687,15 +665,6 @@ msgstr "Zaoblený obdĺžnik"
 msgid "Run Command"
 msgstr "Spustiť príkaz"
 
-msgid "Run Command: Request"
-msgstr "Spustiť príkaz: žiadosť"
-
-msgid "Run Command: Respond"
-msgstr "Spustiť príkaz: odpoveď"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: prístup k vzdialenému zariadeniu a spustenie súborového servera"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -714,9 +683,6 @@ msgstr "Ukladať fotky do knižnice fotiek"
 
 msgid "Save videos to the photo library"
 msgstr "Ukladať videá do knižnice fotiek"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Šetrič obrazovky: blokovanie na vzdialenom zariadení"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Začnite výberom zariadenia zo zoznamu Zariadenia."
@@ -797,12 +763,6 @@ msgstr "Podporované"
 msgid "System Default"
 msgstr "Predvolené systémom"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Hlasitosť systému: ovládanie vzdialeného zariadenia a odpovedanie"
-
-msgid "Take Photo: Respond"
-msgstr "Odfotiť: odpoveď"
-
 msgid "Tap to start pairing"
 msgstr "Ťuknutím začnete párovanie"
 
@@ -853,9 +813,6 @@ msgstr "Prepnúť klávesnicu"
 
 msgid "Troubleshooting"
 msgstr "Riešenie problémov"
-
-msgid "Trusted Networks"
-msgstr "Dôveryhodné siete"
 
 msgid "Unknown Theme"
 msgstr "Neznáma téma"
@@ -909,3 +866,70 @@ msgstr "bez názvu"
 
 msgid "© KDE Community & contributors"
 msgstr "© komunita KDE a prispievatelia"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Schránka: synchronizácia"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Objavovanie a párovanie"
+
+#~ msgid "Find My Device"
+#~ msgstr "Nájsť moje zariadenie"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Integrácia so skratkami Siri"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "Integrácia so systémovým panelom zdieľania je vo vývoji"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Internacionalizácia a lokalizácia"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Klávesnica: ovládanie vzdialeného zariadenia"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Uzamknutá obrazovka: ovládanie vzdialeného zariadenia"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: ovládanie vzdialených médií a odpovedanie"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Nemusí fungovať s KDE Connect pre Windows"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Možno cez schému URL a integráciu so skratkami Siri"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Myš: ovládanie vzdialeného zariadenia"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Upozornenie: prijímanie od ostatných"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Upozornenie: získavanie ostatnými"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Bigscreen"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Spustiť príkaz: žiadosť"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Spustiť príkaz: odpoveď"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr ""
+#~ "SFTP: prístup k vzdialenému zariadeniu a spustenie súborového servera"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Šetrič obrazovky: blokovanie na vzdialenom zariadení"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Hlasitosť systému: ovládanie vzdialeného zariadenia a odpovedanie"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Odfotiť: odpoveď"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Dôveryhodné siete"

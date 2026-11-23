@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-10-11 03:25+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -143,6 +143,10 @@ msgstr "Utzi"
 msgid "Category: %@"
 msgstr "Kategoria: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Bateratze-eskaerak ikusi"
 
@@ -163,9 +167,6 @@ msgstr "Arbelaren sinkronizazioa"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Arbela: testua bidali eta jaso"
-
-msgid "Clipboard: Sync"
-msgstr "Arbela: sinkronizatu"
 
 msgid "Configure Devices By IP"
 msgstr "Gailuak IP bidez konfiguratu"
@@ -190,6 +191,10 @@ msgstr "KDE Connecten lagundu"
 
 msgid "Contributors"
 msgstr "Kolaboratzaileak"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Jasotako fitxategiak dituen karpetaren bide-izena kopiatu"
@@ -282,9 +287,6 @@ msgstr "UDP bidezko difusioa desgaitu"
 msgid "Discovered Devices"
 msgstr "Aurkitutako gailuak"
 
-msgid "Discovery & Pairing"
-msgstr "Gailuak aurkitzea eta parekatzea"
-
 msgid "Do Not Pair"
 msgstr "Ez parekatu"
 
@@ -350,9 +352,6 @@ msgstr "Fitxategi-transferentziak"
 
 msgid "Files"
 msgstr "Fitxategiak"
-
-msgid "Find My Device"
-msgstr "Nire gailua bilatu"
 
 msgid "Find My Phone Mode"
 msgstr "Nire telefonoa bilatzeko modua"
@@ -453,20 +452,8 @@ msgstr "Informazioa"
 msgid "Initiate Pairing?"
 msgstr "Parekatzea hasi?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Siriren lasterbideekin integratzea"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "Sistemaren partekatze-panelarekin integratzea garatzen ari dira"
-
-msgid "Internationalization & Localization"
-msgstr "Nazioartekotzea eta lokalizazioa"
-
 msgid "Invalid"
 msgstr "Baliogabea"
-
-msgid "Keyboard: Control Remote"
-msgstr "Teklatua: urruneko gailua kontrolatu"
 
 msgid "License"
 msgstr "Lizentzia"
@@ -475,26 +462,14 @@ msgstr "Lizentzia"
 msgid "Light"
 msgstr "Arina"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Giltzatze-pantaila: urruneko gailua kontrolatu"
-
 msgid "Logs"
 msgstr "Egunkariak"
 
 msgid "Logs for %@"
 msgstr "%@(e)n egunkariak"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: urruneko media kontrolatu eta erantzun"
-
 msgid "Manage received files in the Files app"
 msgstr "Jasotako fitxategiak Fitxategiak aplikazioan kudeatu"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Baliteke Windowserako KDE Connectekin ez ibiltzea"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Agian URL eskema erabiliz eta Siriren lasterbideekin integratuz"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Agian Apple Notification Center Service (ANCS) erabiliz"
@@ -502,9 +477,6 @@ msgstr "Agian Apple Notification Center Service (ANCS) erabiliz"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Ertaina"
-
-msgid "Mouse: Control Remote"
-msgstr "Sagua: urruneko gailua kontrolatu"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -561,11 +533,10 @@ msgstr "Oraindik ez da inplementatu"
 msgid "Notice"
 msgstr "Oharpena"
 
-msgid "Notification: Receive from Others"
-msgstr "Jakinarazpena: besteengandik jaso"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Jakinarazpena: besteek berreskuratu"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Aplikaziotik kanpoko jakinarazpena:"
 
 msgid "OK"
 msgstr "Ados"
@@ -626,9 +597,6 @@ msgstr "Konektatutako gailu batetik ping bat jaso da."
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
 msgid "Playground"
 msgstr "Probalekua"
 
@@ -644,7 +612,9 @@ msgstr "Erakuslearen sentikortasuna"
 msgid "Preparing Media…"
 msgstr "Media prestatzen…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Aurkezlea: urruneko gailua kontrolatu"
 
 msgid "Preview: "
@@ -678,8 +648,16 @@ msgstr "Gailuen bilaketa freskatu"
 msgid "Remembered Devices"
 msgstr "Gordetako gailuak"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Urruneko sarrera"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Akats baten berri eman"
@@ -706,17 +684,6 @@ msgstr "Izkin biribileko laukizuzena"
 msgid "Run Command"
 msgstr "Komandoa exekutatu"
 
-msgid "Run Command: Request"
-msgstr "Komandoa exekutatu: eskatu"
-
-msgid "Run Command: Respond"
-msgstr "Komandoa exekutatu: erantzun"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr ""
-"SFTP: urruneko gailuaren fitxategi-sistema atzitu eta fitxategi-zerbitzaria "
-"abiarazi"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -735,9 +702,6 @@ msgstr "Argazkiak argazki-liburutegian gorde"
 
 msgid "Save videos to the photo library"
 msgstr "Bideoak argazki-liburutegian gorde"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Pantaila-babeslea: urruneko gailuan aktibatzea eragotzi"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Hasteko, «Gailuak» zerrendako gailu bat hautatu."
@@ -818,12 +782,6 @@ msgstr "Onartuta"
 msgid "System Default"
 msgstr "Sistemako lehenetsia"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Sistemaren bolumena: urruneko gailuarena kontrolatu eta erantzun"
-
-msgid "Take Photo: Respond"
-msgstr "Argazkia atera: erantzun"
-
 msgid "Tap to start pairing"
 msgstr "Parekatzen hasteko, tak egin"
 
@@ -874,9 +832,6 @@ msgstr "Teklatua erakutsi/ezkutatu"
 
 msgid "Troubleshooting"
 msgstr "Arazoak konpontzea"
-
-msgid "Trusted Networks"
-msgstr "Konfiantzazko sareak"
 
 msgid "Unknown Theme"
 msgstr "Gai ezezaguna"
@@ -930,3 +885,71 @@ msgstr "izengabea"
 
 msgid "© KDE Community & contributors"
 msgstr "© KDE komunitatea eta kolaboratzaileak"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Arbela: sinkronizatu"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Gailuak aurkitzea eta parekatzea"
+
+#~ msgid "Find My Device"
+#~ msgstr "Nire gailua bilatu"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Siriren lasterbideekin integratzea"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "Sistemaren partekatze-panelarekin integratzea garatzen ari dira"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Nazioartekotzea eta lokalizazioa"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Teklatua: urruneko gailua kontrolatu"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Giltzatze-pantaila: urruneko gailua kontrolatu"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: urruneko media kontrolatu eta erantzun"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Baliteke Windowserako KDE Connectekin ez ibiltzea"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Agian URL eskema erabiliz eta Siriren lasterbideekin integratuz"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Sagua: urruneko gailua kontrolatu"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Jakinarazpena: besteengandik jaso"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Jakinarazpena: besteek berreskuratu"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Bigscreen"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Komandoa exekutatu: eskatu"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Komandoa exekutatu: erantzun"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr ""
+#~ "SFTP: urruneko gailuaren fitxategi-sistema atzitu eta fitxategi-"
+#~ "zerbitzaria abiarazi"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Pantaila-babeslea: urruneko gailuan aktibatzea eragotzi"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Sistemaren bolumena: urruneko gailuarena kontrolatu eta erantzun"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Argazkia atera: erantzun"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Konfiantzazko sareak"

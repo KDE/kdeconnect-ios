@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-09-21 19:22+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -132,6 +132,10 @@ msgstr "Скасувати"
 msgid "Category: %@"
 msgstr "Категорія: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Отримати запити щодо об'єднання"
 
@@ -152,9 +156,6 @@ msgstr "Синхронізація буфера"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Буфер обміну: надсилання і отримання тексту"
-
-msgid "Clipboard: Sync"
-msgstr "Буфер обміну: синхронізація"
 
 msgid "Configure Devices By IP"
 msgstr "Налаштовування пристроїв за IP"
@@ -179,6 +180,10 @@ msgstr "Участь у проєкті KDE Connect"
 
 msgid "Contributors"
 msgstr "Учасники розробки"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Копіювати шлях до теки, що містить отримані файли"
@@ -272,9 +277,6 @@ msgstr "Вимкнути трансляцію UDP"
 msgid "Discovered Devices"
 msgstr "Виявлені пристрої"
 
-msgid "Discovery & Pairing"
-msgstr "Виявлення і пов'язування"
-
 msgid "Do Not Pair"
 msgstr "Не пов'язувати"
 
@@ -340,9 +342,6 @@ msgstr "Передавання файлів"
 
 msgid "Files"
 msgstr "Файли"
-
-msgid "Find My Device"
-msgstr "Знайти пристрій"
 
 msgid "Find My Phone Mode"
 msgstr "Режим пошуку телефону"
@@ -442,20 +441,8 @@ msgstr "Відомості"
 msgid "Initiate Pairing?"
 msgstr "Ініціювати пов'язування?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Інтеграція зі скороченнями Siri"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "Інтеграцію із аркушем спільних ресурсів системи ще не реалізовано"
-
-msgid "Internationalization & Localization"
-msgstr "Переклади та локалізація"
-
 msgid "Invalid"
 msgstr "Некоректний"
-
-msgid "Keyboard: Control Remote"
-msgstr "Клавіатура: керування віддаленим пристроєм"
 
 msgid "License"
 msgstr "Ліцензування"
@@ -464,26 +451,14 @@ msgstr "Ліцензування"
 msgid "Light"
 msgstr "Світла"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Блокування екрана: керування віддаленим пристроєм"
-
 msgid "Logs"
 msgstr "Журнал"
 
 msgid "Logs for %@"
 msgstr "Журнал для %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: керування віддаленими мультимедійними даними та відповіддю"
-
 msgid "Manage received files in the Files app"
 msgstr "Керувати отриманими файлами у програмі «Файли»"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Може не працювати з KDE Connect для Windows"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Можливо, через схему адреси та інтеграцію зі скороченнями Siri"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Можливо, зі службою центру сповіщень Apple (ACNS)"
@@ -491,9 +466,6 @@ msgstr "Можливо, зі службою центру сповіщень Appl
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Середній"
-
-msgid "Mouse: Control Remote"
-msgstr "Миша: керування віддаленим"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -551,11 +523,10 @@ msgstr "Ще не реалізовано"
 msgid "Notice"
 msgstr "Зауваження"
 
-msgid "Notification: Receive from Others"
-msgstr "Сповіщення: отримання з інших"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Сповіщення: отримання іншими"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Сповіщення поза програмою:"
 
 msgid "OK"
 msgstr "Гаразд"
@@ -616,9 +587,6 @@ msgstr "Від з'єднаного пристрою отримано луна-і
 msgid "Ping!"
 msgstr "Пінг!"
 
-msgid "Plasma Bigscreen"
-msgstr "Плазма для великих екранів"
-
 msgid "Playground"
 msgstr "Ігровий майданчик"
 
@@ -634,7 +602,9 @@ msgstr "Чутливість вказівника"
 msgid "Preparing Media…"
 msgstr "Приготування мультимедіа…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Презентація: керування віддаленим"
 
 msgid "Preview: "
@@ -668,8 +638,16 @@ msgstr "Оновити виявлення"
 msgid "Remembered Devices"
 msgstr "Відомі пристрої"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Дистанційне введення"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Повідомити про ваду"
@@ -696,15 +674,6 @@ msgstr "Округлений прямокутник"
 msgid "Run Command"
 msgstr "Виконати команду"
 
-msgid "Run Command: Request"
-msgstr "Виконання команди: запит"
-
-msgid "Run Command: Respond"
-msgstr "Виконання команди: відповідь"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: доступ до віддаленого сховища та ініціалізація файлового сервера"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -723,9 +692,6 @@ msgstr "Зберігати фотографії до фотобібліотек�
 
 msgid "Save videos to the photo library"
 msgstr "Зберігати відео до фотобібліотеки"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Зберігач екрана: блокування дистанційного керування"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Виберіть пристрій для запуску зі списку пристроїв."
@@ -806,12 +772,6 @@ msgstr "Передбачено підтримку"
 msgid "System Default"
 msgstr "Типова для системи"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Гучність системи: керування віддаленим і відповідь"
-
-msgid "Take Photo: Respond"
-msgstr "Створення фотографії: відповідь"
-
 msgid "Tap to start pairing"
 msgstr "Торкніться, щоб почати пов'язування"
 
@@ -862,9 +822,6 @@ msgstr "Увімкнути/Вимкнути клавіатуру"
 
 msgid "Troubleshooting"
 msgstr "Усування проблем"
-
-msgid "Trusted Networks"
-msgstr "Надійні мережі"
 
 msgid "Unknown Theme"
 msgstr "Невідома тема"
@@ -918,3 +875,70 @@ msgstr "без назви"
 
 msgid "© KDE Community & contributors"
 msgstr "© Спільнота та учасники KDE"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Буфер обміну: синхронізація"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Виявлення і пов'язування"
+
+#~ msgid "Find My Device"
+#~ msgstr "Знайти пристрій"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Інтеграція зі скороченнями Siri"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "Інтеграцію із аркушем спільних ресурсів системи ще не реалізовано"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Переклади та локалізація"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Клавіатура: керування віддаленим пристроєм"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Блокування екрана: керування віддаленим пристроєм"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: керування віддаленими мультимедійними даними та відповіддю"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Може не працювати з KDE Connect для Windows"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Можливо, через схему адреси та інтеграцію зі скороченнями Siri"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Миша: керування віддаленим"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Сповіщення: отримання з інших"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Сповіщення: отримання іншими"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Плазма для великих екранів"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Виконання команди: запит"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Виконання команди: відповідь"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr ""
+#~ "SFTP: доступ до віддаленого сховища та ініціалізація файлового сервера"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Зберігач екрана: блокування дистанційного керування"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Гучність системи: керування віддаленим і відповідь"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Створення фотографії: відповідь"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Надійні мережі"

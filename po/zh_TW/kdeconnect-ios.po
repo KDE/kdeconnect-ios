@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-09-22 03:43+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -126,6 +126,10 @@ msgstr "取消"
 msgid "Category: %@"
 msgstr "分類：%@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "查看合併請求"
 
@@ -146,9 +150,6 @@ msgstr "剪貼簿同步"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "剪貼簿：推送並接收文字"
-
-msgid "Clipboard: Sync"
-msgstr "剪貼簿：同步"
 
 msgid "Configure Devices By IP"
 msgstr "依 IP 位址設定裝置"
@@ -173,6 +174,10 @@ msgstr "為 KDE Connect 貢獻"
 
 msgid "Contributors"
 msgstr "貢獻者"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "複製包含已接收檔案的資料夾的路徑"
@@ -261,9 +266,6 @@ msgstr "停用 UDP 廣播"
 msgid "Discovered Devices"
 msgstr "探索到的裝置"
 
-msgid "Discovery & Pairing"
-msgstr "探索與配對"
-
 msgid "Do Not Pair"
 msgstr "不要配對"
 
@@ -329,9 +331,6 @@ msgstr "檔案傳輸"
 
 msgid "Files"
 msgstr "檔案"
-
-msgid "Find My Device"
-msgstr "尋找我的裝置"
 
 msgid "Find My Phone Mode"
 msgstr "尋找手機模式"
@@ -426,20 +425,8 @@ msgstr "資訊"
 msgid "Initiate Pairing?"
 msgstr "開始配對？"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "與 Siri 捷徑的整合"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "與系統分享介面的整合功能尚在開發中"
-
-msgid "Internationalization & Localization"
-msgstr "國際化與本地化"
-
 msgid "Invalid"
 msgstr "無效"
-
-msgid "Keyboard: Control Remote"
-msgstr "鍵盤：控制遠端"
 
 msgid "License"
 msgstr "授權條款"
@@ -448,26 +435,14 @@ msgstr "授權條款"
 msgid "Light"
 msgstr "淺色"
 
-msgid "Lock Screen: Control Remote"
-msgstr "鎖定螢幕：控制遠端"
-
 msgid "Logs"
 msgstr "紀錄"
 
 msgid "Logs for %@"
 msgstr "%@ 的紀錄"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS：控制遠端媒體與回應"
-
 msgid "Manage received files in the Files app"
 msgstr "在《檔案》應用程式裡管理接收到的檔案"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "可能與 Windows 版 KDE Connect 不相容"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "或許透過 URL 機制與 Siri 捷徑整合"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "或許利用 Apple 通知中心服務 (ACNS)"
@@ -475,9 +450,6 @@ msgstr "或許利用 Apple 通知中心服務 (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "中等"
-
-msgid "Mouse: Control Remote"
-msgstr "滑鼠：控制遠端"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -529,11 +501,10 @@ msgstr "尚未實作"
 msgid "Notice"
 msgstr "注意"
 
-msgid "Notification: Receive from Others"
-msgstr "通知：從其他的接收"
-
-msgid "Notification: Retrieve by Others"
-msgstr "通知：由其他的取得"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "應用程式外的通知："
 
 msgid "OK"
 msgstr "確定"
@@ -594,9 +565,6 @@ msgstr "從連線裝置接收到了 ping 封包。"
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma 大螢幕"
-
 msgid "Playground"
 msgstr "遊樂場"
 
@@ -612,7 +580,9 @@ msgstr "游標靈敏度"
 msgid "Preparing Media…"
 msgstr "正在準備媒體…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "簡報工具：控制遠端"
 
 msgid "Preview: "
@@ -646,8 +616,16 @@ msgstr "重新整理探索"
 msgid "Remembered Devices"
 msgstr "已記住的裝置"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "遠端輸入"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "回報問題"
@@ -674,15 +652,6 @@ msgstr "圓角矩形"
 msgid "Run Command"
 msgstr "執行指令"
 
-msgid "Run Command: Request"
-msgstr "執行指令：請求"
-
-msgid "Run Command: Respond"
-msgstr "執行指令：回應"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP：存取遠端與開始檔案伺服器"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -701,9 +670,6 @@ msgstr "將相片儲存到照片圖庫"
 
 msgid "Save videos to the photo library"
 msgstr "將影片儲存到照片圖庫"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "螢幕保護程式：阻擋遠端"
 
 msgid "Select a device from the Devices list to start."
 msgstr "要開始使用，請從裝置清單中選擇裝置。"
@@ -784,12 +750,6 @@ msgstr "已支援"
 msgid "System Default"
 msgstr "系統預設"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "系統音量：控制遠端與回應"
-
-msgid "Take Photo: Respond"
-msgstr "拍照：回應"
-
 msgid "Tap to start pairing"
 msgstr "輕點以開始配對"
 
@@ -834,9 +794,6 @@ msgstr "切換鍵盤"
 
 msgid "Troubleshooting"
 msgstr "問題排除"
-
-msgid "Trusted Networks"
-msgstr "可信任網路"
 
 msgid "Unknown Theme"
 msgstr "未知主題"
@@ -890,3 +847,69 @@ msgstr "未命名"
 
 msgid "© KDE Community & contributors"
 msgstr "© KDE 社群與貢獻者"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "剪貼簿：同步"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "探索與配對"
+
+#~ msgid "Find My Device"
+#~ msgstr "尋找我的裝置"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "與 Siri 捷徑的整合"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "與系統分享介面的整合功能尚在開發中"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "國際化與本地化"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "鍵盤：控制遠端"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "鎖定螢幕：控制遠端"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS：控制遠端媒體與回應"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "可能與 Windows 版 KDE Connect 不相容"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "或許透過 URL 機制與 Siri 捷徑整合"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "滑鼠：控制遠端"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "通知：從其他的接收"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "通知：由其他的取得"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma 大螢幕"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "執行指令：請求"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "執行指令：回應"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP：存取遠端與開始檔案伺服器"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "螢幕保護程式：阻擋遠端"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "系統音量：控制遠端與回應"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "拍照：回應"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "可信任網路"

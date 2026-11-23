@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-09-21 10:36-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@kde.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -129,6 +129,10 @@ msgstr "Cancelar"
 msgid "Category: %@"
 msgstr "Categoria: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Confira as solicitações de mesclagem"
 
@@ -149,9 +153,6 @@ msgstr "Sincronização da área de transferência"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Área de transferência: Enviar e receber texto"
-
-msgid "Clipboard: Sync"
-msgstr "Área de transferência: Sincronizar"
 
 msgid "Configure Devices By IP"
 msgstr "Configurar dispositivos por IP"
@@ -176,6 +177,10 @@ msgstr "Colaborar com o KDE Connect"
 
 msgid "Contributors"
 msgstr "Colaboradores"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Copiar caminho para a pasta que contém os arquivos recebidos"
@@ -270,9 +275,6 @@ msgstr "Desativar broadcast UDP"
 msgid "Discovered Devices"
 msgstr "Dispositivos descobertos"
 
-msgid "Discovery & Pairing"
-msgstr "Descoberta e pareamento"
-
 msgid "Do Not Pair"
 msgstr "Não parear"
 
@@ -338,9 +340,6 @@ msgstr "Transferências de arquivos"
 
 msgid "Files"
 msgstr "Arquivos"
-
-msgid "Find My Device"
-msgstr "Encontrar meu dispositivo"
 
 msgid "Find My Phone Mode"
 msgstr "Modo \"Encontrar meu telefone\""
@@ -443,22 +442,8 @@ msgstr "Informações"
 msgid "Initiate Pairing?"
 msgstr "Iniciar pareamento?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Integração com atalhos do Siri"
-
-msgid "Integration with the system share sheet is in development"
-msgstr ""
-"A integração com a folha de compartilhamento do sistema está em "
-"desenvolvimento"
-
-msgid "Internationalization & Localization"
-msgstr "Internacionalização e localização"
-
 msgid "Invalid"
 msgstr "Inválido"
-
-msgid "Keyboard: Control Remote"
-msgstr "Teclado: Controle remoto"
 
 msgid "License"
 msgstr "Licença"
@@ -467,26 +452,14 @@ msgstr "Licença"
 msgid "Light"
 msgstr "Leve"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Tela de bloqueio: Controle remoto"
-
 msgid "Logs"
 msgstr "Registros"
 
 msgid "Logs for %@"
 msgstr "Registros para %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Controle remoto de mídia e resposta"
-
 msgid "Manage received files in the Files app"
 msgstr "Gerencie arquivos recebidos no aplicativo Arquivos"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Pode não funcionar com o KDE Connect para Windows"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Talvez por meio de esquema URL e integração com os Atalhos da Siri"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr ""
@@ -496,9 +469,6 @@ msgstr ""
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Médio"
-
-msgid "Mouse: Control Remote"
-msgstr "Mouse: Controle remoto"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -555,11 +525,10 @@ msgstr "Não implementado ainda"
 msgid "Notice"
 msgstr "Notificação"
 
-msgid "Notification: Receive from Others"
-msgstr "Notificação: Receber dor outros"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Notificação: Recuperação por outros"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Notificação externa ao aplicativo:"
 
 msgid "OK"
 msgstr "OK"
@@ -620,9 +589,6 @@ msgstr "Ping recebido de um dispositivo conectado."
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
 msgid "Playground"
 msgstr "Playground"
 
@@ -638,7 +604,9 @@ msgstr "Sensibilidade do ponteiro"
 msgid "Preparing Media…"
 msgstr "Preparando a mídia…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Apresentador: Controle remoto"
 
 msgid "Preview: "
@@ -672,8 +640,16 @@ msgstr "Atualizar descoberta"
 msgid "Remembered Devices"
 msgstr "Dispositivos lembrados"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Entrada remota"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Relatar bug"
@@ -700,15 +676,6 @@ msgstr "Retângulo arredondado"
 msgid "Run Command"
 msgstr "Executar comando"
 
-msgid "Run Command: Request"
-msgstr "Executar comando: Solicitação"
-
-msgid "Run Command: Respond"
-msgstr "Executar comando: Responder"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Acesso remoto e iniciar servidor de arquivos"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -727,9 +694,6 @@ msgstr "Salvar fotos na biblioteca de fotos"
 
 msgid "Save videos to the photo library"
 msgstr "Salvar vídeos na biblioteca de fotos"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Protetor de tela: Inibir controle remoto"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Selecione um dispositivo na lista de dispositivos para começar."
@@ -810,12 +774,6 @@ msgstr "Suportado"
 msgid "System Default"
 msgstr "Padrão do sistema"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Volume do sistema: Controle remoto e resposta"
-
-msgid "Take Photo: Respond"
-msgstr "Tirar foto: Responder"
-
 msgid "Tap to start pairing"
 msgstr "Toque para iniciar o pareamento"
 
@@ -866,9 +824,6 @@ msgstr "Alternar exibição do teclado"
 
 msgid "Troubleshooting"
 msgstr "Solução de problemas"
-
-msgid "Trusted Networks"
-msgstr "Redes confiáveis"
 
 msgid "Unknown Theme"
 msgstr "Tema desconhecido"
@@ -923,3 +878,71 @@ msgstr "sem título"
 
 msgid "© KDE Community & contributors"
 msgstr "© Comunidade KDE e colaboradores"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Área de transferência: Sincronizar"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Descoberta e pareamento"
+
+#~ msgid "Find My Device"
+#~ msgstr "Encontrar meu dispositivo"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Integração com atalhos do Siri"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr ""
+#~ "A integração com a folha de compartilhamento do sistema está em "
+#~ "desenvolvimento"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Internacionalização e localização"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Teclado: Controle remoto"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Tela de bloqueio: Controle remoto"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: Controle remoto de mídia e resposta"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Pode não funcionar com o KDE Connect para Windows"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Talvez por meio de esquema URL e integração com os Atalhos da Siri"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Mouse: Controle remoto"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Notificação: Receber dor outros"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Notificação: Recuperação por outros"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Bigscreen"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Executar comando: Solicitação"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Executar comando: Responder"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: Acesso remoto e iniciar servidor de arquivos"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Protetor de tela: Inibir controle remoto"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Volume do sistema: Controle remoto e resposta"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Tirar foto: Responder"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Redes confiáveis"

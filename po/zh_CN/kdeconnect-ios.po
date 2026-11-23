@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-09-22 01:47\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -127,6 +127,10 @@ msgstr "取消"
 msgid "Category: %@"
 msgstr "类别：%@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "查看合并请求"
 
@@ -147,9 +151,6 @@ msgstr "剪贴板同步"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "剪贴板：推送和接收文本"
-
-msgid "Clipboard: Sync"
-msgstr "剪贴板：同步"
 
 msgid "Configure Devices By IP"
 msgstr "按 IP 配置设备"
@@ -174,6 +175,10 @@ msgstr "为 KDE Connect 贡献力量"
 
 msgid "Contributors"
 msgstr "贡献者"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "复制包含已接收文件的文件夹路径"
@@ -262,9 +267,6 @@ msgstr "禁用 UDP 广播"
 msgid "Discovered Devices"
 msgstr "发现的设备"
 
-msgid "Discovery & Pairing"
-msgstr "发现与配对"
-
 msgid "Do Not Pair"
 msgstr "不配对"
 
@@ -330,9 +332,6 @@ msgstr "文件传输"
 
 msgid "Files"
 msgstr "文件"
-
-msgid "Find My Device"
-msgstr "查找我的设备"
 
 msgid "Find My Phone Mode"
 msgstr "查找我的手机模式"
@@ -425,20 +424,8 @@ msgstr "信息"
 msgid "Initiate Pairing?"
 msgstr "发起配对？"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "与 Siri 快捷指令集成"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "与系统分享面板的集成正在开发中"
-
-msgid "Internationalization & Localization"
-msgstr "国际化和本地化"
-
 msgid "Invalid"
 msgstr "无效"
-
-msgid "Keyboard: Control Remote"
-msgstr "键盘：控制远程"
 
 msgid "License"
 msgstr "许可证"
@@ -447,26 +434,14 @@ msgstr "许可证"
 msgid "Light"
 msgstr "轻"
 
-msgid "Lock Screen: Control Remote"
-msgstr "锁屏：控制远程"
-
 msgid "Logs"
 msgstr "日志"
 
 msgid "Logs for %@"
 msgstr "%@ 的日志"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS：控制远程媒体和响应"
-
 msgid "Manage received files in the Files app"
 msgstr "管理文件应用中收到的文件"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "可能无法兼容 KDE Connect Windows 版"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "也许可以通过 URL 方案以及与 Siri 快捷指令的集成进行"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "也许可以使用苹果通知中心服务 (ACNS)"
@@ -474,9 +449,6 @@ msgstr "也许可以使用苹果通知中心服务 (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "中"
-
-msgid "Mouse: Control Remote"
-msgstr "鼠标：控制远程"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -527,11 +499,10 @@ msgstr "尚未实现"
 msgid "Notice"
 msgstr "提示"
 
-msgid "Notification: Receive from Others"
-msgstr "通知：从其他人接收"
-
-msgid "Notification: Retrieve by Others"
-msgstr "通知：由其他人获取"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "应用外通知："
 
 msgid "OK"
 msgstr "确定"
@@ -592,9 +563,6 @@ msgstr "从已连接的设备收到 Ping。"
 msgid "Ping!"
 msgstr "Ping！"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma 大屏幕"
-
 msgid "Playground"
 msgstr "测试"
 
@@ -610,7 +578,9 @@ msgstr "指针灵敏度"
 msgid "Preparing Media…"
 msgstr "正在准备媒体…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "演示器：控制远程"
 
 msgid "Preview: "
@@ -644,8 +614,16 @@ msgstr "刷新发现"
 msgid "Remembered Devices"
 msgstr "记住的设备"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "远程输入"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "报告程序缺陷"
@@ -672,15 +650,6 @@ msgstr "圆角矩形"
 msgid "Run Command"
 msgstr "运行命令"
 
-msgid "Run Command: Request"
-msgstr "运行命令：请求"
-
-msgid "Run Command: Respond"
-msgstr "运行命令：响应"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP：访问远程端并发起文件服务器"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -699,9 +668,6 @@ msgstr "保存照片到照片库"
 
 msgid "Save videos to the photo library"
 msgstr "保存视频到照片库"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "屏保：抑制远程"
 
 msgid "Select a device from the Devices list to start."
 msgstr "从设备列表中选择一个设备以开始。"
@@ -782,12 +748,6 @@ msgstr "支持"
 msgid "System Default"
 msgstr "系统默认"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "系统音量：控制远程和响应"
-
-msgid "Take Photo: Respond"
-msgstr "拍照：响应"
-
 msgid "Tap to start pairing"
 msgstr "点击开始配对"
 
@@ -832,9 +792,6 @@ msgstr "切换键盘"
 
 msgid "Troubleshooting"
 msgstr "故障排查"
-
-msgid "Trusted Networks"
-msgstr "信任的网络"
 
 msgid "Unknown Theme"
 msgstr "未知主题"
@@ -888,3 +845,69 @@ msgstr "未命名"
 
 msgid "© KDE Community & contributors"
 msgstr "© KDE Community & contributors"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "剪贴板：同步"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "发现与配对"
+
+#~ msgid "Find My Device"
+#~ msgstr "查找我的设备"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "与 Siri 快捷指令集成"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "与系统分享面板的集成正在开发中"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "国际化和本地化"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "键盘：控制远程"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "锁屏：控制远程"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS：控制远程媒体和响应"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "可能无法兼容 KDE Connect Windows 版"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "也许可以通过 URL 方案以及与 Siri 快捷指令的集成进行"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "鼠标：控制远程"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "通知：从其他人接收"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "通知：由其他人获取"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma 大屏幕"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "运行命令：请求"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "运行命令：响应"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP：访问远程端并发起文件服务器"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "屏保：抑制远程"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "系统音量：控制远程和响应"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "拍照：响应"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "信任的网络"

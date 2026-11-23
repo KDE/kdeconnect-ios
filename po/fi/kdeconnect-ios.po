@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-10-09 11:09+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -127,6 +127,10 @@ msgstr "Peru"
 msgid "Category: %@"
 msgstr "Luokka: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Tarkista yhdistämispyynnöt"
 
@@ -147,9 +151,6 @@ msgstr "Tahdista leikepöytä"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Leikepöytä: Lähetä ja vastaanota tekstiä"
-
-msgid "Clipboard: Sync"
-msgstr "Leikepöytä: tahdistus"
 
 msgid "Configure Devices By IP"
 msgstr "Laitteiden asetus IP:llä"
@@ -174,6 +175,10 @@ msgstr "Avusta KDE Connectia"
 
 msgid "Contributors"
 msgstr "Avustajat"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Kopioi vastaanotetut tiedostot sisältävän kansion sijainti"
@@ -265,9 +270,6 @@ msgstr "Poista UDP-yleislähetys käytöstä"
 msgid "Discovered Devices"
 msgstr "Löydetyt laitteet"
 
-msgid "Discovery & Pairing"
-msgstr "Löytäminen ja paritus"
-
 msgid "Do Not Pair"
 msgstr "Älä parita"
 
@@ -338,9 +340,6 @@ msgstr "Tiedostosiirrot"
 
 msgid "Files"
 msgstr "Tiedostot"
-
-msgid "Find My Device"
-msgstr "Etsi laite"
 
 msgid "Find My Phone Mode"
 msgstr "Löydä puhelimeni -tila"
@@ -446,20 +445,8 @@ msgstr "Tietoa"
 msgid "Initiate Pairing?"
 msgstr "Aloitetaanko paritus?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Eheytys Sirin pikanäppäimiin"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "Eheytys järjestelmän tyylisivuun on työn alla"
-
-msgid "Internationalization & Localization"
-msgstr "Kansainvälistäminen ja kotoistaminen"
-
 msgid "Invalid"
 msgstr "Virheellinen"
-
-msgid "Keyboard: Control Remote"
-msgstr "Näppäimistö: etähallinta"
 
 msgid "License"
 msgstr "Lisenssi"
@@ -468,27 +455,14 @@ msgstr "Lisenssi"
 msgid "Light"
 msgstr "Kevyt"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Lukitusnäyttö: etähallinta"
-
 msgid "Logs"
 msgstr "Lokit"
 
 msgid "Logs for %@"
 msgstr "%@ – lokit"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: etähallitse mediaa ja reagoi"
-
 msgid "Manage received files in the Files app"
 msgstr "Tiedostot-sovelluksessa on ehkä vastaanotettuja tiedostoja"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Ei ehkä toimi Windowsin KDE Connectin kanssa"
-
-#, fuzzy
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
 
 #, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
@@ -497,9 +471,6 @@ msgstr "Maybe with Apple Notification Center Service (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Keskitasoinen"
-
-msgid "Mouse: Control Remote"
-msgstr "Hiiri: etähallinta"
 
 #, fuzzy
 msgid ""
@@ -558,12 +529,10 @@ msgstr "Ei vielä toteutettu"
 msgid "Notice"
 msgstr "Ilmoitus"
 
-msgid "Notification: Receive from Others"
-msgstr "Ilmoitus: vastaanota muilta"
-
 #, fuzzy
-msgid "Notification: Retrieve by Others"
-msgstr "Notification: Retrieve by Others"
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Ilmoitus sovelluksen ulkopuolelta:"
 
 msgid "OK"
 msgstr "OK"
@@ -627,9 +596,6 @@ msgstr "Yhdistetyltä laitteelta vastaanotettiin tiedustelupaketti."
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
 msgid "Playground"
 msgstr "Leikkikenttä"
 
@@ -646,7 +612,9 @@ msgstr "Osoitinherkkyys"
 msgid "Preparing Media…"
 msgstr "Valmistellaan mediaa…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Esitys: hallitse kaukosäädintä"
 
 msgid "Preview: "
@@ -680,8 +648,16 @@ msgstr "Virkistä haku"
 msgid "Remembered Devices"
 msgstr "Muistetut laitteet"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Etäsyöte"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Ilmoita viasta"
@@ -708,15 +684,6 @@ msgstr "Pyöristetty nelikulmio"
 msgid "Run Command"
 msgstr "Suorita komento"
 
-msgid "Run Command: Request"
-msgstr "Suorita komento: pyyntö"
-
-msgid "Run Command: Respond"
-msgstr "Suorita komento: vastaa"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: käytä etätiedostopalvelinta"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -735,10 +702,6 @@ msgstr "Tallenna kuvat kuvakirjastoon"
 
 msgid "Save videos to the photo library"
 msgstr "Tallenna videot kuvakirjastoon"
-
-#, fuzzy
-msgid "Screensaver: Inhibit Remote"
-msgstr "Screensaver: Inhibit Remote"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Aloita valitsemalla laite luettelosta."
@@ -822,12 +785,6 @@ msgstr "Tuettu"
 msgid "System Default"
 msgstr "Järjestelmän oletus"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Järjestelmän äänenvoimakkuus: säädä etänä ja reagoi"
-
-msgid "Take Photo: Respond"
-msgstr "Ota kuva: reagoi"
-
 msgid "Tap to start pairing"
 msgstr "Aloita parittaminen napauttamalla"
 
@@ -883,9 +840,6 @@ msgstr "Toggle Keyboard"
 msgid "Troubleshooting"
 msgstr "Vian etsintä"
 
-msgid "Trusted Networks"
-msgstr "Luotetut verkot"
-
 msgid "Unknown Theme"
 msgstr "Tuntematon teema"
 
@@ -938,3 +892,72 @@ msgstr "nimetön"
 
 msgid "© KDE Community & contributors"
 msgstr "© KDE-yhteisö ja avustajat"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Leikepöytä: tahdistus"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Löytäminen ja paritus"
+
+#~ msgid "Find My Device"
+#~ msgstr "Etsi laite"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Eheytys Sirin pikanäppäimiin"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "Eheytys järjestelmän tyylisivuun on työn alla"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Kansainvälistäminen ja kotoistaminen"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Näppäimistö: etähallinta"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Lukitusnäyttö: etähallinta"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: etähallitse mediaa ja reagoi"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Ei ehkä toimi Windowsin KDE Connectin kanssa"
+
+#, fuzzy
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Hiiri: etähallinta"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Ilmoitus: vastaanota muilta"
+
+#, fuzzy
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Notification: Retrieve by Others"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Bigscreen"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Suorita komento: pyyntö"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Suorita komento: vastaa"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: käytä etätiedostopalvelinta"
+
+#, fuzzy
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Screensaver: Inhibit Remote"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Järjestelmän äänenvoimakkuus: säädä etänä ja reagoi"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Ota kuva: reagoi"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Luotetut verkot"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-09-22 07:09+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: \n"
@@ -128,6 +128,10 @@ msgstr "Prekliči"
 msgid "Category: %@"
 msgstr "Kategorija: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Preglejte si zahteve za združitev (merge requests)"
 
@@ -148,9 +152,6 @@ msgstr "Sinhronizacija odložišča"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Odložišče: Pošiljanje in prejemanje besedila"
-
-msgid "Clipboard: Sync"
-msgstr "Odložišče: Sinhronizacija"
 
 msgid "Configure Devices By IP"
 msgstr "Konfiguriraj naprave prek naslova IP"
@@ -175,6 +176,10 @@ msgstr "Prispevajte k KDE Connect"
 
 msgid "Contributors"
 msgstr "Sodelavci"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Kopiraj pot do mape s prejetimi datotekami"
@@ -266,9 +271,6 @@ msgstr "Onemogoči oddajanje UDP"
 msgid "Discovered Devices"
 msgstr "Odkrite naprave"
 
-msgid "Discovery & Pairing"
-msgstr "Odkrivanje in uparjanje"
-
 msgid "Do Not Pair"
 msgstr "Ne uparjaj"
 
@@ -335,9 +337,6 @@ msgstr "Prenosi datotek"
 
 msgid "Files"
 msgstr "Datoteke"
-
-msgid "Find My Device"
-msgstr "Najdi mojo napravo"
 
 msgid "Find My Phone Mode"
 msgstr "Najdi način moj telefon"
@@ -438,20 +437,8 @@ msgstr "Informacije"
 msgid "Initiate Pairing?"
 msgstr "Naj začnem uparjanje?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Integracija z bližnjicami Siri"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "Integracija s sistemskim seznamom skupnih virov je v razvoju"
-
-msgid "Internationalization & Localization"
-msgstr "Internacionalizacija in lokalizacija"
-
 msgid "Invalid"
 msgstr "Neveljavno"
-
-msgid "Keyboard: Control Remote"
-msgstr "Tipkovnica: Daljinski upravljalnik"
 
 msgid "License"
 msgstr "Licenca"
@@ -460,26 +447,14 @@ msgstr "Licenca"
 msgid "Light"
 msgstr "Svetloba"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Zaklenjeni zaslon: Daljinski upravljalnik"
-
 msgid "Logs"
 msgstr "Dnevniki"
 
 msgid "Logs for %@"
 msgstr "Dnevniki za %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Daljinski upravljalnik medijev in odgovor"
-
 msgid "Manage received files in the Files app"
 msgstr "Upravljajte prejete datoteke v aplikaciji Datoteke"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Morda ne bo delovalo s KDE Connect za Windows"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Morda prek sheme URL in integracije z bližnjicami Siri"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Morda s storitvijo Apple Notification Center Service (ACNS)."
@@ -487,9 +462,6 @@ msgstr "Morda s storitvijo Apple Notification Center Service (ACNS)."
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Srednje"
-
-msgid "Mouse: Control Remote"
-msgstr "Miška: Daljinski upravljalnik"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -547,11 +519,10 @@ msgstr "Še ni implementirano"
 msgid "Notice"
 msgstr "Obvestilo"
 
-msgid "Notification: Receive from Others"
-msgstr "Obvestilo: Prejmi od drugih"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Obvestilo: Pridobijo drugi"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Obvestilo zunaj aplikacije:"
 
 msgid "OK"
 msgstr "V redu"
@@ -612,9 +583,6 @@ msgstr "Prejet ping od povezane naprave."
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Bigscreen"
-
 msgid "Playground"
 msgstr "Igrišče (Playground)"
 
@@ -630,7 +598,9 @@ msgstr "Občutljivost kazalca"
 msgid "Preparing Media…"
 msgstr "Priprava predstavnosti…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Voditelj: Daljinski upravljalnik"
 
 msgid "Preview: "
@@ -664,8 +634,16 @@ msgstr "Osveži odkritje"
 msgid "Remembered Devices"
 msgstr "Shranjene naprave"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Oddaljeni vhod"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Prijavi napako"
@@ -692,15 +670,6 @@ msgstr "Zaobljen pravokotnik"
 msgid "Run Command"
 msgstr "Zaženi ukaz"
 
-msgid "Run Command: Request"
-msgstr "Zaženi ukaz: Zahteva"
-
-msgid "Run Command: Respond"
-msgstr "Zaženi ukaz: odgovori"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Oddaljeni dostop in zagon datotečnega strežnika"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -716,9 +685,6 @@ msgstr "Shrani fotografije v knjižnico fotografij"
 
 msgid "Save videos to the photo library"
 msgstr "Shrani videoposnetke v knjižnico fotografij"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Ohranjevalnik zaslona: Onemogoči daljinski upravljalnik"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Za začetek izberite napravo s seznama naprav."
@@ -799,12 +765,6 @@ msgstr "Podprto"
 msgid "System Default"
 msgstr "Privzeto sistemsko"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Glasnost sistema: Upravljaj daljinski upravljalnik in odgovori"
-
-msgid "Take Photo: Respond"
-msgstr "Posnemi fotografijo: Odgovori"
-
 msgid "Tap to start pairing"
 msgstr "Dotaknite se za začetek uparjanja"
 
@@ -855,9 +815,6 @@ msgstr "Preklopi tipkovnico"
 
 msgid "Troubleshooting"
 msgstr "Odpravljanje težav"
-
-msgid "Trusted Networks"
-msgstr "Zaupanja vredna omrežja"
 
 msgid "Unknown Theme"
 msgstr "Neznana tema"
@@ -911,3 +868,69 @@ msgstr "brez naslova"
 
 msgid "© KDE Community & contributors"
 msgstr "© Skupnost KDE in sodelavci"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Odložišče: Sinhronizacija"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Odkrivanje in uparjanje"
+
+#~ msgid "Find My Device"
+#~ msgstr "Najdi mojo napravo"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Integracija z bližnjicami Siri"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "Integracija s sistemskim seznamom skupnih virov je v razvoju"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Internacionalizacija in lokalizacija"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Tipkovnica: Daljinski upravljalnik"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Zaklenjeni zaslon: Daljinski upravljalnik"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: Daljinski upravljalnik medijev in odgovor"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Morda ne bo delovalo s KDE Connect za Windows"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Morda prek sheme URL in integracije z bližnjicami Siri"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Miška: Daljinski upravljalnik"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Obvestilo: Prejmi od drugih"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Obvestilo: Pridobijo drugi"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Bigscreen"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Zaženi ukaz: Zahteva"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Zaženi ukaz: odgovori"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: Oddaljeni dostop in zagon datotečnega strežnika"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Ohranjevalnik zaslona: Onemogoči daljinski upravljalnik"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Glasnost sistema: Upravljaj daljinski upravljalnik in odgovori"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Posnemi fotografijo: Odgovori"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Zaupanja vredna omrežja"

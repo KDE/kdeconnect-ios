@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-10-03 23:38+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -128,6 +128,10 @@ msgstr "취소"
 msgid "Category: %@"
 msgstr "분류: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "병합 요청 확인하기"
 
@@ -149,9 +153,6 @@ msgstr "클립보드 동기화"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "클립보드: 텍스트 보내고 받기"
-
-msgid "Clipboard: Sync"
-msgstr "클립보드: 동기화"
 
 msgid "Configure Devices By IP"
 msgstr "IP로 장치 설정"
@@ -176,6 +177,10 @@ msgstr "KDE Connect에 기여하기"
 
 msgid "Contributors"
 msgstr "기여자"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 #, fuzzy
 msgid "Copy path to the folder containing received files"
@@ -284,10 +289,6 @@ msgid "Discovered Devices"
 msgstr "Discovered Devices"
 
 #, fuzzy
-msgid "Discovery & Pairing"
-msgstr "Discovery & Pairing"
-
-#, fuzzy
 msgid "Do Not Pair"
 msgstr "Do Not Pair"
 
@@ -366,9 +367,6 @@ msgstr "파일 전송"
 
 msgid "Files"
 msgstr "파일"
-
-msgid "Find My Device"
-msgstr "내 장치 찾기"
 
 #, fuzzy
 msgid "Find My Phone Mode"
@@ -479,23 +477,8 @@ msgstr "정보"
 msgid "Initiate Pairing?"
 msgstr "Initiate Pairing?"
 
-#, fuzzy
-msgid "Integration with Siri Shortcuts"
-msgstr "Integration with Siri Shortcuts"
-
-#, fuzzy
-msgid "Integration with the system share sheet is in development"
-msgstr "Integration with the system share sheet is in development"
-
-#, fuzzy
-msgid "Internationalization & Localization"
-msgstr "Internationalization & Localization"
-
 msgid "Invalid"
 msgstr "잘못됨"
-
-msgid "Keyboard: Control Remote"
-msgstr "키보드: 원격 제어"
 
 msgid "License"
 msgstr "라이선스"
@@ -504,29 +487,15 @@ msgstr "라이선스"
 msgid "Light"
 msgstr "밝음"
 
-msgid "Lock Screen: Control Remote"
-msgstr "잠금 화면: 원격 제어"
-
 msgid "Logs"
 msgstr "로그"
 
 msgid "Logs for %@"
 msgstr "%@의 로그"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: 원격 미디어 제어 및 응답"
-
 #, fuzzy
 msgid "Manage received files in the Files app"
 msgstr "Manage received files in the Files app"
-
-#, fuzzy
-msgid "May not work with KDE Connect for Windows"
-msgstr "May not work with KDE Connect for Windows"
-
-#, fuzzy
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
 
 #, fuzzy
 msgid "Maybe with Apple Notification Center Service (ACNS)"
@@ -535,10 +504,6 @@ msgstr "Maybe with Apple Notification Center Service (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "중간"
-
-#, fuzzy
-msgid "Mouse: Control Remote"
-msgstr "Mouse: Control Remote"
 
 #, fuzzy
 msgid ""
@@ -605,12 +570,8 @@ msgid "Notice"
 msgstr "공지"
 
 #, fuzzy
-msgid "Notification: Receive from Others"
-msgstr "Notification: Receive from Others"
-
-#, fuzzy
-msgid "Notification: Retrieve by Others"
-msgstr "Notification: Retrieve by Others"
+msgid "Notifications sync"
+msgstr "Out-App Notification:"
 
 msgid "OK"
 msgstr "확인"
@@ -679,9 +640,6 @@ msgstr "Ping received from a connected device."
 msgid "Ping!"
 msgstr "핑!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma 큰 화면"
-
 msgid "Playground"
 msgstr "놀이터"
 
@@ -700,7 +658,7 @@ msgid "Preparing Media…"
 msgstr "Preparing Media…"
 
 #, fuzzy
-msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Presenter: Control Remote"
 
 msgid "Preview: "
@@ -739,8 +697,16 @@ msgstr "Refresh Discovery"
 msgid "Remembered Devices"
 msgstr "기억하는 장치"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "원격 입력"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "버그 보고"
@@ -772,18 +738,6 @@ msgid "Run Command"
 msgstr "명령 실행"
 
 #, fuzzy
-msgid "Run Command: Request"
-msgstr "Run Command: Request"
-
-#, fuzzy
-msgid "Run Command: Respond"
-msgstr "Run Command: Respond"
-
-#, fuzzy
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Access Remote & Initiate File Server"
-
-#, fuzzy
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -804,10 +758,6 @@ msgstr "Save photos to the photo library"
 #, fuzzy
 msgid "Save videos to the photo library"
 msgstr "Save videos to the photo library"
-
-#, fuzzy
-msgid "Screensaver: Inhibit Remote"
-msgstr "Screensaver: Inhibit Remote"
 
 #, fuzzy
 msgid "Select a device from the Devices list to start."
@@ -903,14 +853,6 @@ msgid "System Default"
 msgstr "시스템 기본값"
 
 #, fuzzy
-msgid "System Volume: Control Remote & Respond"
-msgstr "System Volume: Control Remote & Respond"
-
-#, fuzzy
-msgid "Take Photo: Respond"
-msgstr "Take Photo: Respond"
-
-#, fuzzy
 msgid "Tap to start pairing"
 msgstr "Tap to start pairing"
 
@@ -971,9 +913,6 @@ msgstr "키보드 전환"
 msgid "Troubleshooting"
 msgstr "문제 해결"
 
-msgid "Trusted Networks"
-msgstr "신뢰할 수 있는 네트워크"
-
 msgid "Unknown Theme"
 msgstr "알 수 없는 테마"
 
@@ -1028,3 +967,84 @@ msgstr "제목 없음"
 
 msgid "© KDE Community & contributors"
 msgstr "© KDE Community & contributors"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "클립보드: 동기화"
+
+#, fuzzy
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Discovery & Pairing"
+
+#~ msgid "Find My Device"
+#~ msgstr "내 장치 찾기"
+
+#, fuzzy
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Integration with Siri Shortcuts"
+
+#, fuzzy
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "Integration with the system share sheet is in development"
+
+#, fuzzy
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Internationalization & Localization"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "키보드: 원격 제어"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "잠금 화면: 원격 제어"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: 원격 미디어 제어 및 응답"
+
+#, fuzzy
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "May not work with KDE Connect for Windows"
+
+#, fuzzy
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Maybe through URL Scheme and integration with Siri Shortcuts"
+
+#, fuzzy
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Mouse: Control Remote"
+
+#, fuzzy
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Notification: Receive from Others"
+
+#, fuzzy
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Notification: Retrieve by Others"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma 큰 화면"
+
+#, fuzzy
+#~ msgid "Run Command: Request"
+#~ msgstr "Run Command: Request"
+
+#, fuzzy
+#~ msgid "Run Command: Respond"
+#~ msgstr "Run Command: Respond"
+
+#, fuzzy
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: Access Remote & Initiate File Server"
+
+#, fuzzy
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Screensaver: Inhibit Remote"
+
+#, fuzzy
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "System Volume: Control Remote & Respond"
+
+#, fuzzy
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Take Photo: Respond"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "신뢰할 수 있는 네트워크"

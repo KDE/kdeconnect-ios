@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-11-18 18:21+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -128,6 +128,10 @@ msgstr "Vazgeç"
 msgid "Category: %@"
 msgstr "Kategori: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "Diğer birleştirme isteklerine bakın"
 
@@ -148,9 +152,6 @@ msgstr "Pano Eşzamanlaması"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "Pano: İt ve Metin Al"
-
-msgid "Clipboard: Sync"
-msgstr "Pano: Eşzamanla"
 
 msgid "Configure Devices By IP"
 msgstr "IP ile Aygıt Yapılandır"
@@ -175,6 +176,10 @@ msgstr "KDE Connect’e Katkıda Bulun"
 
 msgid "Contributors"
 msgstr "Katkıcılar"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Alınan dosyaları içeren klasöre olan yolu kopyalayın."
@@ -267,9 +272,6 @@ msgstr "UDP Yayınını Devre Dışı Bırak"
 msgid "Discovered Devices"
 msgstr "Keşfedilmiş Aygıtlar"
 
-msgid "Discovery & Pairing"
-msgstr "Keşif ve Eşleştirme"
-
 msgid "Do Not Pair"
 msgstr "Eşleştirme"
 
@@ -335,9 +337,6 @@ msgstr "Dosya Aktarımları"
 
 msgid "Files"
 msgstr "Dosyalar"
-
-msgid "Find My Device"
-msgstr "Aygıtı Bul"
 
 msgid "Find My Phone Mode"
 msgstr "Telefonu Bul"
@@ -439,20 +438,8 @@ msgstr "Bilgi"
 msgid "Initiate Pairing?"
 msgstr "Eşleştirmeyi Başlat?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "Siri Kestirmeleri ile Tümleşim"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "Sistem paylaşım sayfası ile tümleşim henüz geliştirme aşamasındadır."
-
-msgid "Internationalization & Localization"
-msgstr "Yerelleştirme"
-
 msgid "Invalid"
 msgstr "Geçersiz"
-
-msgid "Keyboard: Control Remote"
-msgstr "Klavye: Kumandayı Denetle"
 
 msgid "License"
 msgstr "Lisans"
@@ -461,26 +448,14 @@ msgstr "Lisans"
 msgid "Light"
 msgstr "Açık"
 
-msgid "Lock Screen: Control Remote"
-msgstr "Kilit Ekranı: Kumandayı Denetle"
-
 msgid "Logs"
 msgstr "Günlükler"
 
 msgid "Logs for %@"
 msgstr "%@ günlükleri"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: Uzak Ortamı Denetle ve Yanıtla"
-
 msgid "Manage received files in the Files app"
 msgstr "Alınan dosyaları yönetmek için Dosyalar uygulamasını kullanın."
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "Windows için KDE Connect ile çalışmayabilir."
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "Belki URL şeması ve Siri Kestirmeleri ile tümleşim ile çalışabilir."
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "Belki Apple Bildirim Merkezi Servisi ile (ACNS)"
@@ -488,9 +463,6 @@ msgstr "Belki Apple Bildirim Merkezi Servisi ile (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "Orta"
-
-msgid "Mouse: Control Remote"
-msgstr "Fare: Kumandayı Denetle"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -546,11 +518,10 @@ msgstr "Henüz gerçeklenmedi"
 msgid "Notice"
 msgstr "Bildiri"
 
-msgid "Notification: Receive from Others"
-msgstr "Bildirim: Başkalarından Al"
-
-msgid "Notification: Retrieve by Others"
-msgstr "Bildirim: Başkalarıyla Al"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "Uygulama dışı bildirim:"
 
 msgid "OK"
 msgstr "Tamam"
@@ -611,9 +582,6 @@ msgstr "Bağlı bir aygıttan bir ping alındı."
 msgid "Ping!"
 msgstr "Ping!"
 
-msgid "Plasma Bigscreen"
-msgstr "Plasma Büyükekran"
-
 msgid "Playground"
 msgstr "Oyun Alanı"
 
@@ -629,7 +597,9 @@ msgstr "İşaretçi Hassaslığı"
 msgid "Preparing Media…"
 msgstr "Ortam Hazırlanıyor…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "Sunucu: Kumandayı Denetle"
 
 msgid "Preview: "
@@ -663,8 +633,16 @@ msgstr "Algılamayı Yenile"
 msgid "Remembered Devices"
 msgstr "Anımsanan Aygıtlar"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "Uzaktan Giriş"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "Hata Bildir"
@@ -691,15 +669,6 @@ msgstr "Yuvarlatılmış Dikdörtgen"
 msgid "Run Command"
 msgstr "Komut Çalıştır"
 
-msgid "Run Command: Request"
-msgstr "Komut Çalıştır: İstek"
-
-msgid "Run Command: Respond"
-msgstr "Komut Çalıştır: Yanıt Ver"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: Uzaktan Eriş ve Dosya Sunucusunu Başlat"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -718,9 +687,6 @@ msgstr "Fotoğrafları, fotoğraf arşivine kaydedin"
 
 msgid "Save videos to the photo library"
 msgstr "Videoları, fotoğraf arşivine kaydedin"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "Ekran Koruyucusu: Kumandayı Engelle"
 
 msgid "Select a device from the Devices list to start."
 msgstr "Başlamak için Aygıtlar listesinden bir aygıt seçin."
@@ -801,12 +767,6 @@ msgstr "Desteklenen"
 msgid "System Default"
 msgstr "Sistem Saptanmışı"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "Sistem Ses Düzeyi: Kumandayı Denetle ve Tepki Ver"
-
-msgid "Take Photo: Respond"
-msgstr "Fotoğraf Çek: Tepki Ver"
-
 msgid "Tap to start pairing"
 msgstr "Eşleştirmeyi başlatmak için dokunun"
 
@@ -857,9 +817,6 @@ msgstr "Klavyeyi Aç/Kapat"
 
 msgid "Troubleshooting"
 msgstr "Hata Tanılama"
-
-msgid "Trusted Networks"
-msgstr "Güvenilen Ağlar"
 
 msgid "Unknown Theme"
 msgstr "Bilinmeyen Tema"
@@ -914,3 +871,70 @@ msgstr "adsız"
 
 msgid "© KDE Community & contributors"
 msgstr "© KDE topluluğu ve katkıcılar"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "Pano: Eşzamanla"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "Keşif ve Eşleştirme"
+
+#~ msgid "Find My Device"
+#~ msgstr "Aygıtı Bul"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "Siri Kestirmeleri ile Tümleşim"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr ""
+#~ "Sistem paylaşım sayfası ile tümleşim henüz geliştirme aşamasındadır."
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "Yerelleştirme"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "Klavye: Kumandayı Denetle"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "Kilit Ekranı: Kumandayı Denetle"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: Uzak Ortamı Denetle ve Yanıtla"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "Windows için KDE Connect ile çalışmayabilir."
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "Belki URL şeması ve Siri Kestirmeleri ile tümleşim ile çalışabilir."
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "Fare: Kumandayı Denetle"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "Bildirim: Başkalarından Al"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "Bildirim: Başkalarıyla Al"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "Plasma Büyükekran"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "Komut Çalıştır: İstek"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "Komut Çalıştır: Yanıt Ver"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: Uzaktan Eriş ve Dosya Sunucusunu Başlat"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "Ekran Koruyucusu: Kumandayı Engelle"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "Sistem Ses Düzeyi: Kumandayı Denetle ve Tepki Ver"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "Fotoğraf Çek: Tepki Ver"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "Güvenilen Ağlar"

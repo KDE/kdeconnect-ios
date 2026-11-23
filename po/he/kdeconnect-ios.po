@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-10-15 13:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -126,6 +126,10 @@ msgstr "ביטול"
 msgid "Category: %@"
 msgstr "קטגוריה: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "כדאי לעיין בבקשות המיזוג"
 
@@ -146,9 +150,6 @@ msgstr "סנכרון לוח הגזירים"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "לוח גזירים: דחיפה וקבלת טקסט"
-
-msgid "Clipboard: Sync"
-msgstr "לוח גזירים: סנכרון"
 
 msgid "Configure Devices By IP"
 msgstr "הגדרת התקנים לפי IP"
@@ -173,6 +174,10 @@ msgstr "התנדבות ל־KDE Connect"
 
 msgid "Contributors"
 msgstr "מתנדבים"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "העתקת הנתיב לתיקייה שמכילה את הקבצים שהתקבלו"
@@ -262,9 +267,6 @@ msgstr "כיבוי שידור UDP"
 msgid "Discovered Devices"
 msgstr "מכשירים שהתגלו"
 
-msgid "Discovery & Pairing"
-msgstr "גילוי וצימוד"
-
 msgid "Do Not Pair"
 msgstr "לא לצמד"
 
@@ -330,9 +332,6 @@ msgstr "העברות קבצים"
 
 msgid "Files"
 msgstr "קבצים"
-
-msgid "Find My Device"
-msgstr "איתור המכשיר שלי"
 
 msgid "Find My Phone Mode"
 msgstr "מצב איתור הטלפון שלי"
@@ -417,20 +416,8 @@ msgstr "פרטים"
 msgid "Initiate Pairing?"
 msgstr "ליזום צימוד?"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "שילוב מול קיצורי סירי"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "השיתוף עם גיליון שיתוף המערכת נמצא בפיתוח"
-
-msgid "Internationalization & Localization"
-msgstr "בינאום ותרגום"
-
 msgid "Invalid"
 msgstr "שגוי"
-
-msgid "Keyboard: Control Remote"
-msgstr "מקלדת: שליטה מרחוק"
 
 msgid "License"
 msgstr "רישיון"
@@ -439,26 +426,14 @@ msgstr "רישיון"
 msgid "Light"
 msgstr "קלה"
 
-msgid "Lock Screen: Control Remote"
-msgstr "מסד נעילה: שליטה מרחוק"
-
 msgid "Logs"
 msgstr "יומנים"
 
 msgid "Logs for %@"
 msgstr "יומנים עבור %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: שליטה ותגובה למדיה מרחוק"
-
 msgid "Manage received files in the Files app"
 msgstr "ניהול קבצים שהתקבלו ביישומון הקבצים"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "אולי לא יעבוד מול KDE Connect ל־Windows"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "אולי באמצעות תבנית כתובות ושילוב עם קיצורי סירי"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "אולי עם שירות מרכז ההתראות של Apple‏ (ACNS)"
@@ -466,9 +441,6 @@ msgstr "אולי עם שירות מרכז ההתראות של Apple‏ (ACNS)"
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "בינונית"
-
-msgid "Mouse: Control Remote"
-msgstr "עכבר: שליטה מרחוק"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -522,11 +494,10 @@ msgstr "לא מומש עדיין"
 msgid "Notice"
 msgstr "הודעה"
 
-msgid "Notification: Receive from Others"
-msgstr "התראה: קבלה מאחרים"
-
-msgid "Notification: Retrieve by Others"
-msgstr "התראה: קבלה על ידי אחרים"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "הודעה מחוץ ליישומון:"
 
 msgid "OK"
 msgstr "אישור"
@@ -587,9 +558,6 @@ msgstr "התקבל פינג ממכשיר מחובר."
 msgid "Ping!"
 msgstr "פינג!"
 
-msgid "Plasma Bigscreen"
-msgstr "פלזמה למסכים גדולים"
-
 msgid "Playground"
 msgstr "מגרש משחקים"
 
@@ -605,7 +573,9 @@ msgstr "רגישות סמן"
 msgid "Preparing Media…"
 msgstr "המדיה מתכוננת…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "מציג: שליטה מרחוק"
 
 msgid "Preview: "
@@ -639,8 +609,16 @@ msgstr "ריענון גילוי"
 msgid "Remembered Devices"
 msgstr "מכשירים שמורים"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "קלט מרחוק"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "דיווח על תקלה"
@@ -667,15 +645,6 @@ msgstr "מרובע מעוגל"
 msgid "Run Command"
 msgstr "הרצת פקודה"
 
-msgid "Run Command: Request"
-msgstr "הרצת פקודה: בקשה"
-
-msgid "Run Command: Respond"
-msgstr "הרצת פקודה: תגובה"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: גישה מרחוק והקמת שרת קבצים"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -694,9 +663,6 @@ msgstr "שמירת תמונות לספריית התמונות"
 
 msgid "Save videos to the photo library"
 msgstr "שמירת סרטונים לספריית התמונות"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "שומר מסך: מניעת מרוחק"
 
 msgid "Select a device from the Devices list to start."
 msgstr "יש לבחור מכשיר מרשימת המכשירים כדי להתחיל."
@@ -777,12 +743,6 @@ msgstr "נתמך"
 msgid "System Default"
 msgstr "ברירת המחדל של המערכת"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "עוצמת השמע של המערכת: שליטה מרוחקת ותגובה"
-
-msgid "Take Photo: Respond"
-msgstr "צילום תמונה: תגובה"
-
 msgid "Tap to start pairing"
 msgstr "נגיעה תתחיל הצמדה"
 
@@ -831,9 +791,6 @@ msgstr "הצגת/הסתרת מקלדת"
 
 msgid "Troubleshooting"
 msgstr "פתרון תקלות"
-
-msgid "Trusted Networks"
-msgstr "רשתות מהימנות"
 
 msgid "Unknown Theme"
 msgstr "ערכת עיצוב לא ידועה"
@@ -887,3 +844,69 @@ msgstr "ללא שם"
 
 msgid "© KDE Community & contributors"
 msgstr "© קהילת KDE ומתנדבים"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "לוח גזירים: סנכרון"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "גילוי וצימוד"
+
+#~ msgid "Find My Device"
+#~ msgstr "איתור המכשיר שלי"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "שילוב מול קיצורי סירי"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "השיתוף עם גיליון שיתוף המערכת נמצא בפיתוח"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "בינאום ותרגום"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "מקלדת: שליטה מרחוק"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "מסד נעילה: שליטה מרחוק"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: שליטה ותגובה למדיה מרחוק"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "אולי לא יעבוד מול KDE Connect ל־Windows"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "אולי באמצעות תבנית כתובות ושילוב עם קיצורי סירי"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "עכבר: שליטה מרחוק"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "התראה: קבלה מאחרים"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "התראה: קבלה על ידי אחרים"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "פלזמה למסכים גדולים"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "הרצת פקודה: בקשה"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "הרצת פקודה: תגובה"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: גישה מרחוק והקמת שרת קבצים"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "שומר מסך: מניעת מרוחק"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "עוצמת השמע של המערכת: שליטה מרוחקת ותגובה"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "צילום תמונה: תגובה"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "רשתות מהימנות"

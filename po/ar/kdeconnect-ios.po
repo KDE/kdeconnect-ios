@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 10:15+0200\n"
+"POT-Creation-Date: 2026-11-22 14:14+0200\n"
 "PO-Revision-Date: 2026-09-26 17:12+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -127,6 +127,10 @@ msgstr "ألغِ"
 msgid "Category: %@"
 msgstr "الفئة: %@"
 
+#, fuzzy
+msgid "Change System Volume"
+msgstr "Change System Volume"
+
 msgid "Check out the merge requests"
 msgstr "تحقق من طلبات الدمج"
 
@@ -147,9 +151,6 @@ msgstr "مزامنة الحافظة"
 
 msgid "Clipboard: Push & Receive Text"
 msgstr "الحافظة: دفع واستلام النصوص"
-
-msgid "Clipboard: Sync"
-msgstr "الحافظة: مزامنة"
 
 msgid "Configure Devices By IP"
 msgstr "اضبط الأجهزة بـ IP"
@@ -174,6 +175,10 @@ msgstr "ساهِم في جسر كيدي"
 
 msgid "Contributors"
 msgstr "المساهمون"
+
+#, fuzzy
+msgid "Control Multimedia Players"
+msgstr "Control Multimedia Players"
 
 msgid "Copy path to the folder containing received files"
 msgstr "انسخ المسار إلى المجلد الذي يحتوي على الملفات المستلمة"
@@ -264,9 +269,6 @@ msgstr "عطّل بث UDP"
 msgid "Discovered Devices"
 msgstr "الأجهزة المكتشفة"
 
-msgid "Discovery & Pairing"
-msgstr "الاكتشاف والاقتران"
-
 msgid "Do Not Pair"
 msgstr "لا تقرن"
 
@@ -332,9 +334,6 @@ msgstr "نقل الملفات"
 
 msgid "Files"
 msgstr "الملفات"
-
-msgid "Find My Device"
-msgstr "اعثر على جهازك"
 
 msgid "Find My Phone Mode"
 msgstr "وضع العثور على هاتفِي"
@@ -435,20 +434,8 @@ msgstr "معلومات"
 msgid "Initiate Pairing?"
 msgstr "أتبدأ الاقتران؟"
 
-msgid "Integration with Siri Shortcuts"
-msgstr "التكامل مع اختصارات Siri"
-
-msgid "Integration with the system share sheet is in development"
-msgstr "التكامل مع ورقة المشاركة للنظام قيد التطوير"
-
-msgid "Internationalization & Localization"
-msgstr "التدويل والتوطين"
-
 msgid "Invalid"
 msgstr "غير صالح"
-
-msgid "Keyboard: Control Remote"
-msgstr "لوحة المفاتيح: التحكم البعيد"
 
 msgid "License"
 msgstr "الرخصة"
@@ -457,26 +444,14 @@ msgstr "الرخصة"
 msgid "Light"
 msgstr "فاتح"
 
-msgid "Lock Screen: Control Remote"
-msgstr "شاشة القفل: التحكم البعيد"
-
 msgid "Logs"
 msgstr "سجلّات"
 
 msgid "Logs for %@"
 msgstr "سجلات %@"
 
-msgid "MPRIS: Control Remote Media & Respond"
-msgstr "MPRIS: التحكم بالوسائط البعيدة والاستجابة"
-
 msgid "Manage received files in the Files app"
 msgstr "أدر الملفات المستلمة في تطبيق الملفات"
-
-msgid "May not work with KDE Connect for Windows"
-msgstr "قد لا يعمل مع جسر كيدي لنظام ويندوز"
-
-msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-msgstr "ربما من خلال مخطّط URL والتكامل مع اختصارات Siri"
 
 msgid "Maybe with Apple Notification Center Service (ACNS)"
 msgstr "ربما باستخدام خدمة مركز إشعارات أبل (ACNS)"
@@ -484,9 +459,6 @@ msgstr "ربما باستخدام خدمة مركز إشعارات أبل (ACNS)
 #. Medium haptic feedback level
 msgid "Medium"
 msgstr "متوسط"
-
-msgid "Mouse: Control Remote"
-msgstr "الفأرة: التحكم البعيد"
 
 msgid ""
 "Move a finger on the screen to move the mouse cursor. Tap with one finger "
@@ -539,11 +511,10 @@ msgstr "لم ينفَّذ بعد"
 msgid "Notice"
 msgstr "إخطار"
 
-msgid "Notification: Receive from Others"
-msgstr "الإشعار: الاستلام من الآخرين"
-
-msgid "Notification: Retrieve by Others"
-msgstr "الإشعار: الاسترداد بواسطة الآخرين"
+#, fuzzy
+#| msgid "Out-App Notification:"
+msgid "Notifications sync"
+msgstr "إشعار خارج التطبيق:"
 
 msgid "OK"
 msgstr "حسنًا"
@@ -604,9 +575,6 @@ msgstr "استُلِمَت وخزة من جهاز متصل."
 msgid "Ping!"
 msgstr "وخزة!"
 
-msgid "Plasma Bigscreen"
-msgstr "بلازما الشاشة الكبيرة"
-
 msgid "Playground"
 msgstr "ملعب"
 
@@ -622,7 +590,9 @@ msgstr "حساسية المؤشر"
 msgid "Preparing Media…"
 msgstr "يُعد الوسائط…"
 
-msgid "Presenter: Control Remote"
+#, fuzzy
+#| msgid "Presenter: Control Remote"
+msgid "Presentation remote"
 msgstr "عارض العروض التقديمية: التحكم البعيد"
 
 msgid "Preview: "
@@ -656,8 +626,16 @@ msgstr "حدّث الاكتشاف"
 msgid "Remembered Devices"
 msgstr "الأجهزة المتذكَّرة"
 
+#, fuzzy
+msgid "Remote Browse Files"
+msgstr "Remote Browse Files"
+
 msgid "Remote Input"
 msgstr "الإدخال البعيد"
+
+#, fuzzy
+msgid "Remote Mouse and Keyboard Control"
+msgstr "Remote Mouse and Keyboard Control"
 
 msgid "Report Bug"
 msgstr "أبلغ عن علة"
@@ -684,15 +662,6 @@ msgstr "مستطيل دائري الزوايا"
 msgid "Run Command"
 msgstr "شغّل أمرًا"
 
-msgid "Run Command: Request"
-msgstr "تشغيل أمر: طلب"
-
-msgid "Run Command: Respond"
-msgstr "تشغيل أمر: استجابة"
-
-msgid "SFTP: Access Remote & Initiate File Server"
-msgstr "SFTP: الوصول البعيد وبدء خادوم الملفات"
-
 msgid ""
 "SHA256 fingerprint of your device certificate is:\n"
 "%@\n"
@@ -711,9 +680,6 @@ msgstr "احفظ الصور في مكتبة الصور"
 
 msgid "Save videos to the photo library"
 msgstr "احفظ المقاطع في مكتبة الصور"
-
-msgid "Screensaver: Inhibit Remote"
-msgstr "حافظة الشاشة: منع التحكم البعيد"
 
 msgid "Select a device from the Devices list to start."
 msgstr "اختر جهازاً من قائمة الأجهزة للبدء."
@@ -794,12 +760,6 @@ msgstr "مدعوم"
 msgid "System Default"
 msgstr "مبدئي النظام"
 
-msgid "System Volume: Control Remote & Respond"
-msgstr "مستوى صوت النظام: التحكم البعيد والاستجابة"
-
-msgid "Take Photo: Respond"
-msgstr "التقاط صورة: استجابة"
-
 msgid "Tap to start pairing"
 msgstr "انقر لبدء الاقتران"
 
@@ -847,9 +807,6 @@ msgstr "بدّل لوحة المفاتيح"
 
 msgid "Troubleshooting"
 msgstr "استكشاف الأخطاء وإصلاحها"
-
-msgid "Trusted Networks"
-msgstr "الشّبكات الموثوقة"
 
 msgid "Unknown Theme"
 msgstr "سمة مجهولة"
@@ -903,3 +860,69 @@ msgstr "بلا عنوان"
 
 msgid "© KDE Community & contributors"
 msgstr "© مجتمع كيدي والمساهمون"
+
+#~ msgid "Clipboard: Sync"
+#~ msgstr "الحافظة: مزامنة"
+
+#~ msgid "Discovery & Pairing"
+#~ msgstr "الاكتشاف والاقتران"
+
+#~ msgid "Find My Device"
+#~ msgstr "اعثر على جهازك"
+
+#~ msgid "Integration with Siri Shortcuts"
+#~ msgstr "التكامل مع اختصارات Siri"
+
+#~ msgid "Integration with the system share sheet is in development"
+#~ msgstr "التكامل مع ورقة المشاركة للنظام قيد التطوير"
+
+#~ msgid "Internationalization & Localization"
+#~ msgstr "التدويل والتوطين"
+
+#~ msgid "Keyboard: Control Remote"
+#~ msgstr "لوحة المفاتيح: التحكم البعيد"
+
+#~ msgid "Lock Screen: Control Remote"
+#~ msgstr "شاشة القفل: التحكم البعيد"
+
+#~ msgid "MPRIS: Control Remote Media & Respond"
+#~ msgstr "MPRIS: التحكم بالوسائط البعيدة والاستجابة"
+
+#~ msgid "May not work with KDE Connect for Windows"
+#~ msgstr "قد لا يعمل مع جسر كيدي لنظام ويندوز"
+
+#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
+#~ msgstr "ربما من خلال مخطّط URL والتكامل مع اختصارات Siri"
+
+#~ msgid "Mouse: Control Remote"
+#~ msgstr "الفأرة: التحكم البعيد"
+
+#~ msgid "Notification: Receive from Others"
+#~ msgstr "الإشعار: الاستلام من الآخرين"
+
+#~ msgid "Notification: Retrieve by Others"
+#~ msgstr "الإشعار: الاسترداد بواسطة الآخرين"
+
+#~ msgid "Plasma Bigscreen"
+#~ msgstr "بلازما الشاشة الكبيرة"
+
+#~ msgid "Run Command: Request"
+#~ msgstr "تشغيل أمر: طلب"
+
+#~ msgid "Run Command: Respond"
+#~ msgstr "تشغيل أمر: استجابة"
+
+#~ msgid "SFTP: Access Remote & Initiate File Server"
+#~ msgstr "SFTP: الوصول البعيد وبدء خادوم الملفات"
+
+#~ msgid "Screensaver: Inhibit Remote"
+#~ msgstr "حافظة الشاشة: منع التحكم البعيد"
+
+#~ msgid "System Volume: Control Remote & Respond"
+#~ msgstr "مستوى صوت النظام: التحكم البعيد والاستجابة"
+
+#~ msgid "Take Photo: Respond"
+#~ msgstr "التقاط صورة: استجابة"
+
+#~ msgid "Trusted Networks"
+#~ msgstr "الشّبكات الموثوقة"
