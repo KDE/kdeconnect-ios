@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 14:14+0200\n"
-"PO-Revision-Date: 2026-09-21 19:22+0300\n"
+"PO-Revision-Date: 2026-11-23 09:37+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -132,9 +132,8 @@ msgstr "Скасувати"
 msgid "Category: %@"
 msgstr "Категорія: %@"
 
-#, fuzzy
 msgid "Change System Volume"
-msgstr "Change System Volume"
+msgstr "Змінити том системи"
 
 msgid "Check out the merge requests"
 msgstr "Отримати запити щодо об'єднання"
@@ -181,9 +180,8 @@ msgstr "Участь у проєкті KDE Connect"
 msgid "Contributors"
 msgstr "Учасники розробки"
 
-#, fuzzy
 msgid "Control Multimedia Players"
-msgstr "Control Multimedia Players"
+msgstr "Керування мультимедійними програвачами"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Копіювати шлях до теки, що містить отримані файли"
@@ -523,10 +521,8 @@ msgstr "Ще не реалізовано"
 msgid "Notice"
 msgstr "Зауваження"
 
-#, fuzzy
-#| msgid "Out-App Notification:"
 msgid "Notifications sync"
-msgstr "Сповіщення поза програмою:"
+msgstr "Синхронізація сповіщень"
 
 msgid "OK"
 msgstr "Гаразд"
@@ -602,10 +598,8 @@ msgstr "Чутливість вказівника"
 msgid "Preparing Media…"
 msgstr "Приготування мультимедіа…"
 
-#, fuzzy
-#| msgid "Presenter: Control Remote"
 msgid "Presentation remote"
-msgstr "Презентація: керування віддаленим"
+msgstr "Керування презентацією"
 
 msgid "Preview: "
 msgstr "Перегляд: "
@@ -638,16 +632,14 @@ msgstr "Оновити виявлення"
 msgid "Remembered Devices"
 msgstr "Відомі пристрої"
 
-#, fuzzy
 msgid "Remote Browse Files"
-msgstr "Remote Browse Files"
+msgstr "Віддалена навігація файлами"
 
 msgid "Remote Input"
 msgstr "Дистанційне введення"
 
-#, fuzzy
 msgid "Remote Mouse and Keyboard Control"
-msgstr "Remote Mouse and Keyboard Control"
+msgstr "Віддалене керування мишею та клавіатурою"
 
 msgid "Report Bug"
 msgstr "Повідомити про ваду"

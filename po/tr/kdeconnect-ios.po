@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 14:14+0200\n"
-"PO-Revision-Date: 2026-11-18 18:21+0300\n"
+"PO-Revision-Date: 2026-11-23 16:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -128,9 +128,8 @@ msgstr "Vazgeç"
 msgid "Category: %@"
 msgstr "Kategori: %@"
 
-#, fuzzy
 msgid "Change System Volume"
-msgstr "Change System Volume"
+msgstr "Sistem Ses Düzeyini Değiştir"
 
 msgid "Check out the merge requests"
 msgstr "Diğer birleştirme isteklerine bakın"
@@ -177,9 +176,8 @@ msgstr "KDE Connect’e Katkıda Bulun"
 msgid "Contributors"
 msgstr "Katkıcılar"
 
-#, fuzzy
 msgid "Control Multimedia Players"
-msgstr "Control Multimedia Players"
+msgstr "Çoklu Ortam Oynatıcılarını Denetle"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Alınan dosyaları içeren klasöre olan yolu kopyalayın."
@@ -518,10 +516,8 @@ msgstr "Henüz gerçeklenmedi"
 msgid "Notice"
 msgstr "Bildiri"
 
-#, fuzzy
-#| msgid "Out-App Notification:"
 msgid "Notifications sync"
-msgstr "Uygulama dışı bildirim:"
+msgstr "Bildirim Eşzamanlama"
 
 msgid "OK"
 msgstr "Tamam"
@@ -597,10 +593,8 @@ msgstr "İşaretçi Hassaslığı"
 msgid "Preparing Media…"
 msgstr "Ortam Hazırlanıyor…"
 
-#, fuzzy
-#| msgid "Presenter: Control Remote"
 msgid "Presentation remote"
-msgstr "Sunucu: Kumandayı Denetle"
+msgstr "Sunu Uzaktan Kumandası"
 
 msgid "Preview: "
 msgstr "Ön izle: "
@@ -633,16 +627,14 @@ msgstr "Algılamayı Yenile"
 msgid "Remembered Devices"
 msgstr "Anımsanan Aygıtlar"
 
-#, fuzzy
 msgid "Remote Browse Files"
-msgstr "Remote Browse Files"
+msgstr "Uzak Dosyalara Göz At"
 
 msgid "Remote Input"
 msgstr "Uzaktan Giriş"
 
-#, fuzzy
 msgid "Remote Mouse and Keyboard Control"
-msgstr "Remote Mouse and Keyboard Control"
+msgstr "Uzak Fare ve Klavye Denetimi"
 
 msgid "Report Bug"
 msgstr "Hata Bildir"

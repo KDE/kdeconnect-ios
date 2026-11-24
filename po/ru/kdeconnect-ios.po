@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kdeconnect-ios\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 14:14+0200\n"
-"PO-Revision-Date: 2026-10-10 12:43+0200\n"
+"PO-Revision-Date: 2026-11-23 07:49+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -131,9 +131,8 @@ msgstr "Отмена"
 msgid "Category: %@"
 msgstr "Категория: %@"
 
-#, fuzzy
 msgid "Change System Volume"
-msgstr "Change System Volume"
+msgstr "Изменение громкости системы"
 
 msgid "Check out the merge requests"
 msgstr "Ознакомьтесь с запросами на слияние"
@@ -180,9 +179,8 @@ msgstr "Помочь проекту KDE Connect"
 msgid "Contributors"
 msgstr "Участники"
 
-#, fuzzy
 msgid "Control Multimedia Players"
-msgstr "Control Multimedia Players"
+msgstr "Управление мультимедийными проигрывателями"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Копировать путь к папке с полученными файлами"
@@ -522,10 +520,8 @@ msgstr "Ещё не реализовано"
 msgid "Notice"
 msgstr "Уведомление"
 
-#, fuzzy
-#| msgid "Out-App Notification:"
 msgid "Notifications sync"
-msgstr "Уведомление вне приложения:"
+msgstr "Синхронизация уведомлений"
 
 msgid "OK"
 msgstr "ОК"
@@ -601,10 +597,8 @@ msgstr "Чувствительность указателя"
 msgid "Preparing Media…"
 msgstr "Подготовка медиаданных…"
 
-#, fuzzy
-#| msgid "Presenter: Control Remote"
 msgid "Presentation remote"
-msgstr "Презентация: управление удалённым устройством"
+msgstr "Пульт для презентаций"
 
 msgid "Preview: "
 msgstr "Предварительный просмотр: "
@@ -637,16 +631,14 @@ msgstr "Обновить обнаружение"
 msgid "Remembered Devices"
 msgstr "Запомненные устройства"
 
-#, fuzzy
 msgid "Remote Browse Files"
-msgstr "Remote Browse Files"
+msgstr "Просмотр файлов на удалённом устройстве"
 
 msgid "Remote Input"
 msgstr "Удалённый ввод"
 
-#, fuzzy
 msgid "Remote Mouse and Keyboard Control"
-msgstr "Remote Mouse and Keyboard Control"
+msgstr "Удалённое управление мышью и клавиатурой"
 
 msgid "Report Bug"
 msgstr "Сообщить об ошибке"

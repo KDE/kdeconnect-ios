@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: kdeconnect-ios static messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 14:14+0200\n"
-"PO-Revision-Date: 2026-09-24 15:45+0200\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"PO-Revision-Date: 2026-11-23 11:58+0100\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Bundle display name
@@ -138,9 +138,8 @@ msgstr "Cancel·la"
 msgid "Category: %@"
 msgstr "Categoria: %@"
 
-#, fuzzy
 msgid "Change System Volume"
-msgstr "Change System Volume"
+msgstr "Canvia el volum del sistema"
 
 msgid "Check out the merge requests"
 msgstr "Extreu les peticions de fusió"
@@ -187,9 +186,8 @@ msgstr "Col·laboració al KDE Connect"
 msgid "Contributors"
 msgstr "Col·laboradors"
 
-#, fuzzy
 msgid "Control Multimedia Players"
-msgstr "Control Multimedia Players"
+msgstr "Control dels reproductors multimèdia"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Copia el camí a la carpeta que conté els fitxers rebuts"
@@ -536,10 +534,8 @@ msgstr "Encara no s'ha implementat"
 msgid "Notice"
 msgstr "Avís"
 
-#, fuzzy
-#| msgid "Out-App Notification:"
 msgid "Notifications sync"
-msgstr "Notificació fora de l'aplicació:"
+msgstr "Sincronització de les notificacions"
 
 msgid "OK"
 msgstr "D'acord"
@@ -616,10 +612,8 @@ msgstr "Sensibilitat del punter"
 msgid "Preparing Media…"
 msgstr "S'està preparant el multimèdia…"
 
-#, fuzzy
-#| msgid "Presenter: Control Remote"
 msgid "Presentation remote"
-msgstr "Presentador: Control remot"
+msgstr "Presentació remota"
 
 msgid "Preview: "
 msgstr "Vista prèvia: "
@@ -653,16 +647,14 @@ msgstr "Actualitza el descobriment"
 msgid "Remembered Devices"
 msgstr "Dispositius recordats"
 
-#, fuzzy
 msgid "Remote Browse Files"
-msgstr "Remote Browse Files"
+msgstr "Navegació remota pels fitxers"
 
 msgid "Remote Input"
 msgstr "Entrada remota"
 
-#, fuzzy
 msgid "Remote Mouse and Keyboard Control"
-msgstr "Remote Mouse and Keyboard Control"
+msgstr "Control remot del ratolí i el teclat"
 
 msgid "Report Bug"
 msgstr "Informeu d'un error"

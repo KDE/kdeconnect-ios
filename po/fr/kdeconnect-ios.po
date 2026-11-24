@@ -887,72 +887,116 @@ msgstr "sans titre"
 msgid "© KDE Community & contributors"
 msgstr "© Communauté de KDE et personnes contributrices"
 
+#, fuzzy
+#~| msgid "Clipboard: Sync"
 #~ msgid "Clipboard: Sync"
 #~ msgstr "Presse-papier : synchroniser"
 
+#, fuzzy
+#~| msgid "Discovery & Pairing"
 #~ msgid "Discovery & Pairing"
 #~ msgstr "Recherche & Association"
 
+#, fuzzy
+#~| msgid "Find My Device"
 #~ msgid "Find My Device"
 #~ msgstr "Localiser mon périphérique"
 
+#, fuzzy
+#~| msgid "Integration with Siri Shortcuts"
 #~ msgid "Integration with Siri Shortcuts"
 #~ msgstr "Intégration avec les raccourcis de Siri"
 
+#, fuzzy
+#~| msgid "Integration with the system share sheet is in development"
 #~ msgid "Integration with the system share sheet is in development"
 #~ msgstr ""
 #~ "L'intégration avec la feuille de partage du système est en cours de "
 #~ "développement."
 
+#, fuzzy
+#~| msgid "Internationalization & Localization"
 #~ msgid "Internationalization & Localization"
 #~ msgstr "Internationalisation et localisation"
 
+#, fuzzy
+#~| msgid "Keyboard: Control Remote"
 #~ msgid "Keyboard: Control Remote"
 #~ msgstr "Clavier : contrôle à distance"
 
+#, fuzzy
+#~| msgid "Lock Screen: Control Remote"
 #~ msgid "Lock Screen: Control Remote"
 #~ msgstr "Écran de verrouillage : contrôle à distance"
 
+#, fuzzy
+#~| msgid "MPRIS: Control Remote Media & Respond"
 #~ msgid "MPRIS: Control Remote Media & Respond"
 #~ msgstr "MPRIS : contrôle de média à distance et réponse"
 
+#, fuzzy
+#~| msgid "May not work with KDE Connect for Windows"
 #~ msgid "May not work with KDE Connect for Windows"
 #~ msgstr "Peut ne pas fonctionner avec KDEConnect pour Windows"
 
+#, fuzzy
+#~| msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
 #~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
 #~ msgstr ""
 #~ "Peut-être grâce au schéma d'URL et à l'intégration avec des raccourcis de "
 #~ "Siri"
 
+#, fuzzy
+#~| msgid "Mouse: Control Remote"
 #~ msgid "Mouse: Control Remote"
 #~ msgstr "Souris : contrôle à distance"
 
+#, fuzzy
+#~| msgid "Notification: Receive from Others"
 #~ msgid "Notification: Receive from Others"
 #~ msgstr "Notification : réception des autres"
 
+#, fuzzy
+#~| msgid "Notification: Retrieve by Others"
 #~ msgid "Notification: Retrieve by Others"
 #~ msgstr "Notification : extraction par d'autres"
 
+#, fuzzy
+#~| msgid "Plasma Bigscreen"
 #~ msgid "Plasma Bigscreen"
 #~ msgstr "Plasma Bigscreen"
 
+#, fuzzy
+#~| msgid "Run Command: Request"
 #~ msgid "Run Command: Request"
 #~ msgstr "Exécuter la commande : demande"
 
+#, fuzzy
+#~| msgid "Run Command: Respond"
 #~ msgid "Run Command: Respond"
 #~ msgstr "Exécuter la commande : réponse"
 
+#, fuzzy
+#~| msgid "SFTP: Access Remote & Initiate File Server"
 #~ msgid "SFTP: Access Remote & Initiate File Server"
 #~ msgstr "SFTP : accéder à distance et démarrer un serveur de fichiers"
 
+#, fuzzy
+#~| msgid "Screensaver: Inhibit Remote"
 #~ msgid "Screensaver: Inhibit Remote"
 #~ msgstr "Économiseur d'écran : inhibition de la télécommande"
 
+#, fuzzy
+#~| msgid "System Volume: Control Remote & Respond"
 #~ msgid "System Volume: Control Remote & Respond"
 #~ msgstr "Volume du système : contrôle à distance et réponse"
 
+#, fuzzy
+#~| msgid "Take Photo: Respond"
 #~ msgid "Take Photo: Respond"
 #~ msgstr "Prendre une photo : réponse"
 
+#, fuzzy
+#~| msgid "Trusted Networks"
 #~ msgid "Trusted Networks"
 #~ msgstr "Réseaux de confiance"

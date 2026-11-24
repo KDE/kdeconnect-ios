@@ -4,14 +4,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 14:14+0200\n"
-"PO-Revision-Date: 2026-09-21 10:36-0300\n"
+"PO-Revision-Date: 2026-11-23 05:22-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@kde.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 26.08.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. Bundle display name
@@ -129,9 +129,8 @@ msgstr "Cancelar"
 msgid "Category: %@"
 msgstr "Categoria: %@"
 
-#, fuzzy
 msgid "Change System Volume"
-msgstr "Change System Volume"
+msgstr "Alterar volume do sistema"
 
 msgid "Check out the merge requests"
 msgstr "Confira as solicitações de mesclagem"
@@ -178,9 +177,8 @@ msgstr "Colaborar com o KDE Connect"
 msgid "Contributors"
 msgstr "Colaboradores"
 
-#, fuzzy
 msgid "Control Multimedia Players"
-msgstr "Control Multimedia Players"
+msgstr "Controlar reprodutores multimídia"
 
 msgid "Copy path to the folder containing received files"
 msgstr "Copiar caminho para a pasta que contém os arquivos recebidos"
@@ -525,10 +523,8 @@ msgstr "Não implementado ainda"
 msgid "Notice"
 msgstr "Notificação"
 
-#, fuzzy
-#| msgid "Out-App Notification:"
 msgid "Notifications sync"
-msgstr "Notificação externa ao aplicativo:"
+msgstr "Sincronizar notificações"
 
 msgid "OK"
 msgstr "OK"
@@ -604,10 +600,8 @@ msgstr "Sensibilidade do ponteiro"
 msgid "Preparing Media…"
 msgstr "Preparando a mídia…"
 
-#, fuzzy
-#| msgid "Presenter: Control Remote"
 msgid "Presentation remote"
-msgstr "Apresentador: Controle remoto"
+msgstr "Controle remoto para apresentações"
 
 msgid "Preview: "
 msgstr "Prévia: "
@@ -640,16 +634,14 @@ msgstr "Atualizar descoberta"
 msgid "Remembered Devices"
 msgstr "Dispositivos lembrados"
 
-#, fuzzy
 msgid "Remote Browse Files"
-msgstr "Remote Browse Files"
+msgstr "Navegar em arquivos remotamente"
 
 msgid "Remote Input"
 msgstr "Entrada remota"
 
-#, fuzzy
 msgid "Remote Mouse and Keyboard Control"
-msgstr "Remote Mouse and Keyboard Control"
+msgstr "Controle remoto de mouse e teclado"
 
 msgid "Report Bug"
 msgstr "Relatar bug"
