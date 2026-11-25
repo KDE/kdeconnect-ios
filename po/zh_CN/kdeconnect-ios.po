@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.19.17\n"
+"X-Generator: Translate Toolkit 3.20.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
@@ -127,9 +127,8 @@ msgstr "取消"
 msgid "Category: %@"
 msgstr "类别：%@"
 
-#, fuzzy
 msgid "Change System Volume"
-msgstr "Change System Volume"
+msgstr ""
 
 msgid "Check out the merge requests"
 msgstr "查看合并请求"
@@ -176,9 +175,8 @@ msgstr "为 KDE Connect 贡献力量"
 msgid "Contributors"
 msgstr "贡献者"
 
-#, fuzzy
 msgid "Control Multimedia Players"
-msgstr "Control Multimedia Players"
+msgstr ""
 
 msgid "Copy path to the folder containing received files"
 msgstr "复制包含已接收文件的文件夹路径"
@@ -499,10 +497,8 @@ msgstr "尚未实现"
 msgid "Notice"
 msgstr "提示"
 
-#, fuzzy
-#| msgid "Out-App Notification:"
 msgid "Notifications sync"
-msgstr "应用外通知："
+msgstr ""
 
 msgid "OK"
 msgstr "确定"
@@ -578,10 +574,8 @@ msgstr "指针灵敏度"
 msgid "Preparing Media…"
 msgstr "正在准备媒体…"
 
-#, fuzzy
-#| msgid "Presenter: Control Remote"
 msgid "Presentation remote"
-msgstr "演示器：控制远程"
+msgstr ""
 
 msgid "Preview: "
 msgstr "预览："
@@ -614,16 +608,14 @@ msgstr "刷新发现"
 msgid "Remembered Devices"
 msgstr "记住的设备"
 
-#, fuzzy
 msgid "Remote Browse Files"
-msgstr "Remote Browse Files"
+msgstr ""
 
 msgid "Remote Input"
 msgstr "远程输入"
 
-#, fuzzy
 msgid "Remote Mouse and Keyboard Control"
-msgstr "Remote Mouse and Keyboard Control"
+msgstr ""
 
 msgid "Report Bug"
 msgstr "报告程序缺陷"
@@ -845,69 +837,3 @@ msgstr "未命名"
 
 msgid "© KDE Community & contributors"
 msgstr "© KDE Community & contributors"
-
-#~ msgid "Clipboard: Sync"
-#~ msgstr "剪贴板：同步"
-
-#~ msgid "Discovery & Pairing"
-#~ msgstr "发现与配对"
-
-#~ msgid "Find My Device"
-#~ msgstr "查找我的设备"
-
-#~ msgid "Integration with Siri Shortcuts"
-#~ msgstr "与 Siri 快捷指令集成"
-
-#~ msgid "Integration with the system share sheet is in development"
-#~ msgstr "与系统分享面板的集成正在开发中"
-
-#~ msgid "Internationalization & Localization"
-#~ msgstr "国际化和本地化"
-
-#~ msgid "Keyboard: Control Remote"
-#~ msgstr "键盘：控制远程"
-
-#~ msgid "Lock Screen: Control Remote"
-#~ msgstr "锁屏：控制远程"
-
-#~ msgid "MPRIS: Control Remote Media & Respond"
-#~ msgstr "MPRIS：控制远程媒体和响应"
-
-#~ msgid "May not work with KDE Connect for Windows"
-#~ msgstr "可能无法兼容 KDE Connect Windows 版"
-
-#~ msgid "Maybe through URL Scheme and integration with Siri Shortcuts"
-#~ msgstr "也许可以通过 URL 方案以及与 Siri 快捷指令的集成进行"
-
-#~ msgid "Mouse: Control Remote"
-#~ msgstr "鼠标：控制远程"
-
-#~ msgid "Notification: Receive from Others"
-#~ msgstr "通知：从其他人接收"
-
-#~ msgid "Notification: Retrieve by Others"
-#~ msgstr "通知：由其他人获取"
-
-#~ msgid "Plasma Bigscreen"
-#~ msgstr "Plasma 大屏幕"
-
-#~ msgid "Run Command: Request"
-#~ msgstr "运行命令：请求"
-
-#~ msgid "Run Command: Respond"
-#~ msgstr "运行命令：响应"
-
-#~ msgid "SFTP: Access Remote & Initiate File Server"
-#~ msgstr "SFTP：访问远程端并发起文件服务器"
-
-#~ msgid "Screensaver: Inhibit Remote"
-#~ msgstr "屏保：抑制远程"
-
-#~ msgid "System Volume: Control Remote & Respond"
-#~ msgstr "系统音量：控制远程和响应"
-
-#~ msgid "Take Photo: Respond"
-#~ msgstr "拍照：响应"
-
-#~ msgid "Trusted Networks"
-#~ msgstr "信任的网络"

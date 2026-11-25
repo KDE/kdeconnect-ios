@@ -4,14 +4,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 14:14+0200\n"
-"PO-Revision-Date: 2026-10-15 13:53+0300\n"
+"PO-Revision-Date: 2026-11-24 09:56+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: צוות התרגום של KDE ישראל\n"
+"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 26.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Bundle display name
@@ -126,9 +126,8 @@ msgstr "ביטול"
 msgid "Category: %@"
 msgstr "קטגוריה: %@"
 
-#, fuzzy
 msgid "Change System Volume"
-msgstr "Change System Volume"
+msgstr "כוונון עוצמת השמע של המערכת"
 
 msgid "Check out the merge requests"
 msgstr "כדאי לעיין בבקשות המיזוג"
@@ -175,9 +174,8 @@ msgstr "התנדבות ל־KDE Connect"
 msgid "Contributors"
 msgstr "מתנדבים"
 
-#, fuzzy
 msgid "Control Multimedia Players"
-msgstr "Control Multimedia Players"
+msgstr "שליטה בנגני מולטימדיה"
 
 msgid "Copy path to the folder containing received files"
 msgstr "העתקת הנתיב לתיקייה שמכילה את הקבצים שהתקבלו"
@@ -494,10 +492,8 @@ msgstr "לא מומש עדיין"
 msgid "Notice"
 msgstr "הודעה"
 
-#, fuzzy
-#| msgid "Out-App Notification:"
 msgid "Notifications sync"
-msgstr "הודעה מחוץ ליישומון:"
+msgstr "סנכרון התראות"
 
 msgid "OK"
 msgstr "אישור"
@@ -573,10 +569,8 @@ msgstr "רגישות סמן"
 msgid "Preparing Media…"
 msgstr "המדיה מתכוננת…"
 
-#, fuzzy
-#| msgid "Presenter: Control Remote"
 msgid "Presentation remote"
-msgstr "מציג: שליטה מרחוק"
+msgstr "מצב מצגת"
 
 msgid "Preview: "
 msgstr "תצוגה מקדימה: "
@@ -609,16 +603,14 @@ msgstr "ריענון גילוי"
 msgid "Remembered Devices"
 msgstr "מכשירים שמורים"
 
-#, fuzzy
 msgid "Remote Browse Files"
-msgstr "Remote Browse Files"
+msgstr "עיון בקבצים מרוחקים"
 
 msgid "Remote Input"
 msgstr "קלט מרחוק"
 
-#, fuzzy
 msgid "Remote Mouse and Keyboard Control"
-msgstr "Remote Mouse and Keyboard Control"
+msgstr "שליטה מרחוק בעכבר ובמקלדת"
 
 msgid "Report Bug"
 msgstr "דיווח על תקלה"
