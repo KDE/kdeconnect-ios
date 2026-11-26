@@ -128,7 +128,7 @@ msgid "Category: %@"
 msgstr "类别：%@"
 
 msgid "Change System Volume"
-msgstr ""
+msgstr "更改系统音量"
 
 msgid "Check out the merge requests"
 msgstr "查看合并请求"
@@ -176,7 +176,7 @@ msgid "Contributors"
 msgstr "贡献者"
 
 msgid "Control Multimedia Players"
-msgstr ""
+msgstr "控制多媒体播放器"
 
 msgid "Copy path to the folder containing received files"
 msgstr "复制包含已接收文件的文件夹路径"
@@ -498,7 +498,7 @@ msgid "Notice"
 msgstr "提示"
 
 msgid "Notifications sync"
-msgstr ""
+msgstr "通知同步"
 
 msgid "OK"
 msgstr "确定"
@@ -575,7 +575,7 @@ msgid "Preparing Media…"
 msgstr "正在准备媒体…"
 
 msgid "Presentation remote"
-msgstr ""
+msgstr "演示遥控"
 
 msgid "Preview: "
 msgstr "预览："
@@ -609,13 +609,13 @@ msgid "Remembered Devices"
 msgstr "记住的设备"
 
 msgid "Remote Browse Files"
-msgstr ""
+msgstr "远程浏览文件"
 
 msgid "Remote Input"
 msgstr "远程输入"
 
 msgid "Remote Mouse and Keyboard Control"
-msgstr ""
+msgstr "远程鼠标和键盘控制"
 
 msgid "Report Bug"
 msgstr "报告程序缺陷"
